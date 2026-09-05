@@ -1,0 +1,321 @@
+/* DeSimone-style featured project hero slider */
+
+.asas-hero-slider {
+  --hero-navy: #0e1420;
+  position: relative;
+  height: min(92vh, 820px);
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--hero-navy);
+  color: #fff;
+}
+
+.asas-hero-media,
+.asas-hero-slide {
+  position: absolute;
+  inset: 0;
+}
+
+.asas-hero-slide {
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 0;
+}
+
+.asas-hero-slide.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.asas-hero-slide img {
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 7s ease-out;
+}
+
+.asas-hero-slide.is-active img {
+  transform: scale(1.12);
+}
+
+.asas-hero-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 0%, transparent 38%, rgba(10, 14, 22, .55) 58%, rgba(10, 14, 22, .88) 78%, rgba(10, 14, 22, .94) 100%),
+    linear-gradient(180deg, rgba(10, 14, 22, .2) 0%, transparent 28%, rgba(10, 14, 22, .35) 100%);
+}
+
+.asas-hero-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0 clamp(24px, 5vw, 72px) 28px;
+  pointer-events: none;
+}
+
+.asas-hero-copy,
+.asas-hero-controls {
+  pointer-events: auto;
+  width: min(100%, 520px);
+}
+
+.asas-hero-copy {
+  margin-bottom: 28px;
+  animation: asas-hero-enter .7s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.asas-hero-location {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, .78);
+  font: 600 12px/1 Manrope, Arial, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.asas-hero-copy h1 {
+  margin: 0 0 16px;
+  max-width: 14ch;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 4.8vw, 58px);
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+}
+
+.asas-hero-note {
+  margin: 0 0 22px;
+  max-width: 42ch;
+  color: rgba(255, 255, 255, .72);
+  font: italic 400 14px/1.55 Georgia, "Times New Roman", serif;
+}
+
+.asas-hero-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px 20px;
+  margin: 0 0 28px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  border-bottom: 1px solid rgba(255, 255, 255, .18);
+}
+
+.asas-hero-facts dt {
+  margin: 0 0 6px;
+  color: rgba(255, 255, 255, .55);
+  font: 700 11px/1.2 Manrope, Arial, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.asas-hero-facts dd {
+  margin: 0;
+  color: #fff;
+  font: 500 14px/1.35 Manrope, Arial, sans-serif;
+}
+
+.asas-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.asas-hero-ghost,
+.asas-hero-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font: 700 13px/1 Manrope, Arial, sans-serif;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.asas-hero-ghost {
+  border: 1px solid rgba(255, 255, 255, .7);
+  color: #fff;
+  background: transparent;
+}
+
+.asas-hero-ghost:hover {
+  background: rgba(255, 255, 255, .1);
+  border-color: #fff;
+}
+
+.asas-hero-solid {
+  border: 1px solid #fff;
+  background: #fff;
+  color: #121826;
+}
+
+.asas-hero-solid:hover {
+  background: #f4b4a8;
+  border-color: #f4b4a8;
+  color: #121826;
+}
+
+.asas-hero-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.asas-hero-progress {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  min-width: 0;
+}
+
+.asas-hero-progress button {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.asas-hero-progress button:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, .28);
+}
+
+.asas-hero-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  width: 0;
+  transform: translateY(-50%);
+  background: #fff;
+}
+
+.asas-hero-progress button.is-active .asas-hero-progress-fill {
+  animation-name: asas-hero-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.asas-hero-nav {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.asas-hero-nav-btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.asas-hero-nav-btn:hover {
+  background: rgba(255, 255, 255, .12);
+  border-color: #fff;
+}
+
+@keyframes asas-hero-progress {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes asas-hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html[dir='rtl'] .asas-hero-panel {
+  align-items: flex-start;
+}
+
+html[dir='rtl'] .asas-hero-veil {
+  background:
+    linear-gradient(270deg, transparent 0%, transparent 38%, rgba(10, 14, 22, .55) 58%, rgba(10, 14, 22, .88) 78%, rgba(10, 14, 22, .94) 100%),
+    linear-gradient(180deg, rgba(10, 14, 22, .2) 0%, transparent 28%, rgba(10, 14, 22, .35) 100%);
+}
+
+@media (max-width: 900px) {
+  .asas-hero-slider {
+    height: auto;
+    min-height: 680px;
+  }
+
+  .asas-hero-veil {
+    background:
+      linear-gradient(180deg, rgba(10, 14, 22, .15) 0%, rgba(10, 14, 22, .45) 35%, rgba(10, 14, 22, .92) 68%, #0a0e16 100%);
+  }
+
+  .asas-hero-panel {
+    align-items: stretch;
+    padding: 120px 20px 24px;
+  }
+
+  .asas-hero-copy,
+  .asas-hero-controls {
+    width: 100%;
+  }
+
+  .asas-hero-copy h1 {
+    max-width: none;
+  }
+
+  .asas-hero-facts {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asas-hero-slide,
+  .asas-hero-slide img,
+  .asas-hero-copy,
+  .asas-hero-ghost,
+  .asas-hero-solid,
+  .asas-hero-nav-btn {
+    transition: none;
+    animation: none;
+  }
+
+  .asas-hero-slide.is-active img {
+    transform: none;
+  }
+
+  .asas-hero-progress button.is-active .asas-hero-progress-fill {
+    width: 100%;
+    animation: none;
+  }
+}
+
+/* Hide old static hero when slider is used */
+.hp-revised.atlas-home .atlas-hero {
+  display: none;
+}

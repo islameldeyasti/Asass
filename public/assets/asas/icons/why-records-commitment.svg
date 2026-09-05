@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#f4b4a8" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <title>Records and commitment</title>
+  <path d="M8 5h10.5L24 10.5V26a1.5 1.5 0 0 1-1.5 1.5H8A1.5 1.5 0 0 1 6.5 26V6.5A1.5 1.5 0 0 1 8 5Z"/>
+  <path d="M18.5 5v5.5H24"/>
+  <path d="M10.5 14h7M10.5 17.5h5"/>
+  <path d="M16 19.5c-3.4 0-5.5 1.8-5.5 3.2 0 .4.5.7 1 .7h9c.5 0 1-.3 1-.7 0-1.4-2.1-3.2-5.5-3.2Z"/>
+  <path d="M16 15.8a2.2 2.2 0 1 0 .001 4.4A2.2 2.2 0 0 0 16 15.8Z"/>
+  <path d="M22.5 14.2v3.3l2.2 1.1 2.2-1.1v-3.3l-2.2-1.2-2.2 1.2Z"/>
+  <path d="M22.5 16.2 24.7 17.3 26.9 16.2" stroke-width="1.35"/>
+</svg>

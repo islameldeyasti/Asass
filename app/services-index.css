@@ -1,0 +1,395 @@
+/* Services index — scoped so shared .service-card / .service-grid stay intact */
+
+.services-index {
+  --hp-navy: #1a2744;
+  --hp-orange: #d0402a;
+  --hp-paper: #f6f5f1;
+  --hp-white: #fff;
+  --hp-card-radius: 12px;
+  --hp-card-border: 1px solid #e4e0d9;
+  --hp-card-shadow: 0 1px 0 rgba(26, 39, 68, .04);
+  --hp-card-pad: 22px;
+  --services-jump-h: 56px;
+}
+
+.services-index .hp-card {
+  border: var(--hp-card-border);
+  border-radius: var(--hp-card-radius);
+  box-shadow: var(--hp-card-shadow);
+  overflow: hidden;
+}
+
+.services-index .services-hero,
+.services-index .services-group,
+.services-index .services-bridge {
+  position: relative;
+}
+
+.services-index .services-group {
+  scroll-margin-top: calc(var(--asas-sticky-offset, 116px) + var(--services-jump-h));
+}
+
+/* Hero */
+.services-hero {
+  min-height: 0;
+  padding: 72px 0 64px;
+  color: #fff;
+  overflow: hidden;
+  background: #121826;
+}
+
+.services-hero-photo {
+  position: absolute;
+  inset: 0;
+}
+
+.services-hero-photo img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.services-hero-photo:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(14, 20, 32, .92) 0%, rgba(14, 20, 32, .78) 42%, rgba(14, 20, 32, .42) 78%, rgba(14, 20, 32, .28) 100%),
+    linear-gradient(180deg, rgba(14, 20, 32, .18) 0%, transparent 32%, rgba(14, 20, 32, .4) 100%),
+    repeating-linear-gradient(135deg, transparent 0 18px, rgba(255, 255, 255, .035) 18px 19px);
+}
+
+.services-hero .container {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+}
+
+.services-hero .breadcrumb {
+  color: rgba(255, 255, 255, .58);
+}
+
+.services-hero h1 {
+  max-width: 16ch;
+  margin: 14px 0 16px;
+  color: #fff;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: clamp(36px, 4.4vw, 56px);
+  font-weight: 700;
+  letter-spacing: -.04em;
+  line-height: 1.05;
+}
+
+.services-hero p {
+  max-width: 52ch;
+  margin: 0;
+  color: rgba(255, 255, 255, .82);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.services-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 28px;
+  color: rgba(255, 255, 255, .7);
+  font: 700 12px/1 Manrope, Arial, sans-serif;
+  letter-spacing: .06em;
+}
+
+.services-hero-meta a {
+  color: #f4b4a8;
+}
+
+.services-hero-meta a:hover {
+  color: #fff;
+}
+
+/* Jump nav */
+.services-jump {
+  position: sticky;
+  top: var(--asas-sticky-offset, 116px);
+  z-index: 20;
+  height: var(--services-jump-h);
+  border-bottom: 1px solid #e4e0d9;
+  background: rgba(255, 255, 255, .94);
+  backdrop-filter: blur(12px);
+}
+
+.services-jump-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: var(--services-jump-h);
+  overflow-x: auto;
+}
+
+.services-jump a {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: #5d5853;
+  font: 700 12px/1 Manrope, Arial, sans-serif;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+.services-jump a:hover,
+.services-jump a.is-active {
+  background: var(--hp-navy);
+  color: #fff;
+}
+
+/* Groups */
+.services-group {
+  padding: 80px 0;
+}
+
+.services-group-design {
+  background: var(--hp-white);
+}
+
+.services-group-delivery {
+  background: var(--hp-paper);
+}
+
+.services-group-planning {
+  background: var(--hp-white);
+}
+
+.services-group-head {
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+
+.services-group-head .atlas-kicker {
+  color: var(--hp-orange);
+}
+
+.services-group-head h2 {
+  margin: 12px 0 0;
+  color: var(--hp-navy);
+  font-family: Manrope, Arial, sans-serif;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.15;
+}
+
+/* Featured + cards */
+.services-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  min-height: 320px;
+  margin-bottom: 16px;
+  background: var(--hp-white);
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.services-featured-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.services-featured-pair .services-featured {
+  grid-template-columns: 1fr;
+  min-height: 0;
+  margin-bottom: 0;
+}
+
+.services-featured-pair .services-featured-media {
+  min-height: 220px;
+}
+
+.services-featured-media {
+  position: relative;
+  min-height: 280px;
+  background: #161b26;
+}
+
+.services-featured-media img {
+  object-fit: cover;
+}
+
+.services-featured-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 34px;
+}
+
+.services-featured-copy h3,
+.services-card h3 {
+  margin: 14px 0 10px;
+  color: var(--hp-navy);
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.2;
+}
+
+.services-featured-copy p,
+.services-card p {
+  flex: 1;
+  margin: 0 0 18px;
+  color: #686360;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.services-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.services-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.services-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.services-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100%;
+  padding: var(--hp-card-pad);
+  background: var(--hp-white);
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.services-card h3 {
+  font-size: 20px;
+}
+
+.services-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--hp-navy);
+  color: #f4b4a8;
+  transition: background .2s ease, color .2s ease;
+}
+
+.services-featured:hover,
+.services-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(26, 39, 68, .1);
+}
+
+.services-featured:hover .services-icon,
+.services-card:hover .services-icon {
+  background: var(--hp-orange);
+  color: #fff;
+}
+
+.services-index .atlas-link {
+  margin-top: auto;
+  color: var(--hp-navy);
+}
+
+/* Bridge into the dark CTA */
+.services-bridge {
+  padding: 36px 0;
+  background:
+    linear-gradient(180deg, #f6f5f1 0%, #2a3142 100%);
+  color: #fff;
+}
+
+.services-bridge-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 28px 48px;
+  align-items: center;
+}
+
+.services-bridge p {
+  max-width: 46ch;
+  margin: 0;
+  color: rgba(255, 255, 255, .82);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.services-bridge dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+
+.services-bridge dt {
+  color: rgba(255, 255, 255, .55);
+  font: 700 11px/1.35 Manrope, Arial, sans-serif;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.services-bridge dd {
+  margin: 8px 0 0;
+  color: #fff;
+  font: 700 26px/1 Manrope, Arial, sans-serif;
+  letter-spacing: -.03em;
+}
+
+.services-index .project-cta {
+  margin-top: 0;
+}
+
+@media (max-width: 1100px) {
+  .services-grid-3,
+  .services-featured,
+  .services-featured-pair,
+  .services-bridge-inner,
+  .services-bridge dl {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .services-hero {
+    padding: 56px 0 48px;
+  }
+
+  .services-hero h1 {
+    max-width: none;
+  }
+
+  .services-group {
+    padding: 56px 0;
+  }
+
+  .services-grid-3,
+  .services-grid-2,
+  .services-featured,
+  .services-featured-pair,
+  .services-bridge-inner,
+  .services-bridge dl {
+    grid-template-columns: 1fr;
+  }
+
+  .services-featured-copy {
+    padding: 24px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-featured,
+  .services-card,
+  .services-icon {
+    transition: none;
+  }
+
+  .services-featured:hover,
+  .services-card:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,912 @@
+{
+  "sourceDocument": "/Users/phantomx/Desktop/Asass Platform/Frontend/public/downloads/asas-company-profile.pdf",
+  "policy": "Only B-tier real project assets are published. D/E sources remain private reference files. Generated editorial assets are never connected to the project database.",
+  "counts": {
+    "directStreamsVerified": 20,
+    "heroQualityRealProjects": 0,
+    "projectCardQualityRealProjects": 1,
+    "smallFeatureRealProjects": 0,
+    "referenceOnly": 10,
+    "needOriginalSource": 9,
+    "missingSourceQueue": 6,
+    "generatedEditorialAssets": 9
+  },
+  "genericAssets": [
+    {
+      "id": "homepage-hero",
+      "imageType": "GENERATED_EDITORIAL",
+      "qualityTier": "B_EDITORIAL",
+      "project": null,
+      "websiteUse": "Homepage hero and contact atmosphere",
+      "source": "assets/image-source/corporate/asas-generic-engineering-hero-source.png",
+      "output": {
+        "webp": "/assets/asas/generated-editorial/asas-editorial-homepage-hero.webp",
+        "avif": "/assets/asas/generated-editorial/asas-editorial-homepage-hero.avif",
+        "width": 1536,
+        "height": 864
+      }
+    },
+    {
+      "id": "technical-coordination",
+      "imageType": "GENERATED_EDITORIAL",
+      "qualityTier": "B_EDITORIAL",
+      "project": null,
+      "websiteUse": "Design, quantities, project management and process",
+      "source": "assets/image-source/services/asas-generic-technical-coordination-source.png",
+      "output": {
+        "webp": "/assets/asas/services/asas-editorial-technical-coordination.webp",
+        "avif": "/assets/asas/services/asas-editorial-technical-coordination.avif",
+        "width": 1280,
+        "height": 960
+      }
+    },
+    {
+      "id": "site-supervision",
+      "imageType": "GENERATED_EDITORIAL",
+      "qualityTier": "B_EDITORIAL",
+      "project": null,
+      "websiteUse": "Construction supervision",
+      "source": "assets/image-source/services/asas-editorial-site-supervision-source.png",
+      "output": {
+        "webp": "/assets/asas/services/asas-editorial-site-supervision.webp",
+        "avif": "/assets/asas/services/asas-editorial-site-supervision.avif",
+        "width": 1280,
+        "height": 960
+      }
+    },
+    {
+      "id": "corporate-team",
+      "imageType": "GENERATED_EDITORIAL",
+      "qualityTier": "B_EDITORIAL",
+      "project": null,
+      "websiteUse": "About and coordinated team",
+      "source": "assets/image-source/corporate/asas-editorial-corporate-team-source.png",
+      "output": {
+        "webp": "/assets/asas/corporate/asas-editorial-corporate-team.webp",
+        "avif": "/assets/asas/corporate/asas-editorial-corporate-team.avif",
+        "width": 1280,
+        "height": 960
+      }
+    },
+    {
+      "id": "buildings-sector",
+      "imageType": "GENERATED_EDITORIAL",
+      "qualityTier": "B_EDITORIAL",
+      "project": null,
+      "websiteUse": "Generic towers and buildings sector headers",
+      "source": "assets/image-source/generated-editorial/asas-editorial-buildings-sector-source.png",
+      "output": {
+        "webp": "/assets/asas/generated-editorial/asas-editorial-buildings-sector.webp",
+        "avif": "/assets/asas/generated-editorial/asas-editorial-buildings-sector.avif",
+        "width": 1280,
+        "height": 960
+      }
+    },
+    {
+      "id": "education-sector",
+      "imageType": "GENERATED_EDITORIAL",
+      "qualityTier": "B_EDITORIAL",
+      "project": null,
+      "websiteUse": "Generic education sector header",
+      "source": "assets/image-source/generated-editorial/asas-editorial-education-sector-source.png",
+      "output": {
+        "webp": "/assets/asas/generated-editorial/asas-editorial-education-sector.webp",
+        "avif": "/assets/asas/generated-editorial/asas-editorial-education-sector.avif",
+        "width": 1280,
+        "height": 960
+      }
+    },
+    {
+      "id": "villas-sector",
+      "imageType": "GENERATED_EDITORIAL",
+      "qualityTier": "B_EDITORIAL",
+      "project": null,
+      "websiteUse": "Generic villas sector header",
+      "source": "assets/image-source/generated-editorial/asas-editorial-villas-sector-source.png",
+      "output": {
+        "webp": "/assets/asas/generated-editorial/asas-editorial-villas-sector.webp",
+        "avif": "/assets/asas/generated-editorial/asas-editorial-villas-sector.avif",
+        "width": 1280,
+        "height": 960
+      }
+    },
+    {
+      "id": "interiors-sector",
+      "imageType": "GENERATED_EDITORIAL",
+      "qualityTier": "B_EDITORIAL",
+      "project": null,
+      "websiteUse": "Generic interiors sector header",
+      "source": "assets/image-source/generated-editorial/asas-editorial-interiors-sector-source.png",
+      "output": {
+        "webp": "/assets/asas/generated-editorial/asas-editorial-interiors-sector.webp",
+        "avif": "/assets/asas/generated-editorial/asas-editorial-interiors-sector.avif",
+        "width": 1280,
+        "height": 960
+      }
+    },
+    {
+      "id": "industrial-sector",
+      "imageType": "GENERATED_EDITORIAL",
+      "qualityTier": "B_EDITORIAL",
+      "project": null,
+      "websiteUse": "Generic industrial sector header",
+      "source": "assets/image-source/generated-editorial/asas-editorial-industrial-sector-source.png",
+      "output": {
+        "webp": "/assets/asas/generated-editorial/asas-editorial-industrial-sector.webp",
+        "avif": "/assets/asas/generated-editorial/asas-editorial-industrial-sector.avif",
+        "width": 1280,
+        "height": 960
+      }
+    }
+  ],
+  "images": [
+    {
+      "id": "four-towers-al-nahda",
+      "page": 30,
+      "xref": 12,
+      "category": "towers",
+      "project": "Four Towers, Al Nahda",
+      "location": "Sharjah, Al Nahda",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "homepage selected work",
+        "project detail",
+        "tower sector"
+      ],
+      "source": "assets/image-source/towers/asas-four-towers-al-nahda-source.png",
+      "sourceDimensions": {
+        "width": 525,
+        "height": 718
+      },
+      "usableCropDimensions": {
+        "width": 525,
+        "height": 710
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "unidentified-high-rise",
+      "page": 3,
+      "xref": 28,
+      "category": "corporate",
+      "project": null,
+      "location": null,
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "editorial company imagery only"
+      ],
+      "source": "assets/image-source/corporate/asas-unidentified-high-rise-source.png",
+      "sourceDimensions": {
+        "width": 447,
+        "height": 737
+      },
+      "usableCropDimensions": {
+        "width": 385,
+        "height": 729
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "commercial-residential-building-m26",
+      "page": 31,
+      "xref": 73,
+      "category": "buildings",
+      "project": "Commercial & Residential Building — M26",
+      "location": "Mohammed Bin Zayed City / Musaffah M26",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "project detail",
+        "buildings sector",
+        "architecture service"
+      ],
+      "source": "assets/image-source/buildings/asas-commercial-residential-building-m26-source.png",
+      "sourceDimensions": {
+        "width": 438,
+        "height": 547
+      },
+      "usableCropDimensions": {
+        "width": 409,
+        "height": 472
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "commercial-residential-building-msh36",
+      "page": 31,
+      "xref": 84,
+      "category": "buildings",
+      "project": "Commercial & Residential Building — MSH36",
+      "location": "Khalifa City, Sector MSH36",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "project detail",
+        "buildings sector",
+        "structural service"
+      ],
+      "source": "assets/image-source/buildings/asas-commercial-residential-building-msh36-source.png",
+      "sourceDimensions": {
+        "width": 441,
+        "height": 551
+      },
+      "usableCropDimensions": {
+        "width": 412,
+        "height": 481
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "supervision-building-unidentified",
+      "page": 21,
+      "xref": 96,
+      "category": "corporate",
+      "project": null,
+      "location": null,
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "construction supervision service only"
+      ],
+      "source": "assets/image-source/corporate/asas-supervision-building-unidentified-source.png",
+      "sourceDimensions": {
+        "width": 371,
+        "height": 380
+      },
+      "usableCropDimensions": {
+        "width": 360,
+        "height": 325
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "residential-building-al-raha-rbw2",
+      "page": 31,
+      "xref": 134,
+      "category": "buildings",
+      "project": "Residential Building — RBW2",
+      "location": "Al Raha Beach, Abu Dhabi, RBW2",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_BETTER_SOURCE",
+      "use": [
+        "project detail",
+        "MEP service"
+      ],
+      "source": "assets/image-source/buildings/asas-residential-building-al-raha-rbw2-source.png",
+      "sourceDimensions": {
+        "width": 241,
+        "height": 380
+      },
+      "usableCropDimensions": {
+        "width": 241,
+        "height": 326
+      },
+      "qualityTier": "E_NEED_ORIGINAL_SOURCE",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": "Upscale by up to 4x using non-generative restoration only. Preserve every building, facade, floor, window, road, engineering line, interior element, person, vehicle and landscape feature exactly as supplied. Apply conservative deblocking, denoise, mild deblur, neutral white balance, exposure correction and restrained edge sharpening. Do not use generative fill, outpainting, object replacement, invented texture or geometry reconstruction. Leave absent detail unresolved rather than synthesising it.",
+      "outputs": null
+    },
+    {
+      "id": "mbz-city-towers",
+      "page": 32,
+      "xref": 137,
+      "category": "towers",
+      "project": "MBZ City Towers",
+      "location": "Mohammed Bin Zayed City, Abu Dhabi",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "project detail",
+        "about feature"
+      ],
+      "source": "assets/image-source/towers/asas-mbz-city-towers-source.png",
+      "sourceDimensions": {
+        "width": 447,
+        "height": 450
+      },
+      "usableCropDimensions": {
+        "width": 384,
+        "height": 450
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "traffic-access-studies",
+      "page": 34,
+      "xref": 171,
+      "category": "infrastructure",
+      "project": "Traffic & Access Studies",
+      "location": "Abu Dhabi Island and Khalifa City — C61, C31, C32, C47",
+      "imageType": "TECHNICAL_DRAWING",
+      "quality": "GOOD",
+      "use": [
+        "project detail",
+        "infrastructure sector",
+        "traffic studies service"
+      ],
+      "source": "assets/image-source/infrastructure/asas-traffic-access-studies-source.png",
+      "sourceDimensions": {
+        "width": 1119,
+        "height": 694
+      },
+      "usableCropDimensions": {
+        "width": 941,
+        "height": 624
+      },
+      "qualityTier": "B_PROJECT_CARD",
+      "activeWebsiteAsset": true,
+      "approvedWebsiteUse": "Project cards and technical editorial layouts",
+      "master": "assets/image-masters/real-projects/asas-traffic-access-studies-master.png",
+      "masterDimensions": {
+        "width": 941,
+        "height": 624
+      },
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop",
+        "native-resolution web export"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": {
+        "card": {
+          "webp": "/assets/asas/real-projects/asas-traffic-access-studies-card.webp",
+          "avif": "/assets/asas/real-projects/asas-traffic-access-studies-card.avif",
+          "width": 800,
+          "height": 600
+        },
+        "portfolio": {
+          "webp": "/assets/asas/real-projects/asas-traffic-access-studies-portfolio.webp",
+          "avif": "/assets/asas/real-projects/asas-traffic-access-studies-portfolio.avif",
+          "width": 936,
+          "height": 624
+        },
+        "mobile": {
+          "webp": "/assets/asas/real-projects/asas-traffic-access-studies-mobile.webp",
+          "avif": "/assets/asas/real-projects/asas-traffic-access-studies-mobile.avif",
+          "width": 600,
+          "height": 450
+        }
+      }
+    },
+    {
+      "id": "culture-private-school",
+      "page": 35,
+      "xref": 176,
+      "category": "schools",
+      "project": "Culture Private School",
+      "location": null,
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "project detail",
+        "education sector"
+      ],
+      "source": "assets/image-source/schools/asas-culture-private-school-source.png",
+      "sourceDimensions": {
+        "width": 593,
+        "height": 523
+      },
+      "usableCropDimensions": {
+        "width": 593,
+        "height": 523
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "emirates-private-school",
+      "page": 35,
+      "xref": 177,
+      "category": "schools",
+      "project": "Emirates Private School",
+      "location": null,
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "project detail",
+        "education sector"
+      ],
+      "source": "assets/image-source/schools/asas-emirates-private-school-source.png",
+      "sourceDimensions": {
+        "width": 573,
+        "height": 297
+      },
+      "usableCropDimensions": {
+        "width": 573,
+        "height": 297
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "compound-villas",
+      "page": 36,
+      "xref": 187,
+      "category": "villas",
+      "project": "Compound Villas Portfolio",
+      "location": "Khalifa City; Mohammed Bin Zayed City; Shakhbout City",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_BETTER_SOURCE",
+      "use": [
+        "compound portfolio",
+        "villas sector",
+        "project management service"
+      ],
+      "source": "assets/image-source/villas/asas-compound-villas-source.png",
+      "sourceDimensions": {
+        "width": 293,
+        "height": 359
+      },
+      "usableCropDimensions": {
+        "width": 258,
+        "height": 329
+      },
+      "qualityTier": "E_NEED_ORIGINAL_SOURCE",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": "Upscale by up to 4x using non-generative restoration only. Preserve every building, facade, floor, window, road, engineering line, interior element, person, vehicle and landscape feature exactly as supplied. Apply conservative deblocking, denoise, mild deblur, neutral white balance, exposure correction and restrained edge sharpening. Do not use generative fill, outpainting, object replacement, invented texture or geometry reconstruction. Leave absent detail unresolved rather than synthesising it.",
+      "outputs": null
+    },
+    {
+      "id": "private-villa-shakhbout-w01",
+      "page": 37,
+      "xref": 190,
+      "category": "villas",
+      "project": "Private Villa — W01",
+      "location": "Shakhbout City, W01",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_BETTER_SOURCE",
+      "use": [
+        "project detail",
+        "private villas"
+      ],
+      "source": "assets/image-source/villas/asas-private-villa-shakhbout-w01-source.png",
+      "sourceDimensions": {
+        "width": 227,
+        "height": 359
+      },
+      "usableCropDimensions": {
+        "width": 199,
+        "height": 330
+      },
+      "qualityTier": "E_NEED_ORIGINAL_SOURCE",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": "Upscale by up to 4x using non-generative restoration only. Preserve every building, facade, floor, window, road, engineering line, interior element, person, vehicle and landscape feature exactly as supplied. Apply conservative deblocking, denoise, mild deblur, neutral white balance, exposure correction and restrained edge sharpening. Do not use generative fill, outpainting, object replacement, invented texture or geometry reconstruction. Leave absent detail unresolved rather than synthesising it.",
+      "outputs": null
+    },
+    {
+      "id": "private-villa-khalifa-se24",
+      "page": 37,
+      "xref": 191,
+      "category": "villas",
+      "project": "Private Villa — SE24",
+      "location": "Khalifa City, SE24",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_BETTER_SOURCE",
+      "use": [
+        "project detail",
+        "private villas"
+      ],
+      "source": "assets/image-source/villas/asas-private-villa-khalifa-se24-source.png",
+      "sourceDimensions": {
+        "width": 211,
+        "height": 335
+      },
+      "usableCropDimensions": {
+        "width": 211,
+        "height": 299
+      },
+      "qualityTier": "E_NEED_ORIGINAL_SOURCE",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": "Upscale by up to 4x using non-generative restoration only. Preserve every building, facade, floor, window, road, engineering line, interior element, person, vehicle and landscape feature exactly as supplied. Apply conservative deblocking, denoise, mild deblur, neutral white balance, exposure correction and restrained edge sharpening. Do not use generative fill, outpainting, object replacement, invented texture or geometry reconstruction. Leave absent detail unresolved rather than synthesising it.",
+      "outputs": null
+    },
+    {
+      "id": "residential-villa-al-shamkha-sh3",
+      "page": 38,
+      "xref": 198,
+      "category": "villas",
+      "project": "Residential Villa — SH3",
+      "location": "Al Shamkha, SH3",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_BETTER_SOURCE",
+      "use": [
+        "project detail",
+        "residential villas"
+      ],
+      "source": "assets/image-source/villas/asas-residential-villa-al-shamkha-sh3-source.png",
+      "sourceDimensions": {
+        "width": 212,
+        "height": 335
+      },
+      "usableCropDimensions": {
+        "width": 212,
+        "height": 289
+      },
+      "qualityTier": "E_NEED_ORIGINAL_SOURCE",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": "Upscale by up to 4x using non-generative restoration only. Preserve every building, facade, floor, window, road, engineering line, interior element, person, vehicle and landscape feature exactly as supplied. Apply conservative deblocking, denoise, mild deblur, neutral white balance, exposure correction and restrained edge sharpening. Do not use generative fill, outpainting, object replacement, invented texture or geometry reconstruction. Leave absent detail unresolved rather than synthesising it.",
+      "outputs": null
+    },
+    {
+      "id": "residential-villa-riyadh-rd32",
+      "page": 38,
+      "xref": 199,
+      "category": "villas",
+      "project": "Residential Villa — RD32",
+      "location": "Madinat Al Riyadh, RD32",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_BETTER_SOURCE",
+      "use": [
+        "project detail",
+        "residential villas"
+      ],
+      "source": "assets/image-source/villas/asas-residential-villa-riyadh-rd32-source.png",
+      "sourceDimensions": {
+        "width": 211,
+        "height": 335
+      },
+      "usableCropDimensions": {
+        "width": 211,
+        "height": 289
+      },
+      "qualityTier": "E_NEED_ORIGINAL_SOURCE",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": "Upscale by up to 4x using non-generative restoration only. Preserve every building, facade, floor, window, road, engineering line, interior element, person, vehicle and landscape feature exactly as supplied. Apply conservative deblocking, denoise, mild deblur, neutral white balance, exposure correction and restrained edge sharpening. Do not use generative fill, outpainting, object replacement, invented texture or geometry reconstruction. Leave absent detail unresolved rather than synthesising it.",
+      "outputs": null
+    },
+    {
+      "id": "residential-villa-bani-yas-eb11-01",
+      "page": 38,
+      "xref": 200,
+      "category": "villas",
+      "project": "Residential Villa — EB11-01",
+      "location": "Bani Yas, EB11-01",
+      "imageType": "REAL_RENDER",
+      "quality": "NEEDS_BETTER_SOURCE",
+      "use": [
+        "project detail",
+        "residential villas"
+      ],
+      "source": "assets/image-source/villas/asas-residential-villa-bani-yas-eb11-01-source.png",
+      "sourceDimensions": {
+        "width": 211,
+        "height": 335
+      },
+      "usableCropDimensions": {
+        "width": 211,
+        "height": 289
+      },
+      "qualityTier": "E_NEED_ORIGINAL_SOURCE",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": "Upscale by up to 4x using non-generative restoration only. Preserve every building, facade, floor, window, road, engineering line, interior element, person, vehicle and landscape feature exactly as supplied. Apply conservative deblocking, denoise, mild deblur, neutral white balance, exposure correction and restrained edge sharpening. Do not use generative fill, outpainting, object replacement, invented texture or geometry reconstruction. Leave absent detail unresolved rather than synthesising it.",
+      "outputs": null
+    },
+    {
+      "id": "reception-hall-private-villa",
+      "page": 41,
+      "xref": 207,
+      "category": "interiors",
+      "project": "Reception Hall — Private Villa",
+      "location": null,
+      "imageType": "REAL_PROJECT",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "project detail",
+        "interior sector",
+        "interior service"
+      ],
+      "source": "assets/image-source/interiors/asas-reception-hall-private-villa-source.png",
+      "sourceDimensions": {
+        "width": 405,
+        "height": 406
+      },
+      "usableCropDimensions": {
+        "width": 405,
+        "height": 406
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "majlis-and-dining-private-villa",
+      "page": 41,
+      "xref": 208,
+      "category": "interiors",
+      "project": "Majlis & Dining — Private Villa",
+      "location": null,
+      "imageType": "REAL_PROJECT",
+      "quality": "NEEDS_ENHANCEMENT",
+      "use": [
+        "project detail",
+        "interior sector"
+      ],
+      "source": "assets/image-source/interiors/asas-majlis-and-dining-private-villa-source.png",
+      "sourceDimensions": {
+        "width": 406,
+        "height": 406
+      },
+      "usableCropDimensions": {
+        "width": 406,
+        "height": 406
+      },
+      "qualityTier": "D_REFERENCE_ONLY",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": null,
+      "outputs": null
+    },
+    {
+      "id": "restaurant-interior",
+      "page": 42,
+      "xref": 211,
+      "category": "interiors",
+      "project": "Restaurant Interior",
+      "location": null,
+      "imageType": "REAL_PROJECT",
+      "quality": "NEEDS_BETTER_SOURCE",
+      "use": [
+        "project detail",
+        "hospitality interiors"
+      ],
+      "source": "assets/image-source/interiors/asas-restaurant-interior-source.png",
+      "sourceDimensions": {
+        "width": 244,
+        "height": 408
+      },
+      "usableCropDimensions": {
+        "width": 244,
+        "height": 408
+      },
+      "qualityTier": "E_NEED_ORIGINAL_SOURCE",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": "Upscale by up to 4x using non-generative restoration only. Preserve every building, facade, floor, window, road, engineering line, interior element, person, vehicle and landscape feature exactly as supplied. Apply conservative deblocking, denoise, mild deblur, neutral white balance, exposure correction and restrained edge sharpening. Do not use generative fill, outpainting, object replacement, invented texture or geometry reconstruction. Leave absent detail unresolved rather than synthesising it.",
+      "outputs": null
+    },
+    {
+      "id": "hotel-lobby-interior",
+      "page": 42,
+      "xref": 212,
+      "category": "interiors",
+      "project": "Hotel Lobby Interior",
+      "location": null,
+      "imageType": "REAL_PROJECT",
+      "quality": "NEEDS_BETTER_SOURCE",
+      "use": [
+        "project detail",
+        "hospitality interiors"
+      ],
+      "source": "assets/image-source/interiors/asas-hotel-lobby-interior-source.png",
+      "sourceDimensions": {
+        "width": 244,
+        "height": 406
+      },
+      "usableCropDimensions": {
+        "width": 244,
+        "height": 406
+      },
+      "qualityTier": "E_NEED_ORIGINAL_SOURCE",
+      "activeWebsiteAsset": false,
+      "approvedWebsiteUse": "Internal reference only; request original ASAS source",
+      "master": null,
+      "masterDimensions": null,
+      "processing": [
+        "Direct embedded-stream extraction",
+        "PDF framing crop"
+      ],
+      "externalEnhancementPrompt": "Upscale by up to 4x using non-generative restoration only. Preserve every building, facade, floor, window, road, engineering line, interior element, person, vehicle and landscape feature exactly as supplied. Apply conservative deblocking, denoise, mild deblur, neutral white balance, exposure correction and restrained edge sharpening. Do not use generative fill, outpainting, object replacement, invented texture or geometry reconstruction. Leave absent detail unresolved rather than synthesising it.",
+      "outputs": null
+    }
+  ],
+  "removedSupersededOutputs": [
+    "public/assets/asas/projects/",
+    "public/assets/asas/generic/",
+    "assets/image-masters/* except assets/image-masters/real-projects/"
+  ],
+  "enhancementQueue": [
+    {
+      "asset": "Showroom — M42",
+      "category": "industrial",
+      "sourceProfilePage": 33,
+      "status": "NEEDS_BETTER_SOURCE",
+      "reason": "Profile contains an empty image slot; no project pixels are embedded.",
+      "desired": "2400px-wide landscape source",
+      "sourceRequest": "Please provide the original uncropped ASAS image for Showroom — M42 at 2400px-wide landscape source; do not provide a generated substitute."
+    },
+    {
+      "asset": "Industrial Facility — M42",
+      "category": "industrial",
+      "sourceProfilePage": 33,
+      "status": "NEEDS_BETTER_SOURCE",
+      "reason": "Profile contains an empty image slot; no project pixels are embedded.",
+      "desired": "2400px-wide landscape source",
+      "sourceRequest": "Please provide the original uncropped ASAS image for Industrial Facility — M42 at 2400px-wide landscape source; do not provide a generated substitute."
+    },
+    {
+      "asset": "Industrial Facility — M15",
+      "category": "industrial",
+      "sourceProfilePage": 33,
+      "status": "NEEDS_BETTER_SOURCE",
+      "reason": "Profile contains an empty image slot; no project pixels are embedded.",
+      "desired": "2400px-wide landscape source",
+      "sourceRequest": "Please provide the original uncropped ASAS image for Industrial Facility — M15 at 2400px-wide landscape source; do not provide a generated substitute."
+    },
+    {
+      "asset": "American International School",
+      "category": "schools",
+      "sourceProfilePage": 35,
+      "status": "NEEDS_BETTER_SOURCE",
+      "reason": "Profile contains an empty image slot.",
+      "desired": "2400px-wide landscape source",
+      "sourceRequest": "Please provide the original uncropped ASAS image for American International School at 2400px-wide landscape source; do not provide a generated substitute."
+    },
+    {
+      "asset": "Private Villa — Z14",
+      "category": "villas",
+      "sourceProfilePage": 37,
+      "status": "NEEDS_BETTER_SOURCE",
+      "reason": "Profile contains an empty image slot.",
+      "desired": "1600px-wide source",
+      "sourceRequest": "Please provide the original uncropped ASAS image for Private Villa — Z14 at 1600px-wide source; do not provide a generated substitute."
+    },
+    {
+      "asset": "Retail / Showroom Interior",
+      "category": "interiors",
+      "sourceProfilePage": 42,
+      "status": "NEEDS_BETTER_SOURCE",
+      "reason": "Profile contains an empty image slot.",
+      "desired": "2000px-wide source",
+      "sourceRequest": "Please provide the original uncropped ASAS image for Retail / Showroom Interior at 2000px-wide source; do not provide a generated substitute."
+    }
+  ]
+}

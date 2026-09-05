@@ -1,0 +1,1058 @@
+/* Completing homepage architecture — new sections only */
+
+.atlas-home .hp-about,
+.atlas-home .hp-services,
+.atlas-home .hp-why,
+.atlas-home .hp-faq,
+.atlas-home .hp-seo {
+  padding: 88px 0;
+}
+
+.atlas-home .hp-why {
+  padding: 72px 0 64px;
+}
+
+.atlas-home .hp-about,
+.atlas-home .hp-why,
+.atlas-home .hp-seo {
+  background: #fff;
+}
+
+/* About — reference layout with ASAS brand */
+.atlas-home .hp-about {
+  position: relative;
+  overflow: hidden;
+}
+
+.atlas-home .hp-about-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, .92fr) minmax(0, 1.08fr);
+  gap: 48px 56px;
+  align-items: center;
+}
+
+.atlas-home .hp-about-visual {
+  position: relative;
+  z-index: 1;
+  border-radius: 28px;
+  overflow: hidden;
+  min-height: 620px;
+  background: #1a1a1a;
+}
+
+.atlas-home .hp-about-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  object-fit: cover;
+  display: block;
+}
+
+.atlas-home .hp-about-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.atlas-home .hp-about-copy:before {
+  content: '';
+  position: absolute;
+  inset: -8% -12% auto auto;
+  width: min(420px, 70%);
+  height: min(420px, 70%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, transparent 46%, rgba(48, 48, 128, .08) 47%, transparent 48%),
+    radial-gradient(circle at center, transparent 62%, rgba(208, 64, 42, .07) 63%, transparent 64%),
+    radial-gradient(circle at center, transparent 78%, rgba(48, 48, 128, .05) 79%, transparent 80%);
+  pointer-events: none;
+}
+
+.atlas-home .hp-about-copy .atlas-kicker {
+  color: #d0402a;
+}
+
+.atlas-home .hp-about-copy h2 {
+  margin: 14px 0 0;
+  max-width: 560px;
+  color: #151515;
+  font-size: clamp(30px, 3.2vw, 42px);
+  font-weight: 700;
+  letter-spacing: -.04em;
+  line-height: 1.12;
+}
+
+.atlas-home .hp-about-lede {
+  margin: 18px 0 0 !important;
+  max-width: 540px;
+  color: #686360;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.atlas-home .hp-about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 28px 0 0;
+  padding: 18px 0;
+  border-top: 1px solid #e6e3dc;
+  border-bottom: 1px solid #e6e3dc;
+}
+
+.atlas-home .hp-about-stats article {
+  padding: 4px 14px 4px 0;
+  border-inline-end: 1px solid #e6e3dc;
+}
+
+.atlas-home .hp-about-stats article:last-child {
+  border-inline-end: 0;
+}
+
+.atlas-home .hp-about-stats strong {
+  display: block;
+  color: #303080;
+  font: 700 28px/1 Manrope, Arial, sans-serif;
+}
+
+.atlas-home .hp-about-stats span {
+  display: block;
+  margin-top: 8px;
+  color: #7a756f;
+  font: 700 10px/1.25 Manrope, Arial, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.atlas-home .hp-about-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.atlas-home .hp-about-cards article {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 16px;
+  border-radius: 14px;
+  background: #f6f5f1;
+}
+
+.atlas-home .hp-about-cards svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  color: #d0402a;
+}
+
+.atlas-home .hp-about-cards h3 {
+  margin: 0 0 4px;
+  color: #151515;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.atlas-home .hp-about-cards p {
+  margin: 0 !important;
+  color: #7a756f;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.atlas-home .hp-about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.atlas-home .hp-about-outline,
+.atlas-home .hp-about-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  font: 700 13px/1 Manrope, Arial, sans-serif;
+  text-decoration: none;
+  transition: background .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.atlas-home .hp-about-outline {
+  border: 1px solid #303080;
+  background: #fff;
+  color: #303080;
+}
+
+.atlas-home .hp-about-outline:hover {
+  background: #303080;
+  color: #fff;
+}
+
+.atlas-home .hp-about-solid {
+  border: 1px solid #d0402a;
+  background: #d0402a;
+  color: #fff;
+}
+
+.atlas-home .hp-about-solid:hover {
+  background: #b83624;
+  border-color: #b83624;
+}
+
+.atlas-home .hp-about-grid,
+.atlas-home .hp-services-grid,
+.atlas-home .hp-faq-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, .42fr) minmax(0, 1fr);
+  gap: 40px 72px;
+  align-items: start;
+}
+
+.atlas-home .hp-about h2,
+.atlas-home .hp-services h2,
+.atlas-home .hp-why h2,
+.atlas-home .hp-faq h2,
+.atlas-home .hp-seo h2 {
+  margin: 12px 0 0;
+  max-width: 560px;
+}
+
+.atlas-home .hp-about-grid > div:last-child p,
+.atlas-home .hp-services-grid > div > p:not(.atlas-kicker),
+.atlas-home .hp-why-head p:not(.atlas-kicker),
+.atlas-home .hp-seo p:not(.atlas-kicker) {
+  margin: 0 0 18px;
+  max-width: 540px;
+  color: #686360;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.atlas-home .hp-ticker {
+  overflow: hidden;
+  border-block: 1px solid #d9d8d3;
+  background: #f6f5f1;
+}
+
+.atlas-home .hp-ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 48px;
+  padding: 16px 0;
+  animation: hp-ticker 32s linear infinite;
+}
+
+.atlas-home .hp-ticker-track span {
+  color: #303080;
+  font: 700 12px/1 Manrope, Arial, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.atlas-home .hp-ticker-track span:after {
+  content: ' ·';
+  color: #d0402a;
+}
+
+@keyframes hp-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-home .hp-ticker-track {
+    animation: none;
+  }
+}
+
+.atlas-home .hp-services {
+  background: #f6f5f1;
+}
+
+.atlas-home .hp-service-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #d9d8d3;
+}
+
+.atlas-home .hp-service-rows a {
+  display: grid;
+  grid-template-columns: 48px 1fr 22px;
+  gap: 16px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid #d9d8d3;
+}
+
+.atlas-home .hp-service-rows span {
+  color: #303080;
+  font: 700 13px/1 Manrope, Arial, sans-serif;
+}
+
+.atlas-home .hp-service-rows h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.atlas-home .hp-service-rows p {
+  margin: 0;
+  color: #686360;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.atlas-home .hp-why-head {
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.atlas-home .hp-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid #e4e1db;
+}
+
+.atlas-home .hp-why-grid article {
+  padding: 22px 22px 4px 0;
+  border-inline-end: 1px solid #e4e1db;
+  min-height: 0;
+}
+
+.atlas-home .hp-why-grid article:last-child {
+  border-inline-end: 0;
+  padding-inline-end: 0;
+}
+
+.atlas-home .hp-why-grid article:not(:first-child) {
+  padding-inline-start: 22px;
+}
+
+.atlas-home .hp-why-grid span {
+  display: block;
+  color: #d0402a;
+  font: 700 12px/1 Manrope, Arial, sans-serif;
+  letter-spacing: .04em;
+}
+
+.atlas-home .hp-why-grid h3 {
+  margin: 12px 0 8px;
+  color: #171615;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+}
+
+.atlas-home .hp-why-grid p {
+  margin: 0;
+  max-width: 28ch;
+  color: #686360;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.atlas-home .hp-faq {
+  background: #f6f5f1;
+}
+
+.atlas-home .hp-faq-list details {
+  border-bottom: 1px solid #d9d8d3;
+}
+
+.atlas-home .hp-faq-list summary {
+  cursor: pointer;
+  padding: 18px 0;
+  font-weight: 700;
+  font-size: 16px;
+  list-style: none;
+}
+
+.atlas-home .hp-faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.atlas-home .hp-faq-list p {
+  margin: 0 0 18px;
+  max-width: 640px;
+  color: #686360;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.atlas-home .hp-seo {
+  padding: 72px 0 80px;
+  border-top: 1px solid #e8e5df;
+  background: #fff;
+}
+
+.atlas-home .atlas-dossier {
+  padding: 72px 0;
+  background: #f9f8f3;
+}
+
+@media (max-width: 900px) {
+  .atlas-home .hp-about-layout,
+  .atlas-home .hp-about-grid,
+  .atlas-home .hp-services-grid,
+  .atlas-home .hp-faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-home .hp-about-visual,
+  .atlas-home .hp-about-visual img {
+    min-height: 380px;
+  }
+
+  .atlas-home .hp-about-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 0;
+  }
+
+  .atlas-home .hp-about-stats article:nth-child(2n) {
+    border-inline-end: 0;
+  }
+
+  .atlas-home .hp-why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .atlas-home .hp-why-grid article {
+    padding: 20px 18px 20px 0;
+    border-inline-end: 1px solid #e4e1db;
+    border-bottom: 1px solid #e4e1db;
+  }
+
+  .atlas-home .hp-why-grid article:nth-child(2n) {
+    border-inline-end: 0;
+    padding-inline-end: 0;
+  }
+
+  .atlas-home .hp-why-grid article:nth-child(n+3) {
+    border-bottom: 0;
+  }
+
+  .atlas-home .hp-why-grid article:not(:first-child) {
+    padding-inline-start: 18px;
+  }
+
+  .atlas-home .hp-why-grid article:nth-child(2n+1) {
+    padding-inline-start: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .atlas-home .hp-about,
+  .atlas-home .hp-services,
+  .atlas-home .hp-why,
+  .atlas-home .hp-faq,
+  .atlas-home .hp-seo {
+    padding: 56px 0;
+  }
+
+  .atlas-home .hp-about-visual,
+  .atlas-home .hp-about-visual img {
+    min-height: 280px;
+    border-radius: 20px;
+  }
+
+  .atlas-home .hp-about-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-home .hp-about-actions {
+    flex-direction: column;
+  }
+
+  .atlas-home .hp-about-outline,
+  .atlas-home .hp-about-solid {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .atlas-home .hp-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-home .hp-why-grid article,
+  .atlas-home .hp-why-grid article:nth-child(2n),
+  .atlas-home .hp-why-grid article:nth-child(2n+1),
+  .atlas-home .hp-why-grid article:not(:first-child) {
+    padding: 18px 0;
+    border-inline-end: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    border-bottom: 1px solid #e4e1db;
+  }
+
+  .atlas-home .hp-why-grid article:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* —— Inspiration sections (Das layout structure + ASAS brand) —— */
+
+.atlas-home .insp-center-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
+
+.atlas-home .insp-center-head .atlas-kicker.center {
+  justify-content: center;
+  width: 100%;
+}
+
+.atlas-home .insp-center-head h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 700;
+  color: #171615;
+  line-height: 1.15;
+  margin: 12px 0 14px;
+}
+
+.atlas-home .insp-center-head p:last-child {
+  color: #676465;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.atlas-home .insp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #303080;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font: 600 13px Manrope, system-ui, sans-serif;
+  text-decoration: none;
+  border: 1px solid #303080;
+  transition: background .25s ease, color .25s ease;
+}
+
+.atlas-home .insp-btn:hover {
+  background: #d0402a;
+  border-color: #d0402a;
+  color: #fff;
+}
+
+.atlas-home .insp-btn.outline {
+  background: transparent;
+  color: #303080;
+}
+
+.atlas-home .insp-btn.outline:hover {
+  background: #303080;
+  color: #fff;
+}
+
+.atlas-home .insp-center-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+/* Dark expertise ticker */
+.atlas-home .insp-ticker {
+  background: #171615;
+  overflow: hidden;
+  padding: 28px 0;
+  border-block: 1px solid #2a2928;
+}
+
+.atlas-home .insp-ticker-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  animation: insp-marquee 42s linear infinite;
+}
+
+.atlas-home .insp-ticker-track span {
+  font: 800 clamp(22px, 3vw, 36px) Manrope, system-ui, sans-serif;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+  position: relative;
+  padding-inline-end: 28px;
+}
+
+.atlas-home .insp-ticker-track span:after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d0402a;
+  transform: translateY(-50%);
+}
+
+.atlas-home .insp-ticker-track span.outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #303080;
+  text-stroke: 1.5px #303080;
+}
+
+@keyframes insp-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+html[dir="rtl"] .atlas-home .insp-ticker-track {
+  animation-name: insp-marquee-rtl;
+}
+
+@keyframes insp-marquee-rtl {
+  from { transform: translateX(0); }
+  to { transform: translateX(50%); }
+}
+
+/* Tabbed services */
+.atlas-home .insp-services {
+  padding: 88px 0;
+  background: #fff;
+}
+
+.atlas-home .insp-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  background: #f3f2f2;
+  border-radius: 14px;
+  padding: 8px;
+  margin-bottom: 32px;
+}
+
+.atlas-home .insp-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  color: #676465;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font: 600 12px Manrope, system-ui, sans-serif;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+
+.atlas-home .insp-tabs button.active {
+  background: #303080;
+  color: #fff;
+}
+
+.atlas-home .insp-tabs button:hover:not(.active) {
+  background: #ebeaea;
+  color: #171615;
+}
+
+.atlas-home .insp-tab-panel {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.atlas-home .insp-tab-media {
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1a1a1a;
+  min-height: 420px;
+}
+
+.atlas-home .insp-tab-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.atlas-home .insp-tab-copy .insp-tab-icon {
+  color: #d0402a;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 12px;
+}
+
+.atlas-home .insp-tab-copy h3 {
+  font: 700 clamp(24px, 2.6vw, 34px) Georgia, "Times New Roman", serif;
+  color: #171615;
+  margin: 0 0 12px;
+}
+
+.atlas-home .insp-tab-copy > p {
+  color: #676465;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 22px;
+}
+
+.atlas-home .insp-tab-copy ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: grid;
+  gap: 12px;
+}
+
+.atlas-home .insp-tab-copy li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #171615;
+  font: 500 14px Manrope, system-ui, sans-serif;
+}
+
+.atlas-home .insp-tab-copy li svg {
+  color: #303080;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Sector image cards — polished production treatment */
+.atlas-home .insp-sectors {
+  padding: 96px 0 88px;
+  background: #f6f5f1;
+}
+
+.atlas-home .insp-sectors-head {
+  max-width: 680px;
+  margin: 0 auto 44px;
+}
+
+.atlas-home .insp-sectors-head h2 {
+  max-width: 620px;
+  margin-inline: auto;
+  line-height: 1.12;
+  letter-spacing: -.03em;
+}
+
+.atlas-home .insp-sectors-head p:last-child {
+  margin-top: 14px;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.atlas-home .insp-sector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.atlas-home .insp-sector-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  height: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  background: #1a1a1a;
+  isolation: isolate;
+}
+
+.atlas-home .insp-sector-card .insp-sector-image,
+.atlas-home .insp-sector-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  transition: transform .55s cubic-bezier(.22, 1, .36, 1);
+}
+
+.atlas-home .insp-sector-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, .78) 0%,
+    rgba(10, 10, 10, .42) 38%,
+    rgba(10, 10, 10, .06) 70%,
+    transparent 100%
+  );
+  transition: opacity .35s ease;
+}
+
+.atlas-home .insp-sector-content {
+  position: absolute;
+  inset-inline: 24px;
+  bottom: 26px;
+  z-index: 2;
+  max-width: 88%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.atlas-home .insp-sector-label {
+  display: block;
+  margin: 0;
+  color: #f0a090;
+  font: 700 11px/1.2 Manrope, system-ui, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.atlas-home .insp-sector-content h3 {
+  margin: 0;
+  color: #fff !important;
+  font: 700 22px/1.2 Manrope, system-ui, sans-serif;
+  letter-spacing: -.02em;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, .28);
+}
+
+.atlas-home .insp-sector-content p {
+  margin: 0;
+  max-width: 34ch;
+  color: rgba(255, 255, 255, .82) !important;
+  font: 500 14px/1.45 Manrope, system-ui, sans-serif;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, .25);
+}
+
+/* Keep light-image cards readable with the same overlay weight */
+.atlas-home .insp-sector-card[data-tone='light'] .insp-sector-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, .82) 0%,
+    rgba(10, 10, 10, .48) 40%,
+    rgba(10, 10, 10, .12) 68%,
+    transparent 100%
+  );
+}
+
+.atlas-home .insp-sector-card:hover .insp-sector-image,
+.atlas-home .insp-sector-card:hover img {
+  transform: scale(1.035);
+}
+
+.atlas-home .insp-sector-card:hover .insp-sector-overlay {
+  opacity: .92;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, .84) 0%,
+    rgba(10, 10, 10, .48) 40%,
+    rgba(10, 10, 10, .1) 72%,
+    transparent 100%
+  );
+}
+
+.atlas-home .insp-sectors .insp-center-cta {
+  margin-top: 36px;
+}
+
+/* Core competencies */
+.atlas-home .insp-expertise {
+  padding: 88px 0;
+  background: #fff;
+}
+
+.atlas-home .insp-expertise-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 48px 56px;
+  align-items: center;
+}
+
+.atlas-home .insp-expertise-grid h2 {
+  font: 700 clamp(28px, 3vw, 40px) Georgia, "Times New Roman", serif;
+  color: #171615;
+  margin: 10px 0 14px;
+  line-height: 1.15;
+}
+
+.atlas-home .insp-expertise-grid > div > p {
+  color: #676465;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 0 28px;
+}
+
+.atlas-home .insp-comp-rows {
+  display: grid;
+  gap: 18px;
+}
+
+.atlas-home .insp-comp-rows article > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.atlas-home .insp-comp-rows strong {
+  font: 700 14px Manrope, system-ui, sans-serif;
+  color: #171615;
+}
+
+.atlas-home .insp-comp-rows span {
+  font: 700 12px Manrope, system-ui, sans-serif;
+  color: #303080;
+}
+
+.atlas-home .insp-comp-rows p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #676465;
+  line-height: 1.5;
+}
+
+.atlas-home .insp-comp-rows i {
+  display: block;
+  height: 8px;
+  width: var(--w, 85%);
+  max-width: 100%;
+  border-radius: 999px;
+  background: #303080;
+}
+
+.atlas-home .insp-expertise-media {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  min-height: 520px;
+  background: #1a1a1a;
+}
+
+.atlas-home .insp-expertise-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+.atlas-home .insp-expertise-media aside {
+  position: absolute;
+  inset-inline-start: 20px;
+  bottom: 20px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  min-width: 160px;
+  box-shadow: 0 12px 40px rgba(23, 22, 21, .18);
+}
+
+.atlas-home .insp-expertise-media aside strong {
+  display: block;
+  font: 800 28px Manrope, system-ui, sans-serif;
+  color: #d0402a;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.atlas-home .insp-expertise-media aside span {
+  font-size: 12px;
+  color: #676465;
+  line-height: 1.4;
+}
+
+@media (max-width: 980px) {
+  .atlas-home .insp-tab-panel,
+  .atlas-home .insp-expertise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-home .insp-sector-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .atlas-home .insp-sector-content {
+    inset-inline: 20px;
+    bottom: 22px;
+  }
+
+  .atlas-home .insp-sector-content h3 {
+    font-size: 20px;
+  }
+
+  .atlas-home .insp-tab-media,
+  .atlas-home .insp-tab-media img {
+    min-height: 320px;
+  }
+
+  .atlas-home .insp-expertise-media,
+  .atlas-home .insp-expertise-media img {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 640px) {
+  .atlas-home .insp-services,
+  .atlas-home .insp-sectors,
+  .atlas-home .insp-expertise {
+    padding: 56px 0;
+  }
+
+  .atlas-home .insp-sectors {
+    padding: 64px 0 56px;
+  }
+
+  .atlas-home .insp-sectors-head {
+    margin-bottom: 28px;
+  }
+
+  .atlas-home .insp-sector-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .atlas-home .insp-sector-card {
+    aspect-ratio: 16 / 10;
+  }
+
+  .atlas-home .insp-sector-content {
+    inset-inline: 20px;
+    bottom: 20px;
+    max-width: 92%;
+  }
+
+  .atlas-home .insp-sector-content h3 {
+    font-size: 20px;
+  }
+
+  .atlas-home .insp-sector-content p {
+    font-size: 13px;
+  }
+
+  .atlas-home .insp-sectors .insp-center-cta {
+    margin-top: 28px;
+  }
+
+  .atlas-home .insp-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .atlas-home .insp-tabs button {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .atlas-home .insp-ticker-track span {
+    font-size: 20px;
+  }
+}

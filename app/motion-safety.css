@@ -1,0 +1,18 @@
+/* Legacy motion-page rules: keep content visible if old HomeMotion classes appear.
+   Active motion is handled by motion-system.css + SiteMotion (html.asas-motion). */
+.motion-page .section-title,
+.motion-page .work-card,
+.motion-page .discipline-list > div,
+.motion-page .timeline-item,
+.motion-page .case-study img,
+.motion-page .case-copy,
+.motion-page .reason-grid > div,
+.motion-page .sector-list a,
+.motion-page .technical-icons > div,
+.motion-page .resource-grid article,
+.motion-page .project-cta,
+.motion-page .stat {
+  opacity: 1;
+  transform: none;
+  clip-path: none;
+}

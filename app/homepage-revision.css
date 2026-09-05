@@ -1,0 +1,663 @@
+/* Homepage revision — consolidation, CTA hierarchy, card rhythm */
+
+.hp-revised {
+  --hp-navy: #1a2744;
+  --hp-orange: #d0402a;
+  --hp-paper: #f6f5f1;
+  --hp-white: #fff;
+  --hp-card-radius: 12px;
+  --hp-card-border: 1px solid #e4e0d9;
+  --hp-card-shadow: 0 1px 0 rgba(26, 39, 68, .04);
+  --hp-card-pad: 22px;
+}
+
+.hp-revised .hp-card {
+  border: var(--hp-card-border);
+  border-radius: var(--hp-card-radius);
+  box-shadow: var(--hp-card-shadow);
+  overflow: hidden;
+}
+
+/* Header enquiry stays secondary so homepage orange fills stay limited */
+.header .nav-cta.button,
+.header .mobile-enquiry {
+  background: transparent !important;
+  border: 1px solid #1a2744 !important;
+  color: #1a2744 !important;
+}
+
+/* 3. Secondary CTAs — navy text links, not orange fills */
+.hp-revised .insp-btn,
+.hp-revised .insp-btn.outline,
+.hp-revised .hp-about-solid,
+.hp-revised .hp-about-outline,
+.hp-revised .archive-projects-button {
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--hp-navy) !important;
+  box-shadow: none !important;
+}
+
+/* 6. Tighter hero + stronger text overlay */
+.hp-revised.atlas-home .atlas-hero {
+  height: 540px;
+}
+
+.hp-revised .atlas-hero-photo:after {
+  background:
+    linear-gradient(90deg, rgba(14, 20, 32, .88) 0%, rgba(14, 20, 32, .72) 38%, rgba(14, 20, 32, .28) 72%, rgba(14, 20, 32, .18) 100%),
+    linear-gradient(180deg, rgba(14, 20, 32, .22) 0%, transparent 28%, rgba(14, 20, 32, .45) 100%);
+}
+
+.hp-revised .atlas-hero-inner {
+  padding-bottom: 28px;
+}
+
+.hp-revised .atlas-hero h1 {
+  max-width: 620px;
+  font-size: clamp(42px, 4.6vw, 64px);
+}
+
+.hp-revised .atlas-lede {
+  color: rgba(255, 255, 255, .88);
+}
+
+/* 5. Alternating section rhythm */
+.hp-revised .hp-about { background: var(--hp-white); padding: 80px 0; }
+.hp-revised .hp-disciplines,
+.hp-revised.atlas-home .insp-services { background: var(--hp-paper); padding: 80px 0; }
+.hp-revised .insp-sectors { background: var(--hp-white); padding: 80px 0; }
+.hp-revised .wf-process { background: var(--hp-paper); padding: 80px 0; }
+.hp-revised .hp-portfolio { background: var(--hp-white); padding: 80px 0; }
+.hp-revised .hp-why { background: var(--hp-paper); padding: 80px 0 0 !important; }
+.hp-revised .home-contact {
+  background:
+    linear-gradient(180deg, var(--hp-paper) 0%, var(--hp-navy) 56px) !important;
+  padding-top: 56px !important;
+}
+.hp-revised .hp-faq { background: var(--hp-white); padding: 80px 0; }
+
+/* About: editorial, no competing stats/cards */
+.hp-revised .hp-about-layout {
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.hp-revised .hp-about-visual,
+.hp-revised .hp-about-visual img {
+  border-radius: var(--hp-card-radius);
+}
+
+.hp-revised .hp-about-copy h2 {
+  max-width: 16ch;
+}
+
+.hp-revised .hp-about-lede {
+  margin-bottom: 14px;
+}
+
+.hp-revised .hp-about-note {
+  max-width: 520px;
+  margin: 0 0 24px;
+  color: #686360;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.hp-revised .hp-about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px 28px;
+}
+
+/* Disciplines stats bar */
+.hp-discipline-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 0 0 28px;
+  border: var(--hp-card-border);
+  border-radius: var(--hp-card-radius);
+  background: var(--hp-white);
+  box-shadow: var(--hp-card-shadow);
+}
+
+.hp-discipline-stats article {
+  padding: 18px 20px;
+  border-inline-start: 1px solid #ece8e2;
+}
+
+.hp-discipline-stats article:first-child {
+  border-inline-start: 0;
+}
+
+.hp-discipline-stats strong {
+  display: block;
+  color: var(--hp-navy);
+  font: 700 26px/1 Manrope, Arial, sans-serif;
+  letter-spacing: -.03em;
+}
+
+.hp-discipline-stats span {
+  display: block;
+  margin-top: 6px;
+  color: #6d6863;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.hp-revised .insp-tab-panel {
+  background: var(--hp-white);
+  padding: 0;
+}
+
+.hp-revised .insp-tab-media,
+.hp-revised .insp-tab-media img {
+  min-height: 340px;
+  border-radius: 0;
+}
+
+.hp-revised .insp-tab-copy {
+  padding: 32px 34px 34px;
+}
+
+.hp-revised .insp-tabs button.active {
+  background: var(--hp-navy);
+  color: #fff;
+}
+
+.hp-revised .insp-center-cta {
+  margin-top: 28px;
+}
+
+/* Unified portfolio */
+.hp-portfolio-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 36px;
+}
+
+.hp-portfolio-head h2 {
+  max-width: 16ch;
+  margin: 12px 0 12px;
+}
+
+.hp-portfolio-head p {
+  max-width: 520px;
+  margin: 0;
+  color: #686360;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.hp-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
+  min-height: 440px;
+  margin-bottom: 16px;
+  background: #161b26;
+  color: #fff;
+}
+
+.hp-featured-visual {
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  background: #121826;
+}
+
+.hp-featured-visual img {
+  object-fit: cover;
+}
+
+.hp-featured-visual:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 55%, rgba(22, 27, 38, .35) 100%);
+  pointer-events: none;
+}
+
+.hp-featured-visual span {
+  display: none;
+}
+
+.hp-featured-copy {
+  padding: 36px 38px;
+}
+
+.hp-featured-copy .atlas-kicker {
+  color: #f28a78;
+}
+
+.hp-featured-copy h3 {
+  margin: 12px 0 14px;
+  color: #fff;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.08;
+}
+
+.hp-featured-copy > p {
+  max-width: 46ch;
+  color: rgba(255, 255, 255, .74);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.hp-featured-copy dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+  margin: 24px 0 26px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+
+.hp-featured-copy dt {
+  color: rgba(255, 255, 255, .48);
+  font: 700 10px/1.2 Manrope, Arial, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.hp-featured-copy dd {
+  margin: 5px 0 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+.hp-featured-copy .atlas-link {
+  color: #fff;
+  border-color: rgba(255, 255, 255, .45);
+}
+
+.hp-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.hp-portfolio-card {
+  background: var(--hp-white);
+}
+
+.hp-portfolio-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #161b26;
+}
+
+.hp-portfolio-media img {
+  object-fit: cover;
+}
+
+.hp-portfolio-card img,
+.hp-portfolio-card .portfolio-card-no-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.hp-portfolio-meta {
+  padding: var(--hp-card-pad);
+}
+
+.hp-portfolio-meta small {
+  display: block;
+  color: var(--hp-orange);
+  font: 700 11px/1 Manrope, Arial, sans-serif;
+  letter-spacing: .1em;
+}
+
+.hp-portfolio-meta h3 {
+  margin: 10px 0 8px;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.hp-portfolio-meta p {
+  min-height: 42px;
+  margin: 0 0 16px;
+  color: #6d6863;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* 4. Why ASAS — equal cards + centered badge icons */
+.hp-revised .hp-why-grid,
+.hp-revised.atlas-home .hp-why-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px !important;
+  align-items: stretch !important;
+  border-top: 0 !important;
+}
+
+.hp-revised .hp-why-grid article,
+.hp-revised.atlas-home .hp-why-grid article {
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0 !important;
+  padding: 24px !important;
+  border: 1px solid #e4e0d9 !important;
+  border-inline-end: 1px solid #e4e0d9 !important;
+  background: var(--hp-white);
+  box-shadow: 0 8px 24px rgba(26, 39, 68, .07);
+}
+
+.hp-revised.atlas-home .hp-why-grid article:not(:first-child),
+.hp-revised.atlas-home .hp-why-grid article:last-child {
+  padding: 24px !important;
+  padding-inline-start: 24px !important;
+  padding-inline-end: 24px !important;
+}
+
+.hp-revised.atlas-home .hp-why-grid span.hp-why-badge,
+.hp-why-badge {
+  display: grid !important;
+  place-items: center !important;
+  place-content: center !important;
+  width: 52px !important;
+  height: 52px !important;
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  border-radius: 12px;
+  background: var(--hp-navy);
+  color: #f4b4a8;
+  font: inherit !important;
+  letter-spacing: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden;
+}
+
+.hp-why-badge svg,
+.hp-revised.atlas-home .hp-why-grid span.hp-why-badge svg {
+  display: block !important;
+  width: 28px !important;
+  height: 28px !important;
+  margin: 0 !important;
+  flex: none;
+  overflow: visible;
+}
+
+.hp-revised .hp-why-grid small {
+  display: block;
+  flex: 0 0 auto;
+  margin: 0 0 8px !important;
+  color: var(--hp-orange) !important;
+  font: 700 18px/1 Manrope, Arial, sans-serif !important;
+  letter-spacing: -.02em !important;
+}
+
+.hp-revised .hp-why-grid h3 {
+  flex: 0 0 auto;
+  margin: 0 0 10px !important;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.hp-revised .hp-why-grid p,
+.hp-revised.atlas-home .hp-why-grid p {
+  flex: 1 1 auto;
+  margin: 0 !important;
+  max-width: none !important;
+  color: #686360;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.hp-why-bridge {
+  margin: 28px 0 0;
+  padding: 22px 0 28px;
+  border-top: 1px solid #e4e0d9;
+}
+
+.hp-why-bridge p {
+  max-width: 46ch;
+  margin: 0;
+  color: #5d5853;
+  font: 600 15px/1.55 Manrope, Arial, sans-serif;
+}
+
+/* 7. Footer as brand extension */
+.site-footer {
+  background: #121826;
+  padding: 56px 52px 20px;
+}
+
+.site-footer .footer-action > a,
+.site-footer .footer-action-link {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, .28);
+  color: #fff !important;
+}
+
+.site-footer .footer-action > a:hover,
+.site-footer .footer-action-link:hover {
+  background: rgba(255, 255, 255, .06) !important;
+  border-color: #fff;
+}
+
+.site-footer .footer-column h3 {
+  color: #f4b4a8;
+}
+
+.insp-sector-card.hp-card {
+  border-radius: var(--hp-card-radius);
+}
+
+.hp-revised .home-contact-form button {
+  background: var(--hp-orange);
+}
+
+.hp-revised .home-contact-form button:hover {
+  background: #b83624;
+}
+
+/* Contact dark section — override white-theme text tokens */
+.hp-revised.atlas-home .home-contact {
+  background:
+    linear-gradient(180deg, var(--hp-paper) 0%, var(--hp-navy) 56px) !important;
+  color: #fff;
+}
+
+.hp-revised.atlas-home .home-contact-head .atlas-kicker {
+  color: #f4b4a8 !important;
+}
+
+.hp-revised.atlas-home .home-contact-head h2 {
+  color: #fff !important;
+  font-family: Manrope, Arial, sans-serif !important;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.hp-revised.atlas-home .home-contact-head > p:last-child {
+  color: rgba(255, 255, 255, .78) !important;
+}
+
+.hp-revised.atlas-home .home-contact-details article > svg {
+  background: rgba(255, 255, 255, .08) !important;
+  color: #f4b4a8 !important;
+}
+
+.hp-revised.atlas-home .home-contact-details h3 {
+  color: #fff !important;
+}
+
+.hp-revised.atlas-home .home-contact-details p,
+.hp-revised.atlas-home .home-contact-details a {
+  color: rgba(255, 255, 255, .78) !important;
+}
+
+.hp-revised.atlas-home .home-contact-details a:hover {
+  color: #f4b4a8 !important;
+}
+
+/* Persistent labels above fields */
+.hp-revised.atlas-home .home-contact-fields label > span {
+  position: static !important;
+  display: block;
+  inset: auto !important;
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, .92) !important;
+  font: 700 12px/1 Manrope, Arial, sans-serif;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  pointer-events: auto;
+}
+
+.hp-revised.atlas-home .home-contact-fields input,
+.hp-revised.atlas-home .home-contact-fields select,
+.hp-revised.atlas-home .home-contact-fields textarea {
+  height: auto;
+  min-height: 48px;
+  padding: 12px 14px !important;
+  border-color: rgba(255, 255, 255, .18) !important;
+  background: rgba(255, 255, 255, .96) !important;
+}
+
+.hp-revised.atlas-home .home-contact-fields textarea {
+  min-height: 132px;
+}
+
+.hp-revised.atlas-home .home-contact-note {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, .55);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Why numbering weight */
+.hp-revised .hp-why-grid small {
+  margin-top: 4px;
+  color: var(--hp-orange) !important;
+  font: 700 18px/1 Manrope, Arial, sans-serif !important;
+  letter-spacing: -.02em !important;
+}
+
+/* Site chat: only WhatsApp, bottom-right — never near header */
+.whatsapp {
+  position: fixed !important;
+  z-index: 45 !important;
+  inset: auto 22px 22px auto !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+html[dir='rtl'] .whatsapp {
+  inset: auto auto 22px 22px !important;
+  right: auto !important;
+}
+
+.announcement,
+.header {
+  z-index: 50 !important;
+}
+
+/* FAQ structure */
+.hp-revised.atlas-home .hp-faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.hp-revised.atlas-home .hp-faq-list details {
+  margin: 0;
+  border: 1px solid #e4e0d9 !important;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.hp-revised.atlas-home .hp-faq-list details:first-child {
+  border-top: 1px solid #e4e0d9 !important;
+}
+
+.hp-revised.atlas-home .hp-faq-list summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px !important;
+  color: var(--hp-navy);
+}
+
+.hp-revised.atlas-home .hp-faq-list summary:after {
+  margin-inline-start: auto;
+  color: var(--hp-orange);
+}
+
+.hp-revised.atlas-home .hp-faq-num {
+  flex: 0 0 auto;
+  color: var(--hp-orange);
+  font: 700 14px/1.2 Manrope, Arial, sans-serif;
+  letter-spacing: -.02em;
+}
+
+.hp-revised.atlas-home .hp-faq-q {
+  flex: 1;
+  padding-inline-end: 12px;
+}
+
+.hp-revised.atlas-home .hp-faq-list p {
+  margin: 0 !important;
+  padding: 0 20px 18px 52px;
+  max-width: none !important;
+}
+
+@media (max-width: 720px) {
+  .hp-revised.atlas-home .hp-faq-list p {
+    padding-inline-start: 20px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hp-portfolio-grid,
+  .hp-revised .hp-why-grid,
+  .hp-discipline-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hp-featured,
+  .hp-revised .hp-about-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .hp-revised.atlas-home .atlas-hero {
+    height: 580px;
+  }
+
+  .hp-portfolio-head,
+  .hp-revised .hp-about-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .hp-revised.atlas-home .atlas-hero {
+    height: 620px;
+  }
+
+  .hp-discipline-stats,
+  .hp-portfolio-grid,
+  .hp-revised .hp-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hp-discipline-stats article {
+    border-inline-start: 0;
+    border-top: 1px solid #ece8e2;
+  }
+
+  .hp-discipline-stats article:first-child {
+    border-top: 0;
+  }
+}
