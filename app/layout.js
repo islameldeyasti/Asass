@@ -23,6 +23,7 @@ import './sectors-index.css';
 import './downloads-index.css';
 import './enquiry-page.css';
 import './about-page.css';
+import './mobile-fixes.css';
 export const metadata={
   title: 'ASAS Engineering & Project Management Consultancy',
   description: 'Abu Dhabi consultancy for architectural, structural, civil and electromechanical design, quantities and cost, project management and construction supervision.',

@@ -1,0 +1,48 @@
+/* Mobile homepage: keep the Why ASAS cards readable instead of four narrow columns. */
+@media (max-width: 640px) {
+  .hp-revised.atlas-home .hp-why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .hp-revised.atlas-home .hp-why-grid article,
+  .hp-revised.atlas-home .hp-why-grid article:not(:first-child),
+  .hp-revised.atlas-home .hp-why-grid article:last-child {
+    min-width: 0;
+    padding: 18px !important;
+  }
+
+  .hp-revised.atlas-home .hp-why-grid span.hp-why-badge {
+    width: 46px !important;
+    height: 46px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .hp-revised.atlas-home .hp-why-grid span.hp-why-badge svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .hp-revised .hp-why-grid small {
+    margin-bottom: 7px !important;
+    font-size: 16px !important;
+  }
+
+  .hp-revised .hp-why-grid h3 {
+    margin-bottom: 8px !important;
+    font-size: 16px !important;
+    overflow-wrap: anywhere;
+  }
+
+  .hp-revised.atlas-home .hp-why-grid p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 370px) {
+  .hp-revised.atlas-home .hp-why-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
