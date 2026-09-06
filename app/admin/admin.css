@@ -1,0 +1,247 @@
+/* ASAS Admin — Team CMS */
+
+.adm-body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f4f5f7;
+  color: #041226;
+  font-family: "Segoe UI", "Microsoft PhagsPa", Arial, sans-serif;
+}
+
+.adm-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 20px 64px;
+}
+
+.adm-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.adm-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.adm-brand strong {
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.adm-brand span {
+  color: #5b6472;
+  font-size: 13px;
+}
+
+.adm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.adm-btn,
+.adm-btn-ghost,
+.adm-btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 6px;
+  border: 0;
+  font: 700 13px/1 "Segoe UI", Arial, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.adm-btn {
+  background: #e55021;
+  color: #fff;
+}
+
+.adm-btn-ghost {
+  background: #fff;
+  color: #070463;
+  border: 1px solid rgba(7, 4, 99, 0.14);
+}
+
+.adm-btn-danger {
+  background: #fff;
+  color: #b42318;
+  border: 1px solid rgba(180, 35, 24, 0.25);
+}
+
+.adm-card {
+  background: #fff;
+  border: 1px solid rgba(7, 4, 99, 0.08);
+  border-radius: 10px;
+  padding: 22px;
+}
+
+.adm-login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.adm-login .adm-card {
+  width: min(420px, 100%);
+}
+
+.adm-login h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.adm-login p {
+  margin: 0 0 22px;
+  color: #5b6472;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.adm-field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.adm-field label {
+  font: 700 11px/1 "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5b6472;
+}
+
+.adm-field input,
+.adm-field textarea,
+.adm-field select {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid rgba(7, 4, 99, 0.16);
+  border-radius: 6px;
+  background: #fff;
+  color: #041226;
+  font: 400 14px/1.4 "Segoe UI", Arial, sans-serif;
+}
+
+.adm-field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.adm-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.adm-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.adm-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  font-size: 14px;
+}
+
+.adm-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.adm-table th,
+.adm-table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(7, 4, 99, 0.08);
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.adm-table th {
+  color: #5b6472;
+  font: 700 11px/1 "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.adm-thumb {
+  width: 44px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #e8eaee;
+}
+
+.adm-badge {
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font: 700 10px/1 "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.adm-badge.published {
+  background: rgba(18, 128, 72, 0.12);
+  color: #128048;
+}
+
+.adm-badge.draft {
+  background: rgba(91, 100, 114, 0.12);
+  color: #5b6472;
+}
+
+.adm-error {
+  margin: 0 0 14px;
+  color: #b42318;
+  font-size: 13px;
+}
+
+.adm-section-title {
+  margin: 28px 0 12px;
+  font-size: 16px;
+  color: #070463;
+}
+
+.adm-preview {
+  width: 120px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #e8eaee;
+}
+
+.adm-empty {
+  padding: 40px 12px;
+  text-align: center;
+  color: #5b6472;
+}
+
+@media (max-width: 800px) {
+  .adm-grid-2,
+  .adm-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .adm-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

@@ -4,12 +4,14 @@ import HomeContactForm from '@/components/HomeContactForm';
 import ServicesTabs from '@/components/home/ServicesTabs';
 import HeroSlider from '@/components/home/HeroSlider';
 import SectorShowcase from '@/components/home/SectorShowcase';
+import HomeTeamSection from '@/components/team/HomeTeamSection';
 import {whyIcons} from '@/components/icons/WhyIcons';
 import {ArrowRight, ArrowUpRight, Mail, MapPin, MessageCircle, Phone} from 'lucide-react';
 import {company} from '@/data/company';
 import {featuredServices} from '@/data/services';
 import {projects} from '@/data/projects';
 import {projectLifecycle} from '@/data/method';
+import {getHomepageTeamMembers} from '@/data/team';
 import {generatedEditorialImages, sectorImages} from '@/data/image-manifest';
 
 const featuredProject = projects.find((project) => project.slug === 'four-towers-al-nahda');
@@ -179,6 +181,8 @@ const faqs = {
 
 function NextArrow({ar}) { return <ArrowRight className={ar ? 'reverse-arrow' : ''}/>; }
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
@@ -193,6 +197,7 @@ export default async function Home({params}) {
   const ar = locale === 'ar';
   const t = content[ar ? 'ar' : 'en'];
   const url = (path) => `/${locale}/${path}`;
+  const featuredTeam = await getHomepageTeamMembers({limit: 4});
 
   return <div className="asas-home atlas-home hp-revised">
     <HeroSlider locale={locale} slides={heroSlides} />
@@ -346,6 +351,8 @@ export default async function Home({params}) {
         </aside>
       </div>
     </section>
+
+    <HomeTeamSection members={featuredTeam} locale={locale} />
 
     <section className="home-contact" id="contact">
       <div className="home-shell">

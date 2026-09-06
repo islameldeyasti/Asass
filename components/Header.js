@@ -15,8 +15,8 @@ const links = [
   ['Projects', 'projects'],
   ['Portfolio', 'portfolio'],
   ['Sectors', 'sectors'],
+  ['Team', 'team'],
   ['Careers', 'careers'],
-  ['Downloads', 'downloads'],
   ['Contact', 'contact'],
 ];
 
@@ -26,8 +26,8 @@ const labelsAr = {
   Projects: 'المشاريع',
   Portfolio: 'المحفظة',
   Sectors: 'القطاعات',
+  Team: 'فريقنا',
   Careers: 'الوظائف',
-  Downloads: 'التحميلات',
   Contact: 'تواصل',
 };
 

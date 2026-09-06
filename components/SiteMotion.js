@@ -69,7 +69,7 @@ function markStagger(root) {
 function markHeadings(root) {
   HEADING_SELECTORS.forEach((sel) => {
     root.querySelectorAll(sel).forEach((el) => {
-      if (el.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf')) return;
+      if (el.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')) return;
       el.classList.add('asas-heading');
     });
   });
@@ -77,7 +77,7 @@ function markHeadings(root) {
 
 function markImages(root) {
   root.querySelectorAll('main img').forEach((img) => {
-    if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf')) return;
+    if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')) return;
     img.classList.add('asas-img');
   });
 }
@@ -94,7 +94,7 @@ function markSections(root) {
         el.classList?.contains('sd') ||
         el.classList?.contains('sc') ||
         el.classList?.contains('cp') ||
-        el.closest('.asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf')
+        el.closest('.asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')
       ) {
         return;
       }

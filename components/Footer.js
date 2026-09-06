@@ -14,6 +14,7 @@ const companyLinks = [
   ['About', 'عن أساس', 'about'],
   ['Projects', 'المشاريع', 'projects'],
   ['Portfolio', 'المحفظة', 'portfolio'],
+  ['Team', 'فريقنا', 'team'],
   ['Sectors', 'القطاعات', 'sectors'],
   ['Careers', 'الوظائف', 'careers'],
   ['Downloads', 'التحميلات', 'downloads'],
