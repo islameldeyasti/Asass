@@ -1,32 +1,31 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {ArrowRight, Building2, Calculator, Car, CircuitBoard, ClipboardCheck, FileText, Flame, HardHat, Leaf, Route, Ruler, Sofa, Trees} from 'lucide-react';
+import {
+  ArrowRight,
+  Building2,
+  Calculator,
+  Car,
+  CheckCircle2,
+  CircuitBoard,
+  ClipboardCheck,
+  FileText,
+  Flame,
+  Globe2,
+  HardHat,
+  Leaf,
+  MessageSquare,
+  PenLine,
+  Route,
+  Ruler,
+  Sofa,
+  Trees,
+  TrendingUp,
+} from 'lucide-react';
 import {services, serviceGroups} from '@/data/services';
 import {generatedEditorialImages, serviceImages} from '@/data/image-manifest';
 import {company, stats} from '@/data/company';
-import {Container, CTA} from '@/components/UI';
 import ServicesJumpNav from '@/components/services/ServicesJumpNav';
-
-const featuredByGroup = {
-  design: 'architectural-design',
-  delivery: 'project-management',
-  planning: 'infrastructure-urban-planning',
-};
-
-const groupCopy = {
-  design: {
-    en: 'Architecture, structure, electromechanical design, quantities, interiors and landscape from one office.',
-    ar: 'العمارة والإنشاءات والتصميم الكهروميكانيكي والكميات والتصميم الداخلي والمناظر الطبيعية من مكتب واحد.',
-  },
-  delivery: {
-    en: 'An integrated cycle from design and tender through construction, supervision and handover.',
-    ar: 'دورة متكاملة من التصميم والعطاء إلى التنفيذ والإشراف والتسليم.',
-  },
-  planning: {
-    en: 'Infrastructure, traffic, sustainability, technical studies and life-safety review supporting project approvals.',
-    ar: 'البنية التحتية والمرور والاستدامة والدراسات الفنية ومراجعة السلامة لدعم اعتمادات المشروع.',
-  },
-};
+import ServicesEnquiryCta from '@/components/services/ServicesEnquiryCta';
 
 const serviceIcons = {
   'architectural-design': Building2,
@@ -44,26 +43,112 @@ const serviceIcons = {
   'health-safety-fire-design': Flame,
 };
 
+const designValuePoints = [
+  {
+    Icon: Building2,
+    en: 'Multidisciplinary expertise',
+    ar: 'خبرات متعددة التخصصات',
+  },
+  {
+    Icon: Leaf,
+    en: 'Sustainable design approach',
+    ar: 'نهج تصميم مستدام',
+  },
+  {
+    Icon: Globe2,
+    en: 'International standards',
+    ar: 'معايير دولية',
+  },
+  {
+    Icon: TrendingUp,
+    en: 'Value-driven solutions',
+    ar: 'حلول مدفوعة بالقيمة',
+  },
+];
+
+const approachSteps = [
+  {
+    number: '01',
+    Icon: MessageSquare,
+    en: ['Understand', 'We begin by understanding client goals, site constraints and intended use.'],
+    ar: ['الفهم', 'نبدأ بفهم أهداف العميل وقيود الموقع والاستخدام المقصود.'],
+  },
+  {
+    number: '02',
+    Icon: PenLine,
+    en: ['Design', 'Develop coordinated architectural, structural and electromechanical solutions.'],
+    ar: ['التصميم', 'نطوّر حلولاً منسقة معمارياً وإنشائياً وكهروميكانيكياً.'],
+  },
+  {
+    number: '03',
+    Icon: HardHat,
+    en: ['Deliver', 'Support through tender, construction supervision and handover.'],
+    ar: ['التنفيذ', 'ندعم عبر العطاء والإشراف الموقعي والتسليم.'],
+  },
+  {
+    number: '04',
+    Icon: CheckCircle2,
+    en: ['Create Value', 'Deliver efficient, lasting engineering with value-focused review.'],
+    ar: ['خلق القيمة', 'نقدّم هندسة فعّالة ومستدامة مع مراجعة مركّزة على القيمة.'],
+  },
+];
+
+const sectionTitles = {
+  design: {
+    en: 'Integrated engineering solutions from concept to reality.',
+    ar: 'حلول هندسية متكاملة من الفكرة إلى الواقع.',
+  },
+  delivery: {
+    en: 'An integrated cycle from design and tender through construction, supervision and handover.',
+    ar: 'دورة متكاملة من التصميم والعطاء إلى التنفيذ والإشراف والتسليم.',
+  },
+  planning: {
+    en: 'Specialist studies for smarter, more sustainable communities.',
+    ar: 'دراسات متخصصة لمجتمعات أذكى وأكثر استدامة.',
+  },
+};
+
+const sectionLeads = {
+  design: {
+    en: 'Architecture, structure, electromechanical design, quantities, interiors and landscape from one Abu Dhabi office.',
+    ar: 'العمارة والإنشاءات والتصميم الكهروميكانيكي والكميات والتصميم الداخلي والمناظر الطبيعية من مكتب واحد في أبوظبي.',
+  },
+  delivery: {
+    en: company.description,
+    ar: company.descriptionAr,
+  },
+  planning: {
+    en: 'Infrastructure, traffic, sustainability, technical studies and life-safety review supporting project approvals.',
+    ar: 'البنية التحتية والمرور والاستدامة والدراسات الفنية ومراجعة السلامة لدعم اعتمادات المشروع.',
+  },
+};
+
 function NextArrow({ar}) {
-  return <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />;
+  return <ArrowRight size={15} className={ar ? 'reverse-arrow' : ''} />;
 }
 
 function ServiceIcon({slug}) {
   const Icon = serviceIcons[slug] || Building2;
-  return <span className="services-icon" aria-hidden="true"><Icon size={20} /></span>;
+  return (
+    <span className="sv-icon" aria-hidden="true">
+      <Icon size={18} />
+    </span>
+  );
 }
 
-function FeaturedService({service, locale, ar}) {
+function ServiceCard({service, locale, ar}) {
   return (
-    <Link className="services-featured hp-card" href={`/${locale}/services/${service.slug}`}>
-      <div className="services-featured-media">
-        <Image src={serviceImages[service.slug]} alt="" fill sizes="(max-width: 900px) 100vw, 52vw" />
-      </div>
-      <div className="services-featured-copy">
+    <Link className="sv-card" href={`/${locale}/services/${service.slug}`}>
+      <div className="sv-card-media">
+        <div className="sv-card-media-frame">
+          <Image src={serviceImages[service.slug]} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" />
+        </div>
         <ServiceIcon slug={service.slug} />
+      </div>
+      <div className="sv-card-copy">
         <h3>{ar ? service.titleAr : service.title}</h3>
         <p>{ar ? service.descriptionAr : service.description}</p>
-        <span className="atlas-link">
+        <span className="sv-card-link">
           {ar ? 'عرض الخدمة' : 'View service'}
           <NextArrow ar={ar} />
         </span>
@@ -72,16 +157,21 @@ function FeaturedService({service, locale, ar}) {
   );
 }
 
-function ServiceCard({service, locale, ar}) {
+function DeliveryCard({service, locale, ar}) {
   return (
-    <Link className="services-card hp-card" href={`/${locale}/services/${service.slug}`}>
-      <ServiceIcon slug={service.slug} />
-      <h3>{ar ? service.titleAr : service.title}</h3>
-      <p>{ar ? service.descriptionAr : service.description}</p>
-      <span className="atlas-link">
-        {ar ? 'عرض الخدمة' : 'View service'}
-        <NextArrow ar={ar} />
-      </span>
+    <Link className="sv-delivery-card" href={`/${locale}/services/${service.slug}`}>
+      <div className="sv-delivery-media">
+        <Image src={serviceImages[service.slug]} alt="" fill sizes="(max-width: 900px) 100vw, 48vw" />
+      </div>
+      <div className="sv-delivery-copy">
+        <ServiceIcon slug={service.slug} />
+        <h3>{ar ? service.titleAr : service.title}</h3>
+        <p>{ar ? service.descriptionAr : service.description}</p>
+        <span className="sv-card-link">
+          {ar ? 'عرض الخدمة' : 'View service'}
+          <NextArrow ar={ar} />
+        </span>
+      </div>
     </Link>
   );
 }
@@ -99,83 +189,241 @@ export async function generateMetadata({params}) {
 export default async function Services({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const bridgeStats = stats.slice(0, 3);
+  const designServices = services.filter((service) => service.group === 'design');
+  const deliveryServices = services.filter((service) => service.group === 'delivery');
+  const planningServices = services.filter((service) => service.group === 'planning');
+  const planningFeatured =
+    planningServices.find((service) => service.slug === 'infrastructure-urban-planning') || planningServices[0];
+  const planningRest = planningServices.filter((service) => service.slug !== planningFeatured.slug);
+  const metrics = stats;
+  const ctaImage = generatedEditorialImages.buildingsSector || generatedEditorialImages.technicalCoordination;
 
   return (
-    <div className="services-index">
-      <section className="services-hero">
-        <div className="services-hero-photo" aria-hidden="true">
-          <Image src={generatedEditorialImages.technicalCoordination} alt="" fill sizes="100vw" />
+    <div className="sv">
+      <section className="sv-hero">
+        <div className="sv-hero-media" aria-hidden="true">
+          <Image src={generatedEditorialImages.technicalCoordination} alt="" fill priority sizes="100vw" />
         </div>
-        <Container>
-          <span className="breadcrumb">ASAS / {ar ? 'الخدمات' : 'Services'}</span>
-          <h1>{ar ? 'دراسات وتصاميم وإشراف عبر تخصصات المشروع.' : 'Studies, design and supervision across project disciplines.'}</h1>
-          <p>{ar
-            ? 'تغطي أساس الخدمات الهندسية والاستشارية من الدراسة والتصميم إلى العطاء والتنفيذ والتسليم.'
-            : 'ASAS covers engineering and consultancy from studies and design through tender, construction and handover.'}</p>
-          <div className="services-hero-meta">
-            <span>{ar ? company.cityAr : company.city} · {company.year}</span>
-            <a href={`tel:${company.phone.replace(/\s/g, '')}`}>{company.phone}</a>
+        <div className="sv-hero-veil" aria-hidden="true" />
+        <svg className="sv-hero-blueprint" viewBox="0 0 320 520" aria-hidden="true">
+          <g fill="none" stroke="currentColor" strokeWidth="1">
+            <path d="M40 40 V480" />
+            <path d="M80 70 V450" />
+            <path d="M120 100 V420" />
+            <path d="M160 130 V390" />
+            <path d="M40 160 H200" />
+            <path d="M40 240 H180" />
+            <path d="M40 320 H160" />
+            <circle cx="40" cy="160" r="3" fill="#e55021" stroke="none" />
+          </g>
+        </svg>
+        <div className="sv-shell sv-hero-inner">
+          <div className="sv-hero-copy">
+            <p className="sv-kicker light">
+              <i />
+              ASAS / {ar ? 'الخدمات' : 'Services'}
+            </p>
+            <h1>
+              {ar ? (
+                <>
+                  <span>دراسات وتصاميم</span>
+                  <span>وإشراف عبر</span>
+                  <span>تخصصات المشروع.</span>
+                </>
+              ) : (
+                <>
+                  <span>Studies, design and</span>
+                  <span>supervision across</span>
+                  <span>project disciplines.</span>
+                </>
+              )}
+            </h1>
+            <p className="sv-hero-lede">
+              {ar
+                ? 'تغطي أساس الخدمات الهندسية والاستشارية من الدراسة والتصميم إلى العطاء والتنفيذ والتسليم.'
+                : 'ASAS covers engineering and consultancy from studies and design through tender, construction and handover.'}
+            </p>
+            <div className="sv-hero-meta">
+              <span>{ar ? company.cityAr : company.city}</span>
+              <span aria-hidden="true">·</span>
+              <span>{company.year}</span>
+              <span aria-hidden="true">|</span>
+              <a href={`tel:${company.phone.replace(/\s/g, '')}`}>{company.phone}</a>
+            </div>
           </div>
-        </Container>
+          <ul className="sv-hero-words" aria-hidden="true">
+            <li>{ar ? 'أشخاص' : 'People'}</li>
+            <li>{ar ? 'أماكن' : 'Places'}</li>
+            <li>{ar ? 'إمكانات' : 'Possibilities'}</li>
+            <li>{ar ? 'غدٍ' : 'A Better'}</li>
+            <li>{ar ? 'أفضل' : 'Tomorrow'}</li>
+          </ul>
+        </div>
       </section>
 
       <ServicesJumpNav locale={locale} />
 
-      {Object.entries(serviceGroups).map(([group, labels]) => {
-        const items = services.filter((service) => service.group === group);
-        const featuredSlug = featuredByGroup[group];
-        const featured = items.find((service) => service.slug === featuredSlug) || items[0];
-        const rest = items.filter((service) => service.slug !== featured.slug);
-        const pairFeatured = group === 'delivery';
-        const columns = group === 'planning' ? 2 : 3;
+      <section className="sv-section sv-design" id="design">
+        <div className="sv-shell sv-design-grid">
+          <div className="sv-design-copy">
+            <p className="sv-kicker">
+              <i />
+              {ar ? serviceGroups.design.ar : serviceGroups.design.en}
+            </p>
+            <h2>{ar ? sectionTitles.design.ar : sectionTitles.design.en}</h2>
+            <p>{ar ? sectionLeads.design.ar : sectionLeads.design.en}</p>
+            <ul className="sv-values">
+              {designValuePoints.map(({Icon, en, ar: labelAr}) => (
+                <li key={en}>
+                  <Icon size={16} aria-hidden="true" />
+                  <span>{ar ? labelAr : en}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="sv-card-grid sv-card-grid-3">
+            {designServices.map((service) => (
+              <ServiceCard key={service.slug} service={service} locale={locale} ar={ar} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-        return (
-          <section className={`services-group services-group-${group}`} id={group} key={group}>
-            <Container>
-              <header className="services-group-head">
-                <p className="atlas-kicker">{ar ? labels.ar : labels.en}</p>
-                <h2>{ar ? groupCopy[group].ar : groupCopy[group].en}</h2>
-              </header>
+      <section className="sv-section sv-delivery" id="delivery">
+        <div className="sv-shell">
+          <header className="sv-section-head">
+            <p className="sv-kicker">
+              <i />
+              {ar ? serviceGroups.delivery.ar : serviceGroups.delivery.en}
+            </p>
+            <h2>{ar ? sectionTitles.delivery.ar : sectionTitles.delivery.en}</h2>
+            <p>{ar ? sectionLeads.delivery.ar : sectionLeads.delivery.en}</p>
+          </header>
+          <div className="sv-delivery-grid">
+            {deliveryServices.map((service) => (
+              <DeliveryCard key={service.slug} service={service} locale={locale} ar={ar} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-              {pairFeatured ? (
-                <div className="services-featured-pair">
-                  {items.map((service) => (
-                    <FeaturedService service={service} locale={locale} ar={ar} key={service.slug} />
-                  ))}
-                </div>
-              ) : (
-                <>
-                  <FeaturedService service={featured} locale={locale} ar={ar} />
-                  {rest.length > 0 && (
-                    <div className={`services-grid services-grid-${columns}`}>
-                      {rest.map((service) => (
-                        <ServiceCard service={service} locale={locale} ar={ar} key={service.slug} />
-                      ))}
-                    </div>
-                  )}
-                </>
-              )}
-            </Container>
-          </section>
-        );
-      })}
+      <section className="sv-section sv-planning" id="planning">
+        <div className="sv-shell">
+          <header className="sv-section-head">
+            <p className="sv-kicker">
+              <i />
+              {ar ? serviceGroups.planning.ar : serviceGroups.planning.en}
+            </p>
+            <h2>{ar ? sectionTitles.planning.ar : sectionTitles.planning.en}</h2>
+            <p>{ar ? sectionLeads.planning.ar : sectionLeads.planning.en}</p>
+          </header>
 
-      <aside className="services-bridge">
-        <Container className="services-bridge-inner">
-          <p>{ar ? company.shortDescriptionAr : company.shortDescription}</p>
-          <dl>
-            {bridgeStats.map((item) => (
-              <div key={item.label}>
-                <dt>{ar ? item.labelAr : item.label}</dt>
-                <dd>{item.value}</dd>
+          <Link className="sv-planning-feature" href={`/${locale}/services/${planningFeatured.slug}`}>
+            <div className="sv-planning-feature-media">
+              <Image
+                src={serviceImages[planningFeatured.slug]}
+                alt=""
+                fill
+                sizes="(max-width: 900px) 100vw, 100vw"
+              />
+            </div>
+            <div className="sv-planning-feature-copy">
+              <ServiceIcon slug={planningFeatured.slug} />
+              <h3>{ar ? planningFeatured.titleAr : planningFeatured.title}</h3>
+              <p>{ar ? planningFeatured.descriptionAr : planningFeatured.description}</p>
+              <span className="sv-card-link">
+                {ar ? 'عرض الخدمة' : 'View service'}
+                <NextArrow ar={ar} />
+              </span>
+            </div>
+          </Link>
+
+          <div className="sv-card-grid sv-card-grid-4">
+            {planningRest.map((service) => (
+              <ServiceCard key={service.slug} service={service} locale={locale} ar={ar} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="sv-metrics">
+        <div className="sv-shell sv-metrics-inner">
+          <dl className="sv-metrics-grid">
+            {metrics.map((item) => (
+              <div key={item.label} className="sv-metric">
+                <dt>{item.value}</dt>
+                <dd>{ar ? item.labelAr : item.label}</dd>
               </div>
             ))}
           </dl>
-        </Container>
-      </aside>
+          <div className="sv-metrics-side" aria-hidden="true">
+            <svg viewBox="0 0 180 280" className="sv-metrics-blueprint">
+              <g fill="none" stroke="currentColor" strokeWidth="1.2">
+                <path d="M40 250 V40 H70 V250" />
+                <path d="M86 250 V28 H120 V250" />
+                <path d="M136 250 V52 H166 V250" />
+                <path d="M30 250 H176" />
+                <path d="M40 120 H166" />
+                <path d="M40 170 H166" />
+                <path d="M52 70 H58 M98 55 H106 M148 80 H156" />
+              </g>
+            </svg>
+            <ul className="sv-metrics-words">
+              {(ar
+                ? ['مبنية على', 'الخبرة', 'مدفوعة', 'بغدٍ أفضل']
+                : ['Built on', 'Expertise', 'Driven by', 'A Better', 'Tomorrow']
+              ).map((word) => (
+                <li key={word}>{word}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      <CTA locale={locale} />
+      <section className="sv-section sv-approach">
+        <div className="sv-shell sv-approach-grid">
+          <header className="sv-approach-copy">
+            <p className="sv-kicker">
+              <i />
+              {ar ? 'منهجيتنا' : 'Our Approach'}
+            </p>
+            <h2>
+              {ar ? (
+                <>
+                  من الرؤية إلى
+                  <br />
+                  أثر واقعي.
+                </>
+              ) : (
+                <>
+                  From vision to
+                  <br />
+                  real-world impact.
+                </>
+              )}
+            </h2>
+          </header>
+          <ol className="sv-steps">
+            {approachSteps.map((step, index) => {
+              const Icon = step.Icon;
+              const [title, copy] = ar ? step.ar : step.en;
+              return (
+                <li key={step.number}>
+                  <span className="sv-step-icon" aria-hidden="true">
+                    <Icon size={18} />
+                  </span>
+                  <span className="sv-step-num">{step.number}</span>
+                  <strong>{title}</strong>
+                  <p>{copy}</p>
+                  {index < approachSteps.length - 1 && <i className="sv-step-line" aria-hidden="true" />}
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
+      <ServicesEnquiryCta locale={locale} image={ctaImage} />
     </div>
   );
 }

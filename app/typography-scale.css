@@ -1,22 +1,23 @@
-/* ASAS global typography scale — applied after page CSS for consistent hierarchy */
+/* ASAS typography scale — uses brand tokens from asas-brand.css */
 
 :root {
-  --type-body: 17px;
+  --type-body: var(--asas-body, 17px);
   --type-body-sm: 16px;
-  --type-lede: 18px;
-  --type-small: 14px;
-  --type-label: 12px;
-  --type-nav: 15px;
-  --type-h1: clamp(2.75rem, 5.2vw, 4.75rem);
-  --type-h2: clamp(2.125rem, 3.6vw, 3.5rem);
-  --type-h3: clamp(1.25rem, 1.8vw, 1.625rem);
-  --type-lh-body: 1.62;
-  --type-lh-tight: 1.08;
-  --type-tracking-display: -0.04em;
-  --type-tracking-label: 0.12em;
+  --type-lede: var(--asas-body-lg, 18px);
+  --type-small: var(--asas-small, 14px);
+  --type-label: var(--asas-label, 12px);
+  --type-nav: var(--asas-nav, 15px);
+  --type-h1: var(--asas-h1);
+  --type-h2: var(--asas-h2);
+  --type-h3: var(--asas-h3);
+  --type-lh-body: var(--asas-lh-body, 1.65);
+  --type-lh-tight: var(--asas-lh-display, 1.04);
+  --type-tracking-display: var(--asas-tracking-display, -0.025em);
+  --type-tracking-label: var(--asas-tracking-label, 0.1em);
 }
 
 body {
+  font-family: var(--asas-font, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);
   font-size: var(--type-body);
   line-height: var(--type-lh-body);
 }
@@ -27,145 +28,54 @@ h1,
   font-size: var(--type-h1);
   line-height: var(--type-lh-tight);
   letter-spacing: var(--type-tracking-display);
-  font-weight: 650;
+  font-weight: 700;
 }
 
 h2 {
   font-size: var(--type-h2);
-  line-height: var(--type-lh-tight);
+  line-height: 1.12;
   letter-spacing: var(--type-tracking-display);
-  font-weight: 650;
+  font-weight: 700;
 }
 
 h3 {
   font-size: var(--type-h3);
   line-height: 1.2;
-  letter-spacing: -0.02em;
   font-weight: 650;
-}
-
-p {
-  font-size: var(--type-body);
-  line-height: var(--type-lh-body);
 }
 
 .eyebrow,
 .atlas-kicker,
-.svc-kicker,
-.proj-kicker,
-.asas-hero-location {
-  font-size: var(--type-label) !important;
-  font-weight: 750 !important;
-  letter-spacing: var(--type-tracking-label) !important;
-  line-height: 1.35 !important;
+.section-label {
+  font-size: var(--type-label);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
+  text-transform: uppercase;
 }
 
-.header .nav nav,
-.header .nav nav a {
-  font-size: var(--type-nav) !important;
-  font-weight: 600;
+.header .nav nav {
+  font-size: var(--type-nav);
 }
 
-.header .button,
-.header .nav-cta,
 .button,
 .atlas-primary,
-.atlas-link,
-.asas-hero-ghost,
-.asas-hero-solid {
-  font-size: 14px !important;
+.nav-cta {
+  font-size: var(--asas-btn, 15px);
   font-weight: 700;
-  transition: background-color .28s ease, color .28s ease, border-color .28s ease, transform .28s ease, box-shadow .28s ease;
-}
-
-.field label,
-.home-contact-fields label > span,
-label {
-  font-size: var(--type-small);
-  font-weight: 700;
-  letter-spacing: 0.02em;
 }
 
 .section-title > p,
-.atlas-lede,
-.hp-about-lede,
-.hp-about-note,
-.insp-sectors-head p:not(.atlas-kicker),
-.hp-portfolio-head p:not(.atlas-kicker),
-.hp-why-head p:not(.atlas-kicker),
-.home-contact-head > p:not(.atlas-kicker),
-.hp-faq-intro p:not(.atlas-kicker),
-.svc-hero-copy p,
-.proj-hero-copy p {
-  font-size: var(--type-lede) !important;
-  line-height: var(--type-lh-body) !important;
-}
-
-.hp-why-grid p,
-.hp-portfolio-meta p,
-.hp-featured-copy > p:not(.atlas-kicker),
-.insp-sector-content p,
-.service-card p,
-.services-card p,
-.services-featured-copy p,
-.svc-card p,
-.proj-card p,
-.projects-card-copy p,
-.hp-faq-list p,
-.atlas-proof span,
-.discipline-grid p,
-.reason-grid p,
-.wf-process-list p {
-  font-size: var(--type-body-sm) !important;
-  line-height: var(--type-lh-body) !important;
-}
-
-.hp-why-grid h3,
-.hp-portfolio-meta h3,
-.insp-sector-content h3,
-.service-card h3,
-.project-caption h3 {
-  font-size: clamp(1.125rem, 1.4vw, 1.35rem) !important;
-  line-height: 1.25 !important;
-}
-
-.atlas-home h2,
-.hp-revised h2,
-.insp-center-head h2,
-.hp-portfolio-head h2,
-.hp-why-head h2,
-.home-contact-head h2,
-.hp-faq-intro h2,
-.wf-process h2 {
-  font-size: clamp(2rem, 3.4vw, 3.25rem) !important;
-  line-height: 1.06 !important;
-  letter-spacing: -0.035em !important;
-  font-weight: 650 !important;
+.intro-copy,
+.lede {
+  font-size: var(--type-lede);
+  line-height: var(--type-lh-body);
+  max-width: 72ch;
 }
 
 @media (max-width: 900px) {
   :root {
     --type-body: 16px;
-    --type-body-sm: 15px;
     --type-lede: 17px;
-    --type-nav: 15px;
-    --type-h1: clamp(2.25rem, 8vw, 3.25rem);
-    --type-h2: clamp(1.75rem, 5.5vw, 2.5rem);
-  }
-}
-
-@media (max-width: 600px) {
-  :root {
-    --type-body: 16px;
-    --type-body-sm: 15px;
-    --type-lede: 16px;
-    --type-label: 11px;
     --type-small: 13px;
-    --type-h1: clamp(2rem, 9vw, 2.75rem);
-    --type-h2: clamp(1.625rem, 6.5vw, 2.125rem);
-  }
-
-  .header .nav nav a {
-    font-size: 16px !important;
   }
 }

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import HomeContactForm from '@/components/HomeContactForm';
 import ServicesTabs from '@/components/home/ServicesTabs';
 import HeroSlider from '@/components/home/HeroSlider';
+import SectorShowcase from '@/components/home/SectorShowcase';
 import {whyIcons} from '@/components/icons/WhyIcons';
 import {ArrowRight, ArrowUpRight, Mail, MapPin, MessageCircle, Phone} from 'lucide-react';
 import {company} from '@/data/company';
@@ -29,70 +30,80 @@ const heroSlides = [
     slug: 'four-towers-al-nahda',
     image: generatedEditorialImages.homepageHero,
     crop: '68% 38%',
+    strip: 'Four Towers',
+    stripAr: 'أربعة أبراج',
     location: 'Al Nahda, Sharjah',
     locationAr: 'النهدة، الشارقة',
     title: 'Four Towers, Al Nahda',
     titleAr: 'أربعة أبراج، النهدة',
     note: 'A four-tower composition over a shared podium with coordinated architectural, structural and electromechanical design.',
     noteAr: 'تكوين من أربعة أبراج فوق منصة مشتركة بتصميم معماري وإنشائي وكهروميكانيكي منسّق.',
-    facts: [['Office', 'Abu Dhabi'], ['Sector', 'Towers'], ['Scope', 'A / S / MEP']],
-    factsAr: [['المكتب', 'أبوظبي'], ['القطاع', 'الأبراج'], ['النطاق', 'عمارة / إنشاءات / MEP']],
+    facts: [['Towers', '4'], ['Floors', '37'], ['Scope', 'A / S / MEP']],
+    factsAr: [['أبراج', '4'], ['طوابق', '37'], ['النطاق', 'A / S / MEP']],
   },
   {
     id: 'traffic',
     slug: 'traffic-access-studies',
     image: projects.find((p) => p.slug === 'traffic-access-studies')?.visual?.src || generatedEditorialImages.technicalCoordination,
     crop: '50% 50%',
+    strip: 'Infrastructure',
+    stripAr: 'بنية تحتية',
     location: 'Khalifa City, Abu Dhabi',
     locationAr: 'مدينة خليفة، أبوظبي',
     title: 'Traffic & Access Studies',
     titleAr: 'دراسات المرور والمداخل',
     note: 'Parking, circulation and municipality-review documentation from the official ASAS portfolio.',
     noteAr: 'مواقف وحركة وتوثيق مراجعة البلدية من أعمال أساس الرسمية.',
-    facts: [['Office', 'Abu Dhabi'], ['Sector', 'Infrastructure'], ['Type', 'Planning study']],
-    factsAr: [['المكتب', 'أبوظبي'], ['القطاع', 'البنية التحتية'], ['النوع', 'دراسة تخطيطية']],
+    facts: [['Sector', 'Infrastructure'], ['Focus', 'Access & parking'], ['Type', 'Planning study']],
+    factsAr: [['القطاع', 'البنية التحتية'], ['التركيز', 'المداخل والمواقف'], ['النوع', 'دراسة تخطيطية']],
   },
   {
     id: 'school',
     slug: 'culture-private-school',
     image: generatedEditorialImages.educationSector,
     crop: '35% 40%',
+    strip: 'Education',
+    stripAr: 'تعليم',
     location: 'Abu Dhabi',
     locationAr: 'أبوظبي',
     title: 'Culture Private School',
     titleAr: 'مدرسة الثقافة الخاصة',
     note: 'Campus master planning and educational facilities within the ASAS selected portfolio.',
     noteAr: 'تخطيط الحرم والمرافق التعليمية ضمن أعمال أساس المختارة.',
-    facts: [['Office', 'Abu Dhabi'], ['Sector', 'Education'], ['Scope', 'Planning & design']],
-    factsAr: [['المكتب', 'أبوظبي'], ['القطاع', 'التعليم'], ['النطاق', 'تخطيط وتصميم']],
+    facts: [['Sector', 'Education'], ['Scope', 'Planning & design'], ['Office', 'Abu Dhabi']],
+    factsAr: [['القطاع', 'التعليم'], ['النطاق', 'تخطيط وتصميم'], ['المكتب', 'أبوظبي']],
   },
   {
     id: 'compounds',
     slug: 'compound-villas-portfolio',
     image: generatedEditorialImages.villasSector,
     crop: '55% 45%',
+    strip: 'Residential',
+    stripAr: 'سكني',
     location: 'Khalifa City, Abu Dhabi',
     locationAr: 'مدينة خليفة، أبوظبي',
     title: 'Compound Villas Portfolio',
     titleAr: 'مجموعة مشاريع مجمعات الفلل',
     note: 'Multi-unit villa compounds planned as one architectural family with shared access and services.',
     noteAr: 'مجمعات فلل متعددة الوحدات كعائلة معمارية واحدة مع مداخل وخدمات مشتركة.',
-    facts: [['Office', 'Abu Dhabi'], ['Sector', 'Compounds'], ['Scope', 'Architecture']],
-    factsAr: [['المكتب', 'أبوظبي'], ['القطاع', 'المجمعات'], ['النطاق', 'عمارة']],
+    facts: [['Sector', 'Compounds'], ['Scope', 'Architecture'], ['Office', 'Abu Dhabi']],
+    factsAr: [['القطاع', 'المجمعات'], ['النطاق', 'عمارة'], ['المكتب', 'أبوظبي']],
   },
   {
     id: 'interiors',
     slug: 'reception-hall-private-villa',
     image: generatedEditorialImages.interiorsSector,
     crop: '40% 50%',
+    strip: 'Interiors',
+    stripAr: 'داخلي',
     location: 'Abu Dhabi',
     locationAr: 'أبوظبي',
     title: 'Reception Hall — Private Villa',
     titleAr: 'قاعة استقبال — فيلا خاصة',
     note: 'Residential reception interiors with classical detailing from the ASAS hospitality portfolio.',
     noteAr: 'تصميم داخلي لقاعة استقبال سكنية بتفاصيل كلاسيكية من أعمال أساس.',
-    facts: [['Office', 'Abu Dhabi'], ['Sector', 'Interiors'], ['Type', 'Interior fit-out']],
-    factsAr: [['المكتب', 'أبوظبي'], ['القطاع', 'التصميم الداخلي'], ['النوع', 'تجهيز داخلي']],
+    facts: [['Sector', 'Interiors'], ['Type', 'Interior fit-out'], ['Office', 'Abu Dhabi']],
+    factsAr: [['القطاع', 'التصميم الداخلي'], ['النوع', 'تجهيز داخلي'], ['المكتب', 'أبوظبي']],
   },
 ];
 
@@ -111,7 +122,10 @@ const content = {
     hero: 'From Sketch to Final Handover.',
     lede: 'Architecture, structure, electromechanical services, quantity surveying, project management and site supervision in one consultancy.',
     start: 'Start a project', work: 'View our work', journey: 'Project lifecycle',
-    sectorEyebrow: 'Project sectors', sectorCopy: 'Project experience across the building types and environments represented in the ASAS portfolio.', sectorCta: 'Explore sectors',
+    sectorEyebrow: 'Project sectors',
+    sectorTitle: 'Projects across diverse sectors.',
+    sectorCopy: 'Project experience across the building types and environments represented in the ASAS portfolio.',
+    sectorCta: 'View all sectors',
     processEyebrow: 'Project lifecycle', processTitle: 'From concept to financial closure', processCopy: 'A documented route through design, award, construction, handover and future phases.',
     archive: 'Selected work', archiveTitle: 'Projects from the official ASAS portfolio', archiveCopy: 'A featured project with supporting work across towers, infrastructure, education, compounds and interiors.', archiveCta: 'View all projects',
     featured: 'Selected project', dossier: [['Composition', '3B + 6 podium'], ['Parking', '6 levels'], ['Height', '37 floors'], ['Location', 'Sharjah, Al Nahda']],
@@ -121,7 +135,10 @@ const content = {
     hero: 'من الرسم إلى التسليم النهائي.',
     lede: 'العمارة والإنشاءات والأعمال الكهروميكانيكية وحصر الكميات وإدارة المشاريع والإشراف الموقعي في مكتب استشاري واحد.',
     start: 'ابدأ مشروعك', work: 'استكشف أعمالنا', journey: 'دورة حياة المشروع',
-    sectorEyebrow: 'قطاعات المشاريع', sectorCopy: 'خبرة عبر أنواع وبيئات المشاريع الواردة في أعمال أساس.', sectorCta: 'استكشف القطاعات',
+    sectorEyebrow: 'قطاعات المشاريع',
+    sectorTitle: 'مشاريع عبر قطاعات متعددة.',
+    sectorCopy: 'خبرة عبر أنواع وبيئات المشاريع الواردة في أعمال أساس.',
+    sectorCta: 'عرض كل القطاعات',
     processEyebrow: 'دورة حياة المشروع', processTitle: 'من الفكرة إلى الإغلاق المالي', processCopy: 'مسار موثق يمر بالتصميم والترسية والتنفيذ والتسليم والمراحل المستقبلية.',
     archive: 'أعمال مختارة', archiveTitle: 'مشاريع من الملف الرسمي لأساس', archiveCopy: 'مشروع مختار مع أعمال داعمة عبر الأبراج والبنية التحتية والتعليم والمجمعات والتصميم الداخلي.', archiveCta: 'عرض كل المشاريع',
     featured: 'مشروع مختار', dossier: [['التكوين', '3 طوابق سفلية + 6 منصة'], ['المواقف', '6 طوابق'], ['الارتفاع', '37 طابقاً'], ['الموقع', 'الشارقة، النهدة']],
@@ -200,31 +217,14 @@ export default async function Home({params}) {
 
     <ServicesTabs locale={locale} services={featuredServices} />
 
-    <section className="insp-sectors">
-      <div className="home-shell">
-        <div className="insp-center-head insp-sectors-head">
-          <p className="atlas-kicker center">{t.sectorEyebrow}</p>
-          <h2>{ar ? 'مشاريع عبر قطاعات متعددة.' : 'Projects across diverse sectors.'}</h2>
-          <p>{t.sectorCopy}</p>
-        </div>
-        <div className="insp-sector-grid">
-          {sectorCards.map((card, index) => (
-            <Link href={url(`sectors/${card.key}`)} className="insp-sector-card hp-card" key={card.key} data-tone={card.tone}>
-              <Image src={card.image} alt={ar ? card.titleAr : card.title} width={800} height={560} className="insp-sector-image"/>
-              <span className="insp-sector-overlay" aria-hidden="true" />
-              <div className="insp-sector-content">
-                <span className="insp-sector-label">{`${String(index + 1).padStart(2, '0')} / ${ar ? card.labelAr : card.label}`}</span>
-                <h3>{ar ? card.titleAr : card.title}</h3>
-                <p>{ar ? card.copyAr : card.copy}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="insp-center-cta">
-          <Link className="atlas-link" href={url('sectors')}>{t.sectorCta}<NextArrow ar={ar}/></Link>
-        </div>
-      </div>
-    </section>
+    <SectorShowcase
+      locale={locale}
+      cards={sectorCards}
+      eyebrow={t.sectorEyebrow}
+      title={t.sectorTitle}
+      copy={t.sectorCopy}
+      cta={t.sectorCta}
+    />
 
     <section className="wf-process">
       <div className="home-shell wf-process-grid">

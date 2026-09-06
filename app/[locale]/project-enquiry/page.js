@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {ArrowRight, Clock3, FileText, Mail, MessageCircle, Phone} from 'lucide-react';
-import {Container, CTA} from '@/components/UI';
+import {Container} from '@/components/UI';
 import EnquiryForm from '@/components/EnquiryForm';
 import {company} from '@/data/company';
 import {generatedEditorialImages} from '@/data/image-manifest';
@@ -153,31 +153,47 @@ export default async function Enquiry({params}) {
         </Container>
       </section>
 
-      <aside className="enquiry-bridge">
-        <Container className="enquiry-bridge-inner">
-          <div>
-            <p className="atlas-kicker">{ar ? 'بديل' : 'Prefer another route?'}</p>
+      <section className="enquiry-cta">
+        <div className="enquiry-cta-media" aria-hidden="true">
+          <Image
+            src={generatedEditorialImages.buildingsSector}
+            alt=""
+            fill
+            sizes="100vw"
+          />
+        </div>
+        <div className="enquiry-cta-veil" aria-hidden="true" />
+        <Container className="enquiry-cta-inner">
+          <div className="enquiry-cta-copy">
+            <p className="enquiry-cta-kicker">
+              <i />
+              {ar ? 'بديل' : 'Prefer another route?'}
+            </p>
             <h2>{ar ? 'راجع الخدمات أو المشاريع أولاً' : 'Review services or projects first'}</h2>
             <p>
               {ar
                 ? 'إذا كنت لا تزال تستكشف النطاق، يمكنك البدء من صفحات الخدمات أو المشاريع.'
                 : 'If you are still exploring scope, start from the services or projects pages.'}
             </p>
+            <div className="enquiry-cta-actions">
+              <Link className="enquiry-cta-btn" href={`/${locale}/services`}>
+                {ar ? 'الخدمات' : 'Services'}
+                <NextArrow ar={ar} />
+              </Link>
+              <Link className="enquiry-cta-link" href={`/${locale}/projects`}>
+                {ar ? 'المشاريع' : 'Projects'}
+                <NextArrow ar={ar} />
+              </Link>
+            </div>
           </div>
-          <div className="enquiry-bridge-actions">
-            <Link className="button" href={`/${locale}/services`}>
-              {ar ? 'الخدمات' : 'Services'}
-              <NextArrow ar={ar} />
-            </Link>
-            <Link className="atlas-link" href={`/${locale}/projects`}>
-              {ar ? 'المشاريع' : 'Projects'}
-              <NextArrow ar={ar} />
-            </Link>
-          </div>
+          <ul className="enquiry-cta-words" aria-hidden="true">
+            <li>{ar ? 'أشخاص' : 'People'}</li>
+            <li>{ar ? 'أماكن' : 'Places'}</li>
+            <li>{ar ? 'إمكانات' : 'Possibilities'}</li>
+            <li>{ar ? 'غدٍ أفضل' : 'A Better Tomorrow'}</li>
+          </ul>
         </Container>
-      </aside>
-
-      <CTA locale={locale} />
+      </section>
     </div>
   );
 }

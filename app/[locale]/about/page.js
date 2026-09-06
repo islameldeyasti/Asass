@@ -9,7 +9,7 @@ import {
   Handshake,
   ShieldCheck,
 } from 'lucide-react';
-import {Container, CTA} from '@/components/UI';
+import {Container} from '@/components/UI';
 import {
   company,
   mission,
@@ -218,31 +218,47 @@ export default async function About({params}) {
         </Container>
       </section>
 
-      <aside className="about-bridge">
-        <Container className="about-bridge-inner">
-          <div>
-            <p className="atlas-kicker">{ar ? 'التالي' : 'Next'}</p>
+      <section className="about-cta">
+        <div className="about-cta-media" aria-hidden="true">
+          <Image
+            src={generatedEditorialImages.buildingsSector}
+            alt=""
+            fill
+            sizes="100vw"
+          />
+        </div>
+        <div className="about-cta-veil" aria-hidden="true" />
+        <Container className="about-cta-inner">
+          <div className="about-cta-copy">
+            <p className="about-cta-kicker">
+              <i />
+              {ar ? 'التالي' : 'Next'}
+            </p>
             <h2>{ar ? 'استكشف الخدمات أو المشاريع' : 'Explore services or projects'}</h2>
             <p>
               {ar
                 ? 'اطّلع على نطاقات الخدمات أو الأعمال المختارة من الملف الرسمي.'
                 : 'Review service scopes or selected work from the official portfolio.'}
             </p>
+            <div className="about-cta-actions">
+              <Link className="about-cta-btn" href={`/${locale}/services`}>
+                {ar ? 'الخدمات' : 'Services'}
+                <NextArrow ar={ar} />
+              </Link>
+              <Link className="about-cta-link" href={`/${locale}/projects`}>
+                {ar ? 'المشاريع' : 'Projects'}
+                <NextArrow ar={ar} />
+              </Link>
+            </div>
           </div>
-          <div className="about-bridge-actions">
-            <Link className="button" href={`/${locale}/services`}>
-              {ar ? 'الخدمات' : 'Services'}
-              <NextArrow ar={ar} />
-            </Link>
-            <Link className="atlas-link" href={`/${locale}/projects`}>
-              {ar ? 'المشاريع' : 'Projects'}
-              <NextArrow ar={ar} />
-            </Link>
-          </div>
+          <ul className="about-cta-words" aria-hidden="true">
+            <li>{ar ? 'أشخاص' : 'People'}</li>
+            <li>{ar ? 'أماكن' : 'Places'}</li>
+            <li>{ar ? 'إمكانات' : 'Possibilities'}</li>
+            <li>{ar ? 'غدٍ أفضل' : 'A Better Tomorrow'}</li>
+          </ul>
         </Container>
-      </aside>
-
-      <CTA locale={locale} />
+      </section>
     </div>
   );
 }

@@ -6,7 +6,6 @@ import {animate, useReducedMotion} from 'motion/react';
 
 const STAGGER_SELECTORS = [
   '.hp-why-grid',
-  '.insp-sector-grid',
   '.hp-portfolio-grid',
   '.discipline-grid',
   '.reason-grid',
@@ -70,7 +69,7 @@ function markStagger(root) {
 function markHeadings(root) {
   HEADING_SELECTORS.forEach((sel) => {
     root.querySelectorAll(sel).forEach((el) => {
-      if (el.closest('.asas-hero-slider')) return;
+      if (el.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf')) return;
       el.classList.add('asas-heading');
     });
   });
@@ -78,7 +77,7 @@ function markHeadings(root) {
 
 function markImages(root) {
   root.querySelectorAll('main img').forEach((img) => {
-    if (img.closest('.asas-hero-slider')) return;
+    if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf')) return;
     img.classList.add('asas-img');
   });
 }
@@ -86,6 +85,19 @@ function markImages(root) {
 function markSections(root) {
   SECTION_SELECTORS.forEach((sel) => {
     root.querySelectorAll(sel).forEach((el) => {
+      if (
+        el.classList?.contains('asas-sectors') ||
+        el.classList?.contains('asas-ph') ||
+        el.classList?.contains('pd') ||
+        el.classList?.contains('pl') ||
+        el.classList?.contains('sv') ||
+        el.classList?.contains('sd') ||
+        el.classList?.contains('sc') ||
+        el.classList?.contains('cp') ||
+        el.closest('.asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf')
+      ) {
+        return;
+      }
       el.classList.add('asas-reveal');
     });
   });
@@ -160,7 +172,7 @@ export default function SiteMotion({locale}) {
       markHeadings(document);
       document.querySelectorAll('.asas-heading:not(.is-inview)').forEach(watch);
       document.querySelectorAll('main img:not(.asas-img)').forEach((img) => {
-        if (img.closest('.asas-hero-slider')) return;
+        if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors')) return;
         img.classList.add('asas-img');
         watch(img);
       });

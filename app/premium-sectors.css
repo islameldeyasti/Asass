@@ -1,0 +1,522 @@
+/* Project sectors — editorial mosaic matching ASAS reference */
+
+.asas-sectors {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(100px, 11vw, 128px) 0 clamp(72px, 8vw, 96px);
+  background: #f6f7f8;
+  overflow: hidden;
+}
+
+.asas-sectors:before {
+  content: 'ASAS';
+  position: absolute;
+  inset-inline-end: clamp(-2%, 2vw, 6%);
+  top: 4%;
+  z-index: 0;
+  color: rgba(11, 29, 77, 0.035);
+  font: 800 clamp(140px, 18vw, 220px)/0.85 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: -0.06em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.asas-sectors-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+}
+
+.asas-sectors-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.75fr);
+  gap: clamp(24px, 4vw, 72px);
+  align-items: end;
+  margin-bottom: clamp(36px, 4vw, 48px);
+}
+
+.asas-sectors-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  color: #e55021;
+  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.asas-sectors-eyebrow i {
+  width: 28px;
+  height: 2px;
+  background: #e55021;
+}
+
+.asas-sectors-head h2 {
+  margin: 0;
+  max-width: 11ch;
+  color: #0b1d4d !important;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  font-size: clamp(44px, 4.2vw, 64px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.asas-sectors-dot {
+  color: #e55021;
+}
+
+.asas-sectors-head-aside {
+  max-width: 360px;
+  justify-self: end;
+  padding-bottom: 4px;
+}
+
+.asas-sectors-head-aside p {
+  margin: 0 0 16px;
+  color: rgba(11, 29, 77, 0.62);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.asas-sectors-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid #e55021;
+  color: #0b1d4d;
+  font: 700 14px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  text-decoration: none;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.asas-sectors-all svg {
+  transition: transform 0.25s ease;
+}
+
+.asas-sectors-all:hover {
+  color: #e55021;
+}
+
+.asas-sectors-all:hover svg {
+  transform: translateX(4px);
+}
+
+html[dir='rtl'] .asas-sectors-all:hover svg.reverse-arrow {
+  transform: translateX(-4px) scaleX(-1);
+}
+
+html[dir='rtl'] .asas-sectors-all svg.reverse-arrow,
+html[dir='rtl'] .asas-sec-ghost svg.reverse-arrow,
+html[dir='rtl'] .asas-sec-orb svg.reverse-arrow {
+  transform: scaleX(-1);
+}
+
+/* Mosaic: featured + side, then 4 equal */
+.asas-sectors-mosaic {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.asas-sec-slot--featured {
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 520px;
+}
+
+.asas-sec-slot--side {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 520px;
+}
+
+.asas-sectors-quad {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.asas-sec-slot--quad {
+  min-height: 340px;
+}
+
+.asas-sec-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: #0a1424;
+  color: #fff;
+  text-decoration: none;
+  isolation: isolate;
+  transition: border-color 0.35s ease, transform 0.35s ease;
+}
+
+.asas-sec-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.asas-sec-media img,
+.asas-sec-image {
+  object-fit: cover !important;
+  object-position: center;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.asas-sec-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(5, 15, 28, 0.82) 0%,
+    rgba(5, 15, 28, 0.28) 46%,
+    transparent 72%
+  );
+  transition: background 0.4s ease;
+}
+
+.asas-sec-card.is-light .asas-sec-veil {
+  background: linear-gradient(
+    to top,
+    rgba(247, 248, 249, 0.92) 0%,
+    rgba(247, 248, 249, 0.55) 42%,
+    rgba(247, 248, 249, 0.12) 70%,
+    transparent 100%
+  );
+}
+
+.asas-sec-tech {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.asas-sec-tech svg {
+  width: 100%;
+  height: 100%;
+}
+
+.asas-sec-content {
+  position: absolute;
+  z-index: 3;
+  inset-inline: clamp(18px, 2vw, 32px);
+  bottom: clamp(18px, 2.2vw, 32px);
+  display: grid;
+  gap: 10px;
+  max-width: 36ch;
+  pointer-events: none;
+}
+
+.asas-sec-card--featured .asas-sec-content {
+  max-width: 28ch;
+  bottom: 56px;
+}
+
+.asas-sec-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.asas-sec-meta i {
+  color: #e55021;
+  font-style: normal;
+}
+
+.asas-sec-meta b {
+  width: 18px;
+  height: 1.5px;
+  background: #e55021;
+}
+
+.asas-sec-meta em {
+  color: rgba(255, 255, 255, 0.72);
+  font-style: normal;
+  font-weight: 650;
+}
+
+.asas-sec-card.is-light .asas-sec-meta em {
+  color: rgba(11, 29, 77, 0.55);
+}
+
+.asas-sec-content h3 {
+  margin: 0;
+  color: #fff !important;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  font-size: clamp(22px, 1.8vw, 28px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.asas-sec-card--featured .asas-sec-content h3 {
+  font-size: clamp(34px, 2.8vw, 44px);
+  max-width: 9ch;
+}
+
+.asas-sec-card.is-light .asas-sec-content h3 {
+  color: #0b1d4d !important;
+}
+
+.asas-sec-content p {
+  margin: 0;
+  max-width: 30ch;
+  color: rgba(255, 255, 255, 0.74) !important;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: opacity 0.35s ease, color 0.35s ease;
+}
+
+.asas-sec-card.is-light .asas-sec-content p {
+  color: rgba(11, 29, 77, 0.62) !important;
+}
+
+.asas-sec-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  color: #fff;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.asas-sec-ghost svg {
+  transition: transform 0.3s ease;
+}
+
+.asas-sec-orb {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-top: 8px;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  color: #fff;
+  transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+}
+
+.asas-sec-card.is-light .asas-sec-orb {
+  border-color: rgba(11, 29, 77, 0.35);
+  color: #0b1d4d;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.asas-sec-orb svg {
+  transition: transform 0.3s ease;
+}
+
+.asas-sec-progress {
+  position: absolute;
+  z-index: 3;
+  left: clamp(18px, 2vw, 32px);
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.55);
+  font: 650 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.12em;
+  pointer-events: none;
+}
+
+html[dir='rtl'] .asas-sec-progress {
+  left: auto;
+  right: clamp(18px, 2vw, 32px);
+}
+
+.asas-sec-progress i {
+  width: 28px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.asas-sec-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.asas-sec-card:hover .asas-sec-image {
+  transform: scale(1.035);
+}
+
+.asas-sec-card:hover .asas-sec-veil {
+  background: linear-gradient(
+    to top,
+    rgba(5, 15, 28, 0.88) 0%,
+    rgba(5, 15, 28, 0.38) 48%,
+    transparent 74%
+  );
+}
+
+.asas-sec-card.is-light:hover .asas-sec-veil {
+  background: linear-gradient(
+    to top,
+    rgba(247, 248, 249, 0.96) 0%,
+    rgba(247, 248, 249, 0.62) 45%,
+    rgba(247, 248, 249, 0.16) 72%,
+    transparent 100%
+  );
+}
+
+.asas-sec-card:hover .asas-sec-content h3 {
+  transform: translateY(-5px);
+}
+
+.asas-sec-card:hover .asas-sec-content p {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.asas-sec-card.is-light:hover .asas-sec-content p {
+  color: rgba(11, 29, 77, 0.8) !important;
+}
+
+.asas-sec-card:hover .asas-sec-ghost {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+.asas-sec-card:hover .asas-sec-ghost svg,
+.asas-sec-card:hover .asas-sec-orb svg {
+  transform: translateX(4px);
+}
+
+html[dir='rtl'] .asas-sec-card:hover .asas-sec-ghost svg.reverse-arrow,
+html[dir='rtl'] .asas-sec-card:hover .asas-sec-orb svg.reverse-arrow {
+  transform: translateX(-4px) scaleX(-1);
+}
+
+.asas-sec-card:hover .asas-sec-orb {
+  background: #e55021;
+  border-color: #e55021;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.asas-sectors-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: clamp(28px, 3vw, 40px);
+  padding-top: 22px;
+  border-top: 1px solid rgba(11, 29, 77, 0.1);
+  color: rgba(11, 29, 77, 0.42);
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.asas-sectors-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.asas-sectors-foot i {
+  width: 36px;
+  height: 1px;
+  background: rgba(11, 29, 77, 0.22);
+}
+
+@media (max-width: 1100px) {
+  .asas-sectors-head {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 18px;
+  }
+
+  .asas-sectors-head h2 {
+    max-width: 14ch;
+  }
+
+  .asas-sectors-head-aside {
+    justify-self: start;
+    max-width: 480px;
+  }
+
+  .asas-sectors-mosaic {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .asas-sec-slot--featured {
+    grid-column: 1 / -1;
+    min-height: 460px;
+  }
+
+  .asas-sec-slot--side {
+    grid-column: 1 / -1;
+    min-height: 360px;
+  }
+
+  .asas-sectors-quad {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .asas-sectors {
+    padding: 80px 0 64px;
+  }
+
+  .asas-sectors-mosaic,
+  .asas-sectors-quad {
+    grid-template-columns: 1fr;
+  }
+
+  .asas-sec-slot--featured {
+    min-height: 460px;
+  }
+
+  .asas-sec-slot--side,
+  .asas-sec-slot--quad {
+    min-height: 340px;
+  }
+
+  .asas-sectors-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .asas-sec-card--featured .asas-sec-content h3 {
+    font-size: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asas-sec-image,
+  .asas-sec-content h3,
+  .asas-sec-ghost,
+  .asas-sec-orb,
+  .asas-sec-orb svg,
+  .asas-sec-ghost svg,
+  .asas-sectors-all svg {
+    transition: none !important;
+  }
+}

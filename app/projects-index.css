@@ -1,13 +1,13 @@
 /* Projects index — matches portfolio reference layout */
 
 .projects-index {
-  --hp-navy: #1a2744;
-  --hp-orange: #d0402a;
+  --hp-navy: var(--asas-navy);
+  --hp-orange: var(--asas-orange);
   --hp-paper: #f7f6f2;
   --hp-white: #fff;
   --hp-card-radius: 14px;
   --hp-card-border: 1px solid #e6e2db;
-  --hp-ink: #171615;
+  --hp-ink: var(--asas-text);
 }
 
 .projects-hero,
@@ -21,7 +21,7 @@
   padding: 88px 0 78px;
   color: #fff;
   overflow: hidden;
-  background: #121826;
+  background: var(--asas-navy);
 }
 
 .projects-hero-collage {
@@ -58,7 +58,7 @@
 .projects-hero .breadcrumb {
   display: block;
   color: rgba(255, 255, 255, .62);
-  font: 600 12px/1 Manrope, Arial, sans-serif;
+  font: 600 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .04em;
 }
 
@@ -66,7 +66,7 @@
   max-width: 13ch;
   margin: 18px 0 18px;
   color: #fff;
-  font-family: Manrope, Arial, sans-serif;
+  font-family: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   font-size: clamp(40px, 5vw, 60px);
   font-weight: 700;
   letter-spacing: -.045em;
@@ -84,7 +84,7 @@
 .projects-hero-meta {
   margin-top: 34px;
   color: rgba(255, 255, 255, .68);
-  font: 700 12px/1 Manrope, Arial, sans-serif;
+  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -102,8 +102,8 @@
   margin: 0 0 28px;
   padding: 14px 0 16px;
   background: rgba(247, 246, 242, .97);
-  border-bottom: 1px solid #e4e0d9;
-  box-shadow: 0 8px 18px rgba(26, 39, 68, .04);
+  border-bottom: 1px solid var(--asas-border);
+  box-shadow: 0 8px 18px rgba(7, 4, 99, .04);
   backdrop-filter: blur(14px);
 }
 
@@ -125,26 +125,26 @@
   border-radius: 999px;
   background: #fff;
   color: #2f2c29;
-  font: 600 14px/1 Manrope, Arial, sans-serif;
+  font: 600 14px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0;
   text-transform: none;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 1px 0 rgba(26, 39, 68, .03);
+  box-shadow: 0 1px 0 rgba(7, 4, 99, .03);
   transition: background .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease;
 }
 
 .projects-filter button:hover {
   border-color: #bdb6ab;
   color: var(--hp-navy);
-  box-shadow: 0 4px 12px rgba(26, 39, 68, .08);
+  box-shadow: 0 4px 12px rgba(7, 4, 99, .08);
 }
 
 .projects-filter button.is-active {
   background: var(--hp-navy);
   border-color: var(--hp-navy);
   color: #fff;
-  box-shadow: 0 6px 16px rgba(26, 39, 68, .18);
+  box-shadow: 0 6px 16px rgba(7, 4, 99, .18);
 }
 
 .projects-filter-label {
@@ -162,12 +162,12 @@
 
 .projects-filter-count {
   color: #4a4540;
-  font: 700 13px/1 Manrope, Arial, sans-serif;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   font-variant-numeric: tabular-nums;
 }
 
 .projects-filter button.is-active .projects-filter-count {
-  color: #f4b4a8;
+  color: rgba(229, 80, 33, 0.45);
 }
 
 /* Featured flagship */
@@ -181,7 +181,7 @@
   background: #161b26;
   color: #fff;
   text-decoration: none;
-  box-shadow: 0 1px 0 rgba(26, 39, 68, .04);
+  box-shadow: 0 1px 0 rgba(7, 4, 99, .04);
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
@@ -202,7 +202,7 @@
   padding: 0;
   border-radius: 0;
   background: transparent;
-  color: #f28a78;
+  color: var(--asas-orange);
   font-size: 11px;
   letter-spacing: .12em;
 }
@@ -210,7 +210,7 @@
 .projects-featured-copy h2 {
   margin: 14px 0 14px;
   color: #fff;
-  font-family: Manrope, Arial, sans-serif;
+  font-family: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   font-size: clamp(28px, 3.1vw, 40px);
   font-weight: 700;
   letter-spacing: -.035em;
@@ -242,7 +242,7 @@
 
 .projects-featured-copy dt {
   color: rgba(255, 255, 255, .48);
-  font: 700 10px/1.2 Manrope, Arial, sans-serif;
+  font: 700 10px/1.2 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -268,7 +268,7 @@
   border-radius: var(--hp-card-radius);
   background: var(--hp-white);
   text-decoration: none;
-  box-shadow: 0 1px 0 rgba(26, 39, 68, .03);
+  box-shadow: 0 1px 0 rgba(7, 4, 99, .03);
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
@@ -306,7 +306,7 @@
 
 .projects-kind {
   color: var(--hp-orange);
-  font: 700 10px/1 Manrope, Arial, sans-serif;
+  font: 700 10px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -336,7 +336,7 @@
 .projects-card h3 {
   margin: 12px 0 8px;
   color: var(--hp-ink);
-  font-family: Manrope, Arial, sans-serif;
+  font-family: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -.03em;
@@ -350,7 +350,7 @@
   overflow: hidden;
   min-height: 44px;
   margin: 0 0 18px;
-  color: #686360;
+  color: var(--asas-text-secondary);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -363,7 +363,7 @@
   padding-top: 14px;
   border-top: 1px solid #ece8e2;
   color: var(--hp-navy);
-  font: 700 12px/1 Manrope, Arial, sans-serif;
+  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .02em;
 }
 
@@ -376,7 +376,7 @@
 .projects-featured:hover,
 .projects-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(26, 39, 68, .1);
+  box-shadow: 0 14px 30px rgba(7, 4, 99, .1);
 }
 
 .projects-more {
@@ -394,7 +394,7 @@
   border-radius: 999px;
   background: transparent;
   color: var(--hp-navy);
-  font: 700 13px/1 Manrope, Arial, sans-serif;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   cursor: pointer;
 }
 
@@ -408,7 +408,7 @@
 }
 
 .projects-more button:hover small {
-  color: #f4b4a8;
+  color: rgba(229, 80, 33, 0.45);
 }
 
 @media (max-width: 1100px) {

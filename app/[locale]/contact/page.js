@@ -143,29 +143,47 @@ export default async function Contact({params}) {
         </Container>
       </section>
 
-      <aside className="contact-bridge">
-        <Container className="contact-bridge-inner">
-          <div>
-            <p className="atlas-kicker">{ar ? 'استكشف' : 'Explore'}</p>
+      <section className="contact-cta">
+        <div className="contact-cta-media" aria-hidden="true">
+          <Image
+            src={generatedEditorialImages.buildingsSector}
+            alt=""
+            fill
+            sizes="100vw"
+          />
+        </div>
+        <div className="contact-cta-veil" aria-hidden="true" />
+        <Container className="contact-cta-inner">
+          <div className="contact-cta-copy">
+            <p className="contact-cta-kicker">
+              <i />
+              {ar ? 'استكشف' : 'Explore'}
+            </p>
             <h2>{ar ? 'راجع الخدمات أو المشاريع أولاً' : 'Review services or projects first'}</h2>
             <p>
               {ar
                 ? 'إذا كنت لا تزال تستكشف النطاق، ابدأ من صفحات الخدمات أو المشاريع.'
                 : 'If you are still exploring scope, start from the services or projects pages.'}
             </p>
+            <div className="contact-cta-actions">
+              <Link className="contact-cta-btn" href={`/${locale}/services`}>
+                {ar ? 'الخدمات' : 'Services'}
+                <NextArrow ar={ar} />
+              </Link>
+              <Link className="contact-cta-link" href={`/${locale}/projects`}>
+                {ar ? 'المشاريع' : 'Projects'}
+                <NextArrow ar={ar} />
+              </Link>
+            </div>
           </div>
-          <div className="contact-bridge-actions">
-            <Link className="button" href={`/${locale}/services`}>
-              {ar ? 'الخدمات' : 'Services'}
-              <NextArrow ar={ar} />
-            </Link>
-            <Link className="atlas-link" href={`/${locale}/projects`}>
-              {ar ? 'المشاريع' : 'Projects'}
-              <NextArrow ar={ar} />
-            </Link>
-          </div>
+          <ul className="contact-cta-words" aria-hidden="true">
+            <li>{ar ? 'أشخاص' : 'People'}</li>
+            <li>{ar ? 'أماكن' : 'Places'}</li>
+            <li>{ar ? 'إمكانات' : 'Possibilities'}</li>
+            <li>{ar ? 'غدٍ أفضل' : 'A Better Tomorrow'}</li>
+          </ul>
         </Container>
-      </aside>
+      </section>
     </div>
   );
 }

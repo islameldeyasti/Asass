@@ -24,6 +24,17 @@ import './downloads-index.css';
 import './enquiry-page.css';
 import './about-page.css';
 import './mobile-fixes.css';
+import './asas-brand.css';
+import './premium-chrome.css';
+import './premium-footer.css';
+import './premium-sectors.css';
+import './premium-project-detail.css';
+import './premium-projects.css';
+import './premium-services.css';
+import './premium-service-detail.css';
+import './premium-sector-detail.css';
+import './premium-company-profile.css';
+import './premium-portfolio.css';
 export const metadata={
   title: 'ASAS Engineering & Project Management Consultancy',
   description: 'Abu Dhabi consultancy for architectural, structural, civil and electromechanical design, quantities and cost, project management and construction supervision.',

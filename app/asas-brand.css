@@ -1,0 +1,687 @@
+/**
+ * ASAS Brand Design System
+ * Official tokens + shared UI refinements.
+ * Loaded last so it normalizes the existing plain-CSS site.
+ */
+
+:root {
+  /* Core brand */
+  --asas-navy: #070463;
+  --asas-orange: #e55021;
+  --asas-white: #ffffff;
+
+  /* Neutrals */
+  --asas-text: #161625;
+  --asas-text-secondary: #5f6070;
+  --asas-bg: #ffffff;
+  --asas-bg-soft: #f7f7f9;
+  --asas-border: #e5e5ea;
+
+  /* Derived — navy */
+  --asas-navy-hover: #05034a;
+  --asas-navy-soft: rgba(7, 4, 99, 0.06);
+  --asas-navy-border: rgba(7, 4, 99, 0.1);
+  --asas-navy-shadow: rgba(7, 4, 99, 0.05);
+  --asas-navy-overlay: rgba(7, 4, 99, 0.72);
+
+  /* Derived — orange */
+  --asas-orange-hover: #c4411a;
+  --asas-orange-soft: rgba(229, 80, 33, 0.1);
+  --asas-orange-border: rgba(229, 80, 33, 0.28);
+
+  /* Typography */
+  --asas-font: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  --asas-display: clamp(48px, 5vw, 76px);
+  --asas-h1: clamp(48px, 4.2vw, 60px);
+  --asas-h2: clamp(36px, 3.4vw, 46px);
+  --asas-h3: clamp(26px, 2.4vw, 32px);
+  --asas-h4: clamp(20px, 1.8vw, 24px);
+  --asas-body-lg: 18px;
+  --asas-body: 17px;
+  --asas-small: 14px;
+  --asas-label: 12px;
+  --asas-nav: 15px;
+  --asas-btn: 15px;
+  --asas-lh-display: 1.04;
+  --asas-lh-heading: 1.12;
+  --asas-lh-body: 1.65;
+  --asas-tracking-display: -0.025em;
+  --asas-tracking-label: 0.1em;
+
+  /* Spacing */
+  --space-section-lg: 112px;
+  --space-section-md: 88px;
+  --space-section-sm: 72px;
+  --space-content: 32px;
+  --space-item: 16px;
+  --space-gutter: 40px;
+
+  /* Layout */
+  --asas-container: 1280px;
+  --asas-container-wide: 1360px;
+  --asas-measure: 68ch;
+  --asas-measure-lede: 78ch;
+  --asas-radius-sm: 4px;
+  --asas-radius: 6px;
+  --asas-radius-md: 8px;
+  --asas-radius-lg: 10px;
+  --asas-header-h: 86px;
+  --asas-announce-h: 34px;
+  --asas-btn-h: 50px;
+  --asas-input-h: 52px;
+  --asas-card-shadow: 0 8px 30px var(--asas-navy-shadow);
+  --asas-card-border: 1px solid var(--asas-navy-border);
+
+  /* Legacy aliases → brand tokens (keeps existing CSS working) */
+  --font-sans: var(--asas-font);
+  --blue: var(--asas-navy);
+  --red: var(--asas-orange);
+  --ink: var(--asas-text);
+  --muted: var(--asas-text-secondary);
+  --line: var(--asas-border);
+  --paper: var(--asas-bg-soft);
+  --navy: var(--asas-navy);
+  --hp-navy: var(--asas-navy);
+  --hp-orange: var(--asas-orange);
+  --hp-paper: var(--asas-bg-soft);
+  --hp-white: var(--asas-white);
+  --hp-muted: var(--asas-text-secondary);
+  --hp-card-radius: var(--asas-radius-md);
+  --hp-card-border: var(--asas-card-border);
+  --hp-card-shadow: var(--asas-card-shadow);
+  --contact-navy: var(--asas-navy);
+  --contact-orange: var(--asas-orange);
+  --contact-ink: var(--asas-text);
+  --contact-muted: var(--asas-text-secondary);
+  --contact-line: var(--asas-border);
+  --contact-paper: var(--asas-bg-soft);
+  --contact-radius: var(--asas-radius-md);
+  --a-navy: var(--asas-navy);
+  --a-orange: var(--asas-orange);
+  --a-ink: var(--asas-text);
+  --a-muted: var(--asas-text-secondary);
+  --a-line: var(--asas-border);
+  --a-paper: var(--asas-bg-soft);
+  --a-radius: var(--asas-radius-md);
+  --e-navy: var(--asas-navy);
+  --e-orange: var(--asas-orange);
+  --e-ink: var(--asas-text);
+  --e-muted: var(--asas-text-secondary);
+  --e-line: var(--asas-border);
+  --e-paper: var(--asas-bg-soft);
+  --e-radius: var(--asas-radius-md);
+  --c-navy: var(--asas-navy);
+  --c-orange: var(--asas-orange);
+  --c-radius: var(--asas-radius-md);
+}
+
+/* ---------- Base ---------- */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--asas-bg);
+  color: var(--asas-text);
+  font-family: var(--asas-font);
+  font-size: var(--asas-body);
+  line-height: var(--asas-lh-body);
+  font-weight: 400;
+}
+
+html[dir='rtl'] body {
+  font-family: var(--asas-font);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: var(--asas-orange-soft);
+  color: var(--asas-navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--asas-orange);
+  outline-offset: 2px;
+}
+
+/* ---------- Typography ---------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--asas-font);
+  color: var(--asas-navy);
+  letter-spacing: var(--asas-tracking-display);
+  margin-top: 0;
+}
+
+h1,
+.page-hero h1,
+.asas-hero-copy h1 {
+  font-size: var(--asas-h1);
+  line-height: var(--asas-lh-display);
+  font-weight: 700;
+}
+
+.asas-hero-slider h1,
+.atlas-hero h1,
+.contact-hero h1,
+.enquiry-hero h1,
+.about-hero h1,
+.sectors-hero h1,
+.downloads-hero h1,
+.careers-hero h1 {
+  font-size: var(--asas-display);
+  line-height: var(--asas-lh-display);
+  font-weight: 700;
+  color: var(--asas-white);
+}
+
+h2 {
+  font-size: var(--asas-h2);
+  line-height: var(--asas-lh-heading);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--asas-h3);
+  line-height: 1.2;
+  font-weight: 650;
+}
+
+h4 {
+  font-size: var(--asas-h4);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+p {
+  color: var(--asas-text-secondary);
+  line-height: var(--asas-lh-body);
+  max-width: var(--asas-measure);
+}
+
+.eyebrow,
+.atlas-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--asas-orange);
+  font-family: var(--asas-font);
+  font-size: var(--asas-label);
+  font-weight: 700;
+  letter-spacing: var(--asas-tracking-label);
+  text-transform: uppercase;
+  max-width: none;
+}
+
+.eyebrow i,
+.atlas-kicker:before {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--asas-orange);
+  flex: none;
+}
+
+.section-title h2 {
+  color: var(--asas-navy);
+  max-width: 18ch;
+}
+
+.section-title > p {
+  max-width: var(--asas-measure-lede);
+  color: var(--asas-text-secondary);
+  font-size: var(--asas-body-lg);
+}
+
+/* ---------- Layout ---------- */
+.container,
+.home-shell {
+  width: 100%;
+  max-width: var(--asas-container);
+  margin-inline: auto;
+  padding-inline: var(--space-gutter);
+}
+
+section {
+  padding-block: var(--space-section-lg);
+}
+
+/* Legacy announcement/header replaced by .asas-chrome */
+.announcement,
+.header:not(.asas-header) {
+  /* kept for non-chrome fallbacks; premium chrome overrides when present */
+}
+
+/* ---------- Buttons ---------- */
+.button,
+.atlas-primary,
+.enquiry-submit,
+.contact-map-directions,
+a.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--asas-btn-h);
+  padding: 0 26px;
+  border-radius: var(--asas-radius) !important;
+  border: 1px solid var(--asas-orange);
+  background: var(--asas-orange);
+  color: var(--asas-white);
+  font-family: var(--asas-font);
+  font-size: var(--asas-btn);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover,
+.atlas-primary:hover,
+.enquiry-submit:hover,
+.contact-map-directions:hover {
+  background: var(--asas-orange-hover);
+  border-color: var(--asas-orange-hover);
+  color: var(--asas-white);
+}
+
+.button.light-btn,
+.light-btn {
+  background: var(--asas-white);
+  border-color: var(--asas-white);
+  color: var(--asas-navy);
+}
+
+.button.light-btn:hover,
+.light-btn:hover {
+  background: var(--asas-bg-soft);
+  border-color: var(--asas-bg-soft);
+  color: var(--asas-navy);
+}
+
+.atlas-link,
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--asas-navy);
+  font-family: var(--asas-font);
+  font-size: 13px;
+  font-weight: 700;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 4px;
+  max-width: none;
+}
+
+.atlas-link:hover,
+.arrow-link:hover {
+  color: var(--asas-orange);
+}
+
+/* Secondary outline CTAs on light surfaces */
+.nav-cta {
+  border-radius: var(--asas-radius) !important;
+}
+
+/* ---------- Forms ---------- */
+.field input,
+.field select,
+.field textarea,
+.enquiry-fields input,
+.enquiry-fields select,
+.enquiry-fields textarea,
+.careers-form input,
+.careers-form select,
+.careers-form textarea,
+.apply-form input,
+.apply-form select,
+.apply-form textarea {
+  min-height: var(--asas-input-h);
+  padding: 12px 14px;
+  border: 1px solid #dadae2;
+  border-radius: var(--asas-radius-sm) !important;
+  background: var(--asas-white);
+  color: var(--asas-text);
+  font-family: var(--asas-font);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field textarea,
+.enquiry-fields textarea,
+.careers-form textarea,
+.apply-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.enquiry-fields input:focus,
+.enquiry-fields select:focus,
+.enquiry-fields textarea:focus,
+.careers-form input:focus,
+.careers-form select:focus,
+.careers-form textarea:focus,
+.apply-form input:focus,
+.apply-form select:focus,
+.apply-form textarea:focus {
+  border-color: var(--asas-navy);
+  box-shadow: 0 0 0 3px var(--asas-navy-soft);
+}
+
+.field label,
+.enquiry-fields label > span,
+.careers-form label > span,
+.apply-form label > span {
+  color: var(--asas-navy);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* ---------- Cards ---------- */
+.service-card,
+.work-card,
+.hp-card,
+.about-strength-card,
+.about-vision-card,
+.contact-form-panel,
+.enquiry-form-panel,
+.careers-job-card,
+.sectors-featured,
+.downloads-featured,
+.about-featured,
+.resource-grid article,
+.atlas-resource-grid a {
+  border-radius: var(--asas-radius-md) !important;
+  border-color: var(--asas-navy-border);
+  box-shadow: var(--asas-card-shadow);
+}
+
+.service-card h3,
+.work-card h3,
+.hp-card h3,
+.about-strength-card h3,
+.careers-job-card h3 {
+  color: var(--asas-navy);
+}
+
+.hp-featured.hp-card .hp-featured-copy h3 {
+  color: #fff;
+}
+
+/* Soften SaaS-like pills / huge radii on UI chrome (keep true circles for FABs) */
+.button,
+.nav-cta,
+.atlas-primary,
+.enquiry-submit,
+.filter,
+.contact-form-panel,
+.enquiry-form-panel,
+.contact-map-frame,
+.about-chip-list li {
+  border-radius: var(--asas-radius-md) !important;
+}
+
+.about-chip-list li {
+  border-radius: var(--asas-radius) !important;
+  border: 1px solid var(--asas-border);
+  background: var(--asas-bg-soft);
+  color: var(--asas-navy);
+}
+
+/* ---------- Page heroes (photo) ---------- */
+.page-hero {
+  background: var(--asas-navy);
+  color: var(--asas-white);
+  padding: 105px 0 70px;
+}
+
+.page-hero h1 {
+  color: var(--asas-white);
+}
+
+.page-hero p,
+.breadcrumb {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ---------- Stats / credibility ---------- */
+.stat strong,
+.about-stat strong,
+.atlas-proof strong {
+  color: var(--asas-navy);
+  font-family: var(--asas-font);
+}
+
+.stat span,
+.about-stat span {
+  color: var(--asas-text-secondary);
+}
+
+/* ---------- Footer (presentation owned by premium-footer.css) ---------- */
+footer,
+.site-footer {
+  background: #08111f;
+  color: rgba(255, 255, 255, 0.68);
+  position: relative;
+  overflow: hidden;
+}
+
+footer .brand,
+footer .brand b,
+footer .brand small {
+  color: var(--asas-white);
+}
+
+/* ---------- CTA band ---------- */
+.project-cta {
+  background-color: var(--asas-navy) !important;
+}
+
+.project-cta .eyebrow {
+  color: var(--asas-orange);
+}
+
+.project-cta h2 {
+  color: var(--asas-white);
+}
+
+.project-cta p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ---------- Bridges (navy strategic sections) ---------- */
+.about-bridge,
+.contact-bridge,
+.enquiry-bridge,
+.sectors-bridge,
+.downloads-bridge,
+.careers-bridge {
+  background: var(--asas-navy) !important;
+  color: var(--asas-white);
+}
+
+.about-bridge h2,
+.contact-bridge h2,
+.enquiry-bridge h2,
+.sectors-bridge h2,
+.downloads-bridge h2,
+.careers-bridge h2 {
+  color: var(--asas-white);
+}
+
+.about-bridge .atlas-kicker,
+.contact-bridge .atlas-kicker,
+.enquiry-bridge .atlas-kicker,
+.sectors-bridge .atlas-kicker,
+.downloads-bridge .atlas-kicker,
+.careers-bridge .atlas-kicker {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.about-bridge .atlas-kicker:before,
+.contact-bridge .atlas-kicker:before,
+.enquiry-bridge .atlas-kicker:before,
+.sectors-bridge .atlas-kicker:before,
+.downloads-bridge .atlas-kicker:before,
+.careers-bridge .atlas-kicker:before {
+  background: var(--asas-orange);
+}
+
+.about-bridge p,
+.contact-bridge p,
+.enquiry-bridge p,
+.sectors-bridge p,
+.downloads-bridge p,
+.careers-bridge p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.about-bridge .button,
+.contact-bridge .button,
+.enquiry-bridge .button,
+.sectors-bridge .button,
+.downloads-bridge .button,
+.careers-bridge .button {
+  background: var(--asas-white);
+  border-color: var(--asas-white);
+  color: var(--asas-navy);
+}
+
+.about-bridge .button:hover,
+.contact-bridge .button:hover,
+.enquiry-bridge .button:hover,
+.sectors-bridge .button:hover,
+.downloads-bridge .button:hover,
+.careers-bridge .button:hover {
+  background: var(--asas-bg-soft);
+  color: var(--asas-navy);
+}
+
+.about-bridge .atlas-link,
+.contact-bridge .atlas-link,
+.enquiry-bridge .atlas-link,
+.sectors-bridge .atlas-link,
+.downloads-bridge .atlas-link,
+.careers-bridge .atlas-link {
+  color: var(--asas-white);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* ---------- Icons ---------- */
+.reason-grid svg,
+.about-strength-card svg,
+.about-standard-list svg,
+.contact-list a svg,
+.discipline-grid svg,
+.technical-icons svg {
+  color: var(--asas-orange);
+}
+
+/* ---------- Filters ---------- */
+.filter {
+  border: 1px solid var(--asas-border);
+  background: transparent;
+  color: var(--asas-navy);
+  border-radius: var(--asas-radius) !important;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 10px 14px;
+}
+
+.filter.active,
+.filter:hover {
+  background: var(--asas-navy);
+  border-color: var(--asas-navy);
+  color: var(--asas-white);
+}
+
+/* ---------- Soft paper sections use brand soft bg ---------- */
+.services,
+.presence,
+.atlas-archive,
+.about-body,
+.about-strengths,
+.about-standards,
+.contact-body,
+.enquiry-body,
+.sectors-body,
+.downloads-body {
+  background: var(--asas-bg-soft);
+}
+
+/* ---------- Neutralize non-brand accent leftovers ---------- */
+.atlas-home {
+  --navy: var(--asas-navy);
+  --red: var(--asas-orange);
+  --ink: var(--asas-text);
+  --line: var(--asas-border);
+  --paper: var(--asas-bg-soft);
+  color: var(--asas-text);
+  font-family: var(--asas-font);
+}
+
+/* Success green only for success states — keep accessible */
+.enquiry-success svg,
+.success {
+  /* intentional non-brand status color */
+}
+
+/* ---------- Mobile typography & spacing ---------- */
+@media (max-width: 900px) {
+  :root {
+    --asas-display: clamp(38px, 8vw, 46px);
+    --asas-h1: clamp(36px, 7vw, 42px);
+    --asas-h2: clamp(30px, 5vw, 36px);
+    --asas-h3: clamp(23px, 4vw, 27px);
+    --asas-body: 16px;
+    --asas-body-lg: 17px;
+    --asas-small: 13px;
+    --space-section-lg: 72px;
+    --space-section-md: 56px;
+    --space-section-sm: 48px;
+    --space-gutter: 24px;
+    --asas-header-h: 72px;
+  }
+
+  section {
+    padding-block: var(--space-section-md);
+  }
+
+  .header .nav nav {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --space-gutter: 20px;
+    --asas-btn-h: 48px;
+    --asas-header-h: 70px;
+  }
+
+  .header .nav nav {
+    top: calc(var(--asas-announce-h) + var(--asas-header-h));
+  }
+}

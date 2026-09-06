@@ -61,14 +61,14 @@
   height: min(420px, 70%);
   border-radius: 50%;
   background:
-    radial-gradient(circle at center, transparent 46%, rgba(48, 48, 128, .08) 47%, transparent 48%),
-    radial-gradient(circle at center, transparent 62%, rgba(208, 64, 42, .07) 63%, transparent 64%),
-    radial-gradient(circle at center, transparent 78%, rgba(48, 48, 128, .05) 79%, transparent 80%);
+    radial-gradient(circle at center, transparent 46%, rgba(7, 4, 99, .08) 47%, transparent 48%),
+    radial-gradient(circle at center, transparent 62%, rgba(229, 80, 33, .07) 63%, transparent 64%),
+    radial-gradient(circle at center, transparent 78%, rgba(7, 4, 99, .05) 79%, transparent 80%);
   pointer-events: none;
 }
 
 .atlas-home .hp-about-copy .atlas-kicker {
-  color: #d0402a;
+  color: var(--asas-orange);
 }
 
 .atlas-home .hp-about-copy h2 {
@@ -84,7 +84,7 @@
 .atlas-home .hp-about-lede {
   margin: 18px 0 0 !important;
   max-width: 540px;
-  color: #686360;
+  color: var(--asas-text-secondary);
   font-size: 16px;
   line-height: 1.7;
 }
@@ -109,15 +109,15 @@
 
 .atlas-home .hp-about-stats strong {
   display: block;
-  color: #303080;
-  font: 700 28px/1 Manrope, Arial, sans-serif;
+  color: var(--asas-navy);
+  font: 700 28px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .atlas-home .hp-about-stats span {
   display: block;
   margin-top: 8px;
   color: #7a756f;
-  font: 700 10px/1.25 Manrope, Arial, sans-serif;
+  font: 700 10px/1.25 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -134,8 +134,8 @@
   gap: 12px;
   align-items: flex-start;
   padding: 16px;
-  border-radius: 14px;
-  background: #f6f5f1;
+  border-radius: var(--asas-radius-md);
+  background: var(--asas-bg-soft);
 }
 
 .atlas-home .hp-about-cards svg {
@@ -143,7 +143,7 @@
   width: 22px;
   height: 22px;
   margin-top: 2px;
-  color: #d0402a;
+  color: var(--asas-orange);
 }
 
 .atlas-home .hp-about-cards h3 {
@@ -175,31 +175,31 @@
   gap: 8px;
   padding: 13px 18px;
   border-radius: 8px;
-  font: 700 13px/1 Manrope, Arial, sans-serif;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   text-decoration: none;
   transition: background .25s ease, color .25s ease, border-color .25s ease;
 }
 
 .atlas-home .hp-about-outline {
-  border: 1px solid #303080;
+  border: 1px solid var(--asas-navy);
   background: #fff;
-  color: #303080;
+  color: var(--asas-navy);
 }
 
 .atlas-home .hp-about-outline:hover {
-  background: #303080;
+  background: var(--asas-navy);
   color: #fff;
 }
 
 .atlas-home .hp-about-solid {
-  border: 1px solid #d0402a;
-  background: #d0402a;
+  border: 1px solid var(--asas-orange);
+  background: var(--asas-orange);
   color: #fff;
 }
 
 .atlas-home .hp-about-solid:hover {
-  background: #b83624;
-  border-color: #b83624;
+  background: #c4411a;
+  border-color: #c4411a;
 }
 
 .atlas-home .hp-about-grid,
@@ -226,7 +226,7 @@
 .atlas-home .hp-seo p:not(.atlas-kicker) {
   margin: 0 0 18px;
   max-width: 540px;
-  color: #686360;
+  color: var(--asas-text-secondary);
   font-size: 16px;
   line-height: 1.7;
 }
@@ -234,7 +234,7 @@
 .atlas-home .hp-ticker {
   overflow: hidden;
   border-block: 1px solid #d9d8d3;
-  background: #f6f5f1;
+  background: var(--asas-bg-soft);
 }
 
 .atlas-home .hp-ticker-track {
@@ -246,8 +246,8 @@
 }
 
 .atlas-home .hp-ticker-track span {
-  color: #303080;
-  font: 700 12px/1 Manrope, Arial, sans-serif;
+  color: var(--asas-navy);
+  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .14em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -255,7 +255,7 @@
 
 .atlas-home .hp-ticker-track span:after {
   content: ' ·';
-  color: #d0402a;
+  color: var(--asas-orange);
 }
 
 @keyframes hp-ticker {
@@ -270,7 +270,7 @@
 }
 
 .atlas-home .hp-services {
-  background: #f6f5f1;
+  background: var(--asas-bg-soft);
 }
 
 .atlas-home .hp-service-rows {
@@ -290,8 +290,8 @@
 }
 
 .atlas-home .hp-service-rows span {
-  color: #303080;
-  font: 700 13px/1 Manrope, Arial, sans-serif;
+  color: var(--asas-navy);
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .atlas-home .hp-service-rows h3 {
@@ -301,7 +301,7 @@
 
 .atlas-home .hp-service-rows p {
   margin: 0;
-  color: #686360;
+  color: var(--asas-text-secondary);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -335,14 +335,14 @@
 
 .atlas-home .hp-why-grid span {
   display: block;
-  color: #d0402a;
-  font: 700 12px/1 Manrope, Arial, sans-serif;
+  color: var(--asas-orange);
+  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .04em;
 }
 
 .atlas-home .hp-why-grid h3 {
   margin: 12px 0 8px;
-  color: #171615;
+  color: var(--asas-text);
   font-size: 18px;
   font-weight: 700;
   line-height: 1.25;
@@ -352,13 +352,13 @@
 .atlas-home .hp-why-grid p {
   margin: 0;
   max-width: 28ch;
-  color: #686360;
+  color: var(--asas-text-secondary);
   font-size: 14px;
   line-height: 1.55;
 }
 
 .atlas-home .hp-faq {
-  background: #f6f5f1;
+  background: var(--asas-bg-soft);
 }
 
 .atlas-home .hp-faq-list details {
@@ -380,7 +380,7 @@
 .atlas-home .hp-faq-list p {
   margin: 0 0 18px;
   max-width: 640px;
-  color: #686360;
+  color: var(--asas-text-secondary);
   font-size: 15px;
   line-height: 1.65;
 }
@@ -458,7 +458,7 @@
   .atlas-home .hp-about-visual,
   .atlas-home .hp-about-visual img {
     min-height: 280px;
-    border-radius: 20px;
+    border-radius: var(--asas-radius-md);
   }
 
   .atlas-home .hp-about-cards {
@@ -512,13 +512,13 @@
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(28px, 3.4vw, 42px);
   font-weight: 700;
-  color: #171615;
+  color: var(--asas-text);
   line-height: 1.15;
   margin: 12px 0 14px;
 }
 
 .atlas-home .insp-center-head p:last-child {
-  color: #676465;
+  color: var(--asas-text-secondary);
   font-size: 15px;
   line-height: 1.7;
   margin: 0;
@@ -528,29 +528,29 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #303080;
+  background: var(--asas-navy);
   color: #fff;
   padding: 12px 20px;
   border-radius: 8px;
-  font: 600 13px Manrope, system-ui, sans-serif;
+  font: 600 13px "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   text-decoration: none;
-  border: 1px solid #303080;
+  border: 1px solid var(--asas-navy);
   transition: background .25s ease, color .25s ease;
 }
 
 .atlas-home .insp-btn:hover {
-  background: #d0402a;
-  border-color: #d0402a;
+  background: var(--asas-orange);
+  border-color: var(--asas-orange);
   color: #fff;
 }
 
 .atlas-home .insp-btn.outline {
   background: transparent;
-  color: #303080;
+  color: var(--asas-navy);
 }
 
 .atlas-home .insp-btn.outline:hover {
-  background: #303080;
+  background: var(--asas-navy);
   color: #fff;
 }
 
@@ -562,7 +562,7 @@
 
 /* Dark expertise ticker */
 .atlas-home .insp-ticker {
-  background: #171615;
+  background: var(--asas-text);
   overflow: hidden;
   padding: 28px 0;
   border-block: 1px solid #2a2928;
@@ -576,7 +576,7 @@
 }
 
 .atlas-home .insp-ticker-track span {
-  font: 800 clamp(22px, 3vw, 36px) Manrope, system-ui, sans-serif;
+  font: 800 clamp(22px, 3vw, 36px) "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .04em;
   text-transform: uppercase;
   color: #fff;
@@ -593,14 +593,14 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #d0402a;
+  background: var(--asas-orange);
   transform: translateY(-50%);
 }
 
 .atlas-home .insp-ticker-track span.outline {
   color: transparent;
-  -webkit-text-stroke: 1.5px #303080;
-  text-stroke: 1.5px #303080;
+  -webkit-text-stroke: 1.5px var(--asas-navy);
+  text-stroke: 1.5px var(--asas-navy);
 }
 
 @keyframes insp-marquee {
@@ -628,7 +628,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
   flex-wrap: wrap;
   gap: 6px;
   background: #f3f2f2;
-  border-radius: 14px;
+  border-radius: var(--asas-radius-md);
   padding: 8px;
   margin-bottom: 32px;
 }
@@ -639,22 +639,22 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
   gap: 8px;
   border: 0;
   background: transparent;
-  color: #676465;
+  color: var(--asas-text-secondary);
   padding: 12px 14px;
   border-radius: 10px;
-  font: 600 12px Manrope, system-ui, sans-serif;
+  font: 600 12px "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   cursor: pointer;
   transition: background .2s ease, color .2s ease;
 }
 
 .atlas-home .insp-tabs button.active {
-  background: #303080;
+  background: var(--asas-navy);
   color: #fff;
 }
 
 .atlas-home .insp-tabs button:hover:not(.active) {
   background: #ebeaea;
-  color: #171615;
+  color: var(--asas-text);
 }
 
 .atlas-home .insp-tab-panel {
@@ -665,7 +665,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 }
 
 .atlas-home .insp-tab-media {
-  border-radius: 20px;
+  border-radius: var(--asas-radius-md);
   overflow: hidden;
   background: #1a1a1a;
   min-height: 420px;
@@ -680,7 +680,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 }
 
 .atlas-home .insp-tab-copy .insp-tab-icon {
-  color: #d0402a;
+  color: var(--asas-orange);
   width: 28px;
   height: 28px;
   margin-bottom: 12px;
@@ -688,12 +688,12 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 
 .atlas-home .insp-tab-copy h3 {
   font: 700 clamp(24px, 2.6vw, 34px) Georgia, "Times New Roman", serif;
-  color: #171615;
+  color: var(--asas-text);
   margin: 0 0 12px;
 }
 
 .atlas-home .insp-tab-copy > p {
-  color: #676465;
+  color: var(--asas-text-secondary);
   font-size: 15px;
   line-height: 1.7;
   margin: 0 0 22px;
@@ -711,12 +711,12 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  color: #171615;
-  font: 500 14px Manrope, system-ui, sans-serif;
+  color: var(--asas-text);
+  font: 500 14px "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .atlas-home .insp-tab-copy li svg {
-  color: #303080;
+  color: var(--asas-navy);
   flex-shrink: 0;
   margin-top: 1px;
 }
@@ -724,7 +724,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 /* Sector image cards — polished production treatment */
 .atlas-home .insp-sectors {
   padding: 96px 0 88px;
-  background: #f6f5f1;
+  background: var(--asas-bg-soft);
 }
 
 .atlas-home .insp-sectors-head {
@@ -757,7 +757,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
   aspect-ratio: 4 / 3;
   min-height: 0;
   height: auto;
-  border-radius: 16px;
+  border-radius: var(--asas-radius-md);
   overflow: hidden;
   text-decoration: none;
   color: #fff;
@@ -807,8 +807,8 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 .atlas-home .insp-sector-label {
   display: block;
   margin: 0;
-  color: #f0a090;
-  font: 700 11px/1.2 Manrope, system-ui, sans-serif;
+  color: rgba(229, 80, 33, 0.55);
+  font: 700 11px/1.2 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -816,7 +816,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 .atlas-home .insp-sector-content h3 {
   margin: 0;
   color: #fff !important;
-  font: 700 22px/1.2 Manrope, system-ui, sans-serif;
+  font: 700 22px/1.2 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: -.02em;
   text-shadow: 0 1px 12px rgba(0, 0, 0, .28);
 }
@@ -825,7 +825,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
   margin: 0;
   max-width: 34ch;
   color: rgba(255, 255, 255, .82) !important;
-  font: 500 14px/1.45 Manrope, system-ui, sans-serif;
+  font: 500 14px/1.45 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   text-shadow: 0 1px 10px rgba(0, 0, 0, .25);
 }
 
@@ -875,13 +875,13 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 
 .atlas-home .insp-expertise-grid h2 {
   font: 700 clamp(28px, 3vw, 40px) Georgia, "Times New Roman", serif;
-  color: #171615;
+  color: var(--asas-text);
   margin: 10px 0 14px;
   line-height: 1.15;
 }
 
 .atlas-home .insp-expertise-grid > div > p {
-  color: #676465;
+  color: var(--asas-text-secondary);
   font-size: 15px;
   line-height: 1.7;
   max-width: 520px;
@@ -902,19 +902,19 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 }
 
 .atlas-home .insp-comp-rows strong {
-  font: 700 14px Manrope, system-ui, sans-serif;
-  color: #171615;
+  font: 700 14px "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  color: var(--asas-text);
 }
 
 .atlas-home .insp-comp-rows span {
-  font: 700 12px Manrope, system-ui, sans-serif;
-  color: #303080;
+  font: 700 12px "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  color: var(--asas-navy);
 }
 
 .atlas-home .insp-comp-rows p {
   margin: 0 0 10px;
   font-size: 13px;
-  color: #676465;
+  color: var(--asas-text-secondary);
   line-height: 1.5;
 }
 
@@ -924,7 +924,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
   width: var(--w, 85%);
   max-width: 100%;
   border-radius: 999px;
-  background: #303080;
+  background: var(--asas-navy);
 }
 
 .atlas-home .insp-expertise-media {
@@ -948,7 +948,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
   inset-inline-start: 20px;
   bottom: 20px;
   background: #fff;
-  border-radius: 14px;
+  border-radius: var(--asas-radius-md);
   padding: 16px 18px;
   min-width: 160px;
   box-shadow: 0 12px 40px rgba(23, 22, 21, .18);
@@ -956,15 +956,15 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 
 .atlas-home .insp-expertise-media aside strong {
   display: block;
-  font: 800 28px Manrope, system-ui, sans-serif;
-  color: #d0402a;
+  font: 800 28px "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  color: var(--asas-orange);
   line-height: 1;
   margin-bottom: 6px;
 }
 
 .atlas-home .insp-expertise-media aside span {
   font-size: 12px;
-  color: #676465;
+  color: var(--asas-text-secondary);
   line-height: 1.4;
 }
 

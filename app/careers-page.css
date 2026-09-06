@@ -1,12 +1,12 @@
 /* Careers page — visual redesign aligned with Services/Sectors/Downloads */
 
 .careers-page {
-  --c-navy: #1a2744;
-  --c-orange: #d0402a;
-  --c-ink: #171615;
-  --c-muted: #676465;
-  --c-line: #e4e0d9;
-  --c-paper: #f6f5f1;
+  --c-navy: var(--asas-navy);
+  --c-orange: var(--asas-orange);
+  --c-ink: var(--asas-text);
+  --c-muted: var(--asas-text-secondary);
+  --c-line: var(--asas-border);
+  --c-paper: var(--asas-bg-soft);
   --c-white: #fff;
   --c-radius: 14px;
 }
@@ -16,7 +16,7 @@
   align-items: center;
   gap: 8px;
   color: var(--c-navy);
-  font: 700 13px/1 Manrope, Arial, sans-serif;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .careers-page .atlas-link .reverse-arrow {
@@ -36,7 +36,7 @@
   padding: 88px 0 72px;
   color: #fff;
   overflow: hidden;
-  background: #121826;
+  background: var(--asas-navy);
 }
 
 .careers-hero-photo {
@@ -72,7 +72,7 @@
   max-width: 14ch;
   margin: 14px 0 16px;
   color: #fff;
-  font-family: Manrope, Arial, sans-serif;
+  font-family: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   font-size: clamp(36px, 4.6vw, 56px);
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -93,7 +93,7 @@
   gap: 10px 28px;
   margin-top: 28px;
   color: rgba(255, 255, 255, 0.72);
-  font: 700 12px/1 Manrope, Arial, sans-serif;
+  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -105,8 +105,8 @@
 }
 
 .careers-hero-meta a:hover {
-  color: #f4b4a8;
-  border-color: #f4b4a8;
+  color: rgba(229, 80, 33, 0.45);
+  border-color: rgba(229, 80, 33, 0.45);
 }
 
 .careers-section-head {
@@ -166,7 +166,7 @@
   height: 38px;
   flex: none;
   border-radius: 10px;
-  background: rgba(208, 64, 42, 0.1);
+  background: rgba(229, 80, 33, 0.1);
   color: var(--c-orange);
 }
 
@@ -230,7 +230,7 @@
   border-radius: 999px;
   background: #fff;
   color: var(--c-ink);
-  font: 650 13px/1 Manrope, Arial, sans-serif;
+  font: 650 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
@@ -292,7 +292,7 @@
   border-radius: 999px;
   background: var(--c-paper);
   color: var(--c-navy);
-  font: 700 11px/1 Manrope, Arial, sans-serif;
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -452,7 +452,7 @@ html[dir='rtl'] .careers-apply-points li:before {
 
 .careers-apply-fields label > span {
   color: var(--c-navy);
-  font: 700 13px/1.3 Manrope, Arial, sans-serif;
+  font: 700 13px/1.3 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .careers-apply-fields label > span small {
@@ -488,7 +488,7 @@ html[dir='rtl'] .careers-apply-points li:before {
 .careers-apply-fields select:focus,
 .careers-apply-fields textarea:focus {
   border-color: var(--c-navy);
-  box-shadow: 0 0 0 3px rgba(26, 39, 68, 0.12);
+  box-shadow: 0 0 0 3px rgba(7, 4, 99, 0.12);
 }
 
 .careers-apply-fields .has-error input,
@@ -496,12 +496,12 @@ html[dir='rtl'] .careers-apply-points li:before {
 .careers-apply-fields .has-error textarea,
 .careers-apply-file.has-error .careers-file-box {
   border-color: var(--c-orange);
-  box-shadow: 0 0 0 3px rgba(208, 64, 42, 0.12);
+  box-shadow: 0 0 0 3px rgba(229, 80, 33, 0.12);
 }
 
 .careers-apply-fields em {
   color: var(--c-orange);
-  font: 600 12px/1.35 Manrope, Arial, sans-serif;
+  font: 600 12px/1.35 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   font-style: normal;
 }
 
@@ -597,7 +597,7 @@ html[dir='rtl'] .careers-apply-points li:before {
 .careers-apply-server-error {
   margin: 14px 0 0;
   color: var(--c-orange);
-  font: 650 14px/1.4 Manrope, Arial, sans-serif;
+  font: 650 14px/1.4 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .careers-apply-success {
@@ -635,6 +635,159 @@ html[dir='rtl'] .careers-apply-points li:before {
   }
 }
 
+/* Cinematic careers CTA */
+.careers-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(360px, 46vh, 440px);
+  display: flex;
+  align-items: center;
+  padding: 88px 0;
+  color: #fff;
+  background: #041226;
+}
+
+.careers-cta-media,
+.careers-cta-veil {
+  position: absolute;
+  inset: 0;
+}
+
+.careers-cta-media img {
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(1.04);
+}
+
+.careers-cta-veil {
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(4, 18, 38, 0.94) 0%,
+    rgba(4, 18, 38, 0.78) 55%,
+    rgba(4, 18, 38, 0.55) 100%
+  );
+}
+
+.careers-cta-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  gap: 40px;
+  align-items: end;
+  width: 100%;
+}
+
+.careers-cta-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  color: #e55021;
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.careers-cta-kicker i {
+  width: 22px;
+  height: 2px;
+  background: #e55021;
+}
+
+.careers-cta-copy h2 {
+  margin: 0 0 14px;
+  max-width: 14ch;
+  color: #fff !important;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.careers-cta-copy p {
+  margin: 0 0 26px;
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.careers-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  align-items: center;
+}
+
+.careers-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 5px;
+  background: #fff;
+  color: #070463 !important;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.careers-cta-btn:hover {
+  transform: translateY(-1px);
+  background: #f3f4f6;
+}
+
+.careers-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font: 700 14px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.careers-cta-link:hover {
+  color: #e55021;
+}
+
+.careers-cta-words {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: rgba(255, 255, 255, 0.3);
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .careers-cta-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .careers-cta-words {
+    writing-mode: horizontal-tb;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 16px;
+  }
+
+  .careers-cta {
+    min-height: 360px;
+    padding: 64px 0;
+  }
+}
+
 /* Bridge */
 .careers-bridge {
   padding: 12px 0 80px;
@@ -648,7 +801,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   gap: 28px;
   padding: 32px 34px;
   border: 1px solid var(--c-line);
-  border-radius: 16px;
+  border-radius: var(--asas-radius-md);
   background: #fff;
   box-shadow: 0 16px 40px rgba(16, 24, 40, 0.05);
 }
@@ -684,7 +837,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   padding: 80px 0 64px;
   color: #fff;
   overflow: hidden;
-  background: #121826;
+  background: var(--asas-navy);
 }
 
 .careers-detail-hero:before {
@@ -692,7 +845,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, #1a1f3a 0%, #303080 55%, #252560 100%);
+    linear-gradient(135deg, #1a1f3a 0%, var(--asas-navy) 55%, var(--asas-navy-hover, #05034a) 100%);
 }
 
 .careers-detail-hero .container {
@@ -752,7 +905,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   border-radius: 999px;
   background: var(--c-paper);
   color: var(--c-navy);
-  font: 700 11px/1 Manrope, Arial, sans-serif;
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -817,7 +970,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   gap: 8px;
   margin-bottom: 24px;
   color: var(--c-navy);
-  font: 700 13px/1 Manrope, Arial, sans-serif;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 @media (max-width: 1000px) {

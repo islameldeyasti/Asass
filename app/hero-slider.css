@@ -73,7 +73,7 @@
 .asas-hero-location {
   margin: 0 0 14px;
   color: rgba(255, 255, 255, .78);
-  font: 600 12px/1 Manrope, Arial, sans-serif;
+  font: 600 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .14em;
   text-transform: uppercase;
 }
@@ -109,7 +109,7 @@
 .asas-hero-facts dt {
   margin: 0 0 6px;
   color: rgba(255, 255, 255, .55);
-  font: 700 11px/1.2 Manrope, Arial, sans-serif;
+  font: 700 11px/1.2 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -117,7 +117,7 @@
 .asas-hero-facts dd {
   margin: 0;
   color: #fff;
-  font: 500 14px/1.35 Manrope, Arial, sans-serif;
+  font: 500 14px/1.35 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .asas-hero-actions {
@@ -134,7 +134,7 @@
   min-height: 46px;
   padding: 0 22px;
   border-radius: 999px;
-  font: 700 13px/1 Manrope, Arial, sans-serif;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   text-decoration: none;
   transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
 }
@@ -153,13 +153,13 @@
 .asas-hero-solid {
   border: 1px solid #fff;
   background: #fff;
-  color: #121826;
+  color: var(--asas-navy);
 }
 
 .asas-hero-solid:hover {
-  background: #f4b4a8;
-  border-color: #f4b4a8;
-  color: #121826;
+  background: rgba(229, 80, 33, 0.45);
+  border-color: rgba(229, 80, 33, 0.45);
+  color: var(--asas-navy);
 }
 
 .asas-hero-controls {

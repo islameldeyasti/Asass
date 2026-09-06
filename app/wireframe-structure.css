@@ -1,7 +1,7 @@
 /* Wireframe structure: numbered process list + project table */
 
 .atlas-home .title-dot {
-  color: var(--red, #d0402a);
+  color: var(--red, var(--asas-orange));
 }
 
 .atlas-home .wf-process,
@@ -23,7 +23,7 @@
 .atlas-home .wf-process-copy h2 {
   margin: 14px 0 18px;
   max-width: 360px;
-  color: #121826;
+  color: var(--asas-navy);
   font-size: clamp(32px, 3.4vw, 46px);
   font-weight: 700;
   letter-spacing: -.04em;
@@ -55,15 +55,15 @@
 }
 
 .atlas-home .wf-process-list span {
-  color: #303080;
-  font: 700 15px/1.2 var(--font-manrope, Manrope, Arial, sans-serif);
+  color: var(--asas-navy);
+  font: 700 15px/1.2 var(--font-sans, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);
   letter-spacing: .04em;
   padding-top: 2px;
 }
 
 .atlas-home .wf-process-list h3 {
   margin: 0 0 6px;
-  color: #171615;
+  color: var(--asas-text);
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -.02em;
@@ -91,7 +91,7 @@
 .atlas-home .wf-table-head h2 {
   margin: 14px 0 0;
   max-width: 520px;
-  color: #121826;
+  color: var(--asas-navy);
   font-size: clamp(28px, 3vw, 42px);
   font-weight: 700;
   letter-spacing: -.035em;
@@ -128,13 +128,13 @@
 
 .atlas-home .wf-table-cols span {
   color: #7a756f;
-  font: 700 11px/1.3 var(--font-manrope, Manrope, Arial, sans-serif);
+  font: 700 11px/1.3 var(--font-sans, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);
   letter-spacing: .1em;
   text-transform: uppercase;
 }
 
 .atlas-home a.wf-table-row strong {
-  color: #171615;
+  color: var(--asas-text);
   font-size: 15px;
   font-weight: 700;
 }
@@ -147,7 +147,7 @@
 .atlas-home a.wf-table-row svg {
   width: 18px;
   height: 18px;
-  color: #303080;
+  color: var(--asas-navy);
   justify-self: end;
 }
 
@@ -157,8 +157,8 @@
 
 .atlas-home .wf-table-link {
   margin-top: 28px;
-  color: #303080;
-  border-bottom: 1px solid #303080;
+  color: var(--asas-navy);
+  border-bottom: 1px solid var(--asas-navy);
 }
 
 [dir="rtl"] .atlas-home a.wf-table-row svg {

@@ -4,8 +4,8 @@
   position: relative;
   background: #f9f8f3;
   background-image:
-    linear-gradient(rgba(48, 48, 128, .035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(48, 48, 128, .035) 1px, transparent 1px);
+    linear-gradient(rgba(7, 4, 99, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(7, 4, 99, .035) 1px, transparent 1px);
   background-size: 52px 52px;
   overflow: hidden;
 }
@@ -90,7 +90,7 @@
 }
 
 .atlas-home .title-dot {
-  color: var(--red, #d0402a);
+  color: var(--red, var(--asas-orange));
   font-weight: 700;
 }
 
@@ -111,8 +111,8 @@
 .atlas-home .route-intro-main h2 {
   margin: 0;
   max-width: 760px;
-  color: #121826;
-  font-family: var(--font-manrope, Manrope, Arial, sans-serif) !important;
+  color: var(--asas-navy);
+  font-family: var(--font-sans, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif) !important;
   font-size: clamp(34px, 4vw, 52px) !important;
   font-weight: 700 !important;
   letter-spacing: -.04em;
@@ -158,7 +158,7 @@
   width: 18px;
   height: 18px;
   margin: 0 0 20px;
-  border: 2px solid var(--red, #d0402a);
+  border: 2px solid var(--red, var(--asas-orange));
   border-radius: 50%;
   background: #f9f8f3;
   box-shadow: inset 0 0 0 4px #f9f8f3;
@@ -171,20 +171,20 @@
   position: absolute;
   inset: 3px;
   border-radius: 50%;
-  background: var(--red, #d0402a);
+  background: var(--red, var(--asas-orange));
 }
 
 .atlas-home .route-map b {
   display: block;
-  color: #303080;
-  font: 700 12px/1 var(--font-manrope, Manrope, Arial, sans-serif);
+  color: var(--asas-navy);
+  font: 700 12px/1 var(--font-sans, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);
   letter-spacing: .04em;
 }
 
 .atlas-home .route-map h3 {
   margin: 8px 0 8px;
-  color: #171615;
-  font-family: var(--font-manrope, Manrope, Arial, sans-serif) !important;
+  color: var(--asas-text);
+  font-family: var(--font-sans, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif) !important;
   font-size: 16px !important;
   font-weight: 700 !important;
   letter-spacing: -.02em;
@@ -227,7 +227,7 @@
   height: 100% !important;
   min-height: 540px;
   object-fit: cover;
-  border-radius: 24px !important;
+  border-radius: var(--asas-radius-md) !important;
 }
 
 .atlas-home .dossier-copy {
@@ -246,8 +246,8 @@
 .atlas-home .dossier-copy h2 {
   margin: 0 0 18px;
   max-width: 420px;
-  color: #121826;
-  font-family: var(--font-manrope, Manrope, Arial, sans-serif) !important;
+  color: var(--asas-navy);
+  font-family: var(--font-sans, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif) !important;
   font-size: clamp(28px, 3vw, 40px) !important;
   font-weight: 700 !important;
   letter-spacing: -.035em;
@@ -286,7 +286,7 @@
 .atlas-home .dossier-copy dt {
   margin: 0;
   color: #7a756f;
-  font: 700 11px/1.3 var(--font-manrope, Manrope, Arial, sans-serif);
+  font: 700 11px/1.3 var(--font-sans, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -300,13 +300,13 @@
 
 .atlas-home .dossier-link {
   align-self: start;
-  border-bottom: 1px solid #303080;
-  color: #303080 !important;
+  border-bottom: 1px solid var(--asas-navy);
+  color: var(--asas-navy) !important;
   font-size: 14px !important;
 }
 
 .atlas-home .dossier-link svg {
-  color: #303080;
+  color: var(--asas-navy);
 }
 
 .atlas-home .dossier-plans {
@@ -322,7 +322,7 @@
   height: 100%;
   min-height: 0;
   object-fit: cover;
-  border-radius: 24px !important;
+  border-radius: var(--asas-radius-md) !important;
 }
 
 /* RTL */

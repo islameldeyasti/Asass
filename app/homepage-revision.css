@@ -1,13 +1,13 @@
 /* Homepage revision — consolidation, CTA hierarchy, card rhythm */
 
 .hp-revised {
-  --hp-navy: #1a2744;
-  --hp-orange: #d0402a;
-  --hp-paper: #f6f5f1;
+  --hp-navy: var(--asas-navy);
+  --hp-orange: var(--asas-orange);
+  --hp-paper: var(--asas-bg-soft);
   --hp-white: #fff;
   --hp-card-radius: 12px;
-  --hp-card-border: 1px solid #e4e0d9;
-  --hp-card-shadow: 0 1px 0 rgba(26, 39, 68, .04);
+  --hp-card-border: 1px solid var(--asas-border);
+  --hp-card-shadow: 0 1px 0 rgba(7, 4, 99, .04);
   --hp-card-pad: 22px;
 }
 
@@ -22,8 +22,8 @@
 .header .nav-cta.button,
 .header .mobile-enquiry {
   background: transparent !important;
-  border: 1px solid #1a2744 !important;
-  color: #1a2744 !important;
+  border: 1px solid var(--asas-navy) !important;
+  color: var(--asas-navy) !important;
 }
 
 /* 3. Secondary CTAs — navy text links, not orange fills */
@@ -100,7 +100,7 @@
 .hp-revised .hp-about-note {
   max-width: 520px;
   margin: 0 0 24px;
-  color: #686360;
+  color: var(--asas-text-secondary);
   font-size: 15px;
   line-height: 1.65;
 }
@@ -135,7 +135,7 @@
 .hp-discipline-stats strong {
   display: block;
   color: var(--hp-navy);
-  font: 700 26px/1 Manrope, Arial, sans-serif;
+  font: 700 26px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: -.03em;
 }
 
@@ -188,7 +188,7 @@
 .hp-portfolio-head p {
   max-width: 520px;
   margin: 0;
-  color: #686360;
+  color: var(--asas-text-secondary);
   font-size: 15px;
   line-height: 1.65;
 }
@@ -206,7 +206,7 @@
   position: relative;
   min-height: 380px;
   overflow: hidden;
-  background: #121826;
+  background: var(--asas-navy);
 }
 
 .hp-featured-visual img {
@@ -230,7 +230,7 @@
 }
 
 .hp-featured-copy .atlas-kicker {
-  color: #f28a78;
+  color: var(--asas-orange);
 }
 
 .hp-featured-copy h3 {
@@ -259,7 +259,7 @@
 
 .hp-featured-copy dt {
   color: rgba(255, 255, 255, .48);
-  font: 700 10px/1.2 Manrope, Arial, sans-serif;
+  font: 700 10px/1.2 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -310,7 +310,7 @@
 .hp-portfolio-meta small {
   display: block;
   color: var(--hp-orange);
-  font: 700 11px/1 Manrope, Arial, sans-serif;
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .1em;
 }
 
@@ -345,10 +345,10 @@
   height: 100%;
   min-height: 0 !important;
   padding: 24px !important;
-  border: 1px solid #e4e0d9 !important;
-  border-inline-end: 1px solid #e4e0d9 !important;
+  border: 1px solid var(--asas-border) !important;
+  border-inline-end: 1px solid var(--asas-border) !important;
   background: var(--hp-white);
-  box-shadow: 0 8px 24px rgba(26, 39, 68, .07);
+  box-shadow: 0 8px 24px rgba(7, 4, 99, .07);
 }
 
 .hp-revised.atlas-home .hp-why-grid article:not(:first-child),
@@ -368,8 +368,8 @@
   margin: 0 0 16px !important;
   padding: 0 !important;
   border-radius: 12px;
-  background: var(--hp-navy);
-  color: #f4b4a8;
+  background: var(--hp-orange, #e55021);
+  color: #fff;
   font: inherit !important;
   letter-spacing: 0 !important;
   line-height: 0 !important;
@@ -384,6 +384,8 @@
   margin: 0 !important;
   flex: none;
   overflow: visible;
+  color: #fff;
+  stroke: currentColor;
 }
 
 .hp-revised .hp-why-grid small {
@@ -391,7 +393,7 @@
   flex: 0 0 auto;
   margin: 0 0 8px !important;
   color: var(--hp-orange) !important;
-  font: 700 18px/1 Manrope, Arial, sans-serif !important;
+  font: 700 18px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif !important;
   letter-spacing: -.02em !important;
 }
 
@@ -407,7 +409,7 @@
   flex: 1 1 auto;
   margin: 0 !important;
   max-width: none !important;
-  color: #686360;
+  color: var(--asas-text-secondary);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -415,37 +417,14 @@
 .hp-why-bridge {
   margin: 28px 0 0;
   padding: 22px 0 28px;
-  border-top: 1px solid #e4e0d9;
+  border-top: 1px solid var(--asas-border);
 }
 
 .hp-why-bridge p {
   max-width: 46ch;
   margin: 0;
   color: #5d5853;
-  font: 600 15px/1.55 Manrope, Arial, sans-serif;
-}
-
-/* 7. Footer as brand extension */
-.site-footer {
-  background: #121826;
-  padding: 56px 52px 20px;
-}
-
-.site-footer .footer-action > a,
-.site-footer .footer-action-link {
-  background: transparent !important;
-  border: 1px solid rgba(255, 255, 255, .28);
-  color: #fff !important;
-}
-
-.site-footer .footer-action > a:hover,
-.site-footer .footer-action-link:hover {
-  background: rgba(255, 255, 255, .06) !important;
-  border-color: #fff;
-}
-
-.site-footer .footer-column h3 {
-  color: #f4b4a8;
+  font: 600 15px/1.55 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .insp-sector-card.hp-card {
@@ -457,7 +436,7 @@
 }
 
 .hp-revised .home-contact-form button:hover {
-  background: #b83624;
+  background: #c4411a;
 }
 
 /* Contact dark section — override white-theme text tokens */
@@ -468,12 +447,12 @@
 }
 
 .hp-revised.atlas-home .home-contact-head .atlas-kicker {
-  color: #f4b4a8 !important;
+  color: rgba(229, 80, 33, 0.45) !important;
 }
 
 .hp-revised.atlas-home .home-contact-head h2 {
   color: #fff !important;
-  font-family: Manrope, Arial, sans-serif !important;
+  font-family: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif !important;
   font-weight: 700;
   letter-spacing: -.04em;
 }
@@ -483,8 +462,8 @@
 }
 
 .hp-revised.atlas-home .home-contact-details article > svg {
-  background: rgba(255, 255, 255, .08) !important;
-  color: #f4b4a8 !important;
+  background: var(--hp-orange, #e55021) !important;
+  color: #fff !important;
 }
 
 .hp-revised.atlas-home .home-contact-details h3 {
@@ -497,7 +476,7 @@
 }
 
 .hp-revised.atlas-home .home-contact-details a:hover {
-  color: #f4b4a8 !important;
+  color: rgba(229, 80, 33, 0.45) !important;
 }
 
 /* Persistent labels above fields */
@@ -507,7 +486,7 @@
   inset: auto !important;
   margin: 0 0 8px;
   color: rgba(255, 255, 255, .92) !important;
-  font: 700 12px/1 Manrope, Arial, sans-serif;
+  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .05em;
   text-transform: uppercase;
   pointer-events: auto;
@@ -538,7 +517,7 @@
 .hp-revised .hp-why-grid small {
   margin-top: 4px;
   color: var(--hp-orange) !important;
-  font: 700 18px/1 Manrope, Arial, sans-serif !important;
+  font: 700 18px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif !important;
   letter-spacing: -.02em !important;
 }
 
@@ -569,14 +548,14 @@ html[dir='rtl'] .whatsapp {
 
 .hp-revised.atlas-home .hp-faq-list details {
   margin: 0;
-  border: 1px solid #e4e0d9 !important;
+  border: 1px solid var(--asas-border) !important;
   border-radius: 12px;
   background: #fff;
   overflow: hidden;
 }
 
 .hp-revised.atlas-home .hp-faq-list details:first-child {
-  border-top: 1px solid #e4e0d9 !important;
+  border-top: 1px solid var(--asas-border) !important;
 }
 
 .hp-revised.atlas-home .hp-faq-list summary {
@@ -595,7 +574,7 @@ html[dir='rtl'] .whatsapp {
 .hp-revised.atlas-home .hp-faq-num {
   flex: 0 0 auto;
   color: var(--hp-orange);
-  font: 700 14px/1.2 Manrope, Arial, sans-serif;
+  font: 700 14px/1.2 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: -.02em;
 }
 

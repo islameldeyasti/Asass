@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {ArrowRight, Building2, ClipboardList, Download, FileText, FolderKanban, Layers} from 'lucide-react';
-import {Container, CTA} from '@/components/UI';
+import {Container} from '@/components/UI';
 import {company} from '@/data/company';
 import {generatedEditorialImages} from '@/data/image-manifest';
 
@@ -159,10 +159,10 @@ export default async function Downloads({params}) {
                   <Download size={17} aria-hidden="true" />
                   {ar ? 'تحميل الملف التعريفي' : 'Download company profile'}
                 </a>
-                <a className="atlas-link" href={PROFILE_HREF} target="_blank" rel="noopener noreferrer">
+                <Link className="atlas-link" href={`/${locale}/company-profile`}>
                   {ar ? 'فتح في المتصفح' : 'Open in browser'}
                   <NextArrow ar={ar} />
-                </a>
+                </Link>
               </div>
             </div>
           </article>
@@ -213,30 +213,51 @@ export default async function Downloads({params}) {
         </Container>
       </section>
 
-      <aside className="downloads-bridge">
-        <Container className="downloads-bridge-inner">
-          <div>
-            <p className="atlas-kicker">{ar ? 'الخطوة التالية' : 'Next step'}</p>
+      <section className="downloads-cta">
+        <div className="downloads-cta-media" aria-hidden="true">
+          <Image
+            src={generatedEditorialImages.buildingsSector}
+            alt=""
+            fill
+            sizes="100vw"
+          />
+        </div>
+        <div className="downloads-cta-veil" aria-hidden="true" />
+        <Container className="downloads-cta-inner">
+          <div className="downloads-cta-copy">
+            <p className="downloads-cta-kicker">
+              <i />
+              {ar ? 'الخطوة التالية' : 'Next Step'}
+            </p>
             <h2>{ar ? 'هل ترغب بمناقشة مشروع؟' : 'Ready to discuss a project?'}</h2>
             <p>
               {ar
-                ? 'تواصل مع مكتب أساس في أبوظبي أو أرسل استفسار مشروع عبر النموذج.'
-                : 'Contact the ASAS office in Abu Dhabi or send a project enquiry through the form.'}
+                ? 'راجع المشاريع المختارة أو تواصل مع المكتب لبدء استفسار مشروع.'
+                : 'Review selected work from the portfolio, or contact the office to start a project enquiry.'}
             </p>
+            <div className="downloads-cta-actions">
+              <Link className="downloads-cta-btn" href={`/${locale}/project-enquiry`}>
+                {ar ? 'أرسل استفسار مشروع' : 'Submit a Project Enquiry'}
+                <NextArrow ar={ar} />
+              </Link>
+              <Link className="downloads-cta-link" href={`/${locale}/projects`}>
+                {ar ? 'عرض المشاريع' : 'View projects'}
+                <NextArrow ar={ar} />
+              </Link>
+              <Link className="downloads-cta-link" href={`/${locale}/contact`}>
+                {ar ? 'صفحة التواصل' : 'Contact page'}
+                <NextArrow ar={ar} />
+              </Link>
+            </div>
           </div>
-          <div className="downloads-bridge-actions">
-            <Link className="button" href={`/${locale}/contact`}>
-              {ar ? 'صفحة التواصل' : 'Contact page'}
-              <NextArrow ar={ar} />
-            </Link>
-            <a className="atlas-link" href={`mailto:${company.email}`}>
-              {company.email}
-            </a>
-          </div>
+          <ul className="downloads-cta-words" aria-hidden="true">
+            <li>{ar ? 'أشخاص' : 'People'}</li>
+            <li>{ar ? 'أماكن' : 'Places'}</li>
+            <li>{ar ? 'إمكانات' : 'Possibilities'}</li>
+            <li>{ar ? 'غدٍ أفضل' : 'A Better Tomorrow'}</li>
+          </ul>
         </Container>
-      </aside>
-
-      <CTA locale={locale} />
+      </section>
     </div>
   );
 }

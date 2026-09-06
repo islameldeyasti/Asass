@@ -9,7 +9,7 @@ import {
   HardHat,
   Ruler,
 } from 'lucide-react';
-import {Container, CTA} from '@/components/UI';
+import {Container} from '@/components/UI';
 import CareersBoard from '@/components/careers/CareersBoard';
 import ApplicationForm from '@/components/careers/ApplicationForm';
 import {careerDepartments, getOpenJobs} from '@/data/careers';
@@ -159,30 +159,49 @@ export default async function Careers({params}) {
         </Container>
       </section>
 
-      <aside className="careers-bridge">
-        <Container className="careers-bridge-inner">
-          <div>
-            <p className="atlas-kicker">{ar ? 'تواصل' : 'Contact'}</p>
+      <section className="careers-cta">
+        <div className="careers-cta-media" aria-hidden="true">
+          <Image
+            src={generatedEditorialImages.corporateTeam || generatedEditorialImages.buildingsSector}
+            alt=""
+            fill
+            sizes="100vw"
+          />
+        </div>
+        <div className="careers-cta-veil" aria-hidden="true" />
+        <Container className="careers-cta-inner">
+          <div className="careers-cta-copy">
+            <p className="careers-cta-kicker">
+              <i />
+              {ar ? 'تواصل' : 'Contact'}
+            </p>
             <h2>{ar ? 'أسئلة حول التوظيف؟' : 'Questions about hiring?'}</h2>
             <p>
               {ar
                 ? 'للاستفسارات المهنية يمكن التواصل مع مكتب أبوظبي عبر البريد الرسمي.'
                 : 'For career questions, reach the Abu Dhabi office through the official email.'}
             </p>
+            <div className="careers-cta-actions">
+              <a
+                className="careers-cta-btn"
+                href={`mailto:${company.email}?subject=${encodeURIComponent('Career enquiry')}`}
+              >
+                {company.email}
+              </a>
+              <Link className="careers-cta-link" href={`/${locale}/contact`}>
+                {ar ? 'صفحة التواصل' : 'Contact page'}
+                <NextArrow ar={ar} />
+              </Link>
+            </div>
           </div>
-          <div className="careers-bridge-actions">
-            <a className="button" href={`mailto:${company.email}?subject=${encodeURIComponent('Career enquiry')}`}>
-              {company.email}
-            </a>
-            <Link className="atlas-link" href={`/${locale}/contact`}>
-              {ar ? 'صفحة التواصل' : 'Contact page'}
-              <NextArrow ar={ar} />
-            </Link>
-          </div>
+          <ul className="careers-cta-words" aria-hidden="true">
+            <li>{ar ? 'أشخاص' : 'People'}</li>
+            <li>{ar ? 'أماكن' : 'Places'}</li>
+            <li>{ar ? 'إمكانات' : 'Possibilities'}</li>
+            <li>{ar ? 'غدٍ أفضل' : 'A Better Tomorrow'}</li>
+          </ul>
         </Container>
-      </aside>
-
-      <CTA locale={locale} />
+      </section>
     </div>
   );
 }

@@ -1,12 +1,12 @@
 /* Project enquiry page — aligned with Contact/Sectors visual system */
 
 .enquiry-page {
-  --e-navy: #1a2744;
-  --e-orange: #d0402a;
-  --e-ink: #171615;
-  --e-muted: #676465;
-  --e-line: #e4e0d9;
-  --e-paper: #f6f5f1;
+  --e-navy: var(--asas-navy);
+  --e-orange: var(--asas-orange);
+  --e-ink: var(--asas-text);
+  --e-muted: var(--asas-text-secondary);
+  --e-line: var(--asas-border);
+  --e-paper: var(--asas-bg-soft);
   --e-radius: 14px;
 }
 
@@ -15,7 +15,7 @@
   align-items: center;
   gap: 8px;
   color: var(--e-navy);
-  font: 700 13px/1 Manrope, Arial, sans-serif;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .enquiry-page .atlas-link .reverse-arrow {
@@ -35,7 +35,7 @@
   padding: 88px 0 72px;
   color: #fff;
   overflow: hidden;
-  background: #121826;
+  background: var(--asas-navy);
 }
 
 .enquiry-hero-photo {
@@ -71,7 +71,7 @@
   max-width: 12ch;
   margin: 14px 0 16px;
   color: #fff;
-  font-family: Manrope, Arial, sans-serif;
+  font-family: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   font-size: clamp(36px, 4.6vw, 56px);
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -92,7 +92,7 @@
   gap: 10px 28px;
   margin-top: 28px;
   color: rgba(255, 255, 255, 0.72);
-  font: 700 12px/1 Manrope, Arial, sans-serif;
+  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -106,8 +106,8 @@
 }
 
 .enquiry-hero-meta a:hover {
-  color: #f4b4a8;
-  border-color: #f4b4a8;
+  color: rgba(229, 80, 33, 0.45);
+  border-color: rgba(229, 80, 33, 0.45);
 }
 
 /* Body */
@@ -155,7 +155,7 @@
 
 .enquiry-steps li > span {
   color: var(--e-orange);
-  font: 750 14px/1 Manrope, Arial, sans-serif;
+  font: 750 14px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.06em;
 }
 
@@ -211,7 +211,7 @@
   gap: 14px;
   padding: 18px;
   border-radius: 12px;
-  background: rgba(208, 64, 42, 0.08);
+  background: rgba(229, 80, 33, 0.08);
 }
 
 .enquiry-note-card > svg {
@@ -281,7 +281,7 @@
 
 .enquiry-page .enquiry-fields label > span {
   color: var(--e-navy);
-  font: 700 13px/1.3 Manrope, Arial, sans-serif;
+  font: 700 13px/1.3 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .enquiry-page .enquiry-fields label > span small {
@@ -318,19 +318,19 @@
 .enquiry-page .enquiry-fields select:focus,
 .enquiry-page .enquiry-fields textarea:focus {
   border-color: var(--e-navy);
-  box-shadow: 0 0 0 3px rgba(26, 39, 68, 0.12);
+  box-shadow: 0 0 0 3px rgba(7, 4, 99, 0.12);
 }
 
 .enquiry-page .enquiry-fields .has-error input,
 .enquiry-page .enquiry-fields .has-error select,
 .enquiry-page .enquiry-fields .has-error textarea {
   border-color: var(--e-orange);
-  box-shadow: 0 0 0 3px rgba(208, 64, 42, 0.12);
+  box-shadow: 0 0 0 3px rgba(229, 80, 33, 0.12);
 }
 
 .enquiry-page .enquiry-fields em {
   color: var(--e-orange);
-  font: 600 12px/1.35 Manrope, Arial, sans-serif;
+  font: 600 12px/1.35 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   font-style: normal;
 }
 
@@ -382,6 +382,158 @@
   line-height: 1.6;
 }
 
+/* Cinematic enquiry CTA */
+.enquiry-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(360px, 46vh, 440px);
+  display: flex;
+  align-items: center;
+  padding: 88px 0;
+  color: #fff;
+  background: #041226;
+}
+
+.enquiry-cta-media,
+.enquiry-cta-veil {
+  position: absolute;
+  inset: 0;
+}
+
+.enquiry-cta-media img {
+  object-fit: cover;
+  transform: scale(1.04);
+}
+
+.enquiry-cta-veil {
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(4, 18, 38, 0.94) 0%,
+    rgba(4, 18, 38, 0.78) 55%,
+    rgba(4, 18, 38, 0.55) 100%
+  );
+}
+
+.enquiry-cta-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  gap: 40px;
+  align-items: end;
+  width: 100%;
+}
+
+.enquiry-cta-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  color: #e55021;
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.enquiry-cta-kicker i {
+  width: 22px;
+  height: 2px;
+  background: #e55021;
+}
+
+.enquiry-cta-copy h2 {
+  margin: 0 0 14px;
+  max-width: 16ch;
+  color: #fff !important;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.enquiry-cta-copy p {
+  margin: 0 0 26px;
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.enquiry-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  align-items: center;
+}
+
+.enquiry-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 5px;
+  background: #fff;
+  color: #070463 !important;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.enquiry-cta-btn:hover {
+  transform: translateY(-1px);
+  background: #f3f4f6;
+}
+
+.enquiry-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font: 700 14px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.enquiry-cta-link:hover {
+  color: #e55021;
+}
+
+.enquiry-cta-words {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: rgba(255, 255, 255, 0.3);
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .enquiry-cta-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .enquiry-cta-words {
+    writing-mode: horizontal-tb;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 16px;
+  }
+
+  .enquiry-cta {
+    min-height: 360px;
+    padding: 64px 0;
+  }
+}
+
 /* Bridge */
 .enquiry-bridge {
   padding: 12px 0 80px;
@@ -395,7 +547,7 @@
   gap: 28px;
   padding: 32px 34px;
   border: 1px solid var(--e-line);
-  border-radius: 16px;
+  border-radius: var(--asas-radius-md);
   background: #fff;
   box-shadow: 0 16px 40px rgba(16, 24, 40, 0.05);
 }
@@ -436,12 +588,6 @@
 
   .enquiry-page .enquiry-fields {
     grid-template-columns: 1fr;
-  }
-
-  .enquiry-bridge-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 26px 22px;
   }
 
   .enquiry-hero h1 {

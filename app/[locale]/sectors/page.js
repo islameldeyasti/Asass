@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {ArrowRight, Building2, Factory, GraduationCap, Hotel, Landmark, Route, Trees} from 'lucide-react';
-import {Container, CTA} from '@/components/UI';
+import {Container} from '@/components/UI';
 import {sectors} from '@/data/sectors';
 import {projects} from '@/data/projects';
 import {company} from '@/data/company';
@@ -157,31 +157,49 @@ export default async function Sectors({params}) {
         </Container>
       </section>
 
-      <aside className="sectors-bridge">
-        <Container className="sectors-bridge-inner">
-          <div>
-            <p className="atlas-kicker">{ar ? 'الخطوة التالية' : 'Next step'}</p>
-            <h2>{ar ? 'هل تخطط لمشروع في أحد هذه القطاعات؟' : 'Planning a project in one of these sectors?'}</h2>
+      <section className="sectors-cta">
+        <div className="sectors-cta-media" aria-hidden="true">
+          <Image
+            src={generatedEditorialImages.buildingsSector}
+            alt=""
+            fill
+            sizes="100vw"
+          />
+        </div>
+        <div className="sectors-cta-veil" aria-hidden="true" />
+        <Container className="sectors-cta-inner">
+          <div className="sectors-cta-copy">
+            <p className="sectors-cta-kicker">
+              <i />
+              {ar ? 'الخطوة التالية' : 'Next Step'}
+            </p>
+            <h2>
+              {ar ? 'هل تخطط لمشروع في أحد هذه القطاعات؟' : 'Planning a project in one of these sectors?'}
+            </h2>
             <p>
               {ar
                 ? 'راجع المشاريع المختارة أو تواصل مع المكتب لبدء استفسار مشروع.'
                 : 'Review selected work from the portfolio, or contact the office to start a project enquiry.'}
             </p>
+            <div className="sectors-cta-actions">
+              <Link className="sectors-cta-btn" href={`/${locale}/project-enquiry`}>
+                {ar ? 'أرسل استفسار مشروع' : 'Submit a Project Enquiry'}
+                <NextArrow ar={ar} />
+              </Link>
+              <Link className="sectors-cta-link" href={`/${locale}/projects`}>
+                {ar ? 'عرض المشاريع' : 'View projects'}
+                <NextArrow ar={ar} />
+              </Link>
+            </div>
           </div>
-          <div className="sectors-bridge-actions">
-            <Link className="button" href={`/${locale}/projects`}>
-              {ar ? 'عرض المشاريع' : 'View projects'}
-              <NextArrow ar={ar} />
-            </Link>
-            <Link className="atlas-link" href={`/${locale}/contact`}>
-              {ar ? 'تواصل معنا' : 'Contact us'}
-              <NextArrow ar={ar} />
-            </Link>
-          </div>
+          <ul className="sectors-cta-words" aria-hidden="true">
+            <li>{ar ? 'أشخاص' : 'People'}</li>
+            <li>{ar ? 'أماكن' : 'Places'}</li>
+            <li>{ar ? 'إمكانات' : 'Possibilities'}</li>
+            <li>{ar ? 'غدٍ أفضل' : 'A Better Tomorrow'}</li>
+          </ul>
         </Container>
-      </aside>
-
-      <CTA locale={locale} />
+      </section>
     </div>
   );
 }

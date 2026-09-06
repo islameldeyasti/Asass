@@ -1,12 +1,12 @@
 /* Downloads page — visual redesign aligned with Services/Sectors */
 
 .downloads-index {
-  --hp-navy: #1a2744;
-  --hp-orange: #d0402a;
-  --hp-paper: #f6f5f1;
+  --hp-navy: var(--asas-navy);
+  --hp-orange: var(--asas-orange);
+  --hp-paper: var(--asas-bg-soft);
   --hp-white: #fff;
-  --hp-muted: #676465;
-  --hp-line: #e4e0d9;
+  --hp-muted: var(--asas-text-secondary);
+  --hp-line: var(--asas-border);
   --hp-radius: 14px;
 }
 
@@ -15,7 +15,7 @@
   align-items: center;
   gap: 8px;
   color: var(--hp-navy);
-  font: 700 13px/1 Manrope, Arial, sans-serif;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .downloads-index .atlas-link .reverse-arrow {
@@ -35,7 +35,7 @@
   padding: 88px 0 72px;
   color: #fff;
   overflow: hidden;
-  background: #121826;
+  background: var(--asas-navy);
 }
 
 .downloads-hero-photo {
@@ -71,7 +71,7 @@
   max-width: 12ch;
   margin: 14px 0 16px;
   color: #fff;
-  font-family: Manrope, Arial, sans-serif;
+  font-family: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   font-size: clamp(36px, 4.6vw, 58px);
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -92,7 +92,7 @@
   gap: 10px 28px;
   margin-top: 28px;
   color: rgba(255, 255, 255, 0.72);
-  font: 700 12px/1 Manrope, Arial, sans-serif;
+  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -162,7 +162,7 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
   color: var(--hp-navy);
-  font: 750 12px/1 Manrope, Arial, sans-serif;
+  font: 750 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.08em;
 }
 
@@ -180,7 +180,7 @@
 
 .downloads-featured-label {
   color: var(--hp-orange);
-  font: 750 11px/1 Manrope, Arial, sans-serif;
+  font: 750 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -215,7 +215,7 @@
   border-radius: 999px;
   background: var(--hp-paper);
   color: var(--hp-navy);
-  font: 650 12px/1 Manrope, Arial, sans-serif;
+  font: 650 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
 .downloads-featured-actions {
@@ -263,7 +263,7 @@
   height: 36px;
   margin-bottom: 12px;
   border-radius: 10px;
-  background: rgba(208, 64, 42, 0.1);
+  background: rgba(229, 80, 33, 0.1);
   color: var(--hp-orange);
 }
 
@@ -352,6 +352,158 @@ html[dir='rtl'] .downloads-related-card:hover .atlas-link svg.reverse-arrow {
   transform: scaleX(-1) translateX(4px);
 }
 
+/* Cinematic downloads CTA */
+.downloads-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(360px, 46vh, 440px);
+  display: flex;
+  align-items: center;
+  padding: 88px 0;
+  color: #fff;
+  background: #041226;
+}
+
+.downloads-cta-media,
+.downloads-cta-veil {
+  position: absolute;
+  inset: 0;
+}
+
+.downloads-cta-media img {
+  object-fit: cover;
+  transform: scale(1.04);
+}
+
+.downloads-cta-veil {
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(4, 18, 38, 0.94) 0%,
+    rgba(4, 18, 38, 0.78) 55%,
+    rgba(4, 18, 38, 0.55) 100%
+  );
+}
+
+.downloads-cta-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  gap: 40px;
+  align-items: end;
+  width: 100%;
+}
+
+.downloads-cta-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  color: #e55021;
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.downloads-cta-kicker i {
+  width: 22px;
+  height: 2px;
+  background: #e55021;
+}
+
+.downloads-cta-copy h2 {
+  margin: 0 0 14px;
+  max-width: 14ch;
+  color: #fff !important;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.downloads-cta-copy p {
+  margin: 0 0 26px;
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.downloads-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  align-items: center;
+}
+
+.downloads-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 5px;
+  background: #fff;
+  color: #070463 !important;
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.downloads-cta-btn:hover {
+  transform: translateY(-1px);
+  background: #f3f4f6;
+}
+
+.downloads-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font: 700 14px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.downloads-cta-link:hover {
+  color: #e55021;
+}
+
+.downloads-cta-words {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: rgba(255, 255, 255, 0.3);
+  font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .downloads-cta-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .downloads-cta-words {
+    writing-mode: horizontal-tb;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 16px;
+  }
+
+  .downloads-cta {
+    min-height: 360px;
+    padding: 64px 0;
+  }
+}
+
 /* Bridge */
 .downloads-bridge {
   padding: 12px 0 80px;
@@ -365,7 +517,7 @@ html[dir='rtl'] .downloads-related-card:hover .atlas-link svg.reverse-arrow {
   gap: 28px;
   padding: 32px 34px;
   border: 1px solid var(--hp-line);
-  border-radius: 16px;
+  border-radius: var(--asas-radius-md);
   background: #fff;
   box-shadow: 0 16px 40px rgba(16, 24, 40, 0.05);
 }
@@ -417,12 +569,6 @@ html[dir='rtl'] .downloads-related-card:hover .atlas-link svg.reverse-arrow {
 
   .downloads-featured-copy {
     padding: 28px 22px;
-  }
-
-  .downloads-bridge-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 26px 22px;
   }
 }
 
