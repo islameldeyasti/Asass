@@ -5,16 +5,24 @@ import ServicesTabs from '@/components/home/ServicesTabs';
 import HeroSlider from '@/components/home/HeroSlider';
 import SectorShowcase from '@/components/home/SectorShowcase';
 import HomeTeamSection from '@/components/team/HomeTeamSection';
+import WireframeSphere from '@/components/home/WireframeSphere';
+import ClientsMarquee from '@/components/home/ClientsMarquee';
+import StatsSection from '@/components/home/StatsSection';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {whyIcons} from '@/components/icons/WhyIcons';
 import {ArrowRight, ArrowUpRight, Mail, MapPin, MessageCircle, Phone} from 'lucide-react';
 import {company} from '@/data/company';
-import {featuredServices} from '@/data/services';
+import {featuredServices, services} from '@/data/services';
 import {projects} from '@/data/projects';
+import {sectors} from '@/data/sectors';
 import {projectLifecycle} from '@/data/method';
 import {getHomepageTeamMembers} from '@/data/team';
-import {generatedEditorialImages, sectorImages} from '@/data/image-manifest';
+import {roleImages, homeSectorImages} from '@/data/image-manifest';
+import ProjectVisualFallback from '@/components/ProjectVisualFallback';
 
-const featuredProject = projects.find((project) => project.slug === 'four-towers-al-nahda');
+const featuredProject = projects.find((project) => project.slug === 'traffic-access-studies')
+  || projects.find((project) => project.visual);
 const portfolioGridSlugs = [
   'culture-private-school',
   'compound-villas-portfolio',
@@ -30,7 +38,8 @@ const heroSlides = [
   {
     id: 'four-towers',
     slug: 'four-towers-al-nahda',
-    image: generatedEditorialImages.homepageHero,
+    image: roleImages.HOME_HERO,
+    imageStatus: 'AUTHENTIC_IMAGE_PENDING',
     crop: '68% 38%',
     strip: 'Four Towers',
     stripAr: 'أربعة أبراج',
@@ -46,7 +55,7 @@ const heroSlides = [
   {
     id: 'traffic',
     slug: 'traffic-access-studies',
-    image: projects.find((p) => p.slug === 'traffic-access-studies')?.visual?.src || generatedEditorialImages.technicalCoordination,
+    image: roleImages.HOME_SLIDE_TRAFFIC,
     crop: '50% 50%',
     strip: 'Infrastructure',
     stripAr: 'بنية تحتية',
@@ -55,14 +64,15 @@ const heroSlides = [
     title: 'Traffic & Access Studies',
     titleAr: 'دراسات المرور والمداخل',
     note: 'Parking, circulation and municipality-review documentation from the official ASAS portfolio.',
-    noteAr: 'مواقف وحركة وتوثيق مراجعة البلدية من أعمال أساس الرسمية.',
+    noteAr: 'مواقف وحركة وتوثيق مراجعة البلدية من أعمال أساس للاستشارات الهندسية وإدارة المشاريع الرسمية.',
     facts: [['Sector', 'Infrastructure'], ['Focus', 'Access & parking'], ['Type', 'Planning study']],
     factsAr: [['القطاع', 'البنية التحتية'], ['التركيز', 'المداخل والمواقف'], ['النوع', 'دراسة تخطيطية']],
   },
   {
     id: 'school',
     slug: 'culture-private-school',
-    image: generatedEditorialImages.educationSector,
+    image: roleImages.HOME_SLIDE_EDUCATION,
+    imageStatus: 'AUTHENTIC_IMAGE_PENDING',
     crop: '35% 40%',
     strip: 'Education',
     stripAr: 'تعليم',
@@ -71,14 +81,15 @@ const heroSlides = [
     title: 'Culture Private School',
     titleAr: 'مدرسة الثقافة الخاصة',
     note: 'Campus master planning and educational facilities within the ASAS selected portfolio.',
-    noteAr: 'تخطيط الحرم والمرافق التعليمية ضمن أعمال أساس المختارة.',
+    noteAr: 'تخطيط الحرم والمرافق التعليمية ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع المختارة.',
     facts: [['Sector', 'Education'], ['Scope', 'Planning & design'], ['Office', 'Abu Dhabi']],
     factsAr: [['القطاع', 'التعليم'], ['النطاق', 'تخطيط وتصميم'], ['المكتب', 'أبوظبي']],
   },
   {
     id: 'compounds',
     slug: 'compound-villas-portfolio',
-    image: generatedEditorialImages.villasSector,
+    image: roleImages.HOME_SLIDE_VILLAS,
+    imageStatus: 'AUTHENTIC_IMAGE_PENDING',
     crop: '55% 45%',
     strip: 'Residential',
     stripAr: 'سكني',
@@ -94,7 +105,8 @@ const heroSlides = [
   {
     id: 'interiors',
     slug: 'reception-hall-private-villa',
-    image: generatedEditorialImages.interiorsSector,
+    image: roleImages.HOME_SLIDE_INTERIORS,
+    imageStatus: 'AUTHENTIC_IMAGE_PENDING',
     crop: '40% 50%',
     strip: 'Interiors',
     stripAr: 'داخلي',
@@ -103,19 +115,19 @@ const heroSlides = [
     title: 'Reception Hall — Private Villa',
     titleAr: 'قاعة استقبال — فيلا خاصة',
     note: 'Residential reception interiors with classical detailing from the ASAS hospitality portfolio.',
-    noteAr: 'تصميم داخلي لقاعة استقبال سكنية بتفاصيل كلاسيكية من أعمال أساس.',
+    noteAr: 'تصميم داخلي لقاعة استقبال سكنية بتفاصيل كلاسيكية من أعمال أساس للاستشارات الهندسية وإدارة المشاريع.',
     facts: [['Sector', 'Interiors'], ['Type', 'Interior fit-out'], ['Office', 'Abu Dhabi']],
     factsAr: [['القطاع', 'التصميم الداخلي'], ['النوع', 'تجهيز داخلي'], ['المكتب', 'أبوظبي']],
   },
 ];
 
 const sectorCards = [
-  {key: 'towers-high-rise', image: sectorImages['towers-high-rise'], label: 'Towers', labelAr: 'الأبراج', title: 'Towers & high-rise', titleAr: 'الأبراج والمباني العالية', copy: 'Architectural, structural and electromechanical design', copyAr: 'تصميم معماري وإنشائي وكهروميكانيكي', tone: 'dark'},
-  {key: 'commercial-residential-buildings', image: sectorImages['commercial-residential-buildings'], label: 'Buildings', labelAr: 'المباني', title: 'Commercial & residential', titleAr: 'التجاري والسكني', copy: 'Building design across coordinated disciplines', copyAr: 'تصميم مبانٍ عبر تخصصات منسقة', tone: 'dark'},
-  {key: 'infrastructure-urban-planning', image: sectorImages['infrastructure-urban-planning'], label: 'Infrastructure', labelAr: 'البنية التحتية', title: 'Infrastructure & planning', titleAr: 'البنية التحتية والتخطيط', copy: 'Traffic, access, parking and municipality review', copyAr: 'المرور والمداخل والمواقف ومراجعة البلدية', tone: 'light'},
-  {key: 'education', image: sectorImages.education, label: 'Education', labelAr: 'التعليم', title: 'Schools', titleAr: 'المدارس', copy: 'Campus planning and educational facilities', copyAr: 'تخطيط الحرم والمرافق التعليمية', tone: 'light'},
-  {key: 'villas-compounds-palaces', image: sectorImages['villas-compounds-palaces'], label: 'Residential', labelAr: 'السكني', title: 'Villas & compounds', titleAr: 'الفلل والمجمعات', copy: 'Private villas, residential villas and compounds', copyAr: 'فلل خاصة وسكنية ومجمعات', tone: 'dark'},
-  {key: 'interior-hospitality-retail', image: sectorImages['interior-hospitality-retail'], label: 'Interiors', labelAr: 'التصميم الداخلي', title: 'Interior design', titleAr: 'التصميم الداخلي', copy: 'Residential, hospitality and retail interiors', copyAr: 'تصميمات سكنية وضيافة وتجزئة', tone: 'dark'},
+  {key: 'towers-high-rise', image: homeSectorImages['towers-high-rise'], label: 'Towers', labelAr: 'الأبراج', title: 'Towers & high-rise', titleAr: 'الأبراج والمباني العالية', copy: 'Architectural, structural and electromechanical design', copyAr: 'تصميم معماري وإنشائي وكهروميكانيكي', tone: 'dark'},
+  {key: 'commercial-residential-buildings', image: homeSectorImages['commercial-residential-buildings'], label: 'Buildings', labelAr: 'المباني', title: 'Commercial & residential', titleAr: 'التجاري والسكني', copy: 'Building design across coordinated disciplines', copyAr: 'تصميم مبانٍ عبر تخصصات منسقة', tone: 'dark'},
+  {key: 'infrastructure-urban-planning', image: homeSectorImages['infrastructure-urban-planning'], label: 'Infrastructure', labelAr: 'البنية التحتية', title: 'Infrastructure & planning', titleAr: 'البنية التحتية والتخطيط', copy: 'Traffic, access, parking and municipality review', copyAr: 'المرور والمداخل والمواقف ومراجعة البلدية', tone: 'light'},
+  {key: 'education', image: homeSectorImages.education, label: 'Education', labelAr: 'التعليم', title: 'Schools', titleAr: 'المدارس', copy: 'Campus planning and educational facilities', copyAr: 'تخطيط الحرم والمرافق التعليمية', tone: 'light'},
+  {key: 'villas-compounds-palaces', image: homeSectorImages['villas-compounds-palaces'], label: 'Residential', labelAr: 'السكني', title: 'Villas & compounds', titleAr: 'الفلل والمجمعات', copy: 'Private villas, residential villas and compounds', copyAr: 'فلل خاصة وسكنية ومجمعات', tone: 'dark'},
+  {key: 'interior-hospitality-retail', image: homeSectorImages['interior-hospitality-retail'], label: 'Interiors', labelAr: 'التصميم الداخلي', title: 'Interior design', titleAr: 'التصميم الداخلي', copy: 'Residential, hospitality and retail interiors', copyAr: 'تصميمات سكنية وضيافة وتجزئة', tone: 'dark'},
 ];
 
 const content = {
@@ -130,7 +142,7 @@ const content = {
     sectorCta: 'View all sectors',
     processEyebrow: 'Project lifecycle', processTitle: 'From concept to financial closure', processCopy: 'A documented route through design, award, construction, handover and future phases.',
     archive: 'Selected work', archiveTitle: 'Projects from the official ASAS portfolio', archiveCopy: 'A featured project with supporting work across towers, infrastructure, education, compounds and interiors.', archiveCta: 'View all projects',
-    featured: 'Selected project', dossier: [['Composition', '3B + 6 podium'], ['Parking', '6 levels'], ['Height', '37 floors'], ['Location', 'Sharjah, Al Nahda']],
+    featured: 'Selected project', dossier: [['Type', 'Planning study'], ['Scope', 'Access & parking'], ['Review', 'Municipality'], ['Location', 'Abu Dhabi']],
   },
   ar: {
     eyebrow: 'تأسست في أبوظبي · 2009',
@@ -139,11 +151,11 @@ const content = {
     start: 'ابدأ مشروعك', work: 'استكشف أعمالنا', journey: 'دورة حياة المشروع',
     sectorEyebrow: 'قطاعات المشاريع',
     sectorTitle: 'مشاريع عبر قطاعات متعددة.',
-    sectorCopy: 'خبرة عبر أنواع وبيئات المشاريع الواردة في أعمال أساس.',
+    sectorCopy: 'خبرة عبر أنواع وبيئات المشاريع الواردة في أعمال أساس للاستشارات الهندسية وإدارة المشاريع.',
     sectorCta: 'عرض كل القطاعات',
     processEyebrow: 'دورة حياة المشروع', processTitle: 'من الفكرة إلى الإغلاق المالي', processCopy: 'مسار موثق يمر بالتصميم والترسية والتنفيذ والتسليم والمراحل المستقبلية.',
-    archive: 'أعمال مختارة', archiveTitle: 'مشاريع من الملف الرسمي لأساس', archiveCopy: 'مشروع مختار مع أعمال داعمة عبر الأبراج والبنية التحتية والتعليم والمجمعات والتصميم الداخلي.', archiveCta: 'عرض كل المشاريع',
-    featured: 'مشروع مختار', dossier: [['التكوين', '3 طوابق سفلية + 6 منصة'], ['المواقف', '6 طوابق'], ['الارتفاع', '37 طابقاً'], ['الموقع', 'الشارقة، النهدة']],
+    archive: 'أعمال مختارة', archiveTitle: 'مشاريع من الملف الرسمي لأساس للاستشارات الهندسية وإدارة المشاريع', archiveCopy: 'مشروع مختار مع أعمال داعمة عبر الأبراج والبنية التحتية والتعليم والمجمعات والتصميم الداخلي.', archiveCta: 'عرض كل المشاريع',
+    featured: 'مشروع مختار', dossier: [['النوع', 'دراسة تخطيطية'], ['النطاق', 'المداخل والمواقف'], ['المراجعة', 'البلدية'], ['الموقع', 'أبوظبي']],
   },
 };
 
@@ -171,11 +183,11 @@ const faqs = {
     ['How does a project progress with ASAS?', 'The documented lifecycle covers concept and brief, design, tender, construction, snagging, final handover, financial closure and future phases.'],
   ],
   ar: [
-    ['ما الخدمات الهندسية التي تقدمها أساس؟', 'تقدم أساس التصميم المعماري والإنشائي والمدني والكهروميكانيكي، وخدمات الكميات والتكلفة، وإدارة المشاريع والإشراف، والبنية التحتية ودراسات المرور والتخطيط الحضري والاستدامة والتصميم الداخلي.'],
-    ['ما القطاعات التي تعمل فيها أساس؟', 'تشمل الأعمال الأبراج والمباني التجارية والسكنية والمنشآت الصناعية والبنية التحتية والمدارس والفلل والمجمعات والتصميم الداخلي.'],
-    ['هل تقدم أساس التصميم والإشراف؟', 'نعم. تقدم أساس خدمات تصميم منسقة وهندسة مقيمة وإشرافاً موقعياً خلال التنفيذ والتسليم.'],
-    ['أين يقع مكتب أساس؟', 'يقع المكتب في مصفح شرق 9 في أبوظبي، خلف سفير مول، في مبنى ADCP رقم P1239.'],
-    ['كيف يتقدم المشروع مع أساس؟', 'تشمل دورة الحياة الموثقة الفكرة والموجز والتصميم والعطاء والتنفيذ وحصر الملاحظات والتسليم النهائي والإغلاق المالي والمراحل المستقبلية.'],
+    ['ما الخدمات الهندسية التي تقدمها أساس للاستشارات الهندسية وإدارة المشاريع؟', 'تقدم أساس للاستشارات الهندسية وإدارة المشاريع التصميم المعماري والإنشائي والمدني والكهروميكانيكي، وخدمات الكميات والتكلفة، وإدارة المشاريع والإشراف، والبنية التحتية ودراسات المرور والتخطيط الحضري والاستدامة والتصميم الداخلي.'],
+    ['ما القطاعات التي تعمل فيها أساس للاستشارات الهندسية وإدارة المشاريع؟', 'تشمل الأعمال الأبراج والمباني التجارية والسكنية والمنشآت الصناعية والبنية التحتية والمدارس والفلل والمجمعات والتصميم الداخلي.'],
+    ['هل تقدم أساس للاستشارات الهندسية وإدارة المشاريع التصميم والإشراف؟', 'نعم. تقدم أساس للاستشارات الهندسية وإدارة المشاريع خدمات تصميم منسقة وهندسة مقيمة وإشرافاً موقعياً خلال التنفيذ والتسليم.'],
+    ['أين يقع مكتب أساس للاستشارات الهندسية وإدارة المشاريع؟', 'يقع المكتب في مصفح شرق 9 في أبوظبي، خلف سفير مول، في مبنى ADCP رقم P1239.'],
+    ['كيف يتقدم المشروع مع أساس للاستشارات الهندسية وإدارة المشاريع؟', 'تشمل دورة الحياة الموثقة الفكرة والموجز والتصميم والعطاء والتنفيذ وحصر الملاحظات والتسليم النهائي والإغلاق المالي والمراحل المستقبلية.'],
   ],
 };
 
@@ -205,22 +217,65 @@ export default async function Home({params}) {
     <section className="hp-about">
       <div className="home-shell hp-about-layout">
         <div className="hp-about-visual">
-          <Image src={generatedEditorialImages.corporateTeam} alt="" width={1280} height={960} />
+          <Image src={roleImages.HOME_ABOUT} alt="" width={1280} height={960} />
         </div>
+        <WireframeSphere />
         <div className="hp-about-copy">
-          <p className="atlas-kicker">{ar ? 'عن ASAS' : 'About us'}</p>
-          <h2>{ar ? 'استشارات هندسية من أبوظبي منذ 2009.' : 'Abu Dhabi engineering consultancy since 2009.'}</h2>
-          <p className="hp-about-lede">{ar ? company.descriptionAr : company.description}</p>
-          <p className="hp-about-note">{ar ? company.shortDescriptionAr : company.shortDescription}</p>
-          <div className="hp-about-actions">
-            <Link className="atlas-link" href={url('about')}>{ar ? 'اعرف المزيد عنا' : 'Learn more about us'}<NextArrow ar={ar}/></Link>
-            <Link className="atlas-link" href="/downloads/asas-company-profile.pdf">{ar ? 'الملف التعريفي' : 'Company profile'}<NextArrow ar={ar}/></Link>
+          <div className="hp-about-copy-inner">
+            <p className="atlas-kicker">{ar ? 'عن ASAS' : 'About us'}</p>
+            <h2>{ar ? 'استشارات هندسية من أبوظبي منذ 2009.' : 'Abu Dhabi engineering consultancy since 2009.'}</h2>
+            <p className="hp-about-lede">{ar ? company.descriptionAr : company.description}</p>
+            <p className="hp-about-note">{ar ? company.shortDescriptionAr : company.shortDescription}</p>
+            <ActionGroup className="hp-about-actions">
+              <ActionButton variant="outline" href={url('about')}>
+                {ar ? 'اعرف المزيد عنا' : 'Learn more about us'}
+              </ActionButton>
+              <ActionButton variant="primary" href={`/${locale}/company-profile`} icon="file">
+                {ar ? 'الملف التعريفي' : 'Company profile'}
+              </ActionButton>
+            </ActionGroup>
           </div>
         </div>
       </div>
     </section>
 
+    <ClientsMarquee locale={locale} />
+
     <ServicesTabs locale={locale} services={featuredServices} />
+
+    <StatsSection
+      locale={locale}
+      stats={[
+        {
+          id: 'years',
+          value: Math.max(1, new Date().getFullYear() - Number(company.year || 2009)),
+          suffix: '+',
+          label: 'Years Experience',
+          labelAr: 'سنوات خبرة',
+        },
+        {
+          id: 'projects',
+          value: projects.length,
+          suffix: '+',
+          label: 'Projects',
+          labelAr: 'مشاريع',
+        },
+        {
+          id: 'services',
+          value: services.length,
+          suffix: '',
+          label: 'Services',
+          labelAr: 'خدمات',
+        },
+        {
+          id: 'sectors',
+          value: sectors.length,
+          suffix: '',
+          label: 'Sectors',
+          labelAr: 'قطاعات',
+        },
+      ]}
+    />
 
     <SectorShowcase
       locale={locale}
@@ -260,20 +315,26 @@ export default async function Home({params}) {
             <h2>{t.archiveTitle}</h2>
             <p>{t.archiveCopy}</p>
           </div>
-          <Link className="atlas-link" href={url('projects')}>{t.archiveCta}<NextArrow ar={ar}/></Link>
+          <ActionButton variant="outline" href={url('projects')}>
+            {t.archiveCta}
+          </ActionButton>
         </div>
 
         {featuredProject && (
           <article className="hp-featured hp-card">
             <div className="hp-featured-visual">
-              <Image
-                src={featuredProject.visual.src}
-                alt=""
-                fill
-                sizes="(max-width: 900px) 100vw, 60vw"
-                style={{objectPosition: featuredProject.visual.crop}}
-                priority
-              />
+              {featuredProject.visual?.src ? (
+                <Image
+                  src={featuredProject.visual.src}
+                  alt={ar ? featuredProject.titleAr : featuredProject.title}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 60vw"
+                  style={{objectPosition: featuredProject.visual.crop}}
+                  priority
+                />
+              ) : (
+                <ProjectVisualFallback project={featuredProject} locale={locale} />
+              )}
             </div>
             <div className="hp-featured-copy">
               <p className="atlas-kicker">{t.featured}</p>
@@ -284,27 +345,31 @@ export default async function Home({params}) {
                   <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
                 ))}
               </dl>
-              <Link className="atlas-link" href={url(`projects/${featuredProject.slug}`)}>
+              <ActionButton variant="ghost" href={url(`projects/${featuredProject.slug}`)}>
                 {ar ? 'عرض المشروع' : 'View project'}
-                <NextArrow ar={ar}/>
-              </Link>
+              </ActionButton>
             </div>
           </article>
         )}
 
         <div className="hp-portfolio-grid">
           {portfolioGrid.map((project, index) => {
-            const photo = project.visual?.classification === 'PROJECT_PHOTO';
+            const photo = project.visual?.classification === 'PROJECT_PHOTO'
+              || project.visual?.classification === 'TECHNICAL_DRAWING';
             return (
               <article className="hp-portfolio-card hp-card" key={project.slug}>
                 <div className="hp-portfolio-media">
-                  <Image
-                    src={project.visual.src}
-                    alt={photo ? (ar ? project.titleAr : project.title) : ''}
-                    fill
-                    sizes="(max-width: 900px) 50vw, 25vw"
-                    style={{objectPosition: project.visual.crop}}
-                  />
+                  {project.visual?.src ? (
+                    <Image
+                      src={project.visual.src}
+                      alt={photo ? (ar ? project.titleAr : project.title) : ''}
+                      fill
+                      sizes="(max-width: 900px) 50vw, 25vw"
+                      style={{objectPosition: project.visual.crop}}
+                    />
+                  ) : (
+                    <ProjectVisualFallback project={project} locale={locale} />
+                  )}
                 </div>
                 <div className="hp-portfolio-meta">
                   <small>0{index + 1}</small>
@@ -352,6 +417,8 @@ export default async function Home({params}) {
       </div>
     </section>
 
+    <TestimonialsSection locale={locale} />
+
     <HomeTeamSection members={featuredTeam} locale={locale} />
 
     <section className="home-contact" id="contact">
@@ -376,13 +443,13 @@ export default async function Home({params}) {
               <Phone aria-hidden="true" />
               <div>
                 <h3>{ar ? 'اتصل بنا' : 'Call us'}</h3>
-                <a href={`tel:${company.phone.replace(/\s/g, '')}`}>{company.phone}</a>
+                <a href={`tel:${company.phone.replace(/\s/g, '')}`} dir="ltr">{company.phone}</a>
               </div>
             </article>
             <article>
               <MessageCircle aria-hidden="true" />
               <div>
-                <h3>WhatsApp</h3>
+                <h3>{ar ? 'واتساب' : 'WhatsApp'}</h3>
                 <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noreferrer">{ar ? 'تواصل مع ASAS' : 'Message ASAS'}</a>
               </div>
             </article>
@@ -390,7 +457,7 @@ export default async function Home({params}) {
               <Mail aria-hidden="true" />
               <div>
                 <h3>{ar ? 'البريد الإلكتروني' : 'Email'}</h3>
-                <a href={`mailto:${company.email}`}>{company.email}</a>
+                <a href={`mailto:${company.email}`} dir="ltr">{company.email}</a>
               </div>
             </article>
           </div>
@@ -409,7 +476,7 @@ export default async function Home({params}) {
           {faqs[ar ? 'ar' : 'en'].map(([question, answer], index) => (
             <details key={question}>
               <summary>
-                <span className="hp-faq-num">0{index + 1}</span>
+                <span className="hp-faq-num ltr-isolate" dir="ltr">0{index + 1}</span>
                 <span className="hp-faq-q">{question}</span>
               </summary>
               <p>{answer}</p>

@@ -2,9 +2,9 @@
 
 import {useEffect, useRef, useState} from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import {ArrowRight, Building2, ClipboardCheck, HardHat, Layers3} from 'lucide-react';
+import {Building2, ClipboardCheck, HardHat, Layers3} from 'lucide-react';
 import {generatedEditorialImages} from '@/data/image-manifest';
+import {ActionButton} from '@/components/ActionButton';
 
 const capabilityIcons = [Building2, Layers3, ClipboardCheck, HardHat];
 
@@ -43,7 +43,9 @@ export default function CoordinatedTeam({locale, eyebrow, title, copy}) {
           const Icon = capabilityIcons[index];
           return <article className="reveal-item" key={name}><Icon/><div><h3>{name}</h3><p>{description}</p></div></article>;
         })}</div>
-        <Link className="team-overview-link reveal-item" href={`/${locale}/services`}>{ar ? 'استكشف خدماتنا' : 'Explore services'}<ArrowRight className={ar ? 'reverse-arrow' : ''}/></Link>
+        <ActionButton variant="outline" className="team-overview-link reveal-item" href={`/${locale}/services`}>
+          {ar ? 'استكشف خدماتنا' : 'Explore services'}
+        </ActionButton>
       </div>
     </div>
   </section>;

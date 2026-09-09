@@ -20,7 +20,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Download,
+  FileText,
   Layers,
+  Layers3,
   MapPin,
   Play,
   Ruler,
@@ -28,7 +30,10 @@ import {
   Workflow,
   X,
 } from 'lucide-react';
+import {NextChevron, PrevChevron} from '@/components/icons/DirectionalChevrons';
 import {company, mission, strengths} from '@/data/company';
+import {observeSectionNav, scrollToSection as scrollToAnchor} from '@/lib/scroll/anchor';
+import ProjectVisualFallback from '@/components/ProjectVisualFallback';
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -72,26 +77,29 @@ function uniqueGallery(project) {
     items.push({src, crop: crop || '50% 40%', photo: Boolean(photo)});
   };
 
+  // Prefer explicit project.images / gallery arrays when present (multi-angle Magnific packs).
+  if (Array.isArray(project.images) && project.images.length) {
+    project.images.forEach((entry) => {
+      if (typeof entry === 'string') push(entry, '50% 40%', true);
+      else if (entry?.src) push(entry.src, entry.crop || '50% 40%', entry.photo !== false);
+    });
+    return items;
+  }
+
   const asset = project.imageAsset;
+  (asset?.gallery || []).forEach((src) => push(src, '50% 40%', true));
+  // Prefer distinct frames; responsive exports of the same drawing count as one logical asset.
   push(asset?.portfolio, '50% 40%', true);
-  push(asset?.card, '50% 50%', true);
-  push(asset?.mobile, '50% 45%', true);
+  if (asset?.card && asset.card !== asset.portfolio) push(asset.card, '50% 50%', true);
+  if (asset?.mobile && asset.mobile !== asset.portfolio && asset.mobile !== asset.card) {
+    push(asset.mobile, '50% 45%', true);
+  }
   push(
     project.visual?.src,
     project.visual?.crop || '50% 40%',
-    project.visual?.classification === 'PROJECT_PHOTO',
+    project.visual?.classification === 'PROJECT_PHOTO' ||
+      project.visual?.classification === 'TECHNICAL_DRAWING',
   );
-
-  // Only when a single authentic frame exists: alternate crops for interactive thumbs.
-  if (items.length === 1) {
-    const base = items[0];
-    return [
-      base,
-      {src: base.src, crop: '68% 30%', photo: base.photo},
-      {src: base.src, crop: '32% 58%', photo: base.photo},
-      {src: base.src, crop: '80% 45%', photo: base.photo},
-    ];
-  }
 
   return items;
 }
@@ -154,7 +162,7 @@ function BlueprintSide({reduced}) {
         <path d="M36 132 H108" />
         <path d="M36 176 H98" />
         <path d="M36 220 H88" />
-        <circle cx="36" cy="88" r="2.2" fill="#e55021" stroke="none" />
+        <circle cx="36" cy="88" r="2.2" fill="#a02315" stroke="none" />
         <circle cx="76" cy="132" r="1.8" fill="currentColor" stroke="none" />
       </g>
     </svg>
@@ -169,15 +177,15 @@ function PeerPager({locale, peers, peerIndex, ar}) {
   return (
     <div className="pd-hero-pager">
       <Link href={`/${locale}/projects/${prev.slug}`} aria-label={ar ? 'المشروع السابق' : 'Previous project'}>
-        <ChevronLeft size={15} />
+        <PrevChevron ar={ar} size={15} />
       </Link>
-      <span>
+      <span className="ltr-isolate" dir="ltr">
         {String(peerIndex + 1).padStart(2, '0')}
         <i>/</i>
         {String(total).padStart(2, '0')}
       </span>
       <Link href={`/${locale}/projects/${next.slug}`} aria-label={ar ? 'المشروع التالي' : 'Next project'}>
-        <ChevronRight size={15} />
+        <NextChevron ar={ar} size={15} />
       </Link>
     </div>
   );
@@ -245,27 +253,12 @@ export default function ProjectDetailView({
   );
 
   const scrollToSection = useCallback((id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block: 'start'});
+    scrollToAnchor(id, {behavior: reduced ? 'auto' : 'smooth'});
   }, [reduced]);
 
   useEffect(() => {
     const ids = TABS.map((tab) => tab.id);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActiveTab(visible[0].target.id);
-      },
-      {rootMargin: '-28% 0px -55% 0px', threshold: [0.08, 0.2, 0.4]},
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+    return observeSectionNav(ids, setActiveTab);
   }, []);
 
   useEffect(() => {
@@ -355,7 +348,7 @@ export default function ProjectDetailView({
           >
             <AnimatePresence mode="wait">
               <motion.div
-                key={current.src + current.crop + index}
+                key={(current?.src || 'fallback') + (current?.crop || '') + index}
                 className="pd-main-media"
                 style={{x: imgX, y: imgY}}
                 initial={reduced ? false : {opacity: 0, scale: 1.025}}
@@ -363,14 +356,18 @@ export default function ProjectDetailView({
                 exit={reduced ? undefined : {opacity: 0, scale: 1.02}}
                 transition={{duration: 0.72, ease: EASE}}
               >
-                <Image
-                  src={current.src}
-                  alt={current.photo ? title : ''}
-                  fill
-                  priority
-                  sizes="(max-width: 900px) 100vw, 56vw"
-                  style={{objectPosition: current.crop}}
-                />
+                {current?.src ? (
+                  <Image
+                    src={current.src}
+                    alt={current.photo ? title : ''}
+                    fill
+                    priority
+                    sizes="(max-width: 900px) 100vw, 56vw"
+                    style={{objectPosition: current.crop}}
+                  />
+                ) : (
+                  <ProjectVisualFallback project={project} locale={locale} />
+                )}
               </motion.div>
             </AnimatePresence>
             <div className="pd-main-veil" aria-hidden="true" />
@@ -388,15 +385,15 @@ export default function ProjectDetailView({
             )}
             <div className="pd-main-nav">
               <button type="button" aria-label={ar ? 'السابق' : 'Previous'} onClick={() => go(index - 1)}>
-                <ChevronLeft size={16} />
+                <PrevChevron ar={ar} size={16} />
               </button>
-              <span>
+              <span className="ltr-isolate" dir="ltr">
                 {String(index + 1).padStart(2, '0')}
                 <i>/</i>
                 {String(gallery.length).padStart(2, '0')}
               </span>
               <button type="button" aria-label={ar ? 'التالي' : 'Next'} onClick={() => go(index + 1)}>
-                <ChevronRight size={16} />
+                <NextChevron ar={ar} size={16} />
               </button>
             </div>
           </div>
@@ -514,7 +511,7 @@ export default function ProjectDetailView({
         </div>
       </section>
 
-      <nav className="pd-tabs" aria-label={ar ? 'أقسام الصفحة' : 'Page sections'}>
+      <nav className="pd-tabs" data-sticky-subnav aria-label={ar ? 'أقسام الصفحة' : 'Page sections'}>
         <div className="pd-tabs-inner">
           {TABS.map((tab) => (
             <a
@@ -552,22 +549,28 @@ export default function ProjectDetailView({
               <blockquote>{quote}</blockquote>
             </div>
             <div className="pd-design-media">
-              {(gallery.length >= 2 ? gallery.slice(0, 2) : [gallery[0], gallery[0]].filter(Boolean)).map((item, i) => (
-                <motion.figure
-                  key={`${item.src}-design-${i}`}
-                  initial={reduced ? false : {clipPath: 'inset(100% 0 0 0)'}}
-                  animate={designInView || reduced ? {clipPath: 'inset(0% 0 0 0)'} : undefined}
-                  transition={{duration: 0.85, delay: 0.1 + i * 0.12, ease: EASE}}
-                >
-                  <Image
-                    src={item.src}
-                    alt=""
-                    fill
-                    sizes="(max-width: 900px) 100vw, 28vw"
-                    style={{objectPosition: i === 1 && gallery.length === 1 ? '70% 55%' : item.crop}}
-                  />
-                </motion.figure>
-              ))}
+              {gallery.length > 0 ? (
+                gallery.slice(0, Math.min(2, gallery.length)).map((item, i) => (
+                  <motion.figure
+                    key={`${item.src}-design-${i}`}
+                    initial={reduced ? false : {clipPath: 'inset(100% 0 0 0)'}}
+                    animate={designInView || reduced ? {clipPath: 'inset(0% 0 0 0)'} : undefined}
+                    transition={{duration: 0.85, delay: 0.1 + i * 0.12, ease: EASE}}
+                  >
+                    <Image
+                      src={item.src}
+                      alt=""
+                      fill
+                      sizes="(max-width: 900px) 100vw, 28vw"
+                      style={{objectPosition: item.crop}}
+                    />
+                  </motion.figure>
+                ))
+              ) : (
+                <div className="pd-design-fallback">
+                  <ProjectVisualFallback project={project} locale={locale} />
+                </div>
+              )}
             </div>
           </div>
           <div className="pd-discipline-grid">
@@ -603,7 +606,7 @@ export default function ProjectDetailView({
               <h2>{ar ? 'التفاصيل الفنية' : 'Technical Details'}</h2>
               <p>
                 {ar
-                  ? 'تُعرض هنا الحقائق المستمدة من بيانات المشروع الرسمية في ملف أساس.'
+                  ? 'تُعرض هنا الحقائق المستمدة من بيانات المشروع الرسمية في ملف أساس للاستشارات الهندسية وإدارة المشاريع.'
                   : 'Facts shown here are drawn from the official ASAS project record.'}
               </p>
             </div>
@@ -691,10 +694,10 @@ export default function ProjectDetailView({
               </button>
               <div className="pd-gallery-controls">
                 <button type="button" aria-label={ar ? 'السابق' : 'Previous'} onClick={() => go(index - 1)}>
-                  <ChevronLeft size={16} />
+                  <PrevChevron ar={ar} size={16} />
                 </button>
                 <button type="button" aria-label={ar ? 'التالي' : 'Next'} onClick={() => go(index + 1)}>
-                  <ChevronRight size={16} />
+                  <NextChevron ar={ar} size={16} />
                 </button>
               </div>
             </div>
@@ -735,14 +738,14 @@ export default function ProjectDetailView({
                     aria-label={ar ? 'السابق' : 'Previous'}
                     onClick={() => setRelatedPage((page) => (page - 1 + relatedPages) % relatedPages)}
                   >
-                    <ChevronLeft size={16} />
+                    <PrevChevron ar={ar} size={16} />
                   </button>
                   <button
                     type="button"
                     aria-label={ar ? 'التالي' : 'Next'}
                     onClick={() => setRelatedPage((page) => (page + 1) % relatedPages)}
                   >
-                    <ChevronRight size={16} />
+                    <NextChevron ar={ar} size={16} />
                   </button>
                 </div>
               )}
@@ -753,17 +756,26 @@ export default function ProjectDetailView({
                 const itemTitle = ar ? item.titleAr : item.title;
                 const itemLocation = ar ? item.locationAr : item.location;
                 const itemCat = item.categoryLabel;
-                const itemImage = item.imageAsset?.portfolio || item.visual.src;
+                const itemImage = item.imageAsset?.portfolio || item.visual?.src || null;
                 return (
                   <Link key={item.slug} href={`/${locale}/projects/${item.slug}`} className="pd-related-card">
                     <span className="pd-related-media">
-                      <Image
-                        src={itemImage}
-                        alt={item.visual.classification === 'PROJECT_PHOTO' ? itemTitle : ''}
-                        fill
-                        sizes="(max-width: 900px) 100vw, 30vw"
-                        style={{objectPosition: item.visual.crop || '50% 40%'}}
-                      />
+                      {itemImage ? (
+                        <Image
+                          src={itemImage}
+                          alt={
+                            item.visual?.classification === 'PROJECT_PHOTO' ||
+                            item.visual?.classification === 'TECHNICAL_DRAWING'
+                              ? itemTitle
+                              : ''
+                          }
+                          fill
+                          sizes="(max-width: 900px) 100vw, 30vw"
+                          style={{objectPosition: item.visual?.crop || '50% 40%'}}
+                        />
+                      ) : (
+                        <ProjectVisualFallback project={item} locale={locale} />
+                      )}
                     </span>
                     <span className="pd-related-copy">
                       <small>{ar ? itemCat?.titleAr : itemCat?.title}</small>
@@ -781,11 +793,7 @@ export default function ProjectDetailView({
         </section>
       )}
 
-      <section className="pd-cta" ref={ctaRef}>
-        <motion.div className="pd-cta-media" style={{y: ctaY}} aria-hidden="true">
-          <Image src={gallery[0]?.src || current.src} alt="" fill sizes="100vw" style={{objectPosition: gallery[0]?.crop || current.crop}} />
-        </motion.div>
-        <div className="pd-cta-veil" aria-hidden="true" />
+      <section className="pd-cta asas-cta-band" ref={ctaRef}>
         <div className="pd-shell pd-cta-inner">
           <div>
             <p className="pd-kicker light">

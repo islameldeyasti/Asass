@@ -97,7 +97,7 @@
 /* Filter — wrapping pills, sticky, no native scrollbar */
 .projects-filter {
   position: sticky;
-  top: var(--asas-sticky-offset, 116px);
+  top: var(--asas-sticky-offset, 138px);
   z-index: 20;
   margin: 0 0 28px;
   padding: 14px 0 16px;
@@ -167,7 +167,7 @@
 }
 
 .projects-filter button.is-active .projects-filter-count {
-  color: rgba(229, 80, 33, 0.45);
+  color: rgba(160, 35, 21, 0.45);
 }
 
 /* Featured flagship */
@@ -178,7 +178,7 @@
   margin-bottom: 22px;
   overflow: hidden;
   border-radius: var(--hp-card-radius);
-  background: #161b26;
+  background: #070463;
   color: #fff;
   text-decoration: none;
   box-shadow: 0 1px 0 rgba(7, 4, 99, .04);
@@ -276,7 +276,7 @@
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #161b26;
+  background: #070463;
 }
 
 .projects-visual img {
@@ -408,7 +408,7 @@
 }
 
 .projects-more button:hover small {
-  color: rgba(229, 80, 33, 0.45);
+  color: rgba(160, 35, 21, 0.45);
 }
 
 @media (max-width: 1100px) {

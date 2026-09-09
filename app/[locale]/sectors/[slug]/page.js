@@ -20,9 +20,11 @@ import {projects, projectCategories} from '@/data/projects';
 import {services} from '@/data/services';
 import {company, strengths} from '@/data/company';
 import {projectLifecycle} from '@/data/method';
-import {generatedEditorialImages, sectorImages} from '@/data/image-manifest';
+import {getSectorImage, roleImages} from '@/data/image-manifest';
 import SectorDetailSubnav from '@/components/sectors/SectorDetailSubnav';
 import SectorDetailEnquiryCta from '@/components/sectors/SectorDetailEnquiryCta';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
+import ProjectVisualFallback from '@/components/ProjectVisualFallback';
 
 const PROFILE_HREF = '/downloads/asas-company-profile.pdf';
 
@@ -69,7 +71,7 @@ function relatedServicesForSector(slug) {
 }
 
 function projectImage(project) {
-  return project?.visual?.src || project?.image || generatedEditorialImages.buildingsSector;
+  return project?.visual?.src || project?.image || null;
 }
 
 export function generateStaticParams() {
@@ -111,18 +113,23 @@ export default async function Sector({params}) {
   const approachSteps = projectLifecycle.slice(0, 4);
   const heroFeatures = strengths.slice(0, 3);
 
-  const heroImage =
-    relatedProjects.map(projectImage).find(Boolean) ||
-    sectorImages[slug] ||
-    generatedEditorialImages.buildingsSector;
-  const overviewImage = sectorImages[slug] || heroImage;
-  const ctaImage = heroImage;
+  const {src: heroSrc, imagePosition: heroPosition} = getSectorImage(slug);
+  const heroImage = heroSrc || roleImages.SECTOR_BUILDINGS;
+  const overviewImage = getSectorImage(slug);
+  const ctaImage = null;
 
   return (
     <div className="sc">
       <section className="sc-hero" id="overview">
         <div className="sc-hero-media" aria-hidden="true">
-          <Image src={heroImage} alt="" fill priority sizes="100vw" />
+          <Image
+            src={heroImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: heroPosition}}
+          />
         </div>
         <div className="sc-hero-veil" aria-hidden="true" />
         <svg className="sc-hero-blueprint" viewBox="0 0 260 460" aria-hidden="true">
@@ -134,12 +141,12 @@ export default async function Sector({params}) {
             <path d="M36 130 H190" />
             <path d="M36 210 H170" />
             <path d="M36 290 H150" />
-            <circle cx="36" cy="130" r="3" fill="#e55021" stroke="none" />
+            <circle cx="36" cy="130" r="3" fill="#a02315" stroke="none" />
           </g>
         </svg>
         <div className="sc-shell sc-hero-inner">
           <div className="sc-hero-copy">
-            <p className="sc-breadcrumb">ASAS / {ar ? 'القطاعات' : 'Sectors'}</p>
+            <p className="sc-breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'القطاعات' : 'Sectors'}</p>
             {categoryLabel && (
               <p className="sc-kicker light">
                 <i />
@@ -162,16 +169,17 @@ export default async function Sector({params}) {
                 ))}
               </ul>
             )}
-            <div className="sc-hero-actions">
-              <Link className="sc-btn-primary" href={`/${locale}/project-enquiry`}>
+            <ActionGroup className="sc-hero-actions">
+              <ActionButton variant="primary" href={`/${locale}/project-enquiry`}>
                 {ar ? 'ابدأ مشروعاً' : 'Start a Project'}
-                <ArrowUpRight size={15} className={ar ? 'sc-flip' : ''} />
-              </Link>
-              <a className="sc-btn-ghost" href={relatedProjects.length ? '#projects' : '#approach'}>
+              </ActionButton>
+              <ActionButton
+                variant="ghost"
+                href={relatedProjects.length ? '#projects' : '#approach'}
+              >
                 {ar ? 'استكشف أعمالنا' : 'Explore our work'}
-                <ArrowRight size={15} className={ar ? 'sc-flip' : ''} />
-              </a>
-            </div>
+              </ActionButton>
+            </ActionGroup>
           </div>
           <ul className="sc-hero-words" aria-hidden="true">
             <li>{ar ? 'أشخاص' : 'People'}</li>
@@ -215,8 +223,24 @@ export default async function Sector({params}) {
             <p>{description}</p>
           </div>
 
-          <div className="sc-overview-media">
-            <Image src={overviewImage} alt="" fill sizes="(max-width: 900px) 100vw, 28vw" />
+          <div
+            className={`sc-overview-media${overviewImage.src ? '' : ' sc-overview-media--panel'}`}
+            aria-hidden="true"
+          >
+            {overviewImage.src ? (
+              <Image
+                src={overviewImage.src}
+                alt=""
+                fill
+                sizes="(max-width: 900px) 100vw, 40vw"
+                style={{objectFit: 'cover', objectPosition: overviewImage.imagePosition}}
+              />
+            ) : (
+              <div className="sc-overview-panel">
+                <span>{ar ? 'قطاع' : 'Sector'}</span>
+                <strong>{title}</strong>
+              </div>
+            )}
           </div>
 
           {relatedServices.length > 0 && (
@@ -331,12 +355,16 @@ export default async function Sector({params}) {
                     href={`/${locale}/projects/${project.slug}`}
                   >
                     <div className="sc-project-media">
-                      <Image
-                        src={projectImage(project)}
-                        alt=""
-                        fill
-                        sizes="(max-width: 900px) 100vw, 30vw"
-                      />
+                      {projectImage(project) ? (
+                        <Image
+                          src={projectImage(project)}
+                          alt=""
+                          fill
+                          sizes="(max-width: 900px) 100vw, 30vw"
+                        />
+                      ) : (
+                        <ProjectVisualFallback project={project} locale={locale} />
+                      )}
                     </div>
                     <div className="sc-project-copy">
                       {cat && (
@@ -423,26 +451,35 @@ export default async function Sector({params}) {
               </h2>
             </header>
             <div className="sc-related-grid">
-              {relatedSectors.map((item) => (
-                <Link
-                  key={item.slug}
-                  className="sc-related-card"
-                  href={`/${locale}/sectors/${item.slug}`}
-                >
-                  <div className="sc-related-media">
-                    <Image
-                      src={sectorImages[item.slug] || generatedEditorialImages.buildingsSector}
-                      alt=""
-                      fill
-                      sizes="(max-width: 900px) 50vw, 22vw"
-                    />
-                  </div>
-                  <div className="sc-related-copy">
-                    <strong>{ar ? item.titleAr : item.title}</strong>
-                    <ArrowUpRight size={16} className={ar ? 'sc-flip' : ''} aria-hidden="true" />
-                  </div>
-                </Link>
-              ))}
+              {relatedSectors.map((item) => {
+                const relatedImage = getSectorImage(item.slug);
+                return (
+                  <Link
+                    key={item.slug}
+                    className="sc-related-card"
+                    href={`/${locale}/sectors/${item.slug}`}
+                  >
+                    <div
+                      className={`sc-related-media${relatedImage.src ? '' : ' sc-related-media--tone'}`}
+                      aria-hidden="true"
+                    >
+                      {relatedImage.src ? (
+                        <Image
+                          src={relatedImage.src}
+                          alt=""
+                          fill
+                          sizes="(max-width: 700px) 50vw, 25vw"
+                          style={{objectFit: 'cover', objectPosition: relatedImage.imagePosition}}
+                        />
+                      ) : null}
+                    </div>
+                    <div className="sc-related-copy">
+                      <strong>{ar ? item.titleAr : item.title}</strong>
+                      <ArrowUpRight size={16} className={ar ? 'sc-flip' : ''} aria-hidden="true" />
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>

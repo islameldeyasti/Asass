@@ -1,0 +1,60 @@
+{
+  "project": "Culture Private School",
+  "slug": "culture-private-school",
+  "category": "education",
+  "finalStatus": "DEPLOYED_READY",
+  "currentHero": "/assets/asas/projects-generated/culture-private-school/culture-private-school-01-hero.webp",
+  "websiteStatus": "APPROVED_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/culture-private-school/source-reference/source-reference.png",
+  "productionSourceStatus": "WEAK_SOURCE",
+  "approved": [
+    {
+      "file": "culture-private-school-01-hero.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/culture-private-school/approved/culture-private-school-01-hero.webp",
+      "live_path": "/assets/asas/projects-generated/culture-private-school/culture-private-school-01-hero.webp",
+      "view": "HERO",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "culture-private-school-02-front.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/culture-private-school/approved/culture-private-school-02-front.webp",
+      "live_path": "/assets/asas/projects-generated/culture-private-school/culture-private-school-02-front.webp",
+      "view": "FRONT",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "culture-private-school-03-left-angle.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/culture-private-school/approved/culture-private-school-03-left-angle.webp",
+      "live_path": "/assets/asas/projects-generated/culture-private-school/culture-private-school-03-left-angle.webp",
+      "view": "LEFT_ANGLE",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "culture-private-school-04-right-angle.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/culture-private-school/approved/culture-private-school-04-right-angle.webp",
+      "live_path": "/assets/asas/projects-generated/culture-private-school/culture-private-school-04-right-angle.webp",
+      "view": "RIGHT_ANGLE",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "culture-private-school-05-detail.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/culture-private-school/approved/culture-private-school-05-detail.webp",
+      "live_path": "/assets/asas/projects-generated/culture-private-school/culture-private-school-05-detail.webp",
+      "view": "DETAIL",
+      "confidence": "HIGH",
+      "deployed": true
+    }
+  ],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": false,
+  "notes": [
+    "5 HIGH-confidence image(s) already live under projects-generated/."
+  ]
+}

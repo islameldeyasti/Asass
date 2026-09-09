@@ -1,7 +1,8 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import {useMemo} from 'react';
 import Link from 'next/link';
+import {useSectionNav} from '@/hooks/useSectionNav';
 
 const items = [
   {id: 'overview', en: 'Overview', ar: 'نظرة عامة'},
@@ -15,26 +16,15 @@ const items = [
 
 export default function CompanyProfileSubnav({locale}) {
   const ar = locale === 'ar';
-  const [active, setActive] = useState('overview');
-
-  useEffect(() => {
-    const nodes = items.map((item) => document.getElementById(item.id)).filter(Boolean);
-    if (!nodes.length) return undefined;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target?.id) setActive(visible.target.id);
-      },
-      {rootMargin: '-28% 0px -55% 0px', threshold: [0.1, 0.35, 0.55]},
-    );
-    nodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, []);
+  const ids = useMemo(() => items.map((item) => item.id), []);
+  const {active, onTabClick} = useSectionNav(ids, {defaultId: 'overview'});
 
   return (
-    <nav className="cp-subnav" aria-label={ar ? 'أقسام الملف التعريفي' : 'Company profile sections'}>
+    <nav
+      className="cp-subnav"
+      data-sticky-subnav
+      aria-label={ar ? 'أقسام الملف التعريفي' : 'Company profile sections'}
+    >
       <div className="cp-shell cp-subnav-inner">
         <div className="cp-subnav-links">
           {items.map(({id, en, ar: labelAr}) => (
@@ -42,11 +32,7 @@ export default function CompanyProfileSubnav({locale}) {
               key={id}
               href={`#${id}`}
               className={active === id ? 'is-active' : ''}
-              onClick={(event) => {
-                event.preventDefault();
-                document.getElementById(id)?.scrollIntoView({behavior: 'smooth', block: 'start'});
-                setActive(id);
-              }}
+              onClick={(event) => onTabClick(event, id)}
             >
               {ar ? labelAr : en}
             </a>

@@ -1,0 +1,61 @@
+/* =========================================================
+   Global anchor / sticky-offset scroll system
+   ========================================================= */
+
+:root {
+  --asas-chrome-h: 138px;
+  --asas-subnav-h: 0px;
+  --asas-anchor-gap: 16px;
+  --asas-anchor-offset: calc(var(--asas-chrome-h) + var(--asas-subnav-h) + var(--asas-anchor-gap));
+  /* Legacy alias — keep old references from drifting */
+  --asas-sticky-offset: var(--asas-anchor-offset);
+}
+
+html {
+  scroll-behavior: auto;
+  /* Single native offset — do NOT also add scroll-margin on the same targets */
+  scroll-padding-top: var(--asas-anchor-offset);
+}
+
+/* JS-driven scrolls use measured offsets; keep section margin at 0 to avoid double offset */
+[data-scroll-section],
+.cp-section,
+.sv-section,
+.sd-section,
+.sc-section,
+.pd-section,
+.pf-section,
+.tm-section,
+.cp-hero,
+.sd-hero,
+.sc-hero,
+.sv-hero,
+.pl-hero,
+.pf-hero,
+.tm-page-hero,
+.pd-hero {
+  scroll-margin-top: 0;
+}
+
+/* Sticky chrome marker target (JS also queries .asas-chrome) */
+[data-sticky-chrome],
+.asas-chrome {
+  /* measured live into --asas-chrome-h */
+}
+
+/* Sticky secondary navs sit under the main chrome */
+[data-sticky-subnav],
+.cp-subnav,
+.sd-subnav,
+.sc-subnav,
+.sv-jump,
+.pd-tabs,
+.pf-subnav {
+  top: var(--asas-chrome-h, var(--ph-chrome, 138px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

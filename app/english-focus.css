@@ -14,7 +14,7 @@
 .atlas-home .journey-ribbon .home-shell>div:not(:last-child):after{top:50%;transform:translateY(-50%)}
 .atlas-home .atlas-proof article{align-items:center;gap:16px}
 .atlas-home .atlas-proof svg{width:28px;height:28px}
-.header .language{display:none}
+.header .language{display:flex}
 .header .brand{gap:13px}.header .brand img{width:56px;height:56px}.header .brand-type{max-width:175px;gap:5px}.header .brand b{font-size:11px}.header .brand small{font-size:8px}
 .header .brand.symbol-only{gap:0}.header .brand.symbol-only img{width:76px;height:76px;object-fit:contain}
 .header .nav nav{font-size:16px;gap:32px}.atlas-home .atlas-actions .atlas-link{padding:15px 19px;background:var(--asas-navy);color:#fff;border:1px solid var(--asas-navy);border-radius:7px}.atlas-home .atlas-actions .atlas-link:hover{background:var(--asas-navy-hover, #05034a);border-color:var(--asas-navy-hover, #05034a)}.atlas-home .atlas-actions .atlas-link svg{width:17px}

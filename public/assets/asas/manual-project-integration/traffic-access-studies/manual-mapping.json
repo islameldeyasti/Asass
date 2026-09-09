@@ -1,0 +1,19 @@
+{
+  "project": "Traffic & Access Studies",
+  "slug": "traffic-access-studies",
+  "category": "infrastructure",
+  "finalStatus": "TECHNICAL_ONLY",
+  "currentHero": "/assets/asas/real-projects/asas-traffic-access-studies-portfolio.webp",
+  "websiteStatus": "APPROVED_TECHNICAL_DRAWING_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/traffic-access-studies/source-reference/source-reference.png",
+  "productionSourceStatus": "TECHNICAL_ONLY",
+  "approved": [],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": false,
+  "notes": [
+    "Technical drawing project \u2014 clarity/enhancement only; already has approved traffic assets on site."
+  ]
+}

@@ -71,15 +71,15 @@ function BlueprintOverlay({ar, reduced}) {
           <path d="M56 48 V730" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
           <path d="M56 48 H108" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
           <path d="M56 730 H108" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-          <path d="M368 86 V668" fill="none" stroke="rgba(229,80,33,0.48)" strokeWidth="1.15" />
-          <path d="M318 86 H368" fill="none" stroke="rgba(229,80,33,0.48)" strokeWidth="1.15" />
-          <path d="M318 668 H368" fill="none" stroke="rgba(229,80,33,0.48)" strokeWidth="1.15" />
+          <path d="M368 86 V668" fill="none" stroke="rgba(160, 35, 21,0.48)" strokeWidth="1.15" />
+          <path d="M318 86 H368" fill="none" stroke="rgba(160, 35, 21,0.48)" strokeWidth="1.15" />
+          <path d="M318 668 H368" fill="none" stroke="rgba(160, 35, 21,0.48)" strokeWidth="1.15" />
           <path d="M78 168 H340" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
           <path d="M96 312 H312" fill="none" stroke="rgba(255,255,255,0.16)" strokeWidth="1" />
           <path d="M110 448 H300" fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="1" />
           <path d="M124 580 H286" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
           <path d="M200 168 V580" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-          <circle cx="56" cy="168" r="3.2" fill="#e55021" />
+          <circle cx="56" cy="168" r="3.2" fill="#a02315" />
           <circle cx="368" cy="312" r="2.8" fill="#fff" />
           <circle cx="200" cy="448" r="2.4" fill="rgba(255,255,255,0.8)" />
           <circle cx="286" cy="580" r="2.2" fill="rgba(255,255,255,0.55)" />
@@ -345,7 +345,7 @@ export default function HeroSlider({locale, slides}) {
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.6 + i * 0.07, duration: 0.5, ease: EASE}}
                   >
-                    <dd>{value}</dd>
+                    <dd className="ltr-isolate" dir="ltr">{value}</dd>
                     <dt>{label}</dt>
                   </motion.div>
                 ))}
@@ -366,7 +366,7 @@ export default function HeroSlider({locale, slides}) {
                     <Play size={14} fill="currentColor" />
                   </span>
                   <span className="asas-ph-film-copy">
-                    <strong>{ar ? 'عرض المشروع' : 'Watch Overview'}</strong>
+                    <strong>{ar ? 'نظرة عامة' : 'Watch Overview'}</strong>
                     <small>{ar ? 'تفاصيل المشروع' : 'Project brief'}</small>
                   </span>
                 </Link>
@@ -389,7 +389,7 @@ export default function HeroSlider({locale, slides}) {
 
       <motion.div
         className="asas-ph-rail"
-        initial={reduced ? false : {opacity: 0, x: 16}}
+        initial={reduced ? false : {opacity: 0, x: ar ? -16 : 16}}
         animate={{opacity: 1, x: 0}}
         transition={{delay: 1.1, duration: 0.55, ease: EASE}}
       >
@@ -401,7 +401,7 @@ export default function HeroSlider({locale, slides}) {
               aria-label={ar ? 'السابق' : 'Previous'}
               onClick={() => goTo(index - 1)}
             >
-              <ChevronLeft size={18} />
+              {ar ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
             </button>
             <button
               type="button"
@@ -409,7 +409,7 @@ export default function HeroSlider({locale, slides}) {
               aria-label={ar ? 'التالي' : 'Next'}
               onClick={() => goTo(index + 1)}
             >
-              <ChevronRight size={18} />
+              {ar ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
             </button>
           </div>
           <div className="asas-ph-progress-row">
@@ -452,15 +452,15 @@ export default function HeroSlider({locale, slides}) {
                   setPlaying(true);
                 }}
               >
+                <span className="asas-ph-thumb-media">
+                  <Image src={slide.image} alt="" width={96} height={58} sizes="96px" />
+                </span>
                 <span className="asas-ph-thumb-index">{String(i + 1).padStart(2, '0')}</span>
                 <span className="asas-ph-thumb-copy">
                   <strong>{label}</strong>
                   <small>
                     {(ar ? slide.locationAr : slide.location || '').split(',')[0].trim()}
                   </small>
-                </span>
-                <span className="asas-ph-thumb-media">
-                  <Image src={slide.image} alt="" width={96} height={58} sizes="96px" />
                 </span>
                 {active && <span className="asas-ph-thumb-line" />}
               </button>

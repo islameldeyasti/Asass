@@ -16,7 +16,7 @@ export default function OfficeMap({locale = 'en'}) {
       <div className="contact-map-head">
         <div>
           <p className="atlas-kicker">{ar ? 'الموقع' : 'Location'}</p>
-          <h2 id="contact-map-title">{ar ? 'مكتب أساس في أبوظبي' : 'ASAS office in Abu Dhabi'}</h2>
+          <h2 id="contact-map-title">{ar ? 'مكتب أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي' : 'ASAS office in Abu Dhabi'}</h2>
           <p className="contact-map-address">
             <MapPin size={16} aria-hidden="true" />
             <span>{ar ? company.addressAr : company.address}</span>
@@ -40,7 +40,7 @@ export default function OfficeMap({locale = 'en'}) {
           <strong>ASAS</strong>
         </div>
         <iframe
-          title={ar ? 'خريطة مكتب أساس' : 'ASAS office map'}
+          title={ar ? 'خريطة مكتب أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS office map'}
           src={MAP_EMBED}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

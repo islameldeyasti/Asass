@@ -1,0 +1,19 @@
+{
+  "project": "Hotel Lobby Interior",
+  "slug": "hotel-lobby-interior",
+  "category": "interior-design",
+  "finalStatus": "MANUAL_READY",
+  "currentHero": null,
+  "websiteStatus": "NO_GENERATED_GALLERY_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/hotel-lobby-interior/source-reference/source-reference.png",
+  "productionSourceStatus": "WEAK_SOURCE",
+  "approved": [],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": true,
+  "notes": [
+    "Authentic source reference copied into this pack."
+  ]
+}

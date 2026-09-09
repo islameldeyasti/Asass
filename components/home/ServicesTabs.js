@@ -4,13 +4,13 @@ import {useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {ArrowRight, Building2, CheckCircle2, ClipboardCheck, Layers3, Ruler} from 'lucide-react';
-import {serviceImages} from '@/data/image-manifest';
-import {stats} from '@/data/company';
+import {ActionButton} from '@/components/ActionButton';
+import {homeDisciplineImages} from '@/data/image-manifest';
 
 const shortTitles = {
   'architectural-design': {en: 'Architecture', ar: 'العمارة'},
   'civil-structural-engineering': {en: 'Structural', ar: 'الإنشاءات'},
-  'mep-engineering-design': {en: 'MEP', ar: 'MEP'},
+  'mep-engineering-design': {en: 'MEP', ar: 'الكهروميكانيكية'},
   'quantities-cost': {en: 'QS', ar: 'الكميات'},
   'project-management': {en: 'PM', ar: 'الإدارة'},
 };
@@ -40,17 +40,8 @@ export default function ServicesTabs({locale, services}) {
           <p className="atlas-kicker center">{ar ? 'تخصصاتنا' : 'Our disciplines'}</p>
           <h2>{ar ? 'تخصصات هندسية في مكتب واحد.' : 'One consultancy. Five core disciplines.'}</h2>
           <p>{ar
-            ? 'تغطي أساس العمارة والإنشاءات والأعمال الكهروميكانيكية والكميات وإدارة المشاريع ضمن عمل منسق.'
+            ? 'تغطي أساس للاستشارات الهندسية وإدارة المشاريع العمارة والإنشاءات والأعمال الكهروميكانيكية والكميات وإدارة المشاريع ضمن عمل منسق.'
             : 'Architecture, structure, electromechanical services, quantity surveying and project management checked together before issue.'}</p>
-        </div>
-
-        <div className="hp-discipline-stats" aria-label={ar ? 'حقائق أساس' : 'ASAS facts'}>
-          {stats.map((stat) => (
-            <article key={stat.label}>
-              <strong>{stat.value}</strong>
-              <span>{ar ? stat.labelAr : stat.label}</span>
-            </article>
-          ))}
         </div>
 
         <div className="insp-tabs" role="tablist">
@@ -74,7 +65,9 @@ export default function ServicesTabs({locale, services}) {
 
         <div className="insp-tab-panel hp-card">
           <div className="insp-tab-media">
-            <Image src={serviceImages[current.slug]} alt="" width={900} height={700} />
+            {homeDisciplineImages[current.slug] ? (
+              <Image src={homeDisciplineImages[current.slug]} alt="" width={900} height={700} />
+            ) : null}
           </div>
           <div className="insp-tab-copy">
             <Icon className="insp-tab-icon" />
@@ -85,10 +78,9 @@ export default function ServicesTabs({locale, services}) {
                 <li key={point}><CheckCircle2 size={18} /><span>{point}</span></li>
               ))}
             </ul>
-            <Link className="atlas-link" href={`/${locale}/services/${current.slug}`}>
+            <ActionButton variant="outline" href={`/${locale}/services/${current.slug}`}>
               {ar ? 'تفاصيل الخدمة' : 'View this service'}
-              <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />
-            </Link>
+            </ActionButton>
           </div>
         </div>
       </div>

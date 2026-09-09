@@ -1,0 +1,195 @@
+/* =========================================================
+   ASAS image uniqueness support
+   - Project typography fallback (no fake project photos)
+   - Compact CTA bands without recycled photography
+   ========================================================= */
+
+.asas-project-fallback {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  padding: 22px 20px;
+  box-sizing: border-box;
+  background:
+    linear-gradient(145deg, #070463 0%, #0a1a70 48%, #05034a 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 47px,
+      rgba(255, 255, 255, 0.04) 47px,
+      rgba(255, 255, 255, 0.04) 48px
+    );
+  color: #fff;
+  text-align: start;
+}
+
+html[data-theme='dark'] .asas-project-fallback {
+  background:
+    linear-gradient(145deg, #1d1d1d 0%, #181818 48%, #0f0f0f 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 47px,
+      rgba(255, 255, 255, 0.04) 47px,
+      rgba(255, 255, 255, 0.04) 48px
+    );
+}
+
+.asas-project-fallback-kicker {
+  color: rgba(160, 35, 21, 0.95);
+  font: 700 10px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.asas-project-fallback-title {
+  max-width: 18ch;
+  font: 600 clamp(22px, 2.4vw, 32px)/1.15 Georgia, "Times New Roman", Times, serif;
+  letter-spacing: -0.02em;
+}
+
+.asas-project-fallback-meta {
+  color: rgba(255, 255, 255, 0.72);
+  font: 600 12px/1.4 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+}
+
+.asas-project-fallback-note {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  font: 600 11px/1.35 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.04em;
+}
+
+/* Photo-free CTA band — replaces recycled CTA photography */
+.asas-cta-band {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(115deg, #070463 0%, #0b1570 55%, #05034a 100%);
+  color: #fff;
+}
+
+.asas-cta-band:before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--asas-orange, #a02315);
+}
+
+.asas-cta-band-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Typography / tone panels when photos are reserved for exclusive roles */
+.sc-overview-media--panel,
+.sd-scope-media--panel,
+.cp-cap-media--panel,
+.cp-download-visual--panel,
+.sd-sector-media--tone,
+.sd-related-media--tone,
+.sc-related-media--tone,
+.cp-sector-media--tone {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, #070463 0%, #121b78 52%, #05034a 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 44px,
+      rgba(255, 255, 255, 0.035) 44px,
+      rgba(255, 255, 255, 0.035) 45px
+    );
+  min-height: 160px;
+}
+
+.sc-overview-panel,
+.sd-scope-panel,
+.cp-cap-fallback {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 22px 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sc-overview-panel span,
+.sd-scope-panel span,
+.cp-cap-fallback span {
+  color: rgba(160, 35, 21, 0.95);
+  font: 700 10px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sc-overview-panel strong,
+.sd-scope-panel strong,
+.cp-cap-fallback strong {
+  max-width: 16ch;
+  font: 600 clamp(22px, 2.2vw, 30px)/1.15 Georgia, "Times New Roman", Times, serif;
+}
+
+.cp-download-visual--panel {
+  display: grid;
+  place-items: center;
+  color: #fff;
+  min-height: 220px;
+}
+
+/* Fill positioned media frames only — never make .pl-visual--fallback itself
+   absolute (that escapes unpositioned .pl-card and overlays the projects hero). */
+.pd-design-fallback,
+.pd-main-media .asas-project-fallback,
+.pd-related-media .asas-project-fallback,
+.sc-project-media .asas-project-fallback,
+.cp-project-media .asas-project-fallback,
+.cp-project-feature-media .asas-project-fallback,
+.tm-project-media .asas-project-fallback,
+.hp-featured-visual .asas-project-fallback,
+.hp-portfolio-media .asas-project-fallback,
+.pl-visual.pl-visual--fallback > .asas-project-fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.pl-visual.pl-visual--fallback {
+  position: relative;
+  inset: auto;
+}
+
+.sv-card-media-frame--tone,
+.sv-delivery-media--tone,
+.sv-planning-feature-media--tone,
+.sectors-featured-media--tone,
+.sectors-card-media--tone {
+  background:
+    linear-gradient(145deg, #070463 0%, #121b78 52%, #05034a 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 44px,
+      rgba(255, 255, 255, 0.035) 44px,
+      rgba(255, 255, 255, 0.035) 45px
+    );
+  min-height: 180px;
+}
+
+.sectors-featured-media--tone,
+.sectors-card-media--tone {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 18px;
+  color: rgba(255, 255, 255, 0.55);
+  font: 700 28px/1 Georgia, "Times New Roman", Times, serif;
+}

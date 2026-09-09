@@ -1,15 +1,18 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
-import {ArrowUpRight} from 'lucide-react';
+import {ActionButton} from '@/components/ActionButton';
 
 export default function CompanyProfileEnquiryCta({locale, image}) {
   const ar = locale === 'ar';
+  const src = typeof image === 'string' ? image : image?.src;
+  const crop = typeof image === 'object' && image?.crop ? image.crop : '50% 40%';
   return (
-    <section className="cp-cta" id="contact">
+    <section className="asas-cta-band cp-cta" id="contact">
       <div className="cp-cta-media" aria-hidden="true">
-        {image && <Image src={image} alt="" fill sizes="100vw" />}
+        {src ? (
+          <Image src={src} alt="" fill sizes="100vw" style={{objectFit: 'cover', objectPosition: crop}} />
+        ) : null}
       </div>
       <div className="cp-cta-veil" aria-hidden="true" />
       <div className="cp-shell cp-cta-inner">
@@ -24,10 +27,9 @@ export default function CompanyProfileEnquiryCta({locale, image}) {
               ? 'فريقنا الهندسي جاهز لفهم متطلباتك والمساعدة في تحويل رؤيتك إلى واقع.'
               : 'Our engineering team is ready to understand your requirements and help turn your vision into reality.'}
           </p>
-          <Link className="cp-cta-btn" href={`/${locale}/project-enquiry`}>
+          <ActionButton variant="primary" href={`/${locale}/project-enquiry`} icon="arrow-up">
             {ar ? 'أرسل استفسار مشروع' : 'Submit a Project Enquiry'}
-            <ArrowUpRight size={16} className={ar ? 'cp-flip' : ''} />
-          </Link>
+          </ActionButton>
         </div>
         <ul className="cp-cta-words" aria-hidden="true">
           {(ar

@@ -40,7 +40,7 @@ export default function EnquiryForm({locale = 'en', id = 'project-enquiry-form'}
         submit: 'إرسال الاستفسار',
         sending: 'جاري التحضير…',
         successTitle: 'شكراً لك',
-        successBody: 'سيراجع فريق أساس رسالتك ويتواصل معك قريباً.',
+        successBody: 'سيراجع فريق أساس للاستشارات الهندسية وإدارة المشاريع رسالتك ويتواصل معك قريباً.',
         reset: 'إرسال استفسار آخر',
         note: 'يفتح تطبيق البريد لديك برسالة جاهزة إلى فريق ASAS.',
         required: 'هذا الحقل مطلوب',
@@ -161,6 +161,7 @@ export default function EnquiryForm({locale = 'en', id = 'project-enquiry-form'}
             name="email"
             type="email"
             autoComplete="email"
+            dir="ltr"
             value={values.email}
             onChange={(e) => setField('email', e.target.value)}
             aria-invalid={Boolean(errors.email)}
@@ -175,6 +176,7 @@ export default function EnquiryForm({locale = 'en', id = 'project-enquiry-form'}
             name="phone"
             type="tel"
             autoComplete="tel"
+            dir="ltr"
             value={values.phone}
             onChange={(e) => setField('phone', e.target.value)}
             aria-invalid={Boolean(errors.phone)}

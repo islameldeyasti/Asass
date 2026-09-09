@@ -1,0 +1,11 @@
+=== SHORT (paste into Magnific) ===
+RESTORATION/ENHANCEMENT ONLY for real ASAS project “Emirates Private School”. Upscale, sharpen, balance lighting, clean noise. Preserve exact architecture, floors, façade, massing, materials. No redesign, no fake ASAS branding.
+
+=== FULL ===
+WEAK SOURCE — restore cautiously. Do not invent missing architecture, new façades, floors, or hallucinated geometry.
+RESTORATION / ENHANCEMENT ONLY for real ASAS project “Emirates Private School” (Education).
+Improve clarity, sharpness, lighting balance, contrast, noise removal, texture refinement, and professional presentation.
+Preserve EXACTLY: building/interior identity, floor count where visible, façade geometry, massing, windows, roof form, proportions, real materials, project character, and original camera identity.
+Do NOT invent new façades, extra floors, new towers, fake landscaping, fake ASAS branding, or fake signage.
+Do NOT redesign architecture.
+Source: Frontend/assets/image-source/schools/asas-emirates-private-school-source.png

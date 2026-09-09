@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {ArrowRight, ArrowUpRight} from 'lucide-react';
 import {motion, useReducedMotion} from 'motion/react';
-import {generatedEditorialImages} from '@/data/image-manifest';
+import {roleImages} from '@/data/image-manifest';
 import TeamCard from './TeamCard';
 
 const EASE = [0.16, 1, 0.3, 1];
@@ -14,7 +14,7 @@ export default function HomeTeamSection({members, locale}) {
   const reduced = useReducedMotion();
   const list = Array.isArray(members) ? members.slice(0, 4) : [];
   if (!list.length) return null;
-  const sideImage = generatedEditorialImages.corporateTeam;
+  const sideImage = roleImages.HOME_TEAM;
 
   return (
     <section className="tm tm-home" id="team" aria-labelledby="home-team-heading">
@@ -48,7 +48,7 @@ export default function HomeTeamSection({members, locale}) {
             </h2>
             <p>
               {ar
-                ? 'مهندسون ومتخصصون وقادة مشاريع يعملون كتخصصات منسّقة ضمن مكتب أساس في أبوظبي.'
+                ? 'مهندسون ومتخصصون وقادة مشاريع يعملون كتخصصات منسّقة ضمن مكتب أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي.'
                 : 'Engineers, specialists and project leaders working as coordinated disciplines inside the ASAS Abu Dhabi office.'}
             </p>
             <Link className="tm-text-link" href={`/${locale}/team`}>
@@ -73,7 +73,7 @@ export default function HomeTeamSection({members, locale}) {
                   sizes="(max-width:900px) 100vw, 38vw"
                   style={{objectPosition: '48% 35%'}}
                 />
-                <span className="tm-home-aside-tag">ASAS · Abu Dhabi</span>
+                <span className="tm-home-aside-tag">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع · أبوظبي' : 'ASAS · Abu Dhabi'}</span>
               </div>
               <Link className="tm-home-aside-link" href={`/${locale}/team`}>
                 {ar ? 'عرض كل الفريق' : 'View full team'}

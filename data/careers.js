@@ -59,11 +59,11 @@ export const jobs = [
     summary:
       'Support concept-to-detailed architectural design across residential, commercial and institutional projects in the ASAS portfolio.',
     summaryAr:
-      'دعم التصميم المعماري من الفكرة إلى التفاصيل عبر مشاريع سكنية وتجارية ومؤسسية ضمن أعمال أساس.',
+      'دعم التصميم المعماري من الفكرة إلى التفاصيل عبر مشاريع سكنية وتجارية ومؤسسية ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع.',
     description:
       'ASAS is seeking an Architectural Designer to join the in-house architecture team in Abu Dhabi. You will work alongside structural, MEP and quantity-surveying colleagues on coordinated deliverables from concept through construction documentation.',
     descriptionAr:
-      'تبحث أساس عن مصمم معماري للانضمام إلى فريق العمارة في أبوظبي. ستعمل مع زملاء الإنشاءات وMEP وحصر الكميات على مخرجات منسّقة من الفكرة حتى وثائق الإنشاء.',
+      'تبحث أساس للاستشارات الهندسية وإدارة المشاريع عن مصمم معماري للانضمام إلى فريق العمارة في أبوظبي. ستعمل مع زملاء الإنشاءات وMEP وحصر الكميات على مخرجات منسّقة من الفكرة حتى وثائق الإنشاء.',
     responsibilities: [
       'Prepare architectural drawings, details and presentation material',
       'Coordinate design packages with structural, MEP and QS disciplines',
@@ -147,7 +147,7 @@ export const jobs = [
     description:
       'ASAS needs an MEP Design Engineer to develop electromechanical design for buildings, working closely with architecture and structural teams and supporting Estidama-related requirements where applicable.',
     descriptionAr:
-      'تحتاج أساس إلى مهندس تصميم كهروميكانيكي لتطوير التصميم الكهروميكانيكي للمباني بالتنسيق مع فرق العمارة والإنشاءات ودعم متطلبات استدامة عند الاقتضاء.',
+      'تحتاج أساس للاستشارات الهندسية وإدارة المشاريع إلى مهندس تصميم كهروميكانيكي لتطوير التصميم الكهروميكانيكي للمباني بالتنسيق مع فرق العمارة والإنشاءات ودعم متطلبات استدامة عند الاقتضاء.',
     responsibilities: [
       'Design MEP systems for buildings in line with project briefs',
       'Prepare drawings, schedules and coordination documentation',
@@ -185,11 +185,11 @@ export const jobs = [
     summary:
       'Prepare bills of quantities, cost studies and tender support across design stages for ASAS projects.',
     summaryAr:
-      'إعداد جداول الكميات ودراسات التكلفة ودعم العطاءات عبر مراحل التصميم لمشاريع أساس.',
+      'إعداد جداول الكميات ودراسات التكلفة ودعم العطاءات عبر مراحل التصميم لمشاريع أساس للاستشارات الهندسية وإدارة المشاريع.',
     description:
       'A Quantity Surveyor is needed to support cost planning, BOQ production, tender analysis and value-engineering review as part of the ASAS design and delivery process.',
     descriptionAr:
-      'مطلوب مساح كميات لدعم تخطيط التكلفة وإعداد جداول الكميات وتحليل العطاءات ومراجعة هندسة القيمة ضمن مسار التصميم والتنفيذ في أساس.',
+      'مطلوب مساح كميات لدعم تخطيط التكلفة وإعداد جداول الكميات وتحليل العطاءات ومراجعة هندسة القيمة ضمن مسار التصميم والتنفيذ في أساس للاستشارات الهندسية وإدارة المشاريع.',
     responsibilities: [
       'Produce bills of quantities and cost estimates',
       'Review designs and specifications against budget',

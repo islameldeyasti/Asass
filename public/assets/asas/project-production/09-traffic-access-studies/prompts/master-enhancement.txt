@@ -1,0 +1,9 @@
+=== SHORT (paste into Magnific) ===
+Clarity enhancement only for ASAS technical drawing “Traffic & Access Studies”. Sharpen lines, improve contrast, clean noise, preserve exact plan geometry. No redesign.
+
+=== FULL ===
+TECHNICAL DRAWING — CLARITY ENHANCEMENT ONLY for real ASAS project “Traffic & Access Studies”.
+Improve line sharpening, contrast, despeckle, and edge legibility.
+Preserve EXACT roads, parking, kerbs, markings, and municipal-review geometry.
+Do not redraw inventively, invent geometry, or add branding.
+Source: Frontend/assets/image-source/infrastructure/asas-traffic-access-studies-source.png

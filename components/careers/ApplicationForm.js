@@ -227,6 +227,7 @@ export default function ApplicationForm({
             value={values.email}
             onChange={(e) => setField('email', e.target.value)}
             autoComplete="email"
+            dir="ltr"
           />
           {errors.email && <em>{errors.email}</em>}
         </label>
@@ -238,6 +239,7 @@ export default function ApplicationForm({
             value={values.phone}
             onChange={(e) => setField('phone', e.target.value)}
             autoComplete="tel"
+            dir="ltr"
           />
           {errors.phone && <em>{errors.phone}</em>}
         </label>
@@ -267,6 +269,7 @@ export default function ApplicationForm({
             placeholder="https://"
             value={values.portfolio}
             onChange={(e) => setField('portfolio', e.target.value)}
+            dir="ltr"
           />
         </label>
 

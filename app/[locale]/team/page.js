@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import {ArrowDown} from 'lucide-react';
-import {generatedEditorialImages} from '@/data/image-manifest';
+import {ctaBandImages, roleImages} from '@/data/image-manifest';
 import {getPublishedTeamMembers} from '@/data/team';
 import TeamListing from '@/components/team/TeamListing';
 import TeamPhilosophy from '@/components/team/TeamPhilosophy';
 import TeamEnquiryCta from '@/components/team/TeamEnquiryCta';
+import {ActionButton} from '@/components/ActionButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,7 +17,7 @@ export async function generateMetadata({params}) {
       ? 'فريقنا | أساس للاستشارات الهندسية وإدارة المشاريع'
       : 'Our Team | ASAS Engineering & Project Management Consultancy',
     description: ar
-      ? 'تعرّف على فريق أساس في أبوظبي عبر التخصصات الهندسية وإدارة المشاريع.'
+      ? 'تعرّف على فريق أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي عبر التخصصات الهندسية وإدارة المشاريع.'
       : 'Meet the ASAS team in Abu Dhabi across engineering disciplines and project leadership.',
   };
 }
@@ -25,9 +26,9 @@ export default async function TeamPage({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
   const members = await getPublishedTeamMembers();
-  const heroImage = generatedEditorialImages.corporateTeam;
+  const heroImage = roleImages.TEAM_HERO;
   const philosophyImage =
-    generatedEditorialImages.technicalCoordination || generatedEditorialImages.siteSupervision;
+    roleImages.TEAM_PHILOSOPHY;
 
   return (
     <div className="tm">
@@ -42,14 +43,14 @@ export default async function TeamPage({params}) {
           <g fill="none" stroke="currentColor" strokeWidth="1">
             <path d="M24 20 V380 M60 50 V350 M96 80 V320" />
             <path d="M24 140 H180 M24 220 H150" />
-            <circle cx="24" cy="140" r="3" fill="#e55021" stroke="none" />
+            <circle cx="24" cy="140" r="3" fill="#a02315" stroke="none" />
           </g>
         </svg>
         <div className="tm-shell tm-page-hero-inner">
           <div className="tm-page-hero-copy">
             <p className="tm-kicker light">
               <i />
-              {ar ? 'أساس / الفريق' : 'ASAS / Team'}
+              {ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع / الفريق' : 'ASAS / Team'}
             </p>
             <h1>
               {ar ? (
@@ -71,10 +72,9 @@ export default async function TeamPage({params}) {
                 ? 'متخصصون عبر العمارة والإنشاءات والكهروميكانيك وإدارة المشاريع والإشراف — ضمن مكتب استشاري واحد في أبوظبي.'
                 : 'Specialists across architecture, structure, MEP, project management and supervision — working as one Abu Dhabi consultancy.'}
             </p>
-            <a className="tm-btn-primary" href="#team-directory">
+            <ActionButton variant="primary" href="#team-directory" icon={false}>
               {ar ? 'استكشف الفريق' : 'Explore the Team'}
-              <ArrowDown size={15} />
-            </a>
+            </ActionButton>
           </div>
           <ul className="tm-page-hero-words" aria-hidden="true">
             <li>{ar ? 'صمّم' : 'Design'}</li>
@@ -92,7 +92,7 @@ export default async function TeamPage({params}) {
       </section>
 
       <TeamPhilosophy locale={locale} image={philosophyImage} />
-      <TeamEnquiryCta locale={locale} />
+      <TeamEnquiryCta locale={locale} image={{src: ctaBandImages.team, crop: '50% 35%'}} />
     </div>
   );
 }

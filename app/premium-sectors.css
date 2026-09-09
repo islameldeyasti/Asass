@@ -40,7 +40,7 @@
   align-items: center;
   gap: 12px;
   margin: 0 0 18px;
-  color: #e55021;
+  color: #a02315;
   font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -49,13 +49,13 @@
 .asas-sectors-eyebrow i {
   width: 28px;
   height: 2px;
-  background: #e55021;
+  background: #a02315;
 }
 
 .asas-sectors-head h2 {
   margin: 0;
   max-width: 11ch;
-  color: #0b1d4d !important;
+  color: #070463 !important;
   font-family: Georgia, "Times New Roman", Times, serif !important;
   font-size: clamp(44px, 4.2vw, 64px);
   font-weight: 600;
@@ -64,7 +64,7 @@
 }
 
 .asas-sectors-dot {
-  color: #e55021;
+  color: #a02315;
 }
 
 .asas-sectors-head-aside {
@@ -85,8 +85,8 @@
   align-items: center;
   gap: 8px;
   padding-bottom: 6px;
-  border-bottom: 1.5px solid #e55021;
-  color: #0b1d4d;
+  border-bottom: 1.5px solid #a02315;
+  color: #070463;
   font: 700 14px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   text-decoration: none;
   transition: color 0.25s ease, border-color 0.25s ease;
@@ -97,7 +97,7 @@
 }
 
 .asas-sectors-all:hover {
-  color: #e55021;
+  color: #a02315;
 }
 
 .asas-sectors-all:hover svg {
@@ -153,7 +153,7 @@ html[dir='rtl'] .asas-sec-orb svg.reverse-arrow {
   overflow: hidden;
   border: 1px solid transparent;
   border-radius: 6px;
-  background: #0a1424;
+  background: #070463;
   color: #fff;
   text-decoration: none;
   isolation: isolate;
@@ -238,14 +238,14 @@ html[dir='rtl'] .asas-sec-orb svg.reverse-arrow {
 }
 
 .asas-sec-meta i {
-  color: #e55021;
+  color: #a02315;
   font-style: normal;
 }
 
 .asas-sec-meta b {
   width: 18px;
   height: 1.5px;
-  background: #e55021;
+  background: #a02315;
 }
 
 .asas-sec-meta em {
@@ -275,7 +275,7 @@ html[dir='rtl'] .asas-sec-orb svg.reverse-arrow {
 }
 
 .asas-sec-card.is-light .asas-sec-content h3 {
-  color: #0b1d4d !important;
+  color: #070463 !important;
 }
 
 .asas-sec-content p {
@@ -324,7 +324,7 @@ html[dir='rtl'] .asas-sec-orb svg.reverse-arrow {
 
 .asas-sec-card.is-light .asas-sec-orb {
   border-color: rgba(11, 29, 77, 0.35);
-  color: #0b1d4d;
+  color: #070463;
   background: rgba(255, 255, 255, 0.55);
 }
 
@@ -412,8 +412,8 @@ html[dir='rtl'] .asas-sec-card:hover .asas-sec-orb svg.reverse-arrow {
 }
 
 .asas-sec-card:hover .asas-sec-orb {
-  background: #e55021;
-  border-color: #e55021;
+  background: #a02315;
+  border-color: #a02315;
   color: #fff;
   transform: scale(1.05);
 }

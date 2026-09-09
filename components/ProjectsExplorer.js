@@ -7,8 +7,6 @@ import {AnimatePresence, motion, useReducedMotion} from 'motion/react';
 import {
   ArrowUpRight,
   Building2,
-  ChevronLeft,
-  ChevronRight,
   Factory,
   Filter,
   Home,
@@ -21,8 +19,10 @@ import {
   X,
 } from 'lucide-react';
 import {projectCategories, projectKinds, projects} from '@/data/projects';
+import ProjectVisualFallback from '@/components/ProjectVisualFallback';
+import {NextChevron, PrevChevron} from '@/components/icons/DirectionalChevrons';
 
-const featuredSlug = 'four-towers-al-nahda';
+const featuredSlug = 'traffic-access-studies';
 const pageSize = 9;
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -82,7 +82,16 @@ function extractStats(project, ar) {
 }
 
 function ProjectVisual({project, ar, sizes, priority = false}) {
-  const photo = project.visual?.classification === 'PROJECT_PHOTO';
+  const photo =
+    project.visual?.classification === 'PROJECT_PHOTO' ||
+    project.visual?.classification === 'TECHNICAL_DRAWING';
+  if (!project.visual?.src) {
+    return (
+      <div className="pl-visual pl-visual--fallback">
+        <ProjectVisualFallback project={project} locale={ar ? 'ar' : 'en'} />
+      </div>
+    );
+  }
   return (
     <div className="pl-visual">
       <Image
@@ -318,7 +327,7 @@ export default function ProjectsExplorer({locale}) {
               disabled={currentPage <= 1}
               onClick={() => setPage((value) => Math.max(1, value - 1))}
             >
-              <ChevronLeft size={16} />
+              <PrevChevron ar={ar} size={16} />
             </button>
             {pageItems.map((item) => (
               <button
@@ -337,7 +346,7 @@ export default function ProjectsExplorer({locale}) {
               disabled={currentPage >= totalPages}
               onClick={() => setPage((value) => Math.min(totalPages, value + 1))}
             >
-              <ChevronRight size={16} />
+              <NextChevron ar={ar} size={16} />
             </button>
           </nav>
         )}

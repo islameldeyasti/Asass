@@ -55,12 +55,17 @@ function prefersReduced() {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-function markStagger(root) {
+function markStagger(root, locale = 'en') {
+  const rtl = locale === 'ar';
   STAGGER_SELECTORS.forEach((sel) => {
     root.querySelectorAll(sel).forEach((group) => {
       group.classList.add('asas-stagger');
-      [...group.children].forEach((child, i) => {
-        child.style.setProperty('--stagger-index', String(Math.min(i, 10)));
+      const children = [...group.children];
+      const n = children.length;
+      children.forEach((child, i) => {
+        // RTL: stagger from reading-start (right) → reading-end (left)
+        const index = rtl ? n - 1 - i : i;
+        child.style.setProperty('--stagger-index', String(Math.min(index, 10)));
       });
     });
   });
@@ -69,7 +74,7 @@ function markStagger(root) {
 function markHeadings(root) {
   HEADING_SELECTORS.forEach((sel) => {
     root.querySelectorAll(sel).forEach((el) => {
-      if (el.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')) return;
+      if (el.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')) return;
       el.classList.add('asas-heading');
     });
   });
@@ -77,7 +82,7 @@ function markHeadings(root) {
 
 function markImages(root) {
   root.querySelectorAll('main img').forEach((img) => {
-    if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')) return;
+    if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')) return;
     img.classList.add('asas-img');
   });
 }
@@ -88,13 +93,14 @@ function markSections(root) {
       if (
         el.classList?.contains('asas-sectors') ||
         el.classList?.contains('asas-ph') ||
+        el.classList?.contains('asas-clients') ||
         el.classList?.contains('pd') ||
         el.classList?.contains('pl') ||
         el.classList?.contains('sv') ||
         el.classList?.contains('sd') ||
         el.classList?.contains('sc') ||
         el.classList?.contains('cp') ||
-        el.closest('.asas-sectors, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')
+        el.closest('.asas-sectors, .asas-clients, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')
       ) {
         return;
       }
@@ -116,6 +122,9 @@ export default function SiteMotion({locale}) {
     const html = document.documentElement;
     html.lang = locale;
     html.dir = locale === 'ar' ? 'rtl' : 'ltr';
+    html.setAttribute('data-locale', locale);
+    html.classList.toggle('locale-ar', locale === 'ar');
+    html.classList.toggle('locale-en', locale === 'en');
 
     const reduced = reducedHook || prefersReduced();
     if (reduced) {
@@ -150,7 +159,7 @@ export default function SiteMotion({locale}) {
 
     const scan = () => {
       markSections(document);
-      markStagger(document);
+      markStagger(document, locale);
       markHeadings(document);
       markImages(document);
 
@@ -172,7 +181,7 @@ export default function SiteMotion({locale}) {
       markHeadings(document);
       document.querySelectorAll('.asas-heading:not(.is-inview)').forEach(watch);
       document.querySelectorAll('main img:not(.asas-img)').forEach((img) => {
-        if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors')) return;
+        if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients')) return;
         img.classList.add('asas-img');
         watch(img);
       });

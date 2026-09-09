@@ -52,7 +52,7 @@ export default function TeamListing({members, locale}) {
                 <i />
                 {ar ? 'القيادة' : 'Leadership'}
               </p>
-              <h2>{ar ? 'قيادة أساس' : 'ASAS Leadership'}</h2>
+              <h2>{ar ? 'قيادة أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Leadership'}</h2>
             </div>
             <TeamGrid members={leadership} locale={locale} variant="leadership" />
           </motion.section>

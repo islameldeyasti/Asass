@@ -34,8 +34,10 @@
 /* Hero */
 .sectors-hero {
   position: relative;
-  min-height: 0;
-  padding: 88px 0 72px;
+  height: var(--asas-internal-hero-h, clamp(650px, 72vh, 760px));
+  min-height: 650px;
+  max-height: 760px;
+  padding: var(--asas-internal-hero-pad-simple, 72px 0 60px);
   color: #fff;
   overflow: hidden;
   background: var(--asas-navy);
@@ -107,8 +109,8 @@
 }
 
 .sectors-hero-meta a:hover {
-  color: rgba(229, 80, 33, 0.45);
-  border-color: rgba(229, 80, 33, 0.45);
+  color: #fff;
+  border-color: var(--asas-rust, #a02315);
 }
 
 /* Body */
@@ -150,11 +152,25 @@
 .sectors-featured-media {
   position: relative;
   min-height: 320px;
-  background: #1a1f2c;
+  background: #070463;
+  overflow: hidden;
 }
 
 .sectors-featured-media img {
   object-fit: cover;
+}
+
+.sectors-featured-index {
+  position: absolute;
+  top: 16px;
+  inset-inline-end: 16px;
+  z-index: 2;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--hp-navy);
+  font: 750 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.06em;
 }
 
 .sectors-featured-copy {
@@ -163,7 +179,7 @@
   justify-content: center;
   gap: 14px;
   padding: 36px 34px;
-  background: #fff;
+  background: var(--bg-surface-elevated, #fff);
 }
 
 .sectors-featured-label {
@@ -175,7 +191,7 @@
 
 .sectors-featured-copy h3 {
   margin: 0;
-  color: var(--hp-navy);
+  color: var(--text-primary, var(--hp-navy));
   font-size: clamp(26px, 2.8vw, 36px);
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -184,7 +200,7 @@
 .sectors-featured-copy > p {
   margin: 0;
   max-width: 38ch;
-  color: var(--hp-muted);
+  color: var(--text-secondary, var(--hp-muted));
   font-size: 16px;
   line-height: 1.6;
 }
@@ -220,7 +236,7 @@ html[dir='rtl'] .sectors-featured:hover .atlas-link svg.reverse-arrow {
 .sectors-card-media {
   position: relative;
   height: 180px;
-  background: #1a1f2c;
+  background: #070463;
   overflow: hidden;
 }
 
@@ -237,7 +253,7 @@ html[dir='rtl'] .sectors-featured:hover .atlas-link svg.reverse-arrow {
   position: absolute;
   top: 12px;
   inset-inline-end: 12px;
-  z-index: 1;
+  z-index: 2;
   padding: 5px 8px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.92);
@@ -260,7 +276,7 @@ html[dir='rtl'] .sectors-featured:hover .atlas-link svg.reverse-arrow {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: rgba(229, 80, 33, 0.1);
+  background: rgba(160, 35, 21, 0.1);
   color: var(--hp-orange);
 }
 
@@ -331,9 +347,9 @@ html[dir='rtl'] .sectors-card:hover .atlas-link svg.reverse-arrow {
   z-index: 1;
   background: linear-gradient(
     100deg,
-    rgba(4, 18, 38, 0.94) 0%,
-    rgba(4, 18, 38, 0.78) 55%,
-    rgba(4, 18, 38, 0.55) 100%
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.78) 55%,
+    rgba(0, 0, 0, 0.55) 100%
   );
 }
 
@@ -352,7 +368,7 @@ html[dir='rtl'] .sectors-card:hover .atlas-link svg.reverse-arrow {
   align-items: center;
   gap: 10px;
   margin: 0 0 14px;
-  color: #e55021;
+  color: #a02315;
   font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -361,7 +377,7 @@ html[dir='rtl'] .sectors-card:hover .atlas-link svg.reverse-arrow {
 .sectors-cta-kicker i {
   width: 22px;
   height: 2px;
-  background: #e55021;
+  background: #a02315;
 }
 
 .sectors-cta-copy h2 {
@@ -420,7 +436,7 @@ html[dir='rtl'] .sectors-card:hover .atlas-link svg.reverse-arrow {
 }
 
 .sectors-cta-link:hover {
-  color: #e55021;
+  color: #a02315;
 }
 
 .sectors-cta-words {

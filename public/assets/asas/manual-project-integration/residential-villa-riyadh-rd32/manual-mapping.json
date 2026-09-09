@@ -1,0 +1,19 @@
+{
+  "project": "Residential Villa \u2014 RD32",
+  "slug": "residential-villa-riyadh-rd32",
+  "category": "residential-villas",
+  "finalStatus": "MANUAL_READY",
+  "currentHero": null,
+  "websiteStatus": "NO_GENERATED_GALLERY_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/residential-villa-riyadh-rd32/source-reference/source-reference.png",
+  "productionSourceStatus": "WEAK_SOURCE",
+  "approved": [],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": true,
+  "notes": [
+    "Authentic source reference copied into this pack."
+  ]
+}

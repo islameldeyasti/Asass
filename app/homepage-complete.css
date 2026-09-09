@@ -62,7 +62,7 @@
   border-radius: 50%;
   background:
     radial-gradient(circle at center, transparent 46%, rgba(7, 4, 99, .08) 47%, transparent 48%),
-    radial-gradient(circle at center, transparent 62%, rgba(229, 80, 33, .07) 63%, transparent 64%),
+    radial-gradient(circle at center, transparent 62%, rgba(160, 35, 21, .07) 63%, transparent 64%),
     radial-gradient(circle at center, transparent 78%, rgba(7, 4, 99, .05) 79%, transparent 80%);
   pointer-events: none;
 }
@@ -198,8 +198,8 @@
 }
 
 .atlas-home .hp-about-solid:hover {
-  background: #c4411a;
-  border-color: #c4411a;
+  background: #801c11;
+  border-color: #801c11;
 }
 
 .atlas-home .hp-about-grid,
@@ -627,7 +627,8 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  background: #f3f2f2;
+  background: color-mix(in srgb, #070463 4%, white);
+  border: 1px solid rgba(7, 4, 99, 0.1);
   border-radius: var(--asas-radius-md);
   padding: 8px;
   margin-bottom: 32px;
@@ -652,8 +653,18 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
   color: #fff;
 }
 
+.atlas-home .insp-tabs button.active svg {
+  color: #fff;
+  stroke: currentColor;
+}
+
+html[data-theme='light'] .atlas-home .insp-tabs button.active {
+  box-shadow: inset 0 -2px 0 var(--asas-rust);
+  color: #fff;
+}
+
 .atlas-home .insp-tabs button:hover:not(.active) {
-  background: #ebeaea;
+  background: color-mix(in srgb, #070463 7%, white);
   color: var(--asas-text);
 }
 
@@ -716,7 +727,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 }
 
 .atlas-home .insp-tab-copy li svg {
-  color: var(--asas-navy);
+  color: var(--asas-orange, #a02315);
   flex-shrink: 0;
   margin-top: 1px;
 }
@@ -807,7 +818,7 @@ html[dir="rtl"] .atlas-home .insp-ticker-track {
 .atlas-home .insp-sector-label {
   display: block;
   margin: 0;
-  color: rgba(229, 80, 33, 0.55);
+  color: rgba(160, 35, 21, 0.55);
   font: 700 11px/1.2 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;

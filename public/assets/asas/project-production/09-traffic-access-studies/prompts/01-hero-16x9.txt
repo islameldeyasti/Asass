@@ -1,0 +1,8 @@
+=== SHORT (paste into Magnific) ===
+From enhanced ASAS technical drawing “Traffic & Access Studies”, create 16:9 (2560×1440) presentation crop. Clarity only; preserve exact plan geometry; no redesign.
+
+=== FULL ===
+TECHNICAL DRAWING crop/presentation for “Traffic & Access Studies”.
+Aspect 16:9 · 2560×1440.
+Enhance clarity only. Preserve exact geometry. No generative redesign.
+Use for website framing of the authentic traffic/access drawing.

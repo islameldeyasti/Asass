@@ -1,0 +1,382 @@
+/* =========================================================
+   ASAS FLOATING UTILITIES + FOOTER SOCIALS
+   Coherent float system: left socials | right scroll / theme / WhatsApp
+   Utility positions are LTR-fixed (not mirrored in Arabic).
+   ========================================================= */
+
+:root {
+  --asas-float-size: 48px;
+  --asas-float-gap: 12px;
+  --asas-float-x: 24px;
+  --asas-float-y: 22px;
+  --asas-float-z: 44;
+  --asas-float-ease: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Footer social block ---------- */
+.asas-social-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.asas-social-list--footer {
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.asas-social-list--footer > li {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  color: inherit !important;
+  list-style: none;
+}
+
+.asas-social-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  line-height: 0;
+  cursor: pointer;
+  transition:
+    color var(--asas-float-ease),
+    border-color var(--asas-float-ease),
+    background var(--asas-float-ease),
+    transform var(--asas-float-ease),
+    box-shadow var(--asas-float-ease);
+}
+
+.asas-social-btn svg {
+  display: block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  globals.css `.footer-grid a { display:block; margin:13px 0; font-size:13px }`
+  overrides unlayered social button centering — force flex center in footer.
+*/
+.site-footer .footer-grid a.asas-social-btn.asas-social-btn--footer,
+.site-footer.asas-footer .footer-grid a.asas-social-btn--footer {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  border-radius: 50%;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.site-footer .footer-grid a.asas-social-btn--footer svg,
+.site-footer.asas-footer .footer-grid a.asas-social-btn--footer svg {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  flex: none;
+}
+
+.site-footer.asas-footer .footer-grid a.asas-social-btn--footer:hover {
+  color: #a02315 !important;
+  border-color: #a02315;
+  background: rgba(160, 35, 21, 0.12);
+  transform: translateY(-2px);
+}
+
+.asas-social-btn--footer:focus-visible {
+  outline: 2px solid #a02315;
+  outline-offset: 3px;
+}
+
+html[data-theme='light'] .site-footer.asas-footer .footer-grid a.asas-social-btn--footer {
+  color: #070463 !important;
+  border-color: rgba(7, 4, 99, 0.16);
+  background: rgba(7, 4, 99, 0.04);
+}
+
+html[data-theme='light'] .site-footer.asas-footer .footer-grid a.asas-social-btn--footer:hover {
+  color: #a02315 !important;
+  border-color: #a02315;
+  background: rgba(160, 35, 21, 0.08);
+}
+
+html[data-theme='dark'] .site-footer.asas-footer .footer-grid a.asas-social-btn--footer {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme='dark'] .site-footer.asas-footer .footer-grid a.asas-social-btn--footer:hover {
+  color: #a02315 !important;
+  border-color: #a02315;
+  background: rgba(160, 35, 21, 0.14);
+}
+
+/* ---------- Floating social bar (LEFT — both EN/AR) ---------- */
+.asas-float-social {
+  position: fixed;
+  z-index: var(--asas-float-z);
+  left: max(var(--asas-float-x), env(safe-area-inset-left, 0px));
+  right: auto;
+  top: 58%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.asas-float-social .asas-social-list--float {
+  pointer-events: auto;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.asas-social-btn--float {
+  width: 44px;
+  height: 44px;
+  color: #070463;
+  background: #fff;
+  border-color: rgba(7, 4, 99, 0.12);
+  box-shadow: 0 6px 18px rgba(7, 4, 99, 0.08);
+}
+
+.asas-social-btn--float:hover {
+  color: #a02315;
+  border-color: #a02315;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 10px 22px rgba(160, 35, 21, 0.14);
+}
+
+.asas-social-btn--float:focus-visible {
+  outline: 2px solid #a02315;
+  outline-offset: 3px;
+}
+
+.asas-social-tooltip {
+  position: absolute;
+  inset-inline-start: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #070463;
+  color: #fff;
+  font: 600 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--asas-float-ease), transform var(--asas-float-ease), visibility var(--asas-float-ease);
+}
+
+.asas-social-btn--float:hover .asas-social-tooltip,
+.asas-social-btn--float:focus-visible .asas-social-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+html[data-theme='dark'] .asas-social-btn--float {
+  color: #fff;
+  background: #181818;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme='dark'] .asas-social-btn--float:hover {
+  color: #a02315;
+  border-color: #a02315;
+}
+
+html[data-theme='dark'] .asas-social-tooltip {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Force LEFT in Arabic — utility chrome, not content flow */
+html[dir='rtl'] .asas-float-social {
+  left: max(var(--asas-float-x), env(safe-area-inset-left, 0px));
+  right: auto;
+}
+
+html[dir='rtl'] .asas-social-tooltip {
+  inset-inline-start: auto;
+  inset-inline-end: calc(100% + 10px);
+}
+
+/* ---------- Scroll to top (RIGHT stack) ---------- */
+.asas-scroll-top {
+  position: fixed;
+  z-index: calc(var(--asas-float-z) + 1);
+  right: max(var(--asas-float-x), env(safe-area-inset-right, 0px));
+  left: auto;
+  /* Above WhatsApp: y + size + gap */
+  bottom: calc(
+    max(var(--asas-float-y), env(safe-area-inset-bottom, 0px)) + var(--asas-float-size) +
+      var(--asas-float-gap)
+  );
+  width: var(--asas-float-size);
+  height: var(--asas-float-size);
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(7, 4, 99, 0.15);
+  background: #fff;
+  color: #070463;
+  box-shadow: 0 8px 24px rgba(7, 4, 99, 0.1);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity var(--asas-float-ease),
+    transform var(--asas-float-ease),
+    visibility var(--asas-float-ease),
+    background var(--asas-float-ease),
+    color var(--asas-float-ease),
+    border-color var(--asas-float-ease),
+    box-shadow var(--asas-float-ease);
+}
+
+.asas-scroll-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.asas-scroll-top:hover {
+  background: #a02315;
+  color: #fff;
+  border-color: #a02315;
+  transform: translateY(-2px);
+}
+
+.asas-scroll-top:focus-visible {
+  outline: 2px solid #a02315;
+  outline-offset: 3px;
+}
+
+html[data-theme='dark'] .asas-scroll-top {
+  background: #181818;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme='dark'] .asas-scroll-top:hover {
+  background: #a02315;
+  color: #fff;
+  border-color: #a02315;
+}
+
+/* ---------- Right float stack: WhatsApp + Theme FAB (utility = RIGHT always) ---------- */
+.whatsapp {
+  position: fixed !important;
+  z-index: calc(var(--asas-float-z) + 2) !important;
+  right: max(var(--asas-float-x), env(safe-area-inset-right, 0px)) !important;
+  left: auto !important;
+  bottom: max(var(--asas-float-y), env(safe-area-inset-bottom, 0px)) !important;
+  top: auto !important;
+  width: var(--asas-float-size) !important;
+  height: var(--asas-float-size) !important;
+  background: var(--asas-rust, #a02315) !important;
+  color: #fff !important;
+}
+
+.whatsapp:hover {
+  background: var(--asas-rust-hover, #801c11) !important;
+  color: #fff !important;
+}
+
+.asas-theme-fab {
+  right: max(var(--asas-float-x), env(safe-area-inset-right, 0px)) !important;
+  left: auto !important;
+  /* Above scroll-to-top: y + 2*(size+gap) */
+  bottom: calc(
+    max(var(--asas-float-y), env(safe-area-inset-bottom, 0px)) +
+      (var(--asas-float-size) + var(--asas-float-gap)) * 2
+  ) !important;
+  width: var(--asas-float-size);
+  height: var(--asas-float-size);
+  z-index: calc(var(--asas-float-z) + 1);
+}
+
+html[dir='rtl'] .whatsapp,
+html[dir='rtl'] .asas-theme-fab,
+html[dir='rtl'] .asas-scroll-top {
+  right: max(var(--asas-float-x), env(safe-area-inset-right, 0px)) !important;
+  left: auto !important;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  :root {
+    --asas-float-x: 18px;
+    --asas-float-size: 46px;
+  }
+
+  .asas-float-social {
+    top: 62%;
+  }
+}
+
+/* Tablet: keep left socials if space allows; shrink */
+@media (max-width: 900px) {
+  :root {
+    --asas-float-size: 46px;
+    --asas-float-gap: 10px;
+    --asas-float-x: 16px;
+    --asas-float-y: 16px;
+  }
+
+  /* OPTION A — hide floating socials on mobile/narrow tablet; footer covers socials */
+  .asas-float-social {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --asas-float-size: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asas-social-btn,
+  .asas-scroll-top,
+  .asas-social-tooltip {
+    transition: none !important;
+  }
+
+  .asas-social-btn:hover,
+  .asas-scroll-top:hover {
+    transform: none;
+  }
+}

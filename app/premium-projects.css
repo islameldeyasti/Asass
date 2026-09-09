@@ -1,9 +1,9 @@
 /* Projects listing — premium portfolio */
 
 .pl {
-  --pl-navy: #0b1d4d;
-  --pl-deep: #08111f;
-  --pl-orange: #e55021;
+  --pl-navy: #070463;
+  --pl-deep: #070463;
+  --pl-orange: #a02315;
   --pl-paper: #f7f7f4;
   --pl-muted: #5b6472;
   background: #fff;
@@ -45,7 +45,9 @@
 .pl-hero {
   position: relative;
   isolation: isolate;
-  min-height: clamp(500px, 62vh, 580px);
+  height: var(--asas-internal-hero-h, clamp(650px, 72vh, 760px));
+  min-height: 650px;
+  max-height: 760px;
   overflow: hidden;
   color: #fff;
   background: var(--pl-deep);
@@ -125,8 +127,11 @@
   flex-direction: column;
   justify-content: center;
   max-width: 560px;
-  min-height: clamp(500px, 62vh, 580px);
-  padding: 72px clamp(24px, 5vw, 72px);
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  padding: 48px clamp(24px, 5vw, 72px) 40px;
+  box-sizing: border-box;
 }
 
 .pl-hero-copy h1 {
@@ -177,7 +182,7 @@
 /* Sidebar */
 .pl-sidebar {
   position: sticky;
-  top: calc(var(--ph-chrome, 80px) + 20px);
+  top: calc(var(--ph-chrome, 138px) + 20px);
   align-self: start;
 }
 
@@ -349,7 +354,7 @@ html[dir='rtl'] .pl-filter-list button.is-active {
   justify-content: center;
   gap: 12px;
   padding: 36px 32px;
-  background: linear-gradient(180deg, #0b1d4d 0%, #08111f 100%);
+  background: linear-gradient(180deg, #070463 0%, #070463 100%);
   color: #fff;
   transition: background 0.35s ease;
 }
@@ -433,7 +438,7 @@ html[dir='rtl'] .pl-filter-list button.is-active {
 
 .pl-featured:hover .pl-featured-cta {
   transform: translateX(3px);
-  background: #d4471c;
+  background: #a02315;
 }
 
 html[dir='rtl'] .pl-featured:hover .pl-featured-cta {
@@ -450,7 +455,7 @@ html[dir='rtl'] .pl-featured:hover .pl-featured-cta {
 .pl-visual {
   position: relative;
   overflow: hidden;
-  background: #0a1424;
+  background: #070463;
 }
 
 .pl-visual img {
@@ -715,7 +720,7 @@ html[dir='rtl'] .pl-card:hover .pl-card-link {
 }
 
 .pl-cta-btn:hover {
-  background: #d4471c;
+  background: #a02315;
   transform: translateY(-1px);
 }
 
@@ -803,7 +808,8 @@ html[dir='rtl'] .pl-card:hover .pl-card-link {
 @media (max-width: 700px) {
   .pl-hero-copy {
     padding: 56px 20px;
-    min-height: 460px;
+    min-height: 0;
+    height: auto;
   }
 
   .pl-grid {

@@ -1,0 +1,443 @@
+/* =========================================================
+   ASAS Homepage — Testimonials + Trusted Clients
+   Premium trust sections (homepage-native)
+   ========================================================= */
+
+/* ---------- Clients marquee ---------- */
+.asas-clients {
+  padding: 72px 0 64px;
+  background: #fff;
+  border-block: 1px solid rgba(7, 4, 99, 0.06);
+  overflow: hidden;
+}
+
+.asas-clients-head {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.asas-clients-head .atlas-kicker {
+  justify-content: center;
+  color: var(--asas-orange, #a02315);
+}
+
+.asas-clients-head h2 {
+  margin: 14px 0 0;
+  color: var(--asas-navy, #070463);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.asas-clients-head p {
+  max-width: 560px;
+  margin: 12px auto 0;
+  color: var(--asas-text-secondary, #5f6070);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.asas-clients-marquee {
+  position: relative;
+  overflow: hidden;
+  direction: ltr;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.asas-clients-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  padding-block: 8px;
+  direction: ltr;
+  will-change: transform;
+  backface-visibility: hidden;
+  animation: asas-clients-marquee 32s linear infinite;
+  animation-iteration-count: infinite;
+}
+
+.asas-clients-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  padding-inline-end: 14px;
+}
+
+.asas-clients-marquee:hover .asas-clients-track {
+  animation-play-state: paused;
+}
+
+.asas-clients-marquee.is-static .asas-clients-track {
+  animation: none !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 52px;
+  gap: 0;
+}
+
+.asas-clients-marquee.is-static .asas-clients-group {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 14px;
+  padding-inline-end: 0;
+}
+
+/* Keep looping even if a parent reveal rule tries to clear animations */
+.asas-clients[data-asas-marquee] .asas-clients-track,
+html.asas-motion .asas-clients .asas-clients-track {
+  animation: asas-clients-marquee 32s linear infinite !important;
+  animation-iteration-count: infinite !important;
+}
+
+html.asas-motion .asas-clients-marquee.is-static .asas-clients-track,
+.asas-clients-marquee.is-static .asas-clients-track {
+  animation: none !important;
+}
+
+html[dir='rtl'] .asas-clients-marquee:not(.is-static) .asas-clients-track,
+html.asas-motion[dir='rtl'] .asas-clients-marquee:not(.is-static) .asas-clients-track {
+  animation-name: asas-clients-marquee-rtl !important;
+}
+
+.asas-clients-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 188px;
+  min-width: 188px;
+  height: 96px;
+  min-height: 96px;
+  padding: 14px 16px;
+  border: 1px solid rgba(7, 4, 99, 0.1);
+  border-radius: 6px;
+  background: #fafafc;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.asas-clients-logo.has-logo {
+  padding: 12px 14px;
+}
+
+.asas-clients-logo-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.asas-clients-logo-img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 74%;
+  max-height: 58px;
+  object-fit: contain;
+}
+
+.asas-clients-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.asas-clients-logo:hover {
+  border-color: rgba(160, 35, 21, 0.35);
+  background: #fff;
+}
+
+.asas-clients-mark {
+  color: var(--asas-navy, #070463);
+  font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.asas-clients-name {
+  max-width: 150px;
+  color: rgba(7, 4, 99, 0.48);
+  font: 600 10px/1.3 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.02em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes asas-clients-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes asas-clients-marquee-rtl {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+/* ---------- Testimonials ---------- */
+.asas-t {
+  padding: 88px 0 80px;
+  background: linear-gradient(180deg, color-mix(in srgb, #070463 3%, white) 0%, color-mix(in srgb, #070463 4%, white) 100%);
+}
+
+.asas-t-shell {
+  max-width: 1320px;
+}
+
+.asas-t-head {
+  max-width: 720px;
+  margin: 0 0 28px;
+}
+
+.asas-t-head .atlas-kicker {
+  color: var(--asas-orange, #a02315);
+}
+
+.asas-t-head h2 {
+  margin: 14px 0 0;
+  color: var(--text-primary, var(--asas-navy, #070463));
+  font-size: clamp(30px, 3.4vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+.asas-t-head > p {
+  max-width: 58ch;
+  margin: 12px 0 0;
+  color: var(--asas-text-secondary, #5f6070);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.asas-t-rail {
+  position: relative;
+}
+
+.asas-t-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.asas-t-nav {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(7, 4, 99, 0.18);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--asas-navy, #070463);
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.asas-t-nav:hover {
+  background: var(--asas-navy, #070463);
+  border-color: var(--asas-navy, #070463);
+  color: #fff;
+}
+
+.asas-t-viewport {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-inline: contain;
+  outline: none;
+  direction: ltr;
+  container-type: inline-size;
+  container-name: asas-t;
+}
+
+.asas-t-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.asas-t-track {
+  list-style: none;
+  margin: 0;
+  padding: 0 1px 4px;
+  width: max-content;
+  display: flex;
+  gap: 18px;
+  direction: ltr;
+}
+
+.asas-t-card {
+  width: 340px;
+  flex: 0 0 340px;
+  min-height: 332px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(7, 4, 99, 0.08);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(7, 4, 99, 0.045);
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.asas-t-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 26px 24px 20px;
+}
+
+.asas-t-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.asas-t-card-top svg {
+  color: var(--asas-orange, #a02315);
+  stroke-width: 1.6;
+}
+
+.asas-t-sector {
+  color: var(--text-muted, rgba(7, 4, 99, 0.55));
+  font: 700 10px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.asas-t-stars {
+  display: flex;
+  gap: 3px;
+  margin-top: 14px;
+  color: var(--asas-orange, #a02315);
+}
+
+.asas-t-card blockquote {
+  margin: 16px 0 0;
+  color: var(--text-secondary, rgba(7, 4, 99, 0.72));
+  font: 500 15px/1.7 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+}
+
+/* Person strip — theme-aware contrast (not a fixed navy panel) */
+.asas-t-person {
+  margin-top: auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--theme-border, rgba(0, 0, 0, 0.1));
+  background: var(--theme-bg, #fff);
+  color: var(--theme-text, #000);
+}
+
+.asas-t-avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: var(--theme-primary, #a02315);
+  color: #fff;
+  font: 700 14px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  flex: none;
+}
+
+.asas-t-meta {
+  min-width: 0;
+}
+
+.asas-t-person strong,
+.asas-t-person em {
+  display: block;
+}
+
+.asas-t-person strong {
+  color: var(--theme-text, #000);
+  font: 700 13px/1.35 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+}
+
+.asas-t-person em {
+  margin-top: 3px;
+  color: var(--theme-text-secondary, #333);
+  font: 600 12px/1.35 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  font-style: normal;
+}
+
+@container asas-t (max-width: 980px) {
+  .asas-t-card {
+    width: min(320px, 58cqi);
+    flex-basis: min(320px, 58cqi);
+    min-height: 318px;
+  }
+}
+
+@container asas-t (max-width: 560px) {
+  .asas-t-card {
+    width: min(300px, 88cqi);
+    flex-basis: min(300px, 88cqi);
+  }
+
+  .asas-t-track {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .asas-clients {
+    padding: 60px 0 52px;
+  }
+
+  .asas-t {
+    padding: 72px 0 64px;
+  }
+
+  .asas-clients-marquee.is-static .asas-clients-track {
+    padding-inline: 25px;
+  }
+}
+
+@media (max-width: 640px) {
+  .asas-clients-head,
+  .asas-t-head {
+    text-align: start;
+  }
+
+  .asas-clients-head .atlas-kicker,
+  .asas-t-head .atlas-kicker {
+    justify-content: flex-start;
+  }
+
+  .asas-t-controls {
+    justify-content: flex-start;
+  }
+
+  .asas-clients-marquee.is-static .asas-clients-track {
+    padding-inline: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asas-clients-track,
+  .asas-clients[data-asas-marquee] .asas-clients-track,
+  html.asas-motion .asas-clients .asas-clients-track {
+    animation: none !important;
+  }
+}

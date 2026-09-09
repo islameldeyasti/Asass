@@ -100,10 +100,21 @@ a:hover > svg.lucide-arrow-up-right {
   transform: translateX(4px);
 }
 
+/* Preserve directional flip under RTL — do not wipe scaleX(-1) on hover */
 html[dir='rtl'] .atlas-link:hover svg,
 html[dir='rtl'] .button:hover svg,
-html[dir='rtl'] .arrow-link:hover svg {
-  transform: translateX(-4px);
+html[dir='rtl'] .arrow-link:hover svg,
+html[dir='rtl'] a:hover > svg.lucide-arrow-right,
+html[dir='rtl'] a:hover > svg.lucide-arrow-up-right,
+html[dir='rtl'] a:hover > svg.reverse-arrow,
+html[dir='rtl'] a:hover > svg.lucide-arrow-left {
+  transform: translateX(-4px) scaleX(-1);
+}
+
+html[dir='rtl'] .arrow-link > svg,
+html[dir='rtl'] a > svg.lucide-arrow-right,
+html[dir='rtl'] a > svg.lucide-arrow-up-right {
+  transform: scaleX(-1);
 }
 
 /* ——— Scroll reveals (only when JS enables motion) ——— */

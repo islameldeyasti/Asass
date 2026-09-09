@@ -3,7 +3,7 @@
 .cp {
   --cp-navy: #070463;
   --cp-deep: #041226;
-  --cp-orange: #e55021;
+  --cp-orange: #a02315;
   --cp-muted: #5b6472;
   --cp-paper: #f6f7f9;
   background: #fff;
@@ -90,10 +90,12 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: clamp(650px, 78vh, 760px);
+  height: var(--asas-internal-hero-h, clamp(650px, 72vh, 760px));
+  min-height: 650px;
+  max-height: 760px;
   color: #fff;
   background: var(--cp-deep);
-  scroll-margin-top: calc(var(--ph-chrome, 80px) + 64px);
+  scroll-margin-top: 0;
 }
 
 .cp-hero-media,
@@ -112,9 +114,9 @@
   z-index: 1;
   background: linear-gradient(
     100deg,
-    rgba(4, 18, 38, 0.94) 0%,
-    rgba(4, 18, 38, 0.55) 48%,
-    rgba(4, 18, 38, 0.22) 100%
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.55) 48%,
+    rgba(0, 0, 0, 0.22) 100%
   );
 }
 
@@ -135,14 +137,21 @@
 }
 
 .cp-hero-inner {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 3;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) auto;
   gap: 40px;
-  align-items: end;
-  min-height: clamp(650px, 78vh, 760px);
-  padding-block: 110px 84px;
+  align-items: center;
+  width: auto;
+  max-width: 1400px;
+  height: auto;
+  min-height: 0;
+  margin: 0 auto;
+  padding-block: var(--asas-internal-hero-pad-block, 64px);
+  padding-inline: clamp(20px, 4vw, 48px);
+  box-sizing: border-box;
 }
 
 .cp-hero-copy h1 {
@@ -227,7 +236,7 @@
 /* Subnav */
 .cp-subnav {
   position: sticky;
-  top: var(--ph-chrome, 80px);
+  top: var(--asas-chrome-h, var(--ph-chrome, 138px));
   z-index: 40;
   background: rgba(255, 255, 255, 0.97);
   border-bottom: 1px solid rgba(7, 4, 99, 0.08);
@@ -295,7 +304,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
 /* Sections */
 .cp-section {
   padding: clamp(84px, 10vw, 118px) 0;
-  scroll-margin-top: calc(var(--ph-chrome, 80px) + 64px);
+  scroll-margin-top: 0;
 }
 
 .cp-section h2,
@@ -335,7 +344,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   min-height: 420px;
   overflow: hidden;
   border-radius: 4px;
-  background: #0a1424;
+  background: #070463;
 }
 
 .cp-overview-media img {
@@ -425,10 +434,15 @@ html[dir='rtl'] .cp-subnav-links a:after {
 
 .cp-timeline-year {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: var(--cp-orange);
-  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  font: 700 12px/1.3 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.08em;
+}
+
+html[dir='rtl'] .cp-timeline-year {
+  letter-spacing: 0;
+  font-family: var(--asas-font-ar, var(--asas-font));
 }
 
 .cp-timeline strong {
@@ -466,7 +480,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   appearance: none;
   border: 1px solid rgba(7, 4, 99, 0.12);
   background: #fff;
-  color: rgba(7, 4, 99, 0.65);
+  color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
   font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
@@ -485,7 +499,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   color: #fff;
 }
 
-.cp-cap-panel {
+.cp-cap-layout {
   display: grid;
   grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
   gap: 20px;
@@ -519,7 +533,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
 .cp-cap-media {
   position: relative;
   min-height: 360px;
-  background: #0a1424;
+  background: #070463;
 }
 
 .cp-cap-media img {
@@ -567,7 +581,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 4px;
-  background: #0a1424;
+  background: #070463;
 }
 
 .cp-sector-media img {
@@ -582,7 +596,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
 .cp-sector-copy strong {
   display: block;
   margin-bottom: 6px;
-  color: var(--cp-navy);
+  color: var(--text-primary, var(--cp-navy));
   font-size: 17px;
   font-weight: 700;
 }
@@ -668,7 +682,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
 .cp-project-feature-media {
   position: relative;
   min-height: 420px;
-  background: #0a1424;
+  background: #070463;
 }
 
 .cp-project-feature-media img,
@@ -738,7 +752,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: #0a1424;
+  background: #070463;
 }
 
 .cp-project-copy {
@@ -835,7 +849,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   height: 38px;
   margin-bottom: 14px;
   border-radius: 50%;
-  background: rgba(229, 80, 33, 0.08);
+  background: rgba(160, 35, 21, 0.08);
   color: var(--cp-orange);
 }
 
@@ -888,7 +902,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   margin: 0 0 22px;
   padding: 0;
   list-style: none;
-  color: rgba(7, 4, 99, 0.55);
+  color: var(--text-muted, rgba(7, 4, 99, 0.55));
   font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.04em;
 }
@@ -905,7 +919,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   min-height: 280px;
   overflow: hidden;
   border-radius: 5px;
-  background: #0a1424;
+  background: #070463;
 }
 
 .cp-download-visual img {
@@ -916,6 +930,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   position: absolute;
   left: 16px;
   bottom: 16px;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -937,7 +952,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   align-items: center;
   padding: 88px 0;
   color: #fff;
-  scroll-margin-top: calc(var(--ph-chrome, 80px) + 64px);
+  scroll-margin-top: 0;
 }
 
 .cp-cta-media,
@@ -952,7 +967,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
 
 .cp-cta-veil {
   z-index: 1;
-  background: linear-gradient(100deg, rgba(4, 18, 38, 0.94) 0%, rgba(4, 18, 38, 0.76) 58%, rgba(4, 18, 38, 0.55) 100%);
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.76) 58%, rgba(0, 0, 0, 0.55) 100%);
 }
 
 .cp-cta-inner {
@@ -1015,7 +1030,7 @@ html[dir='rtl'] .cp-subnav-links a:after {
   .cp-hero-inner,
   .cp-overview-grid,
   .cp-story-grid,
-  .cp-cap-panel,
+  .cp-cap-layout,
   .cp-cap-detail,
   .cp-project-feature,
   .cp-presence-grid,
@@ -1059,8 +1074,9 @@ html[dir='rtl'] .cp-subnav-links a:after {
 
 @media (max-width: 700px) {
   .cp-hero-inner {
-    padding-block: 72px 56px;
-    min-height: 560px;
+    padding-block: var(--asas-internal-hero-pad-block, 56px 48px);
+    min-height: 0;
+    height: auto;
   }
 
   .cp-hero-copy h1 {
@@ -1103,9 +1119,9 @@ html[dir='rtl'] .cp-hero-blueprint {
 html[dir='rtl'] .cp-hero-veil {
   background: linear-gradient(
     260deg,
-    rgba(4, 18, 38, 0.94) 0%,
-    rgba(4, 18, 38, 0.55) 48%,
-    rgba(4, 18, 38, 0.22) 100%
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.55) 48%,
+    rgba(0, 0, 0, 0.22) 100%
   );
 }
 

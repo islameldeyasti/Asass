@@ -37,7 +37,7 @@ export default function CapabilitiesExplorer({locale, groups}) {
         ))}
       </div>
 
-      <div className="cp-cap-panel">
+      <div className="cp-cap-layout">
         <div className="cp-cap-nav">
           {currentGroup.services.map((service) => (
             <button
@@ -54,8 +54,27 @@ export default function CapabilitiesExplorer({locale, groups}) {
 
         {currentService && (
           <div className="cp-cap-detail">
-            <div className="cp-cap-media">
-              <Image src={currentService.image} alt="" fill sizes="(max-width: 900px) 100vw, 42vw" />
+            <div
+              className={`cp-cap-media${currentService.image ? '' : ' cp-cap-media--panel'}`}
+              aria-hidden="true"
+            >
+              {currentService.image ? (
+                <Image
+                  src={currentService.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                  style={{
+                    objectFit: 'cover',
+                    objectPosition: currentService.imagePosition || 'center center',
+                  }}
+                />
+              ) : (
+                <div className="cp-cap-fallback">
+                  <span>{ar ? 'خدمة' : 'Service'}</span>
+                  <strong>{ar ? currentService.titleAr : currentService.title}</strong>
+                </div>
+              )}
             </div>
             <div className="cp-cap-copy">
               <p className="cp-kicker">

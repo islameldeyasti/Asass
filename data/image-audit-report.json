@@ -1,0 +1,30 @@
+{
+  "duplicatesFoundInitially": "Widespread alias reuse of ~9 editorial assets across home/about/services/sectors/CTAs",
+  "roleAssetsNow": 51,
+  "uniqueRolePaths": 51,
+  "roleCollisions": {},
+  "multiComponentUsages": {},
+  "realProjectApproved": [
+    "traffic-access-studies"
+  ],
+  "projectsNeedingOriginal": [
+    "four-towers-al-nahda",
+    "building-mbz-musaffah-m26",
+    "building-khalifa-city-msh36",
+    "residential-building-al-raha-rbw2",
+    "mbz-city-towers",
+    "culture-private-school",
+    "emirates-private-school",
+    "compound-villas-portfolio",
+    "private-villa-shakhbout-w01",
+    "private-villa-khalifa-se24",
+    "residential-villa-al-shamkha-sh3",
+    "residential-villa-riyadh-rd32",
+    "residential-villa-bani-yas-eb11-01",
+    "reception-hall-private-villa",
+    "majlis-and-dining",
+    "restaurant-interior",
+    "hotel-lobby-interior"
+  ],
+  "aiGenericRoleAssetsCreated": 42
+}

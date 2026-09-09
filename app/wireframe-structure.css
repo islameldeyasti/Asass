@@ -55,7 +55,7 @@
 }
 
 .atlas-home .wf-process-list span {
-  color: var(--asas-navy);
+  color: var(--text-muted, rgba(7, 4, 99, 0.45));
   font: 700 15px/1.2 var(--font-sans, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);
   letter-spacing: .04em;
   padding-top: 2px;

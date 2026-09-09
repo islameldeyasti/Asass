@@ -1,20 +1,22 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import {ArrowUpRight, MessageCircle} from 'lucide-react';
-import {company} from '@/data/company';
-import {generatedEditorialImages} from '@/data/image-manifest';
+'use client';
 
-export default function TeamEnquiryCta({locale}) {
+import Image from 'next/image';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
+import {company} from '@/data/company';
+import {t} from '@/lib/i18n';
+
+export default function TeamEnquiryCta({locale, image}) {
   const ar = locale === 'ar';
-  const bg = generatedEditorialImages.siteSupervision || generatedEditorialImages.corporateTeam;
+  const src = typeof image === 'string' ? image : image?.src;
+  const crop = typeof image === 'object' && image?.crop ? image.crop : '50% 35%';
 
   return (
-    <section className="tm-cta">
-      {bg && (
-        <div className="tm-cta-media" aria-hidden="true">
-          <Image src={bg} alt="" fill sizes="100vw" style={{objectPosition: '50% 40%'}} />
-        </div>
-      )}
+    <section className="tm-cta asas-cta-band">
+      <div className="tm-cta-media" aria-hidden="true">
+        {src ? (
+          <Image src={src} alt="" fill sizes="100vw" style={{objectFit: 'cover', objectPosition: crop}} />
+        ) : null}
+      </div>
       <div className="tm-cta-veil" aria-hidden="true" />
       <div className="tm-shell tm-cta-inner">
         <div>
@@ -29,21 +31,19 @@ export default function TeamEnquiryCta({locale}) {
               : 'Our team is ready to discuss your requirements and help with the next steps.'}
           </p>
         </div>
-        <div className="tm-cta-actions">
-          <Link className="tm-btn-light" href={`/${locale}/project-enquiry`}>
+        <ActionGroup className="tm-cta-actions" stack={false}>
+          <ActionButton variant="primary" href={`/${locale}/project-enquiry`} icon="arrow-up">
             {ar ? 'ابدأ مشروعاً' : 'Start a Project'}
-            <ArrowUpRight size={15} className={ar ? 'tm-flip' : ''} />
-          </Link>
-          <a
-            className="tm-btn-ghost"
+          </ActionButton>
+          <ActionButton
+            variant="ghost"
             href={`https://wa.me/${company.whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            external
+            icon={false}
           >
-            <MessageCircle size={15} />
-            WhatsApp
-          </a>
-        </div>
+            {t('whatsapp', locale)}
+          </ActionButton>
+        </ActionGroup>
       </div>
     </section>
   );

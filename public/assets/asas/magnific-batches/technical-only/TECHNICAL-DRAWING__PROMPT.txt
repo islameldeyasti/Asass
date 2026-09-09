@@ -1,0 +1,3 @@
+TECHNICAL DRAWING — CLARITY ENHANCEMENT ONLY.
+
+Enhance the real ASAS technical drawing for “Traffic & Access Studies” for website presentation. Improve line sharpening, contrast, noise cleanup, and text/label edge legibility where present. Preserve EXACT plan geometry, roads, parking, markings, and municipal-review content. Do not redraw inventively, do not redesign, do not invent new geometry, do not add branding. Source: Frontend/assets/image-source/infrastructure/asas-traffic-access-studies-source.png.

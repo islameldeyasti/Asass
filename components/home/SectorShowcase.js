@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {useMemo, useRef} from 'react';
 import {motion, useInView, useMotionValue, useReducedMotion, useSpring, useTransform} from 'motion/react';
 import {ArrowRight} from 'lucide-react';
+import {ActionButton} from '@/components/ActionButton';
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -29,7 +30,7 @@ function TechOverlay({x, y}) {
           <path d="M500 180 H660" />
           <path d="M500 260 H640" />
           <path d="M540 100 V260" />
-          <circle cx="500" cy="100" r="3" fill="#e55021" stroke="none" />
+          <circle cx="500" cy="100" r="3" fill="#a02315" stroke="none" />
           <circle cx="540" cy="180" r="2.5" fill="#fff" stroke="none" />
           <path d="M620 320 L640 340 M640 320 L620 340" />
         </g>
@@ -232,10 +233,9 @@ export default function SectorShowcase({locale, cards, eyebrow, title, copy, cta
           </div>
           <div className="asas-sectors-head-aside">
             <p>{copy}</p>
-            <Link className="asas-sectors-all" href={`/${locale}/sectors`}>
+            <ActionButton variant="outline" href={`/${locale}/sectors`}>
               {cta}
-              <ArrowRight size={15} className={ar ? 'reverse-arrow' : ''} />
-            </Link>
+            </ActionButton>
           </div>
         </motion.header>
 

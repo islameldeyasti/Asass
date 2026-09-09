@@ -1,13 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
-import {ArrowUpRight} from 'lucide-react';
+import {ActionButton} from '@/components/ActionButton';
 
 export default function SectorDetailEnquiryCta({locale, image, title}) {
   const ar = locale === 'ar';
   return (
-    <section className="sc-cta">
+    <section className="asas-cta-band sc-cta">
       <div className="sc-cta-media" aria-hidden="true">
         {image && <Image src={image} alt="" fill sizes="100vw" />}
       </div>
@@ -24,10 +23,9 @@ export default function SectorDetailEnquiryCta({locale, image, title}) {
               ? 'فريقنا الهندسي جاهز لفهم متطلباتك والمساعدة في تحويل رؤيتك إلى واقع.'
               : 'Our engineering team is ready to understand your requirements and help turn your vision into reality.'}
           </p>
-          <Link className="sc-cta-btn" href={`/${locale}/project-enquiry`}>
+          <ActionButton variant="primary" href={`/${locale}/project-enquiry`} icon="arrow-up">
             {ar ? 'أرسل استفسار مشروع' : 'Submit a Project Enquiry'}
-            <ArrowUpRight size={16} className={ar ? 'sc-flip' : ''} />
-          </Link>
+          </ActionButton>
         </div>
         <ul className="sc-cta-words" aria-hidden="true">
           {(ar

@@ -32,7 +32,10 @@
 /* Hero */
 .about-hero {
   position: relative;
-  padding: 88px 0 72px;
+  height: var(--asas-internal-hero-h, clamp(650px, 72vh, 760px));
+  min-height: 650px;
+  max-height: 760px;
+  padding: var(--asas-internal-hero-pad-simple, 72px 0 60px);
   color: #fff;
   overflow: hidden;
   background: var(--asas-navy);
@@ -105,8 +108,8 @@
 }
 
 .about-hero-meta a:hover {
-  color: rgba(229, 80, 33, 0.45);
-  border-color: rgba(229, 80, 33, 0.45);
+  color: #fff;
+  border-color: var(--asas-rust, #a02315);
 }
 
 /* Body / featured */
@@ -147,7 +150,7 @@
 
 .about-featured-copy h2 {
   margin: 0;
-  color: var(--a-navy);
+  color: var(--text-primary, var(--a-ink));
   font-size: clamp(26px, 2.8vw, 36px);
   letter-spacing: -0.03em;
   line-height: 1.12;
@@ -186,7 +189,7 @@
 }
 
 .about-stat strong {
-  color: var(--a-navy);
+  color: var(--text-primary, var(--a-ink));
   font: 750 clamp(28px, 3vw, 36px)/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: -0.03em;
 }
@@ -218,7 +221,7 @@
 
 .about-vision-card h2 {
   margin: 10px 0 14px;
-  color: var(--a-navy);
+  color: var(--text-primary, var(--a-ink));
   font-size: clamp(24px, 2.6vw, 32px);
   letter-spacing: -0.03em;
   line-height: 1.15;
@@ -244,7 +247,7 @@
 
 .about-section-head h2 {
   margin: 10px 0 0;
-  color: var(--a-navy);
+  color: var(--text-primary, var(--a-ink));
   font-size: clamp(28px, 3.2vw, 40px);
   letter-spacing: -0.035em;
   line-height: 1.1;
@@ -272,7 +275,7 @@
 
 .about-strength-card h3 {
   margin: 0;
-  color: var(--a-navy);
+  color: var(--text-primary, var(--a-ink));
   font-size: 18px;
   letter-spacing: -0.02em;
 }
@@ -311,7 +314,7 @@
   border: 1px solid var(--a-line);
   border-radius: 999px;
   background: var(--a-paper);
-  color: var(--a-navy);
+  color: var(--text-primary, var(--a-ink));
   font: 650 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
@@ -352,7 +355,7 @@
 .about-standard-list strong {
   display: block;
   margin-bottom: 4px;
-  color: var(--a-navy);
+  color: var(--text-primary, var(--a-ink));
   font-size: 15px;
 }
 
@@ -377,7 +380,7 @@
 
 .about-mir-copy h2 {
   margin: 10px 0 14px;
-  color: var(--a-navy);
+  color: var(--text-primary, var(--a-ink));
   font-size: clamp(28px, 3vw, 40px);
   letter-spacing: -0.035em;
   line-height: 1.1;
@@ -409,7 +412,7 @@
 .about-mir-card strong {
   display: block;
   margin-bottom: 8px;
-  color: var(--a-navy);
+  color: var(--text-primary, var(--a-ink));
   font-size: 16px;
 }
 
@@ -448,9 +451,9 @@
   z-index: 1;
   background: linear-gradient(
     100deg,
-    rgba(4, 18, 38, 0.94) 0%,
-    rgba(4, 18, 38, 0.78) 55%,
-    rgba(4, 18, 38, 0.55) 100%
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.78) 55%,
+    rgba(0, 0, 0, 0.55) 100%
   );
 }
 
@@ -469,7 +472,7 @@
   align-items: center;
   gap: 10px;
   margin: 0 0 14px;
-  color: #e55021;
+  color: #a02315;
   font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -478,7 +481,7 @@
 .about-cta-kicker i {
   width: 22px;
   height: 2px;
-  background: #e55021;
+  background: #a02315;
 }
 
 .about-cta-copy h2 {
@@ -537,7 +540,7 @@
 }
 
 .about-cta-link:hover {
-  color: #e55021;
+  color: #a02315;
 }
 
 .about-cta-words {

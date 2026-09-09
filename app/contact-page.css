@@ -32,7 +32,10 @@
 /* Hero */
 .contact-hero {
   position: relative;
-  padding: 88px 0 72px;
+  height: var(--asas-internal-hero-h, clamp(650px, 72vh, 760px));
+  min-height: 650px;
+  max-height: 760px;
+  padding: var(--asas-internal-hero-pad-simple, 72px 0 60px);
   color: #fff;
   overflow: hidden;
   background: var(--asas-navy);
@@ -125,7 +128,7 @@
 
 .contact-aside h2 {
   margin: 0 0 12px;
-  color: var(--contact-navy);
+  color: var(--text-primary, var(--contact-ink));
   font-size: clamp(28px, 3vw, 36px);
   letter-spacing: -0.03em;
   line-height: 1.15;
@@ -151,7 +154,7 @@
 }
 
 .contact-list b {
-  color: var(--contact-navy);
+  color: var(--text-muted, var(--contact-navy));
   font: 750 11px/1.2 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -188,7 +191,7 @@
   padding: 18px 18px 16px;
   border: 1px solid var(--contact-line);
   border-radius: var(--contact-radius);
-  background: #fff;
+  background: var(--bg-surface-elevated, var(--contact-paper));
 }
 
 .contact-note-card > svg {
@@ -200,7 +203,7 @@
 .contact-note-card strong {
   display: block;
   margin-bottom: 6px;
-  color: var(--contact-navy);
+  color: var(--text-primary, var(--contact-ink));
   font-size: 15px;
 }
 
@@ -230,7 +233,7 @@
 
 .contact-form-head h2 {
   margin: 0 0 10px;
-  color: var(--contact-navy);
+  color: var(--text-primary, var(--contact-ink));
   font-size: clamp(24px, 2.6vw, 30px);
   letter-spacing: -0.03em;
   line-height: 1.15;
@@ -263,7 +266,7 @@
 }
 
 .enquiry-fields label > span {
-  color: var(--contact-navy, var(--asas-navy));
+  color: var(--text-primary, var(--contact-navy, var(--asas-navy)));
   font: 700 13px/1.3 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
@@ -308,7 +311,7 @@
 .enquiry-fields .has-error select,
 .enquiry-fields .has-error textarea {
   border-color: var(--contact-orange, var(--asas-orange));
-  box-shadow: 0 0 0 3px rgba(229, 80, 33, 0.12);
+  box-shadow: 0 0 0 3px rgba(160, 35, 21, 0.12);
 }
 
 .enquiry-fields em {
@@ -406,7 +409,7 @@
 .contact-map-head h2 {
   margin: 10px 0 12px;
   max-width: 18ch;
-  color: var(--contact-navy);
+  color: var(--text-primary, var(--contact-ink));
   font-size: clamp(28px, 3vw, 40px);
 }
 
@@ -472,11 +475,11 @@
   height: 12px;
   border-radius: 50%;
   background: var(--contact-orange);
-  box-shadow: 0 0 0 4px rgba(229, 80, 33, 0.2);
+  box-shadow: 0 0 0 4px rgba(160, 35, 21, 0.2);
 }
 
 .contact-map-pin strong {
-  color: var(--contact-navy);
+  color: var(--text-primary, var(--contact-ink));
   font: 750 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.08em;
 }
@@ -509,9 +512,9 @@
   z-index: 1;
   background: linear-gradient(
     100deg,
-    rgba(4, 18, 38, 0.94) 0%,
-    rgba(4, 18, 38, 0.78) 55%,
-    rgba(4, 18, 38, 0.55) 100%
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.78) 55%,
+    rgba(0, 0, 0, 0.55) 100%
   );
 }
 
@@ -530,7 +533,7 @@
   align-items: center;
   gap: 10px;
   margin: 0 0 14px;
-  color: #e55021;
+  color: #a02315;
   font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -539,7 +542,7 @@
 .contact-cta-kicker i {
   width: 22px;
   height: 2px;
-  background: #e55021;
+  background: #a02315;
 }
 
 .contact-cta-copy h2 {
@@ -598,7 +601,7 @@
 }
 
 .contact-cta-link:hover {
-  color: #e55021;
+  color: #a02315;
 }
 
 .contact-cta-words {

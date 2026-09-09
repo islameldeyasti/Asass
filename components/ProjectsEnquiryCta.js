@@ -1,13 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
-import {ArrowUpRight} from 'lucide-react';
+import {ActionButton} from '@/components/ActionButton';
 
 export default function ProjectsEnquiryCta({locale, image}) {
   const ar = locale === 'ar';
   return (
-    <section className="pl-cta">
+    <section className="asas-cta-band pl-cta">
       <div className="pl-cta-media" aria-hidden="true">
         {image?.src && (
           <Image src={image.src} alt="" fill sizes="100vw" style={{objectPosition: image.crop || '50% 40%'}} />
@@ -26,10 +25,9 @@ export default function ProjectsEnquiryCta({locale, image}) {
               ? 'فريقنا الهندسي جاهز لفهم متطلباتك والمساعدة في تحويل رؤيتك إلى واقع.'
               : 'Our engineering team is ready to understand your requirements and help turn your vision into reality.'}
           </p>
-          <Link className="pl-cta-btn" href={`/${locale}/project-enquiry`}>
+          <ActionButton variant="primary" href={`/${locale}/project-enquiry`} icon="arrow-up">
             {ar ? 'أرسل استفسار مشروع' : 'Submit a Project Enquiry'}
-            <ArrowUpRight size={16} className={ar ? 'reverse-arrow' : ''} />
-          </Link>
+          </ActionButton>
         </div>
         <ul className="pl-cta-words" aria-hidden="true">
           <li>{ar ? 'أشخاص' : 'People'}</li>

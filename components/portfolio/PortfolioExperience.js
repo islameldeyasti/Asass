@@ -1,13 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import {useCallback, useEffect, useMemo, useState} from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'motion/react';
 import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUpRight,
   ChevronLeft,
   ChevronRight,
   MessageCircle,
@@ -15,33 +11,25 @@ import {
 } from 'lucide-react';
 import {company} from '@/data/company';
 import {projectKinds} from '@/data/projects';
+import {observeSectionNav, scrollToSection as scrollToAnchor} from '@/lib/scroll/anchor';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
+import ProjectGallery, {resolveProjectImages} from '@/components/portfolio/ProjectGallery';
+import ProjectVisualFallback from '@/components/ProjectVisualFallback';
+import {t} from '@/lib/i18n';
 
 const EASE = [0.16, 1, 0.3, 1];
 
 const DISCIPLINES = [
   {id: 'architecture', en: 'Architecture', ar: 'العمارة', match: /architect/i},
   {id: 'structure', en: 'Structure', ar: 'الإنشاءات', match: /structur/i},
-  {id: 'mep', en: 'MEP', ar: 'MEP', match: /electromechan|mep|mechanical|electrical|plumb/i},
+  {id: 'mep', en: 'MEP', ar: 'الكهروميكانيكية', match: /electromechan|mep|mechanical|electrical|plumb/i},
   {id: 'pm', en: 'Project Management', ar: 'إدارة المشاريع', match: /project management|إدارة/i},
   {id: 'supervision', en: 'Supervision', ar: 'الإشراف', match: /supervision|إشراف/i},
   {id: 'planning', en: 'Planning', ar: 'التخطيط', match: /traffic|infrastructure|urban|planning|تخطيط|مرور/i},
 ];
 
 function uniqueGallery(project) {
-  const seen = new Set();
-  const items = [];
-  const push = (src, crop, photo) => {
-    if (!src || seen.has(src)) return;
-    seen.add(src);
-    items.push({src, crop: crop || '50% 40%', photo: Boolean(photo)});
-  };
-  const asset = project.imageAsset;
-  push(asset?.portfolio, '50% 40%', true);
-  push(asset?.card, '50% 50%', true);
-  push(asset?.mobile, '50% 45%', true);
-  push(project.visual?.src, project.visual?.crop, project.visual?.classification === 'PROJECT_PHOTO');
-  (project.gallery || []).forEach((src) => push(src, '50% 45%', true));
-  return items;
+  return resolveProjectImages(project);
 }
 
 function extractFacts(project, ar, categoryLabel) {
@@ -100,47 +88,43 @@ function ProjectLightbox({gallery, index, onClose, onPrev, onNext, title, ar}) {
 function InlineCta({locale, ar, variant = 0}) {
   const copy = [
     {
-      en: ['Planning a Similar Project?', 'Talk with the ASAS engineering team about coordinated design and delivery.'],
-      ar: ['هل تخطط لمشروع مشابه؟', 'تحدث مع فريق أساس الهندسي حول التصميم والتنفيذ المنسق.'],
+      en: ['Planning a similar project?', 'Talk with the ASAS engineering team about your next project.'],
+      ar: ['هل تخطط لمشروع مشابه؟', 'تحدث مع فريق أساس للاستشارات الهندسية وإدارة المشاريع الهندسي حول مشروعك القادم.'],
     },
     {
-      en: ['Need Architecture, Structure and MEP together?', 'Start a project enquiry and share your brief with the Abu Dhabi office.'],
-      ar: ['هل تحتاج العمارة والإنشاءات وMEP معاً؟', 'ابدأ استفسار مشروع وشارك موجزك مع مكتب أبوظبي.'],
+      en: ['Need architecture, structure and MEP together?', 'Share your brief with the Abu Dhabi office.'],
+      ar: ['هل تحتاج العمارة والإنشاءات والكهروميكانيكية معاً؟', 'شارك موجز مشروعك مع مكتب أبوظبي.'],
     },
     {
-      en: ['Have a project like this in mind?', 'Our team is ready to understand your requirements and next steps.'],
-      ar: ['هل لديك مشروع مشابه؟', 'فريقنا جاهز لفهم متطلباتك والخطوات التالية.'],
+      en: ['Have a project like this in mind?', 'Our team is ready to discuss requirements and next steps.'],
+      ar: ['هل لديك مشروع مشابه؟', 'فريقنا جاهز لمناقشة المتطلبات والخطوات التالية.'],
     },
   ][variant % 3];
 
   return (
-    <section className="pf-inline-cta">
-      <div className="pf-shell pf-inline-cta-inner">
-        <div>
-          <p className="pf-kicker light">
-            <i />
-            {ar ? 'ابدأ محادثة' : 'Start a Conversation'}
-          </p>
-          <h3>{ar ? copy.ar[0] : copy.en[0]}</h3>
-          <p>{ar ? copy.ar[1] : copy.en[1]}</p>
-        </div>
-        <div className="pf-inline-cta-actions">
-          <Link className="pf-btn-light" href={`/${locale}/project-enquiry`}>
-            {ar ? 'ابدأ مشروعاً' : 'Start a Project'}
-            <ArrowUpRight size={15} className={ar ? 'pf-flip' : ''} />
-          </Link>
-          <a
-            className="pf-btn-ghost"
-            href={`https://wa.me/${company.whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MessageCircle size={15} />
-            WhatsApp
-          </a>
+    <aside className="pf-inline-cta" aria-label={ar ? 'ابدأ مشروعاً' : 'Start a project'}>
+      <div className="pf-shell">
+        <div className="pf-inline-cta-panel">
+          <div className="pf-inline-cta-copy">
+            <h3>{ar ? copy.ar[0] : copy.en[0]}</h3>
+            <p>{ar ? copy.ar[1] : copy.en[1]}</p>
+          </div>
+          <ActionGroup className="pf-inline-cta-actions">
+            <ActionButton variant="primary" href={`/${locale}/project-enquiry`}>
+              {ar ? 'ابدأ مشروعاً' : 'Start a Project'}
+            </ActionButton>
+            <ActionButton
+              variant="outline"
+              href={`https://wa.me/${company.whatsapp}`}
+              external
+              icon={false}
+            >
+              {t('whatsapp', locale)}
+            </ActionButton>
+          </ActionGroup>
         </div>
       </div>
-    </section>
+    </aside>
   );
 }
 
@@ -148,7 +132,6 @@ function ProjectSection({
   project,
   index,
   total,
-  locale,
   ar,
   categoryLabel,
   layout,
@@ -159,76 +142,13 @@ function ProjectSection({
   const gallery = uniqueGallery(project);
   const facts = extractFacts(project, ar, categoryLabel);
   const scope = project.services || [];
-  const main = gallery[0];
-  const thumbs = gallery.slice(0, 4);
   const number = String(index + 1).padStart(2, '0');
   const title = ar ? project.titleAr : project.title;
   const location = ar
     ? project.locationShortAr || project.locationAr
     : project.locationShort || project.location;
   const description = ar ? project.descriptionAr : project.description;
-
-  if (layout === 'bleed') {
-    return (
-      <section
-        className={`pf-project pf-layout-bleed${dimmed ? ' is-dimmed' : ''}`}
-        id={`project-${project.slug}`}
-        data-category={project.category}
-      >
-        <div className="pf-bleed-media" aria-hidden="true">
-          {main && (
-            <Image
-              src={main.src}
-              alt=""
-              fill
-              sizes="100vw"
-              style={{objectPosition: main.crop}}
-              loading={index < 2 ? 'eager' : 'lazy'}
-            />
-          )}
-        </div>
-        <div className="pf-bleed-veil" aria-hidden="true" />
-        <svg className="pf-bleed-grid" viewBox="0 0 400 200" aria-hidden="true">
-          <g fill="none" stroke="currentColor" strokeWidth="1">
-            <path d="M20 20 H380 M20 180 H380 M40 0 V200 M360 0 V200" />
-            <path d="M40 100 H360" />
-          </g>
-        </svg>
-        <div className="pf-shell pf-bleed-panel">
-          <div className="pf-project-topline light">
-            <span>{number}</span>
-            <span>{categoryLabel}</span>
-          </div>
-          <h2>{title}</h2>
-          {location && <p className="pf-project-loc light">{location}</p>}
-          {description && <p className="pf-project-desc light">{description}</p>}
-          {scope.length > 0 && (
-            <ul className="pf-scope-chips">
-              {scope.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          )}
-          {gallery.length > 1 && (
-            <button type="button" className="pf-btn-ghost" onClick={() => onOpenGallery(project.slug, 0)}>
-              {ar ? 'عرض المعرض' : 'View Gallery'}
-            </button>
-          )}
-          <div className="pf-project-nav light">
-            <button type="button" disabled={index === 0} onClick={() => onGo(index - 1)}>
-              {ar ? 'السابق' : 'Previous'}
-            </button>
-            <span>
-              {number} / {String(total).padStart(2, '0')}
-            </span>
-            <button type="button" disabled={index === total - 1} onClick={() => onGo(index + 1)}>
-              {ar ? 'التالي' : 'Next'}
-            </button>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const isBleed = layout === 'bleed';
 
   return (
     <section
@@ -238,51 +158,38 @@ function ProjectSection({
     >
       <div className="pf-shell">
         <div className="pf-project-grid">
-          <div className="pf-project-media-col">
-            {main && (
-              <button
-                type="button"
-                className="pf-project-main"
-                onClick={() => onOpenGallery(project.slug, 0)}
-                aria-label={ar ? 'فتح المعرض' : 'Open gallery'}
-              >
-                <Image
-                  src={main.src}
-                  alt=""
-                  fill
-                  sizes="(max-width: 900px) 100vw, 58vw"
-                  style={{objectPosition: main.crop}}
-                  loading={index < 2 ? 'eager' : 'lazy'}
-                />
-                <span className="pf-project-shade" />
-              </button>
-            )}
-            {thumbs.length > 1 && (
-              <div className="pf-project-thumbs">
-                {thumbs.slice(1).map((item, i) => (
-                  <button
-                    key={`${project.slug}-t-${i}`}
-                    type="button"
-                    onClick={() => onOpenGallery(project.slug, i + 1)}
-                  >
-                    <Image src={item.src} alt="" fill sizes="160px" style={{objectPosition: item.crop}} loading="lazy" />
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div className="pf-project-copy">
-            <div className="pf-project-topline">
+          <header className={`pf-project-head${isBleed ? ' light' : ''}`}>
+            <div className={`pf-project-topline${isBleed ? ' light' : ''}`}>
               <span>{number}</span>
               <span>{categoryLabel}</span>
             </div>
             <h2>{title}</h2>
-            {location && <p className="pf-project-loc">{location}</p>}
-            {description && <p className="pf-project-desc">{description}</p>}
+            {location && <p className={`pf-project-loc${isBleed ? ' light' : ''}`}>{location}</p>}
+          </header>
+
+          <div className="pf-project-media-col">
+            {gallery.length > 0 ? (
+              <ProjectGallery
+                images={gallery}
+                title={title}
+                ar={ar}
+                priority={index < 2}
+                onExpand={(imageIndex) => onOpenGallery(project.slug, imageIndex)}
+              />
+            ) : (
+              <div className="pf-gallery-stage pf-gallery-fallback">
+                <ProjectVisualFallback project={project} locale={ar ? 'ar' : 'en'} />
+              </div>
+            )}
+          </div>
+
+          <div className={`pf-project-copy${isBleed ? ' is-dark' : ''}`}>
+            {description && (
+              <p className={`pf-project-desc${isBleed ? ' light' : ''}`}>{description}</p>
+            )}
 
             {facts.length > 0 && (
-              <dl className="pf-facts">
+              <dl className={`pf-facts${isBleed ? ' light' : ''}`}>
                 {facts.map((fact) => (
                   <div key={fact.label}>
                     <dt>{fact.label}</dt>
@@ -293,8 +200,8 @@ function ProjectSection({
             )}
 
             {scope.length > 0 && (
-              <div className="pf-scope">
-                <span className="pf-scope-label">{ar ? 'نطاق أساس' : 'ASAS Scope'}</span>
+              <div className={`pf-scope${isBleed ? ' light' : ''}`}>
+                <span className="pf-scope-label">{ar ? 'نطاق أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Scope'}</span>
                 <ul>
                   {scope.map((item) => (
                     <li key={item}>{item}</li>
@@ -303,22 +210,17 @@ function ProjectSection({
               </div>
             )}
 
-            <div className="pf-project-nav">
+            <div className={`pf-project-nav${isBleed ? ' light' : ''}`}>
               <button type="button" disabled={index === 0} onClick={() => onGo(index - 1)}>
-                {ar ? 'المشروع السابق' : 'Previous Project'}
+                {ar ? 'السابق' : 'Previous'}
               </button>
               <span>
                 {number} / {String(total).padStart(2, '0')}
               </span>
               <button type="button" disabled={index === total - 1} onClick={() => onGo(index + 1)}>
-                {ar ? 'المشروع التالي' : 'Next Project'}
+                {ar ? 'التالي' : 'Next'}
               </button>
             </div>
-
-            <Link className="pf-text-cta" href={`/${locale}/project-enquiry`}>
-              {ar ? 'التخطيط لمشروع مشابه؟ ابدأ محادثة' : 'Planning a similar project? Start a conversation'}
-              <ArrowRight size={15} className={ar ? 'pf-flip' : ''} />
-            </Link>
           </div>
         </div>
       </div>
@@ -391,9 +293,7 @@ export default function PortfolioExperience({locale, projects, categories}) {
   const activeDiscipline = DISCIPLINES.find((item) => item.id === discipline) || null;
 
   const scrollToProject = useCallback((slug) => {
-    const el = document.getElementById(`project-${slug}`);
-    if (!el) return;
-    el.scrollIntoView({behavior: 'smooth', block: 'start'});
+    scrollToAnchor(`project-${slug}`, {updateHash: false});
     setActiveSlug(slug);
   }, []);
 
@@ -406,19 +306,8 @@ export default function PortfolioExperience({locale, projects, categories}) {
   );
 
   useEffect(() => {
-    const nodes = visible.map((project) => document.getElementById(`project-${project.slug}`)).filter(Boolean);
-    if (!nodes.length) return undefined;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const hit = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (hit?.target?.id) setActiveSlug(hit.target.id.replace('project-', ''));
-      },
-      {rootMargin: '-30% 0px -45% 0px', threshold: [0.15, 0.4]},
-    );
-    nodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
+    const ids = visible.map((project) => `project-${project.slug}`);
+    return observeSectionNav(ids, (id) => setActiveSlug(id.replace(/^project-/, '')));
   }, [visible]);
 
   useEffect(() => {
@@ -458,16 +347,18 @@ export default function PortfolioExperience({locale, projects, categories}) {
       lastCategory = project.category;
       stream.push(
         <div className="pf-interlude" key={`int-${project.category}-${index}`}>
-          <div className="pf-shell">
-            <p className="pf-kicker light">
+          <div className="pf-shell pf-interlude-inner">
+            <p className="pf-kicker">
               <i />
               {ar ? 'القطاع' : 'Sector'}
             </p>
-            <h2>{ar ? categoryMap[project.category]?.titleAr : categoryMap[project.category]?.title}</h2>
-            <span>
-              {String(visible.filter((p) => p.category === project.category).length).padStart(2, '0')}{' '}
-              {ar ? 'مشاريع' : 'Projects'}
-            </span>
+            <div className="pf-interlude-row">
+              <h2>{ar ? categoryMap[project.category]?.titleAr : categoryMap[project.category]?.title}</h2>
+              <span>
+                {String(visible.filter((p) => p.category === project.category).length).padStart(2, '0')}{' '}
+                {ar ? 'مشاريع' : 'Projects'}
+              </span>
+            </div>
           </div>
         </div>,
       );
@@ -487,7 +378,6 @@ export default function PortfolioExperience({locale, projects, categories}) {
           project={project}
           index={index}
           total={visible.length}
-          locale={locale}
           ar={ar}
           categoryLabel={ar ? categoryMap[project.category]?.titleAr : categoryMap[project.category]?.title}
           layout={layout}
@@ -498,7 +388,7 @@ export default function PortfolioExperience({locale, projects, categories}) {
       </motion.div>,
     );
 
-    if ((index + 1) % 3 === 0 && index < visible.length - 1) {
+    if ((index + 1) % 6 === 0 && index < visible.length - 1) {
       stream.push(<InlineCta key={`cta-${index}`} locale={locale} ar={ar} variant={ctaTick++} />);
     }
   });
@@ -517,17 +407,17 @@ export default function PortfolioExperience({locale, projects, categories}) {
             <path d="M110 100 V370" />
             <path d="M30 150 H190" />
             <path d="M30 240 H170" />
-            <circle cx="30" cy="150" r="3" fill="#e55021" stroke="none" />
+            <circle cx="30" cy="150" r="3" fill="#a02315" stroke="none" />
           </g>
         </svg>
         <div className="pf-shell pf-hero-inner">
           <div className="pf-hero-copy">
             <p className="pf-kicker light">
               <i />
-              {ar ? 'محفظة أساس' : 'ASAS Portfolio'}
+              {ar ? 'محفظة أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Portfolio'}
             </p>
             <h1>
-              <span className="pf-sr-only">{ar ? 'محفظة مشاريع أساس' : 'ASAS Project Portfolio'}</span>
+              <span className="pf-sr-only">{ar ? 'محفظة مشاريع أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Project Portfolio'}</span>
               {ar ? (
                 <>
                   <span aria-hidden="true">تحويل الأفكار</span>
@@ -544,19 +434,9 @@ export default function PortfolioExperience({locale, projects, categories}) {
             </h1>
             <p className="pf-hero-lede">
               {ar
-                ? 'رحلة عبر مشاريع أساس في العمارة والإنشاءات والكهروميكانيك وإدارة المشاريع والتخصصات الاستشارية.'
+                ? 'رحلة عبر مشاريع أساس للاستشارات الهندسية وإدارة المشاريع في العمارة والإنشاءات والكهروميكانيك وإدارة المشاريع والتخصصات الاستشارية.'
                 : 'A curated journey through ASAS projects across architecture, structure, MEP, project management and specialist engineering disciplines.'}
             </p>
-            <div className="pf-hero-actions">
-              <a className="pf-btn-primary" href="#portfolio-work">
-                {ar ? 'استكشف المحفظة' : 'Explore the Portfolio'}
-                <ArrowDown size={15} />
-              </a>
-              <Link className="pf-btn-ghost" href={`/${locale}/project-enquiry`}>
-                {ar ? 'ابدأ مشروعاً' : 'Start a Project'}
-                <ArrowUpRight size={15} className={ar ? 'pf-flip' : ''} />
-              </Link>
-            </div>
             <div className="pf-hero-meta">
               <span>
                 {projects.length} {ar ? 'مشاريع' : 'Projects'}
@@ -567,14 +447,22 @@ export default function PortfolioExperience({locale, projects, categories}) {
               </span>
               <span aria-hidden="true">·</span>
               <span>
-                {ar ? company.cityAr : company.city} / UAE
+                {ar ? company.cityAr : company.city} / {ar ? 'الإمارات' : 'UAE'}
               </span>
+            </div>
+            <div className="pf-hero-actions">
+              <ActionButton variant="primary" href="#portfolio-work" icon={false}>
+                {ar ? 'استكشف المحفظة' : 'Explore the Portfolio'}
+              </ActionButton>
+              <ActionButton variant="ghost" href={`/${locale}/project-enquiry`}>
+                {ar ? 'ابدأ مشروعاً' : 'Start a Project'}
+              </ActionButton>
             </div>
           </div>
         </div>
       </section>
 
-      <nav className="pf-subnav" aria-label={ar ? 'تصفية المحفظة' : 'Portfolio filters'}>
+      <nav className="pf-subnav" data-sticky-subnav aria-label={ar ? 'تصفية المحفظة' : 'Portfolio filters'}>
         <div className="pf-shell pf-subnav-inner">
           <div className="pf-filters">
             {filterCats.map((item) => (
@@ -757,47 +645,33 @@ export default function PortfolioExperience({locale, projects, categories}) {
         </div>
       </section>
 
-      <section className="pf-final-cta">
-        <div className="pf-final-cta-media" aria-hidden="true">
-          {heroImage && <Image src={heroImage} alt="" fill sizes="100vw" loading="lazy" />}
-        </div>
-        <div className="pf-final-cta-veil" aria-hidden="true" />
-        <div className="pf-shell pf-final-cta-inner">
-          <div>
-            <p className="pf-kicker light">
-              <i />
-              {ar ? 'ابدأ محادثة' : 'Start a Conversation'}
-            </p>
-            <h2>{ar ? 'هل تخطط لمشروعك التالي؟' : 'Planning Your Next Project?'}</h2>
-            <p>
-              {ar
-                ? 'فريقنا الهندسي جاهز لفهم متطلباتك والمساعدة في نقل مشروعك من الفكرة إلى التسليم.'
-                : 'Our engineering team is ready to understand your requirements and help move your project from concept to delivery.'}
-            </p>
-            <div className="pf-hero-actions">
-              <Link className="pf-btn-light" href={`/${locale}/project-enquiry`}>
-                {ar ? 'ابدأ مشروعاً' : 'Start a Project'}
-                <ArrowUpRight size={15} className={ar ? 'pf-flip' : ''} />
-              </Link>
-              <a
-                className="pf-btn-ghost"
-                href={`https://wa.me/${company.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle size={15} />
-                WhatsApp
-              </a>
+      <aside className="pf-final-cta" aria-label={ar ? 'ابدأ مشروعاً' : 'Start a project'}>
+        <div className="pf-shell">
+          <div className="pf-final-cta-panel">
+            <div className="pf-final-cta-copy">
+              <h2>{ar ? 'هل تخطط لمشروعك التالي؟' : 'Planning your next project?'}</h2>
+              <p>
+                {ar
+                  ? 'فريق أساس للاستشارات الهندسية وإدارة المشاريع جاهز لمناقشة متطلباتك والخطوات التالية.'
+                  : 'The ASAS team is ready to discuss your requirements and next steps.'}
+              </p>
             </div>
+            <ActionGroup className="pf-final-cta-actions">
+              <ActionButton variant="primary" href={`/${locale}/project-enquiry`}>
+                {ar ? 'ابدأ مشروعاً' : 'Start a Project'}
+              </ActionButton>
+              <ActionButton
+                variant="outline"
+                href={`https://wa.me/${company.whatsapp}`}
+                external
+                icon={<MessageCircle size={15} aria-hidden="true" />}
+              >
+                {t('whatsapp', locale)}
+              </ActionButton>
+            </ActionGroup>
           </div>
-          <ul className="pf-final-words" aria-hidden="true">
-            <li>{ar ? 'صمّم' : 'Design'}</li>
-            <li>{ar ? 'هندس' : 'Engineer'}</li>
-            <li>{ar ? 'نسّق' : 'Coordinate'}</li>
-            <li>{ar ? 'سلّم' : 'Deliver'}</li>
-          </ul>
         </div>
-      </section>
+      </aside>
 
       {lightbox && (
         <ProjectLightbox

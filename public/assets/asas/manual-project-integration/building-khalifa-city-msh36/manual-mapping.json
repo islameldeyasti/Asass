@@ -1,0 +1,44 @@
+{
+  "project": "Commercial & Residential Building \u2014 MSH36",
+  "slug": "building-khalifa-city-msh36",
+  "category": "buildings",
+  "finalStatus": "DEPLOYED_READY",
+  "currentHero": "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-01-hero.webp",
+  "websiteStatus": "APPROVED_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/building-khalifa-city-msh36/source-reference/source-reference.png",
+  "productionSourceStatus": "HAS_SOURCE",
+  "approved": [
+    {
+      "file": "building-khalifa-city-msh36-01-hero.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/building-khalifa-city-msh36/approved/building-khalifa-city-msh36-01-hero.webp",
+      "live_path": "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-01-hero.webp",
+      "view": "HERO",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "building-khalifa-city-msh36-02-front.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/building-khalifa-city-msh36/approved/building-khalifa-city-msh36-02-front.webp",
+      "live_path": "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-02-front.webp",
+      "view": "FRONT",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "building-khalifa-city-msh36-03-left-angle.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/building-khalifa-city-msh36/approved/building-khalifa-city-msh36-03-left-angle.webp",
+      "live_path": "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-03-left-angle.webp",
+      "view": "LEFT_ANGLE",
+      "confidence": "HIGH",
+      "deployed": true
+    }
+  ],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": false,
+  "notes": [
+    "3 HIGH-confidence image(s) already live under projects-generated/."
+  ]
+}

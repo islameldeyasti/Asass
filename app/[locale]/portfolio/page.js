@@ -9,7 +9,7 @@ export async function generateMetadata({params}) {
       ? 'محفظة المشاريع | أساس للاستشارات الهندسية وإدارة المشاريع'
       : 'ASAS Project Portfolio | Engineering & Project Management Consultancy',
     description: ar
-      ? `استكشف ${projects.length} مشروعاً من أعمال أساس عبر القطاعات والتخصصات — دون مغادرة الصفحة.`
+      ? `استكشف ${projects.length} مشروعاً من أعمال أساس للاستشارات الهندسية وإدارة المشاريع عبر القطاعات والتخصصات — دون مغادرة الصفحة.`
       : `Explore ${projects.length} ASAS projects across sectors and disciplines in one immersive portfolio experience.`,
   };
 }

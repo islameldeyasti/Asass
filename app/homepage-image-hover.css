@@ -1,0 +1,182 @@
+/* =========================================================
+   Homepage-only image hover fade / reveal
+   Scoped to .asas-home — does not affect other routes.
+   ========================================================= */
+
+:root {
+  --home-img-opacity: 0.9;
+  --home-img-opacity-hover: 1;
+  --home-img-scale: 1.02;
+  --home-img-duration: 380ms;
+  --home-img-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/*
+  Reusable utility — add class="home-image-hover" to any wrapper.
+  Also auto-applied to known homepage image shells below.
+*/
+.asas-home .home-image-hover,
+.asas-home .hp-about-visual,
+.asas-home .hp-featured-visual,
+.asas-home .hp-portfolio-media,
+.asas-home .insp-tab-media,
+.asas-home .asas-sec-media,
+.asas-home .asas-ph-thumb-media,
+.asas-home .tm-home-aside-media,
+.asas-home .tm-home .tm-card-media {
+  overflow: hidden;
+}
+
+/* Beat SiteMotion `.asas-img.is-inview { opacity: 1 }` without fighting scroll-reveal */
+html.asas-motion .asas-home .home-image-hover img,
+html.asas-motion .asas-home .home-image-hover img.asas-img,
+html.asas-motion .asas-home .home-image-hover img.asas-img.is-inview,
+html.asas-motion .asas-home .hp-about-visual img,
+html.asas-motion .asas-home .hp-about-visual img.asas-img,
+html.asas-motion .asas-home .hp-about-visual img.asas-img.is-inview,
+html.asas-motion .asas-home .hp-featured-visual img,
+html.asas-motion .asas-home .hp-featured-visual img.asas-img,
+html.asas-motion .asas-home .hp-featured-visual img.asas-img.is-inview,
+html.asas-motion .asas-home .hp-portfolio-media img,
+html.asas-motion .asas-home .hp-portfolio-media img.asas-img,
+html.asas-motion .asas-home .hp-portfolio-media img.asas-img.is-inview,
+html.asas-motion .asas-home .insp-tab-media img,
+html.asas-motion .asas-home .insp-tab-media img.asas-img,
+html.asas-motion .asas-home .insp-tab-media img.asas-img.is-inview,
+html.asas-motion .asas-home .asas-sec-media img,
+html.asas-motion .asas-home .asas-sec-image,
+html.asas-motion .asas-home .asas-ph-thumb-media img,
+html.asas-motion .asas-home .tm-home-aside-media img,
+html.asas-motion .asas-home .tm-home-aside-media img.asas-img,
+html.asas-motion .asas-home .tm-home-aside-media img.asas-img.is-inview,
+html.asas-motion .asas-home .tm-home .tm-card-media img,
+html.asas-motion .asas-home .tm-home .tm-card-media img.asas-img,
+html.asas-motion .asas-home .tm-home .tm-card-media img.asas-img.is-inview,
+.asas-home .home-image-hover img,
+.asas-home .hp-about-visual img,
+.asas-home .hp-featured-visual img,
+.asas-home .hp-portfolio-media img,
+.asas-home .insp-tab-media img,
+.asas-home .asas-sec-media img,
+.asas-home .asas-sec-image,
+.asas-home .asas-ph-thumb-media img,
+.asas-home .tm-home-aside-media img,
+.asas-home .tm-home .tm-card-media img {
+  opacity: var(--home-img-opacity);
+  transform: scale(1);
+  transform-origin: center center;
+  transition:
+    opacity var(--home-img-duration) var(--home-img-ease),
+    transform 450ms var(--home-img-ease),
+    filter var(--home-img-duration) var(--home-img-ease);
+}
+
+/* Hover only when a real hover pointer is available */
+@media (hover: hover) and (pointer: fine) {
+  html.asas-motion .asas-home .home-image-hover:hover img,
+  html.asas-motion .asas-home .home-image-hover:hover img.asas-img.is-inview,
+  html.asas-motion .asas-home .hp-about-visual:hover img,
+  html.asas-motion .asas-home .hp-about-visual:hover img.asas-img.is-inview,
+  html.asas-motion .asas-home .hp-featured:hover .hp-featured-visual img,
+  html.asas-motion .asas-home .hp-featured:hover .hp-featured-visual img.asas-img.is-inview,
+  html.asas-motion .asas-home .hp-portfolio-card:hover .hp-portfolio-media img,
+  html.asas-motion .asas-home .hp-portfolio-card:hover .hp-portfolio-media img.asas-img.is-inview,
+  html.asas-motion .asas-home .insp-tab-panel:hover .insp-tab-media img,
+  html.asas-motion .asas-home .insp-tab-panel:hover .insp-tab-media img.asas-img.is-inview,
+  html.asas-motion .asas-home .asas-sec-card:hover .asas-sec-media img,
+  html.asas-motion .asas-home .asas-sec-card:hover .asas-sec-image,
+  html.asas-motion .asas-home .asas-ph-strip button:hover .asas-ph-thumb-media img,
+  html.asas-motion .asas-home .tm-home-aside-media:hover img,
+  html.asas-motion .asas-home .tm-home-aside-media:hover img.asas-img.is-inview,
+  html.asas-motion .asas-home .tm-home .tm-card:hover .tm-card-media img,
+  html.asas-motion .asas-home .tm-home .tm-card:hover .tm-card-media img.asas-img.is-inview,
+  .asas-home .home-image-hover:hover img,
+  .asas-home .hp-about-visual:hover img,
+  .asas-home .hp-featured:hover .hp-featured-visual img,
+  .asas-home .hp-portfolio-card:hover .hp-portfolio-media img,
+  .asas-home .insp-tab-panel:hover .insp-tab-media img,
+  .asas-home .asas-sec-card:hover .asas-sec-media img,
+  .asas-home .asas-sec-card:hover .asas-sec-image,
+  .asas-home .asas-ph-strip button:hover .asas-ph-thumb-media img,
+  .asas-home .tm-home-aside-media:hover img,
+  .asas-home .tm-home .tm-card:hover .tm-card-media img {
+    opacity: var(--home-img-opacity-hover);
+    transform: scale(var(--home-img-scale));
+    filter: brightness(1.03) saturate(1.04);
+  }
+
+  /* Soften existing dark overlays — lighter on hover, text stays readable */
+  .asas-home .hp-featured-visual:after {
+    transition: opacity var(--home-img-duration) var(--home-img-ease);
+  }
+
+  .asas-home .hp-featured:hover .hp-featured-visual:after {
+    opacity: 0.72;
+  }
+
+  .asas-home .asas-sec-veil {
+    transition:
+      background 0.4s ease,
+      opacity var(--home-img-duration) var(--home-img-ease);
+  }
+
+  .asas-home .asas-sec-card:hover .asas-sec-veil {
+    opacity: 0.88;
+  }
+
+  .asas-home .tm-home .tm-card:hover .tm-card-shade {
+    opacity: 0.88;
+  }
+}
+
+/* Override older homepage zoom (1.04 / 1.035) to the shared restrained scale */
+.asas-home .hp-portfolio-card:hover .hp-portfolio-media img,
+.asas-home .hp-featured:hover .hp-featured-visual img,
+.asas-home .asas-sec-card:hover .asas-sec-image,
+.asas-home .tm-home .tm-card:hover .tm-card-media img {
+  transform: scale(var(--home-img-scale));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.asas-motion .asas-home .home-image-hover img,
+  html.asas-motion .asas-home .hp-about-visual img,
+  html.asas-motion .asas-home .hp-featured-visual img,
+  html.asas-motion .asas-home .hp-portfolio-media img,
+  html.asas-motion .asas-home .insp-tab-media img,
+  html.asas-motion .asas-home .asas-sec-media img,
+  html.asas-motion .asas-home .asas-sec-image,
+  html.asas-motion .asas-home .asas-ph-thumb-media img,
+  html.asas-motion .asas-home .tm-home-aside-media img,
+  html.asas-motion .asas-home .tm-home .tm-card-media img,
+  .asas-home .home-image-hover img,
+  .asas-home .hp-about-visual img,
+  .asas-home .hp-featured-visual img,
+  .asas-home .hp-portfolio-media img,
+  .asas-home .insp-tab-media img,
+  .asas-home .asas-sec-media img,
+  .asas-home .asas-sec-image,
+  .asas-home .asas-ph-thumb-media img,
+  .asas-home .tm-home-aside-media img,
+  .asas-home .tm-home .tm-card-media img {
+    transition: opacity 200ms ease;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .asas-home .home-image-hover:hover img,
+    .asas-home .hp-about-visual:hover img,
+    .asas-home .hp-featured:hover .hp-featured-visual img,
+    .asas-home .hp-portfolio-card:hover .hp-portfolio-media img,
+    .asas-home .insp-tab-panel:hover .insp-tab-media img,
+    .asas-home .asas-sec-card:hover .asas-sec-media img,
+    .asas-home .asas-sec-card:hover .asas-sec-image,
+    .asas-home .asas-ph-strip button:hover .asas-ph-thumb-media img,
+    .asas-home .tm-home-aside-media:hover img,
+    .asas-home .tm-home .tm-card:hover .tm-card-media img {
+      opacity: 1;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+}

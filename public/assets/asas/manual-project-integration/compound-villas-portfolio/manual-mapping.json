@@ -1,0 +1,28 @@
+{
+  "project": "Compound Villas Portfolio",
+  "slug": "compound-villas-portfolio",
+  "category": "compound-villas",
+  "finalStatus": "DEPLOYED_READY",
+  "currentHero": "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp",
+  "websiteStatus": "APPROVED_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/compound-villas-portfolio/source-reference/source-reference.png",
+  "productionSourceStatus": "WEAK_SOURCE",
+  "approved": [
+    {
+      "file": "compound-villas-portfolio-01-hero.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/compound-villas-portfolio/approved/compound-villas-portfolio-01-hero.webp",
+      "live_path": "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp",
+      "view": "HERO",
+      "confidence": "HIGH",
+      "deployed": true
+    }
+  ],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": false,
+  "notes": [
+    "1 HIGH-confidence image(s) already live under projects-generated/."
+  ]
+}

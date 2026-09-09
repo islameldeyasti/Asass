@@ -2,9 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {ArrowRight, Clock3, FileText, Mail, MessageCircle, Phone} from 'lucide-react';
 import {Container} from '@/components/UI';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import EnquiryForm from '@/components/EnquiryForm';
 import {company} from '@/data/company';
-import {generatedEditorialImages} from '@/data/image-manifest';
+import {roleImages} from '@/data/image-manifest';
 
 const steps = [
   {
@@ -19,7 +20,7 @@ const steps = [
     title: 'Office review',
     titleAr: 'مراجعة المكتب',
     copy: 'The ASAS team reviews the enquiry against capability and capacity.',
-    copyAr: 'يراجع فريق أساس الاستفسار وفق القدرة والسعة.',
+    copyAr: 'يراجع فريق أساس للاستشارات الهندسية وإدارة المشاريع الاستفسار وفق القدرة والسعة.',
   },
   {
     n: '03',
@@ -37,10 +38,10 @@ function NextArrow({ar}) {
 export async function generateMetadata({params}) {
   const {locale} = await params;
   return {
-    title: locale === 'ar' ? 'استفسار مشروع | أساس' : 'Project Enquiry | ASAS',
+    title: locale === 'ar' ? 'استفسار مشروع | أساس للاستشارات الهندسية وإدارة المشاريع' : 'Project Enquiry | ASAS',
     description:
       locale === 'ar'
-        ? 'أرسل استفسار مشروع إلى مكتب أساس في أبوظبي.'
+        ? 'أرسل استفسار مشروع إلى مكتب أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي.'
         : 'Send a project enquiry to the ASAS office in Abu Dhabi.',
   };
 }
@@ -54,7 +55,7 @@ export default async function Enquiry({params}) {
       <section className="enquiry-hero">
         <div className="enquiry-hero-photo" aria-hidden="true">
           <Image
-            src={generatedEditorialImages.technicalCoordination}
+            src={roleImages.ENQUIRY_HERO}
             alt=""
             fill
             priority
@@ -62,8 +63,8 @@ export default async function Enquiry({params}) {
           />
         </div>
         <Container>
-          <span className="breadcrumb">ASAS / {ar ? 'استفسار مشروع' : 'Project Enquiry'}</span>
-          <h1>{ar ? 'ابدأ مشروعك مع أساس.' : 'Start your project with ASAS.'}</h1>
+          <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'استفسار مشروع' : 'Project Enquiry'}</span>
+          <h1>{ar ? 'ابدأ مشروعك مع أساس للاستشارات الهندسية وإدارة المشاريع.' : 'Start your project with ASAS.'}</h1>
           <p>
             {ar
               ? 'شارك المعلومات الأساسية عن المشروع لبدء المحادثة مع فريق المكتب في أبوظبي.'
@@ -130,10 +131,9 @@ export default async function Enquiry({params}) {
                     ? 'حمّل الملف الرسمي قبل أو بعد إرسال الاستفسار.'
                     : 'Download the official profile before or after sending your enquiry.'}
                 </p>
-                <Link className="atlas-link" href={`/${locale}/downloads`}>
+                <ActionButton variant="outline" href={`/${locale}/downloads`} icon="file">
                   {ar ? 'صفحة التحميلات' : 'Downloads page'}
-                  <NextArrow ar={ar} />
-                </Link>
+                </ActionButton>
               </div>
             </div>
           </aside>
@@ -144,7 +144,7 @@ export default async function Enquiry({params}) {
               <h2>{ar ? 'أرسل استفسار مشروع' : 'Submit a project enquiry'}</h2>
               <p>
                 {ar
-                  ? 'املأ الحقول أدناه وسنفتح رسالة جاهزة إلى فريق أساس.'
+                  ? 'املأ الحقول أدناه وسنفتح رسالة جاهزة إلى فريق أساس للاستشارات الهندسية وإدارة المشاريع.'
                   : 'Complete the fields below and we will open a ready message to the ASAS team.'}
               </p>
             </header>
@@ -153,15 +153,7 @@ export default async function Enquiry({params}) {
         </Container>
       </section>
 
-      <section className="enquiry-cta">
-        <div className="enquiry-cta-media" aria-hidden="true">
-          <Image
-            src={generatedEditorialImages.buildingsSector}
-            alt=""
-            fill
-            sizes="100vw"
-          />
-        </div>
+      <section className="enquiry-cta asas-cta-band">
         <div className="enquiry-cta-veil" aria-hidden="true" />
         <Container className="enquiry-cta-inner">
           <div className="enquiry-cta-copy">
@@ -175,16 +167,14 @@ export default async function Enquiry({params}) {
                 ? 'إذا كنت لا تزال تستكشف النطاق، يمكنك البدء من صفحات الخدمات أو المشاريع.'
                 : 'If you are still exploring scope, start from the services or projects pages.'}
             </p>
-            <div className="enquiry-cta-actions">
-              <Link className="enquiry-cta-btn" href={`/${locale}/services`}>
+            <ActionGroup className="enquiry-cta-actions">
+              <ActionButton variant="primary" href={`/${locale}/services`}>
                 {ar ? 'الخدمات' : 'Services'}
-                <NextArrow ar={ar} />
-              </Link>
-              <Link className="enquiry-cta-link" href={`/${locale}/projects`}>
+              </ActionButton>
+              <ActionButton variant="ghost" href={`/${locale}/projects`}>
                 {ar ? 'المشاريع' : 'Projects'}
-                <NextArrow ar={ar} />
-              </Link>
-            </div>
+              </ActionButton>
+            </ActionGroup>
           </div>
           <ul className="enquiry-cta-words" aria-hidden="true">
             <li>{ar ? 'أشخاص' : 'People'}</li>

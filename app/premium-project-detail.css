@@ -1,11 +1,13 @@
 /* Premium project case study — reference layout */
 
 .pd {
-  --pd-navy: #0b1d4d;
-  --pd-orange: #e55021;
-  --pd-soft: #f7f8f9;
-  background: #fff;
-  color: var(--pd-navy);
+  --pd-navy: var(--asas-navy, #070463);
+  --pd-orange: var(--asas-rust, #a02315);
+  --pd-ink: var(--text-primary, var(--pd-navy));
+  --pd-muted: var(--text-secondary, rgba(11, 29, 77, 0.68));
+  --pd-soft: var(--bg-section, #f7f8f9);
+  background: var(--bg-page, #fff);
+  color: var(--text-primary, var(--pd-navy));
 }
 
 
@@ -99,7 +101,7 @@
   border: 2px solid transparent;
   border-radius: 4px;
   padding: 0;
-  background: #0a1424;
+  background: #070463;
   cursor: pointer;
   opacity: 0.65;
   transition: opacity 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
@@ -144,10 +146,10 @@
   position: relative;
   isolation: isolate;
   width: 100%;
-  height: clamp(520px, 60vh, 650px);
+  height: var(--asas-internal-hero-h, clamp(500px, 60vh, 650px));
   overflow: hidden;
   border-radius: 4px;
-  background: #08111f;
+  background: #070463;
   align-self: start;
 }
 
@@ -244,6 +246,14 @@
   transform: translateX(-2px);
 }
 
+html[dir='rtl'] .pd-main-nav button:hover {
+  transform: translateX(-2px);
+}
+
+html[dir='rtl'] .pd-main-nav button:first-child:hover {
+  transform: translateX(2px);
+}
+
 .pd-main-nav i {
   margin: 0 2px;
   color: rgba(255, 255, 255, 0.4);
@@ -257,7 +267,7 @@
   flex-direction: column;
   align-self: start;
   min-width: 0;
-  max-height: clamp(520px, 60vh, 650px);
+  max-height: var(--asas-internal-hero-h, clamp(500px, 60vh, 650px));
   padding: 2px 8px 0 4px;
   overflow: hidden;
   background: transparent;
@@ -328,13 +338,13 @@
 
 .pd-meta > div > svg {
   margin-top: 2px;
-  color: var(--pd-navy);
-  opacity: 0.65;
+  color: var(--brand-primary, var(--pd-orange));
+  opacity: 0.9;
 }
 
 .pd-meta dt {
   margin: 0 0 3px;
-  color: rgba(11, 29, 77, 0.48);
+  color: var(--text-muted, rgba(11, 29, 77, 0.48));
   font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -342,7 +352,7 @@
 
 .pd-meta dd {
   margin: 0;
-  color: var(--pd-navy);
+  color: var(--pd-ink);
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
@@ -362,7 +372,7 @@
   align-items: stretch;
   align-self: start;
   min-width: 0;
-  height: clamp(520px, 60vh, 650px);
+  height: var(--asas-internal-hero-h, clamp(500px, 60vh, 650px));
   gap: 12px;
 }
 
@@ -401,6 +411,16 @@
   transform: translateX(-3px);
 }
 
+html[dir='rtl'] .pd-hero-pager a:hover,
+html[dir='rtl'] .pd-hero-pager button:hover {
+  transform: translateX(-3px);
+}
+
+html[dir='rtl'] .pd-hero-pager a:first-child:hover,
+html[dir='rtl'] .pd-hero-pager button:first-child:hover {
+  transform: translateX(3px);
+}
+
 .pd-hero-pager i {
   margin: 0 2px;
   color: rgba(11, 29, 77, 0.35);
@@ -423,7 +443,7 @@
   max-width: 110px;
   height: auto;
   max-height: 220px;
-  color: rgba(11, 29, 77, 0.12);
+  color: var(--text-muted, rgba(11, 29, 77, 0.12));
 }
 
 .pd-tech-words {
@@ -432,7 +452,7 @@
   list-style: none;
   display: grid;
   gap: 7px;
-  color: rgba(11, 29, 77, 0.28);
+  color: var(--text-muted, rgba(11, 29, 77, 0.28));
   font: 700 9px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -481,7 +501,7 @@
   max-height: 88px;
   border-radius: 3px;
   background:
-    linear-gradient(135deg, rgba(11, 29, 77, 0.06), rgba(229, 80, 33, 0.08)),
+    linear-gradient(135deg, rgba(11, 29, 77, 0.06), rgba(160, 35, 21, 0.08)),
     repeating-linear-gradient(0deg, transparent, transparent 11px, rgba(11, 29, 77, 0.05) 11px, rgba(11, 29, 77, 0.05) 12px),
     repeating-linear-gradient(90deg, transparent, transparent 11px, rgba(11, 29, 77, 0.05) 11px, rgba(11, 29, 77, 0.05) 12px);
   color: var(--pd-orange);
@@ -505,13 +525,13 @@
 /* Sticky tabs */
 .pd-tabs {
   position: sticky;
-  top: var(--ph-chrome, 80px);
+  top: var(--asas-chrome-h, var(--ph-chrome, 138px));
   z-index: 45;
   width: 100%;
   max-width: none;
   margin: 0;
-  background: rgba(255, 255, 255, 0.96);
-  border-block: 1px solid rgba(11, 29, 77, 0.08);
+  background: color-mix(in srgb, var(--bg-page, #fff) 96%, transparent);
+  border-block: 1px solid var(--border-default, rgba(11, 29, 77, 0.08));
   backdrop-filter: blur(12px);
 }
 
@@ -529,7 +549,7 @@
 .pd-tabs a {
   flex: none;
   padding: 13px 14px;
-  color: rgba(11, 29, 77, 0.5);
+  color: var(--text-muted, rgba(11, 29, 77, 0.5));
   font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   text-decoration: none;
   border-bottom: 2px solid transparent;
@@ -537,14 +557,14 @@
 
 .pd-tabs a.is-active,
 .pd-tabs a:hover {
-  color: var(--pd-navy);
+  color: var(--pd-ink);
   border-bottom-color: var(--pd-orange);
 }
 
 /* Sections */
 .pd-section,
 .pd-hero {
-  scroll-margin-top: calc(var(--ph-chrome, 80px) + 52px);
+  scroll-margin-top: 0;
 }
 
 .pd-section {
@@ -557,7 +577,7 @@
 
 .pd-section h2 {
   margin: 0 0 16px;
-  color: var(--pd-navy) !important;
+  color: var(--pd-ink) !important;
   font-family: Georgia, "Times New Roman", Times, serif !important;
   font-size: clamp(34px, 3.2vw, 52px);
   font-weight: 600;
@@ -575,7 +595,7 @@
 .pd-design-copy > p:not(.pd-kicker) {
   margin: 0 0 16px;
   max-width: 52ch;
-  color: rgba(11, 29, 77, 0.68);
+  color: var(--pd-muted);
   font-size: 16px;
   line-height: 1.7;
 }
@@ -583,9 +603,9 @@
 .pd-design-copy blockquote {
   margin: 28px 0 0;
   padding: 22px 24px;
-  border: 0;
-  background: var(--pd-soft);
-  color: var(--pd-navy);
+  border: 1px solid var(--border-default, transparent);
+  background: var(--bg-surface-elevated, var(--pd-soft));
+  color: var(--pd-ink);
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: clamp(20px, 2vw, 26px);
   line-height: 1.4;
@@ -605,7 +625,7 @@
   min-height: 260px;
   overflow: hidden;
   border-radius: 6px;
-  background: #0a1424;
+  background: #070463;
 }
 
 .pd-design-media figure:last-child {
@@ -724,19 +744,20 @@
 .pd-tech-facts > div {
   display: grid;
   gap: 8px;
-  padding: 22px 20px 22px 0;
+  padding-block: 22px;
+  padding-inline: 0 20px;
   border-bottom: 1px solid rgba(11, 29, 77, 0.12);
   background: transparent;
   border-radius: 0;
 }
 
 .pd-tech-facts > div:nth-child(odd) {
-  padding-right: 24px;
+  padding-inline-end: 24px;
   border-inline-end: 1px solid rgba(11, 29, 77, 0.1);
 }
 
 .pd-tech-facts > div:nth-child(even) {
-  padding-left: 24px;
+  padding-inline-start: 24px;
 }
 
 .pd-tech-facts > div.is-wide {
@@ -876,7 +897,7 @@
   border: 0;
   border-radius: 6px;
   padding: 0;
-  background: #0a1424;
+  background: #070463;
   cursor: pointer;
 }
 
@@ -958,7 +979,7 @@
 .pd-related-media {
   position: relative;
   overflow: hidden;
-  background: #0a1424;
+  background: #070463;
 }
 
 .pd-related-media img {
@@ -974,7 +995,8 @@
   display: grid;
   gap: 8px;
   align-content: center;
-  padding: 18px 52px 18px 18px;
+  padding-block: 18px;
+  padding-inline: 18px 52px;
 }
 
 .pd-related-copy small {
@@ -1054,22 +1076,24 @@
 }
 
 .pd-btn-navy {
-  background: var(--pd-navy);
+  background: var(--asas-navy, var(--pd-navy));
   color: #fff !important;
 }
 
 .pd-btn-navy:hover {
-  background: #08111f;
+  background: var(--asas-navy-hover, #05034a);
   transform: translateY(-1px);
 }
 
 .pd-btn-light {
-  background: #fff;
-  color: var(--pd-navy) !important;
+  background: var(--button-secondary-bg, #fff);
+  border: 1px solid var(--border-strong, transparent);
+  color: var(--button-secondary-text, var(--pd-navy)) !important;
 }
 
 .pd-btn-light:hover {
   transform: translateY(-2px);
+  background: var(--brand-secondary-hover, #f3f4f6);
 }
 
 html[dir='rtl'] .pd-text-link svg.reverse-arrow,
@@ -1194,6 +1218,16 @@ html[dir='rtl'] .pd-related-orb svg.reverse-arrow {
 
 .pd-lightbox-nav.is-prev { left: 20px; }
 .pd-lightbox-nav.is-next { right: 20px; }
+
+html[dir='rtl'] .pd-lightbox-nav.is-prev {
+  left: auto;
+  right: 20px;
+}
+
+html[dir='rtl'] .pd-lightbox-nav.is-next {
+  right: auto;
+  left: 20px;
+}
 
 .pd-lightbox-count {
   position: absolute;
@@ -1411,7 +1445,7 @@ html[dir='rtl'] .pd-related-orb svg.reverse-arrow {
   }
 
   .pd-tabs {
-    top: var(--ph-nav-solid, 80px);
+    top: var(--asas-chrome-h, var(--ph-chrome, 138px));
   }
 
   .pd-cta {

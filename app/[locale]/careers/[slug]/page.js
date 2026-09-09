@@ -26,7 +26,7 @@ export async function generateMetadata({params}) {
     return {title: locale === 'ar' ? 'وظيفة غير متاحة' : 'Role unavailable'};
   }
   return {
-    title: locale === 'ar' ? `${job.titleAr} | وظائف أساس` : `${job.title} | ASAS Careers`,
+    title: locale === 'ar' ? `${job.titleAr} | وظائف أساس للاستشارات الهندسية وإدارة المشاريع` : `${job.title} | ASAS Careers`,
     description: locale === 'ar' ? job.summaryAr : job.summary,
   };
 }
@@ -47,7 +47,7 @@ export default async function CareerDetail({params}) {
       <section className="careers-detail-hero">
         <Container>
           <span className="breadcrumb">
-            ASAS / {ar ? 'الوظائف' : 'Careers'} / {ar ? job.titleAr : job.title}
+            {ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'الوظائف' : 'Careers'} / {ar ? job.titleAr : job.title}
           </span>
           <h1>{ar ? job.titleAr : job.title}</h1>
           <p>{ar ? job.summaryAr : job.summary}</p>

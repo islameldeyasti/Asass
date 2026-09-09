@@ -13,5 +13,5 @@
   </g>
   <circle cx="400" cy="420" r="150" fill="rgba(255,255,255,0.06)"/>
   <text x="400" y="450" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="120" fill="#F4F5F7">AF</text>
-  <text x="400" y="880" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" letter-spacing="6" fill="rgba(229,80,33,0.95)">ASAS</text>
+  <text x="400" y="880" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" letter-spacing="6" fill="rgba(160, 35, 21,0.95)">ASAS</text>
 </svg>

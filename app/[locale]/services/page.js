@@ -22,7 +22,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import {services, serviceGroups} from '@/data/services';
-import {generatedEditorialImages, serviceImages} from '@/data/image-manifest';
+import {getServiceImage, roleImages, ctaBandImages} from '@/data/image-manifest';
 import {company, stats} from '@/data/company';
 import ServicesJumpNav from '@/components/services/ServicesJumpNav';
 import ServicesEnquiryCta from '@/components/services/ServicesEnquiryCta';
@@ -137,11 +137,23 @@ function ServiceIcon({slug}) {
 }
 
 function ServiceCard({service, locale, ar}) {
+  const {src, imagePosition} = getServiceImage(service.slug);
   return (
     <Link className="sv-card" href={`/${locale}/services/${service.slug}`}>
       <div className="sv-card-media">
-        <div className="sv-card-media-frame">
-          <Image src={serviceImages[service.slug]} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" />
+        <div
+          className={`sv-card-media-frame${src ? '' : ' sv-card-media-frame--tone'}`}
+          aria-hidden="true"
+        >
+          {src ? (
+            <Image
+              src={src}
+              alt=""
+              fill
+              sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+              style={{objectFit: 'cover', objectPosition: imagePosition}}
+            />
+          ) : null}
         </div>
         <ServiceIcon slug={service.slug} />
       </div>
@@ -158,10 +170,22 @@ function ServiceCard({service, locale, ar}) {
 }
 
 function DeliveryCard({service, locale, ar}) {
+  const {src, imagePosition} = getServiceImage(service.slug);
   return (
     <Link className="sv-delivery-card" href={`/${locale}/services/${service.slug}`}>
-      <div className="sv-delivery-media">
-        <Image src={serviceImages[service.slug]} alt="" fill sizes="(max-width: 900px) 100vw, 48vw" />
+      <div
+        className={`sv-delivery-media${src ? '' : ' sv-delivery-media--tone'}`}
+        aria-hidden="true"
+      >
+        {src ? (
+          <Image
+            src={src}
+            alt=""
+            fill
+            sizes="(max-width: 700px) 100vw, 50vw"
+            style={{objectFit: 'cover', objectPosition: imagePosition}}
+          />
+        ) : null}
       </div>
       <div className="sv-delivery-copy">
         <ServiceIcon slug={service.slug} />
@@ -179,9 +203,9 @@ function DeliveryCard({service, locale, ar}) {
 export async function generateMetadata({params}) {
   const {locale} = await params;
   return {
-    title: locale === 'ar' ? 'خدمات أساس الهندسية | أبوظبي' : 'Engineering Services | ASAS Abu Dhabi',
+    title: locale === 'ar' ? 'خدمات أساس للاستشارات الهندسية وإدارة المشاريع الهندسية | أبوظبي' : 'Engineering Services | ASAS Abu Dhabi',
     description: locale === 'ar'
-      ? 'خدمات أساس في التصميم والهندسة وإدارة المشاريع والإشراف والتخطيط.'
+      ? 'خدمات أساس للاستشارات الهندسية وإدارة المشاريع في التصميم والهندسة وإدارة المشاريع والإشراف والتخطيط.'
       : 'ASAS services across design, engineering, project management, supervision and planning.',
   };
 }
@@ -195,14 +219,15 @@ export default async function Services({params}) {
   const planningFeatured =
     planningServices.find((service) => service.slug === 'infrastructure-urban-planning') || planningServices[0];
   const planningRest = planningServices.filter((service) => service.slug !== planningFeatured.slug);
+  const planningFeaturedImage = getServiceImage(planningFeatured.slug);
   const metrics = stats;
-  const ctaImage = generatedEditorialImages.buildingsSector || generatedEditorialImages.technicalCoordination;
+  const ctaImage = {src: ctaBandImages.services, crop: '50% 40%'};
 
   return (
     <div className="sv">
       <section className="sv-hero">
         <div className="sv-hero-media" aria-hidden="true">
-          <Image src={generatedEditorialImages.technicalCoordination} alt="" fill priority sizes="100vw" />
+          <Image src={roleImages.SERVICES_HERO} alt="" fill priority sizes="100vw" />
         </div>
         <div className="sv-hero-veil" aria-hidden="true" />
         <svg className="sv-hero-blueprint" viewBox="0 0 320 520" aria-hidden="true">
@@ -214,14 +239,14 @@ export default async function Services({params}) {
             <path d="M40 160 H200" />
             <path d="M40 240 H180" />
             <path d="M40 320 H160" />
-            <circle cx="40" cy="160" r="3" fill="#e55021" stroke="none" />
+            <circle cx="40" cy="160" r="3" fill="#a02315" stroke="none" />
           </g>
         </svg>
         <div className="sv-shell sv-hero-inner">
           <div className="sv-hero-copy">
             <p className="sv-kicker light">
               <i />
-              ASAS / {ar ? 'الخدمات' : 'Services'}
+              {ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'الخدمات' : 'Services'}
             </p>
             <h1>
               {ar ? (
@@ -240,7 +265,7 @@ export default async function Services({params}) {
             </h1>
             <p className="sv-hero-lede">
               {ar
-                ? 'تغطي أساس الخدمات الهندسية والاستشارية من الدراسة والتصميم إلى العطاء والتنفيذ والتسليم.'
+                ? 'تغطي أساس للاستشارات الهندسية وإدارة المشاريع الخدمات الهندسية والاستشارية من الدراسة والتصميم إلى العطاء والتنفيذ والتسليم.'
                 : 'ASAS covers engineering and consultancy from studies and design through tender, construction and handover.'}
             </p>
             <div className="sv-hero-meta">
@@ -319,13 +344,19 @@ export default async function Services({params}) {
           </header>
 
           <Link className="sv-planning-feature" href={`/${locale}/services/${planningFeatured.slug}`}>
-            <div className="sv-planning-feature-media">
-              <Image
-                src={serviceImages[planningFeatured.slug]}
-                alt=""
-                fill
-                sizes="(max-width: 900px) 100vw, 100vw"
-              />
+            <div
+              className={`sv-planning-feature-media${planningFeaturedImage.src ? '' : ' sv-planning-feature-media--tone'}`}
+              aria-hidden="true"
+            >
+              {planningFeaturedImage.src ? (
+                <Image
+                  src={planningFeaturedImage.src}
+                  alt=""
+                  fill
+                  sizes="(max-width: 900px) 100vw, 60vw"
+                  style={{objectFit: 'cover', objectPosition: planningFeaturedImage.imagePosition}}
+                />
+              ) : null}
             </div>
             <div className="sv-planning-feature-copy">
               <ServiceIcon slug={planningFeatured.slug} />
@@ -351,7 +382,7 @@ export default async function Services({params}) {
           <dl className="sv-metrics-grid">
             {metrics.map((item) => (
               <div key={item.label} className="sv-metric">
-                <dt>{item.value}</dt>
+                <dt className="ltr-isolate" dir="ltr">{item.value}</dt>
                 <dd>{ar ? item.labelAr : item.label}</dd>
               </div>
             ))}

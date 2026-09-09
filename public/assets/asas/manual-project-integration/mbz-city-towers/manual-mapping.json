@@ -1,0 +1,36 @@
+{
+  "project": "MBZ City Towers",
+  "slug": "mbz-city-towers",
+  "category": "towers",
+  "finalStatus": "DEPLOYED_READY",
+  "currentHero": "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-01-hero.webp",
+  "websiteStatus": "APPROVED_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/mbz-city-towers/source-reference/source-reference.png",
+  "productionSourceStatus": "HAS_SOURCE",
+  "approved": [
+    {
+      "file": "mbz-city-towers-01-hero.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/mbz-city-towers/approved/mbz-city-towers-01-hero.webp",
+      "live_path": "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-01-hero.webp",
+      "view": "HERO",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "mbz-city-towers-02-front.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/mbz-city-towers/approved/mbz-city-towers-02-front.webp",
+      "live_path": "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-02-front.webp",
+      "view": "FRONT",
+      "confidence": "HIGH",
+      "deployed": true
+    }
+  ],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": false,
+  "notes": [
+    "2 HIGH-confidence image(s) already live under projects-generated/."
+  ]
+}

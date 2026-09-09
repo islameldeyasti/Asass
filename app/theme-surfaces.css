@@ -1,0 +1,2128 @@
+/* =========================================================
+   ASAS THEME SURFACES
+   Enforces docs/ASAS-COLOR-THEME-GUIDE.md
+   Loaded last. Consumes semantic tokens only.
+   ========================================================= */
+
+/* ---------- Floating theme FAB ---------- */
+.asas-theme-fab {
+  position: fixed;
+  z-index: 46;
+  right: max(22px, env(safe-area-inset-right, 0px));
+  bottom: calc(22px + 56px + 12px);
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border-default);
+  border-radius: 50%;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: 0 8px 24px var(--shadow-color);
+  cursor: pointer;
+}
+
+.asas-theme-fab:hover {
+  transform: translateY(-2px);
+}
+
+.asas-theme-fab:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 3px;
+}
+
+html[dir='rtl'] .asas-theme-fab {
+  right: auto;
+  left: max(22px, env(safe-area-inset-left, 0px));
+}
+
+@media (max-width: 900px) {
+  .asas-theme-fab {
+    width: 48px;
+    height: 48px;
+    right: max(16px, env(safe-area-inset-right, 0px));
+    bottom: calc(16px + 52px + 10px);
+  }
+
+  html[dir='rtl'] .asas-theme-fab {
+    right: auto;
+    left: max(16px, env(safe-area-inset-left, 0px));
+  }
+}
+
+.asas-theme-toggle,
+.asas-theme-header-slot,
+.asas-theme-menu {
+  display: none !important;
+}
+
+/* ---------- Global page shells ---------- */
+html[data-theme='light'] body,
+html[data-theme='light'] .asas-home,
+html[data-theme='light'] .atlas-home,
+html[data-theme='light'] .hp-revised,
+html[data-theme='light'] .about-page,
+html[data-theme='light'] .contact-body,
+html[data-theme='light'] .enquiry-body,
+html[data-theme='light'] .careers-body,
+html[data-theme='light'] .downloads-body,
+html[data-theme='light'] .sectors-body,
+html[data-theme='light'] .services-body,
+html[data-theme='light'] .sv-page,
+html[data-theme='light'] .sd-page,
+html[data-theme='light'] .sc-page,
+html[data-theme='light'] .cp-page,
+html[data-theme='light'] .pf-page,
+html[data-theme='light'] .pl-page,
+html[data-theme='light'] .tm-page,
+html[data-theme='light'] .pd,
+html[data-theme='light'] main {
+  background: var(--bg-page) !important;
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] body,
+html[data-theme='dark'] .asas-home,
+html[data-theme='dark'] .atlas-home,
+html[data-theme='dark'] .hp-revised,
+html[data-theme='dark'] .about-page,
+html[data-theme='dark'] .contact-body,
+html[data-theme='dark'] .enquiry-body,
+html[data-theme='dark'] .careers-body,
+html[data-theme='dark'] .downloads-body,
+html[data-theme='dark'] .sectors-body,
+html[data-theme='dark'] .services-body,
+html[data-theme='dark'] .sv-page,
+html[data-theme='dark'] .sd-page,
+html[data-theme='dark'] .sc-page,
+html[data-theme='dark'] .cp-page,
+html[data-theme='dark'] .pf-page,
+html[data-theme='dark'] .pl-page,
+html[data-theme='dark'] .tm-page,
+html[data-theme='dark'] .pd,
+html[data-theme='dark'] main {
+  background: var(--bg-page) !important;
+  color: var(--text-primary);
+}
+
+/* Section rhythm */
+html[data-theme='light'] .hp-revised .hp-about,
+html[data-theme='light'] .hp-revised .insp-services,
+html[data-theme='light'] .hp-revised .hp-portfolio,
+html[data-theme='light'] .hp-revised .hp-faq,
+html[data-theme='light'] .asas-clients,
+html[data-theme='light'] .tm-home {
+  background: var(--bg-page) !important;
+  color: var(--text-primary);
+}
+
+/* Get in touch — soft off-white (distinct from pure page white) */
+html[data-theme='light'] .hp-revised .home-contact,
+html[data-theme='light'] .home-contact {
+  background: var(--bg-section) !important;
+  color: var(--text-primary);
+}
+
+html[data-theme='light'] .hp-revised .insp-sectors,
+html[data-theme='light'] .hp-revised .wf-process,
+html[data-theme='light'] .hp-revised .hp-why,
+html[data-theme='light'] .asas-stats,
+html[data-theme='light'] .asas-t {
+  background: var(--bg-section) !important;
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] section,
+html[data-theme='dark'] .hp-about,
+html[data-theme='dark'] .hp-disciplines,
+html[data-theme='dark'] .insp-services,
+html[data-theme='dark'] .insp-sectors,
+html[data-theme='dark'] .wf-process,
+html[data-theme='dark'] .hp-portfolio,
+html[data-theme='dark'] .hp-why,
+html[data-theme='dark'] .hp-faq,
+html[data-theme='dark'] .asas-stats,
+html[data-theme='dark'] .asas-clients,
+html[data-theme='dark'] .asas-t,
+html[data-theme='dark'] .tm-home,
+html[data-theme='dark'] .about-featured,
+html[data-theme='dark'] .about-vision,
+html[data-theme='dark'] .about-locations,
+html[data-theme='dark'] .about-mir,
+html[data-theme='dark'] .sv-section,
+html[data-theme='dark'] .sd-section,
+html[data-theme='dark'] .sc-section,
+html[data-theme='dark'] .cp-section,
+html[data-theme='dark'] .tm-section,
+html[data-theme='dark'] .downloads-featured,
+html[data-theme='dark'] .downloads-section,
+html[data-theme='dark'] .contact-map-wrap,
+html[data-theme='dark'] .careers-section,
+html[data-theme='dark'] .pd-section,
+html[data-theme='dark'] .pd-block,
+html[data-theme='dark'] .pd-related,
+html[data-theme='dark'] .sd-related,
+html[data-theme='dark'] .sc-related {
+  background: var(--bg-page) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-primary);
+}
+
+/* Get in touch — elevated charcoal (distinct from page black) */
+html[data-theme='dark'] .home-contact,
+html[data-theme='dark'] .hp-revised .home-contact {
+  background: var(--bg-surface) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-primary);
+}
+
+/* Alternate elevated sections in dark */
+html[data-theme='dark'] .insp-sectors,
+html[data-theme='dark'] .wf-process,
+html[data-theme='dark'] .hp-why,
+html[data-theme='dark'] .asas-stats,
+html[data-theme='dark'] .asas-t,
+html[data-theme='dark'] .about-mir,
+html[data-theme='dark'] .downloads-featured {
+  background: var(--bg-section) !important;
+}
+
+/* Cards / panels */
+html[data-theme='dark'] .hp-card,
+html[data-theme='dark'] .insp-tab-panel,
+html[data-theme='dark'] .sv-card,
+html[data-theme='dark'] .sc-card,
+html[data-theme='dark'] .sd-card,
+html[data-theme='dark'] .pl-card,
+html[data-theme='dark'] .pf-card,
+html[data-theme='dark'] .tm-card,
+html[data-theme='dark'] .download-card,
+html[data-theme='dark'] .careers-card,
+html[data-theme='dark'] .hp-portfolio-card,
+html[data-theme='dark'] .hp-why-card,
+html[data-theme='dark'] .asas-t-card,
+html[data-theme='dark'] .cp-card,
+html[data-theme='dark'] .sv-panel,
+html[data-theme='dark'] .sd-panel,
+html[data-theme='dark'] .sc-panel,
+html[data-theme='dark'] .cp-panel,
+html[data-theme='dark'] .contact-panel,
+html[data-theme='dark'] .enquiry-panel,
+html[data-theme='dark'] .careers-panel,
+html[data-theme='dark'] .hp-featured,
+html[data-theme='dark'] .brief-card,
+html[data-theme='dark'] main [class*='-card']:not(img):not(.asas-ph-thumb):not(.asas-clients-logo),
+html[data-theme='dark'] main [class*='-panel'],
+html[data-theme='dark'] .pd article {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+  color: #fff;
+}
+
+html[data-theme='dark'] .hp-card:hover,
+html[data-theme='dark'] .asas-t-card:hover,
+html[data-theme='dark'] .sv-card:hover,
+html[data-theme='dark'] .sc-card:hover,
+html[data-theme='dark'] .sd-card:hover,
+html[data-theme='dark'] .pl-card:hover,
+html[data-theme='dark'] .pf-card:hover,
+html[data-theme='dark'] .tm-card:hover,
+html[data-theme='dark'] .download-card:hover,
+html[data-theme='dark'] .careers-card:hover,
+html[data-theme='dark'] .cp-card:hover {
+  background: #1e1e1e !important;
+}
+
+html[data-theme='light'] .hp-card,
+html[data-theme='light'] .asas-t-card,
+html[data-theme='light'] .sv-card,
+html[data-theme='light'] .sc-card,
+html[data-theme='light'] .sd-card,
+html[data-theme='light'] .pl-card,
+html[data-theme='light'] .pf-card,
+html[data-theme='light'] .tm-card,
+html[data-theme='light'] .download-card,
+html[data-theme='light'] .careers-card,
+html[data-theme='light'] .cp-card {
+  background: var(--bg-surface);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] h1,
+html[data-theme='dark'] h2,
+html[data-theme='dark'] h3,
+html[data-theme='dark'] h4,
+html[data-theme='dark'] h5,
+html[data-theme='dark'] h6,
+html[data-theme='dark'] .asas-stats-value,
+html[data-theme='dark'] .tm-card-copy h3,
+html[data-theme='dark'] .tm-home-copy h2 {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='light'] h1,
+html[data-theme='light'] h2,
+html[data-theme='light'] h3,
+html[data-theme='light'] h4,
+html[data-theme='light'] h5,
+html[data-theme='light'] h6,
+html[data-theme='light'] .asas-stats-value {
+  color: var(--text-primary);
+}
+
+/* Photo / cinematic heroes keep inverse white type in Light Mode.
+   Global light h1 { navy } is more specific than .about-hero h1 and
+   was causing navy-on-dark contrast failures. */
+html[data-theme='light'] .asas-ph h1,
+html[data-theme='light'] .asas-hero-slider h1,
+html[data-theme='light'] .atlas-hero h1,
+html[data-theme='light'] .tm-page-hero h1,
+html[data-theme='light'] .sv-hero h1,
+html[data-theme='light'] .sd-hero h1,
+html[data-theme='light'] .sc-hero h1,
+html[data-theme='light'] .cp-hero h1,
+html[data-theme='light'] .pf-hero h1,
+html[data-theme='light'] .pl-hero h1,
+html[data-theme='light'] .about-hero h1,
+html[data-theme='light'] .contact-hero h1,
+html[data-theme='light'] .careers-hero h1,
+html[data-theme='light'] .careers-detail-hero h1,
+html[data-theme='light'] .downloads-hero h1,
+html[data-theme='light'] .enquiry-hero h1,
+html[data-theme='light'] .sectors-hero h1,
+html[data-theme='light'] .services-hero h1,
+html[data-theme='light'] .projects-hero h1,
+html[data-theme='light'] .sv-hero-copy > h1,
+html[data-theme='light'] .sd-hero-copy > h1,
+html[data-theme='light'] .sc-hero-copy > h1,
+html[data-theme='light'] .cp-hero-copy > h1,
+html[data-theme='light'] .tm-page-hero-copy > h1,
+html[data-theme='light'] .pl-hero-copy > h1,
+html[data-theme='light'] .pf-hero-copy > h1 {
+  color: #fff !important;
+}
+
+/* Photo-hero supporting copy stays inverse in Light Mode */
+html[data-theme='light'] .about-hero,
+html[data-theme='light'] .contact-hero,
+html[data-theme='light'] .careers-hero,
+html[data-theme='light'] .careers-detail-hero,
+html[data-theme='light'] .downloads-hero,
+html[data-theme='light'] .enquiry-hero,
+html[data-theme='light'] .sectors-hero,
+html[data-theme='light'] .services-hero,
+html[data-theme='light'] .projects-hero {
+  color: #fff;
+}
+
+html[data-theme='light'] .about-hero .breadcrumb,
+html[data-theme='light'] .contact-hero .breadcrumb,
+html[data-theme='light'] .careers-hero .breadcrumb,
+html[data-theme='light'] .downloads-hero .breadcrumb,
+html[data-theme='light'] .enquiry-hero .breadcrumb,
+html[data-theme='light'] .sectors-hero .breadcrumb,
+html[data-theme='light'] .services-hero .breadcrumb,
+html[data-theme='light'] .projects-hero .breadcrumb {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+html[data-theme='light'] .about-hero > .container > p,
+html[data-theme='light'] .contact-hero > .container > p,
+html[data-theme='light'] .careers-hero > .container > p,
+html[data-theme='light'] .downloads-hero > .container > p,
+html[data-theme='light'] .enquiry-hero > .container > p,
+html[data-theme='light'] .sectors-hero > .container > p,
+html[data-theme='light'] .services-hero > .container > p,
+html[data-theme='light'] .projects-hero > .container > p,
+html[data-theme='light'] .about-hero-meta,
+html[data-theme='light'] .contact-hero-meta,
+html[data-theme='light'] .careers-hero-meta,
+html[data-theme='light'] .downloads-hero-meta,
+html[data-theme='light'] .enquiry-hero-meta,
+html[data-theme='light'] .sectors-hero-meta,
+html[data-theme='light'] .services-hero-meta,
+html[data-theme='light'] .projects-hero-meta {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+html[data-theme='light'] .about-hero-meta a,
+html[data-theme='light'] .contact-hero-meta a,
+html[data-theme='light'] .careers-hero-meta a,
+html[data-theme='light'] .downloads-hero-meta a,
+html[data-theme='light'] .enquiry-hero-meta a,
+html[data-theme='light'] .sectors-hero-meta a,
+html[data-theme='light'] .services-hero-meta a,
+html[data-theme='light'] .projects-hero-meta a {
+  color: #fff !important;
+  border-bottom-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+html[data-theme='light'] .about-hero-meta a:hover,
+html[data-theme='light'] .contact-hero-meta a:hover,
+html[data-theme='light'] .careers-hero-meta a:hover,
+html[data-theme='light'] .sectors-hero-meta a:hover,
+html[data-theme='light'] .services-hero-meta a:hover,
+html[data-theme='light'] .projects-hero-meta a:hover {
+  color: #fff !important;
+  border-bottom-color: var(--asas-rust) !important;
+}
+
+html[data-theme='light'] .about-hero .asas-action--outline,
+html[data-theme='light'] .contact-hero .asas-action--outline,
+html[data-theme='light'] .careers-hero .asas-action--outline,
+html[data-theme='light'] .sectors-hero .asas-action--outline,
+html[data-theme='light'] .downloads-hero .asas-action--outline,
+html[data-theme='light'] .enquiry-hero .asas-action--outline,
+html[data-theme='light'] .services-hero .asas-action--outline,
+html[data-theme='light'] .projects-hero .asas-action--outline,
+html[data-theme='light'] .about-hero .button.outline,
+html[data-theme='light'] .contact-hero .button.outline,
+html[data-theme='light'] .careers-hero .button.outline,
+html[data-theme='light'] .sectors-hero .button.outline {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  color: #fff !important;
+}
+
+html[data-theme='light'] .insp-tabs {
+  background: color-mix(in srgb, #070463 4%, white) !important;
+  border-color: rgba(7, 4, 99, 0.1) !important;
+}
+
+html[data-theme='light'] .insp-tabs button:hover:not(.active) {
+  background: color-mix(in srgb, #070463 7%, white) !important;
+}
+
+html[data-theme='dark'] .insp-tabs {
+  background: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .insp-tabs button:hover:not(.active) {
+  background: #1d1d1d !important;
+}
+
+html[data-theme='dark'] .asas-stats-label,
+html[data-theme='dark'] p:not(.asas-ph-eyebrow):not(.asas-ph-location):not(.asas-ph-note) {
+  color: var(--text-secondary);
+}
+
+html[data-theme='light'] .asas-stats-label {
+  color: var(--text-secondary);
+}
+
+/* Stats accent bar / + remains rust */
+html[data-theme='light'] .asas-stats-item::after,
+html[data-theme='dark'] .asas-stats-item::after,
+html[data-theme='light'] .asas-stats-plus,
+html[data-theme='dark'] .asas-stats-plus {
+  background: var(--brand-primary);
+  color: var(--brand-primary);
+}
+
+/* ---------- Header / chrome ---------- */
+.asas-topbar {
+  background: var(--topbar-bg) !important;
+  color: var(--topbar-text);
+}
+
+html[data-theme='dark'] .asas-topbar {
+  background: #090909 !important;
+  color: #fff;
+}
+
+html[data-theme='light'] .asas-topbar {
+  background: var(--asas-navy) !important;
+  color: #fff;
+}
+
+html[data-theme='light'] .asas-header {
+  background: var(--header-bg);
+  border-bottom-color: var(--header-border);
+}
+
+html[data-theme='dark'] .asas-header {
+  background: #090909 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none;
+}
+
+/* Desktop: no colored nav strip — blend into header */
+html[data-theme='dark'] .asas-nav {
+  background: transparent !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Mobile open panel: charcoal, not navy */
+@media (max-width: 900px) {
+  html[data-theme='dark'] .asas-nav.is-open {
+    background: #0f0f0f !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55) !important;
+  }
+
+  html[data-theme='dark'] .asas-nav a {
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+html[data-theme='light'] .asas-nav a,
+html[data-theme='light'] .asas-menu {
+  color: var(--nav-link);
+}
+
+html[data-theme='dark'] .asas-nav a,
+html[data-theme='dark'] .asas-menu {
+  color: #fff !important;
+  border-bottom-color: var(--border-default);
+}
+
+html[data-theme='dark'] .asas-nav a:hover {
+  color: #fff !important;
+}
+
+html[data-theme='light'] .asas-nav a.is-active,
+html[data-theme='light'] .asas-nav a[aria-current='page'] {
+  color: var(--asas-navy) !important;
+}
+
+html[data-theme='light'] .asas-nav a.is-active:after,
+html[data-theme='light'] .asas-nav a[aria-current='page']:after,
+html[data-theme='light'] .asas-nav a:hover:after {
+  background: var(--asas-rust) !important;
+}
+
+html[data-theme='dark'] .asas-nav a.is-active,
+html[data-theme='dark'] .asas-nav a[aria-current='page'] {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .asas-nav a.is-active:after,
+html[data-theme='dark'] .asas-nav a[aria-current='page']:after,
+html[data-theme='dark'] .asas-nav a:hover:after {
+  background: var(--asas-rust) !important;
+}
+
+html[data-theme='dark'] .asas-nav-backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* ---------- Footer ---------- */
+/* Light: navy brand anchor. Dark: charcoal (not navy). */
+html[data-theme='light'] .site-footer.asas-footer {
+  background: var(--asas-navy) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+  --ft-bg: var(--asas-navy);
+  --ft-bg-alt: color-mix(in srgb, #070463 88%, black);
+  --ft-heading: #fff;
+  --ft-text: rgba(255, 255, 255, 0.72);
+  --ft-body: rgba(255, 255, 255, 0.72);
+  --ft-muted: rgba(255, 255, 255, 0.58);
+  --ft-link: #fff;
+  --ft-secondary: rgba(255, 255, 255, 0.58);
+  --ft-divider: rgba(255, 255, 255, 0.12);
+  --ft-orange: var(--asas-rust);
+}
+
+html[data-theme='dark'] .site-footer.asas-footer {
+  background: #090909 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  --ft-bg: #090909;
+  --ft-bg-alt: #0f0f0f;
+  --ft-heading: #fff;
+  --ft-text: rgba(255, 255, 255, 0.72);
+  --ft-body: rgba(255, 255, 255, 0.72);
+  --ft-muted: rgba(255, 255, 255, 0.52);
+  --ft-link: #fff;
+  --ft-secondary: rgba(255, 255, 255, 0.52);
+  --ft-divider: rgba(255, 255, 255, 0.1);
+  --ft-orange: var(--asas-rust);
+}
+
+.site-footer.asas-footer h3,
+.site-footer.asas-footer h4,
+.site-footer.asas-footer .footer-company-name,
+.site-footer.asas-footer a:not(.asas-social-btn) {
+  color: var(--ft-heading, #fff) !important;
+}
+
+.site-footer.asas-footer p,
+.site-footer.asas-footer li:not(:has(.asas-social-btn)),
+.site-footer.asas-footer small {
+  color: var(--ft-text, rgba(255, 255, 255, 0.72)) !important;
+}
+
+.site-footer.asas-footer .footer-logo {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+/* Client logos — light plate so dark marks stay visible */
+html[data-theme='dark'] .asas-clients-logo,
+html[data-theme='dark'] .asas-clients-logo-frame {
+  background: #fff !important;
+  border-color: var(--border-default) !important;
+}
+
+html[data-theme='dark'] .tm-card-media,
+html[data-theme='dark'] .tm-card-fallback {
+  background: var(--bg-surface-elevated) !important;
+}
+
+html[data-theme='dark'] .tm-card-fallback span {
+  color: var(--text-muted) !important;
+}
+
+/* ---------- Forms ---------- */
+html[data-theme='light'] input,
+html[data-theme='light'] textarea,
+html[data-theme='light'] select {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] input,
+html[data-theme='dark'] textarea,
+html[data-theme='dark'] select,
+html[data-theme='dark'] .contact-form input,
+html[data-theme='dark'] .contact-form textarea,
+html[data-theme='dark'] .contact-form select,
+html[data-theme='dark'] .enquiry-form input,
+html[data-theme='dark'] .enquiry-form textarea,
+html[data-theme='dark'] .enquiry-form select,
+html[data-theme='dark'] .home-contact input,
+html[data-theme='dark'] .home-contact textarea,
+html[data-theme='dark'] .home-contact select,
+html[data-theme='dark'] .careers-apply-form input,
+html[data-theme='dark'] .careers-apply-form textarea,
+html[data-theme='dark'] .careers-apply-form select {
+  background: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='dark'] input::placeholder,
+html[data-theme='dark'] textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+html[data-theme='light'] input::placeholder,
+html[data-theme='light'] textarea::placeholder {
+  color: var(--text-muted);
+}
+
+html[data-theme='dark'] label {
+  color: var(--text-secondary);
+}
+
+html[data-theme='light'] input:focus,
+html[data-theme='light'] textarea:focus,
+html[data-theme='light'] select:focus,
+html[data-theme='dark'] input:focus,
+html[data-theme='dark'] textarea:focus,
+html[data-theme='dark'] select:focus {
+  border-color: var(--input-focus) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #a02315 28%, transparent);
+}
+
+/* Get in Touch */
+html[data-theme='light'] .home-contact-fields label > span,
+html[data-theme='light'] .home-contact-head h2,
+html[data-theme='light'] .home-contact-details h3 {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='light'] .home-contact-head > p:last-child,
+html[data-theme='light'] .home-contact-details p,
+html[data-theme='light'] .home-contact-details a,
+html[data-theme='light'] .home-contact-note {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme='light'] .home-contact-fields input,
+html[data-theme='light'] .home-contact-fields select,
+html[data-theme='light'] .home-contact-fields textarea {
+  background: var(--input-bg) !important;
+  border: 1px solid var(--input-border) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='dark'] .home-contact-fields label > span,
+html[data-theme='dark'] .home-contact-head h2,
+html[data-theme='dark'] .home-contact-details h3 {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='dark'] .home-contact-head > p:last-child,
+html[data-theme='dark'] .home-contact-details p,
+html[data-theme='dark'] .home-contact-details a,
+html[data-theme='dark'] .home-contact-note {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme='dark'] .home-contact-fields input,
+html[data-theme='dark'] .home-contact-fields select,
+html[data-theme='dark'] .home-contact-fields textarea {
+  background: var(--input-bg) !important;
+  border: 1px solid var(--border-strong) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='dark'] .home-contact-fields option {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+/* Client feedback person strip */
+html[data-theme='light'] .asas-t-person {
+  background: var(--bg-surface) !important;
+  border-top-color: var(--border-default) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='light'] .asas-t-person strong {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='light'] .asas-t-person em {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme='dark'] .asas-t-person {
+  background: #181818 !important;
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .asas-t-person strong {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='dark'] .asas-t-person em {
+  color: var(--text-secondary) !important;
+}
+
+/* ---------- Tabs / subnav ---------- */
+html[data-theme='dark'] .insp-tabs,
+html[data-theme='dark'] .sd-subnav,
+html[data-theme='dark'] .sv-subnav,
+html[data-theme='dark'] .sc-subnav,
+html[data-theme='dark'] .pd-subnav,
+html[data-theme='dark'] .pd-tabs,
+html[data-theme='dark'] .cp-subnav {
+  background: #0f0f0f !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='light'] .insp-tabs button,
+html[data-theme='light'] .sd-subnav a,
+html[data-theme='light'] .sv-subnav a,
+html[data-theme='light'] .sc-subnav a,
+html[data-theme='light'] .pd-subnav a,
+html[data-theme='light'] .pd-tabs a {
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] .insp-tabs button,
+html[data-theme='dark'] .sd-subnav a,
+html[data-theme='dark'] .sv-subnav a,
+html[data-theme='dark'] .sc-subnav a,
+html[data-theme='dark'] .pd-subnav a,
+html[data-theme='dark'] .pd-tabs a {
+  color: var(--text-secondary);
+}
+
+/* Light subnav/tabs on LIGHT surfaces: navy text + rust indicator */
+html[data-theme='light'] .sd-subnav a.is-active,
+html[data-theme='light'] .sv-subnav a.is-active,
+html[data-theme='light'] .sc-subnav a.is-active,
+html[data-theme='light'] .pd-subnav a.is-active,
+html[data-theme='light'] .pd-tabs a.is-active {
+  color: var(--asas-navy);
+  border-color: var(--asas-rust);
+}
+
+/*
+  Discipline tabs: active fill is BRAND_NAVY (#070463).
+  Foreground MUST be white — never navy or rust text on navy fill.
+*/
+html[data-theme='light'] .insp-tabs button.active,
+html[data-theme='light'] .atlas-home .insp-tabs button.active,
+html[data-theme='light'] .hp-revised .insp-tabs button.active {
+  background: var(--asas-navy) !important;
+  color: #fff !important;
+  border-color: transparent;
+  box-shadow: inset 0 -2px 0 var(--asas-rust);
+}
+
+html[data-theme='light'] .insp-tabs button.active svg,
+html[data-theme='light'] .atlas-home .insp-tabs button.active svg,
+html[data-theme='light'] .hp-revised .insp-tabs button.active svg {
+  color: #fff !important;
+  stroke: currentColor !important;
+}
+
+html[data-theme='dark'] .insp-tabs button.active,
+html[data-theme='dark'] .sd-subnav a.is-active,
+html[data-theme='dark'] .sv-subnav a.is-active,
+html[data-theme='dark'] .sc-subnav a.is-active,
+html[data-theme='dark'] .pd-subnav a.is-active,
+html[data-theme='dark'] .pd-tabs a.is-active {
+  color: #fff;
+  background: color-mix(in srgb, white 6%, transparent);
+  border-color: var(--interactive-active);
+}
+
+html[data-theme='dark'] .insp-tabs button.active {
+  background: #1d1d1d;
+  color: #fff;
+  box-shadow: inset 0 -2px 0 var(--asas-rust);
+}
+
+html[data-theme='dark'] .insp-tabs button.active svg {
+  color: #fff;
+  stroke: currentColor;
+}
+
+/* Kickers / eyebrows — rust accent (never navy-as-accent swap) */
+.atlas-kicker,
+.eyebrow {
+  color: var(--brand-primary);
+}
+
+.eyebrow i,
+.atlas-kicker:before,
+.about-bridge .atlas-kicker:before,
+.contact-bridge .atlas-kicker:before,
+.enquiry-bridge .atlas-kicker:before,
+.sectors-bridge .atlas-kicker:before,
+.downloads-bridge .atlas-kicker:before,
+.careers-bridge .atlas-kicker:before {
+  background: var(--asas-rust) !important;
+}
+
+/* ---------- Tables / metadata ---------- */
+html[data-theme='dark'] table,
+html[data-theme='dark'] dl,
+html[data-theme='dark'] .pd-meta,
+html[data-theme='dark'] .sv-meta,
+html[data-theme='dark'] .cp-meta,
+html[data-theme='dark'] th,
+html[data-theme='dark'] td,
+html[data-theme='dark'] dt,
+html[data-theme='dark'] dd {
+  border-color: var(--border-default) !important;
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] th,
+html[data-theme='dark'] dt {
+  color: var(--text-muted);
+}
+
+/* ---------- Gallery controls ---------- */
+html[data-theme='dark'] .pd-gallery-controls button,
+html[data-theme='dark'] .pd-thumbs button {
+  background: var(--bg-surface) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ---------- Heroes: keep light text on imagery ---------- */
+html[data-theme='dark'] .asas-ph,
+html[data-theme='dark'] .tm-page-hero,
+html[data-theme='dark'] .sv-hero,
+html[data-theme='dark'] .sd-hero,
+html[data-theme='dark'] .sc-hero,
+html[data-theme='dark'] .cp-hero,
+html[data-theme='dark'] .pf-hero,
+html[data-theme='dark'] .pl-hero,
+html[data-theme='dark'] .about-hero,
+html[data-theme='dark'] .contact-hero,
+html[data-theme='dark'] .careers-hero,
+html[data-theme='dark'] .downloads-hero,
+html[data-theme='dark'] .enquiry-hero,
+html[data-theme='dark'] .sectors-hero {
+  color: #fff;
+}
+
+html[data-theme='dark'] .asas-ph h1,
+html[data-theme='dark'] .tm-page-hero h1,
+html[data-theme='dark'] .sv-hero h1,
+html[data-theme='dark'] .sd-hero h1,
+html[data-theme='dark'] .sc-hero h1,
+html[data-theme='dark'] .cp-hero h1,
+html[data-theme='dark'] .about-hero h1,
+html[data-theme='dark'] .contact-hero h1,
+html[data-theme='dark'] .careers-hero h1,
+html[data-theme='dark'] .downloads-hero h1,
+html[data-theme='dark'] .enquiry-hero h1,
+html[data-theme='dark'] .sectors-hero h1,
+html[data-theme='dark'] .pf-hero h1,
+html[data-theme='dark'] .pl-hero h1,
+html[data-theme='dark'] .sv-hero-copy > h1,
+html[data-theme='dark'] .sd-hero-copy > h1,
+html[data-theme='dark'] .sc-hero-copy > h1,
+html[data-theme='dark'] .cp-hero-copy > h1,
+html[data-theme='dark'] .tm-page-hero-copy > h1,
+html[data-theme='dark'] .pl-hero-copy > h1,
+html[data-theme='dark'] .pf-hero-copy > h1 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sv-hero-copy > p,
+html[data-theme='dark'] .sd-hero-copy > p,
+html[data-theme='dark'] .sc-hero-copy > p,
+html[data-theme='dark'] .cp-hero-copy > p,
+html[data-theme='dark'] .tm-page-hero-copy > p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* ---------- FAQ ---------- */
+html[data-theme='dark'] .hp-faq-list details,
+html[data-theme='dark'] .hp-faq-list summary {
+  border-color: var(--border-default) !important;
+  color: var(--text-primary);
+}
+
+html[data-theme='dark'] .hp-faq-list p {
+  color: var(--text-secondary) !important;
+}
+
+/* ---------- Stats dividers ---------- */
+html[data-theme='dark'] .asas-stats-grid,
+html[data-theme='dark'] .asas-stats-item,
+html[data-theme='dark'] .asas-stats-item:not(:first-child)::before {
+  border-color: var(--border-default) !important;
+  background: transparent !important;
+}
+
+/* =========================================================
+   BUTTON HIERARCHY (roles fixed — no orange/blue swap)
+   Primary = Rust  | Secondary / outline = Navy (light) or white ghost (dark)
+   ========================================================= */
+
+.asas-action--primary,
+.asas-cta,
+.insp-btn:not(.outline),
+.hp-about-solid,
+.button:not(.light-btn):not(.enquiry-reset):not(.outline),
+.atlas-primary,
+.enquiry-submit,
+.asas-nav-mobile-cta,
+.asas-ph-btn-primary {
+  background: var(--button-primary-bg) !important;
+  border-color: var(--button-primary-bg) !important;
+  color: var(--button-primary-text) !important;
+}
+
+.asas-action--primary:hover,
+.asas-action--primary:active,
+.asas-cta:hover,
+.insp-btn:not(.outline):hover,
+.hp-about-solid:hover,
+.button:not(.light-btn):not(.enquiry-reset):not(.outline):hover,
+.atlas-primary:hover,
+.enquiry-submit:hover,
+.asas-nav-mobile-cta:hover,
+.asas-ph-btn-primary:hover {
+  background: var(--brand-primary-hover) !important;
+  border-color: var(--brand-primary-hover) !important;
+  color: var(--button-primary-text) !important;
+}
+
+/* Secondary solid — navy in light; elevated / ghost in dark */
+html[data-theme='light'] .asas-action--secondary-solid,
+html[data-theme='light'] .asas-action--secondary {
+  background: var(--button-secondary-bg) !important;
+  border-color: var(--button-secondary-bg) !important;
+  color: var(--button-secondary-text) !important;
+}
+
+html[data-theme='light'] .asas-action--secondary-solid:hover,
+html[data-theme='light'] .asas-action--secondary:hover {
+  background: var(--brand-secondary-hover) !important;
+  border-color: var(--brand-secondary-hover) !important;
+}
+
+html[data-theme='dark'] .asas-action--secondary-solid,
+html[data-theme='dark'] .asas-action--secondary {
+  background: var(--bg-surface-elevated) !important;
+  border-color: var(--border-strong) !important;
+  color: #fff !important;
+}
+
+/* Outline / ghost */
+html[data-theme='light'] .asas-action--outline,
+html[data-theme='light'] .insp-btn.outline,
+html[data-theme='light'] .hp-about-outline,
+html[data-theme='light'] .button.outline {
+  background: transparent !important;
+  border-color: var(--button-ghost-border) !important;
+  color: var(--button-ghost-text) !important;
+}
+
+html[data-theme='light'] .asas-action--outline:hover,
+html[data-theme='light'] .insp-btn.outline:hover,
+html[data-theme='light'] .hp-about-outline:hover,
+html[data-theme='light'] .button.outline:hover {
+  background: var(--asas-navy) !important;
+  border-color: var(--asas-navy) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .asas-action--outline,
+html[data-theme='dark'] .insp-btn.outline,
+html[data-theme='dark'] .hp-about-outline,
+html[data-theme='dark'] .button.outline {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .asas-action--outline:hover,
+html[data-theme='dark'] .insp-btn.outline:hover,
+html[data-theme='dark'] .hp-about-outline:hover,
+html[data-theme='dark'] .button.outline:hover {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: var(--asas-navy) !important;
+}
+
+/* Text accents — rust */
+.atlas-link,
+.tm-text-link,
+.sd-text-cta,
+.sc-text-cta,
+.cp-text-cta,
+.pd-text-link,
+.sv-text-link {
+  color: var(--brand-primary) !important;
+}
+
+.asas-action:focus-visible,
+.asas-cta:focus-visible,
+.asas-theme-fab:focus-visible {
+  outline-color: var(--brand-primary);
+}
+
+.asas-action--light {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: var(--asas-navy) !important;
+}
+
+.asas-action--ghost {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.asas-action--ghost:hover {
+  background: #fff !important;
+  color: var(--asas-navy) !important;
+}
+
+/* Intentional full-navy brand blocks keep inverse text */
+.bg-brand,
+.asas-brand-band,
+[data-asas-surface='brand'] {
+  background: var(--bg-brand) !important;
+  color: var(--text-inverse) !important;
+}
+
+/* =========================================================
+   DARK MODE QA — screenshot remediation
+   Neutral charcoal + white text; navy only as rare brand accent.
+   ========================================================= */
+
+/* --- Homepage: lifecycle step numbers --- */
+html[data-theme='dark'] .wf-process-list span {
+  color: rgba(255, 255, 255, 0.38) !important;
+}
+
+html[data-theme='dark'] .wf-process-list h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .wf-process-list p {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .wf-process-list li {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- Homepage: client feedback --- */
+html[data-theme='dark'] .asas-t-sector {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+html[data-theme='dark'] .asas-t-nav {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .asas-t-nav:hover {
+  background: #1e1e1e !important;
+  border-color: #a02315 !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .asas-t-card blockquote {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+/* --- Homepage: team --- */
+html[data-theme='dark'] .tm,
+html[data-theme='dark'] .tm-home {
+  background: #090909 !important;
+  color: #fff !important;
+  --tm-navy: #ffffff;
+  --tm-text: #ffffff;
+  --tm-muted: rgba(255, 255, 255, 0.76);
+  --tm-paper: #0f0f0f;
+  --tm-deep: #090909;
+}
+
+html[data-theme='dark'] .tm-home-aside-link,
+html[data-theme='dark'] .tm-home-copy a {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .tm-home-aside-link:hover {
+  color: #a02315 !important;
+}
+
+html[data-theme='dark'] .tm-card-media {
+  background: #141414 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme='dark'] .tm-card-fallback {
+  background: #141414 !important;
+}
+
+html[data-theme='dark'] .tm-card-fallback span,
+html[data-theme='dark'] .tm-profile-fallback span {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* --- Services index --- */
+html[data-theme='dark'] .sv-page {
+  background: #090909 !important;
+  color: #fff !important;
+  --sv-muted: rgba(255, 255, 255, 0.76);
+  --sv-paper: #0f0f0f;
+  /* Keep --sv-navy as brand for rare accents; do NOT remap to white (breaks active tabs) */
+}
+
+html[data-theme='dark'] .sv-jump {
+  background: #0f0f0f !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .sv-jump-tabs a {
+  background: #181818 !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-theme='dark'] .sv-jump-tabs a.is-active,
+html[data-theme='dark'] .sv-jump-tabs a:hover {
+  background: #1e1e1e !important;
+  color: #fff !important;
+  border-color: #a02315 !important;
+  box-shadow: inset 0 -2px 0 #a02315;
+}
+
+html[data-theme='dark'] .sv-jump-note {
+  color: rgba(255, 255, 255, 0.52) !important;
+}
+
+html[data-theme='dark'] .sv-jump-divider {
+  background: rgba(255, 255, 255, 0.14) !important;
+}
+
+html[data-theme='dark'] .sv-values li,
+html[data-theme='dark'] .sv-design-copy li,
+html[data-theme='dark'] .sv-design-copy h2,
+html[data-theme='dark'] .sv-section h2,
+html[data-theme='dark'] .sv-approach-copy h2,
+html[data-theme='dark'] .sv-approach strong,
+html[data-theme='dark'] .sv-approach h3,
+html[data-theme='dark'] .sv-card-copy h3,
+html[data-theme='dark'] .sv-delivery-copy h3,
+html[data-theme='dark'] .sv-planning-feature-copy h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sv-values li,
+html[data-theme='dark'] .sv-design li {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html[data-theme='dark'] .sv-design,
+html[data-theme='dark'] .sv-delivery-card,
+html[data-theme='dark'] .sv-planning-feature,
+html[data-theme='dark'] .sv-card,
+html[data-theme='dark'] .sv-card-copy,
+html[data-theme='dark'] .sv-delivery-copy,
+html[data-theme='dark'] .sv-planning-feature-copy,
+html[data-theme='dark'] .sv-approach-steps,
+html[data-theme='dark'] .sv-approach-step {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sv-planning-feature-copy,
+html[data-theme='dark'] .sv-delivery-copy {
+  background: #181818 !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sv-approach h3,
+html[data-theme='dark'] .sv-approach .sv-step-title,
+html[data-theme='dark'] .sv-approach strong {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sv-approach,
+html[data-theme='dark'] .sv-metrics {
+  background: #090909 !important;
+}
+
+html[data-theme='dark'] .sv-steps strong {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sv-steps p {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .sv-step-num {
+  color: #a02315 !important;
+}
+
+html[data-theme='dark'] .sv-metric dt {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sv-metric dd,
+html[data-theme='dark'] .sv-metrics-side,
+html[data-theme='dark'] .sv-metrics-words {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+html[data-theme='dark'] .sv-design-copy,
+html[data-theme='dark'] .sv-planning-feature,
+html[data-theme='dark'] .sv-planning-feature-copy,
+html[data-theme='dark'] .sv-delivery-card,
+html[data-theme='dark'] .sv-delivery-copy {
+  background: #181818 !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Dark surfaces on design-copy need internal padding (background was added without a gutter) */
+html[data-theme='dark'] .sv-design-copy {
+  padding: clamp(var(--space-card-pad, 24px), 2.8vw, 36px) !important;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+html[data-theme='dark'] .pl-pages button {
+  background: #181818 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pl-pages button.is-active {
+  background: #a02315 !important;
+  border-color: #a02315 !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pl-pages button:disabled {
+  opacity: 0.45;
+}
+
+html[data-theme='dark'] .cp-project-feature,
+html[data-theme='dark'] .cp-project-feature-copy,
+html[data-theme='dark'] .cp-download,
+html[data-theme='dark'] .cp-download-inner,
+html[data-theme='dark'] .cp-why-card {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .cp-why-card h3,
+html[data-theme='dark'] .cp-download-copy h2,
+html[data-theme='dark'] .cp-project-feature-copy h3,
+html[data-theme='dark'] .cp-project-copy h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .cp-download-copy > p,
+html[data-theme='dark'] .cp-download-meta,
+html[data-theme='dark'] .cp-project-feature-copy p,
+html[data-theme='dark'] .cp-project-copy p,
+html[data-theme='dark'] .cp-why-card p {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .sv-step-icon {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: #a02315 !important;
+}
+
+html[data-theme='dark'] .sv-design {
+  background: #090909 !important;
+}
+
+html[data-theme='dark'] .sv-card {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] .sv-card-copy {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] .cp-project-feature {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .cp-project-feature-media,
+html[data-theme='dark'] .cp-cap-media {
+  background: #141414 !important;
+}
+
+html[data-theme='dark'] .cp-cap-nav {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] .cp-cap-layout {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] .footer-credentials span {
+  background: #181818 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html[data-theme='dark'] .sv-card-copy p,
+html[data-theme='dark'] .sv-delivery-copy p,
+html[data-theme='dark'] .sv-planning-feature-copy p,
+html[data-theme='dark'] .sv-design-copy > p,
+html[data-theme='dark'] .sv-section-head p {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+/* --- Projects listing --- */
+html[data-theme='dark'] .pl-page,
+html[data-theme='dark'] .projects-body {
+  background: #090909 !important;
+  color: #fff !important;
+  --pl-deep: #181818;
+  --pl-muted: rgba(255, 255, 255, 0.76);
+}
+
+html[data-theme='dark'] .pl-sidebar-inner {
+  background: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .pl-sidebar-head h2,
+html[data-theme='dark'] .pl-filter-list button {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pl-sidebar-head p,
+html[data-theme='dark'] .pl-filter-count,
+html[data-theme='dark'] .pl-sidebar-foot {
+  color: rgba(255, 255, 255, 0.52) !important;
+}
+
+html[data-theme='dark'] .pl-filter-list button svg {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html[data-theme='dark'] .pl-filter-list button:hover {
+  background: #1e1e1e !important;
+}
+
+html[data-theme='dark'] .pl-filter-list button.is-active {
+  background: #1e1e1e !important;
+  color: #fff !important;
+  box-shadow: inset 3px 0 0 #a02315 !important;
+}
+
+html[data-theme='dark'] .pl-featured-copy {
+  background: #181818 !important;
+}
+
+html[data-theme='dark'] .pl-featured-copy h2,
+html[data-theme='dark'] .pl-featured-place,
+html[data-theme='dark'] .pl-featured-stats dd {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pl-featured-desc,
+html[data-theme='dark'] .pl-featured-stats dt {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+html[data-theme='dark'] .pl-visual,
+html[data-theme='dark'] .pl-card .pl-visual,
+html[data-theme='dark'] .pl-featured-media .pl-visual {
+  background: #141414 !important;
+}
+
+html[data-theme='dark'] .pl-card-copy {
+  background: #181818 !important;
+}
+
+html[data-theme='dark'] .pl-card-copy h3,
+html[data-theme='dark'] .pl-card-link {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pl-card-copy p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+html[data-theme='dark'] .pl-pager button,
+html[data-theme='dark'] .pl-pagination button,
+html[data-theme='dark'] .pl-pagination a,
+html[data-theme='dark'] [class*='pl-page'] button {
+  background: #181818 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pl-pager button.is-active,
+html[data-theme='dark'] .pl-pagination button.is-active,
+html[data-theme='dark'] .pl-pagination a.is-active,
+html[data-theme='dark'] [class*='pl-page'] button.is-active {
+  background: #a02315 !important;
+  border-color: #a02315 !important;
+  color: #fff !important;
+}
+
+/* --- Company profile --- */
+html[data-theme='dark'] .cp-page {
+  background: #090909 !important;
+  color: #fff !important;
+  --cp-muted: rgba(255, 255, 255, 0.76);
+  --cp-paper: #0f0f0f;
+}
+
+html[data-theme='dark'] .cp-subnav {
+  background: rgba(9, 9, 9, 0.96) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .cp-subnav-links a {
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+html[data-theme='dark'] .cp-subnav-links a.is-active,
+html[data-theme='dark'] .cp-subnav-links a:hover {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .cp-timeline strong,
+html[data-theme='dark'] .cp-office strong,
+html[data-theme='dark'] .cp-section h2,
+html[data-theme='dark'] .cp-sector-card h3,
+html[data-theme='dark'] .cp-cap-copy h3,
+html[data-theme='dark'] .cp-steps strong,
+html[data-theme='dark'] .cp-download-copy h2,
+html[data-theme='dark'] .cp-download-copy h3,
+html[data-theme='dark'] .cp-project-feature-copy h2,
+html[data-theme='dark'] .cp-project-feature-copy h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .cp-timeline p,
+html[data-theme='dark'] .cp-sector-card p,
+html[data-theme='dark'] .cp-cap-copy p,
+html[data-theme='dark'] .cp-steps p,
+html[data-theme='dark'] .cp-office p,
+html[data-theme='dark'] .cp-office a {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .cp-approach,
+html[data-theme='dark'] .cp-presence,
+html[data-theme='dark'] .cp-capabilities {
+  background: #090909 !important;
+}
+
+html[data-theme='dark'] .cp-steps {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .cp-steps li {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .cp-step-num {
+  color: rgba(255, 255, 255, 0.28) !important;
+}
+
+html[data-theme='dark'] .cp-cap-groups button,
+html[data-theme='dark'] .cp-cap-nav button {
+  background: #181818 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-theme='dark'] .cp-cap-groups button.is-active,
+html[data-theme='dark'] .cp-cap-nav button.is-active {
+  background: #1e1e1e !important;
+  color: #fff !important;
+  border-color: #a02315 !important;
+  box-shadow: inset 3px 0 0 #a02315;
+}
+
+html[data-theme='dark'] .cp-cap-detail,
+html[data-theme='dark'] .cp-cap-copy,
+html[data-theme='dark'] .cp-project-feature-copy,
+html[data-theme='dark'] .cp-download,
+html[data-theme='dark'] .cp-download-copy {
+  background: #181818 !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .cp-locations li {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .cp-sector-card {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .cp-btn-ghost {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .cp-download-copy .cp-kicker,
+html[data-theme='dark'] .cp-download-meta,
+html[data-theme='dark'] .cp-download-copy p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* Shared page subnavs (about/services/etc sticky bars) */
+html[data-theme='dark'] .sv-subnav,
+html[data-theme='dark'] .sd-subnav,
+html[data-theme='dark'] .sc-subnav,
+html[data-theme='dark'] .pd-subnav,
+html[data-theme='dark'] .about-subnav {
+  background: rgba(9, 9, 9, 0.96) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .sv-subnav a,
+html[data-theme='dark'] .sd-subnav a,
+html[data-theme='dark'] .sc-subnav a,
+html[data-theme='dark'] .pd-subnav a,
+html[data-theme='dark'] .about-subnav a {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html[data-theme='dark'] .sv-subnav a.is-active,
+html[data-theme='dark'] .sd-subnav a.is-active,
+html[data-theme='dark'] .sc-subnav a.is-active,
+html[data-theme='dark'] .pd-subnav a.is-active {
+  color: #fff !important;
+}
+
+/* Kill leftover navy text / white panels on dark pages */
+html[data-theme='dark'] .sv-page a:not(.asas-action):not(.asas-cta):not([class*='btn']):not(.sv-card-link),
+html[data-theme='dark'] .cp-page a:not(.asas-action):not(.asas-cta):not([class*='btn']):not(.cp-text-cta):not(.cp-subnav-cta),
+html[data-theme='dark'] .pl-page a:not(.asas-action):not(.asas-cta):not([class*='btn']):not(.pl-card-link) {
+  /* leave accent links alone via more specific rules above */
+}
+
+/* =========================================================
+   DARK MODE SECOND PASS — screenshot root causes
+   ========================================================= */
+
+html[data-theme='dark'] .site-footer.asas-footer .footer-credentials span {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+html[data-theme='dark'] .hp-faq-list details,
+html[data-theme='dark'] .hp-revised.atlas-home .hp-faq-list details {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .hp-faq-list summary,
+html[data-theme='dark'] .hp-revised.atlas-home .hp-faq-list summary,
+html[data-theme='dark'] .hp-faq-q {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .hp-faq-list details[open] summary,
+html[data-theme='dark'] .hp-faq-list summary:hover {
+  background: #1e1e1e !important;
+}
+
+html[data-theme='dark'] .hp-faq-list p {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .insp-tab-copy li svg {
+  color: #a02315 !important;
+}
+
+html[data-theme='dark'] .sv-jump {
+  background: #0f0f0f !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .sv-jump-tabs a {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-theme='dark'] .sv-jump-tabs a.is-active,
+html[data-theme='dark'] .sv-jump-tabs a:hover {
+  background: #181818 !important;
+  color: #fff !important;
+  border-color: #a02315 !important;
+  box-shadow: inset 0 -2px 0 #a02315 !important;
+}
+
+html[data-theme='dark'] .sv-jump-tabs a.is-active svg,
+html[data-theme='dark'] .sv-jump-tabs a:hover svg {
+  color: #a02315 !important;
+}
+
+html[data-theme='dark'] .cp-sector-copy strong,
+html[data-theme='dark'] .cp-sector-card h3,
+html[data-theme='dark'] .cp-sector-card strong {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .cp-sector-card {
+  background: #181818 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0 0 14px;
+  overflow: hidden;
+}
+
+html[data-theme='dark'] .cp-sector-copy {
+  padding: 0 14px;
+}
+
+html[data-theme='dark'] .cp-sector-media {
+  background: #141414 !important;
+}
+
+html[data-theme='dark'] .sectors-featured,
+html[data-theme='dark'] .sectors-featured-copy {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sectors-featured-copy h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sectors-featured-copy > p {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .careers-page {
+  --c-ink: #ffffff;
+  --c-muted: rgba(255, 255, 255, 0.76);
+  --c-line: rgba(255, 255, 255, 0.1);
+  --c-paper: #141414;
+  --c-white: #181818;
+}
+
+html[data-theme='dark'] .careers-filters button {
+  background: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .careers-filters button span {
+  background: #0f0f0f !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+html[data-theme='dark'] .careers-filters button.is-active {
+  background: #a02315 !important;
+  border-color: #a02315 !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .careers-filters button:hover:not(.is-active) {
+  background: #1e1e1e !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+html[data-theme='dark'] .careers-card-meta span {
+  background: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+html[data-theme='dark'] .careers-card h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .careers-apply-fields label > span,
+html[data-theme='dark'] .enquiry-fields label > span,
+html[data-theme='dark'] .careers-form label > span,
+html[data-theme='dark'] .apply-form label > span,
+html[data-theme='dark'] .field label,
+html[data-theme='dark'] .contact-list b {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .careers-apply-panel,
+html[data-theme='dark'] .enquiry-form-panel,
+html[data-theme='dark'] .contact-form-panel {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .careers-apply-fields input,
+html[data-theme='dark'] .careers-apply-fields select,
+html[data-theme='dark'] .careers-apply-fields textarea,
+html[data-theme='dark'] .enquiry-fields input,
+html[data-theme='dark'] .enquiry-fields select,
+html[data-theme='dark'] .enquiry-fields textarea {
+  background: #111111 !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .careers-page .atlas-link {
+  color: #a02315 !important;
+}
+
+html[data-theme='dark'] .pl-sidebar-head h2,
+html[data-theme='dark'] .pl-filter-list button,
+html[data-theme='dark'] .pl-filter-label {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pl-filter-list button {
+  background: transparent !important;
+}
+
+html[data-theme='dark'] .pl-filter-list button.is-active {
+  background: #1e1e1e !important;
+  color: #fff !important;
+}
+
+/* =========================================================
+   DARK MODE THIRD PASS — navy title / consent / note cards
+   Brand navy (#070463) stays for accents; body titles use white.
+   ========================================================= */
+
+html[data-theme='dark'] .contact-note-card,
+html[data-theme='dark'] .enquiry-direct,
+html[data-theme='dark'] .about-mir-card,
+html[data-theme='dark'] .about-strength-card,
+html[data-theme='dark'] .about-stats {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .contact-note-card strong,
+html[data-theme='dark'] .enquiry-note-card strong,
+html[data-theme='dark'] .about-standard-list strong,
+html[data-theme='dark'] .about-mir-card strong,
+html[data-theme='dark'] .about-stat strong,
+html[data-theme='dark'] .atlas-proof strong,
+html[data-theme='dark'] .about-featured-copy h2,
+html[data-theme='dark'] .about-vision-card h2,
+html[data-theme='dark'] .about-section-head h2,
+html[data-theme='dark'] .about-strength-card h3,
+html[data-theme='dark'] .about-mir-copy h2,
+html[data-theme='dark'] .about-chip-list li,
+html[data-theme='dark'] .contact-aside h2,
+html[data-theme='dark'] .contact-form-head h2,
+html[data-theme='dark'] .contact-map-head h2,
+html[data-theme='dark'] .contact-map-pin strong,
+html[data-theme='dark'] .enquiry-aside h2,
+html[data-theme='dark'] .enquiry-steps h3,
+html[data-theme='dark'] .enquiry-direct h3,
+html[data-theme='dark'] .enquiry-form-head h2,
+html[data-theme='dark'] .enquiry-page .enquiry-success h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .contact-note-card p,
+html[data-theme='dark'] .enquiry-note-card p,
+html[data-theme='dark'] .about-mir-card p,
+html[data-theme='dark'] .about-standard-list span {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .careers-consent a,
+html[data-theme='dark'] .careers-consent a:hover,
+html[data-theme='dark'] .careers-consent a:focus-visible {
+  color: #a02315 !important;
+}
+
+html[data-theme='dark'] .careers-consent input[type='checkbox'] {
+  accent-color: #a02315 !important;
+}
+
+html[data-theme='dark'] .careers-file-box {
+  background: #111111 !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+html[data-theme='dark'] .careers-file-box svg {
+  color: #a02315 !important;
+}
+
+html[data-theme='dark'] .careers-file-box strong {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .careers-file-box small {
+  color: rgba(255, 255, 255, 0.52) !important;
+}
+
+html[data-theme='dark'] .careers-apply-intro h2,
+html[data-theme='dark'] .careers-empty h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .careers-apply-section {
+  background: #090909 !important;
+}
+
+html[data-theme='light'] .contact-note-card strong,
+html[data-theme='light'] .enquiry-note-card strong,
+html[data-theme='light'] .about-standard-list strong,
+html[data-theme='light'] .about-mir-card strong {
+  color: var(--asas-navy) !important;
+}
+
+html[data-theme='light'] .careers-consent a {
+  color: var(--asas-navy) !important;
+}
+
+html[data-theme='light'] .careers-file-box svg {
+  color: var(--asas-rust) !important;
+}
+
+/* =========================================================
+   DARK MODE FOURTH PASS — downloads meta + careers detail
+   ========================================================= */
+
+html[data-theme='dark'] .downloads-featured,
+html[data-theme='dark'] .downloads-content-card,
+html[data-theme='dark'] .downloads-related-card,
+html[data-theme='dark'] .downloads-bridge-inner {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+}
+
+html[data-theme='dark'] .downloads-featured-meta li {
+  background: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .downloads-featured-copy h3,
+html[data-theme='dark'] .downloads-contents > h3,
+html[data-theme='dark'] .downloads-content-card h4,
+html[data-theme='dark'] .downloads-body-head h2,
+html[data-theme='dark'] .downloads-related-head h2,
+html[data-theme='dark'] .downloads-related-card h3,
+html[data-theme='dark'] .downloads-bridge-inner h2 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .downloads-featured-copy > p,
+html[data-theme='dark'] .downloads-content-card p,
+html[data-theme='dark'] .downloads-related-card p {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .downloads-content-card:hover,
+html[data-theme='dark'] .downloads-related-card:hover {
+  background: #1d1d1d !important;
+}
+
+html[data-theme='dark'] .careers-detail-hero {
+  background: #090909 !important;
+}
+
+html[data-theme='dark'] .careers-detail {
+  background: #090909 !important;
+}
+
+html[data-theme='dark'] .careers-detail-copy,
+html[data-theme='dark'] .careers-detail-aside {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .careers-detail-copy h2,
+html[data-theme='dark'] .careers-detail-aside h2 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .careers-detail-copy > p,
+html[data-theme='dark'] .careers-detail-copy ul,
+html[data-theme='dark'] .careers-detail-aside > p,
+html[data-theme='dark'] .careers-detail-note {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .careers-detail-meta span {
+  background: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .careers-back,
+html[data-theme='dark'] .careers-back:hover {
+  color: #a02315 !important;
+}
+
+html[data-theme='light'] .downloads-featured-meta li {
+  color: var(--asas-navy) !important;
+  background: var(--asas-bg-soft) !important;
+}
+
+html[data-theme='light'] .careers-detail-copy,
+html[data-theme='light'] .careers-detail-aside {
+  background: #fff !important;
+}
+
+html[data-theme='light'] .careers-detail-hero {
+  background: var(--asas-navy) !important;
+}
+
+html[data-theme='light'] .careers-back {
+  color: var(--asas-navy) !important;
+}
+
+/* =========================================================
+   DARK MODE FIFTH PASS — project / service / sector detail
+   ========================================================= */
+
+/* Project tabs were .pd-tabs (not .pd-subnav) — white leak root cause */
+html[data-theme='dark'] .pd-tabs {
+  background: rgba(15, 15, 15, 0.96) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .pd-tabs a {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+html[data-theme='dark'] .pd-tabs a.is-active,
+html[data-theme='dark'] .pd-tabs a:hover {
+  color: #fff !important;
+  border-bottom-color: #a02315 !important;
+}
+
+html[data-theme='dark'] .pd-tech-words,
+html[data-theme='dark'] .pd-side-blueprint {
+  color: rgba(255, 255, 255, 0.28) !important;
+}
+
+html[data-theme='dark'] .pd-meta > div > svg {
+  color: #a02315 !important;
+  opacity: 1 !important;
+}
+
+html[data-theme='dark'] .pd-meta dt {
+  color: rgba(255, 255, 255, 0.52) !important;
+}
+
+html[data-theme='dark'] .pd-meta dd,
+html[data-theme='dark'] .pd-section h2,
+html[data-theme='dark'] .pd-design-copy blockquote {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pd-design-copy > p:not(.pd-kicker) {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .pd-design-copy blockquote {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .pd-btn-navy {
+  background: #181818 !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pd-btn-navy:hover {
+  background: #1d1d1d !important;
+}
+
+html[data-theme='dark'] .pd-btn-light,
+html[data-theme='dark'] .sd-cta-btn,
+html[data-theme='dark'] .sc-cta-btn {
+  background: #a02315 !important;
+  border-color: #a02315 !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .pd-btn-light:hover,
+html[data-theme='dark'] .sd-cta-btn:hover,
+html[data-theme='dark'] .sc-cta-btn:hover {
+  background: color-mix(in srgb, #a02315 82%, black) !important;
+}
+
+html[data-theme='dark'] .sd-cap-list strong,
+html[data-theme='dark'] .sd-steps strong,
+html[data-theme='dark'] .sd-sector-tile strong,
+html[data-theme='dark'] .sd-section h2,
+html[data-theme='dark'] .sd-related-head h2,
+html[data-theme='dark'] .sd-related-copy h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sd-step-num {
+  color: rgba(255, 255, 255, 0.28) !important;
+}
+
+html[data-theme='dark'] .sd-steps p,
+html[data-theme='dark'] .sd-cap-list li {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .sd-sector-icon {
+  background: #a02315 !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sd-method,
+html[data-theme='dark'] .sd-scope,
+html[data-theme='dark'] .sd-sectors {
+  background: #090909 !important;
+}
+
+html[data-theme='dark'] .sc-cap-list strong,
+html[data-theme='dark'] .sc-steps strong,
+html[data-theme='dark'] .sc-related-copy strong,
+html[data-theme='dark'] .sc-expertise-item strong,
+html[data-theme='dark'] .sc-project-copy h3,
+html[data-theme='dark'] .sc-section h2,
+html[data-theme='dark'] .sc-section-head h2,
+html[data-theme='dark'] .sc-projects-head h2 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .sc-cap-list p,
+html[data-theme='dark'] .sc-steps p,
+html[data-theme='dark'] .sc-project-copy p {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+html[data-theme='dark'] .sc-step-num {
+  color: rgba(255, 255, 255, 0.28) !important;
+}
+
+html[data-theme='dark'] .sc-expertise,
+html[data-theme='dark'] .sc-expertise-grid {
+  background: #090909 !important;
+}
+
+html[data-theme='dark'] .sc-expertise-item {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .sc-expertise-item:hover {
+  background: #1d1d1d !important;
+}
+
+html[data-theme='dark'] .sc-project-card,
+html[data-theme='dark'] .sc-project-media,
+html[data-theme='dark'] .sc-related-media,
+html[data-theme='dark'] .sd-sector-media {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme='dark'] .sc-projects,
+html[data-theme='dark'] .sc-related,
+html[data-theme='dark'] .sc-approach {
+  background: #090909 !important;
+}
+
+html[data-theme='light'] .pd-tabs {
+  background: rgba(255, 255, 255, 0.96) !important;
+}
+
+html[data-theme='light'] .pd-btn-navy {
+  background: var(--asas-navy) !important;
+  color: #fff !important;
+}
+
+html[data-theme='light'] .pd-btn-light,
+html[data-theme='light'] .sd-cta-btn,
+html[data-theme='light'] .sc-cta-btn {
+  background: #fff !important;
+  color: var(--asas-navy) !important;
+  border-color: #fff !important;
+}
+
+html[data-theme='light'] .pd-design-copy blockquote {
+  background: var(--asas-bg-soft, #f7f8f9) !important;
+  color: var(--asas-navy) !important;
+}
+
+html[data-theme='light'] .sd-cap-list strong,
+html[data-theme='light'] .sd-steps strong,
+html[data-theme='light'] .sd-sector-tile strong,
+html[data-theme='light'] .sc-cap-list strong,
+html[data-theme='light'] .sc-steps strong,
+html[data-theme='light'] .sc-related-copy strong,
+html[data-theme='light'] .sc-expertise-item strong {
+  color: var(--asas-navy) !important;
+}
+
+
+
+

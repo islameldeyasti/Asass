@@ -1,0 +1,826 @@
+{
+  "policy": "ONE logical source image = ONE primary website role. Same-project ecosystem reuse allowed only for traffic-access-studies. Responsive AVIF/WebP siblings are not duplicates.",
+  "roleCount": 51,
+  "uniqueRolePaths": 51,
+  "rolePathCollisions": {},
+  "fileHashLogicalDuplicates": [
+    {
+      "hash": "f2173126990c",
+      "paths": [
+        "/brand/asas-mark-reverse.png",
+        "/brand/asas-mark-header.png",
+        "/brand/asas-mark.png"
+      ]
+    }
+  ],
+  "cssAssetReferencesRemaining": [],
+  "projectsNeedingOriginal": [
+    "four-towers-al-nahda",
+    "building-mbz-musaffah-m26",
+    "building-khalifa-city-msh36",
+    "residential-building-al-raha-rbw2",
+    "mbz-city-towers",
+    "culture-private-school",
+    "emirates-private-school",
+    "compound-villas-portfolio",
+    "private-villa-shakhbout-w01",
+    "private-villa-khalifa-se24",
+    "residential-villa-al-shamkha-sh3",
+    "residential-villa-riyadh-rd32",
+    "residential-villa-bani-yas-eb11-01",
+    "reception-hall-private-villa",
+    "majlis-and-dining",
+    "restaurant-interior",
+    "hotel-lobby-interior"
+  ],
+  "realProjectApproved": [
+    "traffic-access-studies"
+  ],
+  "entries": [
+    {
+      "id": "about-featured",
+      "role": "ABOUT_FEATURED",
+      "filename": "asas-role-about-featured.webp",
+      "source": "/assets/asas/roles/asas-role-about-featured.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/about/page.js#ABOUT_FEATURED"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "about-hero",
+      "role": "ABOUT_HERO",
+      "filename": "asas-role-about-hero.webp",
+      "source": "/assets/asas/roles/asas-role-about-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/about/page.js#ABOUT_HERO",
+        "data/image-manifest.js#ABOUT_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "careers-hero",
+      "role": "CAREERS_HERO",
+      "filename": "asas-role-careers-hero.webp",
+      "source": "/assets/asas/roles/asas-role-careers-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/careers/page.js#CAREERS_HERO",
+        "data/image-manifest.js#CAREERS_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "company-hero",
+      "role": "COMPANY_HERO",
+      "filename": "asas-role-company-profile-hero.webp",
+      "source": "/assets/asas/roles/asas-role-company-profile-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/company-profile/page.js#COMPANY_HERO",
+        "data/image-manifest.js#COMPANY_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "company-overview",
+      "role": "COMPANY_OVERVIEW",
+      "filename": "asas-editorial-corporate-team.webp",
+      "source": "/assets/asas/corporate/asas-editorial-corporate-team.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/company-profile/page.js#COMPANY_OVERVIEW",
+        "data/image-manifest.js#COMPANY_OVERVIEW"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "contact-hero",
+      "role": "CONTACT_HERO",
+      "filename": "asas-role-contact-hero.webp",
+      "source": "/assets/asas/roles/asas-role-contact-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/contact/page.js#CONTACT_HERO",
+        "data/image-manifest.js#CONTACT_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "downloads-hero",
+      "role": "DOWNLOADS_HERO",
+      "filename": "asas-role-downloads-hero.webp",
+      "source": "/assets/asas/roles/asas-role-downloads-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/downloads/page.js#DOWNLOADS_HERO",
+        "data/image-manifest.js#DOWNLOADS_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "enquiry-hero",
+      "role": "ENQUIRY_HERO",
+      "filename": "asas-role-enquiry-hero.webp",
+      "source": "/assets/asas/roles/asas-role-enquiry-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/project-enquiry/page.js#ENQUIRY_HERO",
+        "data/image-manifest.js#ENQUIRY_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-about",
+      "role": "HOME_ABOUT",
+      "filename": "asas-role-home-about.webp",
+      "source": "/assets/asas/roles/asas-role-home-about.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/page.js#HOME_ABOUT"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-disc-architecture",
+      "role": "HOME_DISC_ARCHITECTURE",
+      "filename": "asas-role-home-disc-architecture.webp",
+      "source": "/assets/asas/roles/asas-role-home-disc-architecture.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_DISC_ARCHITECTURE"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-disc-mep",
+      "role": "HOME_DISC_MEP",
+      "filename": "asas-role-home-disc-mep.webp",
+      "source": "/assets/asas/roles/asas-role-home-disc-mep.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_DISC_MEP"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-disc-pm",
+      "role": "HOME_DISC_PM",
+      "filename": "asas-role-home-disc-pm.webp",
+      "source": "/assets/asas/roles/asas-role-home-disc-pm.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_DISC_PM"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-disc-qs",
+      "role": "HOME_DISC_QS",
+      "filename": "asas-role-home-disc-qs.webp",
+      "source": "/assets/asas/roles/asas-role-home-disc-qs.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_DISC_QS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-disc-structural",
+      "role": "HOME_DISC_STRUCTURAL",
+      "filename": "asas-role-home-disc-structural.webp",
+      "source": "/assets/asas/roles/asas-role-home-disc-structural.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_DISC_STRUCTURAL"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-hero",
+      "role": "HOME_HERO",
+      "filename": "asas-editorial-homepage-hero.webp",
+      "source": "/assets/asas/generated-editorial/asas-editorial-homepage-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/page.js#HOME_HERO",
+        "data/image-manifest.js#HOME_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-sector-buildings",
+      "role": "HOME_SECTOR_BUILDINGS",
+      "filename": "asas-role-home-sector-buildings.webp",
+      "source": "/assets/asas/roles/asas-role-home-sector-buildings.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_SECTOR_BUILDINGS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-sector-education",
+      "role": "HOME_SECTOR_EDUCATION",
+      "filename": "asas-role-home-sector-education.webp",
+      "source": "/assets/asas/roles/asas-role-home-sector-education.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_SECTOR_EDUCATION"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-sector-infrastructure",
+      "role": "HOME_SECTOR_INFRASTRUCTURE",
+      "filename": "asas-role-home-sector-infrastructure.webp",
+      "source": "/assets/asas/roles/asas-role-home-sector-infrastructure.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_SECTOR_INFRASTRUCTURE"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-sector-interiors",
+      "role": "HOME_SECTOR_INTERIORS",
+      "filename": "asas-role-home-sector-interiors.webp",
+      "source": "/assets/asas/roles/asas-role-home-sector-interiors.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_SECTOR_INTERIORS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-sector-towers",
+      "role": "HOME_SECTOR_TOWERS",
+      "filename": "asas-role-home-sector-towers.webp",
+      "source": "/assets/asas/roles/asas-role-home-sector-towers.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_SECTOR_TOWERS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-sector-villas",
+      "role": "HOME_SECTOR_VILLAS",
+      "filename": "asas-role-home-sector-villas.webp",
+      "source": "/assets/asas/roles/asas-role-home-sector-villas.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#HOME_SECTOR_VILLAS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-slide-education",
+      "role": "HOME_SLIDE_EDUCATION",
+      "filename": "asas-role-home-slide-education.webp",
+      "source": "/assets/asas/roles/asas-role-home-slide-education.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/page.js#HOME_SLIDE_EDUCATION"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-slide-interiors",
+      "role": "HOME_SLIDE_INTERIORS",
+      "filename": "asas-role-home-slide-interiors.webp",
+      "source": "/assets/asas/roles/asas-role-home-slide-interiors.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/page.js#HOME_SLIDE_INTERIORS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-slide-traffic",
+      "role": "HOME_SLIDE_TRAFFIC",
+      "filename": "asas-traffic-access-studies-portfolio.webp",
+      "source": "/assets/asas/real-projects/asas-traffic-access-studies-portfolio.webp",
+      "classification": "REAL_PROJECT",
+      "relatedProject": "Traffic & Access Studies",
+      "websiteUsage": [
+        "app/[locale]/page.js#HOME_SLIDE_TRAFFIC",
+        "data/image-manifest.js"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-slide-villas",
+      "role": "HOME_SLIDE_VILLAS",
+      "filename": "asas-role-home-slide-villas.webp",
+      "source": "/assets/asas/roles/asas-role-home-slide-villas.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/page.js#HOME_SLIDE_VILLAS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "home-team",
+      "role": "HOME_TEAM",
+      "filename": "asas-role-home-team.webp",
+      "source": "/assets/asas/roles/asas-role-home-team.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "components/team/HomeTeamSection.js#HOME_TEAM"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "projects-hero",
+      "role": "PROJECTS_HERO",
+      "filename": "asas-role-projects-hero.webp",
+      "source": "/assets/asas/roles/asas-role-projects-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#PROJECTS_HERO",
+        "data/projects.js#PROJECTS_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "sectors-hero",
+      "role": "SECTORS_HERO",
+      "filename": "asas-role-sectors-hero.webp",
+      "source": "/assets/asas/roles/asas-role-sectors-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/sectors/page.js#SECTORS_HERO",
+        "data/image-manifest.js#SECTORS_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "sector-buildings",
+      "role": "SECTOR_BUILDINGS",
+      "filename": "asas-editorial-buildings-sector.webp",
+      "source": "/assets/asas/generated-editorial/asas-editorial-buildings-sector.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/sectors/[slug]/page.js#SECTOR_BUILDINGS",
+        "data/image-manifest.js#SECTOR_BUILDINGS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "sector-education",
+      "role": "SECTOR_EDUCATION",
+      "filename": "asas-editorial-education-sector.webp",
+      "source": "/assets/asas/generated-editorial/asas-editorial-education-sector.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SECTOR_EDUCATION"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "sector-industrial",
+      "role": "SECTOR_INDUSTRIAL",
+      "filename": "asas-editorial-industrial-sector.webp",
+      "source": "/assets/asas/generated-editorial/asas-editorial-industrial-sector.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SECTOR_INDUSTRIAL"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "sector-infrastructure",
+      "role": "SECTOR_INFRASTRUCTURE",
+      "filename": "asas-role-infrastructure-sector.webp",
+      "source": "/assets/asas/roles/asas-role-infrastructure-sector.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SECTOR_INFRASTRUCTURE"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "sector-interiors",
+      "role": "SECTOR_INTERIORS",
+      "filename": "asas-editorial-interiors-sector.webp",
+      "source": "/assets/asas/generated-editorial/asas-editorial-interiors-sector.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SECTOR_INTERIORS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "sector-towers",
+      "role": "SECTOR_TOWERS",
+      "filename": "asas-role-towers-sector.webp",
+      "source": "/assets/asas/roles/asas-role-towers-sector.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SECTOR_TOWERS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "sector-villas",
+      "role": "SECTOR_VILLAS",
+      "filename": "asas-editorial-villas-sector.webp",
+      "source": "/assets/asas/generated-editorial/asas-editorial-villas-sector.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SECTOR_VILLAS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "services-hero",
+      "role": "SERVICES_HERO",
+      "filename": "asas-role-services-hero.webp",
+      "source": "/assets/asas/roles/asas-role-services-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/services/page.js#SERVICES_HERO",
+        "data/image-manifest.js#SERVICES_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-architecture",
+      "role": "SERVICE_ARCHITECTURE",
+      "filename": "asas-role-architecture-service.webp",
+      "source": "/assets/asas/roles/asas-role-architecture-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/services/[slug]/page.js#SERVICE_ARCHITECTURE",
+        "data/image-manifest.js#SERVICE_ARCHITECTURE"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-hse",
+      "role": "SERVICE_HSE",
+      "filename": "asas-role-hse-service.webp",
+      "source": "/assets/asas/roles/asas-role-hse-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_HSE"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-infrastructure",
+      "role": "SERVICE_INFRASTRUCTURE",
+      "filename": "asas-role-infra-service.webp",
+      "source": "/assets/asas/roles/asas-role-infra-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_INFRASTRUCTURE"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-interior",
+      "role": "SERVICE_INTERIOR",
+      "filename": "asas-role-interior-service.webp",
+      "source": "/assets/asas/roles/asas-role-interior-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_INTERIOR"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-landscape",
+      "role": "SERVICE_LANDSCAPE",
+      "filename": "asas-role-landscape-service.webp",
+      "source": "/assets/asas/roles/asas-role-landscape-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_LANDSCAPE"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-mep",
+      "role": "SERVICE_MEP",
+      "filename": "asas-role-mep-service.webp",
+      "source": "/assets/asas/roles/asas-role-mep-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_MEP"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-pm",
+      "role": "SERVICE_PM",
+      "filename": "asas-role-pm-service.webp",
+      "source": "/assets/asas/roles/asas-role-pm-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_PM"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-qs",
+      "role": "SERVICE_QS",
+      "filename": "asas-role-qs-service.webp",
+      "source": "/assets/asas/roles/asas-role-qs-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_QS"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-structural",
+      "role": "SERVICE_STRUCTURAL",
+      "filename": "asas-role-structural-service.webp",
+      "source": "/assets/asas/roles/asas-role-structural-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_STRUCTURAL"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-studies",
+      "role": "SERVICE_STUDIES",
+      "filename": "asas-role-studies-service.webp",
+      "source": "/assets/asas/roles/asas-role-studies-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_STUDIES"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-supervision",
+      "role": "SERVICE_SUPERVISION",
+      "filename": "asas-editorial-site-supervision.webp",
+      "source": "/assets/asas/services/asas-editorial-site-supervision.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_SUPERVISION"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-sustainability",
+      "role": "SERVICE_SUSTAINABILITY",
+      "filename": "asas-role-sustainability-service.webp",
+      "source": "/assets/asas/roles/asas-role-sustainability-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_SUSTAINABILITY"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "service-traffic",
+      "role": "SERVICE_TRAFFIC",
+      "filename": "asas-role-traffic-service.webp",
+      "source": "/assets/asas/roles/asas-role-traffic-service.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "data/image-manifest.js#SERVICE_TRAFFIC"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "team-hero",
+      "role": "TEAM_HERO",
+      "filename": "asas-role-team-hero.webp",
+      "source": "/assets/asas/roles/asas-role-team-hero.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/team/page.js#TEAM_HERO",
+        "data/image-manifest.js#TEAM_HERO"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    },
+    {
+      "id": "team-philosophy",
+      "role": "TEAM_PHILOSOPHY",
+      "filename": "asas-role-team-philosophy.webp",
+      "source": "/assets/asas/roles/asas-role-team-philosophy.webp",
+      "classification": "GENERATED_EDITORIAL",
+      "relatedProject": null,
+      "websiteUsage": [
+        "app/[locale]/team/page.js#TEAM_PHILOSOPHY"
+      ],
+      "duplicateGroup": null,
+      "approved": true
+    }
+  ],
+  "multiFilePathUsages": [
+    {
+      "path": "/assets/asas/generated-editorial/asas-editorial-homepage-hero.webp",
+      "refs": [
+        "app/[locale]/page.js#HOME_HERO",
+        "data/image-manifest.js#HOME_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/real-projects/asas-traffic-access-studies-portfolio.webp",
+      "refs": [
+        "app/[locale]/page.js#HOME_SLIDE_TRAFFIC",
+        "data/image-manifest.js"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-enquiry-hero.webp",
+      "refs": [
+        "app/[locale]/project-enquiry/page.js#ENQUIRY_HERO",
+        "data/image-manifest.js#ENQUIRY_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-contact-hero.webp",
+      "refs": [
+        "app/[locale]/contact/page.js#CONTACT_HERO",
+        "data/image-manifest.js#CONTACT_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-sectors-hero.webp",
+      "refs": [
+        "app/[locale]/sectors/page.js#SECTORS_HERO",
+        "data/image-manifest.js#SECTORS_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/generated-editorial/asas-editorial-buildings-sector.webp",
+      "refs": [
+        "app/[locale]/sectors/[slug]/page.js#SECTOR_BUILDINGS",
+        "data/image-manifest.js#SECTOR_BUILDINGS"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-company-profile-hero.webp",
+      "refs": [
+        "app/[locale]/company-profile/page.js#COMPANY_HERO",
+        "data/image-manifest.js#COMPANY_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/corporate/asas-editorial-corporate-team.webp",
+      "refs": [
+        "app/[locale]/company-profile/page.js#COMPANY_OVERVIEW",
+        "data/image-manifest.js#COMPANY_OVERVIEW"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-about-hero.webp",
+      "refs": [
+        "app/[locale]/about/page.js#ABOUT_HERO",
+        "data/image-manifest.js#ABOUT_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-careers-hero.webp",
+      "refs": [
+        "app/[locale]/careers/page.js#CAREERS_HERO",
+        "data/image-manifest.js#CAREERS_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-team-hero.webp",
+      "refs": [
+        "app/[locale]/team/page.js#TEAM_HERO",
+        "data/image-manifest.js#TEAM_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-downloads-hero.webp",
+      "refs": [
+        "app/[locale]/downloads/page.js#DOWNLOADS_HERO",
+        "data/image-manifest.js#DOWNLOADS_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-services-hero.webp",
+      "refs": [
+        "app/[locale]/services/page.js#SERVICES_HERO",
+        "data/image-manifest.js#SERVICES_HERO"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-architecture-service.webp",
+      "refs": [
+        "app/[locale]/services/[slug]/page.js#SERVICE_ARCHITECTURE",
+        "data/image-manifest.js#SERVICE_ARCHITECTURE"
+      ]
+    },
+    {
+      "path": "/assets/asas/roles/asas-role-projects-hero.webp",
+      "refs": [
+        "data/image-manifest.js#PROJECTS_HERO",
+        "data/projects.js#PROJECTS_HERO"
+      ]
+    }
+  ]
+}

@@ -1,25 +1,27 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import {useRef} from 'react';
 import {motion, useInView, useReducedMotion} from 'motion/react';
 import {ArrowRight, Mail, MapPin, MessageCircle, Phone} from 'lucide-react';
 import {company} from '@/data/company';
 import {services} from '@/data/services';
+import ThemeLogo from '@/components/theme/ThemeLogo';
+import SocialIconLinks from '@/components/social/SocialIconLinks';
+import {t, tNav} from '@/lib/i18n/ui';
 
 const EASE = [0.16, 1, 0.3, 1];
 
-const companyLinks = [
-  ['About', 'عن أساس', 'about'],
-  ['Projects', 'المشاريع', 'projects'],
-  ['Portfolio', 'المحفظة', 'portfolio'],
-  ['Team', 'فريقنا', 'team'],
-  ['Sectors', 'القطاعات', 'sectors'],
-  ['Careers', 'الوظائف', 'careers'],
-  ['Downloads', 'التحميلات', 'downloads'],
-  ['Contact', 'تواصل', 'contact'],
-  ['Project Enquiry', 'استفسار مشروع', 'project-enquiry'],
+const companyLinkKeys = [
+  ['About', 'about'],
+  ['Projects', 'projects'],
+  ['Portfolio', 'portfolio'],
+  ['Team', 'team'],
+  ['Sectors', 'sectors'],
+  ['Careers', 'careers'],
+  ['Downloads', 'downloads'],
+  ['Contact', 'contact'],
+  ['Project Enquiry', 'project-enquiry'],
 ];
 
 export default function Footer({locale}) {
@@ -44,32 +46,32 @@ export default function Footer({locale}) {
       <div className="asas-footer-shell">
         <div className="footer-grid">
           <motion.div className="footer-brand" {...reveal(0)}>
-            <Link className="footer-logo" href={`/${locale}`} aria-label="ASAS home">
-              <Image
-                src="/brand/asas-mark-header.png"
-                alt="ASAS Engineering & Project Management Consultancy"
-                width={168}
-                height={168}
-                priority={false}
+            <Link className="footer-logo" href={`/${locale}`} aria-label={t('homeAria', locale)}>
+              <ThemeLogo
+                appearance="dark"
+                alt={ar ? company.nameAr : company.name}
+                width={62}
+                height={62}
               />
             </Link>
-            <p className="footer-company-name">
-              ASAS Engineering &amp; Project Management Consultancy
-            </p>
+            <p className="footer-company-name">{ar ? company.nameAr : company.name}</p>
             <p className="footer-description">{ar ? company.descriptionAr : company.description}</p>
             <div className="footer-credentials">
-              <span>{ar ? 'تأسست عام 2009' : 'Established 2009'}</span>
-              <span>{ar ? 'أبوظبي، الإمارات' : 'Abu Dhabi, UAE'}</span>
-              <span>{ar ? 'إحدى مبادرات مجموعة مير' : 'An initiative of Mir Group'}</span>
+              <span>{t('established2009', locale)}</span>
+              <span>{t('abuDhabiUae', locale)}</span>
+              <span>{t('mirGroup', locale)}</span>
             </div>
+            <nav aria-label={ar ? 'وسائل التواصل الاجتماعي' : 'Social media'}>
+              <SocialIconLinks variant="footer" locale={locale} />
+            </nav>
           </motion.div>
 
           <motion.nav
             className="footer-column footer-services"
-            aria-label={ar ? 'الخدمات' : 'Services'}
+            aria-label={t('services', locale)}
             {...reveal(0.08)}
           >
-            <h3>{ar ? 'الخدمات' : 'Services'}</h3>
+            <h3>{t('services', locale)}</h3>
             {footerServices.map((service) => (
               <Link href={`/${locale}/services/${service.slug}`} key={service.slug}>
                 {ar ? service.titleAr : service.title}
@@ -79,47 +81,51 @@ export default function Footer({locale}) {
 
           <motion.nav
             className="footer-column footer-company"
-            aria-label={ar ? 'الشركة' : 'Company'}
+            aria-label={t('company', locale)}
             {...reveal(0.16)}
           >
-            <h3>{ar ? 'الشركة' : 'Company'}</h3>
-            {companyLinks.map(([label, labelAr, path]) => (
+            <h3>{t('company', locale)}</h3>
+            {companyLinkKeys.map(([key, path]) => (
               <Link href={`/${locale}/${path}`} key={path}>
-                {ar ? labelAr : label}
+                {tNav(key, locale)}
               </Link>
             ))}
           </motion.nav>
 
           <motion.div className="footer-column footer-contact" {...reveal(0.24)}>
-            <h3>{ar ? 'تواصل معنا' : 'Contact'}</h3>
+            <h3>{t('contactUs', locale)}</h3>
             <div className="footer-contact-item">
               <MapPin aria-hidden="true" strokeWidth={1.75} />
               <div>
-                <strong>{ar ? 'مكتب أبوظبي' : 'Abu Dhabi office'}</strong>
+                <strong>{t('abuDhabiOffice', locale)}</strong>
                 <p>{ar ? company.addressAr : company.address}</p>
               </div>
             </div>
             <div className="footer-contact-item">
               <Phone aria-hidden="true" strokeWidth={1.75} />
               <div>
-                <strong>{ar ? 'اتصل بنا' : 'Call us'}</strong>
-                <a href={`tel:${company.phone.replace(/\s/g, '')}`}>{company.phone}</a>
+                <strong>{t('callUs', locale)}</strong>
+                <a href={`tel:${company.phone.replace(/\s/g, '')}`} dir="ltr">
+                  {company.phone}
+                </a>
               </div>
             </div>
             <div className="footer-contact-item">
               <MessageCircle aria-hidden="true" strokeWidth={1.75} />
               <div>
-                <strong>WhatsApp</strong>
-                <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noreferrer">
-                  {ar ? 'تواصل مع ASAS' : 'Message ASAS'}
+                <strong>{t('whatsapp', locale)}</strong>
+                <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noreferrer" dir="ltr">
+                  {t('messageAsas', locale)}
                 </a>
               </div>
             </div>
             <div className="footer-contact-item">
               <Mail aria-hidden="true" strokeWidth={1.75} />
               <div>
-                <strong>{ar ? 'البريد الإلكتروني' : 'Email'}</strong>
-                <a href={`mailto:${company.email}`}>{company.email}</a>
+                <strong>{t('email', locale)}</strong>
+                <a href={`mailto:${company.email}`} dir="ltr">
+                  {company.email}
+                </a>
               </div>
             </div>
           </motion.div>
@@ -127,28 +133,25 @@ export default function Footer({locale}) {
 
         <motion.div className="footer-action" {...reveal(0.32)}>
           <div className="footer-action-copy">
-            <span className="footer-action-eyebrow">{ar ? 'هل أنت مستعد للبدء؟' : 'Ready to start?'}</span>
-            <strong className="footer-action-title">
-              {ar ? 'ابدأ مشروعك التالي مع ASAS.' : 'Start your next project with ASAS.'}
-            </strong>
-            <p>
-              {ar
-                ? 'شاركنا متطلبات مشروعك وسنرشدك إلى الخطوة التالية.'
-                : 'Share your project requirements and our team will guide you through the next step.'}
-            </p>
+            <span className="footer-action-eyebrow">{t('readyToStart', locale)}</span>
+            <strong className="footer-action-title">{t('startNextProject', locale)}</strong>
+            <p>{t('shareRequirements', locale)}</p>
           </div>
           <Link className="footer-action-link" href={`/${locale}/project-enquiry`}>
-            {ar ? 'استفسار مشروع' : 'Project Enquiry'}
+            {t('projectEnquiry', locale)}
             <ArrowRight size={18} className={ar ? 'reverse-arrow' : ''} />
           </Link>
         </motion.div>
 
         <motion.div className="footnote" {...reveal(0.4)}>
-          <span>© {new Date().getFullYear()} ASAS Engineering &amp; Project Management Consultancy</span>
+          <span>
+            © {new Date().getFullYear()}{' '}
+            {ar ? company.nameAr : 'ASAS Engineering & Project Management Consultancy'}
+          </span>
           <span className="footer-legal">
-            <Link href={`/${locale}/privacy`}>{ar ? 'الخصوصية' : 'Privacy Policy'}</Link>
+            <Link href={`/${locale}/privacy`}>{t('privacy', locale)}</Link>
             <i aria-hidden="true">·</i>
-            <Link href={`/${locale}/terms`}>{ar ? 'الشروط' : 'Terms'}</Link>
+            <Link href={`/${locale}/terms`}>{t('terms', locale)}</Link>
           </span>
         </motion.div>
       </div>

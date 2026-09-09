@@ -1,15 +1,13 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import {
-  ArrowRight,
   CheckCircle2,
   ClipboardCheck,
   Clock3,
-  FileText,
   Handshake,
   ShieldCheck,
 } from 'lucide-react';
 import {Container} from '@/components/UI';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {
   company,
   mission,
@@ -19,19 +17,15 @@ import {
   vision,
   workLocations,
 } from '@/data/company';
-import {generatedEditorialImages} from '@/data/image-manifest';
+import {ctaBandImages, roleImages} from '@/data/image-manifest';
 
 const strengthIcons = [CheckCircle2, Clock3, Handshake];
-
-function NextArrow({ar}) {
-  return <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />;
-}
 
 export async function generateMetadata({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
   return {
-    title: ar ? 'عن أساس | استشارات هندسية في أبوظبي' : 'About ASAS | Abu Dhabi Engineering Consultancy',
+    title: ar ? 'عن أساس للاستشارات الهندسية وإدارة المشاريع | استشارات هندسية في أبوظبي' : 'About ASAS | Abu Dhabi Engineering Consultancy',
     description: ar ? company.descriptionAr : company.description,
   };
 }
@@ -39,13 +33,14 @@ export async function generateMetadata({params}) {
 export default async function About({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
+  const ctaImage = ctaBandImages.about;
 
   return (
     <div className="about-page">
       <section className="about-hero">
         <div className="about-hero-photo" aria-hidden="true">
           <Image
-            src={generatedEditorialImages.buildingsSector}
+            src={roleImages.ABOUT_HERO}
             alt=""
             fill
             priority
@@ -53,7 +48,7 @@ export default async function About({params}) {
           />
         </div>
         <Container>
-          <span className="breadcrumb">ASAS / {ar ? 'عن أساس' : 'About'}</span>
+          <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'عن أساس للاستشارات الهندسية وإدارة المشاريع' : 'About'}</span>
           <h1>
             {ar
               ? 'خبرة هندسية تأسست في أبوظبي عام 2009.'
@@ -65,9 +60,9 @@ export default async function About({params}) {
               {ar ? company.cityAr : company.city} · {company.year}
             </span>
             <span>{ar ? company.parentGroupAr : company.parentGroup}</span>
-            <Link href={`/${locale}/downloads`}>
+            <ActionButton variant="ghost" href={`/${locale}/downloads`} icon="file">
               {ar ? 'الملف التعريفي' : 'Company profile'}
-            </Link>
+            </ActionButton>
           </div>
         </Container>
       </section>
@@ -77,7 +72,7 @@ export default async function About({params}) {
           <article className="about-featured">
             <div className="about-featured-media">
               <Image
-                src={generatedEditorialImages.corporateTeam}
+                src={roleImages.ABOUT_FEATURED}
                 alt=""
                 fill
                 sizes="(max-width: 900px) 100vw, 55vw"
@@ -96,17 +91,16 @@ export default async function About({params}) {
                   ? 'تغطي خدمات المكتب التصميم المعماري والإنشائي والمدني والكهربائي والميكانيكي، إلى جانب دراسات التكاليف والكميات وإدارة المشاريع والإشراف على التنفيذ.'
                   : 'The practice covers architectural, structural, civil, electrical and mechanical design, together with cost and quantity studies, project management and construction supervision.'}
               </p>
-              <Link className="atlas-link" href={`/${locale}/services`}>
+              <ActionButton variant="outline" href={`/${locale}/services`}>
                 {ar ? 'عرض الخدمات' : 'View services'}
-                <NextArrow ar={ar} />
-              </Link>
+              </ActionButton>
             </div>
           </article>
 
           <div className="about-stats">
             {stats.map((stat) => (
               <div className="about-stat" key={stat.label}>
-                <strong>{stat.value}</strong>
+                <strong className="ltr-isolate" dir="ltr">{stat.value}</strong>
                 <span>{ar ? stat.labelAr : stat.label}</span>
               </div>
             ))}
@@ -162,7 +156,7 @@ export default async function About({params}) {
           </header>
           <ul className="about-chip-list">
             {workLocations.map((location) => (
-              <li key={location}>{location}</li>
+              <li key={location.en}>{ar ? location.ar : location.en}</li>
             ))}
           </ul>
         </Container>
@@ -208,24 +202,19 @@ export default async function About({params}) {
                   ? 'حمّل الملف للاطلاع على القدرات والمنهجية والأعمال المختارة.'
                   : 'Download the profile for capabilities, methodology and selected work.'}
               </p>
-              <Link className="atlas-link" href={`/${locale}/downloads`}>
-                <FileText size={15} aria-hidden="true" />
+              <ActionButton variant="outline" href={`/${locale}/downloads`} icon="file">
                 {ar ? 'صفحة التحميلات' : 'Downloads page'}
-                <NextArrow ar={ar} />
-              </Link>
+              </ActionButton>
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="about-cta">
+      <section className="about-cta asas-cta-band">
         <div className="about-cta-media" aria-hidden="true">
-          <Image
-            src={generatedEditorialImages.buildingsSector}
-            alt=""
-            fill
-            sizes="100vw"
-          />
+          {ctaImage ? (
+            <Image src={ctaImage} alt="" fill sizes="100vw" style={{objectFit: 'cover', objectPosition: '50% 40%'}} />
+          ) : null}
         </div>
         <div className="about-cta-veil" aria-hidden="true" />
         <Container className="about-cta-inner">
@@ -240,16 +229,14 @@ export default async function About({params}) {
                 ? 'اطّلع على نطاقات الخدمات أو الأعمال المختارة من الملف الرسمي.'
                 : 'Review service scopes or selected work from the official portfolio.'}
             </p>
-            <div className="about-cta-actions">
-              <Link className="about-cta-btn" href={`/${locale}/services`}>
+            <ActionGroup className="about-cta-actions">
+              <ActionButton variant="primary" href={`/${locale}/services`}>
                 {ar ? 'الخدمات' : 'Services'}
-                <NextArrow ar={ar} />
-              </Link>
-              <Link className="about-cta-link" href={`/${locale}/projects`}>
+              </ActionButton>
+              <ActionButton variant="ghost" href={`/${locale}/projects`}>
                 {ar ? 'المشاريع' : 'Projects'}
-                <NextArrow ar={ar} />
-              </Link>
-            </div>
+              </ActionButton>
+            </ActionGroup>
           </div>
           <ul className="about-cta-words" aria-hidden="true">
             <li>{ar ? 'أشخاص' : 'People'}</li>

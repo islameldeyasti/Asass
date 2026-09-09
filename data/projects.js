@@ -1,6 +1,4 @@
-import {generatedEditorialImages, projectImages} from './image-manifest';
-
-const {homepageHero, buildingsSector, educationSector, villasSector, interiorsSector, industrialSector, technicalCoordination, siteSupervision} = generatedEditorialImages;
+import {projectImages, roleImages} from './image-manifest';
 
 export const projectKinds = {
   built: {en: 'Built Project', ar: 'مشروع منفَّذ'},
@@ -32,34 +30,14 @@ const locationShorts = {
   'residential-villa-bani-yas-eb11-01': ['Bani Yas, Abu Dhabi', 'بني ياس، أبوظبي'],
 };
 
-const editorialVisuals = {
-  'four-towers-al-nahda': {src: homepageHero, crop: '78% 32%'},
-  'mbz-city-towers': {src: buildingsSector, crop: '82% 20%'},
-  'building-mbz-musaffah-m26': {src: buildingsSector, crop: '18% 55%'},
-  'building-khalifa-city-msh36': {src: siteSupervision, crop: '50% 40%'},
-  'residential-building-al-raha-rbw2': {src: buildingsSector, crop: '50% 88%'},
-  'showroom-musaffah-m42': {src: industrialSector, crop: '30% 45%'},
-  'industrial-facility-musaffah-m42': {src: industrialSector, crop: '75% 60%'},
-  'industrial-facility-musaffah-m15': {src: technicalCoordination, crop: '40% 50%'},
-  'culture-private-school': {src: educationSector, crop: '28% 35%'},
-  'emirates-private-school': {src: educationSector, crop: '72% 50%'},
-  'american-international-school': {src: educationSector, crop: '50% 80%'},
-  'compound-villas-portfolio': {src: villasSector, crop: '20% 30%'},
-  'private-villa-shakhbout-w01': {src: villasSector, crop: '70% 25%'},
-  'private-villa-khalifa-se24': {src: villasSector, crop: '45% 70%'},
-  'private-villa-mbz-z14': {src: villasSector, crop: '85% 55%'},
-  'residential-villa-al-shamkha-sh3': {src: villasSector, crop: '15% 75%'},
-  'residential-villa-riyadh-rd32': {src: villasSector, crop: '55% 15%'},
-  'residential-villa-bani-yas-eb11-01': {src: villasSector, crop: '90% 80%'},
-  'reception-hall-private-villa': {src: interiorsSector, crop: '25% 40%'},
-  'majlis-and-dining': {src: interiorsSector, crop: '70% 30%'},
-  'restaurant-interior': {src: interiorsSector, crop: '40% 75%'},
-  'hotel-lobby-interior': {src: interiorsSector, crop: '80% 65%'},
-};
-
+/** Projects listing heroes — exclusive role images, not shared with project cards. */
 export const projectHeroVisuals = [
-  {src: homepageHero, crop: '62% 40%'},
-  {src: projectImages['traffic-access-studies'].portfolio || projectImages['traffic-access-studies'].card, crop: '50% 45%', projectPhoto: true},
+  {src: roleImages.PROJECTS_HERO, crop: '50% 40%', projectPhoto: false},
+  {
+    src: projectImages['traffic-access-studies'].portfolio || projectImages['traffic-access-studies'].card,
+    crop: '50% 45%',
+    projectPhoto: true,
+  },
 ];
 
 export const projectCategories = [
@@ -76,7 +54,7 @@ export const projectCategories = [
 ];
 
 const records = [
-  ['four-towers-al-nahda', 'Four Towers, Al Nahda', 'أربعة أبراج، النهدة', 'towers', 'Sharjah, Al Nahda', 'الشارقة، النهدة', 'A four-tower composition over a shared podium: 3 basement levels, 6 podium parking levels and 37 floors, with architectural, structural and electromechanical design by ASAS.', 'تكوين من أربعة أبراج فوق منصة مشتركة: 3 طوابق سفلية و6 طوابق منصة للمواقف و37 طابقاً، بتصميم معماري وإنشائي وكهروميكانيكي من أساس.', true, ['Architectural design', 'Structural engineering', 'Electromechanical design'], 30],
+  ['four-towers-al-nahda', 'Four Towers, Al Nahda', 'أربعة أبراج، النهدة', 'towers', 'Sharjah, Al Nahda', 'الشارقة، النهدة', 'A four-tower composition over a shared podium: 3 basement levels, 6 podium parking levels and 37 floors, with architectural, structural and electromechanical design by ASAS.', 'تكوين من أربعة أبراج فوق منصة مشتركة: 3 طوابق سفلية و6 طوابق منصة للمواقف و37 طابقاً، بتصميم معماري وإنشائي وكهروميكانيكي من أساس للاستشارات الهندسية وإدارة المشاريع.', true, ['Architectural design', 'Structural engineering', 'Electromechanical design'], 30],
   ['building-mbz-musaffah-m26', 'Commercial & Residential Building — M26', 'مبنى تجاري وسكني — M26', 'buildings', 'Mohammed Bin Zayed City / Musaffah M26', 'مدينة محمد بن زايد / مصفح M26', 'Ground, mezzanine and seven-floor commercial and residential building.', 'مبنى تجاري وسكني من طابق أرضي وميزانين وسبعة طوابق.', true, [], 31],
   ['building-khalifa-city-msh36', 'Commercial & Residential Building — MSH36', 'مبنى تجاري وسكني — MSH36', 'buildings', 'Khalifa City, Sector MSH36', 'مدينة خليفة، القطاع MSH36', 'A commercial and residential building comprising three basement levels, ground floor and seven upper floors.', 'مبنى تجاري وسكني يضم ثلاثة طوابق سفلية وطابقاً أرضياً وسبعة طوابق علوية.', true, [], 31],
   ['residential-building-al-raha-rbw2', 'Residential Building — RBW2', 'مبنى سكني — RBW2', 'buildings', 'Al Raha Beach, Abu Dhabi, RBW2', 'شاطئ الراحة، أبوظبي، RBW2', 'Residential building at Al Raha Beach.', 'مبنى سكني في شاطئ الراحة.', true, [], 31],
@@ -86,8 +64,8 @@ const records = [
   ['industrial-facility-musaffah-m15', 'Industrial Facility — M15', 'منشأة صناعية — M15', 'industrial', 'Musaffah Industrial, M15', 'مصفح الصناعية، M15', 'Industrial facility within the Musaffah industrial area.', 'منشأة صناعية ضمن منطقة مصفح الصناعية.', null, [], 33],
   ['traffic-access-studies', 'Traffic & Access Studies', 'دراسات المرور والمداخل', 'infrastructure', 'Abu Dhabi Island and Khalifa City — C61, C31, C32, C47', 'جزيرة أبوظبي ومدينة خليفة — C61 وC31 وC32 وC47', 'Parking layouts, kerb and sewer adjustments, one-way circulation, service bays, speed humps and road marking prepared for municipality review.', 'مخططات مواقف وتعديلات الأرصفة والصرف وحركة الاتجاه الواحد ومناطق الخدمة ومطبات السرعة وعلامات الطرق، أُعدت لمراجعة البلدية.', true, ['Traffic studies and analysis', 'Infrastructure', 'Urban planning'], 34],
   ['culture-private-school', 'Culture Private School', 'مدرسة الثقافة الخاصة', 'education', null, null, 'Full campus master plan and sports facilities.', 'مخطط عام متكامل للحرم والمرافق الرياضية.', true, [], 35],
-  ['emirates-private-school', 'Emirates Private School', 'مدرسة الإمارات الخاصة', 'education', null, null, 'Private-school project included in the ASAS selected portfolio.', 'مشروع مدرسة خاصة ضمن أعمال أساس المختارة.', true, [], 35],
-  ['american-international-school', 'American International School', 'المدرسة الأمريكية الدولية', 'education', null, null, 'School project included in the ASAS selected portfolio.', 'مشروع مدرسة ضمن أعمال أساس المختارة.', null, [], 35],
+  ['emirates-private-school', 'Emirates Private School', 'مدرسة الإمارات الخاصة', 'education', null, null, 'Private-school project included in the ASAS selected portfolio.', 'مشروع مدرسة خاصة ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع المختارة.', true, [], 35],
+  ['american-international-school', 'American International School', 'المدرسة الأمريكية الدولية', 'education', null, null, 'School project included in the ASAS selected portfolio.', 'مشروع مدرسة ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع المختارة.', null, [], 35],
   ['compound-villas-portfolio', 'Compound Villas Portfolio', 'مجموعة مشاريع مجمعات الفلل', 'compound-villas', 'Khalifa City SE36; Mohammed Bin Zayed City Z19 and C176; Shakhbout City MSH6', 'مدينة خليفة SE36؛ مدينة محمد بن زايد Z19 وC176؛ مدينة شخبوط MSH6', 'Multi-unit villa compounds designed as a single architectural family, with shared access, parking and services planned across each plot.', 'مجمعات فلل متعددة الوحدات صُممت كعائلة معمارية واحدة، مع تخطيط المداخل والمواقف والخدمات المشتركة عبر كل قطعة.', true, [], 36],
   ['private-villa-shakhbout-w01', 'Private Villa — W01', 'فيلا خاصة — W01', 'private-villas', 'Shakhbout City, W01', 'مدينة شخبوط، W01', 'Ground and first-floor private villa.', 'فيلا خاصة من طابق أرضي وأول.', true, [], 37],
   ['private-villa-khalifa-se24', 'Private Villa — SE24', 'فيلا خاصة — SE24', 'private-villas', 'Khalifa City, SE24', 'مدينة خليفة، SE24', 'Ground and first-floor private villa.', 'فيلا خاصة من طابق أرضي وأول.', true, [], 37],
@@ -97,18 +75,35 @@ const records = [
   ['residential-villa-bani-yas-eb11-01', 'Residential Villa — EB11-01', 'فيلا سكنية — EB11-01', 'residential-villas', 'Bani Yas, EB11-01', 'بني ياس، EB11-01', 'Residential villa in Bani Yas.', 'فيلا سكنية في بني ياس.', true, [], 38],
   ['reception-hall-private-villa', 'Reception Hall — Private Villa', 'قاعة استقبال — فيلا خاصة', 'interior-design', null, null, 'Residential reception hall with classical detailing.', 'قاعة استقبال سكنية بتفاصيل كلاسيكية.', true, ['Interior design'], 41],
   ['majlis-and-dining', 'Majlis & Dining — Private Villa', 'مجلس وغرفة طعام — فيلا خاصة', 'interior-design', null, null, 'Majlis and dining interior featuring mashrabiya screens and marble.', 'تصميم داخلي لمجلس وغرفة طعام يتضمن شاشات مشربية ورخاماً.', true, ['Interior design'], 41],
-  ['restaurant-interior', 'Restaurant Interior', 'تصميم داخلي لمطعم', 'interior-design', null, null, 'Restaurant interior included in the ASAS hospitality portfolio.', 'تصميم داخلي لمطعم ضمن أعمال أساس لقطاع الضيافة.', true, ['Interior design'], 42],
-  ['hotel-lobby-interior', 'Hotel Lobby Interior', 'تصميم داخلي لردهة فندق', 'interior-design', null, null, 'Hotel-lobby interior included in the ASAS hospitality portfolio.', 'تصميم داخلي لردهة فندق ضمن أعمال أساس لقطاع الضيافة.', true, ['Interior design'], 42],
+  ['restaurant-interior', 'Restaurant Interior', 'تصميم داخلي لمطعم', 'interior-design', null, null, 'Restaurant interior included in the ASAS hospitality portfolio.', 'تصميم داخلي لمطعم ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع لقطاع الضيافة.', true, ['Interior design'], 42],
+  ['hotel-lobby-interior', 'Hotel Lobby Interior', 'تصميم داخلي لردهة فندق', 'interior-design', null, null, 'Hotel-lobby interior included in the ASAS hospitality portfolio.', 'تصميم داخلي لردهة فندق ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع لقطاع الضيافة.', true, ['Interior design'], 42],
 ];
 
 export const projects = records.map(([slug, title, titleAr, category, location, locationAr, description, descriptionAr, hasImage, services, sourceProfilePage], index) => {
   const asset = hasImage ? projectImages[slug] : null;
   const place = locationShorts[slug] || [];
   const kind = kindByCategory[category] || 'built';
-  const editorial = editorialVisuals[slug] || {src: buildingsSector, crop: '50% 50%'};
-  const visual = asset?.card
-    ? {src: asset.card, crop: '50% 50%', classification: 'PROJECT_PHOTO'}
-    : {src: editorial.src, crop: editorial.crop, classification: 'GENERATED_EDITORIAL'};
+  const approved =
+    asset &&
+    asset.status === 'APPROVED_FOR_CARDS' &&
+    (asset.card || asset.portfolio || asset.mobile);
+
+  const images = approved
+    ? [
+        ...new Set(
+          [...(asset.gallery || []), asset.portfolio, asset.card, asset.mobile].filter(Boolean),
+        ),
+      ]
+    : [];
+
+  const visual = approved
+    ? {
+        src: asset.card || asset.portfolio || asset.mobile,
+        crop: '50% 50%',
+        classification: asset.classification === 'TECHNICAL_DRAWING' ? 'TECHNICAL_DRAWING' : 'PROJECT_PHOTO',
+      }
+    : null;
+
   return {
     id: index + 1,
     slug,
@@ -124,11 +119,20 @@ export const projects = records.map(([slug, title, titleAr, category, location, 
     descriptionAr,
     services,
     kind,
-    image: asset?.card || null,
-    imageAsset: asset || null,
+    image: visual?.src || null,
+    imageAsset: approved ? asset : null,
     visual,
-    gallery: asset ? [asset.portfolio] : [],
-    featured: ['four-towers-al-nahda', 'traffic-access-studies', 'culture-private-school', 'compound-villas-portfolio', 'residential-villa-al-shamkha-sh3', 'reception-hall-private-villa'].includes(slug),
+    images,
+    gallery: images,
+    needsOriginalImage: !approved,
+    featured: [
+      'traffic-access-studies',
+      'four-towers-al-nahda',
+      'culture-private-school',
+      'compound-villas-portfolio',
+      'residential-villa-al-shamkha-sh3',
+      'reception-hall-private-villa',
+    ].includes(slug),
     sourceProfilePage,
   };
 });

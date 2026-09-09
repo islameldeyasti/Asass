@@ -1,0 +1,397 @@
+/* =========================================================
+   ASAS ARABIC + RTL SYSTEM
+   Document-level RTL, logical layout, Arabic typography polish.
+   Fixed utility chrome (WhatsApp / scroll / float social) stays
+   physical — see floating-utilities.css.
+   Loaded after brand/theme so Arabic rules win.
+   ========================================================= */
+
+/* ---------- Document flow ---------- */
+html[dir='rtl'],
+html.locale-ar {
+  direction: rtl;
+}
+
+html[dir='rtl'] body,
+html.locale-ar body {
+  font-family: var(--asas-font-ar, var(--asas-font)) !important;
+  text-align: start;
+}
+
+/* Soften Latin-biased label treatments for Arabic — no English tracking */
+html[dir='rtl'] .eyebrow,
+html[dir='rtl'] .atlas-kicker,
+html[dir='rtl'] .tm-kicker,
+html[dir='rtl'] .sv-kicker,
+html[dir='rtl'] .asas-topbar-tag,
+html[dir='rtl'] .footer-column h3,
+html[dir='rtl'] .site-footer.asas-footer .footer-column h3,
+html[dir='rtl'] .footer-action-eyebrow,
+html[dir='rtl'] .asas-cta,
+html[dir='rtl'] .pd-kicker,
+html[dir='rtl'] .pl-kicker,
+html[dir='rtl'] .cp-kicker,
+html[dir='rtl'] .sc-kicker,
+html[dir='rtl'] .sd-kicker,
+html[dir='rtl'] .asas-action,
+html[dir='rtl'] .asas-ph-btn-primary,
+html[dir='rtl'] .asas-ph-kicker,
+html[dir='rtl'] .asas-ph-meta,
+html[dir='rtl'] .asas-ph-fact,
+html[dir='rtl'] .home-contact-form button {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* Numeric / technical values that must stay LTR inside RTL copy */
+html[dir='rtl'] .ltr-isolate,
+html[dir='rtl'] [dir='ltr'].ltr-isolate {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
+}
+
+/*
+  Force DIN Next Arabic (or fallback stack) over Georgia / PhagsPa display fonts.
+  Component CSS often uses Georgia !important — beat it here for /ar only.
+*/
+html[dir='rtl'] h1,
+html[dir='rtl'] h2,
+html[dir='rtl'] h3,
+html[dir='rtl'] h4,
+html[dir='rtl'] h5,
+html[dir='rtl'] h6,
+html[dir='rtl'] p,
+html[dir='rtl'] li,
+html[dir='rtl'] label,
+html[dir='rtl'] button,
+html[dir='rtl'] input,
+html[dir='rtl'] select,
+html[dir='rtl'] textarea,
+html[dir='rtl'] .asas-nav a,
+html[dir='rtl'] .asas-cta,
+html[dir='rtl'] .asas-cta span,
+html[dir='rtl'] .asas-topbar,
+html[dir='rtl'] .asas-topbar-center,
+html[dir='rtl'] .asas-ph-title,
+html[dir='rtl'] .asas-ph-copy,
+html[dir='rtl'] .asas-ph-lede,
+html[dir='rtl'] .asas-ph-kicker,
+html[dir='rtl'] .tm-home-copy h2,
+html[dir='rtl'] .tm-card-copy h3,
+html[dir='rtl'] .tm-page-hero-copy h1,
+html[dir='rtl'] .sv-section h2,
+html[dir='rtl'] .sv-design-copy h2,
+html[dir='rtl'] .sv-card-copy h3,
+html[dir='rtl'] .sv-delivery-copy h3,
+html[dir='rtl'] .sv-planning-feature-copy h3,
+html[dir='rtl'] .home-contact-head h2,
+html[dir='rtl'] .atlas-home .home-contact-head h2,
+html[dir='rtl'] .pf-hero h1,
+html[dir='rtl'] .pf-hero-copy,
+html[dir='rtl'] .pd-hero-copy h1,
+html[dir='rtl'] .pd-section h2,
+html[dir='rtl'] .pl-hero-copy h1,
+html[dir='rtl'] .pl-card-copy h3,
+html[dir='rtl'] .pl-featured-copy h2,
+html[dir='rtl'] .sc-hero-copy h1,
+html[dir='rtl'] .sd-hero-copy h1,
+html[dir='rtl'] .cp-hero-copy h1,
+html[dir='rtl'] .about-hero h1,
+html[dir='rtl'] .careers-hero h1,
+html[dir='rtl'] .careers-detail-hero h1,
+html[dir='rtl'] .contact-hero h1,
+html[dir='rtl'] .downloads-hero h1,
+html[dir='rtl'] .enquiry-hero h1,
+html[dir='rtl'] .sectors-hero h1,
+html[dir='rtl'] .site-footer.asas-footer,
+html[dir='rtl'] .site-footer.asas-footer h3,
+html[dir='rtl'] .site-footer.asas-footer .footer-company-name,
+html[dir='rtl'] .site-footer.asas-footer .footer-action-title,
+html[dir='rtl'] .breadcrumb,
+html[dir='rtl'] .sd-breadcrumb,
+html[dir='rtl'] .sc-breadcrumb,
+html[dir='rtl'] .pd-breadcrumb,
+html[dir='rtl'] .insp-tabs button,
+html[dir='rtl'] .sv-jump-tabs a,
+html[dir='rtl'] .pd-tabs button,
+html[dir='rtl'] .pl-filter-list button {
+  font-family: var(--asas-font-ar, var(--asas-font)) !important;
+}
+
+/* ---------- Forms: Arabic defaults + LTR technical fields ---------- */
+html[dir='rtl'] input,
+html[dir='rtl'] textarea,
+html[dir='rtl'] select,
+html[dir='rtl'] label {
+  text-align: start;
+}
+
+html[dir='rtl'] input[type='email'],
+html[dir='rtl'] input[type='tel'],
+html[dir='rtl'] input[type='url'],
+html[dir='rtl'] input[type='number'],
+html[dir='rtl'] input[name*='phone' i],
+html[dir='rtl'] input[name*='email' i],
+html[dir='rtl'] input[name*='url' i],
+html[dir='rtl'] input[autocomplete='tel'],
+html[dir='rtl'] input[autocomplete='email'],
+html[dir='rtl'] .dir-ltr,
+html[dir='rtl'] [dir='ltr'] {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: isolate;
+}
+
+/* ---------- Language switcher ---------- */
+.asas-lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  min-height: 40px;
+  padding: 0;
+  border: 1px solid var(--border-default, rgba(7, 4, 99, 0.14));
+  border-radius: var(--asas-radius-sm, 4px);
+  background: var(--bg-surface, #fff);
+  overflow: hidden;
+}
+
+.asas-lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 38px;
+  padding: 0 12px;
+  font: 700 12px/1 var(--asas-font);
+  letter-spacing: 0.02em;
+  color: var(--text-secondary, rgba(7, 4, 99, 0.65));
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.asas-lang-switch a.is-active {
+  background: var(--asas-navy, #070463);
+  color: #fff !important;
+}
+
+.asas-lang-switch a:not(.is-active):hover {
+  color: var(--asas-rust, #a02315);
+  background: rgba(160, 35, 21, 0.06);
+}
+
+html[data-theme='dark'] .asas-lang-switch {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: #181818;
+}
+
+html[data-theme='dark'] .asas-lang-switch a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme='dark'] .asas-lang-switch a.is-active {
+  background: #a02315;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .asas-lang-switch a:not(.is-active):hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.asas-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ---------- Header RTL ---------- */
+html[dir='rtl'] .asas-nav a.is-active:after,
+html[dir='rtl'] .asas-nav a:hover:after {
+  transform-origin: right center;
+}
+
+html[dir='rtl'] .asas-cta svg,
+html[dir='rtl'] .asas-nav-mobile-cta svg {
+  transform: scaleX(-1);
+}
+
+html[dir='rtl'] .asas-topbar-center {
+  font-family: var(--asas-font-ar, var(--asas-font));
+}
+
+/* ---------- Cards / lists / CTAs — shared directional flip ---------- */
+html[dir='rtl'] .reverse-arrow,
+html[dir='rtl'] .tm-flip,
+html[dir='rtl'] .cp-flip,
+html[dir='rtl'] .sd-flip,
+html[dir='rtl'] .sc-flip,
+html[dir='rtl'] .asas-action-arrow {
+  transform: scaleX(-1);
+}
+
+/* Preserve flip on hover (do not let translateX wipe scaleX) */
+html[dir='rtl'] .atlas-primary:hover svg.reverse-arrow,
+html[dir='rtl'] .atlas-link:hover svg.reverse-arrow,
+html[dir='rtl'] a:hover > svg.reverse-arrow,
+html[dir='rtl'] button:hover > svg.reverse-arrow,
+html[dir='rtl'] .asas-ph-btn-primary:hover svg.reverse-arrow,
+html[dir='rtl'] .asas-cta:hover svg,
+html[dir='rtl'] .asas-action:hover .asas-action-arrow {
+  transform: translateX(-4px) scaleX(-1);
+}
+
+/* ---------- Tabs: natural RTL start ---------- */
+html[dir='rtl'] .sv-jump-tabs,
+html[dir='rtl'] .insp-tabs,
+html[dir='rtl'] .pd-tabs,
+html[dir='rtl'] .pl-filter-list,
+html[dir='rtl'] .cp-subnav-list,
+html[dir='rtl'] .sc-subnav-list,
+html[dir='rtl'] .sd-subnav-list {
+  direction: rtl;
+}
+
+/* ---------- Footer ---------- */
+html[dir='rtl'] .site-footer .footer-column a:hover {
+  transform: translateX(-3px);
+}
+
+html[dir='rtl'] .pl-featured:hover .pl-featured-cta {
+  transform: translateX(-3px);
+}
+
+/* Transform-origin for active underlines */
+html[dir='rtl'] .asas-nav a.is-active:after,
+html[dir='rtl'] .asas-nav a:hover:after,
+html[dir='rtl'] .insp-tabs button.active:after,
+html[dir='rtl'] .sv-jump-tabs a.is-active,
+html[dir='rtl'] .pd-tabs button.is-active {
+  transform-origin: right center;
+}
+
+/* Mobile nav drawer: enter from reading-start (right in RTL) */
+@media (max-width: 900px) {
+  html[dir='rtl'] .asas-nav.is-open {
+    text-align: start;
+  }
+}
+
+html[dir='rtl'] .site-footer.asas-footer .footer-company-name,
+html[dir='rtl'] .site-footer.asas-footer .footer-description,
+html[dir='rtl'] .site-footer.asas-footer .footnote {
+  font-family: var(--asas-font-ar, var(--asas-font));
+}
+
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href^='tel:'],
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href^='mailto:'],
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href*='wa.me'] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
+}
+
+/* ---------- Arabic display rhythm (avoid EN-cramped line-heights) ---------- */
+html[dir='rtl'] .atlas-home h1,
+html[dir='rtl'] .atlas-home h2,
+html[dir='rtl'] .atlas-home h3,
+html[dir='rtl'] .asas-ph-title,
+html[dir='rtl'] .cp-story-copy h2,
+html[dir='rtl'] .hp-why-head h2,
+html[dir='rtl'] .home-contact-head h2,
+html[dir='rtl'] .insp-center-head h2 {
+  letter-spacing: 0 !important;
+  line-height: 1.28;
+}
+
+html[dir='rtl'] .atlas-home p,
+html[dir='rtl'] .asas-ph-note,
+html[dir='rtl'] .hp-about-lede,
+html[dir='rtl'] .insp-tab-copy p,
+html[dir='rtl'] .asas-t-card p {
+  letter-spacing: 0 !important;
+  line-height: 1.7;
+}
+
+/* ---------- Internal heroes ---------- */
+html[dir='rtl'] .asas-ph-copy,
+html[dir='rtl'] .about-hero-copy,
+html[dir='rtl'] .sv-hero-copy,
+html[dir='rtl'] .sd-hero-copy,
+html[dir='rtl'] .sc-hero-copy,
+html[dir='rtl'] .cp-hero-copy,
+html[dir='rtl'] .pf-hero-copy,
+html[dir='rtl'] .tm-page-hero-copy,
+html[dir='rtl'] .pl-hero-copy,
+html[dir='rtl'] .careers-hero-copy,
+html[dir='rtl'] .contact-hero-copy,
+html[dir='rtl'] .downloads-hero-copy,
+html[dir='rtl'] .enquiry-hero-copy {
+  text-align: start;
+}
+
+/* ---------- Page forms (about / contact / enquiry / careers) ---------- */
+html[dir='rtl'] .about-page,
+html[dir='rtl'] .contact-page,
+html[dir='rtl'] .enquiry-page,
+html[dir='rtl'] .careers-page,
+html[dir='rtl'] .downloads-page,
+html[dir='rtl'] .sectors-page {
+  text-align: start;
+}
+
+/* ---------- Mobile overflow safety ---------- */
+@media (max-width: 900px) {
+  html[dir='rtl'] .asas-nav.is-open {
+    text-align: start;
+  }
+
+  html[dir='rtl'] body {
+    overflow-x: clip;
+  }
+
+  /* Mobile menu: reading-start aligned; logo already at inline-start via grid+dir */
+  html[dir='rtl'] .asas-nav.is-open a {
+    text-align: start;
+  }
+
+  .asas-header-actions .asas-lang-switch {
+    min-height: 36px;
+  }
+
+  .asas-lang-switch a {
+    min-width: 40px;
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+}
+
+/* ---------- Breadcrumbs ---------- */
+html[dir='rtl'] .breadcrumb,
+html[dir='rtl'] .sd-breadcrumb,
+html[dir='rtl'] .sc-breadcrumb,
+html[dir='rtl'] .pd-breadcrumb,
+html[dir='rtl'] .pl-breadcrumb {
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+/* ---------- Form selects: caret on inline-start edge ---------- */
+html[dir='rtl'] select {
+  background-position: left 0.85rem center;
+}
+
+/* ---------- Nav / progress underline origins (logical fallback) ---------- */
+html[dir='rtl'] .asas-nav a:after,
+html[dir='rtl'] .cp-subnav-links a:after,
+html[dir='rtl'] .asas-ph-progress-line {
+  transform-origin: right center;
+}
+
+@media (max-width: 640px) {
+  /* Keep language switch visible; CTA may wrap */
+  .asas-header-actions {
+    gap: 8px;
+  }
+}

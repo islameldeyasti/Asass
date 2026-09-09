@@ -3,6 +3,7 @@
 import {useMemo, useState} from 'react';
 import Link from 'next/link';
 import {ArrowRight, Briefcase, MapPin} from 'lucide-react';
+import {ActionButton} from '@/components/ActionButton';
 import {
   careerDepartments,
   employmentTypes,
@@ -44,10 +45,9 @@ export default function CareersBoard({locale}) {
               : 'Browse roles by in-house discipline and apply through the on-site form.'}
           </p>
         </div>
-        <Link className="atlas-link" href={`/${locale}/careers#apply`}>
+        <ActionButton variant="outline" href={`/${locale}/careers#apply`}>
           {ar ? 'طلب عام' : 'General application'}
-          <NextArrow ar={ar} />
-        </Link>
+        </ActionButton>
       </div>
 
       <nav className="careers-filters" aria-label={ar ? 'تصفية حسب التخصص' : 'Filter by department'}>
@@ -87,9 +87,9 @@ export default function CareersBoard({locale}) {
               ? 'تحقّق لاحقاً، أو قدّم طلباً عاماً أدناه ليبقى ملفك ضمن اعتبارات التوظيف عند توفر احتياج مناسب.'
               : 'Check back soon, or submit a general application below so your CV can be considered when a suitable need arises.'}
           </p>
-          <Link className="button" href={`/${locale}/careers#apply`}>
+          <ActionButton variant="primary" href={`/${locale}/careers#apply`}>
             {ar ? 'تقديم طلب عام' : 'Submit a general application'}
-          </Link>
+          </ActionButton>
         </div>
       ) : (
         <div className="careers-grid">

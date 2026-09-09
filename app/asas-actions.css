@@ -1,0 +1,254 @@
+/* =========================================================
+   ASAS Global Action / CTA System
+   Use for important user actions — not nav / inline text links.
+   ========================================================= */
+
+:root {
+  --asas-action-h: var(--asas-btn-h, 50px);
+  --asas-action-pad-x: 24px;
+  --asas-action-radius: var(--asas-radius, 6px);
+  --asas-action-gap: 12px;
+  --asas-action-fs: var(--asas-btn, 15px);
+  --asas-action-border-w: 1px;
+}
+
+.asas-action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--asas-action-gap);
+  min-height: var(--asas-action-h);
+  padding: 0 var(--asas-action-pad-x);
+  border-radius: var(--asas-action-radius);
+  /* Explicit 4-sided border — never leave sides unset */
+  border-style: solid;
+  border-width: var(--asas-action-border-w);
+  border-color: transparent;
+  box-sizing: border-box;
+  overflow: visible;
+  font-family: var(--asas-font, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);
+  font-size: var(--asas-action-fs);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-decoration: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+  max-width: none;
+  /* No transform lift — parent overflow:hidden cards would clip the border */
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.asas-action,
+.asas-action:hover,
+.asas-action:focus,
+.asas-action:focus-visible,
+.asas-action:active,
+.asas-action:visited {
+  /* Keep all four sides present in every interaction state */
+  border-style: solid !important;
+  border-width: var(--asas-action-border-w) !important;
+  text-decoration: none !important;
+}
+
+.asas-action-label {
+  display: inline-block;
+}
+
+.asas-action svg {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.asas-action:focus-visible {
+  outline: 2px solid var(--brand-primary, var(--asas-rust, #a02315));
+  outline-offset: 3px;
+}
+
+.asas-action:hover .asas-action-arrow {
+  transform: translateX(4px);
+}
+
+html[dir='rtl'] .asas-action .asas-action-arrow {
+  transform: scaleX(-1);
+}
+
+html[dir='rtl'] .asas-action:hover .asas-action-arrow {
+  transform: translateX(-4px) scaleX(-1);
+}
+
+/* ---------- Primary — always ASAS Rust (action accent) ---------- */
+.asas-action--primary,
+.asas-action--primary:hover,
+.asas-action--primary:focus,
+.asas-action--primary:focus-visible,
+.asas-action--primary:active,
+.asas-action--primary:visited {
+  border-color: var(--button-primary-bg, var(--asas-rust, #a02315)) !important;
+  color: var(--button-primary-text, #fff) !important;
+}
+
+.asas-action--primary {
+  background: var(--button-primary-bg, var(--asas-rust, #a02315));
+}
+
+.asas-action--primary:hover,
+.asas-action--primary:active {
+  background: var(--brand-primary-hover, var(--asas-rust-hover, #801c11));
+  border-color: var(--brand-primary-hover, var(--asas-rust-hover, #801c11)) !important;
+}
+
+/* ---------- Outline — Navy in light; white ghost in dark (via surfaces) ---------- */
+.asas-action--outline,
+.asas-action--outline:hover,
+.asas-action--outline:focus,
+.asas-action--outline:focus-visible,
+.asas-action--outline:active,
+.asas-action--outline:visited {
+  border-color: var(--button-ghost-border, var(--asas-navy, #070463)) !important;
+}
+
+.asas-action--outline {
+  background: transparent;
+  color: var(--button-ghost-text, var(--asas-navy, #070463)) !important;
+}
+
+.asas-action--outline:hover,
+.asas-action--outline:active {
+  background: var(--asas-navy, #070463) !important;
+  color: #fff !important;
+  border-color: var(--asas-navy, #070463) !important;
+}
+
+html[data-theme='dark'] .asas-action--outline:hover,
+html[data-theme='dark'] .asas-action--outline:active {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: var(--asas-navy, #070463) !important;
+}
+
+/* ---------- Light — solid white on dark surfaces ---------- */
+.asas-action--light,
+.asas-action--light:hover,
+.asas-action--light:focus,
+.asas-action--light:focus-visible,
+.asas-action--light:active,
+.asas-action--light:visited {
+  border-color: var(--asas-white, #fff) !important;
+  color: var(--asas-navy, #070463) !important;
+}
+
+.asas-action--light {
+  background: var(--asas-white, #fff);
+}
+
+.asas-action--light:hover,
+.asas-action--light:active {
+  background: var(--asas-bg-soft, #f7f7f9);
+  border-color: var(--asas-bg-soft, #f7f7f9) !important;
+}
+
+/* ---------- Ghost — white outline on dark surfaces ---------- */
+.asas-action--ghost,
+.asas-action--ghost:hover,
+.asas-action--ghost:focus,
+.asas-action--ghost:focus-visible,
+.asas-action--ghost:active,
+.asas-action--ghost:visited {
+  border-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.asas-action--ghost {
+  background: transparent;
+  color: var(--asas-white, #fff) !important;
+}
+
+.asas-action--ghost:hover,
+.asas-action--ghost:active {
+  background: var(--asas-white, #fff);
+  border-color: var(--asas-white, #fff) !important;
+  color: var(--asas-navy, #070463) !important;
+}
+
+/* ---------- Paired CTA group ---------- */
+.asas-action-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 14px;
+}
+
+@media (max-width: 640px) {
+  .asas-action-group--stack {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .asas-action-group--stack > .asas-action {
+    width: 100%;
+  }
+}
+
+/* Align legacy primary buttons with the same geometry */
+.button:not(.light-btn):not(.enquiry-reset),
+.atlas-primary,
+.enquiry-submit,
+a.button:not(.light-btn) {
+  min-height: var(--asas-action-h);
+  padding-inline: var(--asas-action-pad-x);
+  border-radius: var(--asas-action-radius) !important;
+  gap: var(--asas-action-gap);
+  font-size: var(--asas-action-fs);
+}
+
+/*
+  Strip legacy atlas-link UNDERLINE chrome only.
+  Never zero out border-bottom on outline CTAs — that was cutting the frame.
+*/
+a.asas-action.team-overview-link,
+a.asas-action.cp-text-cta {
+  text-decoration: none !important;
+  box-shadow: none;
+  background-image: none;
+}
+
+/* Cards that host CTAs must not clip the 1px border / focus ring */
+.insp-tab-panel.hp-card,
+.insp-tab-panel.hp-card:has(.asas-action),
+.hp-card:has(> .asas-action),
+.hp-card:has(> .asas-action-group),
+.hp-featured-copy:has(.asas-action),
+.insp-tab-copy:has(.asas-action) {
+  overflow: visible;
+}
+
+.insp-tab-copy:has(.asas-action) {
+  /* Keep CTA clear of the clipped media edge inside the panel */
+  padding-bottom: 2px;
+}
+
+/* Header Start a Project — same primary system */
+.asas-cta {
+  min-height: var(--asas-action-h) !important;
+  padding: 0 var(--asas-action-pad-x) !important;
+  border-radius: var(--asas-action-radius) !important;
+  border: var(--asas-action-border-w) solid var(--button-primary-bg, var(--asas-rust, #a02315)) !important;
+  background: var(--button-primary-bg, var(--asas-rust, #a02315)) !important;
+  color: var(--button-primary-text, #fff) !important;
+  font-size: var(--asas-action-fs) !important;
+  font-weight: 700 !important;
+  gap: var(--asas-action-gap) !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  box-sizing: border-box;
+}
+
+.asas-cta:hover {
+  background: var(--brand-primary-hover, var(--asas-rust-hover, #801c11)) !important;
+  border-color: var(--brand-primary-hover, var(--asas-rust-hover, #801c11)) !important;
+  box-shadow: none !important;
+}

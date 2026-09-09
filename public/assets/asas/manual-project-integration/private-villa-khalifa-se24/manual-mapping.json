@@ -1,0 +1,19 @@
+{
+  "project": "Private Villa \u2014 SE24",
+  "slug": "private-villa-khalifa-se24",
+  "category": "private-villas",
+  "finalStatus": "MANUAL_READY",
+  "currentHero": null,
+  "websiteStatus": "NO_GENERATED_GALLERY_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/private-villa-khalifa-se24/source-reference/source-reference.png",
+  "productionSourceStatus": "WEAK_SOURCE",
+  "approved": [],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": true,
+  "notes": [
+    "Authentic source reference copied into this pack."
+  ]
+}

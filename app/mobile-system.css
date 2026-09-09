@@ -1,0 +1,607 @@
+/* =========================================================
+   ASAS MOBILE SYSTEM (SOURCE OF TRUTH FOR ≤900px)
+   Loaded last — shared spacing, overflow, type, touch, forms,
+   tabs, galleries, RTL. Does NOT redesign desktop layouts.
+   ========================================================= */
+
+:root {
+  --asas-m-inline: 20px;
+  --asas-m-section-y: 56px;
+  --asas-m-block-gap: 28px;
+  --asas-m-card-gap: 16px;
+  --asas-m-tap: 44px;
+  --asas-m-input-h: 48px;
+  --asas-m-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    /* Match measured mobile chrome (topbar 46 + nav 78) */
+    --asas-chrome-h: 124px;
+    --ph-chrome: 124px;
+    --asas-m-inline: 20px;
+    --asas-m-section-y: 52px;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  /* ---------- Shared shells / containers ---------- */
+  .home-shell,
+  .container,
+  .sv-shell,
+  .sd-shell,
+  .sc-shell,
+  .cp-shell,
+  .pf-shell,
+  .pl-shell,
+  .tm-shell,
+  .asas-footer-shell {
+    padding-inline: var(--asas-m-inline) !important;
+    box-sizing: border-box;
+  }
+
+  .hp-revised section,
+  .atlas-home > section:not(.asas-ph):not(.asas-clients),
+  .about-page section,
+  .contact-body,
+  .enquiry-body,
+  .careers-body,
+  .downloads-body,
+  .sectors-body,
+  .services-body {
+    padding-block: var(--asas-m-section-y);
+  }
+
+  /* ---------- Typography ---------- */
+  .sv-hero-copy > h1,
+  .sd-hero-copy > h1,
+  .sc-hero-copy > h1,
+  .pf-hero-copy > h1,
+  .cp-hero-copy > h1,
+  .tm-page-hero-copy > h1,
+  .pl-hero-copy > h1,
+  .about-hero h1,
+  .careers-hero h1,
+  .careers-detail-hero h1,
+  .contact-hero h1,
+  .downloads-hero h1,
+  .enquiry-hero h1,
+  .sectors-hero h1 {
+    overflow-wrap: break-word;
+    hyphens: manual;
+  }
+
+  h2 {
+    font-size: clamp(26px, 7vw, 34px) !important;
+    line-height: 1.18 !important;
+  }
+
+  h3 {
+    font-size: clamp(18px, 4.8vw, 22px) !important;
+    line-height: 1.25 !important;
+  }
+
+  /* ---------- Touch targets ---------- */
+  .asas-menu {
+    width: var(--asas-m-tap) !important;
+    height: var(--asas-m-tap) !important;
+    min-width: var(--asas-m-tap);
+    min-height: var(--asas-m-tap);
+    display: inline-grid !important;
+    place-items: center;
+    padding: 0 !important;
+  }
+
+  .asas-header-inner {
+    grid-template-columns: auto 1fr auto !important;
+    gap: 8px !important;
+    padding-inline: 16px 4px !important;
+  }
+
+  .asas-logo {
+    order: 0 !important;
+    grid-column: 1 !important;
+    justify-self: start !important;
+  }
+
+  .asas-nav {
+    grid-column: 2 !important;
+  }
+
+  .asas-header-actions {
+    order: 2 !important;
+    grid-column: 3 !important;
+    justify-content: flex-end !important;
+    justify-self: end !important;
+    margin-inline-end: 0;
+  }
+
+  .asas-topbar-search {
+    width: var(--asas-m-tap) !important;
+    height: var(--asas-m-tap) !important;
+    display: inline-grid !important;
+    place-items: center;
+    margin-block: -8px;
+  }
+
+  .asas-topbar-location {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    padding-block: 8px;
+  }
+
+  .asas-topbar-tag {
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.07em !important;
+    font-size: 9px !important;
+  }
+
+  .asas-topbar-inner {
+    gap: 8px !important;
+  }
+
+  .atlas-link,
+  .tm-text-link,
+  .tm-home-aside-link,
+  .sd-text-cta,
+  .sc-text-cta,
+  .cp-text-cta,
+  .pd-text-link,
+  .sv-text-link,
+  a.arrow-link {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding-block: 8px;
+    box-sizing: border-box;
+  }
+
+  .pf-gallery-dot,
+  .asas-ph-dot,
+  .hero-dot,
+  button.pf-gallery-dot {
+    position: relative;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  .pf-gallery-dot::after,
+  button.pf-gallery-dot::after {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .pf-gallery-dot.is-active::after,
+  button.pf-gallery-dot.is-active::after {
+    background: var(--asas-orange, #a02315);
+  }
+
+  /* ---------- Mobile menu polish ---------- */
+  .asas-nav {
+    max-height: calc(100svh - var(--ph-chrome, 124px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .asas-nav a {
+    min-height: var(--asas-m-tap);
+    display: flex;
+    align-items: center;
+  }
+
+  body.asas-nav-lock {
+    overflow: hidden !important;
+    touch-action: none;
+  }
+
+  /* ---------- Sticky tabs / subnavs ---------- */
+  .sd-subnav-inner,
+  .sc-subnav-inner,
+  .cp-subnav-inner,
+  .pf-subnav,
+  .sv-jump-tabs,
+  .pd-tabs-inner,
+  .pd-tabs {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .sd-subnav-inner::-webkit-scrollbar,
+  .sc-subnav-inner::-webkit-scrollbar,
+  .cp-subnav-inner::-webkit-scrollbar,
+  .pf-subnav::-webkit-scrollbar,
+  .sv-jump-tabs::-webkit-scrollbar,
+  .pd-tabs-inner::-webkit-scrollbar,
+  .pd-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sd-subnav-links,
+  .sc-subnav-links,
+  .cp-subnav-links,
+  .sv-jump-tabs,
+  .pd-tabs-links,
+  .pf-subnav-filters {
+    display: flex;
+    flex-wrap: nowrap !important;
+    gap: 4px 8px;
+    width: max-content;
+    min-width: 100%;
+    padding-inline: 2px;
+  }
+
+  .sd-subnav-links a,
+  .sc-subnav-links a,
+  .cp-subnav-links a,
+  .sv-jump-tabs a,
+  .pd-tabs a,
+  .pf-subnav button,
+  .pf-subnav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding-inline: 12px;
+  }
+
+  /* ---------- Forms ---------- */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* prevent iOS zoom */
+    min-height: var(--asas-m-input-h);
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    min-height: 120px;
+  }
+
+  .form-grid,
+  .enquiry-form,
+  .contact-form-panel form,
+  .careers-apply-form,
+  .asas-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .enquiry-form button[type='submit'],
+  .contact-form-panel button[type='submit'],
+  .careers-apply-form button[type='submit'],
+  .asas-action,
+  .button {
+    min-height: 48px;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  /* ---------- Cards / grids ---------- */
+  .sv-grid,
+  .sv-card-grid,
+  .sc-related-grid,
+  .sd-related-grid,
+  .sd-sectors-grid,
+  .sectors-grid,
+  .services-grid,
+  .download-grid,
+  .tm-grid,
+  .tm-directory-grid,
+  .pl-grid,
+  .pf-grid,
+  .cp-cap-grid,
+  .careers-grid,
+  .hp-portfolio-grid,
+  .hp-why-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--asas-m-card-gap) !important;
+  }
+
+  /* Homepage team: kill broken horizontal carousel; keep even 2-up cards */
+  .tm-home .tm-grid-home {
+    display: grid !important;
+    grid-auto-flow: row !important;
+    grid-auto-columns: unset !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    overflow-x: visible !important;
+    scroll-snap-type: none !important;
+    gap: var(--asas-m-card-gap, 16px) !important;
+    padding-bottom: 0 !important;
+  }
+
+  .tm-home .tm-card-media {
+    aspect-ratio: 3 / 4 !important;
+    max-height: 300px;
+  }
+
+  .tm-home .tm-card-fallback {
+    inset: 0;
+  }
+
+  .tm-home .tm-card-copy h3 {
+    font-size: clamp(17px, 4.2vw, 20px) !important;
+  }
+
+  /* Touch: reveal profile CTA without hover */
+  @media (hover: none) {
+    .tm-card .tm-card-shade {
+      opacity: 0.4;
+    }
+
+    .tm-card .tm-card-cta {
+      opacity: 1;
+      transform: none;
+    }
+
+    .tm-card .tm-card-rule {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 900px) {
+    .sv-grid,
+    .sv-card-grid,
+    .sectors-grid,
+    .tm-directory-grid,
+    .pl-grid,
+    .download-grid,
+    .hp-portfolio-grid,
+    .hp-why-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+  }
+
+  /* ---------- Project detail overflow ---------- */
+  .pd-thumbs {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+
+  .pd-gallery-tools,
+  .pd-gallery-controls {
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pd-gallery-controls button {
+    min-width: var(--asas-m-tap);
+    min-height: var(--asas-m-tap);
+  }
+
+  .pd-gallery-strip {
+    overflow-x: auto;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .pd,
+  .pd-main,
+  .pd-hero,
+  .pd-hero-grid {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  /* Testimonials — kill 100vw width bleed */
+  .asas-t-card,
+  .asas-testimonials-card,
+  .hp-testimonial-card {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+
+  .asas-t-track,
+  .asas-testimonials-track {
+    padding-inline: var(--asas-m-inline) !important;
+    max-width: 100%;
+  }
+
+  /* ---------- Homepage hero ---------- */
+  .asas-ph {
+    min-height: 0 !important;
+  }
+
+  .asas-ph-strip {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    max-width: 100%;
+  }
+
+  .asas-ph-strip-track {
+    display: flex !important;
+    grid-template-columns: none !important;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .asas-ph-thumb {
+    flex: 0 0 auto;
+    min-width: 112px;
+    min-height: var(--asas-m-tap);
+  }
+
+  .asas-ph-title {
+    font-size: clamp(32px, 8.2vw, 46px) !important;
+    line-height: 1.02 !important;
+    max-width: 13ch;
+  }
+
+  .asas-ph-facts {
+    max-width: 100% !important;
+  }
+
+  .asas-ph-shell {
+    padding-bottom: 100px !important;
+  }
+
+  /* ---------- Clients marquee ---------- */
+  .asas-clients-marquee.is-static .asas-clients-track,
+  .asas-clients-marquee .asas-clients-track {
+    padding-inline: var(--asas-m-inline);
+  }
+
+  .asas-clients-logo {
+    width: 156px;
+    min-width: 156px;
+    height: 88px;
+    min-height: 88px;
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer.asas-footer .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .site-footer.asas-footer .footer-action {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 18px;
+  }
+
+  .site-footer.asas-footer .footer-action-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ---------- WhatsApp safe area ---------- */
+  .whatsapp {
+    width: 52px !important;
+    height: 52px !important;
+    right: max(16px, env(safe-area-inset-right, 0px)) !important;
+    bottom: max(16px, env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 45 !important;
+  }
+
+  html[dir='rtl'] .whatsapp {
+    right: auto !important;
+    left: max(16px, env(safe-area-inset-left, 0px)) !important;
+  }
+
+  /* ---------- Internal heroes — shorter on small phones ---------- */
+  .about-hero,
+  .careers-hero,
+  .careers-detail-hero,
+  .contact-hero,
+  .downloads-hero,
+  .enquiry-hero,
+  .sectors-hero,
+  .sv-hero,
+  .sd-hero,
+  .sc-hero,
+  .cp-hero,
+  .tm-page-hero,
+  .pl-hero,
+  .pf-hero {
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --asas-m-inline: 18px;
+    --asas-m-section-y: 48px;
+  }
+
+  .asas-topbar-center {
+    display: none !important;
+  }
+
+  /* Keep one-column card density on narrow phones */
+  .sv-grid,
+  .sv-card-grid,
+  .sectors-grid,
+  .tm-directory-grid,
+  .pl-grid,
+  .download-grid,
+  .hp-portfolio-grid,
+  .hp-why-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .tm-home .tm-grid-home {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .asas-clients-logo {
+    width: 148px;
+    min-width: 148px;
+  }
+}
+
+@media (max-width: 379px) {
+  .tm-home .tm-grid-home {
+    grid-template-columns: 1fr !important;
+  }
+
+  .tm-home .tm-card-media {
+    max-height: 260px;
+  }
+}
+
+/* ---------- Arabic RTL mobile refinements ---------- */
+@media (max-width: 900px) {
+  html[dir='rtl'] .asas-nav a,
+  html[dir='rtl'] .atlas-link,
+  html[dir='rtl'] .sd-text-cta,
+  html[dir='rtl'] .sc-text-cta,
+  html[dir='rtl'] .cp-text-cta {
+    text-align: start;
+  }
+
+  html[dir='rtl'] .sd-subnav-links,
+  html[dir='rtl'] .sc-subnav-links,
+  html[dir='rtl'] .cp-subnav-links,
+  html[dir='rtl'] .sv-jump-tabs,
+  html[dir='rtl'] .pd-tabs-links {
+    flex-direction: row;
+  }
+
+  html[dir='rtl'] .reverse-arrow {
+    transform: scaleX(-1);
+  }
+
+  html[dir='rtl'] .breadcrumb,
+  html[dir='rtl'] .sd-breadcrumb,
+  html[dir='rtl'] .sc-breadcrumb {
+    text-align: start;
+  }
+}
+
+/* Desktop untouched — ensure this file never collapses desktop grids */
+@media (min-width: 901px) {
+  /* no-op: desktop rules live in page CSS */
+}

@@ -32,7 +32,10 @@
 /* Hero */
 .enquiry-hero {
   position: relative;
-  padding: 88px 0 72px;
+  height: var(--asas-internal-hero-h, clamp(650px, 72vh, 760px));
+  min-height: 650px;
+  max-height: 760px;
+  padding: var(--asas-internal-hero-pad-simple, 72px 0 60px);
   color: #fff;
   overflow: hidden;
   background: var(--asas-navy);
@@ -106,8 +109,8 @@
 }
 
 .enquiry-hero-meta a:hover {
-  color: rgba(229, 80, 33, 0.45);
-  border-color: rgba(229, 80, 33, 0.45);
+  color: #fff;
+  border-color: var(--asas-rust, #a02315);
 }
 
 /* Body */
@@ -125,7 +128,7 @@
 
 .enquiry-aside h2 {
   margin: 10px 0 12px;
-  color: var(--e-navy);
+  color: var(--text-primary, var(--e-ink));
   font-size: clamp(26px, 2.8vw, 34px);
   letter-spacing: -0.03em;
   line-height: 1.12;
@@ -161,7 +164,7 @@
 
 .enquiry-steps h3 {
   margin: 0 0 6px;
-  color: var(--e-navy);
+  color: var(--text-primary, var(--e-ink));
   font-size: 16px;
 }
 
@@ -184,7 +187,7 @@
 
 .enquiry-direct h3 {
   margin: 0 0 4px;
-  color: var(--e-navy);
+  color: var(--text-primary, var(--e-ink));
   font-size: 15px;
 }
 
@@ -211,7 +214,7 @@
   gap: 14px;
   padding: 18px;
   border-radius: 12px;
-  background: rgba(229, 80, 33, 0.08);
+  background: rgba(160, 35, 21, 0.08);
 }
 
 .enquiry-note-card > svg {
@@ -223,7 +226,7 @@
 .enquiry-note-card strong {
   display: block;
   margin-bottom: 6px;
-  color: var(--e-navy);
+  color: var(--text-primary, var(--e-ink));
   font-size: 15px;
 }
 
@@ -248,7 +251,7 @@
 
 .enquiry-form-head h2 {
   margin: 10px 0 10px;
-  color: var(--e-navy);
+  color: var(--text-primary, var(--e-ink));
   font-size: clamp(24px, 2.5vw, 30px);
   letter-spacing: -0.03em;
 }
@@ -280,7 +283,7 @@
 }
 
 .enquiry-page .enquiry-fields label > span {
-  color: var(--e-navy);
+  color: var(--text-primary, var(--e-navy));
   font: 700 13px/1.3 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
@@ -325,7 +328,7 @@
 .enquiry-page .enquiry-fields .has-error select,
 .enquiry-page .enquiry-fields .has-error textarea {
   border-color: var(--e-orange);
-  box-shadow: 0 0 0 3px rgba(229, 80, 33, 0.12);
+  box-shadow: 0 0 0 3px rgba(160, 35, 21, 0.12);
 }
 
 .enquiry-page .enquiry-fields em {
@@ -370,7 +373,7 @@
 
 .enquiry-page .enquiry-success h3 {
   margin: 0;
-  color: var(--e-navy);
+  color: var(--text-primary, var(--e-ink));
   font-size: clamp(22px, 2.4vw, 28px);
 }
 
@@ -410,9 +413,9 @@
   z-index: 1;
   background: linear-gradient(
     100deg,
-    rgba(4, 18, 38, 0.94) 0%,
-    rgba(4, 18, 38, 0.78) 55%,
-    rgba(4, 18, 38, 0.55) 100%
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.78) 55%,
+    rgba(0, 0, 0, 0.55) 100%
   );
 }
 
@@ -431,7 +434,7 @@
   align-items: center;
   gap: 10px;
   margin: 0 0 14px;
-  color: #e55021;
+  color: #a02315;
   font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -440,7 +443,7 @@
 .enquiry-cta-kicker i {
   width: 22px;
   height: 2px;
-  background: #e55021;
+  background: #a02315;
 }
 
 .enquiry-cta-copy h2 {
@@ -499,7 +502,7 @@
 }
 
 .enquiry-cta-link:hover {
-  color: #e55021;
+  color: #a02315;
 }
 
 .enquiry-cta-words {

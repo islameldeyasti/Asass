@@ -1,0 +1,36 @@
+{
+  "project": "Commercial & Residential Building \u2014 M26",
+  "slug": "building-mbz-musaffah-m26",
+  "category": "buildings",
+  "finalStatus": "DEPLOYED_READY",
+  "currentHero": "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-01-hero.webp",
+  "websiteStatus": "APPROVED_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/building-mbz-musaffah-m26/source-reference/source-reference.png",
+  "productionSourceStatus": "HAS_SOURCE",
+  "approved": [
+    {
+      "file": "building-mbz-musaffah-m26-01-hero.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/building-mbz-musaffah-m26/approved/building-mbz-musaffah-m26-01-hero.webp",
+      "live_path": "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-01-hero.webp",
+      "view": "HERO",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "building-mbz-musaffah-m26-02-front.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/building-mbz-musaffah-m26/approved/building-mbz-musaffah-m26-02-front.webp",
+      "live_path": "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-02-front.webp",
+      "view": "FRONT",
+      "confidence": "HIGH",
+      "deployed": true
+    }
+  ],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": false,
+  "notes": [
+    "2 HIGH-confidence image(s) already live under projects-generated/."
+  ]
+}

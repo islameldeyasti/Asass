@@ -2,13 +2,14 @@ import Image from 'next/image';
 import {projectHeroVisuals} from '@/data/projects';
 import ProjectsExplorer from '@/components/ProjectsExplorer';
 import ProjectsEnquiryCta from '@/components/ProjectsEnquiryCta';
+import {ctaBandImages} from '@/data/image-manifest';
 
 export async function generateMetadata({params}) {
   const {locale} = await params;
   return {
-    title: locale === 'ar' ? 'مشاريع أساس المختارة' : 'Selected Projects | ASAS',
+    title: locale === 'ar' ? 'مشاريع أساس للاستشارات الهندسية وإدارة المشاريع المختارة' : 'Selected Projects | ASAS',
     description: locale === 'ar'
-      ? 'مشاريع أساس المختارة في الأبراج والمباني والصناعة والبنية التحتية والمدارس والفلل والتصميم الداخلي.'
+      ? 'مشاريع أساس للاستشارات الهندسية وإدارة المشاريع المختارة في الأبراج والمباني والصناعة والبنية التحتية والمدارس والفلل والتصميم الداخلي.'
       : 'Selected ASAS projects across towers, buildings, industry, infrastructure, schools, villas and interior design.',
   };
 }
@@ -18,6 +19,7 @@ export default async function Projects({params}) {
   const ar = locale === 'ar';
   const heroLeft = projectHeroVisuals[0];
   const heroRight = projectHeroVisuals[1] || projectHeroVisuals[0];
+  const ctaImage = {src: ctaBandImages.projects, crop: '50% 40%'};
 
   return (
     <div className="pl">
@@ -47,7 +49,7 @@ export default async function Projects({params}) {
             {ar ? (
               <>
                 <span>أعمال مختارة</span>
-                <span>من محفظة أساس.</span>
+                <span>من محفظة أساس للاستشارات الهندسية وإدارة المشاريع.</span>
               </>
             ) : (
               <>
@@ -74,7 +76,7 @@ export default async function Projects({params}) {
         </div>
       </section>
 
-      <ProjectsEnquiryCta locale={locale} image={heroLeft} />
+      <ProjectsEnquiryCta locale={locale} image={ctaImage} />
     </div>
   );
 }

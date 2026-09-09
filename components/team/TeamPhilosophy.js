@@ -29,7 +29,7 @@ export default function TeamPhilosophy({locale, image}) {
           </h2>
           <p>
             {ar
-              ? 'يعمل مهندسو أساس عبر العمارة والإنشاءات والكهروميكانيك وإدارة المشاريع ضمن مسار تنسيق واحد من الفكرة إلى التسليم.'
+              ? 'يعمل مهندسو أساس للاستشارات الهندسية وإدارة المشاريع عبر العمارة والإنشاءات والكهروميكانيك وإدارة المشاريع ضمن مسار تنسيق واحد من الفكرة إلى التسليم.'
               : 'ASAS engineers work across architecture, structure, MEP and project management as one coordinated path from concept to delivery.'}
           </p>
         </div>

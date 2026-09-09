@@ -71,14 +71,16 @@
 .hp-revised .hp-portfolio { background: var(--hp-white); padding: 80px 0; }
 .hp-revised .hp-why { background: var(--hp-paper); padding: 80px 0 0 !important; }
 .hp-revised .home-contact {
-  background:
-    linear-gradient(180deg, var(--hp-paper) 0%, var(--hp-navy) 56px) !important;
-  padding-top: 56px !important;
+  background: var(--bg-section, #f5f5f8) !important;
+  /* Keep CTA section rhythm — do not crush top padding against prior section */
+  padding-top: var(--space-section-md, 88px) !important;
+  padding-bottom: var(--space-section-md, 88px);
 }
 .hp-revised .hp-faq { background: var(--hp-white); padding: 80px 0; }
 
 /* About: editorial, no competing stats/cards */
 .hp-revised .hp-about-layout {
+  position: relative;
   grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
   gap: 56px;
   align-items: center;
@@ -87,6 +89,13 @@
 .hp-revised .hp-about-visual,
 .hp-revised .hp-about-visual img {
   border-radius: var(--hp-card-radius);
+}
+
+.hp-revised .hp-about-visual {
+  position: relative;
+  z-index: 2;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .hp-revised .hp-about-copy h2 {
@@ -106,45 +115,163 @@
 }
 
 .hp-revised .hp-about-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px 28px;
+  /* spacing owned by .asas-action-group */
+  gap: 12px 14px;
 }
 
-/* Disciplines stats bar */
-.hp-discipline-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-  margin: 0 0 28px;
-  border: var(--hp-card-border);
-  border-radius: var(--hp-card-radius);
-  background: var(--hp-white);
-  box-shadow: var(--hp-card-shadow);
+/* ---------- About wireframe sphere (decorative) ---------- */
+.hp-revised .hp-about-copy {
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  grid-column: 2;
+  grid-row: 1;
 }
 
-.hp-discipline-stats article {
-  padding: 18px 20px;
-  border-inline-start: 1px solid #ece8e2;
+.hp-revised .hp-about-copy-inner {
+  position: relative;
+  z-index: 2;
 }
 
-.hp-discipline-stats article:first-child {
-  border-inline-start: 0;
+/*
+  Anchor in the section grid seam between image + copy.
+  Slightly toward the text so it bridges the gap without covering the photo.
+*/
+.hp-revised .hp-about-layout > .asas-wire-sphere {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 46%;
+  width: min(500px, 52%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  grid-column: 1 / -1;
+  grid-row: 1;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.32;
 }
 
-.hp-discipline-stats strong {
+html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
+  left: auto;
+  right: 46%;
+  transform: translate(50%, -50%);
+}
+
+.hp-revised .asas-wire-sphere-spin,
+.hp-revised .asas-wire-sphere-halo {
+  position: absolute;
+  inset: 0;
+}
+
+.hp-revised .asas-wire-sphere-svg,
+.hp-revised .asas-wire-sphere-halo svg {
   display: block;
-  color: var(--hp-navy);
-  font: 700 26px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
-  letter-spacing: -.03em;
+  width: 100%;
+  height: 100%;
 }
 
-.hp-discipline-stats span {
-  display: block;
-  margin-top: 6px;
-  color: #6d6863;
-  font-size: 12px;
-  line-height: 1.4;
+.hp-revised .asas-wire-sphere-spin {
+  animation: asas-wire-spin 30s linear infinite;
+}
+
+.hp-revised .asas-wire-sphere-halo {
+  opacity: 0.5;
+  animation: asas-wire-spin-reverse 40s linear infinite;
+}
+
+/* Soft ASAS orange wireframe */
+.hp-revised .asas-wire-ring {
+  stroke: rgba(160, 35, 21, 0.34);
+  stroke-width: 1;
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.hp-revised .asas-wire-ring--outer {
+  stroke: rgba(160, 35, 21, 0.42);
+  stroke-width: 1.15;
+}
+
+.hp-revised .asas-wire-ring--orbit {
+  stroke: rgba(160, 35, 21, 0.26);
+  stroke-dasharray: 3 7;
+}
+
+.hp-revised .asas-wire-ring--soft {
+  stroke: rgba(160, 35, 21, 0.2);
+}
+
+.hp-revised .asas-wire-ring--halo {
+  stroke: rgba(160, 35, 21, 0.18);
+  stroke-width: 1;
+}
+
+.hp-revised .asas-wire-ring--accent {
+  stroke: rgba(160, 35, 21, 0.48);
+}
+
+.hp-revised .asas-wire-nodes circle {
+  fill: rgba(160, 35, 21, 0.4);
+  stroke: none;
+}
+
+.hp-revised .asas-wire-node--accent {
+  fill: rgba(160, 35, 21, 0.58);
+}
+
+@keyframes asas-wire-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes asas-wire-spin-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+/* Soften / hide older concentric CSS rings when sphere is present */
+.hp-revised .hp-about-copy:before {
+  opacity: 0;
+}
+
+@media (max-width: 1100px) {
+  .hp-revised .hp-about-layout > .asas-wire-sphere {
+    width: min(440px, 56%);
+    left: 47%;
+    opacity: 0.28;
+  }
+
+  html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
+    left: auto;
+    right: 47%;
+  }
+}
+
+@media (max-width: 900px) {
+  .hp-revised .hp-about-layout > .asas-wire-sphere {
+    width: min(360px, 62%);
+    left: 50%;
+    opacity: 0.22;
+  }
+
+  html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
+    left: auto;
+    right: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .hp-revised .hp-about-layout > .asas-wire-sphere {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-revised .asas-wire-sphere-spin,
+  .hp-revised .asas-wire-sphere-halo {
+    animation: none;
+  }
 }
 
 .hp-revised .insp-tab-panel {
@@ -163,8 +290,13 @@
 }
 
 .hp-revised .insp-tabs button.active {
-  background: var(--hp-navy);
+  background: var(--asas-navy, var(--hp-navy));
   color: #fff;
+}
+
+.hp-revised .insp-tabs button.active svg {
+  color: #fff;
+  stroke: currentColor;
 }
 
 .hp-revised .insp-center-cta {
@@ -198,7 +330,7 @@
   grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
   min-height: 440px;
   margin-bottom: 16px;
-  background: #161b26;
+  background: #070463;
   color: #fff;
 }
 
@@ -289,7 +421,7 @@
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #161b26;
+  background: #070463;
 }
 
 .hp-portfolio-media img {
@@ -368,7 +500,7 @@
   margin: 0 0 16px !important;
   padding: 0 !important;
   border-radius: 12px;
-  background: var(--hp-orange, #e55021);
+  background: var(--hp-orange, #a02315);
   color: #fff;
   font: inherit !important;
   letter-spacing: 0 !important;
@@ -436,47 +568,51 @@
 }
 
 .hp-revised .home-contact-form button:hover {
-  background: #c4411a;
+  background: #801c11;
 }
 
-/* Contact dark section — override white-theme text tokens */
+/* Contact section — theme-aware surfaces (not pure page white / page black) */
 .hp-revised.atlas-home .home-contact {
-  background:
-    linear-gradient(180deg, var(--hp-paper) 0%, var(--hp-navy) 56px) !important;
-  color: #fff;
+  background: var(--bg-section, #f5f5f8) !important;
+  color: var(--theme-text, #000);
+}
+
+html[data-theme='dark'] .hp-revised.atlas-home .home-contact {
+  background: var(--bg-surface, #141414) !important;
+  color: var(--text-primary, #fff);
 }
 
 .hp-revised.atlas-home .home-contact-head .atlas-kicker {
-  color: rgba(229, 80, 33, 0.45) !important;
+  color: #a02315 !important;
 }
 
 .hp-revised.atlas-home .home-contact-head h2 {
-  color: #fff !important;
+  color: var(--theme-text, #000) !important;
   font-family: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif !important;
   font-weight: 700;
   letter-spacing: -.04em;
 }
 
 .hp-revised.atlas-home .home-contact-head > p:last-child {
-  color: rgba(255, 255, 255, .78) !important;
+  color: var(--theme-text-secondary, #333) !important;
 }
 
 .hp-revised.atlas-home .home-contact-details article > svg {
-  background: var(--hp-orange, #e55021) !important;
+  background: #a02315 !important;
   color: #fff !important;
 }
 
 .hp-revised.atlas-home .home-contact-details h3 {
-  color: #fff !important;
+  color: var(--theme-text, #000) !important;
 }
 
 .hp-revised.atlas-home .home-contact-details p,
 .hp-revised.atlas-home .home-contact-details a {
-  color: rgba(255, 255, 255, .78) !important;
+  color: var(--theme-text-secondary, #333) !important;
 }
 
 .hp-revised.atlas-home .home-contact-details a:hover {
-  color: rgba(229, 80, 33, 0.45) !important;
+  color: #a02315 !important;
 }
 
 /* Persistent labels above fields */
@@ -485,7 +621,7 @@
   display: block;
   inset: auto !important;
   margin: 0 0 8px;
-  color: rgba(255, 255, 255, .92) !important;
+  color: var(--theme-text, #000) !important;
   font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .05em;
   text-transform: uppercase;
@@ -498,8 +634,19 @@
   height: auto;
   min-height: 48px;
   padding: 12px 14px !important;
-  border-color: rgba(255, 255, 255, .18) !important;
-  background: rgba(255, 255, 255, .96) !important;
+  border: 1px solid var(--theme-input-border, #ccc) !important;
+  background: var(--theme-input-bg, #fff) !important;
+  color: var(--theme-text, #000) !important;
+}
+
+.hp-revised.atlas-home .home-contact-fields input::placeholder,
+.hp-revised.atlas-home .home-contact-fields textarea::placeholder {
+  color: var(--theme-text-muted, #555) !important;
+}
+
+.hp-revised.atlas-home .home-contact-fields option {
+  background: var(--theme-surface, #fff);
+  color: var(--theme-text, #000);
 }
 
 .hp-revised.atlas-home .home-contact-fields textarea {
@@ -508,7 +655,7 @@
 
 .hp-revised.atlas-home .home-contact-note {
   margin: 12px 0 0;
-  color: rgba(255, 255, 255, .55);
+  color: var(--theme-text-muted, #555);
   font-size: 12px;
   line-height: 1.5;
 }
@@ -548,14 +695,14 @@ html[dir='rtl'] .whatsapp {
 
 .hp-revised.atlas-home .hp-faq-list details {
   margin: 0;
-  border: 1px solid var(--asas-border) !important;
+  border: 1px solid var(--border-default, var(--asas-border)) !important;
   border-radius: 12px;
-  background: #fff;
+  background: var(--bg-surface-elevated, var(--hp-white, #fff));
   overflow: hidden;
 }
 
 .hp-revised.atlas-home .hp-faq-list details:first-child {
-  border-top: 1px solid var(--asas-border) !important;
+  border-top: 1px solid var(--border-default, var(--asas-border)) !important;
 }
 
 .hp-revised.atlas-home .hp-faq-list summary {
@@ -563,7 +710,11 @@ html[dir='rtl'] .whatsapp {
   align-items: flex-start;
   gap: 14px;
   padding: 18px 20px !important;
-  color: var(--hp-navy);
+  color: var(--text-primary, var(--hp-navy));
+}
+
+.hp-revised.atlas-home .hp-faq-list summary:hover {
+  background: var(--dark-hover, transparent);
 }
 
 .hp-revised.atlas-home .hp-faq-list summary:after {
@@ -597,14 +748,23 @@ html[dir='rtl'] .whatsapp {
 
 @media (max-width: 1100px) {
   .hp-portfolio-grid,
-  .hp-revised .hp-why-grid,
-  .hp-discipline-stats {
+  .hp-revised .hp-why-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hp-featured,
   .hp-revised .hp-about-layout {
     grid-template-columns: 1fr;
+  }
+
+  .hp-revised .hp-about-visual {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hp-revised .hp-about-copy {
+    grid-column: 1;
+    grid-row: 2;
   }
 }
 
@@ -625,18 +785,8 @@ html[dir='rtl'] .whatsapp {
     height: 620px;
   }
 
-  .hp-discipline-stats,
   .hp-portfolio-grid,
   .hp-revised .hp-why-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hp-discipline-stats article {
-    border-inline-start: 0;
-    border-top: 1px solid #ece8e2;
-  }
-
-  .hp-discipline-stats article:first-child {
-    border-top: 0;
   }
 }

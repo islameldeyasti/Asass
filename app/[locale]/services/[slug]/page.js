@@ -23,9 +23,10 @@ import {services, serviceGroups} from '@/data/services';
 import {sectors} from '@/data/sectors';
 import {company} from '@/data/company';
 import {designMethod, supervisionMethod, sustainabilityProcess} from '@/data/method';
-import {generatedEditorialImages, sectorImages, serviceImages} from '@/data/image-manifest';
+import {getSectorImage, getServiceImage, roleImages} from '@/data/image-manifest';
 import ServiceDetailSubnav from '@/components/services/ServiceDetailSubnav';
 import ServiceDetailEnquiryCta from '@/components/services/ServiceDetailEnquiryCta';
+import {ActionButton} from '@/components/ActionButton';
 
 const serviceIcons = {
   'architectural-design': Building2,
@@ -108,17 +109,28 @@ export default async function Service({params}) {
   const capabilities = ar ? service.capabilitiesAr : service.capabilities;
   const related = services.filter((item) => item.slug !== slug && item.group === service.group).slice(0, 3);
   const steps = methodSteps(slug);
-  const heroImage = serviceImages[slug] || generatedEditorialImages.buildingsSector;
-  const scopeImage = serviceImages[slug] || generatedEditorialImages.buildingsSector;
-  const ctaImage = generatedEditorialImages.buildingsSector || heroImage;
-  const sectorTiles = sectors.slice(0, 6);
+  const {src: heroSrc, imagePosition: heroPosition} = getServiceImage(slug);
+  const heroImage = heroSrc || roleImages.SERVICE_ARCHITECTURE;
+  const scopeImage = getServiceImage(slug);
+  const ctaImage = null;
+  const sectorTiles = sectors;
   const ServiceIcon = serviceIcons[slug] || Building2;
+
+  const heroFocusClass =
+    slug === 'quantities-cost' ? ' sd-hero--focus-upper' : '';
 
   return (
     <div className="sd">
-      <section className="sd-hero" id="overview">
+      <section className={`sd-hero${heroFocusClass}`} id="overview">
         <div className="sd-hero-media" aria-hidden="true">
-          <Image src={heroImage} alt="" fill priority sizes="100vw" />
+          <Image
+            src={heroImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: heroPosition}}
+          />
         </div>
         <div className="sd-hero-veil" aria-hidden="true" />
         <svg className="sd-hero-blueprint" viewBox="0 0 280 480" aria-hidden="true">
@@ -130,13 +142,13 @@ export default async function Service({params}) {
             <path d="M40 140 H200" />
             <path d="M40 220 H180" />
             <path d="M40 300 H160" />
-            <circle cx="40" cy="140" r="3" fill="#e55021" stroke="none" />
+            <circle cx="40" cy="140" r="3" fill="#a02315" stroke="none" />
           </g>
         </svg>
         <div className="sd-shell sd-hero-inner">
           <div className="sd-hero-copy">
             <p className="sd-breadcrumb">
-              ASAS / {ar ? 'الخدمات' : 'Services'} / {title}
+              {ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'الخدمات' : 'Services'} / {title}
             </p>
             <p className="sd-kicker light">
               <i />
@@ -148,12 +160,9 @@ export default async function Service({params}) {
               ))}
             </h1>
             <p className="sd-hero-lede">{description}</p>
-            <a className="sd-hero-cta" href="#method">
-              <span className="sd-hero-cta-icon" aria-hidden="true">
-                <ArrowRight size={16} className={ar ? 'sd-flip' : ''} />
-              </span>
+            <ActionButton variant="primary" href="#method">
               {ar ? 'استكشف منهجيتنا' : 'Explore our approach'}
-            </a>
+            </ActionButton>
           </div>
           <ul className="sd-hero-words" aria-hidden="true">
             <li>{ar ? 'أشخاص' : 'People'}</li>
@@ -199,8 +208,24 @@ export default async function Service({params}) {
               </a>
             </div>
 
-            <div className="sd-scope-media">
-              <Image src={scopeImage} alt="" fill sizes="(max-width: 900px) 100vw, 28vw" />
+            <div
+              className={`sd-scope-media${scopeImage.src ? '' : ' sd-scope-media--panel'}`}
+              aria-hidden="true"
+            >
+              {scopeImage.src ? (
+                <Image
+                  src={scopeImage.src}
+                  alt=""
+                  fill
+                  sizes="(max-width: 900px) 100vw, 45vw"
+                  style={{objectFit: 'cover', objectPosition: scopeImage.imagePosition}}
+                />
+              ) : (
+                <div className="sd-scope-panel">
+                  <span>{ar ? 'خدمة' : 'Service'}</span>
+                  <strong>{title}</strong>
+                </div>
+              )}
             </div>
 
             <ul className="sd-cap-list">
@@ -253,26 +278,35 @@ export default async function Service({params}) {
             </div>
 
             <div className="sd-sector-tiles">
-              {sectorTiles.map((sector) => (
-                <Link
-                  key={sector.slug}
-                  className="sd-sector-tile"
-                  href={`/${locale}/sectors/${sector.slug}`}
-                >
-                  <div className="sd-sector-media">
-                    <Image
-                      src={sectorImages[sector.slug] || generatedEditorialImages.buildingsSector}
-                      alt=""
-                      fill
-                      sizes="(max-width: 900px) 50vw, 18vw"
-                    />
-                  </div>
-                  <span className="sd-sector-icon" aria-hidden="true">
-                    <Building2 size={14} />
-                  </span>
-                  <strong>{ar ? sector.titleAr : sector.title}</strong>
-                </Link>
-              ))}
+              {sectorTiles.map((sector) => {
+                const sectorImage = getSectorImage(sector.slug);
+                return (
+                  <Link
+                    key={sector.slug}
+                    className="sd-sector-tile"
+                    href={`/${locale}/sectors/${sector.slug}`}
+                  >
+                    <div
+                      className={`sd-sector-media${sectorImage.src ? '' : ' sd-sector-media--tone'}`}
+                      aria-hidden="true"
+                    >
+                      {sectorImage.src ? (
+                        <Image
+                          src={sectorImage.src}
+                          alt=""
+                          fill
+                          sizes="(max-width: 700px) 50vw, 220px"
+                          style={{objectFit: 'cover', objectPosition: sectorImage.imagePosition}}
+                        />
+                      ) : null}
+                    </div>
+                    <span className="sd-sector-icon" aria-hidden="true">
+                      <Building2 size={14} />
+                    </span>
+                    <strong>{ar ? sector.titleAr : sector.title}</strong>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -360,19 +394,26 @@ export default async function Service({params}) {
             <div className="sd-related-grid">
               {related.map((item) => {
                 const Icon = serviceIcons[item.slug] || ServiceIcon;
+                const relatedImage = getServiceImage(item.slug);
                 return (
                   <Link
                     key={item.slug}
                     className="sd-related-card"
                     href={`/${locale}/services/${item.slug}`}
                   >
-                    <div className="sd-related-media">
-                      <Image
-                        src={serviceImages[item.slug] || generatedEditorialImages.technicalCoordination}
-                        alt=""
-                        fill
-                        sizes="(max-width: 900px) 100vw, 30vw"
-                      />
+                    <div
+                      className={`sd-related-media${relatedImage.src ? '' : ' sd-related-media--tone'}`}
+                      aria-hidden="true"
+                    >
+                      {relatedImage.src ? (
+                        <Image
+                          src={relatedImage.src}
+                          alt=""
+                          fill
+                          sizes="(max-width: 700px) 100vw, 33vw"
+                          style={{objectFit: 'cover', objectPosition: relatedImage.imagePosition}}
+                        />
+                      ) : null}
                       <span className="sd-related-arrow" aria-hidden="true">
                         <ArrowUpRight size={16} />
                       </span>

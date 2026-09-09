@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {ArrowUpRight} from 'lucide-react';
+import ProjectVisualFallback from '@/components/ProjectVisualFallback';
 
 export default function TeamProjects({projects, locale}) {
   const ar = locale === 'ar';
@@ -18,7 +19,7 @@ export default function TeamProjects({projects, locale}) {
           {projects.map((project) => (
             <Link key={project.slug} className="tm-project-card" href={`/${locale}/projects/${project.slug}`}>
               <div className="tm-project-media">
-                {project.visual?.src && (
+                {project.visual?.src ? (
                   <Image
                     src={project.visual.src}
                     alt=""
@@ -27,6 +28,8 @@ export default function TeamProjects({projects, locale}) {
                     style={{objectPosition: project.visual.crop || '50% 40%'}}
                     loading="lazy"
                   />
+                ) : (
+                  <ProjectVisualFallback project={project} locale={locale} />
                 )}
               </div>
               <div className="tm-project-copy">

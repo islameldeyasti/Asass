@@ -1,0 +1,62 @@
+{
+  "project": "Majlis & Dining \u2014 Private Villa",
+  "slug": "majlis-and-dining",
+  "category": "interior-design",
+  "finalStatus": "MANUAL_READY",
+  "currentHero": null,
+  "websiteStatus": "NO_GENERATED_GALLERY_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/majlis-and-dining/source-reference/source-reference.png",
+  "productionSourceStatus": "HAS_SOURCE",
+  "approved": [],
+  "candidates": [],
+  "rejected": [
+    {
+      "file": "majlis-and-dining-rejected-06-alternate.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/majlis-and-dining/rejected/majlis-and-dining-rejected-06-alternate.webp",
+      "view": "ALTERNATE",
+      "confidence": "MEDIUM",
+      "reason": "Exterior bronze interlocking-circle screens echo the mashrabiya circle motif in the Majlis & Dining interior source.",
+      "uncertainty": "Only authentic source is an interior. Exterior massing is not verified from real project photography; motif transfer alone is insufficient.",
+      "manualRecommendation": "REJECT",
+      "original": "magnific_use-the-connected-enhance_LwNKvlLswO.jpg"
+    },
+    {
+      "file": "majlis-and-dining-rejected-05-detail.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/majlis-and-dining/rejected/majlis-and-dining-rejected-05-detail.webp",
+      "view": "DETAIL",
+      "confidence": "MEDIUM",
+      "reason": "Close-up of interlocking circle metal screens matching Majlis interior screen motif.",
+      "uncertainty": "Detail could be invented exterior treatment; no authentic exterior reference for this private villa.",
+      "manualRecommendation": "REJECT",
+      "original": "magnific_use-the-connected-enhance_ovHD31K829.jpg"
+    },
+    {
+      "file": "majlis-and-dining-rejected-03-left-angle.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/majlis-and-dining/rejected/majlis-and-dining-rejected-03-left-angle.webp",
+      "view": "LEFT_ANGLE",
+      "confidence": "MEDIUM",
+      "reason": "Corner exterior with same circle-screen bay rhythm as other majlis-motif candidates.",
+      "uncertainty": "No verified exterior source; cannot confirm this building is the Majlis villa.",
+      "manualRecommendation": "REJECT",
+      "original": "magnific_use-the-connected-enhance_JNGluYnOq4.jpg"
+    },
+    {
+      "file": "majlis-and-dining-rejected-02-front.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/majlis-and-dining/rejected/majlis-and-dining-rejected-02-front.webp",
+      "view": "FRONT",
+      "confidence": "MEDIUM",
+      "reason": "Front/corner with circle-motif entrance panel consistent with majlis screen language.",
+      "uncertainty": "Exterior identity unverified; style match only.",
+      "manualRecommendation": "REJECT",
+      "original": "magnific_use-the-connected-enhance_eIE0iBAdqL.jpg"
+    }
+  ],
+  "conceptCandidates": [],
+  "manualReviewRequired": true,
+  "notes": [
+    "4 rejected as authentic project evidence \u2014 do not deploy as project proof.",
+    "Authentic source reference copied into this pack.",
+    "Majlis exterior circle-screen images remain REJECTED as authentic project evidence."
+  ]
+}

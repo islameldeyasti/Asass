@@ -2,10 +2,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {ArrowRight, Building2, Factory, GraduationCap, Hotel, Landmark, Route, Trees} from 'lucide-react';
 import {Container} from '@/components/UI';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {sectors} from '@/data/sectors';
 import {projects} from '@/data/projects';
 import {company} from '@/data/company';
-import {generatedEditorialImages, sectorImages} from '@/data/image-manifest';
+import {getSectorImage, roleImages} from '@/data/image-manifest';
 
 const sectorIcons = {
   'towers-high-rise': Landmark,
@@ -26,12 +27,30 @@ function projectCountFor(sector) {
   return projects.filter((project) => categories.includes(project.category)).length;
 }
 
+function SectorMedia({slug, className, indexLabel, sizes}) {
+  const {src, imagePosition} = getSectorImage(slug);
+  return (
+    <div className={`${className}${src ? '' : ` ${className}--tone`}`} aria-hidden="true">
+      {src ? (
+        <Image
+          src={src}
+          alt=""
+          fill
+          sizes={sizes}
+          style={{objectFit: 'cover', objectPosition: imagePosition}}
+        />
+      ) : null}
+      {indexLabel ? <span className={className.includes('featured') ? 'sectors-featured-index' : 'sectors-card-index'}>{indexLabel}</span> : null}
+    </div>
+  );
+}
+
 export async function generateMetadata({params}) {
   const {locale} = await params;
   return {
-    title: locale === 'ar' ? 'قطاعات أساس' : 'Project Sectors | ASAS',
+    title: locale === 'ar' ? 'قطاعات أساس للاستشارات الهندسية وإدارة المشاريع' : 'Project Sectors | ASAS',
     description: locale === 'ar'
-      ? 'قطاعات مدعومة بخدمات أساس وخبرتها الواردة في الملف التعريفي.'
+      ? 'قطاعات مدعومة بخدمات أساس للاستشارات الهندسية وإدارة المشاريع وخبرتها الواردة في الملف التعريفي.'
       : 'Project sectors supported by ASAS capabilities and portfolio experience.',
   };
 }
@@ -48,7 +67,7 @@ export default async function Sectors({params}) {
       <section className="sectors-hero">
         <div className="sectors-hero-photo" aria-hidden="true">
           <Image
-            src={generatedEditorialImages.buildingsSector}
+            src={roleImages.SECTORS_HERO}
             alt=""
             fill
             priority
@@ -56,7 +75,7 @@ export default async function Sectors({params}) {
           />
         </div>
         <Container>
-          <span className="breadcrumb">ASAS / {ar ? 'القطاعات' : 'Sectors'}</span>
+          <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'القطاعات' : 'Sectors'}</span>
           <h1>
             {ar
               ? 'قطاعات مدعومة بخبرة هندسية ومشاريع فعلية.'
@@ -64,7 +83,7 @@ export default async function Sectors({params}) {
           </h1>
           <p>
             {ar
-              ? 'تغطي أعمال أساس الأبراج والمباني والمنشآت الصناعية والبنية التحتية والمدارس والفلل والتصميم الداخلي.'
+              ? 'تغطي أعمال أساس للاستشارات الهندسية وإدارة المشاريع الأبراج والمباني والمنشآت الصناعية والبنية التحتية والمدارس والفلل والتصميم الداخلي.'
               : 'ASAS work covers towers, buildings, industrial facilities, infrastructure, schools, villas and interior design.'}
           </p>
           <div className="sectors-hero-meta">
@@ -82,21 +101,18 @@ export default async function Sectors({params}) {
             <h2>{ar ? 'خبرة القطاعات، مترابطة.' : 'Sector experience, connected.'}</h2>
             <p>
               {ar
-                ? 'كل قطاع يرتبط بتخصصات التصميم والتنفيذ داخل المكتب — من العمارة والإنشاءات إلى MEP والإشراف.'
+                ? 'كل قطاع يرتبط بتخصصات التصميم والتنفيذ داخل المكتب — من العمارة والإنشاءات إلى الكهروميكانيكية والإشراف.'
                 : 'Each sector connects to in-house design and delivery disciplines — from architecture and structure to MEP and supervision.'}
             </p>
           </header>
 
           <Link className="sectors-featured hp-card" href={`/${locale}/sectors/${featured.slug}`}>
-            <div className="sectors-featured-media">
-              <Image
-                src={sectorImages[featured.slug]}
-                alt=""
-                fill
-                sizes="(max-width: 900px) 100vw, 58vw"
-                style={{objectPosition: '50% 35%'}}
-              />
-            </div>
+            <SectorMedia
+              slug={featured.slug}
+              className="sectors-featured-media"
+              indexLabel="01"
+              sizes="(max-width: 900px) 100vw, 55vw"
+            />
             <div className="sectors-featured-copy">
               <span className="sectors-featured-label">
                 {ar ? 'قطاع مميز' : 'Featured sector'}
@@ -121,15 +137,12 @@ export default async function Sectors({params}) {
                   href={`/${locale}/sectors/${sector.slug}`}
                   key={sector.slug}
                 >
-                  <div className="sectors-card-media">
-                    <Image
-                      src={sectorImages[sector.slug]}
-                      alt=""
-                      fill
-                      sizes="(max-width: 900px) 100vw, 33vw"
-                    />
-                    <span className="sectors-card-index">{String(index + 2).padStart(2, '0')}</span>
-                  </div>
+                  <SectorMedia
+                    slug={sector.slug}
+                    className="sectors-card-media"
+                    indexLabel={String(index + 2).padStart(2, '0')}
+                    sizes="(max-width: 700px) 100vw, 33vw"
+                  />
                   <div className="sectors-card-copy">
                     <span className="sectors-card-icon" aria-hidden="true">
                       <Icon size={18} />
@@ -157,15 +170,7 @@ export default async function Sectors({params}) {
         </Container>
       </section>
 
-      <section className="sectors-cta">
-        <div className="sectors-cta-media" aria-hidden="true">
-          <Image
-            src={generatedEditorialImages.buildingsSector}
-            alt=""
-            fill
-            sizes="100vw"
-          />
-        </div>
+      <section className="sectors-cta asas-cta-band">
         <div className="sectors-cta-veil" aria-hidden="true" />
         <Container className="sectors-cta-inner">
           <div className="sectors-cta-copy">
@@ -181,16 +186,14 @@ export default async function Sectors({params}) {
                 ? 'راجع المشاريع المختارة أو تواصل مع المكتب لبدء استفسار مشروع.'
                 : 'Review selected work from the portfolio, or contact the office to start a project enquiry.'}
             </p>
-            <div className="sectors-cta-actions">
-              <Link className="sectors-cta-btn" href={`/${locale}/project-enquiry`}>
+            <ActionGroup className="sectors-cta-actions">
+              <ActionButton variant="primary" href={`/${locale}/project-enquiry`}>
                 {ar ? 'أرسل استفسار مشروع' : 'Submit a Project Enquiry'}
-                <NextArrow ar={ar} />
-              </Link>
-              <Link className="sectors-cta-link" href={`/${locale}/projects`}>
+              </ActionButton>
+              <ActionButton variant="ghost" href={`/${locale}/projects`}>
                 {ar ? 'عرض المشاريع' : 'View projects'}
-                <NextArrow ar={ar} />
-              </Link>
-            </div>
+              </ActionButton>
+            </ActionGroup>
           </div>
           <ul className="sectors-cta-words" aria-hidden="true">
             <li>{ar ? 'أشخاص' : 'People'}</li>

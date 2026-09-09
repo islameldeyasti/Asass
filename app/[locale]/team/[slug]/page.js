@@ -11,6 +11,7 @@ import TeamExpertise from '@/components/team/TeamExpertise';
 import TeamProjects from '@/components/team/TeamProjects';
 import RelatedTeam from '@/components/team/RelatedTeam';
 import TeamEnquiryCta from '@/components/team/TeamEnquiryCta';
+import {ctaBandImages} from '@/data/image-manifest';
 
 export const dynamic = 'force-dynamic';
 
@@ -136,7 +137,7 @@ export default async function TeamMemberPage({params}) {
 
       <TeamProjects projects={selectedProjects} locale={locale} />
       <RelatedTeam members={related} locale={locale} />
-      <TeamEnquiryCta locale={locale} />
+      <TeamEnquiryCta locale={locale} image={{src: ctaBandImages.team, crop: '50% 35%'}} />
     </div>
   );
 }

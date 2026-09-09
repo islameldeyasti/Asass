@@ -26,7 +26,7 @@
 }
 
 .services-index .services-group {
-  scroll-margin-top: calc(var(--asas-sticky-offset, 116px) + var(--services-jump-h));
+  scroll-margin-top: 0;
 }
 
 /* Hero */
@@ -98,7 +98,7 @@
 }
 
 .services-hero-meta a {
-  color: rgba(229, 80, 33, 0.45);
+  color: rgba(160, 35, 21, 0.45);
 }
 
 .services-hero-meta a:hover {
@@ -108,7 +108,7 @@
 /* Jump nav */
 .services-jump {
   position: sticky;
-  top: var(--asas-sticky-offset, 116px);
+  top: var(--asas-sticky-offset, 138px);
   z-index: 20;
   height: var(--services-jump-h);
   border-bottom: 1px solid var(--asas-border);
@@ -275,7 +275,7 @@
   height: 44px;
   border-radius: 10px;
   background: var(--hp-navy);
-  color: rgba(229, 80, 33, 0.45);
+  color: rgba(160, 35, 21, 0.45);
   transition: background .2s ease, color .2s ease;
 }
 

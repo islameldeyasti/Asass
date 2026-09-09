@@ -2,10 +2,10 @@
 
 :root {
   --ph-navy: #070463;
-  --ph-orange: #e55021;
-  --ph-top: 41px;
+  --ph-orange: #a02315;
+  --ph-top: 46px;
   --ph-nav: 92px;
-  --ph-nav-solid: 80px;
+  --ph-nav-solid: 92px; /* kept as alias — no shrink on scroll */
   --ph-chrome: calc(var(--ph-top) + var(--ph-nav));
 }
 
@@ -13,13 +13,14 @@
   position: sticky;
   top: 0;
   z-index: 80;
+  overflow-anchor: none;
 }
 
-/* ========== TOP BAR ========== */
+/* ========== TOP BAR — always visible, fixed height ========== */
 .asas-topbar {
   overflow: hidden;
   height: var(--ph-top);
-  background: var(--ph-navy);
+  background: var(--topbar-bg, var(--ph-navy));
   color: rgba(255, 255, 255, 0.9);
   font: 650 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.04em;
@@ -47,6 +48,7 @@
   max-width: none;
   font-size: 10px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .asas-topbar-tag i {
@@ -59,11 +61,12 @@
 .asas-topbar-center {
   margin: 0;
   text-align: center;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.92);
   white-space: nowrap;
   max-width: none;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.015em;
 }
 
 .asas-topbar-meta {
@@ -74,12 +77,14 @@
 }
 
 .asas-topbar-meta > span,
+.asas-topbar-location,
 .asas-topbar-lang,
 .asas-topbar-search {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   color: rgba(255, 255, 255, 0.84);
+  text-decoration: none;
 }
 
 .asas-topbar-divider {
@@ -88,24 +93,23 @@
   background: rgba(255, 255, 255, 0.22);
 }
 
+.asas-topbar-location:hover,
 .asas-topbar-lang:hover,
 .asas-topbar-search:hover {
   color: var(--ph-orange);
 }
 
-/* ========== MAIN NAV ========== */
-.asas-header {
-  height: var(--ph-nav);
-  background: #fff;
-  border-bottom: 1px solid rgba(7, 4, 99, 0.06);
-  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+/* Language switch temporarily hidden */
+.asas-topbar-lang {
+  display: none !important;
 }
 
-.asas-chrome.is-solid .asas-header {
-  height: var(--ph-nav-solid);
-  box-shadow: 0 10px 28px rgba(7, 4, 99, 0.08);
-  backdrop-filter: blur(14px);
-  background: rgba(255, 255, 255, 0.96);
+/* ========== MAIN NAV — fixed height, no scroll morph ========== */
+.asas-header {
+  height: var(--ph-nav);
+  background: var(--color-header-bg, #fff);
+  border-bottom: 1px solid var(--color-header-border, rgba(7, 4, 99, 0.06));
+  box-shadow: 0 1px 0 rgba(7, 4, 99, 0.04);
 }
 
 .asas-header-inner {
@@ -124,27 +128,13 @@
   place-items: center;
   width: 68px;
   height: 68px;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.asas-chrome.is-solid .asas-logo-link {
-  width: 60px;
-  height: 60px;
-}
-
-.asas-logo-link:hover {
-  transform: scale(1.03);
+  flex-shrink: 0;
 }
 
 .asas-logo-link img {
   width: 62px !important;
   height: 62px !important;
   object-fit: contain;
-}
-
-.asas-chrome.is-solid .asas-logo-link img {
-  width: 54px !important;
-  height: 54px !important;
 }
 
 .asas-nav {
@@ -180,7 +170,7 @@ html[dir='rtl'] .asas-nav a:after {
 }
 
 .asas-nav a:hover {
-  color: #0b1d4d;
+  color: #070463;
 }
 
 .asas-nav a.is-active {
@@ -217,6 +207,7 @@ html[dir='rtl'] .asas-nav a:after {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 12px;
 }
 
 .asas-cta {
@@ -226,17 +217,17 @@ html[dir='rtl'] .asas-nav a:after {
   min-height: 48px;
   padding: 0 22px;
   border-radius: 6px;
-  background: var(--ph-orange);
-  color: #fff !important;
-  font: 700 14px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
-  box-shadow: 0 4px 14px rgba(229, 80, 33, 0.18);
+  background: var(--theme-primary, var(--ph-orange));
+  color: var(--theme-on-primary, #fff) !important;
+  font: 700 14px/1 var(--asas-font, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
 .asas-cta:hover {
-  background: #c4411a;
+  background: var(--theme-primary-hover, #801c11);
   transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(229, 80, 33, 0.22);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
 }
 
 .asas-cta svg {
@@ -261,7 +252,7 @@ html[dir='rtl'] .asas-nav a:after {
   inset: 0;
   z-index: 70;
   border: 0;
-  background: rgba(7, 4, 99, 0.28);
+  background: rgba(0, 0, 0, 0.55);
 }
 
 /* ========== HERO ========== */
@@ -271,7 +262,7 @@ html[dir='rtl'] .asas-nav a:after {
   height: calc(100svh - var(--ph-chrome, 133px));
   min-height: 700px;
   overflow: hidden;
-  background: #061932;
+  background: #090909;
   color: #fff;
 }
 
@@ -302,7 +293,7 @@ html[dir='rtl'] .asas-nav a:after {
   filter: none;
 }
 
-/* Deep architectural navy — not purple */
+/* Deep neutral veil — black only, no navy/blue cast */
 .asas-ph-veil {
   position: absolute;
   inset: 0;
@@ -311,13 +302,13 @@ html[dir='rtl'] .asas-nav a:after {
   background:
     linear-gradient(
       100deg,
-      rgba(6, 25, 50, 0.82) 0%,
-      rgba(6, 25, 50, 0.72) 22%,
-      rgba(8, 30, 55, 0.3) 48%,
-      rgba(8, 30, 55, 0.22) 62%,
-      rgba(4, 18, 35, 0.5) 100%
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.62) 22%,
+      rgba(0, 0, 0, 0.28) 48%,
+      rgba(0, 0, 0, 0.2) 62%,
+      rgba(0, 0, 0, 0.48) 100%
     ),
-    linear-gradient(180deg, rgba(4, 18, 35, 0.2) 0%, transparent 30%, rgba(4, 18, 35, 0.42) 100%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, transparent 30%, rgba(0, 0, 0, 0.4) 100%);
 }
 
 .asas-ph-blueprint-wrap {
@@ -457,7 +448,7 @@ html[dir='rtl'] .asas-ph-vertical-copy {
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 0.91;
-  text-shadow: 0 2px 28px rgba(4, 18, 35, 0.35);
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
 }
 
 .atlas-home .asas-ph-title,
@@ -492,8 +483,14 @@ html[dir='rtl'] .asas-ph-vertical-copy {
 }
 
 .asas-ph-facts > div {
-  padding: 2px 16px 2px 0;
+  padding: 2px 0;
+  padding-inline-end: 18px;
   border-inline-end: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+/* Space on both sides of the divider — not only before it */
+.asas-ph-facts > div + div {
+  padding-inline-start: 18px;
 }
 
 .asas-ph-facts > div:last-child {
@@ -548,6 +545,10 @@ html[dir='rtl'] .asas-ph-vertical-copy {
 
 .asas-ph-btn-primary:hover svg {
   transform: translateX(4px);
+}
+
+html[dir='rtl'] .asas-ph-btn-primary svg.reverse-arrow {
+  transform: scaleX(-1);
 }
 
 html[dir='rtl'] .asas-ph-btn-primary:hover svg.reverse-arrow {
@@ -640,6 +641,10 @@ html[dir='rtl'] .asas-ph-scroll {
 html[dir='rtl'] .asas-ph-rail {
   right: auto;
   left: 5%;
+}
+
+html[dir='rtl'] .asas-ph-controls {
+  justify-items: start;
 }
 
 .asas-ph-controls {
@@ -745,11 +750,11 @@ html[dir='rtl'] .asas-ph-strip {
 .asas-ph-thumb {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto minmax(0, 1fr);
   align-items: center;
   gap: 10px;
   min-height: 70px;
-  padding: 12px 12px 14px 0;
+  padding: 12px 10px 14px 0;
   border: 0;
   border-inline-end: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0;
@@ -833,7 +838,7 @@ html[dir='rtl'] .asas-ph-strip {
 
 .asas-ph-thumb.is-active .asas-ph-thumb-media {
   border-color: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 0 0 1px rgba(229, 80, 33, 0.35);
+  box-shadow: 0 0 0 1px rgba(160, 35, 21, 0.35);
 }
 
 .asas-ph-thumb-line {
@@ -1036,7 +1041,36 @@ html[dir='rtl'] .asas-ph-strip {
 @media (max-width: 900px) {
   :root {
     --ph-nav: 78px;
-    --ph-nav-solid: 72px;
+    --ph-nav-solid: 78px; /* alias — no shrink on scroll */
+  }
+
+  .asas-topbar-inner {
+    gap: 10px;
+    padding-inline: 16px 10px;
+  }
+
+  .asas-topbar-tag {
+    gap: 8px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+
+  .asas-topbar-tag i {
+    width: 16px;
+  }
+
+  .asas-topbar-meta {
+    gap: 8px;
+    flex: none;
+  }
+
+  .asas-topbar-location {
+    white-space: nowrap;
+    font-size: 10px;
   }
 
   .asas-logo-link {
@@ -1052,20 +1086,16 @@ html[dir='rtl'] .asas-ph-strip {
   .asas-nav {
     position: fixed;
     z-index: 75;
-    top: calc(var(--ph-top) + var(--ph-nav-solid));
+    top: calc(var(--ph-top) + var(--ph-nav));
     inset-inline: 0;
     display: none;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
     padding: 12px 22px 24px;
-    background: #fff;
-    border-bottom: 1px solid rgba(7, 4, 99, 0.08);
+    background: var(--color-nav-bg, #fff);
+    border-bottom: 1px solid var(--color-border, rgba(7, 4, 99, 0.08));
     box-shadow: 0 16px 36px rgba(7, 4, 99, 0.1);
-  }
-
-  .asas-chrome:not(.is-solid) .asas-nav {
-    top: calc(var(--ph-top) + var(--ph-nav));
   }
 
   .asas-nav.is-open {
@@ -1098,28 +1128,67 @@ html[dir='rtl'] .asas-ph-strip {
     display: none;
   }
 
+  /* Mobile header: logo left, menu flush right */
+  .asas-header-inner {
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+    padding-inline: 16px 8px;
+  }
+
+  .asas-logo {
+    order: 0;
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .asas-nav {
+    order: 1;
+    grid-column: 2;
+  }
+
+  .asas-header-actions {
+    order: 2;
+    grid-column: 3;
+    justify-content: flex-end;
+    justify-self: end;
+  }
+
+  .asas-menu {
+    padding: 0;
+  }
+
   .asas-ph {
     height: auto;
-    min-height: calc(100svh - 120px);
+    min-height: min(100svh - var(--ph-chrome, 124px), 760px);
+    max-height: none;
   }
 
   .asas-ph-shell {
-    padding: 40px 24px 160px;
+    padding: 36px 22px 118px;
   }
 
   .asas-ph-copy {
     margin-top: 0;
+    max-width: 100%;
   }
 
   .asas-ph-title {
-    font-size: clamp(42px, 10vw, 58px);
-    line-height: 0.95;
-    max-width: none;
+    font-size: clamp(34px, 8.4vw, 48px);
+    line-height: 1.02;
+    max-width: 14ch;
+  }
+
+  .asas-ph-note {
+    max-width: 36ch;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .asas-ph-facts {
     grid-template-columns: 1fr;
-    max-width: 280px;
+    max-width: 100%;
+    gap: 0;
+    margin-block: 18px 22px;
   }
 
   .asas-ph-facts > div {
@@ -1127,28 +1196,70 @@ html[dir='rtl'] .asas-ph-strip {
     align-items: baseline;
     justify-content: space-between;
     gap: 16px;
-    padding: 10px 0;
+    padding: 8px 0;
     border-inline-end: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   }
 
+  .asas-ph-facts > div + div {
+    padding-inline-start: 0;
+  }
+
   .asas-ph-facts dd {
-    font-size: 16px;
+    font-size: 15px;
+  }
+
+  .asas-ph-facts dt {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  .asas-ph-actions {
+    flex-wrap: wrap;
+    gap: 12px 16px;
+  }
+
+  .asas-ph-btn-primary,
+  .asas-ph-film {
+    min-height: 44px;
   }
 
   .asas-ph-blueprint-wrap {
     display: none;
   }
 
+  /* Bottom strip: horizontal scroll, not 5 cramped equal columns */
   .asas-ph-strip {
-    left: 16px;
-    right: 16px;
-    bottom: 18px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 0 max(10px, env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.55) 40%);
   }
 
   html[dir='rtl'] .asas-ph-strip {
-    left: 16px;
-    right: 16px;
+    left: 0;
+    right: 0;
+  }
+
+  .asas-ph-strip-track {
+    display: flex;
+    grid-template-columns: none;
+    width: max-content;
+    min-width: 100%;
+    gap: 0;
+    padding-inline: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    overflow: visible;
+  }
+
+  .asas-ph-thumb {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 118px;
+    max-width: 160px;
+    min-height: 52px;
+    padding: 12px 14px 12px 0;
   }
 
   .asas-ph-thumb-copy small {
@@ -1156,14 +1267,18 @@ html[dir='rtl'] .asas-ph-strip {
   }
 
   .asas-ph-rail {
-    top: 20px;
+    top: 16px;
     bottom: auto;
-    right: 18px;
+    right: 16px;
   }
 
   html[dir='rtl'] .asas-ph-rail {
-    left: 18px;
+    left: 16px;
     right: auto;
+  }
+
+  .asas-ph-controls {
+    min-width: 0;
   }
 
   .asas-ph-scroll {
@@ -1177,14 +1292,35 @@ html[dir='rtl'] .asas-ph-strip {
     display: none;
   }
 
+  /* Keep slogan on one line — location icon only */
+  .asas-topbar-location {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .asas-topbar-location svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .asas-topbar-tag {
+    font-size: 8.5px;
+    letter-spacing: 0.06em;
+  }
+
   .asas-ph-shell {
-    padding: 28px 18px 150px;
+    padding: 28px 18px 108px;
+  }
+
+  .asas-ph-title {
+    font-size: clamp(32px, 8.2vw, 42px);
   }
 
   .asas-ph-thumb {
     grid-template-columns: auto 1fr;
-    min-height: 58px;
-    padding-inline-end: 10px;
+    min-width: 108px;
+    min-height: 48px;
+    padding-inline-end: 12px;
   }
 
   .asas-ph-thumb-media {
@@ -1192,6 +1328,11 @@ html[dir='rtl'] .asas-ph-strip {
   }
 
   .asas-ph-progress-row {
-    width: 140px;
+    width: 120px;
+  }
+
+  .asas-ph-icon-btn {
+    width: 42px;
+    height: 42px;
   }
 }

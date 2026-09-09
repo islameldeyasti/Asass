@@ -10,11 +10,12 @@ import {
   Ruler,
 } from 'lucide-react';
 import {Container} from '@/components/UI';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import CareersBoard from '@/components/careers/CareersBoard';
 import ApplicationForm from '@/components/careers/ApplicationForm';
 import {careerDepartments, getOpenJobs} from '@/data/careers';
 import {company} from '@/data/company';
-import {generatedEditorialImages} from '@/data/image-manifest';
+import {ctaBandImages, roleImages} from '@/data/image-manifest';
 
 const departmentIcons = {
   architecture: Building2,
@@ -33,7 +34,7 @@ export async function generateMetadata({params}) {
   const {locale} = await params;
   const open = getOpenJobs().length;
   return {
-    title: locale === 'ar' ? 'العمل لدى أساس' : 'Careers at ASAS',
+    title: locale === 'ar' ? 'العمل لدى أساس للاستشارات الهندسية وإدارة المشاريع' : 'Careers at ASAS',
     description:
       locale === 'ar'
         ? `شواغر مفتوحة: ${open}. تخصصات هندسية تعمل ضمن فريق واحد في أبوظبي.`
@@ -46,6 +47,7 @@ export default async function Careers({params}) {
   const ar = locale === 'ar';
   const openJobs = getOpenJobs();
   const openCount = openJobs.length;
+  const ctaImage = ctaBandImages.careers;
 
   const deptCounts = Object.fromEntries(
     careerDepartments.map((dept) => [
@@ -59,7 +61,7 @@ export default async function Careers({params}) {
       <section className="careers-hero">
         <div className="careers-hero-photo" aria-hidden="true">
           <Image
-            src={generatedEditorialImages.corporateTeam}
+            src={roleImages.CAREERS_HERO}
             alt=""
             fill
             priority
@@ -67,13 +69,13 @@ export default async function Careers({params}) {
           />
         </div>
         <Container>
-          <span className="breadcrumb">ASAS / {ar ? 'الوظائف' : 'Careers'}</span>
+          <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'الوظائف' : 'Careers'}</span>
           <h1>
             {ar ? 'تخصصات هندسية تعمل ضمن فريق واحد.' : 'Engineering disciplines working as one team.'}
           </h1>
           <p>
             {ar
-              ? 'تحدد احتياجات التوظيف وفق كل مشروع، مع دعم فرق أساس بخبرات خارجية عند الحاجة للأعمال واسعة النطاق.'
+              ? 'تحدد احتياجات التوظيف وفق كل مشروع، مع دعم فرق أساس للاستشارات الهندسية وإدارة المشاريع بخبرات خارجية عند الحاجة للأعمال واسعة النطاق.'
               : 'Staffing is set according to each project, with external associates supplementing ASAS teams for large-scale work when required.'}
           </p>
           <div className="careers-hero-meta">
@@ -93,7 +95,7 @@ export default async function Careers({params}) {
             <h2>{ar ? 'التخصصات داخل المكتب' : 'In-house disciplines'}</h2>
             <p>
               {ar
-                ? 'فرق أساس تعمل عبر تخصصات منسّقة — من التصميم إلى الإشراف ودعم المشاريع.'
+                ? 'فرق أساس للاستشارات الهندسية وإدارة المشاريع تعمل عبر تخصصات منسّقة — من التصميم إلى الإشراف ودعم المشاريع.'
                 : 'ASAS teams work across coordinated disciplines — from design through supervision and project support.'}
             </p>
           </header>
@@ -148,10 +150,9 @@ export default async function Careers({params}) {
               <li>{ar ? 'رفع PDF أو DOC بحد أقصى 5 ميجابايت' : 'Upload PDF or DOC up to 5 MB'}</li>
               <li>{ar ? 'تأكيد فوري بعد الإرسال' : 'Instant confirmation after submit'}</li>
             </ul>
-            <Link className="atlas-link" href={`/${locale}/careers#openings`}>
+            <ActionButton variant="outline" href={`/${locale}/careers#openings`}>
               {ar ? 'العودة إلى الشواغر' : 'Back to openings'}
-              <NextArrow ar={ar} />
-            </Link>
+            </ActionButton>
           </div>
           <div className="careers-apply-panel">
             <ApplicationForm locale={locale} defaultPosition="general" />
@@ -159,14 +160,11 @@ export default async function Careers({params}) {
         </Container>
       </section>
 
-      <section className="careers-cta">
+      <section className="careers-cta asas-cta-band">
         <div className="careers-cta-media" aria-hidden="true">
-          <Image
-            src={generatedEditorialImages.corporateTeam || generatedEditorialImages.buildingsSector}
-            alt=""
-            fill
-            sizes="100vw"
-          />
+          {ctaImage ? (
+            <Image src={ctaImage} alt="" fill sizes="100vw" style={{objectFit: 'cover', objectPosition: '50% 30%'}} />
+          ) : null}
         </div>
         <div className="careers-cta-veil" aria-hidden="true" />
         <Container className="careers-cta-inner">
@@ -181,18 +179,18 @@ export default async function Careers({params}) {
                 ? 'للاستفسارات المهنية يمكن التواصل مع مكتب أبوظبي عبر البريد الرسمي.'
                 : 'For career questions, reach the Abu Dhabi office through the official email.'}
             </p>
-            <div className="careers-cta-actions">
-              <a
-                className="careers-cta-btn"
+            <ActionGroup className="careers-cta-actions">
+              <ActionButton
+                variant="primary"
                 href={`mailto:${company.email}?subject=${encodeURIComponent('Career enquiry')}`}
+                icon={false}
               >
                 {company.email}
-              </a>
-              <Link className="careers-cta-link" href={`/${locale}/contact`}>
+              </ActionButton>
+              <ActionButton variant="ghost" href={`/${locale}/contact`}>
                 {ar ? 'صفحة التواصل' : 'Contact page'}
-                <NextArrow ar={ar} />
-              </Link>
-            </div>
+              </ActionButton>
+            </ActionGroup>
           </div>
           <ul className="careers-cta-words" aria-hidden="true">
             <li>{ar ? 'أشخاص' : 'People'}</li>

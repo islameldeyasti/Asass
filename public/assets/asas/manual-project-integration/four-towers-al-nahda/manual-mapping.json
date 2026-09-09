@@ -1,0 +1,52 @@
+{
+  "project": "Four Towers, Al Nahda",
+  "slug": "four-towers-al-nahda",
+  "category": "towers",
+  "finalStatus": "DEPLOYED_READY",
+  "currentHero": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-01-hero.webp",
+  "websiteStatus": "APPROVED_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/four-towers-al-nahda/source-reference/source-reference.png",
+  "productionSourceStatus": "HAS_SOURCE",
+  "approved": [
+    {
+      "file": "four-towers-al-nahda-01-hero.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/four-towers-al-nahda/approved/four-towers-al-nahda-01-hero.webp",
+      "live_path": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-01-hero.webp",
+      "view": "HERO",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "four-towers-al-nahda-02-front.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/four-towers-al-nahda/approved/four-towers-al-nahda-02-front.webp",
+      "live_path": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-02-front.webp",
+      "view": "FRONT",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "four-towers-al-nahda-03-left-angle.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/four-towers-al-nahda/approved/four-towers-al-nahda-03-left-angle.webp",
+      "live_path": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-03-left-angle.webp",
+      "view": "LEFT_ANGLE",
+      "confidence": "HIGH",
+      "deployed": true
+    },
+    {
+      "file": "four-towers-al-nahda-05-detail.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/four-towers-al-nahda/approved/four-towers-al-nahda-05-detail.webp",
+      "live_path": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-05-detail.webp",
+      "view": "DETAIL",
+      "confidence": "HIGH",
+      "deployed": true
+    }
+  ],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": false,
+  "notes": [
+    "4 HIGH-confidence image(s) already live under projects-generated/."
+  ]
+}

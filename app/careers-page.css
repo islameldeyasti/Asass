@@ -33,7 +33,10 @@
 /* Hero */
 .careers-hero {
   position: relative;
-  padding: 88px 0 72px;
+  height: var(--asas-internal-hero-h, clamp(650px, 72vh, 760px));
+  min-height: 650px;
+  max-height: 760px;
+  padding: var(--asas-internal-hero-pad-simple, 72px 0 60px);
   color: #fff;
   overflow: hidden;
   background: var(--asas-navy);
@@ -105,8 +108,8 @@
 }
 
 .careers-hero-meta a:hover {
-  color: rgba(229, 80, 33, 0.45);
-  border-color: rgba(229, 80, 33, 0.45);
+  color: #fff;
+  border-color: var(--asas-rust, #a02315);
 }
 
 .careers-section-head {
@@ -166,7 +169,7 @@
   height: 38px;
   flex: none;
   border-radius: 10px;
-  background: rgba(229, 80, 33, 0.1);
+  background: rgba(160, 35, 21, 0.1);
   color: var(--c-orange);
 }
 
@@ -226,10 +229,10 @@
   gap: 8px;
   min-height: 40px;
   padding: 0 14px;
-  border: 1px solid var(--c-line);
+  border: 1px solid var(--border-default, var(--c-line));
   border-radius: 999px;
-  background: #fff;
-  color: var(--c-ink);
+  background: var(--bg-surface, #fff);
+  color: var(--text-primary, var(--c-ink));
   font: 650 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -242,20 +245,24 @@
   height: 22px;
   padding: 0 6px;
   border-radius: 999px;
-  background: var(--c-paper);
-  color: var(--c-muted);
+  background: var(--bg-section, var(--c-paper));
+  color: var(--text-muted, var(--c-muted));
   font-size: 11px;
 }
 
 .careers-filters button.is-active {
-  background: var(--c-navy);
-  border-color: var(--c-navy);
+  background: var(--brand-primary, var(--c-orange));
+  border-color: var(--brand-primary, var(--c-orange));
   color: #fff;
 }
 
 .careers-filters button.is-active span {
   background: rgba(255, 255, 255, 0.16);
   color: #fff;
+}
+
+.careers-filters button:hover:not(.is-active) {
+  border-color: var(--border-strong, rgba(7, 4, 99, 0.22));
 }
 
 .careers-grid {
@@ -290,8 +297,9 @@
 .careers-card-meta span {
   padding: 5px 10px;
   border-radius: 999px;
-  background: var(--c-paper);
-  color: var(--c-navy);
+  background: var(--bg-section, var(--c-paper));
+  color: var(--text-secondary, var(--c-navy));
+  border: 1px solid var(--border-default, transparent);
   font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -299,7 +307,7 @@
 
 .careers-card h3 {
   margin: 0;
-  color: var(--c-navy);
+  color: var(--text-primary, var(--c-navy));
   font-size: 22px;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -355,7 +363,7 @@ html[dir='rtl'] .careers-card:hover .atlas-link svg.reverse-arrow {
 
 .careers-empty h3 {
   margin: 0;
-  color: var(--c-navy);
+  color: var(--text-primary, var(--c-ink));
   font-size: 24px;
 }
 
@@ -382,7 +390,7 @@ html[dir='rtl'] .careers-card:hover .atlas-link svg.reverse-arrow {
 
 .careers-apply-intro h2 {
   margin: 10px 0 12px;
-  color: var(--c-navy);
+  color: var(--text-primary, var(--c-ink));
   font-size: clamp(28px, 3vw, 38px);
   letter-spacing: -0.03em;
 }
@@ -451,7 +459,7 @@ html[dir='rtl'] .careers-apply-points li:before {
 }
 
 .careers-apply-fields label > span {
-  color: var(--c-navy);
+  color: var(--text-primary, var(--c-navy));
   font: 700 13px/1.3 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 
@@ -496,7 +504,7 @@ html[dir='rtl'] .careers-apply-points li:before {
 .careers-apply-fields .has-error textarea,
 .careers-apply-file.has-error .careers-file-box {
   border-color: var(--c-orange);
-  box-shadow: 0 0 0 3px rgba(229, 80, 33, 0.12);
+  box-shadow: 0 0 0 3px rgba(160, 35, 21, 0.12);
 }
 
 .careers-apply-fields em {
@@ -523,7 +531,7 @@ html[dir='rtl'] .careers-apply-points li:before {
 }
 
 .careers-file-box svg {
-  color: var(--c-navy);
+  color: var(--brand-primary, var(--c-orange));
   flex: none;
 }
 
@@ -560,7 +568,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   min-height: 0;
   margin-top: 2px;
   flex: none;
-  accent-color: var(--c-navy);
+  accent-color: var(--brand-primary, var(--c-orange));
 }
 
 .careers-consent > span {
@@ -571,8 +579,9 @@ html[dir='rtl'] .careers-apply-points li:before {
 }
 
 .careers-consent a {
-  color: var(--c-navy);
+  color: var(--brand-primary, var(--c-orange));
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .careers-apply-submit {
@@ -664,9 +673,9 @@ html[dir='rtl'] .careers-apply-points li:before {
   z-index: 1;
   background: linear-gradient(
     100deg,
-    rgba(4, 18, 38, 0.94) 0%,
-    rgba(4, 18, 38, 0.78) 55%,
-    rgba(4, 18, 38, 0.55) 100%
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.78) 55%,
+    rgba(0, 0, 0, 0.55) 100%
   );
 }
 
@@ -685,7 +694,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   align-items: center;
   gap: 10px;
   margin: 0 0 14px;
-  color: #e55021;
+  color: #a02315;
   font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -694,7 +703,7 @@ html[dir='rtl'] .careers-apply-points li:before {
 .careers-cta-kicker i {
   width: 22px;
   height: 2px;
-  background: #e55021;
+  background: #a02315;
 }
 
 .careers-cta-copy h2 {
@@ -753,7 +762,7 @@ html[dir='rtl'] .careers-apply-points li:before {
 }
 
 .careers-cta-link:hover {
-  color: #e55021;
+  color: #a02315;
 }
 
 .careers-cta-words {
@@ -834,7 +843,10 @@ html[dir='rtl'] .careers-apply-points li:before {
 /* Job detail */
 .careers-detail-hero {
   position: relative;
-  padding: 80px 0 64px;
+  height: var(--asas-internal-hero-h, clamp(650px, 72vh, 760px));
+  min-height: 650px;
+  max-height: 760px;
+  padding: var(--asas-internal-hero-pad-simple, 72px 0 60px);
   color: #fff;
   overflow: hidden;
   background: var(--asas-navy);
@@ -844,8 +856,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(135deg, #1a1f3a 0%, var(--asas-navy) 55%, var(--asas-navy-hover, #05034a) 100%);
+  background: var(--asas-hero-solid);
 }
 
 .careers-detail-hero .container {
@@ -876,7 +887,7 @@ html[dir='rtl'] .careers-apply-points li:before {
 
 .careers-detail {
   padding: 56px 0 96px;
-  background: var(--c-paper);
+  background: var(--bg-page, var(--c-paper));
 }
 
 .careers-detail-layout {
@@ -890,7 +901,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   padding: 28px;
   border: 1px solid var(--c-line);
   border-radius: var(--c-radius);
-  background: #fff;
+  background: var(--bg-surface-elevated, #fff);
 }
 
 .careers-detail-meta {
@@ -903,8 +914,9 @@ html[dir='rtl'] .careers-apply-points li:before {
 .careers-detail-meta span {
   padding: 6px 11px;
   border-radius: 999px;
-  background: var(--c-paper);
-  color: var(--c-navy);
+  border: 1px solid var(--border-default, var(--c-line));
+  background: var(--bg-section, var(--c-paper));
+  color: var(--text-secondary, var(--c-ink));
   font: 700 11px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -912,27 +924,27 @@ html[dir='rtl'] .careers-apply-points li:before {
 
 .careers-detail-copy > p {
   margin: 0 0 28px;
-  color: var(--c-muted);
+  color: var(--text-secondary, var(--c-muted));
   font-size: 17px;
   line-height: 1.65;
 }
 
 .careers-detail-note {
   margin: 0 !important;
-  color: var(--c-muted) !important;
+  color: var(--text-muted, var(--c-muted)) !important;
   font-size: 14px !important;
 }
 
 .careers-detail-copy h2 {
   margin: 0 0 12px;
-  color: var(--c-navy);
+  color: var(--text-primary, var(--c-ink));
   font-size: 22px;
 }
 
 .careers-detail-copy ul {
   margin: 0 0 28px;
   padding-inline-start: 18px;
-  color: var(--c-ink);
+  color: var(--text-secondary, var(--c-ink));
   font-size: 15px;
   line-height: 1.65;
 }
@@ -943,23 +955,23 @@ html[dir='rtl'] .careers-apply-points li:before {
 
 .careers-detail-aside {
   position: sticky;
-  top: calc(var(--asas-sticky-offset, 116px) + 12px);
+  top: calc(var(--asas-sticky-offset, 138px) + 12px);
   padding: 24px;
   border: 1px solid var(--c-line);
   border-radius: var(--c-radius);
-  background: #fff;
+  background: var(--bg-surface-elevated, #fff);
   box-shadow: 0 16px 40px rgba(16, 24, 40, 0.06);
 }
 
 .careers-detail-aside h2 {
   margin: 0 0 8px;
-  color: var(--c-navy);
+  color: var(--text-primary, var(--c-ink));
   font-size: 22px;
 }
 
 .careers-detail-aside > p {
   margin: 0 0 18px;
-  color: var(--c-muted);
+  color: var(--text-secondary, var(--c-muted));
   font-size: 14px;
   line-height: 1.55;
 }
@@ -969,7 +981,7 @@ html[dir='rtl'] .careers-apply-points li:before {
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
-  color: var(--c-navy);
+  color: var(--brand-primary, var(--c-orange));
   font: 700 13px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 }
 

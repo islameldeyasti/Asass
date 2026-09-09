@@ -1,0 +1,7 @@
+No,Project,Project ID,Source Filename,Source Dimensions,Prompt Filename,Recommended Output Ratio,Recommended Output Size
+1,"Four Towers, Al Nahda",four-towers-al-nahda,FOUR-TOWERS-AL-NAHDA__SOURCE.png,525×718,FOUR-TOWERS-AL-NAHDA__PROMPT.txt,3:2,2400×1600
+2,Commercial & Residential Building — M26,building-mbz-musaffah-m26,BUILDING-MBZ-MUSAFFAH-M26__SOURCE.png,438×547,BUILDING-MBZ-MUSAFFAH-M26__PROMPT.txt,3:2,2400×1600
+3,Commercial & Residential Building — MSH36,building-khalifa-city-msh36,BUILDING-KHALIFA-CITY-MSH36__SOURCE.png,441×551,BUILDING-KHALIFA-CITY-MSH36__PROMPT.txt,3:2,2400×1600
+4,MBZ City Towers,mbz-city-towers,MBZ-CITY-TOWERS__SOURCE.png,447×450,MBZ-CITY-TOWERS__PROMPT.txt,3:2,2400×1600
+5,Reception Hall — Private Villa,reception-hall-private-villa,RECEPTION-HALL-PRIVATE-VILLA__SOURCE.png,405×406,RECEPTION-HALL-PRIVATE-VILLA__PROMPT.txt,3:2,2400×1600
+6,Majlis & Dining — Private Villa,majlis-and-dining,MAJLIS-AND-DINING__SOURCE.png,406×406,MAJLIS-AND-DINING__PROMPT.txt,3:2,2400×1600

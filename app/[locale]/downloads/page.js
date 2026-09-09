@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {ArrowRight, Building2, ClipboardList, Download, FileText, FolderKanban, Layers} from 'lucide-react';
+import {ArrowRight, Building2, ClipboardList, FileText, FolderKanban, Layers} from 'lucide-react';
 import {Container} from '@/components/UI';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {company} from '@/data/company';
-import {generatedEditorialImages} from '@/data/image-manifest';
+import {companyDocumentImage, roleImages} from '@/data/image-manifest';
 
 const PROFILE_HREF = '/downloads/asas-company-profile.pdf';
 const PROFILE_SIZE = '7.7 MB';
@@ -21,7 +22,7 @@ const profileContents = [
     title: 'Capabilities',
     titleAr: 'القدرات',
     copy: 'Architecture, structure, MEP, quantities and supervision.',
-    copyAr: 'العمارة والإنشاءات وMEP والكميات والإشراف.',
+    copyAr: 'العمارة والإنشاءات والكهروميكانيكية والكميات والإشراف.',
   },
   {
     icon: ClipboardList,
@@ -35,7 +36,7 @@ const profileContents = [
     title: 'Selected work',
     titleAr: 'أعمال مختارة',
     copy: 'Portfolio examples across ASAS project sectors.',
-    copyAr: 'أمثلة من الأعمال عبر قطاعات مشاريع أساس.',
+    copyAr: 'أمثلة من الأعمال عبر قطاعات مشاريع أساس للاستشارات الهندسية وإدارة المشاريع.',
   },
 ];
 
@@ -43,7 +44,7 @@ const relatedLinks = [
   {
     href: 'about',
     label: 'About ASAS',
-    labelAr: 'عن أساس',
+    labelAr: 'عن أساس للاستشارات الهندسية وإدارة المشاريع',
     copy: 'Company background and how the office works.',
     copyAr: 'خلفية الشركة وكيف يعمل المكتب.',
   },
@@ -77,8 +78,8 @@ function NextArrow({ar}) {
 export async function generateMetadata({params}) {
   const {locale} = await params;
   return {
-    title: locale === 'ar' ? 'تحميل الملف التعريفي لأساس' : 'ASAS Company Profile Download',
-    description: locale === 'ar' ? 'تحميل الملف التعريفي الرسمي لشركة أساس.' : 'Download the official ASAS Company Profile.',
+    title: locale === 'ar' ? 'تحميل الملف التعريفي لأساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Company Profile Download',
+    description: locale === 'ar' ? 'تحميل الملف التعريفي الرسمي لشركة أساس للاستشارات الهندسية وإدارة المشاريع.' : 'Download the official ASAS Company Profile.',
   };
 }
 
@@ -91,7 +92,7 @@ export default async function Downloads({params}) {
       <section className="downloads-hero">
         <div className="downloads-hero-photo" aria-hidden="true">
           <Image
-            src={generatedEditorialImages.technicalCoordination}
+            src={roleImages.DOWNLOADS_HERO}
             alt=""
             fill
             priority
@@ -99,8 +100,8 @@ export default async function Downloads({params}) {
           />
         </div>
         <Container>
-          <span className="breadcrumb">ASAS / {ar ? 'التحميلات' : 'Downloads'}</span>
-          <h1>{ar ? 'موارد أساس الرسمية.' : 'Official ASAS resources.'}</h1>
+          <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'التحميلات' : 'Downloads'}</span>
+          <h1>{ar ? 'موارد أساس للاستشارات الهندسية وإدارة المشاريع الرسمية.' : 'Official ASAS resources.'}</h1>
           <p>
             {ar
               ? 'تعرّف على الشركة وقدراتها ومنهجيتها ومشاريعها المختارة عبر الملف التعريفي الرسمي.'
@@ -121,19 +122,22 @@ export default async function Downloads({params}) {
             <h2>{ar ? 'الملف التعريفي الرسمي' : 'Official company profile'}</h2>
             <p>
               {ar
-                ? 'المستند المعتمد للتعريف بأساس — المصدر الرسمي للمعلومات عن الشركة والأعمال.'
+                ? 'المستند المعتمد للتعريف بأساس للاستشارات الهندسية وإدارة المشاريع — المصدر الرسمي للمعلومات عن الشركة والأعمال.'
                 : 'The approved document for introducing ASAS — the official source for firm and portfolio information.'}
             </p>
           </header>
 
           <article className="downloads-featured">
             <div className="downloads-featured-visual" aria-hidden="true">
-              <Image
-                src={generatedEditorialImages.homepageHero}
-                alt=""
-                fill
-                sizes="(max-width: 900px) 100vw, 42vw"
-              />
+              {companyDocumentImage ? (
+                <Image
+                  src={companyDocumentImage}
+                  alt=""
+                  fill
+                  sizes="(max-width: 900px) 100vw, 40vw"
+                  style={{objectFit: 'cover', objectPosition: 'center 40%'}}
+                />
+              ) : null}
               <div className="downloads-featured-badge">
                 <FileText size={22} />
                 <span>PDF</span>
@@ -143,10 +147,10 @@ export default async function Downloads({params}) {
               <span className="downloads-featured-label">
                 {ar ? 'المورد الأساسي' : 'Primary resource'}
               </span>
-              <h3>{ar ? 'الملف التعريفي لشركة أساس' : 'ASAS Company Profile'}</h3>
+              <h3>{ar ? 'الملف التعريفي لشركة أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Company Profile'}</h3>
               <p>
                 {ar
-                  ? 'يتضمن نظرة على الشركة والتخصصات والمنهجية وأمثلة من المشاريع الرسمية لأساس في أبوظبي.'
+                  ? 'يتضمن نظرة على الشركة والتخصصات والمنهجية وأمثلة من المشاريع الرسمية لأساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي.'
                   : 'Includes firm overview, disciplines, methodology and examples from the official ASAS portfolio in Abu Dhabi.'}
               </p>
               <ul className="downloads-featured-meta">
@@ -154,16 +158,14 @@ export default async function Downloads({params}) {
                 <li>{ar ? 'الحجم' : 'Size'} · {PROFILE_SIZE}</li>
                 <li>{ar ? 'اللغة' : 'Language'} · {ar ? 'إنجليزي' : 'English'}</li>
               </ul>
-              <div className="downloads-featured-actions">
-                <a className="button" href={PROFILE_HREF} download>
-                  <Download size={17} aria-hidden="true" />
+              <ActionGroup className="downloads-featured-actions">
+                <ActionButton variant="primary" href={PROFILE_HREF} icon="download" download>
                   {ar ? 'تحميل الملف التعريفي' : 'Download company profile'}
-                </a>
-                <Link className="atlas-link" href={`/${locale}/company-profile`}>
+                </ActionButton>
+                <ActionButton variant="outline" href={`/${locale}/company-profile`}>
                   {ar ? 'فتح في المتصفح' : 'Open in browser'}
-                  <NextArrow ar={ar} />
-                </Link>
-              </div>
+                </ActionButton>
+              </ActionGroup>
             </div>
           </article>
 
@@ -213,15 +215,7 @@ export default async function Downloads({params}) {
         </Container>
       </section>
 
-      <section className="downloads-cta">
-        <div className="downloads-cta-media" aria-hidden="true">
-          <Image
-            src={generatedEditorialImages.buildingsSector}
-            alt=""
-            fill
-            sizes="100vw"
-          />
-        </div>
+      <section className="downloads-cta asas-cta-band">
         <div className="downloads-cta-veil" aria-hidden="true" />
         <Container className="downloads-cta-inner">
           <div className="downloads-cta-copy">
@@ -235,20 +229,17 @@ export default async function Downloads({params}) {
                 ? 'راجع المشاريع المختارة أو تواصل مع المكتب لبدء استفسار مشروع.'
                 : 'Review selected work from the portfolio, or contact the office to start a project enquiry.'}
             </p>
-            <div className="downloads-cta-actions">
-              <Link className="downloads-cta-btn" href={`/${locale}/project-enquiry`}>
+            <ActionGroup className="downloads-cta-actions">
+              <ActionButton variant="primary" href={`/${locale}/project-enquiry`}>
                 {ar ? 'أرسل استفسار مشروع' : 'Submit a Project Enquiry'}
-                <NextArrow ar={ar} />
-              </Link>
-              <Link className="downloads-cta-link" href={`/${locale}/projects`}>
+              </ActionButton>
+              <ActionButton variant="ghost" href={`/${locale}/projects`}>
                 {ar ? 'عرض المشاريع' : 'View projects'}
-                <NextArrow ar={ar} />
-              </Link>
-              <Link className="downloads-cta-link" href={`/${locale}/contact`}>
+              </ActionButton>
+              <ActionButton variant="ghost" href={`/${locale}/contact`}>
                 {ar ? 'صفحة التواصل' : 'Contact page'}
-                <NextArrow ar={ar} />
-              </Link>
-            </div>
+              </ActionButton>
+            </ActionGroup>
           </div>
           <ul className="downloads-cta-words" aria-hidden="true">
             <li>{ar ? 'أشخاص' : 'People'}</li>

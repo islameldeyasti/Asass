@@ -1,0 +1,69 @@
+/* =========================================================
+   ASAS ARABIC FONTS
+   Primary: DIN Next Arabic (licensed files — place under public/fonts/)
+   Fallbacks: IBM Plex Sans Arabic, Noto Sans Arabic (Google Fonts)
+
+   DIN Next Arabic files expected at:
+     /public/fonts/din-next-arabic/DINNextArabic-Light.woff2
+     /public/fonts/din-next-arabic/DINNextArabic-Regular.woff2
+     /public/fonts/din-next-arabic/DINNextArabic-Medium.woff2
+     /public/fonts/din-next-arabic/DINNextArabic-Bold.woff2
+
+   Until licensed files are added, @font-face rules are inert and
+   the stack falls through to IBM Plex / Noto.
+   See docs/arabic-rtl-guide.md
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'DIN Next Arabic';
+  src: url('/fonts/din-next-arabic/DINNextArabic-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DIN Next Arabic';
+  src: url('/fonts/din-next-arabic/DINNextArabic-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DIN Next Arabic';
+  src: url('/fonts/din-next-arabic/DINNextArabic-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DIN Next Arabic';
+  src: url('/fonts/din-next-arabic/DINNextArabic-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --asas-font-en: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  --asas-font-ar: "DIN Next Arabic", "IBM Plex Sans Arabic", "Noto Sans Arabic", sans-serif;
+  --asas-font: var(--asas-font-en);
+}
+
+html[dir='rtl'],
+html.locale-ar,
+html[data-locale='ar'] {
+  --asas-font: var(--asas-font-ar);
+  --asas-tracking-display: 0;
+  --asas-tracking-label: 0.02em;
+}
+
+html[dir='ltr'],
+html.locale-en,
+html[data-locale='en'] {
+  --asas-font: var(--asas-font-en);
+}

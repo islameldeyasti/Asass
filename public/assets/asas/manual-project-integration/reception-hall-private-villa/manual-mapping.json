@@ -1,0 +1,19 @@
+{
+  "project": "Reception Hall \u2014 Private Villa",
+  "slug": "reception-hall-private-villa",
+  "category": "interior-design",
+  "finalStatus": "MANUAL_READY",
+  "currentHero": null,
+  "websiteStatus": "NO_GENERATED_GALLERY_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/reception-hall-private-villa/source-reference/source-reference.png",
+  "productionSourceStatus": "HAS_SOURCE",
+  "approved": [],
+  "candidates": [],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": true,
+  "notes": [
+    "Authentic source reference copied into this pack."
+  ]
+}

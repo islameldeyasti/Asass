@@ -1,11 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  ArrowDown,
   ArrowRight,
   Building2,
   CheckCircle2,
-  Download,
   FileText,
   MapPin,
 } from 'lucide-react';
@@ -21,14 +19,12 @@ import {services, serviceGroups} from '@/data/services';
 import {sectors} from '@/data/sectors';
 import {featuredProjects, projectCategories} from '@/data/projects';
 import {projectLifecycle} from '@/data/method';
-import {
-  generatedEditorialImages,
-  sectorImages,
-  serviceImages,
-} from '@/data/image-manifest';
+import {getSectorImage, getServiceImage, roleImages, ctaBandImages, companyDocumentImage} from '@/data/image-manifest';
 import CompanyProfileSubnav from '@/components/company-profile/CompanyProfileSubnav';
 import CapabilitiesExplorer from '@/components/company-profile/CapabilitiesExplorer';
 import CompanyProfileEnquiryCta from '@/components/company-profile/CompanyProfileEnquiryCta';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
+import ProjectVisualFallback from '@/components/ProjectVisualFallback';
 
 const PROFILE_HREF = '/downloads/asas-company-profile.pdf';
 const PROFILE_SIZE = '7.7 MB';
@@ -38,7 +34,7 @@ function NextArrow({ar}) {
 }
 
 function projectImage(project) {
-  return project?.visual?.src || project?.image || generatedEditorialImages.buildingsSector;
+  return project?.visual?.src || project?.image || null;
 }
 
 export async function generateMetadata({params}) {
@@ -55,9 +51,10 @@ export async function generateMetadata({params}) {
 export default async function CompanyProfile({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const heroImage = generatedEditorialImages.homepageHero || generatedEditorialImages.buildingsSector;
-  const overviewImage = generatedEditorialImages.corporateTeam || generatedEditorialImages.buildingsSector;
-  const ctaImage = generatedEditorialImages.buildingsSector;
+  const heroImage = roleImages.COMPANY_HERO;
+  const overviewImage = roleImages.COMPANY_OVERVIEW;
+  const ctaImage = ctaBandImages.company;
+  const documentImage = companyDocumentImage;
 
   const capabilityGroups = ['design', 'delivery', 'planning'].map((id) => ({
     id,
@@ -65,10 +62,14 @@ export default async function CompanyProfile({params}) {
     labelAr: serviceGroups[id].ar,
     services: services
       .filter((service) => service.group === id)
-      .map((service) => ({
-        ...service,
-        image: serviceImages[service.slug] || generatedEditorialImages.technicalCoordination,
-      })),
+      .map((service) => {
+        const {src, imagePosition} = getServiceImage(service.slug);
+        return {
+          ...service,
+          image: src,
+          imagePosition,
+        };
+      }),
   }));
 
   const selectedProjects = featuredProjects.slice(0, 6);
@@ -78,7 +79,7 @@ export default async function CompanyProfile({params}) {
 
   return (
     <div className="cp">
-      <section className="cp-hero" id="overview">
+      <section className="cp-hero">
         <div className="cp-hero-media" aria-hidden="true">
           <Image src={heroImage} alt="" fill priority sizes="100vw" />
         </div>
@@ -92,14 +93,14 @@ export default async function CompanyProfile({params}) {
             <path d="M40 160 H210" />
             <path d="M40 250 H190" />
             <path d="M40 340 H170" />
-            <circle cx="40" cy="160" r="3" fill="#e55021" stroke="none" />
+            <circle cx="40" cy="160" r="3" fill="#a02315" stroke="none" />
           </g>
         </svg>
         <div className="cp-shell cp-hero-inner">
           <div className="cp-hero-copy">
             <p className="cp-kicker light">
               <i />
-              {ar ? 'الملف التعريفي لأساس' : 'ASAS Company Profile'}
+              {ar ? 'الملف التعريفي لأساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Company Profile'}
             </p>
             <h1>
               {ar ? (
@@ -126,16 +127,14 @@ export default async function CompanyProfile({params}) {
                 {ar ? 'تأسست' : 'Established'} {company.year}
               </span>
             </div>
-            <div className="cp-hero-actions">
-              <a className="cp-btn-primary" href="#story">
-                {ar ? 'استكشف أساس' : 'Explore ASAS'}
-                <ArrowDown size={15} />
-              </a>
-              <a className="cp-btn-ghost" href={PROFILE_HREF} download>
+            <ActionGroup className="cp-hero-actions">
+              <ActionButton variant="primary" href="#story" icon={false}>
+                {ar ? 'استكشف أساس للاستشارات الهندسية وإدارة المشاريع' : 'Explore ASAS'}
+              </ActionButton>
+              <ActionButton variant="ghost" href={PROFILE_HREF} icon="download" download>
                 {ar ? 'تحميل الملف التعريفي' : 'Download Company Profile'}
-                <Download size={15} />
-              </a>
-            </div>
+              </ActionButton>
+            </ActionGroup>
           </div>
           <ul className="cp-hero-words" aria-hidden="true">
             <li>{ar ? 'أشخاص' : 'People'}</li>
@@ -148,7 +147,7 @@ export default async function CompanyProfile({params}) {
 
       <CompanyProfileSubnav locale={locale} />
 
-      <section className="cp-section cp-overview">
+      <section className="cp-section cp-overview" id="overview" data-scroll-section>
         <div className="cp-shell cp-overview-grid">
           <div className="cp-overview-copy">
             <p className="cp-kicker">
@@ -192,7 +191,7 @@ export default async function CompanyProfile({params}) {
             <dl className="cp-metrics-grid">
               {stats.map((item) => (
                 <div key={item.label} className="cp-metric">
-                  <dt>{item.value}</dt>
+                  <dt className="ltr-isolate" dir="ltr">{item.value}</dt>
                   <dd>{ar ? item.labelAr : item.label}</dd>
                 </div>
               ))}
@@ -292,30 +291,39 @@ export default async function CompanyProfile({params}) {
             </h2>
           </header>
           <div className="cp-sector-grid">
-            {sectors.map((sector) => (
-              <Link
-                key={sector.slug}
-                className="cp-sector-card"
-                href={`/${locale}/sectors/${sector.slug}`}
-              >
-                <div className="cp-sector-media">
-                  <Image
-                    src={sectorImages[sector.slug] || generatedEditorialImages.buildingsSector}
-                    alt=""
-                    fill
-                    sizes="(max-width: 900px) 50vw, 22vw"
-                  />
-                </div>
-                <div className="cp-sector-copy">
-                  <strong>{ar ? sector.titleAr : sector.title}</strong>
-                  <p>{ar ? sector.descriptionAr : sector.description}</p>
-                  <span className="cp-text-cta">
-                    {ar ? 'استكشف القطاع' : 'Explore sector'}
-                    <NextArrow ar={ar} />
-                  </span>
-                </div>
-              </Link>
-            ))}
+            {sectors.map((sector) => {
+              const sectorImage = getSectorImage(sector.slug);
+              return (
+                <Link
+                  key={sector.slug}
+                  className="cp-sector-card"
+                  href={`/${locale}/sectors/${sector.slug}`}
+                >
+                  <div
+                    className={`cp-sector-media${sectorImage.src ? '' : ' cp-sector-media--tone'}`}
+                    aria-hidden="true"
+                  >
+                    {sectorImage.src ? (
+                      <Image
+                        src={sectorImage.src}
+                        alt=""
+                        fill
+                        sizes="(max-width: 700px) 50vw, 25vw"
+                        style={{objectFit: 'cover', objectPosition: sectorImage.imagePosition}}
+                      />
+                    ) : null}
+                  </div>
+                  <div className="cp-sector-copy">
+                    <strong>{ar ? sector.titleAr : sector.title}</strong>
+                    <p>{ar ? sector.descriptionAr : sector.description}</p>
+                    <span className="cp-text-cta">
+                      {ar ? 'استكشف القطاع' : 'Explore sector'}
+                      <NextArrow ar={ar} />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -369,7 +377,7 @@ export default async function CompanyProfile({params}) {
                     <>
                       أعمال من محفظة
                       <br />
-                      أساس الرسمية.
+                      أساس للاستشارات الهندسية وإدارة المشاريع الرسمية.
                     </>
                   ) : (
                     <>
@@ -380,10 +388,9 @@ export default async function CompanyProfile({params}) {
                   )}
                 </h2>
               </div>
-              <Link className="cp-text-cta" href={`/${locale}/projects`}>
+              <ActionButton variant="outline" href={`/${locale}/projects`}>
                 {ar ? 'عرض كل المشاريع' : 'View all projects'}
-                <NextArrow ar={ar} />
-              </Link>
+              </ActionButton>
             </div>
 
             {featuredProject && (
@@ -392,12 +399,16 @@ export default async function CompanyProfile({params}) {
                 href={`/${locale}/projects/${featuredProject.slug}`}
               >
                 <div className="cp-project-feature-media">
-                  <Image
-                    src={projectImage(featuredProject)}
-                    alt=""
-                    fill
-                    sizes="(max-width: 900px) 100vw, 58vw"
-                  />
+                  {projectImage(featuredProject) ? (
+                    <Image
+                      src={projectImage(featuredProject)}
+                      alt=""
+                      fill
+                      sizes="(max-width: 900px) 100vw, 58vw"
+                    />
+                  ) : (
+                    <ProjectVisualFallback project={featuredProject} locale={locale} />
+                  )}
                 </div>
                 <div className="cp-project-feature-copy">
                   {(() => {
@@ -433,12 +444,16 @@ export default async function CompanyProfile({params}) {
                       href={`/${locale}/projects/${project.slug}`}
                     >
                       <div className="cp-project-media">
-                        <Image
-                          src={projectImage(project)}
-                          alt=""
-                          fill
-                          sizes="(max-width: 900px) 100vw, 30vw"
-                        />
+                        {projectImage(project) ? (
+                          <Image
+                            src={projectImage(project)}
+                            alt=""
+                            fill
+                            sizes="(max-width: 900px) 100vw, 30vw"
+                          />
+                        ) : (
+                          <ProjectVisualFallback project={project} locale={locale} />
+                        )}
                       </div>
                       <div className="cp-project-copy">
                         {cat && (
@@ -504,9 +519,9 @@ export default async function CompanyProfile({params}) {
           {workLocations.length > 0 && (
             <ul className="cp-locations">
               {workLocations.map((place) => (
-                <li key={place}>
+                <li key={place.en}>
                   <Building2 size={14} aria-hidden="true" />
-                  <span>{place}</span>
+                  <span>{ar ? place.ar : place.en}</span>
                 </li>
               ))}
             </ul>
@@ -520,7 +535,7 @@ export default async function CompanyProfile({params}) {
             <header className="cp-section-head">
               <p className="cp-kicker">
                 <i />
-                {ar ? 'لماذا أساس' : 'Why ASAS'}
+                {ar ? 'لماذا أساس للاستشارات الهندسية وإدارة المشاريع' : 'Why ASAS'}
               </p>
               <h2>
                 {ar ? (
@@ -560,10 +575,10 @@ export default async function CompanyProfile({params}) {
               <i />
               {ar ? 'المستند الرسمي' : 'Official Document'}
             </p>
-            <h2>{ar ? 'الملف التعريفي لشركة أساس' : 'ASAS Company Profile'}</h2>
+            <h2>{ar ? 'الملف التعريفي لشركة أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Company Profile'}</h2>
             <p>
               {ar
-                ? 'المستند المعتمد للتعريف بأساس — المصدر الرسمي للمعلومات عن الشركة والأعمال.'
+                ? 'المستند المعتمد للتعريف بأساس للاستشارات الهندسية وإدارة المشاريع — المصدر الرسمي للمعلومات عن الشركة والأعمال.'
                 : 'The approved document for introducing ASAS — the official source for firm and portfolio information.'}
             </p>
             <ul className="cp-download-meta">
@@ -571,25 +586,28 @@ export default async function CompanyProfile({params}) {
               <li>{ar ? 'اللغة' : 'Language'} · {ar ? 'إنجليزي' : 'English'}</li>
               <li>{ar ? 'الحجم' : 'Size'} · {PROFILE_SIZE}</li>
             </ul>
-            <div className="cp-download-actions">
-              <a className="cp-btn-primary dark" href={PROFILE_HREF} download>
-                <Download size={16} />
+            <ActionGroup className="cp-download-actions">
+              <ActionButton variant="primary" href={PROFILE_HREF} icon="download" download>
                 {ar ? 'تحميل الملف' : 'Download Profile'}
-              </a>
-              <a
-                className="cp-text-cta"
-                href={PROFILE_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FileText size={15} />
+              </ActionButton>
+              <ActionButton variant="outline" href={PROFILE_HREF} icon="file" external>
                 {ar ? 'فتح ملف PDF' : 'Open PDF'}
-                <NextArrow ar={ar} />
-              </a>
-            </div>
+              </ActionButton>
+            </ActionGroup>
           </div>
-          <div className="cp-download-visual" aria-hidden="true">
-            <Image src={generatedEditorialImages.homepageHero} alt="" fill sizes="40vw" />
+          <div
+            className={`cp-download-visual${documentImage ? '' : ' cp-download-visual--panel'}`}
+            aria-hidden="true"
+          >
+            {documentImage ? (
+              <Image
+                src={documentImage}
+                alt=""
+                fill
+                sizes="(max-width: 900px) 100vw, 40vw"
+                style={{objectFit: 'cover', objectPosition: 'center 40%'}}
+              />
+            ) : null}
             <span>
               <FileText size={22} />
               PDF

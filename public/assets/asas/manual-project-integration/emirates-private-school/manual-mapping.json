@@ -1,0 +1,32 @@
+{
+  "project": "Emirates Private School",
+  "slug": "emirates-private-school",
+  "category": "education",
+  "finalStatus": "MANUAL_READY",
+  "currentHero": null,
+  "websiteStatus": "NO_GENERATED_GALLERY_ON_SITE",
+  "authenticSourceAvailable": true,
+  "sourceReference": "Frontend/public/assets/asas/manual-project-integration/emirates-private-school/source-reference/source-reference.png",
+  "productionSourceStatus": "WEAK_SOURCE",
+  "approved": [],
+  "candidates": [
+    {
+      "file": "emirates-private-school-candidate-01-hero.webp",
+      "path": "Frontend/public/assets/asas/manual-project-integration/emirates-private-school/candidate/emirates-private-school-candidate-01-hero.webp",
+      "view": "HERO",
+      "confidence": "MEDIUM",
+      "recommendedUse": "hero-or-gallery",
+      "reason": "White facade with clustered vertical wood/brown louvers over recessed window bays matches Emirates Private School source geometry.",
+      "uncertainty": "Source shows low-rise with EMIRATES PRIVATE SCHOOL signage; enhance removes signage and appears to add floors. Architecture related but not safe to auto-deploy.",
+      "manualRecommendation": "NEEDS_HUMAN_REVIEW",
+      "original": "magnific_use-the-connected-enhance_Tdhn8KZVNR.jpg"
+    }
+  ],
+  "rejected": [],
+  "conceptCandidates": [],
+  "manualReviewRequired": true,
+  "notes": [
+    "Candidates prepared for manual hero/gallery selection.",
+    "Authentic source reference copied into this pack."
+  ]
+}

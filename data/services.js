@@ -30,7 +30,7 @@ export const services = [
   {
     slug: 'mep-engineering-design',
     title: 'Electromechanical / MEP Engineering',
-    titleAr: 'الهندسة الكهروميكانيكية وMEP',
+    titleAr: 'الهندسة الكهروميكانيكية (MEP)',
     group: 'design',
     description: 'Electrical, mechanical and plumbing design and site supervision developed for building efficiency, energy saving and environmental safety.',
     descriptionAr: 'تصميم وإشراف للأعمال الكهربائية والميكانيكية والصحية بما يدعم كفاءة المبنى وتوفير الطاقة والسلامة البيئية.',

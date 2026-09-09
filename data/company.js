@@ -2,6 +2,8 @@ export const company = {
   name: 'ASAS Engineering & Project Management Consultancy',
   nameAr: 'أساس للاستشارات الهندسية وإدارة المشاريع',
   shortName: 'ASAS',
+  /** Arabic never uses the short form alone — same as nameAr. */
+  shortNameAr: 'أساس للاستشارات الهندسية وإدارة المشاريع',
   year: '2009',
   city: 'Abu Dhabi',
   cityAr: 'أبوظبي',
@@ -11,14 +13,14 @@ export const company = {
   mobile: '+971 55 410 5649',
   whatsapp: '971554105649',
   fax: '+971 2 63 16 555',
-  email: 'bahaa@asasengg.ae',
+  email: 'asas@asasengg.ae',
   website: 'www.asasengg.ae',
   address: 'ADCP Building No. P1239, Plot No. C125, Musaffah East 9, behind Safeer Mall, Mezzanine Floor, Office 3, P.O. Box 114789, Abu Dhabi, UAE',
   addressAr: 'مبنى ADCP رقم P1239، قطعة C125، مصفح شرق 9، خلف سفير مول، طابق الميزانين، مكتب 3، ص.ب. 114789، أبوظبي، الإمارات',
   shortDescription: 'A single Abu Dhabi consultancy covering architecture, structure, electromechanical services, quantity surveying and site supervision.',
   shortDescriptionAr: 'مكتب استشاري واحد في أبوظبي يغطي العمارة والإنشاءات والأعمال الكهروميكانيكية وحصر الكميات والإشراف الموقعي.',
   description: 'Founded in Abu Dhabi in 2009, ASAS provides architectural, structural, civil and electromechanical design, quantities and cost services, project management and construction supervision.',
-  descriptionAr: 'تأسست أساس في أبوظبي عام 2009، وتقدم التصميم المعماري والإنشائي والمدني والكهروميكانيكي، وخدمات الكميات والتكلفة، وإدارة المشاريع والإشراف على التنفيذ.',
+  descriptionAr: 'تأسست أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي عام 2009، وتقدم التصميم المعماري والإنشائي والمدني والكهروميكانيكي، وخدمات الكميات والتكلفة، وإدارة المشاريع والإشراف على التنفيذ.',
   parentGroup: 'An initiative of Mir Group',
   parentGroupAr: 'إحدى مبادرات مجموعة مير',
 };
@@ -32,7 +34,7 @@ export const stats = [
 
 export const vision = {
   en: 'To strengthen ASAS among major architectural and engineering consulting firms by advancing technical and technological solutions and providing strong value in professional engineering services, regardless of project size.',
-  ar: 'تعزيز مكانة أساس بين كبرى شركات الاستشارات المعمارية والهندسية عبر تطوير الحلول التقنية والتكنولوجية وتقديم أفضل قيمة في الخدمات الهندسية المهنية بغض النظر عن حجم المشروع.',
+  ar: 'تعزيز مكانة أساس للاستشارات الهندسية وإدارة المشاريع بين كبرى شركات الاستشارات المعمارية والهندسية عبر تطوير الحلول التقنية والتكنولوجية وتقديم أفضل قيمة في الخدمات الهندسية المهنية بغض النظر عن حجم المشروع.',
 };
 
 export const mission = {
@@ -62,17 +64,17 @@ export const strengths = [
 ];
 
 export const workLocations = [
-  'Abu Dhabi',
-  'Al Ain',
-  'Khalifa City',
-  'Mohammed Bin Zayed City',
-  'Shakhbout City',
-  'Madinat Al Riyadh',
-  'Bani Yas',
-  'Al Shamkha',
-  'Musaffah',
-  'Sharjah',
-  'Dubai',
+  {en: 'Abu Dhabi', ar: 'أبوظبي'},
+  {en: 'Al Ain', ar: 'العين'},
+  {en: 'Khalifa City', ar: 'مدينة خليفة'},
+  {en: 'Mohammed Bin Zayed City', ar: 'مدينة محمد بن زايد'},
+  {en: 'Shakhbout City', ar: 'مدينة شخبوط'},
+  {en: 'Madinat Al Riyadh', ar: 'مدينة الرياض'},
+  {en: 'Bani Yas', ar: 'بني ياس'},
+  {en: 'Al Shamkha', ar: 'الشامخة'},
+  {en: 'Musaffah', ar: 'مصفح'},
+  {en: 'Sharjah', ar: 'الشارقة'},
+  {en: 'Dubai', ar: 'دبي'},
 ];
 
 export const standards = [

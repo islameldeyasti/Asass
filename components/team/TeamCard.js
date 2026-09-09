@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {motion, useReducedMotion} from 'motion/react';
 import {ArrowUpRight} from 'lucide-react';
 import {localizeMember} from '@/lib/team/schema';
+import {staggerDelayRtl} from '@/lib/motion/rtl';
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -39,7 +40,7 @@ export default function TeamCard({member, locale, index = 0}) {
       initial={reduced ? false : {opacity: 0, y: 22}}
       whileInView={{opacity: 1, y: 0}}
       viewport={{once: true, amount: 0.2}}
-      transition={{duration: 0.65, delay: Math.min(index * 0.08, 0.32), ease: EASE}}
+      transition={{duration: 0.65, delay: staggerDelayRtl(index, locale, {columns: 4}), ease: EASE}}
     >
       <Link href={href} className="tm-card-link">
         <div className="tm-card-media">

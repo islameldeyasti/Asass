@@ -10,6 +10,7 @@
     "seed:team": "node scripts/seed-team-demo.mjs"
   },
   "dependencies": {
+    "@google/genai": "^2.21.0",
     "@next/third-parties": "latest",
     "lucide-react": "0.575.0",
     "motion": "^13.1.1",

@@ -1,21 +1,15 @@
+html {
+  scroll-behavior: smooth;
+}
+
 /* Visual QA pass — refine inconsistencies without redesigning */
 
 :root {
   --asas-announce-h: 34px;
   --asas-header-h: 82px;
-  --asas-sticky-offset: calc(var(--asas-announce-h) + var(--asas-header-h));
 }
 
-html {
-  scroll-padding-top: var(--asas-sticky-offset);
-}
-
-/* Keep page content from clipping under sticky chrome */
-.atlas-home,
-.atlas-home section,
-.atlas-home [id] {
-  scroll-margin-top: var(--asas-sticky-offset);
-}
+/* Anchor offsets are owned by anchor-scroll.css + live JS measurement */
 
 .atlas-home {
   overflow-x: clip !important;
@@ -23,7 +17,7 @@ html {
 }
 
 .atlas-home .atlas-hero-photo {
-  background-image: url('/assets/asas/generated-editorial/asas-editorial-homepage-hero.webp');
+  background-image: none;
   background-color: #151515;
   background-position: right center;
   background-size: min(1536px, 100vw) auto;
@@ -722,11 +716,17 @@ html[dir='rtl'] .atlas-home .insp-ticker-track {
   height: 52px !important;
   display: grid !important;
   place-items: center !important;
-  background: #1f9b67 !important;
+  background: #a02315 !important;
   color: #fff !important;
   border-radius: 50% !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, .22) !important;
+  box-shadow: 0 6px 20px rgba(160, 35, 21, 0.35) !important;
   pointer-events: auto !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+.whatsapp:hover {
+  background: #801c11 !important;
+  color: #fff !important;
 }
 
 html[dir='rtl'] .whatsapp {
@@ -749,7 +749,7 @@ html[dir='rtl'] .whatsapp {
 .atlas-home .brief-photo {
   position: absolute;
   inset: 0;
-  background: center / cover no-repeat url('/assets/asas/generated-editorial/asas-editorial-homepage-hero.webp');
+  background: center / cover no-repeat none;
 }
 
 .atlas-home .brief-photo:after {
@@ -780,7 +780,7 @@ html[dir='rtl'] .whatsapp {
 }
 
 .atlas-home .brief-copy .atlas-kicker {
-  color: rgba(229, 80, 33, 0.55) !important;
+  color: rgba(160, 35, 21, 0.55) !important;
   margin: 0;
 }
 
@@ -893,13 +893,13 @@ html[dir='rtl'] .whatsapp {
 
 /* Contact — reference composition translated to the ASAS system */
 .atlas-home .home-contact {
-  padding: 88px 0 92px;
+  padding: var(--space-section-md, 88px) 0 calc(var(--space-section-md, 88px) + 4px);
   background: #fff;
 }
 
 .atlas-home .home-contact-head {
   max-width: 720px;
-  margin: 0 auto 48px;
+  margin: 0 auto var(--space-stack-xl, 48px);
   text-align: center;
 }
 
@@ -910,7 +910,7 @@ html[dir='rtl'] .whatsapp {
 }
 
 .atlas-home .home-contact-head h2 {
-  margin: 15px 0 0;
+  margin: var(--space-stack-md, 16px) 0 0;
   color: var(--asas-text);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(32px, 3.4vw, 44px);
@@ -920,7 +920,7 @@ html[dir='rtl'] .whatsapp {
 }
 
 .atlas-home .home-contact-head > p:last-child {
-  margin: 14px auto 0;
+  margin: var(--space-stack-md, 16px) auto 0;
   max-width: 580px;
   color: var(--asas-text-secondary);
   font-size: 15px;
@@ -1429,7 +1429,7 @@ html[dir='rtl'] .site-footer .footer-column a:hover {
 }
 
 .site-footer .footer-action > a:hover {
-  background: #c4411a;
+  background: #801c11;
 }
 
 .site-footer .footnote {
@@ -1478,7 +1478,7 @@ html[dir='rtl'] .site-footer .footer-column a:hover {
 
 @media (max-width: 900px) {
   .atlas-home .home-contact {
-    padding: 68px 0 72px;
+    padding: var(--space-section-sm, 72px) 0;
   }
 
   .atlas-home .home-contact-layout {
@@ -1546,11 +1546,11 @@ html[dir='rtl'] .site-footer .footer-column a:hover {
 
 @media (max-width: 640px) {
   .atlas-home .home-contact {
-    padding: 56px 0 60px;
+    padding: var(--space-section-sm, 48px) 0 calc(var(--space-section-sm, 48px) + 4px);
   }
 
   .atlas-home .home-contact-head {
-    margin-bottom: 34px;
+    margin-bottom: var(--space-stack-xl, 48px);
   }
 
   .atlas-home .home-contact-layout,

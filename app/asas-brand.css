@@ -5,32 +5,38 @@
  */
 
 :root {
-  /* Core brand */
+  /* Core brand — see docs/ASAS-COLOR-THEME-GUIDE.md
+     Navy = structure | Rust = action. Roles never swap.
+     theme-tokens.css overrides semantic surfaces per theme. */
   --asas-navy: #070463;
-  --asas-orange: #e55021;
+  --asas-rust: #a02315;
+  --asas-orange: var(--asas-rust);
   --asas-white: #ffffff;
 
-  /* Neutrals */
-  --asas-text: #161625;
-  --asas-text-secondary: #5f6070;
+  /* Neutrals (theme-tokens remaps these for light/dark) */
+  --asas-text: #070463;
+  --asas-text-secondary: rgba(7, 4, 99, 0.72);
   --asas-bg: #ffffff;
-  --asas-bg-soft: #f7f7f9;
-  --asas-border: #e5e5ea;
+  --asas-bg-soft: color-mix(in srgb, #070463 3%, white);
+  --asas-border: rgba(7, 4, 99, 0.12);
 
   /* Derived — navy */
-  --asas-navy-hover: #05034a;
-  --asas-navy-soft: rgba(7, 4, 99, 0.06);
-  --asas-navy-border: rgba(7, 4, 99, 0.1);
-  --asas-navy-shadow: rgba(7, 4, 99, 0.05);
+  --asas-navy-hover: color-mix(in srgb, #070463 82%, black);
+  --asas-navy-soft: color-mix(in srgb, #070463 5%, white);
+  --asas-navy-border: rgba(7, 4, 99, 0.12);
+  --asas-navy-shadow: rgba(7, 4, 99, 0.08);
   --asas-navy-overlay: rgba(7, 4, 99, 0.72);
 
-  /* Derived — orange */
-  --asas-orange-hover: #c4411a;
-  --asas-orange-soft: rgba(229, 80, 33, 0.1);
-  --asas-orange-border: rgba(229, 80, 33, 0.28);
+  /* Derived — rust */
+  --asas-rust-hover: color-mix(in srgb, #a02315 82%, black);
+  --asas-orange-hover: var(--asas-rust-hover);
+  --asas-orange-soft: color-mix(in srgb, #a02315 12%, white);
+  --asas-orange-border: color-mix(in srgb, #a02315 35%, transparent);
 
   /* Typography */
-  --asas-font: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  --asas-font-en: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  --asas-font-ar: "DIN Next Arabic", "IBM Plex Sans Arabic", "Noto Sans Arabic", sans-serif;
+  --asas-font: var(--asas-font-en);
   --asas-display: clamp(48px, 5vw, 76px);
   --asas-h1: clamp(48px, 4.2vw, 60px);
   --asas-h2: clamp(36px, 3.4vw, 46px);
@@ -48,13 +54,22 @@
   --asas-tracking-display: -0.025em;
   --asas-tracking-label: 0.1em;
 
-  /* Spacing */
+  /* Spacing — shared rhythm scale (theme-independent) */
   --space-section-lg: 112px;
   --space-section-md: 88px;
   --space-section-sm: 72px;
   --space-content: 32px;
   --space-item: 16px;
   --space-gutter: 40px;
+  --space-grid-gap: 24px;
+  --space-card-pad: 24px;
+  --space-card-pad-tight: 20px;
+  --space-stack-xs: 8px;
+  --space-stack-sm: 12px;
+  --space-stack-md: 16px;
+  --space-stack-lg: 24px;
+  --space-stack-xl: 48px;
+  --space-header-gap: 56px;
 
   /* Layout */
   --asas-container: 1280px;
@@ -131,8 +146,9 @@ body {
   font-weight: 400;
 }
 
-html[dir='rtl'] body {
-  font-family: var(--asas-font);
+html[dir='rtl'] body,
+html.locale-ar body {
+  font-family: var(--asas-font-ar, var(--asas-font));
 }
 
 a {
@@ -394,7 +410,7 @@ a.button {
 .enquiry-fields label > span,
 .careers-form label > span,
 .apply-form label > span {
-  color: var(--asas-navy);
+  color: var(--text-primary, var(--asas-navy));
   font-weight: 700;
   font-size: 13px;
 }
@@ -423,7 +439,7 @@ a.button {
 .hp-card h3,
 .about-strength-card h3,
 .careers-job-card h3 {
-  color: var(--asas-navy);
+  color: var(--text-primary, var(--asas-navy));
 }
 
 .hp-featured.hp-card .hp-featured-copy h3 {
@@ -447,7 +463,7 @@ a.button {
   border-radius: var(--asas-radius) !important;
   border: 1px solid var(--asas-border);
   background: var(--asas-bg-soft);
-  color: var(--asas-navy);
+  color: var(--text-primary, var(--asas-navy));
 }
 
 /* ---------- Page heroes (photo) ---------- */
@@ -470,7 +486,7 @@ a.button {
 .stat strong,
 .about-stat strong,
 .atlas-proof strong {
-  color: var(--asas-navy);
+  color: var(--text-primary, var(--asas-navy));
   font-family: var(--asas-font);
 }
 
@@ -662,6 +678,9 @@ footer .brand small {
     --space-section-md: 56px;
     --space-section-sm: 48px;
     --space-gutter: 24px;
+    --space-grid-gap: 20px;
+    --space-card-pad: 20px;
+    --space-header-gap: 40px;
     --asas-header-h: 72px;
   }
 

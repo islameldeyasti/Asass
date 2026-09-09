@@ -2,10 +2,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {ArrowRight, FileText, Mail, MessageCircle, Phone, Printer} from 'lucide-react';
 import {Container} from '@/components/UI';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import EnquiryForm from '@/components/EnquiryForm';
 import OfficeMap from '@/components/OfficeMap';
 import {company} from '@/data/company';
-import {generatedEditorialImages} from '@/data/image-manifest';
+import {roleImages} from '@/data/image-manifest';
 
 function NextArrow({ar}) {
   return <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />;
@@ -14,7 +15,7 @@ function NextArrow({ar}) {
 export async function generateMetadata({params}) {
   const {locale} = await params;
   return {
-    title: locale === 'ar' ? 'تواصل مع أساس | أبوظبي' : 'Contact ASAS | Abu Dhabi',
+    title: locale === 'ar' ? 'تواصل مع أساس للاستشارات الهندسية وإدارة المشاريع | أبوظبي' : 'Contact ASAS | Abu Dhabi',
     description: locale === 'ar' ? company.addressAr : company.address,
   };
 }
@@ -28,7 +29,7 @@ export default async function Contact({params}) {
       <section className="contact-hero">
         <div className="contact-hero-photo" aria-hidden="true">
           <Image
-            src={generatedEditorialImages.corporateTeam}
+            src={roleImages.CONTACT_HERO}
             alt=""
             fill
             priority
@@ -36,8 +37,8 @@ export default async function Contact({params}) {
           />
         </div>
         <Container>
-          <span className="breadcrumb">ASAS / {ar ? 'تواصل' : 'Contact'}</span>
-          <h1>{ar ? 'تواصل مع مكتب أساس في أبوظبي.' : 'Reach the ASAS office in Abu Dhabi.'}</h1>
+          <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'تواصل' : 'Contact'}</span>
+          <h1>{ar ? 'تواصل مع مكتب أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي.' : 'Reach the ASAS office in Abu Dhabi.'}</h1>
           <p>
             {ar
               ? 'بيانات المكتب وخريطة الموقع ونموذج استفسار المشروع في صفحة واحدةحدة.'
@@ -60,7 +61,7 @@ export default async function Contact({params}) {
             <h2>{ar ? 'بيانات التواصل' : 'Contact details'}</h2>
             <p>
               {ar
-                ? 'تأسست أساس في أبوظبي عام 2009. يمكنك الاتصال مباشرة أو إرسال استفسار عبر النموذج.'
+                ? 'تأسست أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي عام 2009. يمكنك الاتصال مباشرة أو إرسال استفسار عبر النموذج.'
                 : 'Founded in Abu Dhabi in 2009. Call or message directly, or send an enquiry with the form.'}
             </p>
 
@@ -71,28 +72,28 @@ export default async function Contact({params}) {
               </div>
               <div>
                 <b>{ar ? 'الهاتف' : 'Telephone'}</b>
-                <a href={`tel:${company.phone.replace(/\s/g, '')}`}>
+                <a href={`tel:${company.phone.replace(/\s/g, '')}`} dir="ltr">
                   <Phone size={15} aria-hidden="true" />
                   {company.phone}
                 </a>
               </div>
               <div>
                 <b>{ar ? 'الهاتف المتحرك / واتساب' : 'Mobile / WhatsApp'}</b>
-                <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noopener noreferrer" dir="ltr">
                   <MessageCircle size={15} aria-hidden="true" />
                   {company.mobile}
                 </a>
               </div>
               <div>
                 <b>{ar ? 'الفاكس' : 'Fax'}</b>
-                <a href={`tel:${company.fax.replace(/\s/g, '')}`}>
+                <a href={`tel:${company.fax.replace(/\s/g, '')}`} dir="ltr">
                   <Printer size={15} aria-hidden="true" />
                   {company.fax}
                 </a>
               </div>
               <div>
                 <b>{ar ? 'البريد الإلكتروني' : 'Email'}</b>
-                <a href={`mailto:${company.email}`}>
+                <a href={`mailto:${company.email}`} dir="ltr">
                   <Mail size={15} aria-hidden="true" />
                   {company.email}
                 </a>
@@ -114,10 +115,9 @@ export default async function Contact({params}) {
                     ? 'حمّل الملف الرسمي للاطلاع على القدرات والمشاريع قبل التواصل.'
                     : 'Download the official profile for capabilities and projects before you write.'}
                 </p>
-                <Link className="atlas-link" href={`/${locale}/downloads`}>
+                <ActionButton variant="outline" href={`/${locale}/downloads`} icon="file">
                   {ar ? 'صفحة التحميلات' : 'Downloads page'}
-                  <NextArrow ar={ar} />
-                </Link>
+                </ActionButton>
               </div>
             </div>
           </aside>
@@ -128,7 +128,7 @@ export default async function Contact({params}) {
               <h2>{ar ? 'استفسار مشروع' : 'Project enquiry'}</h2>
               <p>
                 {ar
-                  ? 'شاركنا المعلومات الأساسية عن مشروعك وسيتواصل معك فريق أساس.'
+                  ? 'شاركنا المعلومات الأساسية عن مشروعك وسيتواصل معك فريق أساس للاستشارات الهندسية وإدارة المشاريع.'
                   : 'Share the essentials about your project and the ASAS team will follow up.'}
               </p>
             </header>
@@ -143,15 +143,7 @@ export default async function Contact({params}) {
         </Container>
       </section>
 
-      <section className="contact-cta">
-        <div className="contact-cta-media" aria-hidden="true">
-          <Image
-            src={generatedEditorialImages.buildingsSector}
-            alt=""
-            fill
-            sizes="100vw"
-          />
-        </div>
+      <section className="contact-cta asas-cta-band">
         <div className="contact-cta-veil" aria-hidden="true" />
         <Container className="contact-cta-inner">
           <div className="contact-cta-copy">
@@ -165,16 +157,14 @@ export default async function Contact({params}) {
                 ? 'إذا كنت لا تزال تستكشف النطاق، ابدأ من صفحات الخدمات أو المشاريع.'
                 : 'If you are still exploring scope, start from the services or projects pages.'}
             </p>
-            <div className="contact-cta-actions">
-              <Link className="contact-cta-btn" href={`/${locale}/services`}>
+            <ActionGroup className="contact-cta-actions">
+              <ActionButton variant="primary" href={`/${locale}/services`}>
                 {ar ? 'الخدمات' : 'Services'}
-                <NextArrow ar={ar} />
-              </Link>
-              <Link className="contact-cta-link" href={`/${locale}/projects`}>
+              </ActionButton>
+              <ActionButton variant="ghost" href={`/${locale}/projects`}>
                 {ar ? 'المشاريع' : 'Projects'}
-                <NextArrow ar={ar} />
-              </Link>
-            </div>
+              </ActionButton>
+            </ActionGroup>
           </div>
           <ul className="contact-cta-words" aria-hidden="true">
             <li>{ar ? 'أشخاص' : 'People'}</li>
