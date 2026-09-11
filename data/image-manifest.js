@@ -16,22 +16,28 @@ const trafficStudies = {
   mobile: '/assets/asas/real-projects/asas-traffic-access-studies-mobile.webp',
 };
 
-const unavailableProject = (id, sourceProfilePage, qualityTier) => ({
-  id,
-  sourceProfilePage,
-  classification: 'REAL_PROJECT_REFERENCE',
-  qualityTier,
-  status: 'NEED_ORIGINAL_SOURCE',
-  card: null,
-  portfolio: null,
-  mobile: null,
-  gallery: [],
-});
-
 /** Magnific-verified real project assets under /projects-generated/<slug>/ */
 const PG = '/assets/asas/projects-generated';
 const approvedGeneratedProject = (id, sourceProfilePage, slug, files, qualityTier = 'A_PROJECT_HERO') => {
   const paths = files.map((file) => `${PG}/${slug}/${file}`);
+  const hero = paths[0] || null;
+  return {
+    id,
+    sourceProfilePage,
+    classification: 'PROJECT_PHOTO',
+    qualityTier,
+    status: 'APPROVED_FOR_CARDS',
+    card: hero,
+    portfolio: hero,
+    mobile: paths[1] || hero,
+    gallery: paths,
+  };
+};
+
+/** Library photos imported from صور اساس under /projects-library/<slug>/ */
+const PL = '/assets/asas/projects-library';
+const approvedLibraryProject = (id, sourceProfilePage, slug, files, qualityTier = 'A_PROJECT_HERO') => {
+  const paths = files.map((file) => `${PL}/${slug}/${file}`);
   const hero = paths[0] || null;
   return {
     id,
@@ -75,12 +81,35 @@ export const projectImages = {
       'building-khalifa-city-msh36-03-left-angle.webp',
     ],
   ),
-  'residential-building-al-raha-rbw2': unavailableProject('residential-building-al-raha-rbw2', 31, 'E_NEED_ORIGINAL_SOURCE'),
+  'residential-building-al-raha-rbw2': approvedLibraryProject(
+    'residential-building-al-raha-rbw2',
+    31,
+    'residential-building-al-raha-rbw2',
+    ['residential-building-al-raha-rbw2-01.webp', 'residential-building-al-raha-rbw2-02.webp'],
+  ),
   'mbz-city-towers': approvedGeneratedProject(
     'mbz-city-towers',
     32,
     'mbz-city-towers',
     ['mbz-city-towers-01-hero.webp', 'mbz-city-towers-02-front.webp'],
+  ),
+  'showroom-musaffah-m42': approvedLibraryProject(
+    'showroom-musaffah-m42',
+    33,
+    'showroom-musaffah-m42',
+    ['showroom-musaffah-m42-01.webp', 'showroom-musaffah-m42-02.webp'],
+  ),
+  'industrial-facility-musaffah-m42': approvedLibraryProject(
+    'industrial-facility-musaffah-m42',
+    33,
+    'industrial-facility-musaffah-m42',
+    ['industrial-facility-musaffah-m42-01.webp', 'industrial-facility-musaffah-m42-02.webp'],
+  ),
+  'industrial-facility-musaffah-m15': approvedLibraryProject(
+    'industrial-facility-musaffah-m15',
+    33,
+    'industrial-facility-musaffah-m15',
+    ['industrial-facility-musaffah-m15-01.webp', 'industrial-facility-musaffah-m15-02.webp'],
   ),
   'traffic-access-studies': trafficStudies,
   'culture-private-school': approvedGeneratedProject(
@@ -95,22 +124,109 @@ export const projectImages = {
       'culture-private-school-05-detail.webp',
     ],
   ),
-  'emirates-private-school': unavailableProject('emirates-private-school', 35, 'D_REFERENCE_ONLY'),
+  'emirates-private-school': approvedLibraryProject(
+    'emirates-private-school',
+    35,
+    'emirates-private-school',
+    ['emirates-private-school-01.webp', 'emirates-private-school-02.webp'],
+  ),
+  'american-international-school': approvedLibraryProject(
+    'american-international-school',
+    35,
+    'american-international-school',
+    ['american-international-school-01.webp', 'american-international-school-02.webp'],
+  ),
   'compound-villas-portfolio': approvedGeneratedProject(
     'compound-villas',
     36,
     'compound-villas-portfolio',
     ['compound-villas-portfolio-01-hero.webp'],
   ),
-  'private-villa-shakhbout-w01': unavailableProject('private-villa-shakhbout-w01', 37, 'E_NEED_ORIGINAL_SOURCE'),
-  'private-villa-khalifa-se24': unavailableProject('private-villa-khalifa-se24', 37, 'E_NEED_ORIGINAL_SOURCE'),
-  'residential-villa-al-shamkha-sh3': unavailableProject('residential-villa-al-shamkha-sh3', 38, 'E_NEED_ORIGINAL_SOURCE'),
-  'residential-villa-riyadh-rd32': unavailableProject('residential-villa-riyadh-rd32', 38, 'E_NEED_ORIGINAL_SOURCE'),
-  'residential-villa-bani-yas-eb11-01': unavailableProject('residential-villa-bani-yas-eb11-01', 38, 'E_NEED_ORIGINAL_SOURCE'),
-  'reception-hall-private-villa': unavailableProject('reception-hall-private-villa', 41, 'D_REFERENCE_ONLY'),
-  'majlis-and-dining': unavailableProject('majlis-and-dining-private-villa', 41, 'D_REFERENCE_ONLY'),
-  'restaurant-interior': unavailableProject('restaurant-interior', 42, 'E_NEED_ORIGINAL_SOURCE'),
-  'hotel-lobby-interior': unavailableProject('hotel-lobby-interior', 42, 'E_NEED_ORIGINAL_SOURCE'),
+  'private-villa-shakhbout-w01': approvedLibraryProject(
+    'private-villa-shakhbout-w01',
+    37,
+    'private-villa-shakhbout-w01',
+    ['private-villa-shakhbout-w01-01.webp', 'private-villa-shakhbout-w01-02.webp'],
+  ),
+  'private-villa-khalifa-se24': approvedLibraryProject(
+    'private-villa-khalifa-se24',
+    37,
+    'private-villa-khalifa-se24',
+    ['private-villa-khalifa-se24-01.webp', 'private-villa-khalifa-se24-02.webp'],
+  ),
+  'private-villa-mbz-z14': approvedLibraryProject(
+    'private-villa-mbz-z14',
+    37,
+    'private-villa-mbz-z14',
+    ['private-villa-mbz-z14-01.webp', 'private-villa-mbz-z14-02.webp'],
+  ),
+  'residential-villa-al-shamkha-sh3': approvedLibraryProject(
+    'residential-villa-al-shamkha-sh3',
+    38,
+    'residential-villa-al-shamkha-sh3',
+    ['residential-villa-al-shamkha-sh3-01.webp', 'residential-villa-al-shamkha-sh3-02.webp'],
+  ),
+  'residential-villa-riyadh-rd32': approvedLibraryProject(
+    'residential-villa-riyadh-rd32',
+    38,
+    'residential-villa-riyadh-rd32',
+    ['residential-villa-riyadh-rd32-01.webp', 'residential-villa-riyadh-rd32-02.webp'],
+  ),
+  'residential-villa-bani-yas-eb11-01': approvedLibraryProject(
+    'residential-villa-bani-yas-eb11-01',
+    38,
+    'residential-villa-bani-yas-eb11-01',
+    ['residential-villa-bani-yas-eb11-01-01.webp', 'residential-villa-bani-yas-eb11-01-02.webp'],
+  ),
+  'reception-hall-private-villa': approvedLibraryProject(
+    'reception-hall-private-villa',
+    41,
+    'reception-hall-private-villa',
+    [
+      'reception-hall-private-villa-01.webp',
+      'reception-hall-private-villa-02.webp',
+      'reception-hall-private-villa-03.webp',
+      'reception-hall-private-villa-04.webp',
+      'reception-hall-private-villa-05.webp',
+    ],
+  ),
+  'majlis-and-dining': approvedLibraryProject(
+    'majlis-and-dining-private-villa',
+    41,
+    'majlis-and-dining',
+    [
+      'majlis-and-dining-01.webp',
+      'majlis-and-dining-02.webp',
+      'majlis-and-dining-03.webp',
+      'majlis-and-dining-04.webp',
+      'majlis-and-dining-05.webp',
+    ],
+  ),
+  'restaurant-interior': approvedLibraryProject(
+    'restaurant-interior',
+    42,
+    'restaurant-interior',
+    [
+      'restaurant-interior-01.webp',
+      'restaurant-interior-02.webp',
+      'restaurant-interior-03.webp',
+      'restaurant-interior-04.webp',
+      'restaurant-interior-05.webp',
+      'restaurant-interior-06.webp',
+    ],
+  ),
+  'hotel-lobby-interior': approvedLibraryProject(
+    'hotel-lobby-interior',
+    42,
+    'hotel-lobby-interior',
+    [
+      'hotel-lobby-interior-01.webp',
+      'hotel-lobby-interior-02.webp',
+      'hotel-lobby-interior-03.webp',
+      'hotel-lobby-interior-04.webp',
+      'hotel-lobby-interior-05.webp',
+    ],
+  ),
 };
 
 const R = '/assets/asas/roles';

@@ -201,6 +201,42 @@ html.asas-motion img.asas-img.is-inview {
   transform: scale(1);
 }
 
+/* Project / gallery cards — never hide media via scroll-reveal */
+html.asas-motion .pl-card img,
+html.asas-motion .pl-featured img,
+html.asas-motion .gl-tile img,
+html.asas-motion .gl-hero img,
+html.asas-motion .gl-fig img,
+html.asas-motion .gl-fig-img,
+html.asas-motion .gl-lightbox img,
+html.asas-motion .gx img,
+html.asas-motion .gx .gx-reveal-img,
+html.asas-motion .ge img,
+html.asas-motion .ge .ge-shot-img,
+html.asas-motion .ga img,
+html.asas-motion .ga .ga-shot-img,
+html.asas-motion .gj img,
+html.asas-motion .gj .gj-shot-img,
+html.asas-motion .hg img,
+html.asas-motion .pl-card img.asas-img,
+html.asas-motion .pl-featured img.asas-img,
+html.asas-motion .gl img.asas-img,
+html.asas-motion .gx img.asas-img,
+html.asas-motion .ge img.asas-img,
+html.asas-motion .ga img.asas-img,
+html.asas-motion .gj img.asas-img,
+html.asas-motion .hg img.asas-img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html.asas-motion .pl-card img.asas-img,
+html.asas-motion .pl-featured img.asas-img,
+html.asas-motion .gl img.asas-img,
+html.asas-motion .gx img.asas-img {
+  transform: none !important;
+}
+
 /* Hero slider owns its own title + image motion — never hide via scroll reveal */
 html.asas-motion .asas-hero-slider h1,
 html.asas-motion .asas-hero-slider .asas-heading,

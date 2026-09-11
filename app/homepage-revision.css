@@ -330,8 +330,8 @@ html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
   grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
   min-height: 440px;
   margin-bottom: 16px;
-  background: #070463;
-  color: #fff;
+  background: #fff;
+  color: #2a2a2a;
 }
 
 .hp-featured-visual {
@@ -349,7 +349,7 @@ html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 55%, rgba(22, 27, 38, .35) 100%);
+  background: linear-gradient(90deg, transparent 55%, rgba(22, 27, 38, .12) 100%);
   pointer-events: none;
 }
 
@@ -359,6 +359,8 @@ html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
 
 .hp-featured-copy {
   padding: 36px 38px;
+  background: #fff;
+  color: #2a2a2a;
 }
 
 .hp-featured-copy .atlas-kicker {
@@ -367,14 +369,14 @@ html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
 
 .hp-featured-copy h3 {
   margin: 12px 0 14px;
-  color: #fff;
+  color: #1f1f1f !important;
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.08;
 }
 
 .hp-featured-copy > p {
   max-width: 46ch;
-  color: rgba(255, 255, 255, .74);
+  color: #3a3a3a !important;
   font-size: 15px;
   line-height: 1.65;
 }
@@ -385,12 +387,12 @@ html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
   gap: 14px 20px;
   margin: 24px 0 26px;
   padding: 16px 0;
-  border-top: 1px solid rgba(255, 255, 255, .12);
-  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  border-top: 1px solid rgba(26, 26, 26, .1);
+  border-bottom: 1px solid rgba(26, 26, 26, .1);
 }
 
 .hp-featured-copy dt {
-  color: rgba(255, 255, 255, .48);
+  color: #6a6a6a !important;
   font: 700 10px/1.2 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -398,13 +400,14 @@ html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
 
 .hp-featured-copy dd {
   margin: 5px 0 0;
-  color: #fff;
+  color: #2a2a2a !important;
   font-size: 14px;
 }
 
-.hp-featured-copy .atlas-link {
-  color: #fff;
-  border-color: rgba(255, 255, 255, .45);
+.hp-featured-copy .atlas-link,
+.hp-featured-copy .asas-action {
+  color: #1f1f1f !important;
+  border-color: rgba(26, 26, 26, .28);
 }
 
 .hp-portfolio-grid {

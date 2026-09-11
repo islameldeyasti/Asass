@@ -6,7 +6,7 @@
 .brand b{font-family: var(--asas-font, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);font-size:9px;letter-spacing:.08em;line-height:1.2}
 .brand small{display:block;font-size:7px;letter-spacing:.1em;line-height:1.2;margin:0}
 .brand.light{color:#fff}.brand.light img{background:var(--asas-text)}
-footer{background:var(--asas-navy, #070463)}
+footer{background:var(--footer-bg, #f4f5f7)}
 .hero:before{background:linear-gradient(90deg,rgba(23,22,21,.96) 0%,rgba(23,22,21,.62) 48%,rgba(23,22,21,.12)),repeating-linear-gradient(90deg,transparent 0 90px,rgba(255,255,255,.08) 91px 92px)}
 .hero{background-color:var(--asas-text);background-image:none;background-size:min(1536px,100vw) auto;background-position:right center;background-repeat:no-repeat}
 .hero:after{opacity:.55}

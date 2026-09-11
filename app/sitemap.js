@@ -1,8 +1,9 @@
 import {services} from '@/data/services';
 import {projects} from '@/data/projects';
 import {sectors} from '@/data/sectors';
+import {getPosts} from '@/data/blog';
 
-const routes = ['', 'about', 'services', 'projects', 'portfolio', 'sectors', 'team', 'careers', 'downloads', 'contact', 'project-enquiry', 'company-profile', 'privacy', 'terms'];
+const routes = ['', 'about', 'services', 'projects', 'gallery', 'portfolio', 'sectors', 'blog', 'team', 'careers', 'downloads', 'contact', 'project-enquiry', 'company-profile', 'privacy', 'terms'];
 
 export default async function sitemap() {
   const {getPublishedTeamMembers} = await import('@/data/team');
@@ -11,6 +12,7 @@ export default async function sitemap() {
     ...services.map((service) => `services/${service.slug}`),
     ...projects.map((project) => `projects/${project.slug}`),
     ...sectors.map((sector) => `sectors/${sector.slug}`),
+    ...getPosts().map((post) => `blog/${post.slug}`),
     ...teamMembers.map((member) => `team/${member.slug}`),
   ];
   return ['en', 'ar'].flatMap((locale) => [...routes, ...detailRoutes].map((route) => ({

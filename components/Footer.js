@@ -15,9 +15,11 @@ const EASE = [0.16, 1, 0.3, 1];
 const companyLinkKeys = [
   ['About', 'about'],
   ['Projects', 'projects'],
+  ['Gallery', 'gallery'],
   ['Portfolio', 'portfolio'],
   ['Team', 'team'],
   ['Sectors', 'sectors'],
+  ['Blog', 'blog'],
   ['Careers', 'careers'],
   ['Downloads', 'downloads'],
   ['Contact', 'contact'],
@@ -48,7 +50,7 @@ export default function Footer({locale}) {
           <motion.div className="footer-brand" {...reveal(0)}>
             <Link className="footer-logo" href={`/${locale}`} aria-label={t('homeAria', locale)}>
               <ThemeLogo
-                appearance="dark"
+                appearance="auto"
                 alt={ar ? company.nameAr : company.name}
                 width={62}
                 height={62}
@@ -61,9 +63,12 @@ export default function Footer({locale}) {
               <span>{t('abuDhabiUae', locale)}</span>
               <span>{t('mirGroup', locale)}</span>
             </div>
-            <nav aria-label={ar ? 'وسائل التواصل الاجتماعي' : 'Social media'}>
-              <SocialIconLinks variant="footer" locale={locale} />
-            </nav>
+            <div className="footer-social">
+              <p className="footer-social-label">{t('followAsas', locale)}</p>
+              <nav aria-label={ar ? 'وسائل التواصل الاجتماعي' : 'Social media'}>
+                <SocialIconLinks variant="footer" locale={locale} />
+              </nav>
+            </div>
           </motion.div>
 
           <motion.nav

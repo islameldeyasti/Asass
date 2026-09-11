@@ -49,6 +49,8 @@ import './theme-surfaces.css';
 import './floating-utilities.css';
 import './chatbot.css';
 import './ai-assistant.css';
+import './gallery-page.css';
+import './blog-page.css';
 import './fonts-arabic.css';
 import './arabic-rtl.css';
 import {ThemeProvider} from '@/components/theme/ThemeProvider';

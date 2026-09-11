@@ -8,14 +8,27 @@
 
 /* ---------- Document flow ---------- */
 html[dir='rtl'],
-html.locale-ar {
+html.locale-ar,
+html[data-locale='ar'] {
   direction: rtl;
 }
 
 html[dir='rtl'] body,
-html.locale-ar body {
-  font-family: var(--asas-font-ar, var(--asas-font)) !important;
+html.locale-ar body,
+html[data-locale='ar'] body {
+  font-family: var(--asas-font-ar) !important;
   text-align: start;
+}
+
+/*
+  Standardize Arabic typeface across the site.
+  Component CSS often hardcodes PhagsPa / Georgia / Arial in font shorthands —
+  force the shared Arabic stack so /ar is visually consistent.
+*/
+html[dir='rtl'] *:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp),
+html.locale-ar *:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp),
+html[data-locale='ar'] *:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp) {
+  font-family: var(--asas-font-ar) !important;
 }
 
 /* Soften Latin-biased label treatments for Arabic — no English tracking */
@@ -52,8 +65,9 @@ html[dir='rtl'] [dir='ltr'].ltr-isolate {
 }
 
 /*
-  Force DIN Next Arabic (or fallback stack) over Georgia / PhagsPa display fonts.
-  Component CSS often uses Georgia !important — beat it here for /ar only.
+  Legacy per-component Arabic font overrides — kept for specificity
+  against older Georgia !important rules. Universal rule above covers
+  new/hardcoded PhagsPa stacks; this list remains as a safety net.
 */
 html[dir='rtl'] h1,
 html[dir='rtl'] h2,
@@ -116,7 +130,7 @@ html[dir='rtl'] .insp-tabs button,
 html[dir='rtl'] .sv-jump-tabs a,
 html[dir='rtl'] .pd-tabs button,
 html[dir='rtl'] .pl-filter-list button {
-  font-family: var(--asas-font-ar, var(--asas-font)) !important;
+  font-family: var(--asas-font-ar) !important;
 }
 
 /* ---------- Forms: Arabic defaults + LTR technical fields ---------- */

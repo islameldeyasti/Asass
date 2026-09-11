@@ -86,9 +86,10 @@
   line-height: 0 !important;
   border-radius: 50%;
   box-sizing: border-box;
-  color: rgba(255, 255, 255, 0.92) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.06);
+  color: #070463 !important;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
 .site-footer .footer-grid a.asas-social-btn--footer svg,
@@ -98,13 +99,15 @@
   height: 20px !important;
   margin: 0 !important;
   flex: none;
+  stroke: currentColor;
 }
 
 .site-footer.asas-footer .footer-grid a.asas-social-btn--footer:hover {
-  color: #a02315 !important;
+  color: #fff !important;
   border-color: #a02315;
-  background: rgba(160, 35, 21, 0.12);
+  background: #a02315;
   transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(160, 35, 21, 0.28);
 }
 
 .asas-social-btn--footer:focus-visible {
@@ -112,28 +115,30 @@
   outline-offset: 3px;
 }
 
+/* Footer is always navy — keep social icons white (never navy-on-navy) */
 html[data-theme='light'] .site-footer.asas-footer .footer-grid a.asas-social-btn--footer {
   color: #070463 !important;
   border-color: rgba(7, 4, 99, 0.16);
-  background: rgba(7, 4, 99, 0.04);
-}
-
-html[data-theme='light'] .site-footer.asas-footer .footer-grid a.asas-social-btn--footer:hover {
-  color: #a02315 !important;
-  border-color: #a02315;
-  background: rgba(160, 35, 21, 0.08);
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(7, 4, 99, 0.08);
 }
 
 html[data-theme='dark'] .site-footer.asas-footer .footer-grid a.asas-social-btn--footer {
+  color: #070463 !important;
+  border-color: rgba(255, 255, 255, 0.95);
+  background: #fff;
+}
+
+html[data-theme='light'] .site-footer.asas-footer .footer-grid a.asas-social-btn--footer:hover {
   color: #fff !important;
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: #a02315;
+  background: #a02315;
 }
 
 html[data-theme='dark'] .site-footer.asas-footer .footer-grid a.asas-social-btn--footer:hover {
-  color: #a02315 !important;
+  color: #fff !important;
   border-color: #a02315;
-  background: rgba(160, 35, 21, 0.14);
+  background: #a02315;
 }
 
 /* ---------- Floating social bar (LEFT — both EN/AR) ---------- */

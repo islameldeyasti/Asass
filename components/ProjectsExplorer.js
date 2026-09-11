@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import {useMemo, useState} from 'react';
 import {AnimatePresence, motion, useReducedMotion} from 'motion/react';
@@ -81,27 +80,31 @@ function extractStats(project, ar) {
   return stats.slice(0, 3);
 }
 
-function ProjectVisual({project, ar, sizes, priority = false}) {
-  const photo =
-    project.visual?.classification === 'PROJECT_PHOTO' ||
-    project.visual?.classification === 'TECHNICAL_DRAWING';
-  if (!project.visual?.src) {
+function ProjectVisual({project, ar}) {
+  const title = ar ? project.titleAr : project.title;
+  const src = project.visual?.src;
+  const crop = project.visual?.crop || '50% 45%';
+
+  if (!src) {
     return (
-      <div className="pl-visual pl-visual--fallback">
+      <div className="pl-visual pl-visual--fallback" role="img" aria-label={title}>
+        <span className="pl-visual-ratio" aria-hidden="true" />
         <ProjectVisualFallback project={project} locale={ar ? 'ar' : 'en'} />
       </div>
     );
   }
+
   return (
-    <div className="pl-visual">
-      <Image
-        src={project.visual.src}
-        alt={photo ? (ar ? project.titleAr : project.title) : ''}
-        fill
-        sizes={sizes}
-        priority={priority}
-        style={{objectPosition: project.visual.crop}}
-      />
+    <div
+      className="pl-visual pl-visual--photo"
+      role="img"
+      aria-label={title}
+      style={{
+        backgroundImage: `url(${src})`,
+        backgroundPosition: crop,
+      }}
+    >
+      <span className="pl-visual-ratio" aria-hidden="true" />
     </div>
   );
 }
@@ -111,7 +114,7 @@ function ProjectCard({project, locale, ar}) {
   const place = ar ? project.locationShortAr || project.locationAr : project.locationShort || project.location;
   return (
     <Link className="pl-card" href={`/${locale}/projects/${project.slug}`}>
-      <ProjectVisual project={project} ar={ar} sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw" />
+      <ProjectVisual project={project} ar={ar} />
       <div className="pl-card-copy">
         <div className="pl-card-meta">
           <span className="pl-kind">{ar ? kind.ar : kind.en}</span>
@@ -270,7 +273,7 @@ export default function ProjectsExplorer({locale}) {
             >
               <Link className="pl-featured" href={`/${locale}/projects/${featured.slug}`}>
                 <div className="pl-featured-media">
-                  <ProjectVisual project={featured} ar={ar} sizes="(max-width: 900px) 100vw, 58vw" priority />
+                  <ProjectVisual project={featured} ar={ar} />
                 </div>
                 <div className="pl-featured-copy">
                   <span className="pl-featured-eyebrow">{ar ? 'مشروع مميز' : 'Featured Project'}</span>
@@ -302,12 +305,13 @@ export default function ProjectsExplorer({locale}) {
           )}
         </AnimatePresence>
 
-        <motion.div className="pl-grid" layout>
+        <motion.div className="pl-grid" layout={false}>
           <AnimatePresence mode="popLayout">
             {visible.map((project, i) => (
               <motion.div
                 key={project.slug}
-                layout
+                className="pl-grid-item"
+                layout={false}
                 initial={reduced ? false : {opacity: 0, y: 20}}
                 animate={{opacity: 1, y: 0}}
                 exit={{opacity: 0, y: 12}}

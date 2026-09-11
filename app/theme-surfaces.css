@@ -211,7 +211,35 @@ html[data-theme='dark'] .cp-panel,
 html[data-theme='dark'] .contact-panel,
 html[data-theme='dark'] .enquiry-panel,
 html[data-theme='dark'] .careers-panel,
-html[data-theme='dark'] .hp-featured,
+html[data-theme='dark'] .hp-featured {
+  background: #181818 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+  color: #e8e8e8 !important;
+}
+
+html[data-theme='dark'] .hp-featured .hp-featured-copy {
+  background: #181818 !important;
+  color: #e8e8e8 !important;
+}
+
+html[data-theme='dark'] .hp-featured .hp-featured-copy h3 {
+  color: #f2f2f2 !important;
+}
+
+html[data-theme='dark'] .hp-featured .hp-featured-copy > p {
+  color: rgba(232, 232, 232, 0.78) !important;
+}
+
+html[data-theme='dark'] .hp-featured .hp-featured-copy dt {
+  color: rgba(232, 232, 232, 0.5) !important;
+}
+
+html[data-theme='dark'] .hp-featured .hp-featured-copy dd,
+html[data-theme='dark'] .hp-featured .hp-featured-copy .asas-action {
+  color: #f2f2f2 !important;
+}
+
 html[data-theme='dark'] .brief-card,
 html[data-theme='dark'] main [class*='-card']:not(img):not(.asas-ph-thumb):not(.asas-clients-logo),
 html[data-theme='dark'] main [class*='-panel'],
@@ -236,7 +264,7 @@ html[data-theme='dark'] .cp-card:hover {
   background: #1e1e1e !important;
 }
 
-html[data-theme='light'] .hp-card,
+html[data-theme='light'] .hp-card:not(.hp-featured),
 html[data-theme='light'] .asas-t-card,
 html[data-theme='light'] .sv-card,
 html[data-theme='light'] .sc-card,
@@ -287,6 +315,7 @@ html[data-theme='light'] .sc-hero h1,
 html[data-theme='light'] .cp-hero h1,
 html[data-theme='light'] .pf-hero h1,
 html[data-theme='light'] .pl-hero h1,
+html[data-theme='light'] .gl-hero h1,
 html[data-theme='light'] .about-hero h1,
 html[data-theme='light'] .contact-hero h1,
 html[data-theme='light'] .careers-hero h1,
@@ -302,7 +331,8 @@ html[data-theme='light'] .sc-hero-copy > h1,
 html[data-theme='light'] .cp-hero-copy > h1,
 html[data-theme='light'] .tm-page-hero-copy > h1,
 html[data-theme='light'] .pl-hero-copy > h1,
-html[data-theme='light'] .pf-hero-copy > h1 {
+html[data-theme='light'] .pf-hero-copy > h1,
+html[data-theme='light'] .gl-hero-copy > h1 {
   color: #fff !important;
 }
 
@@ -508,34 +538,52 @@ html[data-theme='dark'] .asas-nav a:hover:after {
   background: var(--asas-rust) !important;
 }
 
-html[data-theme='dark'] .asas-nav-backdrop {
-  background: rgba(0, 0, 0, 0.65);
+html[data-theme='dark'] .asas-nav-submenu {
+  background: #181818;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme='dark'] .asas-nav-submenu a {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+html[data-theme='dark'] .asas-nav-submenu a:hover,
+html[data-theme='dark'] .asas-nav-submenu a.is-active {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .asas-nav-caret {
+  color: #fff;
 }
 
 /* ---------- Footer ---------- */
-/* Light: navy brand anchor. Dark: charcoal (not navy). */
+/* Neutral footer surface — no navy/rust fill. Brand color only on accents. */
 html[data-theme='light'] .site-footer.asas-footer {
-  background: var(--asas-navy) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
-  color: #fff !important;
-  --ft-bg: var(--asas-navy);
-  --ft-bg-alt: color-mix(in srgb, #070463 88%, black);
-  --ft-heading: #fff;
-  --ft-text: rgba(255, 255, 255, 0.72);
-  --ft-body: rgba(255, 255, 255, 0.72);
-  --ft-muted: rgba(255, 255, 255, 0.58);
-  --ft-link: #fff;
-  --ft-secondary: rgba(255, 255, 255, 0.58);
-  --ft-divider: rgba(255, 255, 255, 0.12);
+  background: #f4f5f7 !important;
+  border-top: 1px solid rgba(7, 4, 99, 0.08) !important;
+  color: #2a2a2a !important;
+  --ft-bg: #f4f5f7;
+  --ft-bg-alt: #eceef2;
+  --ft-heading: #070463;
+  --ft-text: #4a4f5c;
+  --ft-body: #4a4f5c;
+  --ft-muted: #6b7280;
+  --ft-link: #2f3545;
+  --ft-secondary: #6b7280;
+  --ft-divider: rgba(7, 4, 99, 0.1);
   --ft-orange: var(--asas-rust);
+  --ft-orange-hover: var(--asas-rust-hover, #801c11);
+  --ft-action-text: #fff;
 }
 
 html[data-theme='dark'] .site-footer.asas-footer {
-  background: #090909 !important;
+  background: #000 !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: #fff !important;
-  --ft-bg: #090909;
-  --ft-bg-alt: #0f0f0f;
+  --ft-bg: #000;
+  --ft-bg-alt: #0a0a0a;
   --ft-heading: #fff;
   --ft-text: rgba(255, 255, 255, 0.72);
   --ft-body: rgba(255, 255, 255, 0.72);
@@ -544,6 +592,36 @@ html[data-theme='dark'] .site-footer.asas-footer {
   --ft-secondary: rgba(255, 255, 255, 0.52);
   --ft-divider: rgba(255, 255, 255, 0.1);
   --ft-orange: var(--asas-rust);
+  --ft-orange-hover: var(--asas-rust-hover, #801c11);
+  --ft-action-text: #fff;
+}
+
+/* Light footer is neutral — keep brand accents readable */
+html[data-theme='light'] .site-footer.asas-footer .footer-contact-item > svg {
+  color: var(--asas-rust) !important;
+}
+
+html[data-theme='light'] .site-footer.asas-footer .footer-column a:hover {
+  color: var(--asas-rust) !important;
+  opacity: 1;
+}
+
+html[data-theme='light'] .site-footer.asas-footer .footer-action-eyebrow {
+  color: var(--asas-rust) !important;
+}
+
+html[data-theme='light'] .site-footer.asas-footer .footer-social-label {
+  color: var(--asas-rust) !important;
+}
+
+html[data-theme='light'] .site-footer.asas-footer .footer-credentials span {
+  border-color: rgba(7, 4, 99, 0.12) !important;
+  background: rgba(7, 4, 99, 0.04) !important;
+  color: #5b6472 !important;
+}
+
+html[data-theme='dark'] .site-footer.asas-footer .footer-social-label {
+  color: rgba(255, 255, 255, 0.62) !important;
 }
 
 .site-footer.asas-footer h3,
@@ -559,9 +637,14 @@ html[data-theme='dark'] .site-footer.asas-footer {
   color: var(--ft-text, rgba(255, 255, 255, 0.72)) !important;
 }
 
-.site-footer.asas-footer .footer-logo {
-  background: transparent !important;
-  border-color: transparent !important;
+html[data-theme='dark'] .site-footer.asas-footer:before {
+  color: rgba(255, 255, 255, 0.05) !important;
+}
+
+html[data-theme='dark'] .site-footer.asas-footer:after {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
 /* Client logos — light plate so dark marks stay visible */
@@ -1081,16 +1164,72 @@ html[data-theme='dark'] .asas-t-card blockquote {
   color: rgba(255, 255, 255, 0.78) !important;
 }
 
-/* --- Homepage: team --- */
+/* --- Homepage: team experts --- */
 html[data-theme='dark'] .tm,
-html[data-theme='dark'] .tm-home {
-  background: #090909 !important;
+html[data-theme='dark'] .tm-home,
+html[data-theme='dark'] .tm-experts {
+  background: #0a0a0c !important;
   color: #fff !important;
   --tm-navy: #ffffff;
   --tm-text: #ffffff;
-  --tm-muted: rgba(255, 255, 255, 0.76);
+  --tm-muted: rgba(255, 255, 255, 0.72);
   --tm-paper: #0f0f0f;
   --tm-deep: #090909;
+}
+
+html[data-theme='dark'] .tm-experts-glow {
+  background:
+    radial-gradient(ellipse 55% 50% at 0% 40%, rgba(160, 35, 21, 0.22), transparent 70%),
+    radial-gradient(ellipse 50% 45% at 100% 55%, rgba(160, 35, 21, 0.12), transparent 70%) !important;
+}
+
+html[data-theme='dark'] .tm-experts-head h2,
+html[data-theme='dark'] .tm-expert-copy h3 {
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .tm-experts-head .tm-kicker {
+  color: #a02315 !important;
+}
+
+html[data-theme='dark'] .tm-experts-head > p:not(.tm-kicker) {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+html[data-theme='dark'] .tm-expert-copy p {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+html[data-theme='dark'] .tm-expert-media {
+  background: #141418 !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme='dark'] .tm-expert-fallback {
+  background: linear-gradient(160deg, #1a1a20, #101014) !important;
+}
+
+html[data-theme='dark'] .tm-expert-fallback span {
+  color: rgba(255, 255, 255, 0.28) !important;
+}
+
+html[data-theme='dark'] .tm-experts-cta {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  color: #fff !important;
+}
+
+html[data-theme='dark'] .tm-experts-cta:hover {
+  background: #a02315 !important;
+  border-color: #a02315 !important;
+  color: #fff !important;
+}
+
+html[data-theme='light'] .tm-experts {
+  background: #f4f5f7 !important;
+}
+
+html[data-theme='light'] .tm-expert-media {
+  box-shadow: 0 14px 36px rgba(7, 4, 99, 0.08);
 }
 
 html[data-theme='dark'] .tm-home-aside-link,

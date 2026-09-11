@@ -74,7 +74,7 @@ function markStagger(root, locale = 'en') {
 function markHeadings(root) {
   HEADING_SELECTORS.forEach((sel) => {
     root.querySelectorAll(sel).forEach((el) => {
-      if (el.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')) return;
+      if (el.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .gl, .gx, .ge, .ga, .gj, .hg, .sv, .sd, .sc, .cp, .pf, .tm')) return;
       el.classList.add('asas-heading');
     });
   });
@@ -82,7 +82,7 @@ function markHeadings(root) {
 
 function markImages(root) {
   root.querySelectorAll('main img').forEach((img) => {
-    if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')) return;
+    if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .gl, .gx, .ge, .ga, .gj, .hg, .sv, .sd, .sc, .cp, .pf, .tm')) return;
     img.classList.add('asas-img');
   });
 }
@@ -96,11 +96,17 @@ function markSections(root) {
         el.classList?.contains('asas-clients') ||
         el.classList?.contains('pd') ||
         el.classList?.contains('pl') ||
+        el.classList?.contains('gl') ||
+        el.classList?.contains('gx') ||
+        el.classList?.contains('ge') ||
+        el.classList?.contains('ga') ||
+        el.classList?.contains('gj') ||
+        el.classList?.contains('hg') ||
         el.classList?.contains('sv') ||
         el.classList?.contains('sd') ||
         el.classList?.contains('sc') ||
         el.classList?.contains('cp') ||
-        el.closest('.asas-sectors, .asas-clients, .pd, .pl, .sv, .sd, .sc, .cp, .pf, .tm')
+        el.closest('.asas-sectors, .asas-clients, .pd, .pl, .gl, .gx, .ge, .ga, .gj, .hg, .sv, .sd, .sc, .cp, .pf, .tm')
       ) {
         return;
       }
@@ -181,7 +187,13 @@ export default function SiteMotion({locale}) {
       markHeadings(document);
       document.querySelectorAll('.asas-heading:not(.is-inview)').forEach(watch);
       document.querySelectorAll('main img:not(.asas-img)').forEach((img) => {
-        if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients')) return;
+        if (
+          img.closest(
+            '.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .gl, .gx, .ge, .ga, .gj, .hg, .sv, .sd, .sc, .cp, .pf, .tm',
+          )
+        ) {
+          return;
+        }
         img.classList.add('asas-img');
         watch(img);
       });

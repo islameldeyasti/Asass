@@ -1,7 +1,7 @@
 /* =========================================================
-   ASAS ARABIC FONTS
-   Primary: DIN Next Arabic (licensed files — place under public/fonts/)
-   Fallbacks: IBM Plex Sans Arabic, Noto Sans Arabic (Google Fonts)
+   ASAS ARABIC FONT SYSTEM — single source of truth
+   Primary (when licensed files exist): DIN Next Arabic
+   Live web fallbacks: IBM Plex Sans Arabic → Noto Sans Arabic
 
    DIN Next Arabic files expected at:
      /public/fonts/din-next-arabic/DINNextArabic-Light.woff2
@@ -9,9 +9,8 @@
      /public/fonts/din-next-arabic/DINNextArabic-Medium.woff2
      /public/fonts/din-next-arabic/DINNextArabic-Bold.woff2
 
-   Until licensed files are added, @font-face rules are inert and
-   the stack falls through to IBM Plex / Noto.
-   See docs/arabic-rtl-guide.md
+   Until licensed files are added, the stack falls through to
+   IBM Plex / Noto. All Arabic UI must use --asas-font-ar.
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
@@ -49,21 +48,31 @@
 }
 
 :root {
+  /* English UI stack */
   --asas-font-en: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
-  --asas-font-ar: "DIN Next Arabic", "IBM Plex Sans Arabic", "Noto Sans Arabic", sans-serif;
+
+  /* Arabic UI stack — one family chain for the whole AR site */
+  --asas-font-ar: "DIN Next Arabic", "IBM Plex Sans Arabic", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+
+  /* Active stack (switched by locale below) */
   --asas-font: var(--asas-font-en);
 }
 
+/* Locale switches — keep tokens in sync everywhere */
 html[dir='rtl'],
 html.locale-ar,
 html[data-locale='ar'] {
   --asas-font: var(--asas-font-ar);
+  --font-sans: var(--asas-font-ar);
+  --tm-font: var(--asas-font-ar);
   --asas-tracking-display: 0;
   --asas-tracking-label: 0.02em;
+  font-family: var(--asas-font-ar);
 }
 
 html[dir='ltr'],
 html.locale-en,
 html[data-locale='en'] {
   --asas-font: var(--asas-font-en);
+  --font-sans: var(--asas-font-en);
 }

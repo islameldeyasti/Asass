@@ -142,7 +142,17 @@ const content = {
     sectorCta: 'View all sectors',
     processEyebrow: 'Project lifecycle', processTitle: 'From concept to financial closure', processCopy: 'A documented route through design, award, construction, handover and future phases.',
     archive: 'Selected work', archiveTitle: 'Projects from the official ASAS portfolio', archiveCopy: 'A featured project with supporting work across towers, infrastructure, education, compounds and interiors.', archiveCta: 'View all projects',
-    featured: 'Selected project', dossier: [['Type', 'Planning study'], ['Scope', 'Access & parking'], ['Review', 'Municipality'], ['Location', 'Abu Dhabi']],
+    featured: 'Selected project',
+    featuredTitle: 'Traffic & Access Studies',
+    featuredDesc:
+      'Parking layouts, kerb and sewer adjustments, one-way circulation, service bays, speed humps and road marking prepared for municipality review.',
+    dossier: [
+      ['Type', 'Planning study'],
+      ['Scope', 'Access & parking'],
+      ['Review', 'Municipality'],
+      ['Location', 'Abu Dhabi'],
+    ],
+    viewProject: 'View project',
   },
   ar: {
     eyebrow: 'تأسست في أبوظبي · 2009',
@@ -155,7 +165,17 @@ const content = {
     sectorCta: 'عرض كل القطاعات',
     processEyebrow: 'دورة حياة المشروع', processTitle: 'من الفكرة إلى الإغلاق المالي', processCopy: 'مسار موثق يمر بالتصميم والترسية والتنفيذ والتسليم والمراحل المستقبلية.',
     archive: 'أعمال مختارة', archiveTitle: 'مشاريع من الملف الرسمي لأساس للاستشارات الهندسية وإدارة المشاريع', archiveCopy: 'مشروع مختار مع أعمال داعمة عبر الأبراج والبنية التحتية والتعليم والمجمعات والتصميم الداخلي.', archiveCta: 'عرض كل المشاريع',
-    featured: 'مشروع مختار', dossier: [['النوع', 'دراسة تخطيطية'], ['النطاق', 'المداخل والمواقف'], ['المراجعة', 'البلدية'], ['الموقع', 'أبوظبي']],
+    featured: 'مشروع مختار',
+    featuredTitle: 'دراسات المرور والمداخل',
+    featuredDesc:
+      'مخططات مواقف وتعديلات الأرصفة والصرف وحركة الاتجاه الواحد ومناطق الخدمة ومطبات السرعة وعلامات الطرق، أُعدت لمراجعة البلدية.',
+    dossier: [
+      ['النوع', 'دراسة تخطيطية'],
+      ['النطاق', 'المداخل والمواقف'],
+      ['المراجعة', 'البلدية'],
+      ['الموقع', 'أبوظبي'],
+    ],
+    viewProject: 'عرض المشروع',
   },
 };
 
@@ -338,15 +358,15 @@ export default async function Home({params}) {
             </div>
             <div className="hp-featured-copy">
               <p className="atlas-kicker">{t.featured}</p>
-              <h3>{ar ? featuredProject.titleAr : featuredProject.title}</h3>
-              <p>{ar ? featuredProject.descriptionAr : featuredProject.description}</p>
+              <h3>{t.featuredTitle}</h3>
+              <p>{t.featuredDesc}</p>
               <dl>
                 {t.dossier.map(([label, value]) => (
                   <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
                 ))}
               </dl>
               <ActionButton variant="ghost" href={url(`projects/${featuredProject.slug}`)}>
-                {ar ? 'عرض المشروع' : 'View project'}
+                {t.viewProject}
               </ActionButton>
             </div>
           </article>

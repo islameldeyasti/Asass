@@ -35,7 +35,7 @@
 
   /* Typography */
   --asas-font-en: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
-  --asas-font-ar: "DIN Next Arabic", "IBM Plex Sans Arabic", "Noto Sans Arabic", sans-serif;
+  --asas-font-ar: "DIN Next Arabic", "IBM Plex Sans Arabic", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
   --asas-font: var(--asas-font-en);
   --asas-display: clamp(48px, 5vw, 76px);
   --asas-h1: clamp(48px, 4.2vw, 60px);
@@ -201,7 +201,9 @@ h1,
 .about-hero h1,
 .sectors-hero h1,
 .downloads-hero h1,
-.careers-hero h1 {
+.careers-hero h1,
+.blog-hero h1,
+.blog-post-hero h1 {
   font-size: var(--asas-display);
   line-height: var(--asas-lh-display);
   font-weight: 700;
@@ -443,7 +445,7 @@ a.button {
 }
 
 .hp-featured.hp-card .hp-featured-copy h3 {
-  color: #fff;
+  color: #1f1f1f !important;
 }
 
 /* Soften SaaS-like pills / huge radii on UI chrome (keep true circles for FABs) */

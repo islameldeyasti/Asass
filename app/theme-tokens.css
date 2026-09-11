@@ -64,9 +64,9 @@ html[data-theme='light'] {
 
   --header-bg: #ffffff;
   --header-border: var(--border-default);
-  --footer-bg: var(--asas-navy);
-  --footer-text: #ffffff;
-  --footer-text-muted: rgba(255, 255, 255, 0.72);
+  --footer-bg: #f4f5f7;
+  --footer-text: #070463;
+  --footer-text-muted: #4a4f5c;
 
   --overlay-light: rgba(255, 255, 255, 0.72);
   --overlay-dark: rgba(7, 4, 99, 0.72);
@@ -167,16 +167,17 @@ html[data-theme='light'] {
   --ph-orange: var(--asas-rust);
 
   --ft-bg: var(--footer-bg);
-  --ft-bg-alt: color-mix(in srgb, #070463 88%, black);
+  --ft-bg-alt: #eceef2;
   --ft-heading: var(--footer-text);
   --ft-text: var(--footer-text-muted);
   --ft-body: var(--footer-text-muted);
-  --ft-muted: rgba(255, 255, 255, 0.58);
-  --ft-link: var(--footer-text);
-  --ft-secondary: rgba(255, 255, 255, 0.58);
-  --ft-divider: rgba(255, 255, 255, 0.12);
+  --ft-muted: #6b7280;
+  --ft-link: #2f3545;
+  --ft-secondary: #6b7280;
+  --ft-divider: rgba(7, 4, 99, 0.1);
   --ft-orange: var(--asas-rust);
   --ft-orange-hover: var(--asas-rust-hover);
+  --ft-action-text: #fff;
 
   --tm-navy: var(--text-primary);
   --tm-muted: var(--text-secondary);
@@ -260,7 +261,7 @@ html[data-theme='dark'] {
 
   --header-bg: #090909;
   --header-border: rgba(255, 255, 255, 0.1);
-  --footer-bg: #090909;
+  --footer-bg: #000000;
   --footer-text: #ffffff;
   --footer-text-muted: rgba(255, 255, 255, 0.72);
 
@@ -360,7 +361,7 @@ html[data-theme='dark'] {
   --ph-orange: var(--asas-rust);
 
   --ft-bg: var(--footer-bg);
-  --ft-bg-alt: #0f0f0f;
+  --ft-bg-alt: #0a0a0a;
   --ft-heading: var(--footer-text);
   --ft-text: var(--footer-text-muted);
   --ft-body: var(--footer-text-muted);
