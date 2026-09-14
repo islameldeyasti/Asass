@@ -72,8 +72,8 @@ export default async function Enquiry({params}) {
           </p>
           <div className="enquiry-hero-meta">
             <span>{ar ? company.cityAr : company.city} · {company.year}</span>
-            <a href={`mailto:${company.email}`}>{company.email}</a>
-            <a href={`tel:${company.phone.replace(/\s/g, '')}`}>{company.phone}</a>
+            <a href={`mailto:${company.email}`} dir="ltr">{company.email}</a>
+            <a href={`tel:${company.phone.replace(/\s/g, '')}`} dir="ltr">{company.phone}</a>
           </div>
         </Container>
       </section>

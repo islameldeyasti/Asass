@@ -372,10 +372,12 @@ html[dir='rtl'] .asas-scroll-top {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   :root {
-    --asas-float-x: 18px;
-    --asas-float-size: 46px;
+    --asas-float-x: 14px;
+    --asas-float-size: 44px;
+    --asas-float-gap: 8px;
+    --asas-float-y: max(14px, env(safe-area-inset-bottom, 0px));
   }
 
   .asas-float-social {
@@ -389,22 +391,25 @@ html[dir='rtl'] .asas-scroll-top {
 
 /* Tablet: keep left socials if space allows; shrink */
 @media (max-width: 900px) {
-  :root {
-    --asas-float-size: 46px;
-    --asas-float-gap: 10px;
-    --asas-float-x: 16px;
-    --asas-float-y: 16px;
-  }
-
   /* OPTION A — hide floating socials on mobile/narrow tablet; footer covers socials */
   .asas-float-social {
     display: none !important;
+  }
+
+  /* Keep right utility stack physical-right (don't mirror under RTL) */
+  .whatsapp,
+  .asas-theme-fab,
+  .asas-scroll-top {
+    right: max(var(--asas-float-x), env(safe-area-inset-right, 0px)) !important;
+    left: auto !important;
   }
 }
 
 @media (max-width: 640px) {
   :root {
-    --asas-float-size: 48px;
+    --asas-float-size: 42px;
+    --asas-float-x: 12px;
+    --asas-float-gap: 8px;
   }
 }
 

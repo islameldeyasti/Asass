@@ -372,6 +372,8 @@ html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
   color: #1f1f1f !important;
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.08;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .hp-featured-copy > p {
@@ -681,8 +683,9 @@ html[data-theme='dark'] .hp-revised.atlas-home .home-contact {
 }
 
 html[dir='rtl'] .whatsapp {
-  inset: auto auto 22px 22px !important;
-  right: auto !important;
+  inset: auto 22px 22px auto !important;
+  left: auto !important;
+  right: 22px !important;
 }
 
 .announcement,
@@ -791,5 +794,25 @@ html[dir='rtl'] .whatsapp {
   .hp-portfolio-grid,
   .hp-revised .hp-why-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hp-featured-copy h3 {
+    font-size: clamp(24px, 6.5vw, 32px);
+    line-height: 1.25;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .hp-featured-copy > p,
+  .hp-featured-copy dl {
+    max-width: 100%;
+  }
+
+  .hp-featured-copy dl {
+    grid-template-columns: 1fr;
+  }
+
+  .hp-featured {
+    padding-inline-end: 56px;
   }
 }

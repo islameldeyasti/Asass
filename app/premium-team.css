@@ -1056,6 +1056,19 @@ html[dir='rtl'] .tm-card-cta svg:last-child {
   .tm-expert-socials {
     opacity: 1;
     transform: none;
+    gap: 6px;
+    bottom: 10px;
+    inset-inline: 8px;
+  }
+
+  .tm-expert-social {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tm-expert-social svg {
+    width: 13px;
+    height: 13px;
   }
 
   .tm-grid-home,
@@ -1076,6 +1089,7 @@ html[dir='rtl'] .tm-card-cta svg:last-child {
     scroll-snap-type: none;
     gap: var(--space-grid-gap, 20px);
     padding-bottom: 0;
+    padding-inline-end: 56px;
   }
 
   .tm-home .tm-card-media {

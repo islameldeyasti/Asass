@@ -646,8 +646,8 @@ export default function ProjectDetailView({
                 {ar ? 'منهجيتنا' : 'Our Approach'}
               </p>
               <h2>{ar ? 'منهجية التصميم' : 'Design Approach'}</h2>
-              <p>{approachLead}</p>
-              {approachSupport && <p>{approachSupport}</p>}
+              <p>{approachLead || (ar ? 'منهجية تصميم مخصصة لهذا المشروع.' : 'A design approach shaped for this project.')}</p>
+              {approachSupport ? <p>{approachSupport}</p> : null}
               <Link className="pd-text-link" href={`/${locale}/about`}>
                 {ar ? 'فلسفة التصميم لدينا' : 'Our Design Philosophy'}
                 <ArrowRight size={14} className={ar ? 'reverse-arrow' : ''} />

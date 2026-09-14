@@ -271,6 +271,12 @@ html[data-theme='light'] {
     max-height: 760px;
   }
 
+  .pd-hero-tech {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+
   .pd-hero-copy {
     max-height: var(--asas-internal-hero-h);
   }
@@ -347,6 +353,12 @@ html[data-theme='light'] {
   .pd-hero-copy {
     max-height: none;
   }
+
+  /* Project tech column is pager-only on many pages — don't force tall empty space */
+  .pd-hero-tech {
+    height: auto;
+    min-height: 0;
+  }
 }
 
 @media (max-width: 700px) {
@@ -386,6 +398,11 @@ html[data-theme='light'] {
   .pd-main-frame,
   .pd-hero-tech {
     height: clamp(280px, 46vh, 420px);
+  }
+
+  .pd-hero-tech {
+    height: auto;
+    min-height: 0;
   }
 }
 

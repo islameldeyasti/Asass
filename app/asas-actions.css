@@ -183,13 +183,20 @@ html[data-theme='dark'] .asas-action--outline:active {
 }
 
 @media (max-width: 640px) {
-  .asas-action-group--stack {
-    flex-direction: column;
-    align-items: stretch;
+  .asas-action {
+    white-space: normal;
+    height: auto;
+    min-height: var(--asas-action-h);
+    padding-block: 12px;
+    line-height: 1.35;
+    text-align: center;
+    max-width: 100%;
   }
 
-  .asas-action-group--stack > .asas-action {
+  .asas-action-group--stack > .asas-action,
+  .asas-action-group > .asas-action {
     width: 100%;
+    justify-content: center;
   }
 }
 

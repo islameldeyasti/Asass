@@ -277,7 +277,9 @@ export default async function Services({params}) {
               <span aria-hidden="true">·</span>
               <span>{company.year}</span>
               <span aria-hidden="true">|</span>
-              <a href={`tel:${company.phone.replace(/\s/g, '')}`}>{company.phone}</a>
+              <a href={`tel:${company.phone.replace(/\s/g, '')}`} dir="ltr">
+                {company.phone}
+              </a>
             </div>
           </div>
           <ul className="sv-hero-words" aria-hidden="true">

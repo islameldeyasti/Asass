@@ -595,10 +595,29 @@
 
   .enquiry-hero h1 {
     max-width: none;
+    font-size: clamp(28px, 7.2vw, 38px);
+    line-height: 1.25;
+  }
+
+  html[dir='rtl'] .enquiry-hero h1 {
+    line-height: 1.35;
+  }
+
+  .enquiry-hero-meta a {
+    direction: ltr;
+    unicode-bidi: isolate;
   }
 }
 
 @media (max-width: 600px) {
+  .enquiry-hero {
+    padding: 56px 0 40px;
+  }
+
+  .enquiry-hero h1 {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+
   .enquiry-body {
     padding: 40px 0 24px;
   }

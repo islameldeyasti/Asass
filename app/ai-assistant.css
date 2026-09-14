@@ -535,16 +535,32 @@ html[data-theme='dark'] .asas-ai-foot {
 
 @media (max-width: 640px) {
   .asas-ai {
-    left: max(12px, env(safe-area-inset-left, 0px));
-    right: auto;
+    left: max(12px, env(safe-area-inset-left, 0px)) !important;
+    right: auto !important;
     bottom: max(12px, env(safe-area-inset-bottom, 0px));
-    align-items: stretch;
-    width: calc(100vw - 24px);
+    align-items: flex-start;
+    width: auto !important;
     max-width: none;
   }
 
+  .asas-ai:not(.is-open) {
+    width: auto !important;
+    max-width: none !important;
+  }
+
   .asas-ai-fab {
-    align-self: flex-start;
+    align-self: flex-start !important;
+    min-width: var(--asas-float-size, 42px);
+    width: var(--asas-float-size, 42px) !important;
+    height: var(--asas-float-size, 42px) !important;
+    padding: 0 !important;
+    border-radius: 50%;
+  }
+
+  .asas-ai.is-open {
+    width: calc(100vw - 24px) !important;
+    max-width: none;
+    align-items: stretch;
   }
 
   .asas-ai.is-open .asas-ai-fab {
@@ -562,13 +578,7 @@ html[data-theme='dark'] .asas-ai-foot {
   }
 
   .asas-ai-fab-label {
-    display: none;
-  }
-
-  .asas-ai-fab {
-    width: var(--asas-float-size, 48px);
-    padding: 0;
-    border-radius: 50%;
+    display: none !important;
   }
 }
 
