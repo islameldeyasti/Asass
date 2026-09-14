@@ -409,7 +409,14 @@ html[dir='rtl'] .asas-scroll-top {
   :root {
     --asas-float-size: 42px;
     --asas-float-x: 12px;
-    --asas-float-gap: 8px;
+    --asas-float-gap: 10px;
+  }
+
+  .whatsapp,
+  .asas-theme-fab,
+  .asas-scroll-top {
+    right: max(var(--asas-float-x), env(safe-area-inset-right, 0px)) !important;
+    left: auto !important;
   }
 }
 

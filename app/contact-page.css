@@ -921,6 +921,24 @@
     padding: 72px 0 56px;
   }
 
+  .contact-copy h1,
+  .contact-bridge h2,
+  .contact-cta-copy h2 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    line-height: 1.3;
+  }
+
+  .contact-list > div {
+    padding-inline-end: 8px;
+  }
+
+  .contact-list a,
+  .contact-list span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
   .contact-body {
     padding: 48px 0 32px;
   }
@@ -944,6 +962,13 @@
 
   .contact-bridge {
     padding: 44px 0;
+  }
+
+  .contact-bridge .button,
+  .contact-cta .asas-action {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 

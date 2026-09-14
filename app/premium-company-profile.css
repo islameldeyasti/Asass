@@ -1080,12 +1080,27 @@ html[dir='rtl'] .cp-timeline-year {
   }
 
   .cp-hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(28px, 7.5vw, 40px);
+    line-height: 1.25;
+  }
+
+  html[dir='rtl'] .cp-hero-copy h1 {
+    line-height: 1.35;
+  }
+
+  .cp-metric dd {
     max-width: none;
-    font-size: clamp(36px, 10vw, 48px);
+    overflow-wrap: anywhere;
   }
 
   .cp-section {
-    padding: 72px 0;
+    padding: 56px 0;
+  }
+
+  .cp-section h2 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .cp-metrics-grid,

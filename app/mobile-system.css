@@ -623,6 +623,208 @@
   }
 }
 
+/* ---------- Mobile FAB clearance + stop RTL edge clipping ---------- */
+@media (max-width: 900px) {
+  :root {
+    --asas-m-fab-clear: calc(var(--asas-float-size, 42px) + var(--asas-float-x, 12px) + 10px);
+  }
+
+  /* Physical-right clearance for scroll/theme/WhatsApp stack (FABs stay on right in RTL) */
+  main#main > section .container,
+  main#main > .container,
+  .pd-shell .container,
+  .sv-shell .container,
+  .sc-shell .container,
+  .cp-shell .container,
+  .tm-shell .container,
+  .pl-shell .container,
+  .pf-shell .container,
+  .about-featured-copy,
+  .contact-copy,
+  .enquiry-aside,
+  .enquiry-form-panel,
+  .sc-section .container,
+  .cp-section .container,
+  .pd-section .container {
+    padding-inline: var(--asas-m-inline, 20px) !important;
+    padding-right: max(var(--asas-m-inline, 20px), var(--asas-m-fab-clear)) !important;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  /* Headings / copy must wrap inside the viewport */
+  main#main h1,
+  main#main h2,
+  main#main h3,
+  main#main p,
+  .sc-section h2,
+  .sc-section-head h2,
+  .sc-projects-head h2,
+  .sc-cta-copy h2,
+  .cp-section h2,
+  .about-bridge h2,
+  .contact-bridge h2,
+  .pd-cta h2,
+  .pd-design-copy h2,
+  .pd-gallery-head h2,
+  .enquiry-hero h1,
+  .contact-copy h1,
+  .contact-copy h2 {
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  html[dir='rtl'] main#main h1,
+  html[dir='rtl'] main#main h2,
+  html[dir='rtl'] main#main h3 {
+    line-height: 1.35;
+  }
+
+  /* Sticky subnavs: keep first/last tabs fully visible; clear FABs on physical right */
+  .sd-subnav-inner,
+  .sc-subnav-inner,
+  .cp-subnav-inner,
+  .pd-tabs-inner,
+  .sv-jump-tabs,
+  .pf-subnav {
+    padding-left: 16px !important;
+    padding-right: calc(16px + var(--asas-m-fab-clear)) !important;
+    scroll-padding-inline: 16px;
+  }
+
+  .sd-subnav-links,
+  .sc-subnav-links,
+  .cp-subnav-links,
+  .sv-jump-tabs,
+  .pd-tabs-inner,
+  .pf-subnav-filters {
+    gap: 6px 14px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Contact rows: stack tightly, don't stretch label↔value across the screen */
+  .contact-list > div {
+    display: grid !important;
+    gap: 6px !important;
+    justify-items: start;
+    padding-block: 14px !important;
+  }
+
+  .contact-list a,
+  .contact-list span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  /* Stats / metrics: keep number + label stacked and fully on-screen */
+  .about-stat,
+  .cp-metric,
+  .sc-expertise-item {
+    display: grid !important;
+    justify-items: start !important;
+    gap: 8px !important;
+    padding-inline: 16px !important;
+    max-width: 100%;
+  }
+
+  .about-stat strong,
+  .cp-metric dt {
+    text-align: start;
+  }
+
+  .about-stat span,
+  .cp-metric dd {
+    max-width: none !important;
+    overflow-wrap: anywhere;
+    letter-spacing: 0.02em !important;
+    text-transform: none;
+  }
+
+  .cp-metrics-grid,
+  .about-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sc-expertise-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sc-expertise-item {
+    padding-inline-end: calc(16px + var(--asas-m-fab-clear)) !important;
+  }
+
+  .sc-cta-copy,
+  .pd-cta-inner,
+  .about-bridge-inner,
+  .contact-bridge-inner,
+  .contact-cta-inner {
+    padding-inline-end: var(--asas-m-fab-clear);
+  }
+
+  .sc-cta-copy h2,
+  .about-bridge h2,
+  .contact-bridge h2,
+  .pd-cta h2 {
+    max-width: 100% !important;
+  }
+
+  .about-bridge-actions,
+  .contact-bridge-actions,
+  .contact-cta-actions {
+    width: 100%;
+  }
+
+  .about-bridge .button,
+  .contact-bridge .button,
+  .contact-cta .asas-action,
+  .pd-btn-light,
+  .pd-btn-navy {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Project cards / sector cards — keep CTA clear of WhatsApp */
+  .sc-project-card,
+  .pl-card,
+  .hp-featured,
+  .sectors-card,
+  .tm-expert-card,
+  .pd-related-card {
+    margin-inline-end: 0;
+  }
+
+  .sc-text-cta,
+  .pd-text-link,
+  .pl-card-link,
+  .atlas-link {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  /* Meta rows / service lists — clear physical-right FAB column */
+  .pd-meta > div,
+  .sv-rail a,
+  .sv-jump a,
+  .contact-list > div,
+  .sc-expertise-item,
+  .sd-capability-list li {
+    padding-right: max(12px, calc(var(--asas-m-fab-clear) - 8px)) !important;
+  }
+
+  /* Bottom page breathing room above FAB stack */
+  main#main {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .asas-footer,
+  .site-footer {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
 /* Desktop untouched — ensure this file never collapses desktop grids */
 @media (min-width: 901px) {
   /* no-op: desktop rules live in page CSS */
