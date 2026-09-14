@@ -58,12 +58,12 @@ export const clients = [
 export const clientsCopy = {
   en: {
     eyebrow: 'Trusted network',
-    title: 'Selected organizations and project partners.',
+    title: 'Selected organizations and project partners',
     intro: 'Organizations and institutions connected with ASAS projects across the UAE.',
   },
   ar: {
     eyebrow: 'شبكة موثوقة',
-    title: 'مؤسسات وشركاء مشاريع مختارون.',
+    title: 'مؤسسات وشركاء مشاريع مختارون',
     intro: 'جهات ومؤسسات مرتبطة بمشاريع أساس للاستشارات الهندسية وإدارة المشاريع عبر دولة الإمارات.',
   },
 };

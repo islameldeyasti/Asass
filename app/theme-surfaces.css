@@ -9,7 +9,8 @@
   position: fixed;
   z-index: 46;
   right: max(22px, env(safe-area-inset-right, 0px));
-  bottom: calc(22px + 56px + 12px);
+  /* Middle of right stack: above WhatsApp */
+  bottom: calc(22px + 48px + 12px);
   width: 52px;
   height: 52px;
   display: grid;
@@ -34,8 +35,8 @@
 }
 
 html[dir='rtl'] .asas-theme-fab {
-  right: auto;
-  left: max(22px, env(safe-area-inset-left, 0px));
+  right: max(22px, env(safe-area-inset-right, 0px));
+  left: auto;
 }
 
 @media (max-width: 900px) {
@@ -43,12 +44,12 @@ html[dir='rtl'] .asas-theme-fab {
     width: 48px;
     height: 48px;
     right: max(16px, env(safe-area-inset-right, 0px));
-    bottom: calc(16px + 52px + 10px);
+    bottom: calc(16px + 48px + 10px);
   }
 
   html[dir='rtl'] .asas-theme-fab {
-    right: auto;
-    left: max(16px, env(safe-area-inset-left, 0px));
+    right: max(16px, env(safe-area-inset-right, 0px));
+    left: auto;
   }
 }
 
@@ -627,8 +628,19 @@ html[data-theme='dark'] .site-footer.asas-footer .footer-social-label {
 .site-footer.asas-footer h3,
 .site-footer.asas-footer h4,
 .site-footer.asas-footer .footer-company-name,
-.site-footer.asas-footer a:not(.asas-social-btn) {
+.site-footer.asas-footer a:not(.asas-social-btn):not(.footer-action-link) {
   color: var(--ft-heading, #fff) !important;
+}
+
+.site-footer.asas-footer a.footer-action-link,
+.site-footer.asas-footer .footer-action-link {
+  color: #fff !important;
+}
+
+.site-footer.asas-footer a.footer-action-link svg,
+.site-footer.asas-footer .footer-action-link svg {
+  color: #fff !important;
+  stroke: #fff !important;
 }
 
 .site-footer.asas-footer p,

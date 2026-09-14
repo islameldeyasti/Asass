@@ -1,6 +1,7 @@
 import {NextResponse} from 'next/server';
 import {revalidatePath} from 'next/cache';
-import {getAdminSession} from '@/lib/team/auth';
+import {requireAdmin} from '@/lib/cms/auth';
+import {PERMS} from '@/lib/cms/permissions';
 import {createTeamMember, listTeamMembers} from '@/lib/team/store';
 
 export const runtime = 'nodejs';
@@ -13,25 +14,19 @@ function revalidateTeamPublic() {
   revalidatePath('/sitemap.xml');
 }
 
-async function requireAdmin() {
-  const ok = await getAdminSession();
-  if (!ok) {
-    return NextResponse.json({error: 'Unauthorized'}, {status: 401});
-  }
-  return null;
-}
-
 export async function GET() {
-  const denied = await requireAdmin();
-  if (denied) return denied;
-  const members = await listTeamMembers({includeDrafts: true});
-  return NextResponse.json({members});
+  try {
+    await requireAdmin(PERMS.TEAM_READ);
+    const members = await listTeamMembers({includeDrafts: true});
+    return NextResponse.json({members});
+  } catch (error) {
+    return NextResponse.json({error: error.message || 'Unauthorized'}, {status: error.status || 401});
+  }
 }
 
 export async function POST(request) {
-  const denied = await requireAdmin();
-  if (denied) return denied;
   try {
+    await requireAdmin(PERMS.TEAM_WRITE);
     const body = await request.json();
     const member = await createTeamMember(body);
     revalidateTeamPublic();

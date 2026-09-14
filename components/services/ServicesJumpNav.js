@@ -43,7 +43,7 @@ export default function ServicesJumpNav({locale}) {
         </div>
         <p className="sv-jump-note">
           <span className="sv-jump-divider" aria-hidden="true" />
-          {ar ? 'خدمات شاملة. أثر دائم.' : 'Comprehensive services. Lasting impact.'}
+          {ar ? 'خدمات شاملة، أثر دائم' : 'Comprehensive services, lasting impact'}
         </p>
       </div>
     </nav>

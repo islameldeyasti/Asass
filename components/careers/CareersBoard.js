@@ -15,10 +15,12 @@ function NextArrow({ar}) {
   return <ArrowRight size={15} className={ar ? 'reverse-arrow' : ''} />;
 }
 
-export default function CareersBoard({locale}) {
+export default function CareersBoard({locale, jobs: jobsProp}) {
   const ar = locale === 'ar';
   const [filter, setFilter] = useState('all');
-  const openJobs = getOpenJobs();
+  const openJobs = Array.isArray(jobsProp)
+    ? jobsProp.filter((job) => job.status === 'open' || job.status == null)
+    : getOpenJobs();
 
   const filtered = useMemo(() => {
     if (filter === 'all') return openJobs;

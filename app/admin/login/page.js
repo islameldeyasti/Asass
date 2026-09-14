@@ -1,10 +1,9 @@
 'use client';
 
-import {useRouter} from 'next/navigation';
 import {useState} from 'react';
 
 export default function AdminLoginPage() {
-  const router = useRouter();
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,31 +16,56 @@ export default function AdminLoginPage() {
       const res = await fetch('/api/admin/auth', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({password}),
+        body: JSON.stringify({email, password}),
+        credentials: 'same-origin',
       });
+      const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
         throw new Error(data.error || 'Sign-in failed');
       }
-      router.replace('/admin/team');
-      router.refresh();
+      window.location.assign('/admin/dashboard');
+      return;
     } catch (err) {
       setError(err.message || 'Sign-in failed');
-    } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="adm-login">
-      <form className="adm-card" onSubmit={onSubmit}>
-        <h1>ASAS Admin</h1>
-        <p>Sign in to manage Team content. Default local password is set via ADMIN_PASSWORD.</p>
-        {error && <p className="adm-error">{error}</p>}
-        <div className="adm-field">
+    <div className="cms-login">
+      <form className="cms-login-card" onSubmit={onSubmit}>
+        <div className="cms-login-brand">
+          <div className="cms-sidebar-logo" aria-hidden>
+            AS
+          </div>
+          <div>
+            <strong>ASAS CMS</strong>
+            <span>Content workspace</span>
+          </div>
+        </div>
+
+        <h1>Sign in</h1>
+        <p>Use your admin account to continue.</p>
+
+        {error ? <p className="cms-error">{error}</p> : null}
+
+        <div className="cms-field">
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="username"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            required
+          />
+        </div>
+        <div className="cms-field">
           <label htmlFor="password">Password</label>
           <input
             id="password"
+            name="password"
             type="password"
             autoComplete="current-password"
             value={password}
@@ -49,7 +73,7 @@ export default function AdminLoginPage() {
             required
           />
         </div>
-        <button className="adm-btn" type="submit" disabled={loading}>
+        <button className="cms-btn" type="submit" disabled={loading} style={{width: '100%'}}>
           {loading ? 'Signing in…' : 'Sign in'}
         </button>
       </form>

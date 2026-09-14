@@ -46,8 +46,9 @@ export default function TeamMemberHero({member, locale}) {
               alt={local.name}
               fill
               priority
-              sizes="(max-width:900px) 100vw, 46vw"
-              style={{objectPosition: member.profile_image_focal || '50% 28%'}}
+              quality={92}
+              sizes="(max-width:900px) 100vw, 48vw"
+              style={{objectFit: 'cover', objectPosition: member.profile_image_focal || '50% 28%'}}
             />
           ) : (
             <div className="tm-card-fallback tm-profile-fallback" aria-hidden="true">

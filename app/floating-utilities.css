@@ -150,6 +150,37 @@ html[data-theme='dark'] .site-footer.asas-footer .footer-grid a.asas-social-btn-
   top: 58%;
   transform: translateY(-50%);
   pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--asas-float-ease),
+    visibility var(--asas-float-ease),
+    transform var(--asas-float-ease);
+}
+
+/* Home hero: hide until user scrolls into the second section */
+html.asas-home-chrome .asas-float-social.is-hero-hidden,
+.asas-float-social.is-hero-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-50%) translateX(-8px);
+}
+
+.asas-float-social.is-past-hero {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%);
+}
+
+/* Inside pages: pin under chrome, above the hero (not mid-page) */
+.asas-float-social.is-internal {
+  top: calc(var(--asas-chrome-h, var(--ph-chrome, 138px)) + 14px);
+  transform: none;
+}
+
+.asas-float-social.is-internal.is-past-hero {
+  transform: none;
 }
 
 .asas-float-social .asas-social-list--float {
@@ -232,16 +263,16 @@ html[dir='rtl'] .asas-social-tooltip {
   inset-inline-end: calc(100% + 10px);
 }
 
-/* ---------- Scroll to top (RIGHT stack) ---------- */
+/* ---------- Scroll to top (RIGHT stack — top of column) ---------- */
 .asas-scroll-top {
   position: fixed;
   z-index: calc(var(--asas-float-z) + 1);
   right: max(var(--asas-float-x), env(safe-area-inset-right, 0px));
   left: auto;
-  /* Above WhatsApp: y + size + gap */
+  /* Top of stack: above Theme + WhatsApp */
   bottom: calc(
-    max(var(--asas-float-y), env(safe-area-inset-bottom, 0px)) + var(--asas-float-size) +
-      var(--asas-float-gap)
+    max(var(--asas-float-y), env(safe-area-inset-bottom, 0px)) +
+      (var(--asas-float-size) + var(--asas-float-gap)) * 2
   );
   width: var(--asas-float-size);
   height: var(--asas-float-size);
@@ -301,7 +332,7 @@ html[data-theme='dark'] .asas-scroll-top:hover {
   border-color: #a02315;
 }
 
-/* ---------- Right float stack: WhatsApp + Theme FAB (utility = RIGHT always) ---------- */
+/* ---------- Right float stack (top → bottom): Scroll → Theme → WhatsApp ---------- */
 .whatsapp {
   position: fixed !important;
   z-index: calc(var(--asas-float-z) + 2) !important;
@@ -323,10 +354,10 @@ html[data-theme='dark'] .asas-scroll-top:hover {
 .asas-theme-fab {
   right: max(var(--asas-float-x), env(safe-area-inset-right, 0px)) !important;
   left: auto !important;
-  /* Above scroll-to-top: y + 2*(size+gap) */
+  /* Middle of stack: above WhatsApp, below scroll-to-top */
   bottom: calc(
-    max(var(--asas-float-y), env(safe-area-inset-bottom, 0px)) +
-      (var(--asas-float-size) + var(--asas-float-gap)) * 2
+    max(var(--asas-float-y), env(safe-area-inset-bottom, 0px)) + var(--asas-float-size) +
+      var(--asas-float-gap)
   ) !important;
   width: var(--asas-float-size);
   height: var(--asas-float-size);
@@ -349,6 +380,10 @@ html[dir='rtl'] .asas-scroll-top {
 
   .asas-float-social {
     top: 62%;
+  }
+
+  .asas-float-social.is-internal {
+    top: calc(var(--asas-chrome-h, var(--ph-chrome, 120px)) + 10px);
   }
 }
 

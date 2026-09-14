@@ -1,0 +1,13 @@
+[
+  {
+    "id": "usr_85c1830783bbcab3",
+    "email": "admin@asasengg.ae",
+    "name": "ASAS Super Admin",
+    "role": "super_admin",
+    "passwordHash": "$2b$10$1k.JitbWTJsWuh8B68oT5ewhRK8VPSPeMsdX6QoVHEX9IDiUogzsS",
+    "active": true,
+    "createdAt": "2026-09-12T07:27:18.828Z",
+    "updatedAt": "2026-09-13T07:16:08.262Z",
+    "lastLoginAt": "2026-09-13T07:16:08.259Z"
+  }
+]

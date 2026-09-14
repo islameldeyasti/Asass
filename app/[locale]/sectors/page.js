@@ -3,10 +3,14 @@ import Image from 'next/image';
 import {ArrowRight, Building2, Factory, GraduationCap, Hotel, Landmark, Route, Trees} from 'lucide-react';
 import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
-import {sectors} from '@/data/sectors';
-import {projects} from '@/data/projects';
+import {sectors as sectorsSeed} from '@/data/sectors';
+import {projects as projectsSeed} from '@/data/projects';
 import {company} from '@/data/company';
-import {getSectorImage, roleImages} from '@/data/image-manifest';
+import {getSectorImage, roleImages, ctaBandImages} from '@/data/image-manifest';
+import {getPublicProjects, getPublicSectors} from '@/lib/cms/public-data';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
+
+export const dynamic = 'force-dynamic';
 
 const sectorIcons = {
   'towers-high-rise': Landmark,
@@ -22,13 +26,13 @@ function NextArrow({ar}) {
   return <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />;
 }
 
-function projectCountFor(sector) {
+function projectCountFor(sector, projects) {
   const categories = sector.relatedCategories || [sector.projectCategory];
   return projects.filter((project) => categories.includes(project.category)).length;
 }
 
-function SectorMedia({slug, className, indexLabel, sizes}) {
-  const {src, imagePosition} = getSectorImage(slug);
+function SectorMedia({slug, image, className, indexLabel, sizes}) {
+  const {src, imagePosition} = getSectorImage(slug, image);
   return (
     <div className={`${className}${src ? '' : ` ${className}--tone`}`} aria-hidden="true">
       {src ? (
@@ -45,22 +49,25 @@ function SectorMedia({slug, className, indexLabel, sizes}) {
   );
 }
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  return {
-    title: locale === 'ar' ? 'قطاعات أساس للاستشارات الهندسية وإدارة المشاريع' : 'Project Sectors | ASAS',
-    description: locale === 'ar'
-      ? 'قطاعات مدعومة بخدمات أساس للاستشارات الهندسية وإدارة المشاريع وخبرتها الواردة في الملف التعريفي.'
-      : 'Project sectors supported by ASAS capabilities and portfolio experience.',
-  };
-}
+export const generateMetadata = staticPageMetadata({
+  path: 'sectors',
+  titleEn: 'Project Sectors',
+  titleAr: 'قطاعات أساس للاستشارات الهندسية وإدارة المشاريع',
+  descriptionEn: 'Project sectors supported by ASAS capabilities and portfolio experience.',
+  descriptionAr:
+    'قطاعات مدعومة بخدمات أساس للاستشارات الهندسية وإدارة المشاريع وخبرتها الواردة في الملف التعريفي.',
+});
+
 
 export default async function Sectors({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const featured = sectors[0];
-  const rest = sectors.slice(1);
-  const featuredCount = projectCountFor(featured);
+  const [sectors, projects] = await Promise.all([getPublicSectors(), getPublicProjects()]);
+  const sectorList = sectors?.length ? sectors : sectorsSeed;
+  const projectList = projects?.length ? projects : projectsSeed;
+  const featured = sectorList[0];
+  const rest = sectorList.slice(1);
+  const featuredCount = projectCountFor(featured, projectList);
 
   return (
     <div className="sectors-index">
@@ -78,8 +85,8 @@ export default async function Sectors({params}) {
           <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'القطاعات' : 'Sectors'}</span>
           <h1>
             {ar
-              ? 'قطاعات مدعومة بخبرة هندسية ومشاريع فعلية.'
-              : 'Sectors supported by engineering capability and project experience.'}
+              ? 'قطاعات مدعومة بخبرة هندسية ومشاريع فعلية'
+              : 'Sectors supported by engineering capability and project experience'}
           </h1>
           <p>
             {ar
@@ -87,7 +94,7 @@ export default async function Sectors({params}) {
               : 'ASAS work covers towers, buildings, industrial facilities, infrastructure, schools, villas and interior design.'}
           </p>
           <div className="sectors-hero-meta">
-            <span>{sectors.length} {ar ? 'قطاعات' : 'sectors'}</span>
+            <span>{sectorList.length} {ar ? 'قطاعات' : 'sectors'}</span>
             <span>{ar ? company.cityAr : company.city} · {company.year}</span>
             <Link href={`/${locale}/projects`}>{ar ? 'عرض المشاريع' : 'View projects'}</Link>
           </div>
@@ -98,7 +105,7 @@ export default async function Sectors({params}) {
         <Container>
           <header className="sectors-body-head">
             <p className="atlas-kicker">{ar ? 'خبرة القطاعات' : 'Sector experience'}</p>
-            <h2>{ar ? 'خبرة القطاعات، مترابطة.' : 'Sector experience, connected.'}</h2>
+            <h2>{ar ? 'خبرة القطاعات، مترابطة' : 'Sector experience, connected'}</h2>
             <p>
               {ar
                 ? 'كل قطاع يرتبط بتخصصات التصميم والتنفيذ داخل المكتب — من العمارة والإنشاءات إلى الكهروميكانيكية والإشراف.'
@@ -109,6 +116,7 @@ export default async function Sectors({params}) {
           <Link className="sectors-featured hp-card" href={`/${locale}/sectors/${featured.slug}`}>
             <SectorMedia
               slug={featured.slug}
+              image={featured.image || featured.cover}
               className="sectors-featured-media"
               indexLabel="01"
               sizes="(max-width: 900px) 100vw, 55vw"
@@ -130,7 +138,7 @@ export default async function Sectors({params}) {
           <div className="sectors-card-grid">
             {rest.map((sector, index) => {
               const Icon = sectorIcons[sector.slug] || Building2;
-              const count = projectCountFor(sector);
+              const count = projectCountFor(sector, projectList);
               return (
                 <Link
                   className="sectors-card hp-card"
@@ -139,6 +147,7 @@ export default async function Sectors({params}) {
                 >
                   <SectorMedia
                     slug={sector.slug}
+                    image={sector.image || sector.cover}
                     className="sectors-card-media"
                     indexLabel={String(index + 2).padStart(2, '0')}
                     sizes="(max-width: 700px) 100vw, 33vw"
@@ -171,6 +180,15 @@ export default async function Sectors({params}) {
       </section>
 
       <section className="sectors-cta asas-cta-band">
+        <div className="sectors-cta-media" aria-hidden="true">
+          <Image
+            src={ctaBandImages.sectors}
+            alt=""
+            fill
+            sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: '50% 40%'}}
+          />
+        </div>
         <div className="sectors-cta-veil" aria-hidden="true" />
         <Container className="sectors-cta-inner">
           <div className="sectors-cta-copy">

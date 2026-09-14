@@ -7,13 +7,19 @@ import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {
   categoryLabel,
   formatPostDate,
-  getPostBySlug,
-  getPosts,
-  getRelatedPosts,
 } from '@/data/blog';
+import {
+  getPublicBlogPostBySlug,
+  getPublicBlogPosts,
+  getPublicRelatedBlogPosts,
+} from '@/lib/cms/public-data';
+import {buildRouteMetadata} from '@/lib/cms/seo/build-metadata';
+
+export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
-  return getPosts().flatMap((post) => [
+  const posts = await getPublicBlogPosts();
+  return posts.flatMap((post) => [
     {locale: 'en', slug: post.slug},
     {locale: 'ar', slug: post.slug},
   ]);
@@ -21,26 +27,29 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({params}) {
   const {locale, slug} = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPublicBlogPostBySlug(slug);
   if (!post) return {title: 'Blog'};
-  return {
-    title: locale === 'ar' ? `${post.titleAr} | مدونة أساس` : `${post.title} | ASAS Blog`,
-    description: locale === 'ar' ? post.excerptAr : post.excerpt,
-    openGraph: {
-      title: locale === 'ar' ? post.titleAr : post.title,
-      description: locale === 'ar' ? post.excerptAr : post.excerpt,
-      images: post.cover ? [{url: post.cover}] : undefined,
-    },
-  };
+  return buildRouteMetadata({
+    locale,
+    path: `blog/${slug}`,
+    type: 'blog',
+    fallbackTitle: post.title,
+    fallbackTitleAr: post.titleAr,
+    fallbackDescription: post.excerpt || post.description || '',
+    fallbackDescriptionAr: post.excerptAr || post.descriptionAr || '',
+    fallbackImage: post.cover || post.image || '',
+    schemaType: 'Article',
+  });
 }
+
 
 export default async function BlogPostPage({params}) {
   const {locale, slug} = await params;
   const ar = locale === 'ar';
-  const post = getPostBySlug(slug);
+  const post = await getPublicBlogPostBySlug(slug);
   if (!post) notFound();
 
-  const related = getRelatedPosts(slug, {limit: 3});
+  const related = await getPublicRelatedBlogPosts(slug, {limit: 3});
   const paragraphs = ar ? post.bodyAr : post.body;
 
   return (

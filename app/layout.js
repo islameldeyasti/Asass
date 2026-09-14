@@ -56,35 +56,41 @@ import './arabic-rtl.css';
 import {ThemeProvider} from '@/components/theme/ThemeProvider';
 import {THEME_BOOT_SCRIPT} from '@/lib/theme';
 import {LOCALE_HTML_BOOT} from '@/lib/i18n/locale-boot';
+import {getCmsRootMetadata} from '@/lib/cms/site-metadata';
+import {getBranding} from '@/lib/cms/branding-server';
+import Script from 'next/script';
 
-export const metadata = {
-  title: 'ASAS Engineering & Project Management Consultancy',
-  description:
-    'Abu Dhabi consultancy for architectural, structural, civil and electromechanical design, quantities and cost, project management and construction supervision.',
-  icons: {
-    icon: [
-      {url: '/favicon.ico', sizes: 'any'},
-      {url: '/brand/asas-mark-header.png', type: 'image/png'},
-    ],
-    apple: '/brand/asas-mark-header.png',
-  },
-  openGraph: {
-    title: 'ASAS Engineering & Project Management Consultancy',
-    description: 'Engineering consultancy founded in Abu Dhabi in 2009.',
-    type: 'website',
-    images: [{url: '/brand/asas-mark-header.png'}],
-  },
-};
+export async function generateMetadata() {
+  const [cms, branding] = await Promise.all([getCmsRootMetadata(), getBranding()]);
+  const favicon = branding.favicon || '/favicon.ico';
+  const apple = branding.appleTouchIcon || '/brand/asas-mark-header.png';
+  return {
+    ...cms,
+    icons: {
+      icon: [
+        {url: favicon, sizes: 'any'},
+        {url: apple, type: 'image/png'},
+      ],
+      apple,
+    },
+  };
+}
 
 export default function RootLayout({children}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{__html: THEME_BOOT_SCRIPT}} />
-        {/* Reads /en|/ar from path before paint — pairs with locale layout sync */}
-        <script dangerouslySetInnerHTML={{__html: LOCALE_HTML_BOOT}} />
-      </head>
       <body>
+        <Script
+          id="asas-theme-boot"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{__html: THEME_BOOT_SCRIPT}}
+        />
+        {/* Reads /en|/ar from path before paint — pairs with locale layout sync */}
+        <Script
+          id="asas-locale-boot"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{__html: LOCALE_HTML_BOOT}}
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

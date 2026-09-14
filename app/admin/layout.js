@@ -1,4 +1,7 @@
+import '../fonts-arabic.css';
 import './admin.css';
+import '../corporate-print.css';
+import {ToastProvider} from '@/components/admin/ui/ToastProvider';
 
 export const metadata = {
   title: 'ASAS Admin',
@@ -6,5 +9,9 @@ export const metadata = {
 };
 
 export default function AdminLayout({children}) {
-  return <div className="adm-body">{children}</div>;
+  return (
+    <ToastProvider>
+      <div className="adm-body cms-body">{children}</div>
+    </ToastProvider>
+  );
 }

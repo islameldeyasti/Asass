@@ -165,20 +165,21 @@ function FilterList({categories, counts, active, onSelect, ar}) {
   );
 }
 
-export default function ProjectsExplorer({locale}) {
+export default function ProjectsExplorer({locale, items}) {
   const ar = locale === 'ar';
+  const list = items?.length ? items : projects;
   const reduced = useReducedMotion();
   const [active, setActive] = useState('all');
   const [page, setPage] = useState(1);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const counts = useMemo(() => {
-    const next = {all: projects.length};
-    for (const project of projects) next[project.category] = (next[project.category] || 0) + 1;
+    const next = {all: list.length};
+    for (const project of list) next[project.category] = (next[project.category] || 0) + 1;
     return next;
-  }, []);
+  }, [list]);
 
-  const filtered = active === 'all' ? projects : projects.filter((project) => project.category === active);
+  const filtered = active === 'all' ? list : list.filter((project) => project.category === active);
   const showFeatured = active === 'all' || active === 'towers';
   const featured = showFeatured
     ? filtered.find((project) => project.slug === featuredSlug) || filtered.find((project) => project.featured)

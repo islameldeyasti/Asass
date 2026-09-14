@@ -6,25 +6,26 @@ import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {
   categoryLabel,
   formatPostDate,
-  getPosts,
 } from '@/data/blog';
 import {roleImages} from '@/data/image-manifest';
+import {getPublicBlogPosts} from '@/lib/cms/public-data';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  return {
-    title: locale === 'ar' ? 'مدونة أساس | رؤى هندسية' : 'ASAS Blog | Engineering Insights',
-    description:
-      locale === 'ar'
-        ? 'مقالات ورؤى من أساس للاستشارات الهندسية وإدارة المشاريع حول التصميم والتنسيق والتنفيذ في أبوظبي.'
-        : 'Articles and insights from ASAS Engineering on design, coordination and delivery in Abu Dhabi.',
-  };
-}
+export const dynamic = 'force-dynamic';
+
+export const generateMetadata = staticPageMetadata({
+  path: 'blog',
+  titleEn: 'ASAS Blog',
+  titleAr: 'مدونة أساس',
+  descriptionEn: 'Articles and insights from ASAS Engineering on design, coordination and delivery in Abu Dhabi.',
+  descriptionAr: 'مقالات ورؤى من أساس للاستشارات الهندسية وإدارة المشاريع حول التصميم والتنسيق والتنفيذ في أبوظبي.',
+});
+
 
 export default async function BlogPage({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const posts = getPosts();
+  const posts = await getPublicBlogPosts();
 
   return (
     <div className="blog-page">

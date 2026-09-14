@@ -26,12 +26,38 @@ const companyLinkKeys = [
   ['Project Enquiry', 'project-enquiry'],
 ];
 
-export default function Footer({locale}) {
+function normalizeFooterLinks(companyLinks) {
+  if (!Array.isArray(companyLinks) || !companyLinks.length) return companyLinkKeys;
+  // Legacy [key, path] tuples
+  if (Array.isArray(companyLinks[0])) return companyLinks;
+  return [...companyLinks]
+    .filter((link) => link && !link.hidden && link.path)
+    .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
+    .map((link) => ({
+      path: link.path,
+      labelEn: link.labelEn || link.label || link.path,
+      labelAr: link.labelAr || link.labelEn || link.path,
+    }));
+}
+
+export default function Footer({
+  locale,
+  companyData,
+  featuredServices,
+  companyLinks,
+  branding,
+  footerCta,
+}) {
   const ar = locale === 'ar';
   const reduced = useReducedMotion();
   const rootRef = useRef(null);
   const inView = useInView(rootRef, {once: true, amount: 0.18});
-  const footerServices = services.filter((service) => service.featured).slice(0, 7);
+  const companyInfo = companyData || company;
+  const footerServices =
+    Array.isArray(featuredServices) && featuredServices.length
+      ? featuredServices
+      : services.filter((service) => service.featured).slice(0, 7);
+  const links = normalizeFooterLinks(companyLinks);
   const show = inView || reduced;
 
   const reveal = (delay = 0) =>
@@ -50,14 +76,18 @@ export default function Footer({locale}) {
           <motion.div className="footer-brand" {...reveal(0)}>
             <Link className="footer-logo" href={`/${locale}`} aria-label={t('homeAria', locale)}>
               <ThemeLogo
-                appearance="auto"
-                alt={ar ? company.nameAr : company.name}
+                appearance="dark"
+                alt={ar ? companyInfo.nameAr : companyInfo.name}
                 width={62}
                 height={62}
+                lightSrc={branding?.footerLogo || branding?.lightLogo}
+                darkSrc={branding?.footerLogo || branding?.darkLogo}
               />
             </Link>
-            <p className="footer-company-name">{ar ? company.nameAr : company.name}</p>
-            <p className="footer-description">{ar ? company.descriptionAr : company.description}</p>
+            <p className="footer-company-name">{ar ? companyInfo.nameAr : companyInfo.name}</p>
+            <p className="footer-description">
+              {ar ? companyInfo.descriptionAr : companyInfo.description}
+            </p>
             <div className="footer-credentials">
               <span>{t('established2009', locale)}</span>
               <span>{t('abuDhabiUae', locale)}</span>
@@ -90,11 +120,20 @@ export default function Footer({locale}) {
             {...reveal(0.16)}
           >
             <h3>{t('company', locale)}</h3>
-            {companyLinkKeys.map(([key, path]) => (
-              <Link href={`/${locale}/${path}`} key={path}>
-                {tNav(key, locale)}
-              </Link>
-            ))}
+            {links.map((link) => {
+              const isTuple = Array.isArray(link);
+              const path = isTuple ? link[1] : link.path;
+              const label = isTuple
+                ? tNav(link[0], locale)
+                : ar
+                  ? link.labelAr || link.labelEn
+                  : link.labelEn;
+              return (
+                <Link href={`/${locale}/${path}`} key={path}>
+                  {label}
+                </Link>
+              );
+            })}
           </motion.nav>
 
           <motion.div className="footer-column footer-contact" {...reveal(0.24)}>
@@ -103,15 +142,15 @@ export default function Footer({locale}) {
               <MapPin aria-hidden="true" strokeWidth={1.75} />
               <div>
                 <strong>{t('abuDhabiOffice', locale)}</strong>
-                <p>{ar ? company.addressAr : company.address}</p>
+                <p>{ar ? companyInfo.addressAr : companyInfo.address}</p>
               </div>
             </div>
             <div className="footer-contact-item">
               <Phone aria-hidden="true" strokeWidth={1.75} />
               <div>
                 <strong>{t('callUs', locale)}</strong>
-                <a href={`tel:${company.phone.replace(/\s/g, '')}`} dir="ltr">
-                  {company.phone}
+                <a href={`tel:${String(companyInfo.phone || '').replace(/\s/g, '')}`} dir="ltr">
+                  {companyInfo.phone}
                 </a>
               </div>
             </div>
@@ -119,7 +158,12 @@ export default function Footer({locale}) {
               <MessageCircle aria-hidden="true" strokeWidth={1.75} />
               <div>
                 <strong>{t('whatsapp', locale)}</strong>
-                <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noreferrer" dir="ltr">
+                <a
+                  href={`https://wa.me/${companyInfo.whatsapp}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  dir="ltr"
+                >
                   {t('messageAsas', locale)}
                 </a>
               </div>
@@ -128,8 +172,8 @@ export default function Footer({locale}) {
               <Mail aria-hidden="true" strokeWidth={1.75} />
               <div>
                 <strong>{t('email', locale)}</strong>
-                <a href={`mailto:${company.email}`} dir="ltr">
-                  {company.email}
+                <a href={`mailto:${companyInfo.email}`} dir="ltr">
+                  {companyInfo.email}
                 </a>
               </div>
             </div>
@@ -138,12 +182,19 @@ export default function Footer({locale}) {
 
         <motion.div className="footer-action" {...reveal(0.32)}>
           <div className="footer-action-copy">
-            <span className="footer-action-eyebrow">{t('readyToStart', locale)}</span>
-            <strong className="footer-action-title">{t('startNextProject', locale)}</strong>
-            <p>{t('shareRequirements', locale)}</p>
+            <span className="footer-action-eyebrow">
+              {(ar ? footerCta?.eyebrowAr : footerCta?.eyebrowEn) || t('readyToStart', locale)}
+            </span>
+            <strong className="footer-action-title">
+              {(ar ? footerCta?.titleAr : footerCta?.titleEn) || t('startNextProject', locale)}
+            </strong>
+            <p>{(ar ? footerCta?.bodyAr : footerCta?.bodyEn) || t('shareRequirements', locale)}</p>
           </div>
-          <Link className="footer-action-link" href={`/${locale}/project-enquiry`}>
-            {t('projectEnquiry', locale)}
+          <Link
+            className="footer-action-link"
+            href={`/${locale}/${footerCta?.href || 'project-enquiry'}`}
+          >
+            {(ar ? footerCta?.buttonAr : footerCta?.buttonEn) || t('projectEnquiry', locale)}
             <ArrowRight size={18} className={ar ? 'reverse-arrow' : ''} />
           </Link>
         </motion.div>
@@ -151,7 +202,7 @@ export default function Footer({locale}) {
         <motion.div className="footnote" {...reveal(0.4)}>
           <span>
             © {new Date().getFullYear()}{' '}
-            {ar ? company.nameAr : 'ASAS Engineering & Project Management Consultancy'}
+            {ar ? companyInfo.nameAr : companyInfo.name || 'ASAS Engineering & Project Management Consultancy'}
           </span>
           <span className="footer-legal">
             <Link href={`/${locale}/privacy`}>{t('privacy', locale)}</Link>

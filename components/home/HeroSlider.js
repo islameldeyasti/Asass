@@ -219,6 +219,7 @@ export default function HeroSlider({locale, slides}) {
     <section
       ref={rootRef}
       className="asas-ph"
+      data-asas-hero
       aria-roledescription="carousel"
       aria-label={ar ? 'مشاريع مختارة' : 'Featured projects'}
       onPointerMove={onPointerMove}

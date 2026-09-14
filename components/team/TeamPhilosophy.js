@@ -15,15 +15,15 @@ export default function TeamPhilosophy({locale, image}) {
           <h2>
             {ar ? (
               <>
-                تخصصات متعددة.
+                تخصصات متعددة
                 <br />
-                فريق منسّق واحد.
+                فريق منسّق واحد
               </>
             ) : (
               <>
-                Different disciplines.
+                Different disciplines
                 <br />
-                One coordinated team.
+                One coordinated team
               </>
             )}
           </h2>

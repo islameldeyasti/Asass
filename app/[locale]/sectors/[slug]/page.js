@@ -15,9 +15,9 @@ import {
   Target,
   CheckCircle2,
 } from 'lucide-react';
-import {sectors} from '@/data/sectors';
-import {projects, projectCategories} from '@/data/projects';
-import {services} from '@/data/services';
+import {sectors as sectorsSeed} from '@/data/sectors';
+import {projects as projectsSeed, projectCategories} from '@/data/projects';
+import {services as servicesSeed} from '@/data/services';
 import {company, strengths} from '@/data/company';
 import {projectLifecycle} from '@/data/method';
 import {getSectorImage, roleImages} from '@/data/image-manifest';
@@ -25,6 +25,15 @@ import SectorDetailSubnav from '@/components/sectors/SectorDetailSubnav';
 import SectorDetailEnquiryCta from '@/components/sectors/SectorDetailEnquiryCta';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import ProjectVisualFallback from '@/components/ProjectVisualFallback';
+import {
+  getPublicProjects,
+  getPublicSectorBySlug,
+  getPublicSectors,
+  getPublicServices,
+} from '@/lib/cms/public-data';
+import {buildRouteMetadata} from '@/lib/cms/seo/build-metadata';
+
+export const dynamic = 'force-dynamic';
 
 const PROFILE_HREF = '/downloads/asas-company-profile.pdf';
 
@@ -55,7 +64,7 @@ function splitTitle(title) {
   return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
 }
 
-function relatedServicesForSector(slug) {
+function relatedServicesForSector(slug, services) {
   return services.filter((service) => {
     if (slug.includes('interior')) return service.slug === 'interior-design';
     if (slug.includes('infrastructure')) {
@@ -74,23 +83,40 @@ function projectImage(project) {
   return project?.visual?.src || project?.image || null;
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const sectors = await getPublicSectors();
   return sectors.flatMap((sector) => ['en', 'ar'].map((locale) => ({locale, slug: sector.slug})));
 }
 
 export async function generateMetadata({params}) {
   const {locale, slug} = await params;
-  const sector = sectors.find((item) => item.slug === slug);
-  if (!sector) return {};
-  return {
-    title: `${locale === 'ar' ? sector.titleAr : sector.title} | ASAS`,
-    description: locale === 'ar' ? sector.descriptionAr : sector.description,
-  };
+  const sector = await getPublicSectorBySlug(slug);
+  if (!sector) return {title: 'Sector'};
+  return buildRouteMetadata({
+    locale,
+    path: `sectors/${slug}`,
+    type: 'sector',
+    fallbackTitle: sector.title,
+    fallbackTitleAr: sector.titleAr,
+    fallbackDescription: sector.description || '',
+    fallbackDescriptionAr: sector.descriptionAr || '',
+    fallbackImage: sector.cover || sector.image || '',
+    schemaType: '',
+  });
 }
+
 
 export default async function Sector({params}) {
   const {locale, slug} = await params;
-  const sector = sectors.find((item) => item.slug === slug);
+  const [sectors, projects, services] = await Promise.all([
+    getPublicSectors(),
+    getPublicProjects(),
+    getPublicServices(),
+  ]);
+  const sectorList = sectors?.length ? sectors : sectorsSeed;
+  const projectList = projects?.length ? projects : projectsSeed;
+  const serviceList = services?.length ? services : servicesSeed;
+  const sector = sectorList.find((item) => item.slug === slug);
   if (!sector) notFound();
 
   const ar = locale === 'ar';
@@ -105,17 +131,17 @@ export default async function Sector({params}) {
       : categoryMeta.title
     : null;
 
-  const relatedProjects = projects
+  const relatedProjects = projectList
     .filter((project) => categories.includes(project.category))
     .slice(0, 3);
-  const relatedServices = relatedServicesForSector(slug);
-  const relatedSectors = sectors.filter((item) => item.slug !== slug).slice(0, 4);
+  const relatedServices = relatedServicesForSector(slug, serviceList);
+  const relatedSectors = sectorList.filter((item) => item.slug !== slug).slice(0, 4);
   const approachSteps = projectLifecycle.slice(0, 4);
   const heroFeatures = strengths.slice(0, 3);
 
-  const {src: heroSrc, imagePosition: heroPosition} = getSectorImage(slug);
+  const {src: heroSrc, imagePosition: heroPosition} = getSectorImage(slug, sector?.image || sector?.cover);
   const heroImage = heroSrc || roleImages.SECTOR_BUILDINGS;
-  const overviewImage = getSectorImage(slug);
+  const overviewImage = getSectorImage(slug, sector?.image || sector?.cover);
   const ctaImage = null;
 
   return (
@@ -210,13 +236,13 @@ export default async function Sector({params}) {
                 <>
                   هندسة لغدٍ
                   <br />
-                  أفضل.
+                  أفضل
                 </>
               ) : (
                 <>
                   Engineering a
                   <br />
-                  better tomorrow.
+                  better tomorrow
                 </>
               )}
             </h2>
@@ -278,13 +304,13 @@ export default async function Sector({params}) {
                   <>
                     تخصصات داعمة
                     <br />
-                    لهذا القطاع.
+                    لهذا القطاع
                   </>
                 ) : (
                   <>
                     Supporting disciplines
                     <br />
-                    for this sector.
+                    for this sector
                   </>
                 )}
               </h2>
@@ -328,13 +354,13 @@ export default async function Sector({params}) {
                     <>
                       خبرتنا في هذا
                       <br />
-                      القطاع عملياً.
+                      القطاع عملياً
                     </>
                   ) : (
                     <>
                       Our sector
                       <br />
-                      expertise in action.
+                      expertise in action
                     </>
                   )}
                 </h2>
@@ -399,13 +425,13 @@ export default async function Sector({params}) {
                 <>
                   من الفكرة إلى
                   <br />
-                  التسليم.
+                  التسليم
                 </>
               ) : (
                 <>
                   From concept to
                   <br />
-                  delivery.
+                  delivery
                 </>
               )}
             </h2>
@@ -439,20 +465,20 @@ export default async function Sector({params}) {
                   <>
                     استكشف بيئات
                     <br />
-                    مشاريع متصلة.
+                    مشاريع متصلة
                   </>
                 ) : (
                   <>
                     Explore connected
                     <br />
-                    project environments.
+                    project environments
                   </>
                 )}
               </h2>
             </header>
             <div className="sc-related-grid">
               {relatedSectors.map((item) => {
-                const relatedImage = getSectorImage(item.slug);
+                const relatedImage = getSectorImage(item.slug, item.image || item.cover);
                 return (
                   <Link
                     key={item.slug}

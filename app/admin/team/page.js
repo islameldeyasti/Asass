@@ -1,32 +1,27 @@
 import Link from 'next/link';
-import {redirect} from 'next/navigation';
-import {getAdminSession} from '@/lib/team/auth';
+import {requireAdminPage} from '@/lib/cms/guard';
+import {PERMS} from '@/lib/cms/permissions';
 import {listTeamMembers} from '@/lib/team/store';
-import AdminSignOut from '@/components/admin/AdminSignOut';
+import AdminShell from '@/components/admin/AdminShell';
 
 export const dynamic = 'force-dynamic';
 
 export default async function AdminTeamListPage() {
-  const ok = await getAdminSession();
-  if (!ok) redirect('/admin/login');
-
+  const {user, navItems} = await requireAdminPage(PERMS.TEAM_READ);
   const members = await listTeamMembers({includeDrafts: true});
 
   return (
-    <div className="adm-shell">
-      <div className="adm-top">
-        <div className="adm-brand">
-          <strong>ASAS Admin</strong>
-          <span>Team members · {members.length} total</span>
-        </div>
-        <div className="adm-actions">
-          <Link className="adm-btn" href="/admin/team/new">
-            Add team member
-          </Link>
-          <AdminSignOut />
-        </div>
-      </div>
-
+    <AdminShell
+      user={user}
+      navItems={navItems}
+      title="Team"
+      subtitle={`${members.length} profiles`}
+      actions={
+        <Link className="adm-btn" href="/admin/team/new">
+          Add team member
+        </Link>
+      }
+    >
       <div className="adm-card">
         {members.length === 0 ? (
           <div className="adm-empty">
@@ -84,6 +79,6 @@ export default async function AdminTeamListPage() {
           </table>
         )}
       </div>
-    </div>
+    </AdminShell>
   );
 }

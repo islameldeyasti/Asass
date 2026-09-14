@@ -65,11 +65,15 @@ html[data-theme='dark'] .asas-project-fallback {
   letter-spacing: 0.04em;
 }
 
-/* Photo-free CTA band — replaces recycled CTA photography */
+/* CTA band — photo background + navy veil (page-level media/veil can refine) */
 .asas-cta-band {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(115deg, #070463 0%, #0b1570 55%, #05034a 100%);
+  isolation: isolate;
+  background-color: #070463;
+  background-image: url('/assets/asas/generated/ready/ENQUIRY-HERO-001.webp');
+  background-size: cover;
+  background-position: 50% 40%;
   color: #fff;
 }
 
@@ -78,7 +82,23 @@ html[data-theme='dark'] .asas-project-fallback {
   position: absolute;
   inset: 0 auto 0 0;
   width: 3px;
+  z-index: 4;
   background: var(--asas-orange, #a02315);
+}
+
+/* Soft navy wash so copy stays readable when no page veil is present */
+.asas-cta-band:not(:has([class*='cta-veil'])):after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(7, 4, 99, 0.88) 0%,
+    rgba(7, 4, 99, 0.7) 55%,
+    rgba(7, 4, 99, 0.52) 100%
+  );
 }
 
 .asas-cta-band-photo {

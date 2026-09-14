@@ -49,8 +49,9 @@ export default function TeamCard({member, locale, index = 0}) {
               src={portrait}
               alt={local.name}
               fill
-              sizes="(max-width: 900px) 50vw, 25vw"
-              style={{objectPosition: member.profile_image_focal || '50% 28%'}}
+              quality={90}
+              sizes="(max-width: 900px) 80vw, 28vw"
+              style={{objectFit: 'cover', objectPosition: member.profile_image_focal || '50% 28%'}}
               loading={index < 4 ? 'eager' : 'lazy'}
             />
           ) : (

@@ -3,7 +3,7 @@ import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 /**
  * Global floating utilities (left socials + right scroll-to-top).
- * WhatsApp + ThemeFab remain separate siblings; CSS stacks the right column.
+ * Right stack (top → bottom): Scroll → ThemeFab → WhatsApp.
  */
 export default function FloatingUtilities({locale = 'en'}) {
   return (

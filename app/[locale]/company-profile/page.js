@@ -25,6 +25,7 @@ import CapabilitiesExplorer from '@/components/company-profile/CapabilitiesExplo
 import CompanyProfileEnquiryCta from '@/components/company-profile/CompanyProfileEnquiryCta';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import ProjectVisualFallback from '@/components/ProjectVisualFallback';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 const PROFILE_HREF = '/downloads/asas-company-profile.pdf';
 const PROFILE_SIZE = '7.7 MB';
@@ -37,16 +38,15 @@ function projectImage(project) {
   return project?.visual?.src || project?.image || null;
 }
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  const ar = locale === 'ar';
-  return {
-    title: ar
-      ? 'الملف التعريفي | أساس للاستشارات الهندسية وإدارة المشاريع'
-      : 'ASAS Engineering & Project Management Consultancy | Company Profile',
-    description: ar ? company.descriptionAr : company.description,
-  };
-}
+export const generateMetadata = staticPageMetadata({
+  path: 'company-profile',
+  titleEn: 'Company Profile',
+  titleAr: 'الملف التعريفي',
+  descriptionEn: company.description,
+  descriptionAr: company.descriptionAr,
+  schemaType: 'AboutPage',
+});
+
 
 export default async function CompanyProfile({params}) {
   const {locale} = await params;
@@ -63,7 +63,7 @@ export default async function CompanyProfile({params}) {
     services: services
       .filter((service) => service.group === id)
       .map((service) => {
-        const {src, imagePosition} = getServiceImage(service.slug);
+        const {src, imagePosition} = getServiceImage(service.slug, service.image || service.cover);
         return {
           ...service,
           image: src,
@@ -107,13 +107,13 @@ export default async function CompanyProfile({params}) {
                 <>
                   <span>هندسة</span>
                   <span>لغدٍ</span>
-                  <span>أفضل.</span>
+                  <span>أفضل</span>
                 </>
               ) : (
                 <>
                   <span>Engineering</span>
                   <span>a Better</span>
-                  <span>Tomorrow.</span>
+                  <span>Tomorrow</span>
                 </>
               )}
             </h1>
@@ -161,7 +161,7 @@ export default async function CompanyProfile({params}) {
                   <br />
                   مبنية حول
                   <br />
-                  مشاريع حقيقية.
+                  مشاريع حقيقية
                 </>
               ) : (
                 <>
@@ -169,7 +169,7 @@ export default async function CompanyProfile({params}) {
                   <br />
                   built around
                   <br />
-                  real projects.
+                  real projects
                 </>
               )}
             </h2>
@@ -212,13 +212,13 @@ export default async function CompanyProfile({params}) {
                 <>
                   من أبوظبي،
                   <br />
-                  منذ {company.year}.
+                  منذ {company.year}
                 </>
               ) : (
                 <>
                   From Abu Dhabi,
                   <br />
-                  since {company.year}.
+                  since {company.year}
                 </>
               )}
             </h2>
@@ -252,13 +252,13 @@ export default async function CompanyProfile({params}) {
                 <>
                   تخصصات متكاملة
                   <br />
-                  من مكتب واحد.
+                  من مكتب واحد
                 </>
               ) : (
                 <>
                   Integrated disciplines
                   <br />
-                  from one office.
+                  from one office
                 </>
               )}
             </h2>
@@ -279,20 +279,20 @@ export default async function CompanyProfile({params}) {
                 <>
                   مشاريع عبر
                   <br />
-                  بيئات متعددة.
+                  بيئات متعددة
                 </>
               ) : (
                 <>
                   Projects across
                   <br />
-                  multiple environments.
+                  multiple environments
                 </>
               )}
             </h2>
           </header>
           <div className="cp-sector-grid">
             {sectors.map((sector) => {
-              const sectorImage = getSectorImage(sector.slug);
+              const sectorImage = getSectorImage(sector.slug, sector.image || sector.cover);
               return (
                 <Link
                   key={sector.slug}
@@ -340,13 +340,13 @@ export default async function CompanyProfile({params}) {
                 <>
                   من الموجز إلى
                   <br />
-                  التسليم.
+                  التسليم
                 </>
               ) : (
                 <>
                   From brief to
                   <br />
-                  handover.
+                  handover
                 </>
               )}
             </h2>
@@ -377,13 +377,13 @@ export default async function CompanyProfile({params}) {
                     <>
                       أعمال من محفظة
                       <br />
-                      أساس للاستشارات الهندسية وإدارة المشاريع الرسمية.
+                      أساس للاستشارات الهندسية وإدارة المشاريع الرسمية
                     </>
                   ) : (
                     <>
                       Work from the
                       <br />
-                      official ASAS portfolio.
+                      official ASAS portfolio
                     </>
                   )}
                 </h2>
@@ -495,7 +495,7 @@ export default async function CompanyProfile({params}) {
                   <br />
                   ومشاريع عبر
                   <br />
-                  الإمارات.
+                  الإمارات
                 </>
               ) : (
                 <>
@@ -503,7 +503,7 @@ export default async function CompanyProfile({params}) {
                   <br />
                   work across
                   <br />
-                  the Emirates.
+                  the Emirates
                 </>
               )}
             </h2>
@@ -542,13 +542,13 @@ export default async function CompanyProfile({params}) {
                   <>
                     قيمة مهنية
                     <br />
-                    في كل مشروع.
+                    في كل مشروع
                   </>
                 ) : (
                   <>
                     Professional value
                     <br />
-                    on every project.
+                    on every project
                   </>
                 )}
               </h2>

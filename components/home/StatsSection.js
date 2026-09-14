@@ -23,17 +23,7 @@ export default function StatsSection({locale, stats}) {
             {ar ? 'بالأرقام' : 'By the numbers'}
           </p>
           <h2>
-            {ar ? (
-              <>
-                سجل عمل واضح
-                <span className="title-dot">.</span>
-              </>
-            ) : (
-              <>
-                A clear record of delivery
-                <span className="title-dot">.</span>
-              </>
-            )}
+            {ar ? 'سجل عمل واضح' : 'A clear record of delivery'}
           </h2>
         </div>
 

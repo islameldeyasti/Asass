@@ -316,7 +316,7 @@ html[dir='rtl'] .site-footer.asas-footer .footer-column a:hover {
   border: 0 !important;
   border-radius: 6px !important;
   background: var(--ft-orange) !important;
-  color: var(--ft-action-text, #fff) !important;
+  color: #fff !important;
   font: 700 15px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif !important;
   text-decoration: none;
   white-space: nowrap;
@@ -329,14 +329,15 @@ html[dir='rtl'] .site-footer.asas-footer .footer-column a:hover {
 
 .site-footer.asas-footer .footer-action-link svg {
   transition: transform 0.25s ease;
-  color: inherit;
+  color: #fff !important;
+  stroke: #fff !important;
 }
 
 .site-footer.asas-footer .footer-action-link:hover,
 .site-footer.asas-footer .footer-action > a:hover {
   background: var(--ft-orange-hover) !important;
   border-color: transparent !important;
-  color: var(--ft-action-text, #fff) !important;
+  color: #fff !important;
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 }

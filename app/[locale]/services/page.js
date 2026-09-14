@@ -21,11 +21,15 @@ import {
   Trees,
   TrendingUp,
 } from 'lucide-react';
-import {services, serviceGroups} from '@/data/services';
+import {services as servicesSeed, serviceGroups} from '@/data/services';
 import {getServiceImage, roleImages, ctaBandImages} from '@/data/image-manifest';
 import {company, stats} from '@/data/company';
 import ServicesJumpNav from '@/components/services/ServicesJumpNav';
 import ServicesEnquiryCta from '@/components/services/ServicesEnquiryCta';
+import {getPublicServices} from '@/lib/cms/public-data';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
+
+export const dynamic = 'force-dynamic';
 
 const serviceIcons = {
   'architectural-design': Building2,
@@ -95,16 +99,16 @@ const approachSteps = [
 
 const sectionTitles = {
   design: {
-    en: 'Integrated engineering solutions from concept to reality.',
-    ar: 'حلول هندسية متكاملة من الفكرة إلى الواقع.',
+    en: 'Integrated engineering solutions from concept to reality',
+    ar: 'حلول هندسية متكاملة من الفكرة إلى الواقع',
   },
   delivery: {
-    en: 'An integrated cycle from design and tender through construction, supervision and handover.',
-    ar: 'دورة متكاملة من التصميم والعطاء إلى التنفيذ والإشراف والتسليم.',
+    en: 'An integrated cycle from design and tender through construction, supervision and handover',
+    ar: 'دورة متكاملة من التصميم والعطاء إلى التنفيذ والإشراف والتسليم',
   },
   planning: {
-    en: 'Specialist studies for smarter, more sustainable communities.',
-    ar: 'دراسات متخصصة لمجتمعات أذكى وأكثر استدامة.',
+    en: 'Specialist studies for smarter, more sustainable communities',
+    ar: 'دراسات متخصصة لمجتمعات أذكى وأكثر استدامة',
   },
 };
 
@@ -137,7 +141,7 @@ function ServiceIcon({slug}) {
 }
 
 function ServiceCard({service, locale, ar}) {
-  const {src, imagePosition} = getServiceImage(service.slug);
+  const {src, imagePosition} = getServiceImage(service.slug, service.image || service.cover);
   return (
     <Link className="sv-card" href={`/${locale}/services/${service.slug}`}>
       <div className="sv-card-media">
@@ -170,7 +174,7 @@ function ServiceCard({service, locale, ar}) {
 }
 
 function DeliveryCard({service, locale, ar}) {
-  const {src, imagePosition} = getServiceImage(service.slug);
+  const {src, imagePosition} = getServiceImage(service.slug, service.image || service.cover);
   return (
     <Link className="sv-delivery-card" href={`/${locale}/services/${service.slug}`}>
       <div
@@ -200,26 +204,26 @@ function DeliveryCard({service, locale, ar}) {
   );
 }
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  return {
-    title: locale === 'ar' ? 'خدمات أساس للاستشارات الهندسية وإدارة المشاريع الهندسية | أبوظبي' : 'Engineering Services | ASAS Abu Dhabi',
-    description: locale === 'ar'
-      ? 'خدمات أساس للاستشارات الهندسية وإدارة المشاريع في التصميم والهندسة وإدارة المشاريع والإشراف والتخطيط.'
-      : 'ASAS services across design, engineering, project management, supervision and planning.',
-  };
-}
+export const generateMetadata = staticPageMetadata({
+  path: 'services',
+  titleEn: 'Engineering Services',
+  titleAr: 'خدمات أساس للاستشارات الهندسية وإدارة المشاريع الهندسية',
+  descriptionEn: 'ASAS services across design, engineering, project management, supervision and planning.',
+  descriptionAr: 'خدمات أساس للاستشارات الهندسية وإدارة المشاريع في التصميم والهندسة وإدارة المشاريع والإشراف والتخطيط.',
+});
+
 
 export default async function Services({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
+  const services = (await getPublicServices()) || servicesSeed;
   const designServices = services.filter((service) => service.group === 'design');
   const deliveryServices = services.filter((service) => service.group === 'delivery');
   const planningServices = services.filter((service) => service.group === 'planning');
   const planningFeatured =
     planningServices.find((service) => service.slug === 'infrastructure-urban-planning') || planningServices[0];
   const planningRest = planningServices.filter((service) => service.slug !== planningFeatured.slug);
-  const planningFeaturedImage = getServiceImage(planningFeatured.slug);
+  const planningFeaturedImage = getServiceImage(planningFeatured.slug, planningFeatured.image || planningFeatured.cover);
   const metrics = stats;
   const ctaImage = {src: ctaBandImages.services, crop: '50% 40%'};
 
@@ -253,13 +257,13 @@ export default async function Services({params}) {
                 <>
                   <span>دراسات وتصاميم</span>
                   <span>وإشراف عبر</span>
-                  <span>تخصصات المشروع.</span>
+                  <span>تخصصات المشروع</span>
                 </>
               ) : (
                 <>
                   <span>Studies, design and</span>
                   <span>supervision across</span>
-                  <span>project disciplines.</span>
+                  <span>project disciplines</span>
                 </>
               )}
             </h1>
@@ -423,13 +427,13 @@ export default async function Services({params}) {
                 <>
                   من الرؤية إلى
                   <br />
-                  أثر واقعي.
+                  أثر واقعي
                 </>
               ) : (
                 <>
                   From vision to
                   <br />
-                  real-world impact.
+                  real-world impact
                 </>
               )}
             </h2>

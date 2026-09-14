@@ -2,16 +2,12 @@
 
 import Image from 'next/image';
 import {useTheme} from './ThemeProvider';
-
-/** Light mode: color mark. Dark mode / navy brand surfaces: white mark. */
-const LIGHT_SRC = '/brand/asas-logo-light.png';
-const DARK_SRC = '/brand/asas-logo-dark.png';
+import {DEFAULT_BRANDING} from '@/lib/cms/branding';
 
 /**
  * Theme-aware ASAS mark for header/footer.
+ * Prefers CMS branding URLs when provided.
  * @param {'auto'|'light'|'dark'} appearance
- *   auto = follow theme; dark = white mark (navy brand bands / footer);
- *   light = color mark
  */
 export default function ThemeLogo({
   width = 62,
@@ -20,11 +16,15 @@ export default function ThemeLogo({
   className = '',
   alt = 'ASAS',
   appearance = 'auto',
+  lightSrc,
+  darkSrc,
 }) {
   const {resolved} = useTheme();
   const mode =
     appearance === 'auto' ? resolved : appearance === 'dark' ? 'dark' : 'light';
-  const src = mode === 'dark' ? DARK_SRC : LIGHT_SRC;
+  const light = lightSrc || DEFAULT_BRANDING.lightLogo;
+  const dark = darkSrc || DEFAULT_BRANDING.darkLogo;
+  const src = mode === 'dark' ? dark : light;
 
   return (
     <Image

@@ -90,13 +90,13 @@ export const testimonials = [
 export const testimonialsCopy = {
   en: {
     eyebrow: 'Client feedback',
-    title: 'Trusted by clients across disciplines.',
+    title: 'Trusted by clients across disciplines',
     intro:
       'Selected reflections from developers, contractors and advisors who have worked with ASAS on design, coordination and site delivery.',
   },
   ar: {
     eyebrow: 'آراء العملاء',
-    title: 'ثقة العملاء عبر التخصصات.',
+    title: 'ثقة العملاء عبر التخصصات',
     intro:
       'مختارات من آراء مطورين ومقاولين ومستشارين عملوا مع أساس للاستشارات الهندسية وإدارة المشاريع في التصميم والتنسيق والتنفيذ الموقعي.',
   },

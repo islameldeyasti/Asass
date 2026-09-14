@@ -1,0 +1,675 @@
+/* ASAS Digital Business Cards — 10 template art directions */
+
+.dcard-wrap {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.dcard-wrap.is-compact {
+  max-width: 360px;
+}
+
+.dcard {
+  --dcard-navy: #070463;
+  --dcard-rust: #a02315;
+  --dcard-ink: #14141f;
+  --dcard-muted: #5b6472;
+  --dcard-stone: #f4f1ec;
+  --dcard-charcoal: #16161d;
+  --dcard-shell-bg: #ffffff;
+  --dcard-head-bg: #070463;
+  --dcard-head-text: #ffffff;
+  --dcard-cover-image: none;
+  --dcard-cover-focal: 50% 40%;
+  --dcard-overlay: transparent;
+  --dcard-local-cover: var(--dcard-cover-image);
+  --dcard-local-focal: var(--dcard-cover-focal);
+  --dcard-pad-x: 20px;
+  --dcard-pad-y: 20px;
+  --dcard-head-pad-y: 18px;
+  --dcard-gap: 8px;
+  --dcard-section: 12px;
+  --dcard-actions-mt: 18px;
+  --dcard-radius: 22px;
+  --dcard-name-size: 1.45rem;
+  --dcard-title-size: 0.95rem;
+  --dcard-bio-size: 0.88rem;
+  width: 100%;
+  color: var(--dcard-ink);
+  font-family: inherit;
+}
+
+.dcard-shell {
+  border-radius: var(--dcard-radius);
+  overflow: hidden;
+  background: var(--dcard-shell-bg);
+  box-shadow: 0 22px 56px rgba(7, 4, 99, 0.16);
+}
+
+.dcard.is-dark .dcard-shell,
+.dcard--executive-dark .dcard-shell {
+  background: var(--dcard-shell-bg, var(--dcard-charcoal));
+  color: var(--dcard-ink, #f5f5f7);
+}
+
+.dcard-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.dcard-photo {
+  object-fit: cover;
+  background: #e8e9f2;
+  flex-shrink: 0;
+}
+
+.dcard-photo.is-rounded { border-radius: 18px; }
+.dcard-photo.is-circle { border-radius: 999px; }
+.dcard-photo.is-square { border-radius: 8px; }
+.dcard-photo.is-editorial { border-radius: 4px; width: 100%; height: auto; aspect-ratio: 4/5; }
+
+.dcard-photo.is-md { width: 88px; height: 88px; }
+.dcard-photo.is-lg { width: 112px; height: 112px; }
+.dcard-photo.is-xl { width: 128px; height: 128px; border: 4px solid #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+.dcard-photo.is-hero { width: 100%; height: auto; }
+
+.dcard-photo--empty {
+  display: grid;
+  place-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--dcard-navy);
+  background: linear-gradient(145deg, #eceef8, #dfe3f4);
+}
+
+.dcard-name {
+  margin: 0 0 4px;
+  font-size: var(--dcard-name-size);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.dcard-title {
+  margin: 0;
+  font-size: var(--dcard-title-size);
+  font-weight: 600;
+  color: var(--dcard-rust);
+}
+
+.dcard.is-dark .dcard-title,
+.dcard--executive-dark .dcard-title {
+  color: #f0a090;
+}
+
+.dcard-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--dcard-gap) * 0.75) calc(var(--dcard-gap) * 1.75);
+  margin: var(--dcard-section) 0 0;
+  font-size: 0.78rem;
+  color: var(--dcard-muted);
+  justify-content: inherit;
+}
+
+.dcard-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dcard-bio {
+  margin: var(--dcard-section) 0 0;
+  font-size: var(--dcard-bio-size);
+  line-height: 1.55;
+  color: inherit;
+  opacity: 0.88;
+}
+
+.dcard-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--dcard-gap) * 0.75);
+  margin: var(--dcard-section) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dcard-tags li {
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(7, 4, 99, 0.06);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.dcard.is-dark .dcard-tags li,
+.dcard--executive-dark .dcard-tags li {
+  background: rgba(255,255,255,0.1);
+}
+
+.dcard-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--dcard-gap);
+  margin-top: var(--dcard-actions-mt);
+}
+
+.dcard-actions.is-compact {
+  grid-template-columns: 1fr;
+}
+
+.dcard-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dcard-action--solid {
+  background: var(--dcard-navy);
+  color: #fff;
+}
+
+.dcard-action--ghost {
+  background: transparent;
+  border-color: rgba(7, 4, 99, 0.14);
+  color: inherit;
+}
+
+.dcard.is-dark .dcard-action--ghost,
+.dcard--executive-dark .dcard-action--ghost {
+  border-color: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.dcard.is-dark .dcard-action--solid,
+.dcard--executive-dark .dcard-action--solid {
+  background: var(--dcard-rust);
+}
+
+.dcard-qr {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--dcard-gap) * 1.25);
+  margin-top: var(--dcard-section);
+  font-size: 0.75rem;
+  color: var(--dcard-muted);
+}
+
+.dcard-qr img {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  background: #fff;
+  padding: 4px;
+}
+
+.dcard-head {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--dcard-gap) * 1.5);
+  padding: var(--dcard-head-pad-y) var(--dcard-pad-x);
+}
+
+.dcard-head--brand {
+  background-color: var(--dcard-head-bg, var(--dcard-navy));
+  background-image:
+    linear-gradient(var(--dcard-overlay), var(--dcard-overlay)),
+    var(--dcard-local-cover, var(--dcard-cover-image));
+  background-size: cover;
+  background-position: var(--dcard-local-focal, var(--dcard-cover-focal));
+  background-repeat: no-repeat;
+  color: var(--dcard-head-text, #fff);
+}
+
+.dcard-head--brand strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.dcard-head--brand span {
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+.dcard-head--ruled {
+  border-bottom: 2px solid var(--dcard-navy);
+  position: relative;
+}
+
+.dcard-head--ruled::after {
+  content: '';
+  position: absolute;
+  left: var(--dcard-pad-x);
+  right: 40%;
+  bottom: -2px;
+  height: 2px;
+  background: var(--dcard-rust);
+}
+
+.dcard-body {
+  padding: var(--dcard-pad-y) var(--dcard-pad-x);
+}
+
+.dcard-body--overlap {
+  padding-top: 0;
+  margin-top: calc(var(--dcard-pad-y) * -1.4);
+  position: relative;
+}
+
+.dcard-body--overlap-circle {
+  margin-top: calc(var(--dcard-pad-y) * -3.2);
+  position: relative;
+  text-align: center;
+}
+
+.dcard-body--centered {
+  text-align: center;
+}
+
+.dcard-body--centered .dcard-actions {
+  text-align: initial;
+}
+
+.dcard-body--airy {
+  padding: calc(var(--dcard-pad-y) * 1.8) calc(var(--dcard-pad-x) * 1.4) calc(var(--dcard-pad-y) * 2);
+}
+
+.dcard-body--row {
+  display: flex;
+  gap: calc(var(--dcard-gap) * 2);
+  align-items: flex-start;
+  padding: var(--dcard-pad-y) var(--dcard-pad-x);
+}
+
+.dcard-portrait-overlap {
+  margin-bottom: var(--dcard-section);
+}
+
+.dcard-body--centered .dcard-portrait-overlap {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dcard-cover {
+  min-height: 140px;
+  background-color: var(--dcard-head-bg, var(--dcard-navy));
+  background-image:
+    linear-gradient(var(--dcard-overlay), var(--dcard-overlay)),
+    var(--dcard-local-cover, var(--dcard-cover-image));
+  background-size: cover;
+  background-position: var(--dcard-local-focal, var(--dcard-cover-focal));
+  background-repeat: no-repeat;
+  color: var(--dcard-head-text, #fff);
+}
+
+.dcard-cover--tall { min-height: 168px; }
+
+.dcard-cover--shell {
+  min-height: 112px;
+}
+
+.dcard-cover--brand {
+  min-height: 150px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.dcard-cover:not(.has-image):not(.dcard-cover--stone) {
+  background-image:
+    linear-gradient(var(--dcard-overlay), var(--dcard-overlay)),
+    var(--dcard-cover-image),
+    linear-gradient(135deg, var(--dcard-navy), color-mix(in srgb, var(--dcard-navy) 70%, #1a1870) 55%, var(--dcard-rust));
+}
+
+.dcard-cover--stone {
+  min-height: 132px;
+  background-color: var(--dcard-stone);
+}
+
+.dcard-cover--stone:not(.has-image) {
+  background-image:
+    linear-gradient(var(--dcard-overlay), var(--dcard-overlay)),
+    var(--dcard-cover-image),
+    linear-gradient(160deg, #efe8dc, #d9d0c2);
+}
+
+.dcard-dark-band {
+  padding: 16px 20px;
+  border-bottom: 3px solid var(--dcard-rust);
+  background-color: var(--dcard-head-bg, var(--dcard-charcoal));
+  background-image:
+    linear-gradient(var(--dcard-overlay), var(--dcard-overlay)),
+    var(--dcard-local-cover, var(--dcard-cover-image));
+  background-size: cover;
+  background-position: var(--dcard-local-focal, var(--dcard-cover-focal));
+  background-repeat: no-repeat;
+}
+
+.dcard-split {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  min-height: 420px;
+}
+
+.dcard-split-media {
+  background-color: var(--dcard-head-bg, var(--dcard-navy));
+  background-image:
+    linear-gradient(var(--dcard-overlay), var(--dcard-overlay)),
+    var(--dcard-local-cover, var(--dcard-cover-image));
+  background-size: cover;
+  background-position: var(--dcard-local-focal, var(--dcard-cover-focal));
+  background-repeat: no-repeat;
+  padding: calc(var(--dcard-pad-y) * 0.8) var(--dcard-pad-x);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: calc(var(--dcard-gap) * 2);
+  color: var(--dcard-head-text, #fff);
+}
+
+.dcard-split-copy {
+  padding: var(--dcard-pad-y) calc(var(--dcard-pad-x) * 0.8) calc(var(--dcard-pad-y) * 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.dcard-grid-frame {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(7,4,99,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(7,4,99,0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.55;
+}
+
+.dcard--architectural-grid .dcard-shell {
+  position: relative;
+}
+
+.dcard-body--grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 16px;
+  align-items: start;
+}
+
+.dcard-body--grid .dcard-bio,
+.dcard-body--grid .dcard-tags,
+.dcard-body--grid .dcard-actions,
+.dcard-body--grid .dcard-qr {
+  grid-column: 1 / -1;
+}
+
+.dcard-eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dcard-muted);
+  margin-bottom: 6px;
+}
+
+.dcard-id {
+  padding: var(--dcard-pad-y) var(--dcard-pad-x);
+}
+
+.dcard-id-main {
+  display: flex;
+  gap: calc(var(--dcard-gap) * 1.75);
+  align-items: flex-start;
+  margin-bottom: var(--dcard-section);
+}
+
+.dcard-company-line {
+  margin: 6px 0 0;
+  font-size: 0.75rem;
+  color: var(--dcard-muted);
+}
+
+.dcard-id-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(7,4,99,0.1);
+}
+
+.dcard-id-rows li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(7,4,99,0.08);
+  font-size: 0.8rem;
+}
+
+.dcard-id-rows span { color: var(--dcard-muted); }
+.dcard-id-foot {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.dcard-id-foot .dcard-actions {
+  flex: 1;
+  margin-top: 0;
+}
+
+.dcard-editorial {
+  display: grid;
+  gap: 0;
+}
+
+.dcard-editorial-copy {
+  padding: var(--dcard-pad-y) var(--dcard-pad-x) calc(var(--dcard-pad-y) * 1.1);
+}
+
+.dcard-editorial .dcard-name {
+  font-size: calc(var(--dcard-name-size) * 1.17);
+}
+
+.dcard-body--uae {
+  background: linear-gradient(180deg, #fff 0%, var(--dcard-stone) 100%);
+}
+
+.dcard--uae-premium .dcard-title {
+  color: var(--dcard-navy);
+}
+
+.dcard--unavailable .dcard-shell {
+  padding: 8px;
+}
+
+.dcard-share-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--dcard-muted);
+  margin: 10px 0 0;
+}
+
+.dcard-page {
+  min-height: 100dvh;
+  background: #eceff4;
+  padding: 24px 16px 48px;
+}
+
+.dcard-page-inner {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.dcard-lang {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.dcard-lang a,
+.dcard-lang button {
+  border: 0;
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 650;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--dcard-navy);
+}
+
+@media (max-width: 520px) {
+  .dcard-split {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .dcard-split-media {
+    min-height: 180px;
+  }
+  .dcard-actions {
+    grid-template-columns: 1fr;
+  }
+  .dcard-name { font-size: calc(var(--dcard-name-size) * 0.93); }
+}
+
+/* Theme presets (safe, curated) */
+.theme-warm-neutral .dcard-shell { background: var(--dcard-shell-bg, #faf7f2); }
+.theme-high-contrast .dcard-action--solid { background: #000; }
+.theme-asas-dark .dcard-shell { background: var(--dcard-shell-bg, #12121a); color: var(--dcard-ink, #f5f5f7); }
+.theme-asas-dark .dcard-title { color: #f0a090; }
+.theme-asas-dark .dcard-action--ghost { border-color: rgba(255,255,255,0.22); color: #fff; }
+
+/* Print business cards */
+.bc-sheet {
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.bc-face {
+  width: 85mm;
+  height: 55mm;
+  max-width: 100%;
+  aspect-ratio: 85 / 55;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(7,4,99,0.12);
+  box-shadow: 0 8px 24px rgba(7,4,99,0.08);
+}
+
+.bc-face.is-dark {
+  background: #16161d;
+  color: #fff;
+}
+
+.bc-safe {
+  height: 100%;
+  padding: 4.5mm;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bc-front-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.bc-logo { width: 28px; height: 28px; object-fit: contain; }
+.bc-photo {
+  width: 18mm;
+  height: 18mm;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.bc-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.bc-role {
+  display: block;
+  font-size: 9px;
+  color: #a02315;
+  margin-top: 2px;
+}
+
+.bc-face.is-dark .bc-role { color: #f0a090; }
+
+.bc-company {
+  display: block;
+  font-size: 8px;
+  opacity: 0.7;
+  margin-top: 3px;
+}
+
+.bc-contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 8px;
+  line-height: 1.45;
+}
+
+.bc-back-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.bc-back-cta {
+  margin: 8px 0 4px;
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.bc-back-web {
+  margin: 0;
+  font-size: 8px;
+  opacity: 0.7;
+}
+
+.bc-qr {
+  width: 22mm;
+  height: 22mm;
+  background: #fff;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.bc-qr--empty {
+  display: grid;
+  place-items: center;
+  color: #999;
+  font-size: 10px;
+}
+
+@media print {
+  .dcard-page { background: #fff; padding: 0; }
+  .no-print { display: none !important; }
+  .bc-print-root { break-inside: avoid; }
+}

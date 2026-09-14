@@ -225,11 +225,13 @@ html[dir='rtl'] .asas-nav a:after {
 
 .asas-nav-submenu {
   position: absolute;
-  top: calc(100% + 6px);
+  /* Flush to trigger — no dead hover gap (was calc(100% + 6px)) */
+  top: 100%;
   inset-inline-start: 50%;
   z-index: 40;
   min-width: 210px;
-  padding: 10px;
+  /* Top padding stays hoverable so the mouse can travel into the menu */
+  padding: 12px 10px 10px;
   border: 1px solid rgba(7, 4, 99, 0.1);
   border-radius: 10px;
   background: #fff;
@@ -237,7 +239,7 @@ html[dir='rtl'] .asas-nav a:after {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(-50%) translateY(6px);
+  transform: translateX(-50%) translateY(4px);
   transition:
     opacity 0.2s ease,
     transform 0.2s ease,
@@ -245,7 +247,7 @@ html[dir='rtl'] .asas-nav a:after {
 }
 
 html[dir='rtl'] .asas-nav-submenu {
-  transform: translateX(50%) translateY(6px);
+  transform: translateX(50%) translateY(4px);
 }
 
 .asas-nav-item--drop.is-open .asas-nav-submenu,

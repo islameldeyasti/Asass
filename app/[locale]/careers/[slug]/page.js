@@ -6,12 +6,18 @@ import ApplicationForm from '@/components/careers/ApplicationForm';
 import {
   employmentTypes,
   getDepartment,
-  getJobBySlug,
-  getOpenJobs,
-  jobs,
 } from '@/data/careers';
+import {
+  getPublicJobBySlug,
+  getPublicJobs,
+  getPublicOpenJobs,
+} from '@/lib/cms/public-data';
+import {buildRouteMetadata} from '@/lib/cms/seo/build-metadata';
 
-export function generateStaticParams() {
+export const dynamic = 'force-dynamic';
+
+export async function generateStaticParams() {
+  const jobs = await getPublicJobs();
   return ['en', 'ar'].flatMap((locale) =>
     jobs
       .filter((job) => job.status === 'open')
@@ -21,26 +27,34 @@ export function generateStaticParams() {
 
 export async function generateMetadata({params}) {
   const {locale, slug} = await params;
-  const job = getJobBySlug(slug);
+  const job = await getPublicJobBySlug(slug);
   if (!job || job.status !== 'open') {
     return {title: locale === 'ar' ? 'وظيفة غير متاحة' : 'Role unavailable'};
   }
-  return {
-    title: locale === 'ar' ? `${job.titleAr} | وظائف أساس للاستشارات الهندسية وإدارة المشاريع` : `${job.title} | ASAS Careers`,
-    description: locale === 'ar' ? job.summaryAr : job.summary,
-  };
+  return buildRouteMetadata({
+    locale,
+    path: `careers/${slug}`,
+    type: 'job',
+    fallbackTitle: job.title,
+    fallbackTitleAr: job.titleAr,
+    fallbackDescription: job.summary || job.description || '',
+    fallbackDescriptionAr: job.summaryAr || job.descriptionAr || '',
+    fallbackImage: job.cover || job.image || '',
+    schemaType: 'JobPosting',
+  });
 }
+
 
 export default async function CareerDetail({params}) {
   const {locale, slug} = await params;
   const ar = locale === 'ar';
-  const job = getJobBySlug(slug);
+  const job = await getPublicJobBySlug(slug);
 
   if (!job || job.status !== 'open') notFound();
 
   const dept = getDepartment(job.department);
   const type = employmentTypes[job.type];
-  const openCount = getOpenJobs().length;
+  const openCount = (await getPublicOpenJobs()).length;
 
   return (
     <div className="careers-page">

@@ -321,6 +321,10 @@ export const ctaBandImages = {
   team: roleImages.TEAM_HERO,
   enquiry: roleImages.ENQUIRY_HERO,
   company: roleImages.COMPANY_HERO,
+  contact: roleImages.CONTACT_HERO || roleImages.ENQUIRY_HERO,
+  sectors: roleImages.SECTORS_HERO || roleImages.ENQUIRY_HERO,
+  downloads: roleImages.DOWNLOADS_HERO || roleImages.ENQUIRY_HERO,
+  blog: roleImages.ABOUT_FEATURED || roleImages.ENQUIRY_HERO,
 };
 
 /** Company profile official-document card preview (reuse downloads editorial). */
@@ -377,8 +381,8 @@ export const sectorImagePositions = {
 };
 
 /** Canonical sector image resolver (listing, detail, service Sectors Served). */
-export function getSectorImage(slug) {
-  const src = sectorImages[slug] || null;
+export function getSectorImage(slug, overrideSrc = '') {
+  const src = overrideSrc || sectorImages[slug] || null;
   return {
     src,
     imagePosition: sectorImagePositions[slug] || 'center center',
@@ -410,8 +414,8 @@ export const serviceImagePositions = {
 };
 
 /** Canonical service image resolver (listing cards + detail heroes). */
-export function getServiceImage(slug) {
-  const src = serviceImages[slug] || null;
+export function getServiceImage(slug, overrideSrc = '') {
+  const src = overrideSrc || serviceImages[slug] || null;
   return {
     src,
     imagePosition: serviceImagePositions[slug] || 'center center',

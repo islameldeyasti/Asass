@@ -1,0 +1,21 @@
+ROUTE,SECTION,COMPONENT,IMAGE,SOURCE,SHOULD_BE_EDITABLE,ADMIN_LOCATION,MEDIA_PICKER,STATUS
+/,Hero,Homepage hero slides,slide.image,CMS homepage.heroSlides,YES,/admin/homepage,YES,COMPLETE
+/,About,About block,about.image,CMS homepage.about.image,YES,/admin/homepage,YES,COMPLETE
+/,Sectors mosaic,sectorCards,card.image,CMS homepage.sectorCards,YES,/admin/homepage,YES,COMPLETE
+/services,Listing cards,ServiceCard,service.image || manifest fallback,CMS services,YES,/admin/services,YES,COMPLETE
+/services/[slug],Hero,Service detail,service.image,CMS services,YES,/admin/services,YES,COMPLETE
+/sectors,Listing,Sector cards,sector.image,CMS sectors,YES,/admin/sectors,YES,COMPLETE
+/projects,Listing,Project cards,project.image,CMS projects,YES,/admin/projects,YES,COMPLETE
+/projects/[slug],Gallery,ProjectDetailView,project.images[],CMS projects,YES,/admin/projects,YES,COMPLETE
+/team,Cards/detail,Team,profile_image,Team CMS,YES,/admin/team,YES,COMPLETE
+/blog,Cards/detail,Blog,cover,CMS blog,YES,/admin/blog,YES,COMPLETE
+/clients,Logo strip,Clients,logo,CMS clients,YES,/admin/clients,YES,COMPLETE
+/gallery,Grid,Gallery,src,CMS gallery,YES,/admin/gallery,YES,COMPLETE
+*,Header,ThemeLogo,headerLogoLight/Dark,Settings branding,YES,/admin/settings/branding,YES,COMPLETE
+*,Footer,ThemeLogo,footerLogo,Settings branding,YES,/admin/settings/branding,YES,COMPLETE
+*,Root layout,favicon/apple,branding.favicon,Settings branding,YES,/admin/settings/branding,YES,COMPLETE
+*,OG fallback,build-metadata/schema,branding.defaultOgImage,Settings branding + SEO,YES,/admin/settings/branding + /admin/seo,YES,COMPLETE
+/card/[slug],Digital card,DigitalCardProfile logos,branding light/dark,Settings branding,YES,/admin/settings/branding,YES,COMPLETE
+*,Letterhead defaults,corporate assets,print/letterhead logos,Settings branding + studio overrides,YES,/admin/settings/branding,YES,COMPLETE
+*,UI chrome,SVG/CSS patterns,decorative,code,NO,n/a,NO,INTENTIONALLY_STATIC
+*,image-manifest fallbacks,role/sector heroes,static paths when CMS image empty,fallback only,PARTIAL — override via entity MediaPicker,/admin/services|/admin/sectors|/admin/homepage,YES,COMPLETE

@@ -4,7 +4,8 @@ import {ArrowRight, Building2, ClipboardList, FileText, FolderKanban, Layers} fr
 import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {company} from '@/data/company';
-import {companyDocumentImage, roleImages} from '@/data/image-manifest';
+import {companyDocumentImage, roleImages, ctaBandImages} from '@/data/image-manifest';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 const PROFILE_HREF = '/downloads/asas-company-profile.pdf';
 const PROFILE_SIZE = '7.7 MB';
@@ -75,13 +76,14 @@ function NextArrow({ar}) {
   return <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />;
 }
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  return {
-    title: locale === 'ar' ? 'تحميل الملف التعريفي لأساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Company Profile Download',
-    description: locale === 'ar' ? 'تحميل الملف التعريفي الرسمي لشركة أساس للاستشارات الهندسية وإدارة المشاريع.' : 'Download the official ASAS Company Profile.',
-  };
-}
+export const generateMetadata = staticPageMetadata({
+  path: 'downloads',
+  titleEn: 'ASAS Company Profile Download',
+  titleAr: 'تحميل الملف التعريفي لأساس للاستشارات الهندسية وإدارة المشاريع',
+  descriptionEn: 'Download the official ASAS Company Profile.',
+  descriptionAr: 'تحميل الملف التعريفي الرسمي لشركة أساس للاستشارات الهندسية وإدارة المشاريع.',
+});
+
 
 export default async function Downloads({params}) {
   const {locale} = await params;
@@ -101,7 +103,7 @@ export default async function Downloads({params}) {
         </div>
         <Container>
           <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'التحميلات' : 'Downloads'}</span>
-          <h1>{ar ? 'موارد أساس للاستشارات الهندسية وإدارة المشاريع الرسمية.' : 'Official ASAS resources.'}</h1>
+          <h1>{ar ? 'موارد أساس للاستشارات الهندسية وإدارة المشاريع الرسمية' : 'Official ASAS resources'}</h1>
           <p>
             {ar
               ? 'تعرّف على الشركة وقدراتها ومنهجيتها ومشاريعها المختارة عبر الملف التعريفي الرسمي.'
@@ -216,6 +218,15 @@ export default async function Downloads({params}) {
       </section>
 
       <section className="downloads-cta asas-cta-band">
+        <div className="downloads-cta-media" aria-hidden="true">
+          <Image
+            src={ctaBandImages.downloads}
+            alt=""
+            fill
+            sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: '50% 40%'}}
+          />
+        </div>
         <div className="downloads-cta-veil" aria-hidden="true" />
         <Container className="downloads-cta-inner">
           <div className="downloads-cta-copy">

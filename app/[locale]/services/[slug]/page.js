@@ -19,14 +19,22 @@ import {
   ShieldCheck,
   Target,
 } from 'lucide-react';
-import {services, serviceGroups} from '@/data/services';
-import {sectors} from '@/data/sectors';
+import {services as servicesSeed, serviceGroups} from '@/data/services';
+import {sectors as sectorsSeed} from '@/data/sectors';
 import {company} from '@/data/company';
 import {designMethod, supervisionMethod, sustainabilityProcess} from '@/data/method';
 import {getSectorImage, getServiceImage, roleImages} from '@/data/image-manifest';
 import ServiceDetailSubnav from '@/components/services/ServiceDetailSubnav';
 import ServiceDetailEnquiryCta from '@/components/services/ServiceDetailEnquiryCta';
 import {ActionButton} from '@/components/ActionButton';
+import {
+  getPublicServiceBySlug,
+  getPublicServices,
+  getPublicSectors,
+} from '@/lib/cms/public-data';
+import {buildRouteMetadata} from '@/lib/cms/seo/build-metadata';
+
+export const dynamic = 'force-dynamic';
 
 const serviceIcons = {
   'architectural-design': Building2,
@@ -82,23 +90,34 @@ function methodHeadline(text) {
   return first;
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const services = await getPublicServices();
   return services.flatMap((service) => ['en', 'ar'].map((locale) => ({locale, slug: service.slug})));
 }
 
 export async function generateMetadata({params}) {
   const {locale, slug} = await params;
-  const service = services.find((item) => item.slug === slug);
-  if (!service) return {};
-  return {
-    title: `${locale === 'ar' ? service.titleAr : service.title} | ASAS`,
-    description: locale === 'ar' ? service.descriptionAr : service.description,
-  };
+  const service = await getPublicServiceBySlug(slug);
+  if (!service) return {title: 'Service'};
+  return buildRouteMetadata({
+    locale,
+    path: `services/${slug}`,
+    type: 'service',
+    fallbackTitle: service.title,
+    fallbackTitleAr: service.titleAr,
+    fallbackDescription: service.description || '',
+    fallbackDescriptionAr: service.descriptionAr || '',
+    fallbackImage: service.cover || service.image || '',
+    schemaType: 'Service',
+  });
 }
+
 
 export default async function Service({params}) {
   const {locale, slug} = await params;
-  const service = services.find((item) => item.slug === slug);
+  const [services, sectors] = await Promise.all([getPublicServices(), getPublicSectors()]);
+  const service = services.find((item) => item.slug === slug)
+    || servicesSeed.find((item) => item.slug === slug);
   if (!service) notFound();
 
   const ar = locale === 'ar';
@@ -109,11 +128,11 @@ export default async function Service({params}) {
   const capabilities = ar ? service.capabilitiesAr : service.capabilities;
   const related = services.filter((item) => item.slug !== slug && item.group === service.group).slice(0, 3);
   const steps = methodSteps(slug);
-  const {src: heroSrc, imagePosition: heroPosition} = getServiceImage(slug);
+  const {src: heroSrc, imagePosition: heroPosition} = getServiceImage(slug, service?.image || service?.cover);
   const heroImage = heroSrc || roleImages.SERVICE_ARCHITECTURE;
-  const scopeImage = getServiceImage(slug);
+  const scopeImage = getServiceImage(slug, service?.image || service?.cover);
   const ctaImage = null;
-  const sectorTiles = sectors;
+  const sectorTiles = sectors?.length ? sectors : sectorsSeed;
   const ServiceIcon = serviceIcons[slug] || Building2;
 
   const heroFocusClass =
@@ -189,7 +208,7 @@ export default async function Service({params}) {
                     <br />
                     مع متطلبات
                     <br />
-                    المشروع.
+                    المشروع
                   </>
                 ) : (
                   <>
@@ -197,7 +216,7 @@ export default async function Service({params}) {
                     <br />
                     with project
                     <br />
-                    requirements.
+                    requirements
                   </>
                 )}
               </h2>
@@ -258,15 +277,15 @@ export default async function Service({params}) {
               <h2>
                 {ar ? (
                   <>
-                    مشاريع متنوعة.
+                    مشاريع متنوعة
                     <br />
-                    أثر دائم.
+                    أثر دائم
                   </>
                 ) : (
                   <>
-                    Diverse projects.
+                    Diverse projects
                     <br />
-                    Lasting impact.
+                    Lasting impact
                   </>
                 )}
               </h2>
@@ -279,7 +298,7 @@ export default async function Service({params}) {
 
             <div className="sd-sector-tiles">
               {sectorTiles.map((sector) => {
-                const sectorImage = getSectorImage(sector.slug);
+                const sectorImage = getSectorImage(sector.slug, sector.image || sector.cover);
                 return (
                   <Link
                     key={sector.slug}
@@ -327,7 +346,7 @@ export default async function Service({params}) {
                     <br />
                     عبر مراحل
                     <br />
-                    العمل.
+                    العمل
                   </>
                 ) : (
                   <>
@@ -335,7 +354,7 @@ export default async function Service({params}) {
                     <br />
                     review through
                     <br />
-                    the work.
+                    the work
                   </>
                 )}
               </h2>
@@ -376,7 +395,7 @@ export default async function Service({params}) {
                     <>
                       خبرات مكملة
                       <br />
-                      لحلول متكاملة.
+                      لحلول متكاملة
                     </>
                   ) : (
                     <>
@@ -384,7 +403,7 @@ export default async function Service({params}) {
                       <br />
                       expertise for
                       <br />
-                      complete solutions.
+                      complete solutions
                     </>
                   )}
                 </h2>
@@ -394,7 +413,7 @@ export default async function Service({params}) {
             <div className="sd-related-grid">
               {related.map((item) => {
                 const Icon = serviceIcons[item.slug] || ServiceIcon;
-                const relatedImage = getServiceImage(item.slug);
+                const relatedImage = getServiceImage(item.slug, item.image || item.cover);
                 return (
                   <Link
                     key={item.slug}

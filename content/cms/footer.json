@@ -1,0 +1,104 @@
+{
+  "companyLinks": [
+    {
+      "id": "about",
+      "labelEn": "About",
+      "labelAr": "من نحن",
+      "path": "about",
+      "order": 10,
+      "hidden": false
+    },
+    {
+      "id": "projects",
+      "labelEn": "Projects",
+      "labelAr": "المشاريع",
+      "path": "projects",
+      "order": 20,
+      "hidden": false
+    },
+    {
+      "id": "gallery",
+      "labelEn": "Gallery",
+      "labelAr": "المعرض",
+      "path": "gallery",
+      "order": 30,
+      "hidden": false
+    },
+    {
+      "id": "portfolio",
+      "labelEn": "Portfolio",
+      "labelAr": "الأعمال",
+      "path": "portfolio",
+      "order": 40,
+      "hidden": false
+    },
+    {
+      "id": "team",
+      "labelEn": "Team",
+      "labelAr": "الفريق",
+      "path": "team",
+      "order": 50,
+      "hidden": false
+    },
+    {
+      "id": "sectors",
+      "labelEn": "Sectors",
+      "labelAr": "القطاعات",
+      "path": "sectors",
+      "order": 60,
+      "hidden": false
+    },
+    {
+      "id": "blog",
+      "labelEn": "Blog",
+      "labelAr": "المدونة",
+      "path": "blog",
+      "order": 70,
+      "hidden": false
+    },
+    {
+      "id": "careers",
+      "labelEn": "Careers",
+      "labelAr": "الوظائف",
+      "path": "careers",
+      "order": 80,
+      "hidden": false
+    },
+    {
+      "id": "downloads",
+      "labelEn": "Downloads",
+      "labelAr": "التنزيلات",
+      "path": "downloads",
+      "order": 90,
+      "hidden": false
+    },
+    {
+      "id": "contact",
+      "labelEn": "Contact",
+      "labelAr": "تواصل",
+      "path": "contact",
+      "order": 100,
+      "hidden": false
+    },
+    {
+      "id": "project-enquiry",
+      "labelEn": "Project Enquiry",
+      "labelAr": "استفسار مشروع",
+      "path": "project-enquiry",
+      "order": 110,
+      "hidden": false
+    }
+  ],
+  "cta": {
+    "eyebrowEn": "",
+    "eyebrowAr": "",
+    "titleEn": "",
+    "titleAr": "",
+    "bodyEn": "",
+    "bodyAr": "",
+    "buttonEn": "",
+    "buttonAr": "",
+    "href": "project-enquiry"
+  },
+  "updatedAt": "2026-09-12T22:11:49.511Z"
+}

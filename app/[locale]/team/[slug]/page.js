@@ -12,27 +12,25 @@ import TeamProjects from '@/components/team/TeamProjects';
 import RelatedTeam from '@/components/team/RelatedTeam';
 import TeamEnquiryCta from '@/components/team/TeamEnquiryCta';
 import {ctaBandImages} from '@/data/image-manifest';
+import {buildRouteMetadata} from '@/lib/cms/seo/build-metadata';
 
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({params}) {
   const {locale, slug} = await params;
-  const member = await getTeamMemberBySlug(slug);
-  if (!member) return {title: 'Team'};
-  const local = localizeMember(member, locale);
-  const title =
-    local.seoTitle ||
-    `${local.name} | ${local.jobTitle} | ASAS`;
-  const description = local.seoDescription || local.shortBio || company.shortDescription;
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      images: member.profile_image ? [{url: member.profile_image}] : undefined,
-    },
-  };
+  const item = await getTeamMemberBySlug(slug);
+  if (!item) return {title: 'Team'};
+  return buildRouteMetadata({
+    locale,
+    path: `team/${slug}`,
+    type: 'team',
+    fallbackTitle: item.seo_title_en || item.name_en,
+    fallbackTitleAr: item.seo_title_ar || item.name_ar,
+    fallbackDescription: item.seo_description_en || item.short_bio_en || company.shortDescription,
+    fallbackDescriptionAr: item.seo_description_ar || item.short_bio_ar || company.shortDescriptionAr,
+    fallbackImage: item.profile_image || '',
+    schemaType: 'Person',
+  });
 }
 
 function BioBlocks({text}) {

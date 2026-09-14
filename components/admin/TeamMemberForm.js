@@ -1,9 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import {useRouter} from 'next/navigation';
-import {useMemo, useState} from 'react';
+import {useState} from 'react';
 import {teamDepartments} from '@/lib/team/schema';
+import MediaPicker from '@/components/admin/media/MediaPicker';
 // Client-safe schema imports only (no filesystem store).
 
 function listToText(value) {
@@ -30,9 +30,6 @@ export default function TeamMemberForm({member, projectOptions = [], mode = 'cre
   }));
   const [error, setError] = useState('');
   const [saving, setSaving] = useState(false);
-  const [uploading, setUploading] = useState('');
-
-  const title = mode === 'create' ? 'New team member' : `Edit · ${member.name_en || member.slug}`;
 
   function setField(key, value) {
     setForm((current) => ({...current, [key]: value}));
@@ -49,26 +46,7 @@ export default function TeamMemberForm({member, projectOptions = [], mode = 'cre
     }));
   }
 
-  async function uploadImage(file, field) {
-    if (!file) return;
-    setUploading(field);
-    setError('');
-    try {
-      const body = new FormData();
-      body.append('file', file);
-      const res = await fetch('/api/admin/team/upload', {method: 'POST', body});
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Upload failed');
-      setField(field, data.url);
-    } catch (err) {
-      setError(err.message || 'Upload failed');
-    } finally {
-      setUploading('');
-    }
-  }
-
-  const payload = useMemo(
-    () => ({
+  const payload = {
       ...form,
       expertise_en: form.expertise_en_text,
       expertise_ar: form.expertise_ar_text,
@@ -79,9 +57,7 @@ export default function TeamMemberForm({member, projectOptions = [], mode = 'cre
       certifications_en: form.certifications_en_text,
       certifications_ar: form.certifications_ar_text,
       notable_projects: form.notable_projects_text,
-    }),
-    [form],
-  );
+  };
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -124,23 +100,14 @@ export default function TeamMemberForm({member, projectOptions = [], mode = 'cre
   }
 
   return (
-    <div className="adm-shell">
-      <div className="adm-top">
-        <div className="adm-brand">
-          <strong>ASAS Admin</strong>
-          <span>{title}</span>
+    <div className="adm-stack">
+      {mode === 'edit' ? (
+        <div className="adm-actions" style={{justifyContent: 'flex-end'}}>
+          <button type="button" className="adm-btn-danger" onClick={onDelete} disabled={saving}>
+            Delete
+          </button>
         </div>
-        <div className="adm-actions">
-          <Link className="adm-btn-ghost" href="/admin/team">
-            Back to list
-          </Link>
-          {mode === 'edit' && (
-            <button type="button" className="adm-btn-danger" onClick={onDelete} disabled={saving}>
-              Delete
-            </button>
-          )}
-        </div>
-      </div>
+      ) : null}
 
       <form className="adm-card" onSubmit={onSubmit}>
         {error && <p className="adm-error">{error}</p>}
@@ -214,47 +181,26 @@ export default function TeamMemberForm({member, projectOptions = [], mode = 'cre
 
         <h2 className="adm-section-title">Portraits</h2>
         <div className="adm-grid-2">
-          <div className="adm-field">
-            <label>Profile image</label>
-            {form.profile_image ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img className="adm-preview" src={form.profile_image} alt="" />
-            ) : null}
-            <input
-              type="file"
-              accept="image/jpeg,image/png,image/webp,image/avif"
-              onChange={(e) => uploadImage(e.target.files?.[0], 'profile_image')}
-              disabled={Boolean(uploading)}
-            />
-            <input
-              value={form.profile_image}
-              onChange={(e) => setField('profile_image', e.target.value)}
-              placeholder="/assets/asas/team/…"
-            />
-            <input
-              value={form.profile_image_focal}
-              onChange={(e) => setField('profile_image_focal', e.target.value)}
-              placeholder="Focal point e.g. 50% 30%"
-            />
-          </div>
-          <div className="adm-field">
-            <label>Secondary image (optional)</label>
-            {form.secondary_image ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img className="adm-preview" src={form.secondary_image} alt="" />
-            ) : null}
-            <input
-              type="file"
-              accept="image/jpeg,image/png,image/webp,image/avif"
-              onChange={(e) => uploadImage(e.target.files?.[0], 'secondary_image')}
-              disabled={Boolean(uploading)}
-            />
-            <input
-              value={form.secondary_image}
-              onChange={(e) => setField('secondary_image', e.target.value)}
-              placeholder="/assets/asas/team/…"
-            />
-          </div>
+          <MediaPicker
+            label="Profile image"
+            hint="Crop and set focus so the face stays centered in cards and team pages."
+            value={form.profile_image || ''}
+            onChange={(url) => setField('profile_image', url || '')}
+            mode="IMAGE"
+            canWrite
+            cropAspect={1}
+            focalValue={form.profile_image_focal || '50% 30%'}
+            onFocalChange={(focal) => setField('profile_image_focal', focal)}
+          />
+          <MediaPicker
+            label="Secondary image"
+            value={form.secondary_image || ''}
+            onChange={(url) => setField('secondary_image', url || '')}
+            mode="IMAGE"
+            canWrite
+            focalValue={form.secondary_image_focal || '50% 40%'}
+            onFocalChange={(focal) => setField('secondary_image_focal', focal)}
+          />
         </div>
 
         <h2 className="adm-section-title">Biography</h2>
@@ -374,8 +320,8 @@ export default function TeamMemberForm({member, projectOptions = [], mode = 'cre
         </div>
 
         <div className="adm-actions" style={{marginTop: 24}}>
-          <button className="adm-btn" type="submit" disabled={saving || Boolean(uploading)}>
-            {saving ? 'Saving…' : uploading ? 'Uploading…' : 'Save team member'}
+          <button className="adm-btn" type="submit" disabled={saving}>
+            {saving ? 'Saving…' : 'Save team member'}
           </button>
         </div>
       </form>

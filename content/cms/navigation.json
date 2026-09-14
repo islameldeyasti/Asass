@@ -1,0 +1,98 @@
+{
+  "items": [
+    {
+      "id": "home",
+      "label": "Home",
+      "labelAr": "الرئيسية",
+      "path": "",
+      "home": true,
+      "hidden": false,
+      "order": 10
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "labelAr": "من نحن",
+      "path": "about",
+      "hidden": false,
+      "order": 20,
+      "children": [
+        {
+          "id": "company-profile",
+          "label": "Company Profile",
+          "labelAr": "الملف التعريفي",
+          "path": "company-profile"
+        },
+        {
+          "id": "gallery",
+          "label": "Gallery",
+          "labelAr": "المعرض",
+          "path": "gallery"
+        },
+        {
+          "id": "team",
+          "label": "Team",
+          "labelAr": "الفريق",
+          "path": "team"
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "labelAr": "الخدمات",
+      "path": "services",
+      "hidden": false,
+      "order": 30
+    },
+    {
+      "id": "projects",
+      "label": "Projects",
+      "labelAr": "المشاريع",
+      "path": "projects",
+      "hidden": false,
+      "order": 40
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "labelAr": "الأعمال",
+      "path": "portfolio",
+      "hidden": true,
+      "order": 50
+    },
+    {
+      "id": "sectors",
+      "label": "Sectors",
+      "labelAr": "القطاعات",
+      "path": "sectors",
+      "hidden": false,
+      "order": 60
+    },
+    {
+      "id": "blog",
+      "label": "Blog",
+      "labelAr": "المدونة",
+      "path": "blog",
+      "hidden": false,
+      "order": 70
+    },
+    {
+      "id": "careers",
+      "label": "Careers",
+      "labelAr": "الوظائف",
+      "path": "careers",
+      "hidden": false,
+      "order": 80
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "labelAr": "تواصل",
+      "path": "contact",
+      "hidden": false,
+      "order": 90
+    }
+  ],
+  "updatedAt": "2026-09-12T13:49:59.934Z"
+}

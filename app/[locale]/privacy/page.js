@@ -1,5 +1,16 @@
 import {Container} from '@/components/UI';
 import {company} from '@/data/company';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
+
+export const generateMetadata = staticPageMetadata({
+  path: 'privacy',
+  titleEn: 'Privacy',
+  titleAr: 'الخصوصية',
+  descriptionEn:
+    'Enquiry forms on this website open your email application so information can be sent directly to the official ASAS email address. Please do not send unnecessary confidential information.',
+  descriptionAr:
+    'تفتح نماذج الاستفسار في هذا الموقع تطبيق البريد الإلكتروني لإرسال المعلومات مباشرة إلى عنوان أساس للاستشارات الهندسية وإدارة المشاريع الرسمي. يرجى عدم إرسال معلومات سرية غير مطلوبة.',
+});
 
 export default async function Privacy({params}) {
   const {locale} = await params;

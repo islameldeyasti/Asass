@@ -6,19 +6,22 @@ import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import EnquiryForm from '@/components/EnquiryForm';
 import OfficeMap from '@/components/OfficeMap';
 import {company} from '@/data/company';
-import {roleImages} from '@/data/image-manifest';
+import {roleImages, ctaBandImages} from '@/data/image-manifest';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 function NextArrow({ar}) {
   return <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />;
 }
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  return {
-    title: locale === 'ar' ? 'تواصل مع أساس للاستشارات الهندسية وإدارة المشاريع | أبوظبي' : 'Contact ASAS | Abu Dhabi',
-    description: locale === 'ar' ? company.addressAr : company.address,
-  };
-}
+export const generateMetadata = staticPageMetadata({
+  path: 'contact',
+  titleEn: 'Contact ASAS',
+  titleAr: 'تواصل مع أساس للاستشارات الهندسية وإدارة المشاريع',
+  descriptionEn: company.address,
+  descriptionAr: company.addressAr,
+  schemaType: 'ContactPage',
+});
+
 
 export default async function Contact({params}) {
   const {locale} = await params;
@@ -38,11 +41,11 @@ export default async function Contact({params}) {
         </div>
         <Container>
           <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'تواصل' : 'Contact'}</span>
-          <h1>{ar ? 'تواصل مع مكتب أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي.' : 'Reach the ASAS office in Abu Dhabi.'}</h1>
+          <h1>{ar ? 'تواصل مع مكاتب أساس في أبوظبي ودبي وسوريا' : 'Reach ASAS offices in Abu Dhabi, Dubai & Syria'}</h1>
           <p>
             {ar
-              ? 'بيانات المكتب وخريطة الموقع ونموذج استفسار المشروع في صفحة واحدةحدة.'
-              : 'Office details, location map and a project enquiry form — all on one page.'}
+              ? 'بيانات المكاتب والخرائط ونموذج استفسار المشروع في صفحة واحدةحدة.'
+              : 'Office details, location maps and a project enquiry form — all on one page.'}
           </p>
           <div className="contact-hero-meta">
             <span>
@@ -57,12 +60,12 @@ export default async function Contact({params}) {
       <section className="contact-body">
         <Container className="contact-layout">
           <aside className="contact-aside">
-            <p className="atlas-kicker">{ar ? 'المكتب' : 'Abu Dhabi office'}</p>
+            <p className="atlas-kicker">{ar ? 'التواصل' : 'Get in touch'}</p>
             <h2>{ar ? 'بيانات التواصل' : 'Contact details'}</h2>
             <p>
               {ar
-                ? 'تأسست أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي عام 2009. يمكنك الاتصال مباشرة أو إرسال استفسار عبر النموذج.'
-                : 'Founded in Abu Dhabi in 2009. Call or message directly, or send an enquiry with the form.'}
+                ? 'تأسست أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي عام 2009، مع فروع في دبي وسوريا. يمكنك الاتصال مباشرة أو إرسال استفسار عبر النموذج.'
+                : 'Founded in Abu Dhabi in 2009, with branches in Dubai and Syria. Call or message directly, or send an enquiry with the form.'}
             </p>
 
             <div className="contact-list">
@@ -144,6 +147,15 @@ export default async function Contact({params}) {
       </section>
 
       <section className="contact-cta asas-cta-band">
+        <div className="contact-cta-media" aria-hidden="true">
+          <Image
+            src={ctaBandImages.contact}
+            alt=""
+            fill
+            sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: '50% 40%'}}
+          />
+        </div>
         <div className="contact-cta-veil" aria-hidden="true" />
         <Container className="contact-cta-inner">
           <div className="contact-cta-copy">

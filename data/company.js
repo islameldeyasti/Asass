@@ -15,6 +15,8 @@ export const company = {
   fax: '+971 2 63 16 555',
   email: 'asas@asasengg.ae',
   website: 'www.asasengg.ae',
+  poBox: 'P.O. Box 114789',
+  poBoxAr: 'ص.ب. 114789',
   address: 'ADCP Building No. P1239, Plot No. C125, Musaffah East 9, behind Safeer Mall, Mezzanine Floor, Office 3, P.O. Box 114789, Abu Dhabi, UAE',
   addressAr: 'مبنى ADCP رقم P1239، قطعة C125، مصفح شرق 9، خلف سفير مول، طابق الميزانين، مكتب 3، ص.ب. 114789، أبوظبي، الإمارات',
   shortDescription: 'A single Abu Dhabi consultancy covering architecture, structure, electromechanical services, quantity surveying and site supervision.',
@@ -24,6 +26,71 @@ export const company = {
   parentGroup: 'An initiative of Mir Group',
   parentGroupAr: 'إحدى مبادرات مجموعة مير',
 };
+
+/** Physical offices / branches shown on Contact. Primary HQ remains company.address. */
+export const offices = [
+  {
+    id: 'abu-dhabi',
+    city: 'Abu Dhabi',
+    cityAr: 'أبوظبي',
+    country: 'UAE',
+    countryAr: 'الإمارات',
+    badge: 'Head office',
+    badgeAr: 'المكتب الرئيسي',
+    title: 'ASAS office in Abu Dhabi',
+    titleAr: 'مكتب أساس في أبوظبي',
+    address:
+      'ADCP Building No. P1239, Plot No. C125, Musaffah East 9, behind Safeer Mall, Mezzanine Floor, Office 3, P.O. Box 114789, Abu Dhabi, UAE',
+    addressAr:
+      'مبنى ADCP رقم P1239، قطعة C125، مصفح شرق 9، خلف سفير مول، طابق الميزانين، مكتب 3، ص.ب. 114789، أبوظبي، الإمارات',
+    mapQuery:
+      'ADCP Building P1239, Plot C125, Musaffah East 9, behind Safeer Mall, Abu Dhabi, UAE',
+    lat: 24.3638,
+    lng: 54.5142,
+    phone: '+971 2 63 11 320',
+    email: 'asas@asasengg.ae',
+  },
+  {
+    id: 'dubai',
+    city: 'Dubai',
+    cityAr: 'دبي',
+    country: 'UAE',
+    countryAr: 'الإمارات',
+    badge: 'Branch',
+    badgeAr: 'فرع',
+    title: 'ASAS Prime office in Dubai',
+    titleAr: 'مكتب أساس برايم في دبي',
+    legalName: 'ASAS PRIME ENGINEERING CONSULTANCY L.L.C',
+    legalNameAr: 'أساس برايم للاستشارات الهندسية ذ.م.م',
+    address:
+      'Al Baraha, Deira — Maryam Mohamed Ahmed Al Otaiba property, Dubai, United Arab Emirates',
+    addressAr:
+      'البراحة، ديرة — ملك مريم محمد أحمد العتيبة، دبي، الإمارات العربية المتحدة',
+    mapQuery: 'Al Baraha Deira, Dubai, UAE',
+    lat: 25.2755,
+    lng: 55.3168,
+    email: 'dubai@asasengg.ae',
+  },
+  {
+    id: 'syria',
+    city: 'Damascus',
+    cityAr: 'دمشق',
+    country: 'Syria',
+    countryAr: 'سوريا',
+    badge: 'Branch',
+    badgeAr: 'فرع',
+    title: 'ASAS office in Syria',
+    titleAr: 'مكتب أساس في سوريا',
+    address:
+      'Abu Rummaneh, Abdul Rahman Al Kawakibi Street, Building 12, Floor 2, Damascus, Syria',
+    addressAr:
+      'أبو رمانة، شارع عبد الرحمن الكواكبي، مبنى 12، الطابق الثاني، دمشق، سوريا',
+    mapQuery: 'Abu Rummaneh, Damascus, Syria',
+    lat: 33.5193,
+    lng: 36.2874,
+    email: 'syria@asasengg.ae',
+  },
+];
 
 export const stats = [
   {value: '2009', label: 'Founded in Abu Dhabi', labelAr: 'تأسست في أبوظبي'},

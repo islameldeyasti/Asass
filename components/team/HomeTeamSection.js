@@ -81,8 +81,9 @@ function ExpertCard({member, locale, index}) {
               src={portrait}
               alt={local.name}
               fill
-              sizes="(max-width: 900px) 50vw, 25vw"
-              style={{objectPosition: member.profile_image_focal || '50% 22%'}}
+              quality={90}
+              sizes="(max-width: 900px) 80vw, 28vw"
+              style={{objectFit: 'cover', objectPosition: member.profile_image_focal || '50% 22%'}}
               loading={index < 4 ? 'eager' : 'lazy'}
             />
           ) : (
@@ -154,7 +155,7 @@ export default function HomeTeamSection({members, locale}) {
             {ar ? 'تعرّف على خبرائنا' : 'Meet Our Experts'}
           </p>
           <h2 id="home-team-heading">
-            {ar ? 'الأشخاص خلف تميّزنا الهندسي.' : 'People behind our engineering excellence.'}
+            {ar ? 'الأشخاص خلف تميّزنا الهندسي' : 'People behind our engineering excellence'}
           </h2>
           <p>
             {ar

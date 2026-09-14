@@ -514,7 +514,15 @@ footer .brand small {
 
 /* ---------- CTA band ---------- */
 .project-cta {
-  background-color: var(--asas-navy) !important;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: transparent !important;
+}
+
+.project-cta > .container {
+  position: relative;
+  z-index: 2;
 }
 
 .project-cta .eyebrow {

@@ -13,9 +13,13 @@ import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import CareersBoard from '@/components/careers/CareersBoard';
 import ApplicationForm from '@/components/careers/ApplicationForm';
-import {careerDepartments, getOpenJobs} from '@/data/careers';
+import {careerDepartments} from '@/data/careers';
 import {company} from '@/data/company';
 import {ctaBandImages, roleImages} from '@/data/image-manifest';
+import {getPublicOpenJobs} from '@/lib/cms/public-data';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
+
+export const dynamic = 'force-dynamic';
 
 const departmentIcons = {
   architecture: Building2,
@@ -30,22 +34,19 @@ function NextArrow({ar}) {
   return <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />;
 }
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  const open = getOpenJobs().length;
-  return {
-    title: locale === 'ar' ? 'العمل لدى أساس للاستشارات الهندسية وإدارة المشاريع' : 'Careers at ASAS',
-    description:
-      locale === 'ar'
-        ? `شواغر مفتوحة: ${open}. تخصصات هندسية تعمل ضمن فريق واحد في أبوظبي.`
-        : `${open} open roles. Engineering disciplines working as one team in Abu Dhabi.`,
-  };
-}
+export const generateMetadata = staticPageMetadata({
+  path: 'careers',
+  titleEn: 'Careers at ASAS',
+  titleAr: 'العمل لدى أساس للاستشارات الهندسية وإدارة المشاريع',
+  descriptionEn: 'Engineering disciplines working as one team in Abu Dhabi.',
+  descriptionAr: 'تخصصات هندسية تعمل ضمن فريق واحد في أبوظبي.',
+});
+
 
 export default async function Careers({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const openJobs = getOpenJobs();
+  const openJobs = await getPublicOpenJobs();
   const openCount = openJobs.length;
   const ctaImage = ctaBandImages.careers;
 
@@ -71,7 +72,7 @@ export default async function Careers({params}) {
         <Container>
           <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'الوظائف' : 'Careers'}</span>
           <h1>
-            {ar ? 'تخصصات هندسية تعمل ضمن فريق واحد.' : 'Engineering disciplines working as one team.'}
+            {ar ? 'تخصصات هندسية تعمل ضمن فريق واحد' : 'Engineering disciplines working as one team'}
           </h1>
           <p>
             {ar
@@ -131,7 +132,7 @@ export default async function Careers({params}) {
 
       <section className="careers-openings" id="openings">
         <Container>
-          <CareersBoard locale={locale} />
+          <CareersBoard locale={locale} jobs={openJobs} />
         </Container>
       </section>
 

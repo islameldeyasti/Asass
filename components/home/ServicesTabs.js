@@ -38,7 +38,7 @@ export default function ServicesTabs({locale, services}) {
       <div className="home-shell">
         <div className="insp-center-head">
           <p className="atlas-kicker center">{ar ? 'تخصصاتنا' : 'Our disciplines'}</p>
-          <h2>{ar ? 'تخصصات هندسية في مكتب واحد.' : 'One consultancy. Five core disciplines.'}</h2>
+          <h2>{ar ? 'تخصصات هندسية في مكتب واحد' : 'One consultancy, five core disciplines'}</h2>
           <p>{ar
             ? 'تغطي أساس للاستشارات الهندسية وإدارة المشاريع العمارة والإنشاءات والأعمال الكهروميكانيكية والكميات وإدارة المشاريع ضمن عمل منسق.'
             : 'Architecture, structure, electromechanical services, quantity surveying and project management checked together before issue.'}</p>

@@ -1,0 +1,27 @@
+ROUTE,PAGE,SECTION,ELEMENT,CURRENT SOURCE,ADMIN MODULE,ADMIN LOCATION,DATABASE TABLE,EDITABLE,EN,AR,MEDIA,MEDIA_PICKER,ORDER,VISIBILITY,RELATIONS,SEO,REPORTING,STATUS
+/,Homepage,Hero,Hero slides (image/title/note),CMS homepage.heroSlides,Homepage,/admin/homepage,homepage.json,YES,YES,YES,YES,YES,NO,via sections,NO,YES,YES,COMPLETE
+/,Homepage,About,About copy + image,CMS homepage.about,Homepage,/admin/homepage,homepage.json,YES,YES,YES,YES,YES,NO,via sections,NO,YES,YES,COMPLETE
+/,Homepage,Sectors,Sector cards,CMS homepage.sectorCards,Homepage,/admin/homepage,homepage.json,YES,YES,YES,YES,YES,NO,via sections,NO,YES,YES,COMPLETE
+/,Homepage,Sections,Enable/order blocks,CMS homepage.sections,Homepage,/admin/homepage,homepage.json,YES,NO,NO,NO,NO,YES,YES,NO,NO,YES,COMPLETE
+/,Homepage,FAQ,FAQ items,CMS homepage.faqs,Homepage,/admin/homepage,homepage.json,YES,YES,YES,NO,NO,NO,via sections,NO,NO,YES,COMPLETE
+/services,Services listing,Cards,Service image/title,CMS services[].image,Services,/admin/services,services.json,YES,YES,YES,YES,YES,YES,status,YES,YES,YES,COMPLETE
+/services/[slug],Service detail,Hero,Service image,CMS services[].image,Services,/admin/services,services.json,YES,YES,YES,YES,YES,NO,status,YES,YES,YES,COMPLETE
+/sectors,Sectors listing,Cards,Sector image,CMS sectors[].image,Sectors,/admin/sectors,sectors.json,YES,YES,YES,YES,YES,YES,status,YES,YES,YES,COMPLETE
+/projects,Projects,Cards,Cover image,CMS projects[].image,Projects,/admin/projects,projects.json,YES,YES,YES,YES,YES,YES,status,YES,YES,YES,COMPLETE
+/projects/[slug],Project detail,Gallery,images[],CMS projects[].images,Projects,/admin/projects,projects.json,YES,YES,YES,YES,YES,YES,status,YES,YES,YES,COMPLETE
+/team,Team,Photos,profile_image,Team store,Team,/admin/team,team store,YES,YES,YES,YES,YES,YES,visibility,NO,YES,YES,COMPLETE
+/blog,Blog,Cover,cover,CMS blog,Blog,/admin/blog,blog-posts.json,YES,YES,YES,YES,YES,YES,status,NO,YES,YES,COMPLETE
+/clients,Clients,Logos,logo,CMS clients,Clients,/admin/clients,clients.json,YES,YES,NO,YES,YES,YES,visibility,NO,NO,YES,COMPLETE
+/gallery,Gallery,Items,src,CMS gallery,Gallery,/admin/gallery,gallery.json,YES,YES,YES,YES,YES,YES,visibility,NO,NO,YES,COMPLETE
+/downloads,Downloads,Files,href,CMS downloads,Downloads,/admin/downloads,downloads.json,YES,YES,YES,YES,YES,YES,visibility,NO,NO,YES,COMPLETE
+*,Header,Logo,Header logos,Settings branding,Branding,/admin/settings/branding,settings.json,YES,NO,NO,YES,YES,NO,NO,NO,NO,YES,COMPLETE
+*,Footer,Logo,Footer logo,Settings branding,Branding,/admin/settings/branding,settings.json,YES,NO,NO,YES,YES,NO,NO,NO,NO,YES,COMPLETE
+*,Footer,Company links,Link labels/paths,CMS footer,Footer,/admin/footer,footer.json,YES,YES,YES,NO,NO,YES,YES,NO,NO,YES,COMPLETE
+*,Footer,CTA,CTA overrides,CMS footer.cta,Footer,/admin/footer,footer.json,YES,YES,YES,NO,NO,NO,NO,NO,NO,YES,COMPLETE
+*,Favicon/OG,Brand icons,favicon/apple/OG,Settings branding,Branding,/admin/settings/branding,settings.json,YES,NO,NO,YES,YES,NO,NO,NO,YES,YES,COMPLETE
+*,Navigation,Menu,Nav items,CMS navigation,Navigation,/admin/navigation,navigation.json,YES,YES,YES,NO,NO,YES,YES,NO,NO,YES,COMPLETE
+*,SEO,Page SEO,titles/desc/OG,page-seo + seo settings,SEO,/admin/seo,page-seo.json,YES,YES,YES,YES,YES,NO,index flags,NO,YES,YES,COMPLETE
+*,Contact,Company phones/email,Settings company,Contact,/admin/settings/contact,settings.json,YES,YES,YES,NO,NO,NO,NO,NO,NO,YES,COMPLETE
+*,Social,Social URLs,Settings socialLinks,Social,/admin/settings/social,settings.json,YES,NO,NO,NO,NO,NO,NO,NO,NO,YES,COMPLETE
+/corporate letterhead,Letterhead,Print chrome,corporate assets + MediaPicker QR,Letterhead Studio,/admin/corporate/letterheads,letters,YES,YES,YES,YES,YES,NO,NO,NO,NO,NO,COMPLETE
+Decorative UI chrome,System,SYSTEM_ASSET,CSS/SVG decorations,code,n/a,n/a,n/a,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,INTENTIONALLY_STATIC

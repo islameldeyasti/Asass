@@ -5,7 +5,8 @@ import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import EnquiryForm from '@/components/EnquiryForm';
 import {company} from '@/data/company';
-import {roleImages} from '@/data/image-manifest';
+import {roleImages, ctaBandImages} from '@/data/image-manifest';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 const steps = [
   {
@@ -35,16 +36,15 @@ function NextArrow({ar}) {
   return <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />;
 }
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  return {
-    title: locale === 'ar' ? 'استفسار مشروع | أساس للاستشارات الهندسية وإدارة المشاريع' : 'Project Enquiry | ASAS',
-    description:
-      locale === 'ar'
-        ? 'أرسل استفسار مشروع إلى مكتب أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي.'
-        : 'Send a project enquiry to the ASAS office in Abu Dhabi.',
-  };
-}
+export const generateMetadata = staticPageMetadata({
+  path: 'project-enquiry',
+  titleEn: 'Project Enquiry',
+  titleAr: 'استفسار مشروع',
+  descriptionEn: 'Send a project enquiry to the ASAS office in Abu Dhabi.',
+  descriptionAr: 'أرسل استفسار مشروع إلى مكتب أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي.',
+  schemaType: 'ContactPage',
+});
+
 
 export default async function Enquiry({params}) {
   const {locale} = await params;
@@ -64,7 +64,7 @@ export default async function Enquiry({params}) {
         </div>
         <Container>
           <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'استفسار مشروع' : 'Project Enquiry'}</span>
-          <h1>{ar ? 'ابدأ مشروعك مع أساس للاستشارات الهندسية وإدارة المشاريع.' : 'Start your project with ASAS.'}</h1>
+          <h1>{ar ? 'ابدأ مشروعك مع أساس للاستشارات الهندسية وإدارة المشاريع' : 'Start your project with ASAS'}</h1>
           <p>
             {ar
               ? 'شارك المعلومات الأساسية عن المشروع لبدء المحادثة مع فريق المكتب في أبوظبي.'
@@ -154,6 +154,15 @@ export default async function Enquiry({params}) {
       </section>
 
       <section className="enquiry-cta asas-cta-band">
+        <div className="enquiry-cta-media" aria-hidden="true">
+          <Image
+            src={ctaBandImages.enquiry}
+            alt=""
+            fill
+            sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: '50% 40%'}}
+          />
+        </div>
         <div className="enquiry-cta-veil" aria-hidden="true" />
         <Container className="enquiry-cta-inner">
           <div className="enquiry-cta-copy">

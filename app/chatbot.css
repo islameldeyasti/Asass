@@ -310,7 +310,7 @@ html[data-theme='dark'] .asas-chat-foot {
 }
 
 /* Legacy chat float slot removed from layout — do not push scroll/theme up.
-   AI Assistant lives on the left; right stack is WhatsApp → Scroll → Theme. */
+   AI Assistant lives on the left; right stack is Scroll → Theme → WhatsApp. */
 /*
 .asas-scroll-top {
   bottom: calc(

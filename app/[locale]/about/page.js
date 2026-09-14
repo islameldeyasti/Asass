@@ -18,17 +18,19 @@ import {
   workLocations,
 } from '@/data/company';
 import {ctaBandImages, roleImages} from '@/data/image-manifest';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 const strengthIcons = [CheckCircle2, Clock3, Handshake];
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  const ar = locale === 'ar';
-  return {
-    title: ar ? 'عن أساس للاستشارات الهندسية وإدارة المشاريع | استشارات هندسية في أبوظبي' : 'About ASAS | Abu Dhabi Engineering Consultancy',
-    description: ar ? company.descriptionAr : company.description,
-  };
-}
+export const generateMetadata = staticPageMetadata({
+  path: 'about',
+  titleEn: 'About ASAS',
+  titleAr: 'عن أساس للاستشارات الهندسية وإدارة المشاريع',
+  descriptionEn: company.description,
+  descriptionAr: company.descriptionAr,
+  schemaType: 'AboutPage',
+});
+
 
 export default async function About({params}) {
   const {locale} = await params;
@@ -51,8 +53,8 @@ export default async function About({params}) {
           <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'عن أساس للاستشارات الهندسية وإدارة المشاريع' : 'About'}</span>
           <h1>
             {ar
-              ? 'خبرة هندسية تأسست في أبوظبي عام 2009.'
-              : 'Engineering expertise founded in Abu Dhabi in 2009.'}
+              ? 'خبرة هندسية تأسست في أبوظبي عام 2009'
+              : 'Engineering expertise founded in Abu Dhabi in 2009'}
           </h1>
           <p>{ar ? company.descriptionAr : company.description}</p>
           <div className="about-hero-meta">
@@ -80,7 +82,7 @@ export default async function About({params}) {
             </div>
             <div className="about-featured-copy">
               <p className="atlas-kicker">{ar ? 'الشركة' : 'The firm'}</p>
-              <h2>{ar ? 'مكتب واحد، وتخصصات مترابطة.' : 'One consultancy, connected disciplines.'}</h2>
+              <h2>{ar ? 'مكتب واحد، وتخصصات مترابطة' : 'One consultancy, connected disciplines'}</h2>
               <p>
                 {ar
                   ? 'تأسست أساس للاستشارات الهندسية وإدارة المشاريع عام 2009 في إمارة أبوظبي كمكتب متخصص في الخدمات الهندسية. يشمل عملها المباني والأبراج السكنية والتجارية والفلل والقصور والمجمعات والمشاريع المرتبطة بها.'
@@ -112,12 +114,12 @@ export default async function About({params}) {
         <Container className="about-vision-grid">
           <article className="about-vision-card">
             <p className="atlas-kicker">{ar ? 'الرؤية' : 'Vision'}</p>
-            <h2>{ar ? 'قيمة هندسية تتطور باستمرار.' : 'Advancing the value of engineering service.'}</h2>
+            <h2>{ar ? 'قيمة هندسية تتطور باستمرار' : 'Advancing the value of engineering service'}</h2>
             <p>{ar ? vision.ar : vision.en}</p>
           </article>
           <article className="about-vision-card">
             <p className="atlas-kicker">{ar ? 'الرسالة' : 'Mission'}</p>
-            <h2>{ar ? 'خدمة تستجيب لاحتياجات العملاء.' : 'Service responsive to changing needs.'}</h2>
+            <h2>{ar ? 'خدمة تستجيب لاحتياجات العملاء' : 'Service responsive to changing needs'}</h2>
             <p>{ar ? mission.ar : mission.en}</p>
           </article>
         </Container>
@@ -127,7 +129,7 @@ export default async function About({params}) {
         <Container>
           <header className="about-section-head">
             <p className="atlas-kicker">{ar ? 'نقاط القوة' : 'Strengths'}</p>
-            <h2>{ar ? 'التزامات تدعم كل مشروع.' : 'Commitments behind every project.'}</h2>
+            <h2>{ar ? 'التزامات تدعم كل مشروع' : 'Commitments behind every project'}</h2>
           </header>
           <div className="about-strength-grid">
             {strengths.map((item, index) => {
@@ -150,8 +152,8 @@ export default async function About({params}) {
             <p className="atlas-kicker">{ar ? 'نطاق العمل' : 'Where we work'}</p>
             <h2>
               {ar
-                ? 'من أبوظبي إلى مواقع مختارة في الإمارات.'
-                : 'From Abu Dhabi to project locations across the UAE.'}
+                ? 'من أبوظبي إلى مواقع مختارة في الإمارات'
+                : 'From Abu Dhabi to project locations across the UAE'}
             </h2>
           </header>
           <ul className="about-chip-list">
@@ -166,7 +168,7 @@ export default async function About({params}) {
         <Container className="about-split">
           <header className="about-section-head">
             <p className="atlas-kicker">{ar ? 'المعايير' : 'Standards'}</p>
-            <h2>{ar ? 'متطلبات التصميم والمراجعة.' : 'Design and review requirements.'}</h2>
+            <h2>{ar ? 'متطلبات التصميم والمراجعة' : 'Design and review requirements'}</h2>
           </header>
           <ul className="about-standard-list">
             {standards.map((standard) => (

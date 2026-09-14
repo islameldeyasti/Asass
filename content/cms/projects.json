@@ -1,0 +1,1174 @@
+[
+  {
+    "status": "published",
+    "id": 1,
+    "slug": "four-towers-al-nahda",
+    "title": "Four Towers, Al Nahda",
+    "titleAr": "أربعة أبراج، النهدة",
+    "category": "towers",
+    "sector": "towers",
+    "location": "Sharjah, Al Nahda",
+    "locationAr": "الشارقة، النهدة",
+    "locationShort": "Al Nahda, Sharjah",
+    "locationShortAr": "النهدة، الشارقة",
+    "description": "A four-tower composition over a shared podium: 3 basement levels, 6 podium parking levels and 37 floors, with architectural, structural and electromechanical design by ASAS.",
+    "descriptionAr": "تكوين من أربعة أبراج فوق منصة مشتركة: 3 طوابق سفلية و6 طوابق منصة للمواقف و37 طابقاً، بتصميم معماري وإنشائي وكهروميكانيكي من أساس للاستشارات الهندسية وإدارة المشاريع.",
+    "services": [
+      "Architectural design",
+      "Structural engineering",
+      "Electromechanical design"
+    ],
+    "kind": "built",
+    "image": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-01-hero.webp",
+    "imageAsset": {
+      "id": "four-towers-al-nahda",
+      "sourceProfilePage": 30,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-01-hero.webp",
+      "portfolio": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-01-hero.webp",
+      "mobile": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-02-front.webp",
+      "gallery": [
+        "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-01-hero.webp",
+        "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-02-front.webp",
+        "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-03-left-angle.webp",
+        "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-05-detail.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-01-hero.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-01-hero.webp",
+      "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-02-front.webp",
+      "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-03-left-angle.webp",
+      "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-05-detail.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-01-hero.webp",
+      "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-02-front.webp",
+      "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-03-left-angle.webp",
+      "/assets/asas/projects-generated/four-towers-al-nahda/four-towers-al-nahda-05-detail.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": true,
+    "sourceProfilePage": 30
+  },
+  {
+    "status": "published",
+    "id": 2,
+    "slug": "building-mbz-musaffah-m26",
+    "title": "Commercial & Residential Building — M26",
+    "titleAr": "مبنى تجاري وسكني — M26",
+    "category": "buildings",
+    "sector": "buildings",
+    "location": "Mohammed Bin Zayed City / Musaffah M26",
+    "locationAr": "مدينة محمد بن زايد / مصفح M26",
+    "locationShort": "Mohammed Bin Zayed City, Abu Dhabi",
+    "locationShortAr": "مدينة محمد بن زايد، أبوظبي",
+    "description": "Ground, mezzanine and seven-floor commercial and residential building.",
+    "descriptionAr": "مبنى تجاري وسكني من طابق أرضي وميزانين وسبعة طوابق.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-01-hero.webp",
+    "imageAsset": {
+      "id": "commercial-residential-building-m26",
+      "sourceProfilePage": 31,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-01-hero.webp",
+      "portfolio": "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-01-hero.webp",
+      "mobile": "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-02-front.webp",
+      "gallery": [
+        "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-01-hero.webp",
+        "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-02-front.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-01-hero.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-01-hero.webp",
+      "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-02-front.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-01-hero.webp",
+      "/assets/asas/projects-generated/building-mbz-musaffah-m26/building-mbz-musaffah-m26-02-front.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 31
+  },
+  {
+    "status": "published",
+    "id": 3,
+    "slug": "building-khalifa-city-msh36",
+    "title": "Commercial & Residential Building — MSH36",
+    "titleAr": "مبنى تجاري وسكني — MSH36",
+    "category": "buildings",
+    "sector": "buildings",
+    "location": "Khalifa City, Sector MSH36",
+    "locationAr": "مدينة خليفة، القطاع MSH36",
+    "locationShort": "Khalifa City, Abu Dhabi",
+    "locationShortAr": "مدينة خليفة، أبوظبي",
+    "description": "A commercial and residential building comprising three basement levels, ground floor and seven upper floors.",
+    "descriptionAr": "مبنى تجاري وسكني يضم ثلاثة طوابق سفلية وطابقاً أرضياً وسبعة طوابق علوية.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-01-hero.webp",
+    "imageAsset": {
+      "id": "commercial-residential-building-msh36",
+      "sourceProfilePage": 31,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-01-hero.webp",
+      "portfolio": "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-01-hero.webp",
+      "mobile": "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-02-front.webp",
+      "gallery": [
+        "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-01-hero.webp",
+        "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-02-front.webp",
+        "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-03-left-angle.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-01-hero.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-01-hero.webp",
+      "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-02-front.webp",
+      "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-03-left-angle.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-01-hero.webp",
+      "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-02-front.webp",
+      "/assets/asas/projects-generated/building-khalifa-city-msh36/building-khalifa-city-msh36-03-left-angle.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 31
+  },
+  {
+    "status": "published",
+    "id": 4,
+    "slug": "residential-building-al-raha-rbw2",
+    "title": "Residential Building — RBW2",
+    "titleAr": "مبنى سكني — RBW2",
+    "category": "buildings",
+    "sector": "buildings",
+    "location": "Al Raha Beach, Abu Dhabi, RBW2",
+    "locationAr": "شاطئ الراحة، أبوظبي، RBW2",
+    "locationShort": "Al Raha Beach, Abu Dhabi",
+    "locationShortAr": "شاطئ الراحة، أبوظبي",
+    "description": "Residential building at Al Raha Beach.",
+    "descriptionAr": "مبنى سكني في شاطئ الراحة.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-01.webp",
+    "imageAsset": {
+      "id": "residential-building-al-raha-rbw2",
+      "sourceProfilePage": 31,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-01.webp",
+      "portfolio": "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-01.webp",
+      "mobile": "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-01.webp",
+        "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-01.webp",
+      "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-01.webp",
+      "/assets/asas/projects-library/residential-building-al-raha-rbw2/residential-building-al-raha-rbw2-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 31
+  },
+  {
+    "status": "published",
+    "id": 5,
+    "slug": "mbz-city-towers",
+    "title": "MBZ City Towers",
+    "titleAr": "أبراج مدينة محمد بن زايد",
+    "category": "towers",
+    "sector": "towers",
+    "location": "Mohammed Bin Zayed City, Abu Dhabi",
+    "locationAr": "مدينة محمد بن زايد، أبوظبي",
+    "locationShort": "Mohammed Bin Zayed City, Abu Dhabi",
+    "locationShortAr": "مدينة محمد بن زايد، أبوظبي",
+    "description": "Tower project in Mohammed Bin Zayed City, Abu Dhabi.",
+    "descriptionAr": "مشروع أبراج في مدينة محمد بن زايد، أبوظبي.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-01-hero.webp",
+    "imageAsset": {
+      "id": "mbz-city-towers",
+      "sourceProfilePage": 32,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-01-hero.webp",
+      "portfolio": "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-01-hero.webp",
+      "mobile": "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-02-front.webp",
+      "gallery": [
+        "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-01-hero.webp",
+        "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-02-front.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-01-hero.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-01-hero.webp",
+      "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-02-front.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-01-hero.webp",
+      "/assets/asas/projects-generated/mbz-city-towers/mbz-city-towers-02-front.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 32
+  },
+  {
+    "status": "published",
+    "id": 6,
+    "slug": "showroom-musaffah-m42",
+    "title": "Showroom — M42",
+    "titleAr": "صالة عرض — M42",
+    "category": "industrial",
+    "sector": "industrial",
+    "location": "Musaffah Industrial, M42",
+    "locationAr": "مصفح الصناعية، M42",
+    "locationShort": "Musaffah, Abu Dhabi",
+    "locationShortAr": "مصفح، أبوظبي",
+    "description": "Showroom within the Musaffah industrial area.",
+    "descriptionAr": "صالة عرض ضمن منطقة مصفح الصناعية.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-01.webp",
+    "imageAsset": {
+      "id": "showroom-musaffah-m42",
+      "sourceProfilePage": 33,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-01.webp",
+      "portfolio": "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-01.webp",
+      "mobile": "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-01.webp",
+        "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-01.webp",
+      "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-01.webp",
+      "/assets/asas/projects-library/showroom-musaffah-m42/showroom-musaffah-m42-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 33
+  },
+  {
+    "status": "published",
+    "id": 7,
+    "slug": "industrial-facility-musaffah-m42",
+    "title": "Industrial Facility — M42",
+    "titleAr": "منشأة صناعية — M42",
+    "category": "industrial",
+    "sector": "industrial",
+    "location": "Musaffah Industrial, M42",
+    "locationAr": "مصفح الصناعية، M42",
+    "locationShort": "Musaffah, Abu Dhabi",
+    "locationShortAr": "مصفح، أبوظبي",
+    "description": "Industrial facility within the Musaffah industrial area.",
+    "descriptionAr": "منشأة صناعية ضمن منطقة مصفح الصناعية.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-01.webp",
+    "imageAsset": {
+      "id": "industrial-facility-musaffah-m42",
+      "sourceProfilePage": 33,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-01.webp",
+      "portfolio": "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-01.webp",
+      "mobile": "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-01.webp",
+        "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-01.webp",
+      "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-01.webp",
+      "/assets/asas/projects-library/industrial-facility-musaffah-m42/industrial-facility-musaffah-m42-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 33
+  },
+  {
+    "status": "published",
+    "id": 8,
+    "slug": "industrial-facility-musaffah-m15",
+    "title": "Industrial Facility — M15",
+    "titleAr": "منشأة صناعية — M15",
+    "category": "industrial",
+    "sector": "industrial",
+    "location": "Musaffah Industrial, M15",
+    "locationAr": "مصفح الصناعية، M15",
+    "locationShort": "Musaffah, Abu Dhabi",
+    "locationShortAr": "مصفح، أبوظبي",
+    "description": "Industrial facility within the Musaffah industrial area.",
+    "descriptionAr": "منشأة صناعية ضمن منطقة مصفح الصناعية.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-01.webp",
+    "imageAsset": {
+      "id": "industrial-facility-musaffah-m15",
+      "sourceProfilePage": 33,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-01.webp",
+      "portfolio": "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-01.webp",
+      "mobile": "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-01.webp",
+        "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-01.webp",
+      "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-01.webp",
+      "/assets/asas/projects-library/industrial-facility-musaffah-m15/industrial-facility-musaffah-m15-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 33
+  },
+  {
+    "status": "published",
+    "id": 9,
+    "slug": "traffic-access-studies",
+    "title": "Traffic & Access Studies",
+    "titleAr": "دراسات المرور والمداخل",
+    "category": "infrastructure",
+    "sector": "infrastructure",
+    "location": "Abu Dhabi Island and Khalifa City — C61, C31, C32, C47",
+    "locationAr": "جزيرة أبوظبي ومدينة خليفة — C61 وC31 وC32 وC47",
+    "locationShort": "Khalifa City, Abu Dhabi",
+    "locationShortAr": "مدينة خليفة، أبوظبي",
+    "description": "Parking layouts, kerb and sewer adjustments, one-way circulation, service bays, speed humps and road marking prepared for municipality review.",
+    "descriptionAr": "مخططات مواقف وتعديلات الأرصفة والصرف وحركة الاتجاه الواحد ومناطق الخدمة ومطبات السرعة وعلامات الطرق، أُعدت لمراجعة البلدية.",
+    "services": [
+      "Traffic studies and analysis",
+      "Infrastructure",
+      "Urban planning"
+    ],
+    "kind": "study",
+    "image": "/assets/asas/real-projects/asas-traffic-access-studies-card.webp",
+    "imageAsset": {
+      "id": "traffic-access-studies",
+      "sourceProfilePage": 34,
+      "classification": "TECHNICAL_DRAWING",
+      "qualityTier": "B_PROJECT_CARD",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/real-projects/asas-traffic-access-studies-card.webp",
+      "portfolio": "/assets/asas/real-projects/asas-traffic-access-studies-portfolio.webp",
+      "mobile": "/assets/asas/real-projects/asas-traffic-access-studies-mobile.webp"
+    },
+    "visual": {
+      "src": "/assets/asas/real-projects/asas-traffic-access-studies-card.webp",
+      "crop": "50% 50%",
+      "classification": "TECHNICAL_DRAWING"
+    },
+    "images": [
+      "/assets/asas/real-projects/asas-traffic-access-studies-portfolio.webp",
+      "/assets/asas/real-projects/asas-traffic-access-studies-card.webp",
+      "/assets/asas/real-projects/asas-traffic-access-studies-mobile.webp"
+    ],
+    "gallery": [
+      "/assets/asas/real-projects/asas-traffic-access-studies-portfolio.webp",
+      "/assets/asas/real-projects/asas-traffic-access-studies-card.webp",
+      "/assets/asas/real-projects/asas-traffic-access-studies-mobile.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": true,
+    "sourceProfilePage": 34
+  },
+  {
+    "status": "published",
+    "id": 10,
+    "slug": "culture-private-school",
+    "title": "Culture Private School",
+    "titleAr": "مدرسة الثقافة الخاصة",
+    "category": "education",
+    "sector": "education",
+    "location": null,
+    "locationAr": null,
+    "locationShort": null,
+    "locationShortAr": null,
+    "description": "Full campus master plan and sports facilities.",
+    "descriptionAr": "مخطط عام متكامل للحرم والمرافق الرياضية.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-generated/culture-private-school/culture-private-school-01-hero.webp",
+    "imageAsset": {
+      "id": "culture-private-school",
+      "sourceProfilePage": 35,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-generated/culture-private-school/culture-private-school-01-hero.webp",
+      "portfolio": "/assets/asas/projects-generated/culture-private-school/culture-private-school-01-hero.webp",
+      "mobile": "/assets/asas/projects-generated/culture-private-school/culture-private-school-02-front.webp",
+      "gallery": [
+        "/assets/asas/projects-generated/culture-private-school/culture-private-school-01-hero.webp",
+        "/assets/asas/projects-generated/culture-private-school/culture-private-school-02-front.webp",
+        "/assets/asas/projects-generated/culture-private-school/culture-private-school-03-left-angle.webp",
+        "/assets/asas/projects-generated/culture-private-school/culture-private-school-04-right-angle.webp",
+        "/assets/asas/projects-generated/culture-private-school/culture-private-school-05-detail.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-generated/culture-private-school/culture-private-school-01-hero.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-01-hero.webp",
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-02-front.webp",
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-03-left-angle.webp",
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-04-right-angle.webp",
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-05-detail.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-01-hero.webp",
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-02-front.webp",
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-03-left-angle.webp",
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-04-right-angle.webp",
+      "/assets/asas/projects-generated/culture-private-school/culture-private-school-05-detail.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": true,
+    "sourceProfilePage": 35
+  },
+  {
+    "status": "published",
+    "id": 11,
+    "slug": "emirates-private-school",
+    "title": "Emirates Private School",
+    "titleAr": "مدرسة الإمارات الخاصة",
+    "category": "education",
+    "sector": "education",
+    "location": null,
+    "locationAr": null,
+    "locationShort": null,
+    "locationShortAr": null,
+    "description": "Private-school project included in the ASAS selected portfolio.",
+    "descriptionAr": "مشروع مدرسة خاصة ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع المختارة.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/emirates-private-school/emirates-private-school-01.webp",
+    "imageAsset": {
+      "id": "emirates-private-school",
+      "sourceProfilePage": 35,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/emirates-private-school/emirates-private-school-01.webp",
+      "portfolio": "/assets/asas/projects-library/emirates-private-school/emirates-private-school-01.webp",
+      "mobile": "/assets/asas/projects-library/emirates-private-school/emirates-private-school-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/emirates-private-school/emirates-private-school-01.webp",
+        "/assets/asas/projects-library/emirates-private-school/emirates-private-school-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/emirates-private-school/emirates-private-school-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/emirates-private-school/emirates-private-school-01.webp",
+      "/assets/asas/projects-library/emirates-private-school/emirates-private-school-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/emirates-private-school/emirates-private-school-01.webp",
+      "/assets/asas/projects-library/emirates-private-school/emirates-private-school-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 35
+  },
+  {
+    "status": "published",
+    "id": 12,
+    "slug": "american-international-school",
+    "title": "American International School",
+    "titleAr": "المدرسة الأمريكية الدولية",
+    "category": "education",
+    "sector": "education",
+    "location": null,
+    "locationAr": null,
+    "locationShort": null,
+    "locationShortAr": null,
+    "description": "School project included in the ASAS selected portfolio.",
+    "descriptionAr": "مشروع مدرسة ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع المختارة.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/american-international-school/american-international-school-01.webp",
+    "imageAsset": {
+      "id": "american-international-school",
+      "sourceProfilePage": 35,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/american-international-school/american-international-school-01.webp",
+      "portfolio": "/assets/asas/projects-library/american-international-school/american-international-school-01.webp",
+      "mobile": "/assets/asas/projects-library/american-international-school/american-international-school-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/american-international-school/american-international-school-01.webp",
+        "/assets/asas/projects-library/american-international-school/american-international-school-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/american-international-school/american-international-school-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/american-international-school/american-international-school-01.webp",
+      "/assets/asas/projects-library/american-international-school/american-international-school-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/american-international-school/american-international-school-01.webp",
+      "/assets/asas/projects-library/american-international-school/american-international-school-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 35
+  },
+  {
+    "status": "published",
+    "id": 13,
+    "slug": "compound-villas-portfolio",
+    "title": "Compound Villas Portfolio",
+    "titleAr": "مجموعة مشاريع مجمعات الفلل",
+    "category": "compound-villas",
+    "sector": "compound-villas",
+    "location": "Khalifa City SE36; Mohammed Bin Zayed City Z19 and C176; Shakhbout City MSH6",
+    "locationAr": "مدينة خليفة SE36؛ مدينة محمد بن زايد Z19 وC176؛ مدينة شخبوط MSH6",
+    "locationShort": "Khalifa City, Abu Dhabi",
+    "locationShortAr": "مدينة خليفة، أبوظبي",
+    "description": "Multi-unit villa compounds designed as a single architectural family, with shared access, parking and services planned across each plot.",
+    "descriptionAr": "مجمعات فلل متعددة الوحدات صُممت كعائلة معمارية واحدة، مع تخطيط المداخل والمواقف والخدمات المشتركة عبر كل قطعة.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp",
+    "imageAsset": {
+      "id": "compound-villas",
+      "sourceProfilePage": 36,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp",
+      "portfolio": "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp",
+      "mobile": "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp",
+      "gallery": [
+        "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-generated/compound-villas-portfolio/compound-villas-portfolio-01-hero.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": true,
+    "sourceProfilePage": 36
+  },
+  {
+    "status": "published",
+    "id": 14,
+    "slug": "private-villa-shakhbout-w01",
+    "title": "Private Villa — W01",
+    "titleAr": "فيلا خاصة — W01",
+    "category": "private-villas",
+    "sector": "private-villas",
+    "location": "Shakhbout City, W01",
+    "locationAr": "مدينة شخبوط، W01",
+    "locationShort": "Shakhbout City, Abu Dhabi",
+    "locationShortAr": "مدينة شخبوط، أبوظبي",
+    "description": "Ground and first-floor private villa.",
+    "descriptionAr": "فيلا خاصة من طابق أرضي وأول.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-01.webp",
+    "imageAsset": {
+      "id": "private-villa-shakhbout-w01",
+      "sourceProfilePage": 37,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-01.webp",
+      "portfolio": "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-01.webp",
+      "mobile": "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-01.webp",
+        "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-01.webp",
+      "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-01.webp",
+      "/assets/asas/projects-library/private-villa-shakhbout-w01/private-villa-shakhbout-w01-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 37
+  },
+  {
+    "status": "published",
+    "id": 15,
+    "slug": "private-villa-khalifa-se24",
+    "title": "Private Villa — SE24",
+    "titleAr": "فيلا خاصة — SE24",
+    "category": "private-villas",
+    "sector": "private-villas",
+    "location": "Khalifa City, SE24",
+    "locationAr": "مدينة خليفة، SE24",
+    "locationShort": "Khalifa City, Abu Dhabi",
+    "locationShortAr": "مدينة خليفة، أبوظبي",
+    "description": "Ground and first-floor private villa.",
+    "descriptionAr": "فيلا خاصة من طابق أرضي وأول.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-01.webp",
+    "imageAsset": {
+      "id": "private-villa-khalifa-se24",
+      "sourceProfilePage": 37,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-01.webp",
+      "portfolio": "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-01.webp",
+      "mobile": "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-01.webp",
+        "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-01.webp",
+      "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-01.webp",
+      "/assets/asas/projects-library/private-villa-khalifa-se24/private-villa-khalifa-se24-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 37
+  },
+  {
+    "status": "published",
+    "id": 16,
+    "slug": "private-villa-mbz-z14",
+    "title": "Private Villa — Z14",
+    "titleAr": "فيلا خاصة — Z14",
+    "category": "private-villas",
+    "sector": "private-villas",
+    "location": "Mohammed Bin Zayed City, Z14",
+    "locationAr": "مدينة محمد بن زايد، Z14",
+    "locationShort": "Mohammed Bin Zayed City, Abu Dhabi",
+    "locationShortAr": "مدينة محمد بن زايد، أبوظبي",
+    "description": "Ground, first-floor and roof private villa.",
+    "descriptionAr": "فيلا خاصة من طابق أرضي وأول وسطح.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-01.webp",
+    "imageAsset": {
+      "id": "private-villa-mbz-z14",
+      "sourceProfilePage": 37,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-01.webp",
+      "portfolio": "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-01.webp",
+      "mobile": "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-01.webp",
+        "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-01.webp",
+      "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-01.webp",
+      "/assets/asas/projects-library/private-villa-mbz-z14/private-villa-mbz-z14-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 37
+  },
+  {
+    "status": "published",
+    "id": 17,
+    "slug": "residential-villa-al-shamkha-sh3",
+    "title": "Residential Villa — SH3",
+    "titleAr": "فيلا سكنية — SH3",
+    "category": "residential-villas",
+    "sector": "residential-villas",
+    "location": "Al Shamkha, SH3",
+    "locationAr": "الشامخة، SH3",
+    "locationShort": "Al Shamkha, Abu Dhabi",
+    "locationShortAr": "الشامخة، أبوظبي",
+    "description": "Residential villa in Al Shamkha.",
+    "descriptionAr": "فيلا سكنية في الشامخة.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-01.webp",
+    "imageAsset": {
+      "id": "residential-villa-al-shamkha-sh3",
+      "sourceProfilePage": 38,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-01.webp",
+      "portfolio": "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-01.webp",
+      "mobile": "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-01.webp",
+        "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-01.webp",
+      "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-01.webp",
+      "/assets/asas/projects-library/residential-villa-al-shamkha-sh3/residential-villa-al-shamkha-sh3-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": true,
+    "sourceProfilePage": 38
+  },
+  {
+    "status": "published",
+    "id": 18,
+    "slug": "residential-villa-riyadh-rd32",
+    "title": "Residential Villa — RD32",
+    "titleAr": "فيلا سكنية — RD32",
+    "category": "residential-villas",
+    "sector": "residential-villas",
+    "location": "Madinat Al Riyadh, RD32",
+    "locationAr": "مدينة الرياض، RD32",
+    "locationShort": "Madinat Al Riyadh, Abu Dhabi",
+    "locationShortAr": "مدينة الرياض، أبوظبي",
+    "description": "Residential villa in Madinat Al Riyadh.",
+    "descriptionAr": "فيلا سكنية في مدينة الرياض.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-01.webp",
+    "imageAsset": {
+      "id": "residential-villa-riyadh-rd32",
+      "sourceProfilePage": 38,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-01.webp",
+      "portfolio": "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-01.webp",
+      "mobile": "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-01.webp",
+        "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-01.webp",
+      "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-01.webp",
+      "/assets/asas/projects-library/residential-villa-riyadh-rd32/residential-villa-riyadh-rd32-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 38
+  },
+  {
+    "status": "published",
+    "id": 19,
+    "slug": "residential-villa-bani-yas-eb11-01",
+    "title": "Residential Villa — EB11-01",
+    "titleAr": "فيلا سكنية — EB11-01",
+    "category": "residential-villas",
+    "sector": "residential-villas",
+    "location": "Bani Yas, EB11-01",
+    "locationAr": "بني ياس، EB11-01",
+    "locationShort": "Bani Yas, Abu Dhabi",
+    "locationShortAr": "بني ياس، أبوظبي",
+    "description": "Residential villa in Bani Yas.",
+    "descriptionAr": "فيلا سكنية في بني ياس.",
+    "services": [],
+    "kind": "built",
+    "image": "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-01.webp",
+    "imageAsset": {
+      "id": "residential-villa-bani-yas-eb11-01",
+      "sourceProfilePage": 38,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-01.webp",
+      "portfolio": "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-01.webp",
+      "mobile": "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-01.webp",
+        "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-02.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-01.webp",
+      "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-02.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-01.webp",
+      "/assets/asas/projects-library/residential-villa-bani-yas-eb11-01/residential-villa-bani-yas-eb11-01-02.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 38
+  },
+  {
+    "status": "published",
+    "id": 20,
+    "slug": "reception-hall-private-villa",
+    "title": "Reception Hall — Private Villa",
+    "titleAr": "قاعة استقبال — فيلا خاصة",
+    "category": "interior-design",
+    "sector": "interior-design",
+    "location": null,
+    "locationAr": null,
+    "locationShort": null,
+    "locationShortAr": null,
+    "description": "Residential reception hall with classical detailing.",
+    "descriptionAr": "قاعة استقبال سكنية بتفاصيل كلاسيكية.",
+    "services": [
+      "Interior design"
+    ],
+    "kind": "interior",
+    "image": "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-01.webp",
+    "imageAsset": {
+      "id": "reception-hall-private-villa",
+      "sourceProfilePage": 41,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-01.webp",
+      "portfolio": "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-01.webp",
+      "mobile": "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-01.webp",
+        "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-02.webp",
+        "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-03.webp",
+        "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-04.webp",
+        "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-05.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-01.webp",
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-02.webp",
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-03.webp",
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-04.webp",
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-05.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-01.webp",
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-02.webp",
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-03.webp",
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-04.webp",
+      "/assets/asas/projects-library/reception-hall-private-villa/reception-hall-private-villa-05.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": true,
+    "sourceProfilePage": 41
+  },
+  {
+    "status": "published",
+    "id": 21,
+    "slug": "majlis-and-dining",
+    "title": "Majlis & Dining — Private Villa",
+    "titleAr": "مجلس وغرفة طعام — فيلا خاصة",
+    "category": "interior-design",
+    "sector": "interior-design",
+    "location": null,
+    "locationAr": null,
+    "locationShort": null,
+    "locationShortAr": null,
+    "description": "Majlis and dining interior featuring mashrabiya screens and marble.",
+    "descriptionAr": "تصميم داخلي لمجلس وغرفة طعام يتضمن شاشات مشربية ورخاماً.",
+    "services": [
+      "Interior design"
+    ],
+    "kind": "interior",
+    "image": "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-01.webp",
+    "imageAsset": {
+      "id": "majlis-and-dining-private-villa",
+      "sourceProfilePage": 41,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-01.webp",
+      "portfolio": "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-01.webp",
+      "mobile": "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-01.webp",
+        "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-02.webp",
+        "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-03.webp",
+        "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-04.webp",
+        "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-05.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-01.webp",
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-02.webp",
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-03.webp",
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-04.webp",
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-05.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-01.webp",
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-02.webp",
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-03.webp",
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-04.webp",
+      "/assets/asas/projects-library/majlis-and-dining/majlis-and-dining-05.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 41
+  },
+  {
+    "status": "published",
+    "id": 22,
+    "slug": "restaurant-interior",
+    "title": "Restaurant Interior",
+    "titleAr": "تصميم داخلي لمطعم",
+    "category": "interior-design",
+    "sector": "interior-design",
+    "location": null,
+    "locationAr": null,
+    "locationShort": null,
+    "locationShortAr": null,
+    "description": "Restaurant interior included in the ASAS hospitality portfolio.",
+    "descriptionAr": "تصميم داخلي لمطعم ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع لقطاع الضيافة.",
+    "services": [
+      "Interior design"
+    ],
+    "kind": "interior",
+    "image": "/assets/asas/projects-library/restaurant-interior/restaurant-interior-01.webp",
+    "imageAsset": {
+      "id": "restaurant-interior",
+      "sourceProfilePage": 42,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/restaurant-interior/restaurant-interior-01.webp",
+      "portfolio": "/assets/asas/projects-library/restaurant-interior/restaurant-interior-01.webp",
+      "mobile": "/assets/asas/projects-library/restaurant-interior/restaurant-interior-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/restaurant-interior/restaurant-interior-01.webp",
+        "/assets/asas/projects-library/restaurant-interior/restaurant-interior-02.webp",
+        "/assets/asas/projects-library/restaurant-interior/restaurant-interior-03.webp",
+        "/assets/asas/projects-library/restaurant-interior/restaurant-interior-04.webp",
+        "/assets/asas/projects-library/restaurant-interior/restaurant-interior-05.webp",
+        "/assets/asas/projects-library/restaurant-interior/restaurant-interior-06.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/restaurant-interior/restaurant-interior-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-01.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-02.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-03.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-04.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-05.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-06.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-01.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-02.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-03.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-04.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-05.webp",
+      "/assets/asas/projects-library/restaurant-interior/restaurant-interior-06.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 42
+  },
+  {
+    "status": "published",
+    "id": 23,
+    "slug": "hotel-lobby-interior",
+    "title": "Hotel Lobby Interior",
+    "titleAr": "تصميم داخلي لردهة فندق",
+    "category": "interior-design",
+    "sector": "interior-design",
+    "location": null,
+    "locationAr": null,
+    "locationShort": null,
+    "locationShortAr": null,
+    "description": "Hotel-lobby interior included in the ASAS hospitality portfolio.",
+    "descriptionAr": "تصميم داخلي لردهة فندق ضمن أعمال أساس للاستشارات الهندسية وإدارة المشاريع لقطاع الضيافة.",
+    "services": [
+      "Interior design"
+    ],
+    "kind": "interior",
+    "image": "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-01.webp",
+    "imageAsset": {
+      "id": "hotel-lobby-interior",
+      "sourceProfilePage": 42,
+      "classification": "PROJECT_PHOTO",
+      "qualityTier": "A_PROJECT_HERO",
+      "status": "APPROVED_FOR_CARDS",
+      "card": "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-01.webp",
+      "portfolio": "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-01.webp",
+      "mobile": "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-02.webp",
+      "gallery": [
+        "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-01.webp",
+        "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-02.webp",
+        "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-03.webp",
+        "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-04.webp",
+        "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-05.webp"
+      ]
+    },
+    "visual": {
+      "src": "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-01.webp",
+      "crop": "50% 50%",
+      "classification": "PROJECT_PHOTO"
+    },
+    "images": [
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-01.webp",
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-02.webp",
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-03.webp",
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-04.webp",
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-05.webp"
+    ],
+    "gallery": [
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-01.webp",
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-02.webp",
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-03.webp",
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-04.webp",
+      "/assets/asas/projects-library/hotel-lobby-interior/hotel-lobby-interior-05.webp"
+    ],
+    "needsOriginalImage": false,
+    "featured": false,
+    "sourceProfilePage": 42
+  }
+]

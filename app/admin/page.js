@@ -1,7 +1,7 @@
 import {redirect} from 'next/navigation';
-import {getAdminSession} from '@/lib/team/auth';
+import {getAdminSession} from '@/lib/cms/auth';
 
 export default async function AdminIndex() {
-  const ok = await getAdminSession();
-  redirect(ok ? '/admin/team' : '/admin/login');
+  const session = await getAdminSession();
+  redirect(session ? '/admin/dashboard' : '/admin/login');
 }

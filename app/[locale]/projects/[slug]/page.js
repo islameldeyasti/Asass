@@ -1,6 +1,10 @@
 import {notFound} from 'next/navigation';
 import ProjectDetailView from '@/components/projects/ProjectDetailView';
-import {projects, projectCategories} from '@/data/projects';
+import {projectCategories} from '@/data/projects';
+import {getPublicProjectBySlug, getPublicProjects} from '@/lib/cms/public-data';
+import {buildRouteMetadata} from '@/lib/cms/seo/build-metadata';
+
+export const dynamic = 'force-dynamic';
 
 const scopeAr = {
   'Architectural design': 'التصميم المعماري',
@@ -32,22 +36,32 @@ const scopeTagsAr = {
   'Interior design': 'داخلي',
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getPublicProjects();
   return projects.flatMap((project) => ['en', 'ar'].map((locale) => ({locale, slug: project.slug})));
 }
 
 export async function generateMetadata({params}) {
   const {locale, slug} = await params;
-  const project = projects.find((item) => item.slug === slug);
-  if (!project) return {};
-  return {
-    title: `${locale === 'ar' ? project.titleAr : project.title} | ASAS`,
-    description: locale === 'ar' ? project.descriptionAr : project.description,
-  };
+  const project = await getPublicProjectBySlug(slug);
+  if (!project) return {title: 'Project'};
+  return buildRouteMetadata({
+    locale,
+    path: `projects/${slug}`,
+    type: 'project',
+    fallbackTitle: project.title,
+    fallbackTitleAr: project.titleAr,
+    fallbackDescription: project.description || '',
+    fallbackDescriptionAr: project.descriptionAr || '',
+    fallbackImage: project.cover || project.image || project.visual?.src || '',
+    schemaType: 'CreativeWork',
+  });
 }
+
 
 export default async function Project({params}) {
   const {locale, slug} = await params;
+  const projects = await getPublicProjects();
   const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
 

@@ -228,7 +228,6 @@ export default function SectorShowcase({locale, cards, eyebrow, title, copy, cta
             </p>
             <h2 id="asas-sectors-title">
               {titleText}
-              <span className="asas-sectors-dot">.</span>
             </h2>
           </div>
           <div className="asas-sectors-head-aside">

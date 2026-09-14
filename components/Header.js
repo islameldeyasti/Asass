@@ -14,7 +14,7 @@ import {enterX} from '@/lib/motion/rtl';
 
 const EASE = [0.16, 1, 0.3, 1];
 
-const navItems = [
+const DEFAULT_NAV_ITEMS = [
   {label: 'Home', path: '', home: true},
   {
     label: 'About',
@@ -27,7 +27,6 @@ const navItems = [
   },
   {label: 'Services', path: 'services'},
   {label: 'Projects', path: 'projects'},
-  // Hidden from nav (not deleted) — restore by removing hidden
   {label: 'Portfolio', path: 'portfolio', hidden: true},
   {label: 'Sectors', path: 'sectors'},
   {label: 'Blog', path: 'blog'},
@@ -39,14 +38,39 @@ function pathActive(pathname, href) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+function navLabel(item, locale) {
+  if (locale === 'ar' && item?.labelAr) return item.labelAr;
+  return tNav(item?.label, locale) || item?.label || '';
+}
+
 function NavDropdown({item, locale, pathname, onNavigate, delay = 0}) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef(null);
+  const closeTimerRef = useRef(null);
   const href = `/${locale}/${item.path}`;
   const childActive = item.children.some((child) =>
     pathActive(pathname, `/${locale}/${child.path}`),
   );
   const active = pathActive(pathname, href) || childActive;
+
+  function clearCloseTimer() {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }
+
+  function openMenu() {
+    clearCloseTimer();
+    setOpen(true);
+  }
+
+  function scheduleClose() {
+    clearCloseTimer();
+    closeTimerRef.current = setTimeout(() => setOpen(false), 160);
+  }
+
+  useEffect(() => () => clearCloseTimer(), []);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -71,8 +95,8 @@ function NavDropdown({item, locale, pathname, onNavigate, delay = 0}) {
       initial={{opacity: 0, y: -8}}
       animate={{opacity: 1, y: 0}}
       transition={{duration: 0.4, delay, ease: EASE}}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={openMenu}
+      onMouseLeave={scheduleClose}
     >
       <div className="asas-nav-parent">
         <Link
@@ -81,7 +105,7 @@ function NavDropdown({item, locale, pathname, onNavigate, delay = 0}) {
           aria-current={pathActive(pathname, href) ? 'page' : undefined}
           className={active ? 'is-active' : undefined}
         >
-          {tNav(item.label, locale)}
+          {navLabel(item, locale)}
         </Link>
         <button
           type="button"
@@ -110,7 +134,7 @@ function NavDropdown({item, locale, pathname, onNavigate, delay = 0}) {
               aria-current={isChildActive ? 'page' : undefined}
               className={isChildActive ? 'is-active' : undefined}
             >
-              {tNav(child.label, locale)}
+              {navLabel(child, locale)}
             </Link>
           );
         })}
@@ -119,16 +143,18 @@ function NavDropdown({item, locale, pathname, onNavigate, delay = 0}) {
   );
 }
 
-export default function Header({locale}) {
+export default function Header({locale, navItems, companyData, branding}) {
   const pathname = usePathname() || `/${locale}`;
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const ar = locale === 'ar';
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
+  const companyInfo = companyData || company;
   const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    ar ? company.addressAr : company.address,
+    ar ? companyInfo.addressAr || companyInfo.address : companyInfo.address,
   )}`;
-  const visibleItems = navItems.filter((item) => !item.hidden);
+  const items = Array.isArray(navItems) && navItems.length ? navItems : DEFAULT_NAV_ITEMS;
+  const visibleItems = items.filter((item) => !item.hidden);
 
   useEffect(() => {
     document.documentElement.classList.toggle('asas-home-chrome', isHome);
@@ -178,7 +204,7 @@ export default function Header({locale}) {
           </p>
           <p className="asas-topbar-center">
             {ar
-              ? `${company.nameAr} · ${t('abuDhabiUae', locale)}`
+              ? `${companyInfo.nameAr || companyInfo.name} · ${t('abuDhabiUae', locale)}`
               : 'ASAS Engineering & Project Management Consultancy · Abu Dhabi, UAE'}
           </p>
           <div className="asas-topbar-meta">
@@ -222,7 +248,13 @@ export default function Header({locale}) {
             transition={{duration: 0.55, delay: 0.16, ease: EASE}}
           >
             <Link href={`/${locale}`} aria-label={t('homeAria', locale)} className="asas-logo-link">
-              <ThemeLogo width={62} height={62} priority />
+              <ThemeLogo
+                width={62}
+                height={62}
+                priority
+                lightSrc={branding?.headerLogoLight || branding?.lightLogo}
+                darkSrc={branding?.headerLogoDark || branding?.darkLogo}
+              />
             </Link>
           </motion.div>
 
@@ -259,7 +291,7 @@ export default function Header({locale}) {
                     aria-current={active ? 'page' : undefined}
                     className={active ? 'is-active' : undefined}
                   >
-                    {tNav(item.label, locale)}
+                    {navLabel(item, locale)}
                   </Link>
                 </motion.div>
               );

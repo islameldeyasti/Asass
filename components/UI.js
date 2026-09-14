@@ -37,7 +37,7 @@ export function ArrowLink({href, children, locale}) {
 export function CTA({locale, title = 'Planning a New Project?'}) {
   const ar = locale === 'ar';
   return (
-    <section className="project-cta">
+    <section className="project-cta asas-cta-band">
       <Container>
         <Eyebrow>{ar ? 'ابدأ محادثة' : 'START A CONVERSATION'}</Eyebrow>
         <h2>{ar ? 'هل تخطط لمشروع جديد؟' : title}</h2>

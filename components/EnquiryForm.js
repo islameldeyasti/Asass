@@ -82,7 +82,7 @@ export default function EnquiryForm({locale = 'en', id = 'project-enquiry-form'}
     return Object.keys(next).length === 0;
   }
 
-  function onSubmit(event) {
+  async function onSubmit(event) {
     event.preventDefault();
     if (status === 'loading') return;
     if (!validate()) return;
@@ -90,6 +90,26 @@ export default function EnquiryForm({locale = 'en', id = 'project-enquiry-form'}
     setStatus('loading');
     const serviceLabel =
       options.find((item) => item.slug === values.service)?.[ar ? 'titleAr' : 'title'] || values.service;
+
+    try {
+      await fetch('/api/public/enquiry', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          name: values.name.trim(),
+          email: values.email.trim(),
+          phone: values.phone.trim(),
+          service: values.service,
+          serviceLabel,
+          location: values.location.trim(),
+          message: values.message.trim(),
+          locale,
+          source: id,
+        }),
+      });
+    } catch {
+      // Persist failure should not block the mailto handoff.
+    }
 
     const subject = ar
       ? `استفسار مشروع — ${values.name.trim()}`

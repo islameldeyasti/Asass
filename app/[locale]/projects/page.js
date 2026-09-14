@@ -3,20 +3,26 @@ import {projectHeroVisuals} from '@/data/projects';
 import ProjectsExplorer from '@/components/ProjectsExplorer';
 import ProjectsEnquiryCta from '@/components/ProjectsEnquiryCta';
 import {ctaBandImages} from '@/data/image-manifest';
+import {getPublicProjects} from '@/lib/cms/public-data';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  return {
-    title: locale === 'ar' ? 'مشاريع أساس للاستشارات الهندسية وإدارة المشاريع المختارة' : 'Selected Projects | ASAS',
-    description: locale === 'ar'
-      ? 'مشاريع أساس للاستشارات الهندسية وإدارة المشاريع المختارة في الأبراج والمباني والصناعة والبنية التحتية والمدارس والفلل والتصميم الداخلي.'
-      : 'Selected ASAS projects across towers, buildings, industry, infrastructure, schools, villas and interior design.',
-  };
-}
+export const dynamic = 'force-dynamic';
+
+export const generateMetadata = staticPageMetadata({
+  path: 'projects',
+  titleEn: 'Selected Projects',
+  titleAr: 'مشاريع أساس للاستشارات الهندسية وإدارة المشاريع المختارة',
+  descriptionEn:
+    'Selected ASAS projects across towers, buildings, industry, infrastructure, schools, villas and interior design.',
+  descriptionAr:
+    'مشاريع أساس للاستشارات الهندسية وإدارة المشاريع المختارة في الأبراج والمباني والصناعة والبنية التحتية والمدارس والفلل والتصميم الداخلي.',
+});
+
 
 export default async function Projects({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
+  const projects = await getPublicProjects();
   const heroLeft = projectHeroVisuals[0];
   const heroRight = projectHeroVisuals[1] || projectHeroVisuals[0];
   const ctaImage = {src: ctaBandImages.projects, crop: '50% 40%'};
@@ -49,13 +55,13 @@ export default async function Projects({params}) {
             {ar ? (
               <>
                 <span>أعمال مختارة</span>
-                <span>من محفظة أساس للاستشارات الهندسية وإدارة المشاريع.</span>
+                <span>من محفظة أساس للاستشارات الهندسية وإدارة المشاريع</span>
               </>
             ) : (
               <>
                 <span>Selected work</span>
                 <span>from the ASAS</span>
-                <span>portfolio.</span>
+                <span>portfolio</span>
               </>
             )}
           </h1>
@@ -65,14 +71,14 @@ export default async function Projects({params}) {
               : 'Towers, commercial and residential buildings, industrial facilities, infrastructure, schools, villas and interiors across Abu Dhabi, Al Ain, Sharjah and Dubai.'}
           </p>
           <p className="pl-hero-tag">
-            {ar ? 'مشاريع حقيقية. مجتمعات أقوى.' : 'Real projects. Stronger communities.'}
+            {ar ? 'مشاريع حقيقية، مجتمعات أقوى' : 'Real projects, stronger communities'}
           </p>
         </div>
       </section>
 
       <section className="pl-body">
         <div className="pl-shell">
-          <ProjectsExplorer locale={locale} />
+          <ProjectsExplorer locale={locale} items={projects} />
         </div>
       </section>
 

@@ -6,21 +6,19 @@ import TeamListing from '@/components/team/TeamListing';
 import TeamPhilosophy from '@/components/team/TeamPhilosophy';
 import TeamEnquiryCta from '@/components/team/TeamEnquiryCta';
 import {ActionButton} from '@/components/ActionButton';
+import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata({params}) {
-  const {locale} = await params;
-  const ar = locale === 'ar';
-  return {
-    title: ar
-      ? 'فريقنا | أساس للاستشارات الهندسية وإدارة المشاريع'
-      : 'Our Team | ASAS Engineering & Project Management Consultancy',
-    description: ar
-      ? 'تعرّف على فريق أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي عبر التخصصات الهندسية وإدارة المشاريع.'
-      : 'Meet the ASAS team in Abu Dhabi across engineering disciplines and project leadership.',
-  };
-}
+export const generateMetadata = staticPageMetadata({
+  path: 'team',
+  titleEn: 'Our Team',
+  titleAr: 'فريقنا',
+  descriptionEn: 'Meet the ASAS team in Abu Dhabi across engineering disciplines and project leadership.',
+  descriptionAr:
+    'تعرّف على فريق أساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي عبر التخصصات الهندسية وإدارة المشاريع.',
+});
+
 
 export default async function TeamPage({params}) {
   const {locale} = await params;
@@ -57,13 +55,13 @@ export default async function TeamPage({params}) {
                 <>
                   الهندسة
                   <br />
-                  جهد فريق.
+                  جهد فريق
                 </>
               ) : (
                 <>
                   Engineering is
                   <br />
-                  a team effort.
+                  a team effort
                 </>
               )}
             </h1>

@@ -31,7 +31,9 @@ import {
   X,
 } from 'lucide-react';
 import {NextChevron, PrevChevron} from '@/components/icons/DirectionalChevrons';
-import {company, mission, strengths} from '@/data/company';
+import {projectKinds} from '@/data/projects';
+import {ctaBandImages} from '@/data/image-manifest';
+import {resolveProjectApproach} from '@/lib/projects/approach';
 import {observeSectionNav, scrollToSection as scrollToAnchor} from '@/lib/scroll/anchor';
 import ProjectVisualFallback from '@/components/ProjectVisualFallback';
 
@@ -86,6 +88,14 @@ function uniqueGallery(project) {
     return items;
   }
 
+  if (Array.isArray(project.gallery) && project.gallery.length) {
+    project.gallery.forEach((entry) => {
+      if (typeof entry === 'string') push(entry, '50% 40%', true);
+      else if (entry?.src) push(entry.src, entry.crop || '50% 40%', entry.photo !== false);
+    });
+    return items;
+  }
+
   const asset = project.imageAsset;
   (asset?.gallery || []).forEach((src) => push(src, '50% 40%', true));
   // Prefer distinct frames; responsive exports of the same drawing count as one logical asset.
@@ -104,6 +114,52 @@ function uniqueGallery(project) {
   return items;
 }
 
+const DEFAULT_SCOPE_BY_CATEGORY = {
+  towers: {
+    en: 'Architecture · Structure · MEP',
+    ar: 'عمارة · إنشاءات · كهروميكانيك',
+  },
+  buildings: {
+    en: 'Architecture · Structure · MEP',
+    ar: 'عمارة · إنشاءات · كهروميكانيك',
+  },
+  industrial: {
+    en: 'Industrial architecture · Structure · Services',
+    ar: 'عمارة صناعية · إنشاءات · خدمات',
+  },
+  infrastructure: {
+    en: 'Traffic · Access · Urban planning',
+    ar: 'مرور · مداخل · تخطيط حضري',
+  },
+  education: {
+    en: 'Campus planning · Architecture · Structure',
+    ar: 'تخطيط الحرم · عمارة · إنشاءات',
+  },
+  'compound-villas': {
+    en: 'Villa typologies · Shared infrastructure · Site services',
+    ar: 'أنماط فلل · بنية مشتركة · خدمات الموقع',
+  },
+  'private-villas': {
+    en: 'Architectural design · Structure · MEP',
+    ar: 'تصميم معماري · إنشاءات · كهروميكانيك',
+  },
+  'residential-villas': {
+    en: 'Architectural design · Structure · MEP',
+    ar: 'تصميم معماري · إنشاءات · كهروميكانيك',
+  },
+  'interior-design': {
+    en: 'Interior design · Fit-out coordination',
+    ar: 'تصميم داخلي · تنسيق التجهيز',
+  },
+};
+
+function extractPlotCode(location = '') {
+  const match = String(location).match(
+    /\b((?:EB|MSH|RBW|SH|SE|RD|Z|W|C|M)\d+(?:-\d+)?|[A-Z]{1,4}\d{1,3}(?:-\d{1,2})?)\b/i,
+  );
+  return match ? match[1].toUpperCase() : '';
+}
+
 function extractFacts(project, ar, category, services) {
   const text = `${project.description || ''} ${project.descriptionAr || ''}`;
   const metrics = [];
@@ -111,27 +167,72 @@ function extractFacts(project, ar, category, services) {
   const addMetric = (label, value) => {
     if (value) metrics.push({label, value});
   };
-  const addDetail = (label, value) => {
-    if (value) details.push({label, value, wide: false});
+  const addDetail = (label, value, wide = false) => {
+    if (value) details.push({label, value, wide});
   };
 
   const floors = text.match(/(\d+)\s*(?:floors|طوابق|طابقاً)/i);
   const basement = text.match(/(\d+)\s*(?:basement|طوابق سفلية|طابق(?:اً)? سفل)/i);
   const podium = text.match(/(\d+)\s*(?:podium|منصة)/i);
   const towers = /(?:four|4)\s*-?\s*tower|أربعة أبراج/i.test(text);
+  const sevenFloors = /seven-floor|سبعة طوابق/i.test(text);
+  const villaG1Roof = /ground,\s*first-floor and roof|طابق أرضي وأول وسطح/i.test(text);
+  const villaG1 = /ground and first-floor|طابق أرضي وأول/i.test(text);
+  const isVilla = ['residential-villas', 'private-villas', 'compound-villas'].includes(
+    project.category,
+  );
 
   if (towers) addMetric(ar ? 'أبراج' : 'Towers', '4');
   if (floors) addMetric(ar ? 'طوابق' : 'Floors', ar ? `${floors[1]} طوابق` : `${floors[1]} floors`);
+  else if (sevenFloors) addMetric(ar ? 'طوابق' : 'Floors', ar ? '7 طوابق' : '7 floors');
+  else if (villaG1Roof) addMetric(ar ? 'الطوابق' : 'Levels', ar ? 'أرضي + أول + سطح' : 'G + 1 + roof');
+  else if (villaG1) addMetric(ar ? 'الطوابق' : 'Levels', ar ? 'أرضي + أول' : 'G + 1');
+  else if (isVilla && project.category !== 'compound-villas') {
+    addMetric(ar ? 'الطوابق' : 'Levels', ar ? 'أرضي + أول' : 'G + 1');
+  }
   if (basement) addMetric(ar ? 'طوابق سفلية' : 'Basement levels', ar ? `${basement[1]} مستويات` : `${basement[1]} levels`);
   if (podium) addMetric(ar ? 'مواقف المنصة' : 'Podium parking', ar ? `${podium[1]} مستويات` : `${podium[1]} levels`);
+
   if (category) addDetail(ar ? 'الفئة' : 'Category', ar ? category.titleAr : category.title);
-  if (project.location) addDetail(ar ? 'الموقع' : 'Location', ar ? project.locationAr : project.location);
+
+  const locationValue = ar
+    ? project.locationAr || project.location
+    : project.location || project.locationAr;
+  if (locationValue) addDetail(ar ? 'الموقع' : 'Location', locationValue);
+
+  const kind = project.kind || 'built';
+  const kindLabel = ar
+    ? projectKinds[kind]?.ar || kind
+    : projectKinds[kind]?.en || kind;
+  addDetail(ar ? 'النوع' : 'Type', kindLabel);
+
+  const area = ar ? project.locationShortAr : project.locationShort;
+  if (area && area !== locationValue) addDetail(ar ? 'المنطقة' : 'Area', area);
+
+  const plot = extractPlotCode(project.location || project.locationAr || '');
+  if (plot) addDetail(ar ? 'القطعة / القطاع' : 'Plot / Sector', plot);
+
+  const status =
+    kind === 'study'
+      ? ar
+        ? 'دراسة تخطيطية'
+        : 'Planning study'
+      : kind === 'interior'
+        ? ar
+          ? 'تجهيز داخلي'
+          : 'Interior fit-out'
+        : ar
+          ? 'مشروع منفَّذ'
+          : 'Built delivery';
+  addDetail(ar ? 'الحالة' : 'Status', status);
+
+  addDetail(ar ? 'الدور' : 'Role', ar ? 'استشارات هندسية' : 'Engineering consultancy');
+
   if (services?.length) {
-    details.push({
-      label: ar ? 'النطاق' : 'Scope',
-      value: services.join(ar ? ' · ' : ' · '),
-      wide: true,
-    });
+    addDetail(ar ? 'النطاق' : 'Scope', services.join(ar ? ' · ' : ' · '), true);
+  } else {
+    const fallback = DEFAULT_SCOPE_BY_CATEGORY[project.category];
+    if (fallback) addDetail(ar ? 'النطاق' : 'Scope', ar ? fallback.ar : fallback.en, true);
   }
 
   return [...metrics, ...details];
@@ -148,25 +249,6 @@ function splitTitle(title) {
     return [a.trim(), rest.join('—').trim()].filter(Boolean);
   }
   return [title];
-}
-
-function BlueprintSide({reduced}) {
-  return (
-    <svg className="pd-side-blueprint" viewBox="0 0 140 280" aria-hidden="true">
-      <g className={reduced ? '' : 'pd-draw'} fill="none" stroke="currentColor" strokeWidth="1">
-        <path d="M36 18 V262" />
-        <path d="M56 36 V244" />
-        <path d="M76 54 V226" />
-        <path d="M96 72 V208" />
-        <path d="M36 88 H118" />
-        <path d="M36 132 H108" />
-        <path d="M36 176 H98" />
-        <path d="M36 220 H88" />
-        <circle cx="36" cy="88" r="2.2" fill="#a02315" stroke="none" />
-        <circle cx="76" cy="132" r="1.8" fill="currentColor" stroke="none" />
-      </g>
-    </svg>
-  );
 }
 
 function PeerPager({locale, peers, peerIndex, ar}) {
@@ -226,10 +308,23 @@ export default function ProjectDetailView({
   const thumbItems = gallery.slice(0, 4);
   const relatedPages = Math.max(1, Math.ceil(related.length / 3));
   const relatedSlice = related.slice(relatedPage * 3, relatedPage * 3 + 3);
-  const quote = ar ? mission.ar : mission.en;
-  const approachLead = ar ? company.descriptionAr : company.description;
-  const approachSupport = ar ? strengths[0]?.copyAr : strengths[0]?.copy;
+  const approach = resolveProjectApproach(project, locale);
+  const approachLead = approach.lead;
+  const approachSupport = approach.support;
   const showMap = Boolean(location);
+  const skipMetaLabels = new Set(
+    ar
+      ? ['الفئة', 'الموقع', 'النطاق', 'النوع', 'المنطقة', 'الحالة', 'الدور']
+      : ['Category', 'Location', 'Scope', 'Type', 'Area', 'Status', 'Role'],
+  );
+  const factPreview = facts.filter((fact) => !skipMetaLabels.has(fact.label)).slice(0, 3);
+  const areaLabel = ar ? project.locationShortAr : project.locationShort;
+  const kindLabel = project.kind
+    ? ar
+      ? projectKinds[project.kind]?.ar || project.kind
+      : projectKinds[project.kind]?.en || project.kind
+    : '';
+  const lede = String(description || '').replace(/[.。]\s*$/, '');
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -426,7 +521,7 @@ export default function ProjectDetailView({
               animate={{opacity: 1, y: 0}}
               transition={{duration: 0.55, delay: 0.3, ease: EASE}}
             >
-              {description}
+              {lede}
             </motion.p>
             <dl className="pd-meta">
               {category && (
@@ -455,11 +550,51 @@ export default function ProjectDetailView({
                   </div>
                 </motion.div>
               )}
-              {services.length > 0 && (
+              {kindLabel && (
+                <motion.div
+                  initial={reduced ? false : {opacity: 0, y: 10}}
+                  animate={{opacity: 1, y: 0}}
+                  transition={{duration: 0.45, delay: 0.46, ease: EASE}}
+                >
+                  <Building2 size={14} aria-hidden="true" />
+                  <div>
+                    <dt>{ar ? 'النوع' : 'Type'}</dt>
+                    <dd>{kindLabel}</dd>
+                  </div>
+                </motion.div>
+              )}
+              {areaLabel && areaLabel !== location && (
                 <motion.div
                   initial={reduced ? false : {opacity: 0, y: 10}}
                   animate={{opacity: 1, y: 0}}
                   transition={{duration: 0.45, delay: 0.48, ease: EASE}}
+                >
+                  <Layers3 size={14} aria-hidden="true" />
+                  <div>
+                    <dt>{ar ? 'المنطقة' : 'Area'}</dt>
+                    <dd>{areaLabel}</dd>
+                  </div>
+                </motion.div>
+              )}
+              {factPreview.map((fact, i) => (
+                <motion.div
+                  key={`${fact.label}-${fact.value}`}
+                  initial={reduced ? false : {opacity: 0, y: 10}}
+                  animate={{opacity: 1, y: 0}}
+                  transition={{duration: 0.45, delay: 0.5 + i * 0.04, ease: EASE}}
+                >
+                  <Ruler size={14} aria-hidden="true" />
+                  <div>
+                    <dt>{fact.label}</dt>
+                    <dd>{fact.value}</dd>
+                  </div>
+                </motion.div>
+              ))}
+              {services.length > 0 && (
+                <motion.div
+                  initial={reduced ? false : {opacity: 0, y: 10}}
+                  animate={{opacity: 1, y: 0}}
+                  transition={{duration: 0.45, delay: 0.56, ease: EASE}}
                 >
                   <Layers size={14} aria-hidden="true" />
                   <div>
@@ -479,34 +614,6 @@ export default function ProjectDetailView({
 
           <aside className="pd-hero-tech">
             <PeerPager locale={locale} peers={peers} peerIndex={peerIndex} ar={ar} />
-            <div className="pd-tech-graphic">
-              <BlueprintSide reduced={reduced} />
-              <ul className="pd-tech-words" aria-hidden="true">
-                {(ar
-                  ? ['تخطيط', 'تصميم', 'هندسة', 'غدٍ أفضل']
-                  : ['Planning', 'Design', 'Engineering', 'A Better', 'Tomorrow']
-                ).map((word) => (
-                  <li key={word}>{word}</li>
-                ))}
-              </ul>
-            </div>
-            {location && (
-              <a
-                className="pd-map-card"
-                href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="pd-map-card-visual" aria-hidden="true">
-                  <MapPin size={18} />
-                </span>
-                <strong>{location}</strong>
-                <em>
-                  {ar ? 'عرض على الخريطة' : 'View on map'}
-                  <ArrowRight size={12} className={ar ? 'reverse-arrow' : ''} />
-                </em>
-              </a>
-            )}
           </aside>
         </div>
       </section>
@@ -541,12 +648,10 @@ export default function ProjectDetailView({
               <h2>{ar ? 'منهجية التصميم' : 'Design Approach'}</h2>
               <p>{approachLead}</p>
               {approachSupport && <p>{approachSupport}</p>}
-              <p>{description}</p>
               <Link className="pd-text-link" href={`/${locale}/about`}>
                 {ar ? 'فلسفة التصميم لدينا' : 'Our Design Philosophy'}
                 <ArrowRight size={14} className={ar ? 'reverse-arrow' : ''} />
               </Link>
-              <blockquote>{quote}</blockquote>
             </div>
             <div className="pd-design-media">
               {gallery.length > 0 ? (
@@ -794,6 +899,16 @@ export default function ProjectDetailView({
       )}
 
       <section className="pd-cta asas-cta-band" ref={ctaRef}>
+        <div className="pd-cta-media" aria-hidden="true">
+          <Image
+            src={ctaBandImages.projects}
+            alt=""
+            fill
+            sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: '50% 40%'}}
+          />
+        </div>
+        <div className="pd-cta-veil" aria-hidden="true" />
         <div className="pd-shell pd-cta-inner">
           <div>
             <p className="pd-kicker light">

@@ -1,0 +1,59 @@
+{
+  "pages": {
+    "about": {
+      "pageId": "about",
+      "titleEn": "About ASAS",
+      "titleAr": "عن أساس",
+      "eyebrowEn": "Company",
+      "eyebrowAr": "الشركة",
+      "ledeEn": "Abu Dhabi engineering consultancy since 2009.",
+      "ledeAr": "استشارات هندسية من أبوظبي منذ 2009."
+    },
+    "contact": {
+      "pageId": "contact",
+      "titleEn": "Contact",
+      "titleAr": "تواصل",
+      "eyebrowEn": "Get in touch",
+      "eyebrowAr": "تواصل معنا",
+      "ledeEn": "Reach the Abu Dhabi office or start a project enquiry.",
+      "ledeAr": "تواصل مع مكتب أبوظبي أو ابدأ استفسار مشروع."
+    },
+    "careers": {
+      "pageId": "careers",
+      "titleEn": "Careers",
+      "titleAr": "الوظائف",
+      "eyebrowEn": "Join ASAS",
+      "eyebrowAr": "انضم إلى أساس",
+      "ledeEn": "Open roles across architecture, structure, MEP and project delivery.",
+      "ledeAr": "فرص مفتوحة عبر العمارة والإنشاءات وMEP وتنفيذ المشاريع."
+    },
+    "downloads": {
+      "pageId": "downloads",
+      "titleEn": "Downloads",
+      "titleAr": "التحميلات",
+      "eyebrowEn": "Documents",
+      "eyebrowAr": "مستندات",
+      "ledeEn": "Download the official ASAS Company Profile.",
+      "ledeAr": "حمّل الملف التعريفي الرسمي لأساس."
+    },
+    "terms": {
+      "pageId": "terms",
+      "titleEn": "Terms of Use",
+      "titleAr": "شروط الاستخدام",
+      "eyebrowEn": "Legal",
+      "eyebrowAr": "قانوني",
+      "ledeEn": "Terms governing use of the ASAS website.",
+      "ledeAr": "الشروط التي تحكم استخدام موقع أساس."
+    },
+    "privacy": {
+      "pageId": "privacy",
+      "titleEn": "Privacy Policy",
+      "titleAr": "سياسة الخصوصية",
+      "eyebrowEn": "Legal",
+      "eyebrowAr": "قانوني",
+      "ledeEn": "How ASAS handles personal information collected via this site.",
+      "ledeAr": "كيف تتعامل أساس مع المعلومات الشخصية عبر هذا الموقع."
+    }
+  },
+  "updatedAt": "2026-09-12T13:53:08.602Z"
+}

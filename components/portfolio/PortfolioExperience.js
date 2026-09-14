@@ -422,13 +422,13 @@ export default function PortfolioExperience({locale, projects, categories}) {
                 <>
                   <span aria-hidden="true">تحويل الأفكار</span>
                   <span aria-hidden="true">إلى واقع</span>
-                  <span aria-hidden="true">مبني.</span>
+                  <span aria-hidden="true">مبني</span>
                 </>
               ) : (
                 <>
                   <span aria-hidden="true">Engineering</span>
                   <span aria-hidden="true">Ideas Into</span>
-                  <span aria-hidden="true">Built Reality.</span>
+                  <span aria-hidden="true">Built Reality</span>
                 </>
               )}
             </h1>
@@ -494,13 +494,13 @@ export default function PortfolioExperience({locale, projects, categories}) {
                 <>
                   مشاريع تشكّلت
                   <br />
-                  بدقة هندسية.
+                  بدقة هندسية
                 </>
               ) : (
                 <>
                   Projects shaped by
                   <br />
-                  engineering precision.
+                  engineering precision
                 </>
               )}
             </h2>
@@ -572,15 +572,15 @@ export default function PortfolioExperience({locale, projects, categories}) {
           <h2>
             {ar ? (
               <>
-                محفظة واحدة.
+                محفظة واحدة
                 <br />
-                تخصصات متعددة.
+                تخصصات متعددة
               </>
             ) : (
               <>
-                One portfolio.
+                One portfolio
                 <br />
-                Multiple disciplines.
+                Multiple disciplines
               </>
             )}
           </h2>
@@ -621,13 +621,13 @@ export default function PortfolioExperience({locale, projects, categories}) {
                 <>
                   كل مشروع،
                   <br />
-                  رؤية منسقة واحدة.
+                  رؤية منسقة واحدة
                 </>
               ) : (
                 <>
                   Every project,
                   <br />
-                  one coordinated vision.
+                  one coordinated vision
                 </>
               )}
             </h2>

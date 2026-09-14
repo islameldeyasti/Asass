@@ -1,4 +1,4 @@
-import {company} from '@/data/company';
+import {company as fallbackCompany} from '@/data/company';
 import {t} from '@/lib/i18n/ui';
 
 /** Official WhatsApp glyph (Meta brand path). */
@@ -17,11 +17,12 @@ function WhatsAppIcon({size = 22}) {
   );
 }
 
-export default function WhatsApp({locale = 'en'}) {
+export default function WhatsApp({locale = 'en', companyData}) {
+  const info = companyData || fallbackCompany;
   return (
     <a
       className="whatsapp"
-      href={`https://wa.me/${company.whatsapp}`}
+      href={`https://wa.me/${info.whatsapp}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${t('whatsapp', locale)} ASAS`}
