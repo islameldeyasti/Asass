@@ -2,6 +2,7 @@
 
 import {
   CompanyBrand,
+  CompanyResources,
   ContactActions,
   CoverBand,
   EmployeeBio,
@@ -50,7 +51,7 @@ function Shell({vm, className = '', children}) {
   );
 }
 
-function CommonFooter({vm, handlers}) {
+function CommonFooter({vm, handlers, compact = false}) {
   return (
     <>
       <ContactActions
@@ -58,7 +59,9 @@ function CommonFooter({vm, handlers}) {
         onTrack={handlers.onTrack}
         onShare={handlers.onShare}
         onSaveContact={handlers.onSaveContact}
+        compact={compact}
       />
+      <CompanyResources vm={vm} onTrack={handlers.onTrack} compact={compact} />
       {vm.showQrOnCard ? (
         <QrBlock qrDataUrl={vm.qrDataUrl} label={vm.ar ? 'امسح للحفظ' : 'Scan to save'} />
       ) : null}
@@ -240,13 +243,7 @@ export function TemplateMinimalSignature({vm, handlers}) {
         />
         <EmployeeName name={vm.name} />
         <EmployeeRole title={vm.title} />
-        <ContactActions
-          vm={vm}
-          onTrack={handlers.onTrack}
-          onShare={handlers.onShare}
-          onSaveContact={handlers.onSaveContact}
-          compact
-        />
+        <CommonFooter vm={vm} handlers={handlers} compact />
       </div>
     </Shell>
   );
@@ -337,6 +334,7 @@ export function TemplateProfessionalId({vm, handlers}) {
             onSaveContact={handlers.onSaveContact}
             compact
           />
+          <CompanyResources vm={vm} onTrack={handlers.onTrack} compact />
         </div>
       </div>
     </Shell>

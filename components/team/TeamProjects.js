@@ -46,6 +46,10 @@ export default function TeamProjects({projects, locale}) {
             </Link>
           ))}
         </div>
+        <Link className="tm-text-link tm-projects-more" href={`/${locale}/projects`}>
+          {ar ? 'عرض محفظة المشاريع الكاملة' : 'View full project portfolio'}
+          <ArrowUpRight size={14} className={ar ? 'tm-flip' : ''} />
+        </Link>
       </div>
     </section>
   );

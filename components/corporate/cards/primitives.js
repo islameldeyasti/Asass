@@ -1,7 +1,9 @@
 'use client';
 
 import {
+  Building2,
   Download,
+  FileText,
   Link2,
   Linkedin,
   Mail,
@@ -77,7 +79,7 @@ export function EmployeeBio({bio, className = ''}) {
   return <p className={`dcard-bio ${className}`.trim()}>{bio}</p>;
 }
 
-export function ActionButton({href, onClick, label, children, variant = 'solid'}) {
+export function ActionButton({href, onClick, label, children, variant = 'solid', download = false}) {
   const className = `dcard-action dcard-action--${variant}`;
   if (href) {
     const isExternalHttp = /^https?:\/\//i.test(href);
@@ -85,6 +87,7 @@ export function ActionButton({href, onClick, label, children, variant = 'solid'}
       <a
         className={className}
         href={href}
+        download={download === true ? true : download || undefined}
         target={isExternalHttp ? '_blank' : undefined}
         rel={isExternalHttp ? 'noopener noreferrer' : undefined}
         onClick={onClick}
@@ -196,6 +199,43 @@ export function ContactActions({
     );
   }
   return <div className={`dcard-actions${compact ? ' is-compact' : ''}`}>{items}</div>;
+}
+
+const COMPANY_PROFILE_PDF = '/downloads/asas-company-profile.pdf';
+
+/** Company PDF download + portfolio + full company profile links for employee cards. */
+export function CompanyResources({vm, onTrack, compact = false}) {
+  if (vm.showCompanyResources === false) return null;
+  const locale = vm.locale || (vm.ar ? 'ar' : 'en');
+  return (
+    <div className={`dcard-resources${compact ? ' is-compact' : ''}`}>
+      <ActionButton
+        href={COMPANY_PROFILE_PDF}
+        label={vm.ar ? 'تحميل الملف' : 'Download Profile'}
+        variant="solid"
+        download
+        onClick={() => onTrack?.('download')}
+      >
+        <Download size={16} />
+      </ActionButton>
+      <ActionButton
+        href={`/${locale}/projects`}
+        label={vm.ar ? 'محفظة المشاريع' : 'Project Portfolio'}
+        variant="ghost"
+        onClick={() => onTrack?.('portfolio')}
+      >
+        <FileText size={16} />
+      </ActionButton>
+      <ActionButton
+        href={`/${locale}/company-profile`}
+        label={vm.ar ? 'معلومات الشركة' : 'Company Information'}
+        variant="ghost"
+        onClick={() => onTrack?.('company')}
+      >
+        <Building2 size={16} />
+      </ActionButton>
+    </div>
+  );
 }
 
 function digits(value) {

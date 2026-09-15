@@ -97,6 +97,7 @@ export function buildCardViewModel({
     showQrOnCard: card.showQrOnCard && Boolean(qrDataUrl),
     showContactActions: card.showContactActions !== false,
     showSocialButtons: card.showSocialButtons !== false,
+    showCompanyResources: card.showCompanyResources !== false,
     themePreset: card.themePreset || 'asas-classic',
     sectionsOrder: card.sectionsOrder || [],
   };

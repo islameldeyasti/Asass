@@ -4,10 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {motion, useReducedMotion} from 'motion/react';
 import {ArrowUpRight, Linkedin, Mail, Phone} from 'lucide-react';
+import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {localizeMember} from '@/lib/team/schema';
 import {isUsablePortrait} from './TeamCard';
 
 const EASE = [0.16, 1, 0.3, 1];
+const PROFILE_PDF = '/downloads/asas-company-profile.pdf';
 
 function initialsFromName(name) {
   return String(name || '')
@@ -136,6 +138,18 @@ export default function TeamMemberHero({member, locale}) {
               </a>
             )}
           </div>
+
+          <ActionGroup className="tm-member-resources" stack={false}>
+            <ActionButton variant="primary" href={PROFILE_PDF} icon="download" download>
+              {ar ? 'تحميل الملف' : 'Download Profile'}
+            </ActionButton>
+            <ActionButton variant="outline" href={`/${locale}/projects`} icon="arrow-up">
+              {ar ? 'محفظة المشاريع' : 'Project Portfolio'}
+            </ActionButton>
+            <ActionButton variant="outline" href={`/${locale}/company-profile`} icon="file">
+              {ar ? 'معلومات الشركة' : 'Company Information'}
+            </ActionButton>
+          </ActionGroup>
 
           <Link className="tm-text-link" href={`/${locale}/team`}>
             {ar ? 'العودة إلى الفريق' : 'Back to Team'}

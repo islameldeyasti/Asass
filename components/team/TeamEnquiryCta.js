@@ -35,6 +35,9 @@ export default function TeamEnquiryCta({locale, image}) {
           <ActionButton variant="primary" href={`/${locale}/project-enquiry`} icon="arrow-up">
             {ar ? 'ابدأ مشروعاً' : 'Start a Project'}
           </ActionButton>
+          <ActionButton variant="ghost" href={`/${locale}/company-profile`} icon="file">
+            {ar ? 'معلومات الشركة' : 'Company Information'}
+          </ActionButton>
           <ActionButton
             variant="ghost"
             href={`https://wa.me/${company.whatsapp}`}

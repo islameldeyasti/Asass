@@ -105,6 +105,9 @@ export default function DigitalCardProfile({
       vcard: 'vcard',
       share: 'share',
       linkedin: 'contact',
+      download: 'download',
+      portfolio: 'contact',
+      company: 'contact',
     };
     trackEvent(card.publicId, map[type] || 'contact');
   }

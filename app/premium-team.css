@@ -791,6 +791,24 @@ html[dir='rtl'] .tm-card-cta svg:last-child {
   color: var(--tm-orange);
 }
 
+.tm-member-resources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 22px;
+}
+
+.tm-member-resources .asas-action {
+  min-height: 44px;
+}
+
+.tm-projects-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 28px;
+}
+
 .tm-bio {
   background: #fff;
 }

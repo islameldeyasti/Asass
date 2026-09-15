@@ -161,6 +161,17 @@
   grid-template-columns: 1fr;
 }
 
+.dcard-resources {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--dcard-gap);
+  margin-top: 10px;
+}
+
+.dcard-resources.is-compact {
+  margin-top: 8px;
+}
+
 .dcard-action {
   display: inline-flex;
   align-items: center;
