@@ -9,6 +9,7 @@ import {
   getOrCreateConversationId,
   sendAiChatMessage,
 } from '@/lib/ai/client';
+import usePastFirstSection from '@/components/hooks/usePastFirstSection';
 import AIHeader from './AIHeader';
 import AIMessage from './AIMessage';
 import AIComposer from './AIComposer';
@@ -37,6 +38,7 @@ export default function AIWidget({locale = 'en'}) {
   const inputRef = useRef(null);
   const liveRef = useRef(null);
   const transcriptSeq = useRef(0);
+  const {pastHero} = usePastFirstSection();
 
   const [open, setOpen] = useState(false);
   const [minimized, setMinimized] = useState(false);
@@ -352,8 +354,13 @@ export default function AIWidget({locale = 'en'}) {
 
   if (!AI_ASSISTANT_CONFIG.enabled) return null;
 
+  const showFab = open || pastHero;
+
   return (
-    <div className={`asas-ai${open ? ' is-open' : ''}`} data-locale={siteLocale}>
+    <div
+      className={`asas-ai${open ? ' is-open' : ''}${showFab ? '' : ' is-fab-hidden'}`}
+      data-locale={siteLocale}
+    >
       {open ? (
         <div
           id={panelId}
@@ -465,6 +472,8 @@ export default function AIWidget({locale = 'en'}) {
         aria-label={open ? t.close : t.open}
         aria-expanded={open}
         aria-controls={panelId}
+        aria-hidden={showFab ? undefined : true}
+        tabIndex={showFab ? undefined : -1}
         onClick={() => setOpen((value) => !value)}
       >
         {open ? (
