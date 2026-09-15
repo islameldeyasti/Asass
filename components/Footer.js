@@ -4,13 +4,19 @@ import Link from 'next/link';
 import {useRef} from 'react';
 import {motion, useInView, useReducedMotion} from 'motion/react';
 import {ArrowRight, Mail, MapPin, MessageCircle, Phone} from 'lucide-react';
-import {company} from '@/data/company';
+import {company, offices} from '@/data/company';
 import {services} from '@/data/services';
 import ThemeLogo from '@/components/theme/ThemeLogo';
 import SocialIconLinks from '@/components/social/SocialIconLinks';
 import {t, tNav} from '@/lib/i18n/ui';
 
 const EASE = [0.16, 1, 0.3, 1];
+
+const OFFICE_LABEL_KEYS = {
+  'abu-dhabi': 'abuDhabiOffice',
+  dubai: 'dubaiOffice',
+  syria: 'syriaOffice',
+};
 
 const companyLinkKeys = [
   ['About', 'about'],
@@ -138,13 +144,27 @@ export default function Footer({
 
           <motion.div className="footer-column footer-contact" {...reveal(0.24)}>
             <h3>{t('contactUs', locale)}</h3>
-            <div className="footer-contact-item">
-              <MapPin aria-hidden="true" strokeWidth={1.75} />
-              <div>
-                <strong>{t('abuDhabiOffice', locale)}</strong>
-                <p>{ar ? companyInfo.addressAr : companyInfo.address}</p>
-              </div>
-            </div>
+            {(Array.isArray(offices) && offices.length ? offices : [{id: 'abu-dhabi', address: companyInfo.address, addressAr: companyInfo.addressAr}]).map(
+              (office) => {
+                const labelKey = OFFICE_LABEL_KEYS[office.id];
+                const label = labelKey
+                  ? t(labelKey, locale)
+                  : ar
+                    ? `مكتب ${office.cityAr || office.city || ''}`
+                    : `${office.city || 'Office'} office`;
+                const address = ar ? office.addressAr || office.address : office.address;
+                if (!address) return null;
+                return (
+                  <div className="footer-contact-item" key={office.id}>
+                    <MapPin aria-hidden="true" strokeWidth={1.75} />
+                    <div>
+                      <strong>{label}</strong>
+                      <p>{address}</p>
+                    </div>
+                  </div>
+                );
+              },
+            )}
             <div className="footer-contact-item">
               <Phone aria-hidden="true" strokeWidth={1.75} />
               <div>
