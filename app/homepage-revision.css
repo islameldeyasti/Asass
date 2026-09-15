@@ -835,7 +835,18 @@ html[dir='rtl'] .whatsapp {
     grid-template-columns: 1fr;
   }
 
+  /* Full-bleed featured image on mobile — FAB clearance belongs on CTAs, not the media. */
   .hp-featured {
-    padding-inline-end: 56px;
+    padding-inline: 0;
+    width: 100%;
+  }
+
+  .hp-featured-visual {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hp-featured-copy {
+    padding-inline-end: max(24px, calc(var(--asas-m-fab-clear, 56px) - 8px));
   }
 }
