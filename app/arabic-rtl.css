@@ -347,7 +347,70 @@ html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href^='mailto:']
 html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href*='wa.me'] {
   direction: ltr;
   unicode-bidi: isolate;
-  text-align: start;
+  text-align: left;
+  align-self: flex-end;
+}
+
+/* Footer + home contact rows: keep copy against the icon (reading-start) in Arabic */
+html[dir='rtl'] .site-footer .footer-contact-item,
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item,
+html[dir='rtl'] .atlas-home .home-contact-details article {
+  text-align: right;
+}
+
+html[dir='rtl'] .site-footer .footer-contact-item > div,
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item > div,
+html[dir='rtl'] .atlas-home .home-contact-details article > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  min-width: 0;
+}
+
+html[dir='rtl'] .site-footer .footer-contact-item strong,
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item strong,
+html[dir='rtl'] .site-footer .footer-contact-item p,
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item p,
+html[dir='rtl'] .atlas-home .home-contact-details h3,
+html[dir='rtl'] .atlas-home .home-contact-details p {
+  text-align: right;
+  width: 100%;
+}
+
+html[dir='rtl'] .site-footer .footer-contact-item a,
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a,
+html[dir='rtl'] .atlas-home .home-contact-details a {
+  align-self: flex-end;
+  max-width: 100%;
+}
+
+html[dir='rtl'] .atlas-home .home-contact-details a[dir='ltr'],
+html[dir='rtl'] .site-footer .footer-contact-item a[dir='ltr'],
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[dir='ltr'] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: left;
+}
+
+/* Contact page detail list */
+html[dir='rtl'] .contact-list > div,
+html[dir='rtl'] .contact-aside {
+  text-align: right;
+}
+
+html[dir='rtl'] .contact-list b,
+html[dir='rtl'] .contact-list span,
+html[dir='rtl'] .contact-list a {
+  text-align: right;
+}
+
+html[dir='rtl'] .contact-list a[dir='ltr'] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: left;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 /* ---------- Arabic display rhythm (avoid EN-cramped line-heights) ---------- */

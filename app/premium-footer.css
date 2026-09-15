@@ -222,6 +222,18 @@ html[dir='rtl'] .site-footer.asas-footer .footer-column a:hover {
   align-items: start;
 }
 
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item {
+  grid-template-columns: minmax(0, 1fr) 22px;
+}
+
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item > svg {
+  order: 2;
+}
+
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item > div {
+  order: 1;
+}
+
 .site-footer.asas-footer .footer-contact-item > svg {
   width: 18px;
   height: 18px;
