@@ -342,30 +342,35 @@ html[dir='rtl'] .site-footer.asas-footer .footnote {
   font-family: var(--asas-font-ar, var(--asas-font));
 }
 
-html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href^='tel:'],
-html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href^='mailto:'],
-html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href*='wa.me'] {
-  direction: ltr;
-  unicode-bidi: isolate;
-  text-align: left;
-  align-self: flex-end;
-}
-
-/* Footer + home contact rows: keep copy against the icon (reading-start) in Arabic */
+/* Footer + home contact rows in Arabic:
+   icon stays at reading-start (right); copy sits beside it, right-aligned. */
 html[dir='rtl'] .site-footer .footer-contact-item,
 html[dir='rtl'] .site-footer.asas-footer .footer-contact-item,
 html[dir='rtl'] .atlas-home .home-contact-details article {
-  text-align: right;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: start;
+}
+
+html[dir='rtl'] .site-footer .footer-contact-item > svg,
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item > svg,
+html[dir='rtl'] .atlas-home .home-contact-details article > svg {
+  order: 0 !important;
+  flex: none;
 }
 
 html[dir='rtl'] .site-footer .footer-contact-item > div,
 html[dir='rtl'] .site-footer.asas-footer .footer-contact-item > div,
 html[dir='rtl'] .atlas-home .home-contact-details article > div {
+  order: 0 !important;
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  min-width: 0;
+  align-items: flex-start; /* start = right under dir=rtl */
+  text-align: start;
 }
 
 html[dir='rtl'] .site-footer .footer-contact-item strong,
@@ -374,23 +379,27 @@ html[dir='rtl'] .site-footer .footer-contact-item p,
 html[dir='rtl'] .site-footer.asas-footer .footer-contact-item p,
 html[dir='rtl'] .atlas-home .home-contact-details h3,
 html[dir='rtl'] .atlas-home .home-contact-details p {
-  text-align: right;
+  text-align: start;
   width: 100%;
 }
 
 html[dir='rtl'] .site-footer .footer-contact-item a,
 html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a,
 html[dir='rtl'] .atlas-home .home-contact-details a {
-  align-self: flex-end;
+  align-self: flex-start;
   max-width: 100%;
 }
 
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href^='tel:'],
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href^='mailto:'],
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href*='wa.me'],
 html[dir='rtl'] .atlas-home .home-contact-details a[dir='ltr'],
 html[dir='rtl'] .site-footer .footer-contact-item a[dir='ltr'],
 html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[dir='ltr'] {
   direction: ltr;
   unicode-bidi: isolate;
   text-align: left;
+  align-self: flex-start;
 }
 
 /* Contact page detail list */
