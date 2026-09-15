@@ -81,7 +81,7 @@ function ExpertCard({member, locale, index}) {
               src={portrait}
               alt={local.name}
               fill
-              quality={90}
+              quality={75}
               sizes="(max-width: 900px) 80vw, 28vw"
               style={{objectFit: 'cover', objectPosition: member.profile_image_focal || '50% 22%'}}
               loading={index < 4 ? 'eager' : 'lazy'}

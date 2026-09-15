@@ -46,7 +46,7 @@ export default function TeamMemberHero({member, locale}) {
               alt={local.name}
               fill
               priority
-              quality={92}
+              quality={75}
               sizes="(max-width:900px) 100vw, 48vw"
               style={{objectFit: 'cover', objectPosition: member.profile_image_focal || '50% 28%'}}
             />

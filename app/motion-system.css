@@ -201,6 +201,35 @@ html.asas-motion img.asas-img.is-inview {
   transform: scale(1);
 }
 
+/* Failsafe if IntersectionObserver misses an image (blank media bug) */
+html.asas-motion .asas-img:not(.is-inview),
+html.asas-motion img.asas-img:not(.is-inview) {
+  animation: asas-heading-failsafe 0.5s var(--motion-ease) 0.85s forwards;
+}
+
+/* Page heroes — never hide media via scroll-reveal */
+html.asas-motion .about-hero img,
+html.asas-motion .contact-hero img,
+html.asas-motion .careers-hero img,
+html.asas-motion .careers-detail-hero img,
+html.asas-motion .downloads-hero img,
+html.asas-motion .enquiry-hero img,
+html.asas-motion .sectors-hero img,
+html.asas-motion .gallery-hero img,
+html.asas-motion .blog-hero img,
+html.asas-motion .page-hero img,
+html.asas-motion .about-hero img.asas-img,
+html.asas-motion .contact-hero img.asas-img,
+html.asas-motion .careers-hero img.asas-img,
+html.asas-motion .downloads-hero img.asas-img,
+html.asas-motion .enquiry-hero img.asas-img,
+html.asas-motion .sectors-hero img.asas-img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+}
+
 /* Project / gallery cards — never hide media via scroll-reveal */
 html.asas-motion .pl-card img,
 html.asas-motion .pl-featured img,

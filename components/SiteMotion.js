@@ -71,10 +71,13 @@ function markStagger(root, locale = 'en') {
   });
 }
 
+const MOTION_IMG_SKIP =
+  '.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .gl, .gx, .ge, .ga, .gj, .hg, .sv, .sd, .sc, .cp, .pf, .tm, .about-hero, .contact-hero, .careers-hero, .careers-detail-hero, .downloads-hero, .enquiry-hero, .sectors-hero, .gallery-hero, .blog-hero, .page-hero';
+
 function markHeadings(root) {
   HEADING_SELECTORS.forEach((sel) => {
     root.querySelectorAll(sel).forEach((el) => {
-      if (el.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .gl, .gx, .ge, .ga, .gj, .hg, .sv, .sd, .sc, .cp, .pf, .tm')) return;
+      if (el.closest(MOTION_IMG_SKIP)) return;
       el.classList.add('asas-heading');
     });
   });
@@ -82,7 +85,7 @@ function markHeadings(root) {
 
 function markImages(root) {
   root.querySelectorAll('main img').forEach((img) => {
-    if (img.closest('.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .gl, .gx, .ge, .ga, .gj, .hg, .sv, .sd, .sc, .cp, .pf, .tm')) return;
+    if (img.closest(MOTION_IMG_SKIP)) return;
     img.classList.add('asas-img');
   });
 }
@@ -178,20 +181,23 @@ export default function SiteMotion({locale}) {
     // Second pass after layout/fonts settle (catches hero remounts & late layout).
     const raf = requestAnimationFrame(() => {
       scan();
-      document.querySelectorAll('.asas-heading').forEach((el) => {
+      document.querySelectorAll('.asas-heading, .asas-img').forEach((el) => {
         if (inViewport(el)) el.classList.add('is-inview');
       });
     });
+
+    // Hard failsafe — never leave media stuck invisible if IO misses
+    const failsafe = window.setTimeout(() => {
+      document.querySelectorAll('.asas-img:not(.is-inview), .asas-heading:not(.is-inview), .asas-reveal:not(.is-inview)').forEach((el) => {
+        el.classList.add('is-inview');
+      });
+    }, 1400);
 
     const mutator = new MutationObserver(() => {
       markHeadings(document);
       document.querySelectorAll('.asas-heading:not(.is-inview)').forEach(watch);
       document.querySelectorAll('main img:not(.asas-img)').forEach((img) => {
-        if (
-          img.closest(
-            '.asas-hero-slider, .asas-ph, .asas-chrome, .asas-sectors, .asas-clients, .pd, .pl, .gl, .gx, .ge, .ga, .gj, .hg, .sv, .sd, .sc, .cp, .pf, .tm',
-          )
-        ) {
+        if (img.closest(MOTION_IMG_SKIP)) {
           return;
         }
         img.classList.add('asas-img');
@@ -232,6 +238,7 @@ export default function SiteMotion({locale}) {
 
     return () => {
       cancelAnimationFrame(raf);
+      window.clearTimeout(failsafe);
       observer.disconnect();
       statsObserver?.disconnect();
       mutator.disconnect();

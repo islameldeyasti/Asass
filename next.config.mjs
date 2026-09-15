@@ -6,6 +6,8 @@ const nextConfig = {
   // Allow both localhost and 127.0.0.1 in dev (Next 16 blocks cross-origin /_next by default)
   allowedDevOrigins: ['127.0.0.1', 'localhost'],
   images: {
+    // Next 16 defaults to qualities: [75] only — other q= values 400 the optimizer
+    qualities: [60, 75, 90, 92, 100],
     remotePatterns: [
       {
         protocol: 'https',
