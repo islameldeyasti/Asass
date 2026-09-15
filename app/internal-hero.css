@@ -879,6 +879,24 @@ html[data-theme='dark'] .careers-detail-hero:before {
   text-align: start;
 }
 
+/* Arabic needs taller line boxes so descenders don't collide */
+html[dir='rtl'] .sv-hero-copy > h1,
+html[dir='rtl'] .sd-hero-copy > h1,
+html[dir='rtl'] .sc-hero-copy > h1,
+html[dir='rtl'] .pf-hero-copy > h1,
+html[dir='rtl'] .cp-hero-copy > h1,
+html[dir='rtl'] .tm-page-hero-copy > h1,
+html[dir='rtl'] .pl-hero-copy > h1,
+html[dir='rtl'] .about-hero h1,
+html[dir='rtl'] .careers-hero h1,
+html[dir='rtl'] .careers-detail-hero h1,
+html[dir='rtl'] .contact-hero h1,
+html[dir='rtl'] .downloads-hero h1,
+html[dir='rtl'] .enquiry-hero h1,
+html[dir='rtl'] .sectors-hero h1 {
+  line-height: 1.5 !important;
+}
+
 /* --- Supporting paragraph / lede --- */
 .sv-hero-lede,
 .sd-hero-lede,

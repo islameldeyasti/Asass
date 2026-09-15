@@ -351,6 +351,13 @@ html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a[href*='wa.me'] {
 }
 
 /* ---------- Arabic display rhythm (avoid EN-cramped line-heights) ---------- */
+/*
+  Latin heroes use ~0.95–1.08 line-height. Arabic glyphs need more room
+  or lines crash into each other (e.g. contact hero: أبوظبي / ودبي).
+*/
+html[dir='rtl'] h1,
+html[dir='rtl'] h2,
+html[dir='rtl'] h3,
 html[dir='rtl'] .atlas-home h1,
 html[dir='rtl'] .atlas-home h2,
 html[dir='rtl'] .atlas-home h3,
@@ -365,6 +372,17 @@ html[dir='rtl'] .sc-hero-copy h1,
 html[dir='rtl'] .cp-hero-copy h1,
 html[dir='rtl'] .pd-hero-copy h1,
 html[dir='rtl'] .pl-hero-copy h1,
+html[dir='rtl'] .pf-hero-copy h1,
+html[dir='rtl'] .tm-page-hero-copy h1,
+html[dir='rtl'] .about-hero h1,
+html[dir='rtl'] .careers-hero h1,
+html[dir='rtl'] .careers-detail-hero h1,
+html[dir='rtl'] .contact-hero h1,
+html[dir='rtl'] .downloads-hero h1,
+html[dir='rtl'] .enquiry-hero h1,
+html[dir='rtl'] .sectors-hero h1,
+html[dir='rtl'] .gallery-hero h1,
+html[dir='rtl'] .blog-hero h1,
 html[dir='rtl'] .sv-hero-lede,
 html[dir='rtl'] .sd-hero-lede,
 html[dir='rtl'] .sc-hero-lede,
@@ -373,16 +391,46 @@ html[dir='rtl'] .sd-kicker,
 html[dir='rtl'] .sc-kicker,
 html[dir='rtl'] .atlas-kicker {
   letter-spacing: normal !important;
-  line-height: 1.28;
+  line-height: 1.45 !important;
+}
+
+html[dir='rtl'] .contact-hero h1,
+html[dir='rtl'] .about-hero h1,
+html[dir='rtl'] .enquiry-hero h1,
+html[dir='rtl'] .downloads-hero h1,
+html[dir='rtl'] .sectors-hero h1,
+html[dir='rtl'] .careers-hero h1,
+html[dir='rtl'] .careers-detail-hero h1,
+html[dir='rtl'] .sv-hero-copy h1,
+html[dir='rtl'] .sd-hero-copy h1,
+html[dir='rtl'] .sc-hero-copy h1,
+html[dir='rtl'] .cp-hero-copy h1,
+html[dir='rtl'] .pd-hero-copy h1,
+html[dir='rtl'] .pl-hero-copy h1,
+html[dir='rtl'] .pf-hero-copy h1,
+html[dir='rtl'] .asas-ph-title {
+  line-height: 1.5 !important;
+}
+
+html[dir='rtl'] .sd-hero-copy h1 span,
+html[dir='rtl'] .sv-hero-copy h1 span,
+html[dir='rtl'] .sc-hero-copy h1 span,
+html[dir='rtl'] .cp-hero-copy h1 span,
+html[dir='rtl'] .pf-hero-copy h1 span {
+  line-height: inherit;
+  padding-block: 0.06em;
 }
 
 html[dir='rtl'] .atlas-home p,
 html[dir='rtl'] .asas-ph-note,
 html[dir='rtl'] .hp-about-lede,
 html[dir='rtl'] .insp-tab-copy p,
-html[dir='rtl'] .asas-t-card p {
+html[dir='rtl'] .asas-t-card p,
+html[dir='rtl'] .contact-hero p,
+html[dir='rtl'] .about-hero p,
+html[dir='rtl'] .enquiry-hero p {
   letter-spacing: normal !important;
-  line-height: 1.7;
+  line-height: 1.75 !important;
 }
 
 /* ---------- Internal heroes ---------- */

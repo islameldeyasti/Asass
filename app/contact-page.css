@@ -81,6 +81,11 @@
   line-height: 1.05;
 }
 
+html[dir='rtl'] .contact-hero h1 {
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+
 .contact-hero p {
   max-width: 48ch;
   margin: 0;
