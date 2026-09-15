@@ -332,28 +332,41 @@ html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
   margin-bottom: 16px;
   background: #fff;
   color: #2a2a2a;
+  overflow: hidden;
 }
 
 .hp-featured-visual {
   position: relative;
+  width: 100%;
   min-height: 380px;
+  height: 100%;
   overflow: hidden;
-  background: var(--asas-navy);
+  background: #111;
 }
 
-.hp-featured-visual img {
-  object-fit: cover;
+.hp-featured-visual img,
+.hp-featured-visual [data-nimg] {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
 }
 
 .hp-featured-visual:after {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(90deg, transparent 55%, rgba(22, 27, 38, .12) 100%);
   pointer-events: none;
 }
 
-.hp-featured-visual span {
+/* Decorative label only — never hide Next/Image wrappers */
+.hp-featured-visual > span:not([data-nimg]):not(:has(img)) {
   display: none;
 }
 
@@ -426,11 +439,15 @@ html[dir='rtl'] .hp-revised .hp-about-layout > .asas-wire-sphere {
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #070463;
+  background: #111;
 }
 
-.hp-portfolio-media img {
-  object-fit: cover;
+.hp-portfolio-media img,
+.hp-portfolio-media [data-nimg] {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
 }
 
 .hp-portfolio-card img,
@@ -783,6 +800,12 @@ html[dir='rtl'] .whatsapp {
   .hp-revised .hp-about-actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .hp-featured-visual {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    width: 100%;
   }
 }
 

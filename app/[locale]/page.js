@@ -451,7 +451,10 @@ export default async function Home({params}) {
                     alt={ar ? featuredProject.titleAr : featuredProject.title}
                     fill
                     sizes="(max-width: 900px) 100vw, 60vw"
-                    style={{objectPosition: featuredProject.visual.crop}}
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: featuredProject.visual.crop || '50% 50%',
+                    }}
                     priority
                   />
                 ) : (
@@ -487,7 +490,10 @@ export default async function Home({params}) {
                         alt={photo ? (ar ? project.titleAr : project.title) : ''}
                         fill
                         sizes="(max-width: 900px) 50vw, 25vw"
-                        style={{objectPosition: project.visual.crop}}
+                        style={{
+                          objectFit: 'cover',
+                          objectPosition: project.visual.crop || '50% 50%',
+                        }}
                       />
                     ) : (
                       <ProjectVisualFallback project={project} locale={locale} />
