@@ -79,6 +79,20 @@ html[dir='rtl'] .home-contact-form button {
   text-transform: none !important;
 }
 
+html[dir='rtl'] .site-footer .footer-action-link,
+html[dir='rtl'] .site-footer .footer-action > a,
+html[dir='rtl'] .site-footer.asas-footer .footer-action-link,
+html[dir='rtl'] .site-footer.asas-footer .footer-action > a,
+html[dir='rtl'] .site-footer.asas-footer .footer-action-title,
+html[dir='rtl'] .site-footer.asas-footer .footer-action-eyebrow,
+html[dir='rtl'] .site-footer.asas-footer .footer-action p,
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item strong,
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item p,
+html[dir='rtl'] .site-footer.asas-footer .footer-contact-item a {
+  font-family: var(--asas-font-ar) !important;
+  letter-spacing: normal !important;
+}
+
 /* Numeric / technical values that must stay LTR inside RTL copy */
 html[dir='rtl'] .ltr-isolate,
 html[dir='rtl'] [dir='ltr'].ltr-isolate {

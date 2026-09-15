@@ -1448,7 +1448,10 @@ html[dir='rtl'] .site-footer .footer-column a:hover {
   border-radius: 7px;
   background: var(--asas-orange);
   color: #fff;
-  font: 700 12px/1 "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
+  font-family: var(--asas-font, "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
   text-decoration: none;
   white-space: nowrap;
   transition: background .2s ease;
