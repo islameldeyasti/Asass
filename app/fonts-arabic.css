@@ -9,12 +9,13 @@
      /public/fonts/din-next-arabic/DINNextArabic-Medium.woff2
      /public/fonts/din-next-arabic/DINNextArabic-Bold.woff2
 
-   Until licensed files are added, the stack falls through to
-   IBM Plex / Noto. All Arabic UI must use --asas-font-ar.
+   @font-face for DIN is disabled until those files are present —
+   empty faces can break Arabic letter joining in some browsers.
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 
+/*
 @font-face {
   font-family: 'DIN Next Arabic';
   src: url('/fonts/din-next-arabic/DINNextArabic-Light.woff2') format('woff2');
@@ -46,13 +47,14 @@
   font-style: normal;
   font-display: swap;
 }
+*/
 
 :root {
   /* English UI stack */
   --asas-font-en: "Microsoft PhagsPa", "Segoe UI", Arial, sans-serif;
 
-  /* Arabic UI stack — one family chain for the whole AR site */
-  --asas-font-ar: "DIN Next Arabic", "IBM Plex Sans Arabic", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  /* Arabic UI stack — IBM Plex until licensed DIN files are added */
+  --asas-font-ar: "IBM Plex Sans Arabic", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
 
   /* Active stack (switched by locale below) */
   --asas-font: var(--asas-font-en);
@@ -66,7 +68,7 @@ html[data-locale='ar'] {
   --font-sans: var(--asas-font-ar);
   --tm-font: var(--asas-font-ar);
   --asas-tracking-display: 0;
-  --asas-tracking-label: 0.02em;
+  --asas-tracking-label: 0;
   font-family: var(--asas-font-ar);
 }
 

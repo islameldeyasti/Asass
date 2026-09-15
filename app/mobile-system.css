@@ -156,7 +156,7 @@
     white-space: nowrap !important;
     overflow: hidden;
     text-overflow: ellipsis;
-    letter-spacing: 0.07em !important;
+    letter-spacing: normal !important;
     font-size: 9px !important;
   }
 
@@ -755,7 +755,7 @@
   .asas-stats-label {
     max-width: none !important;
     overflow-wrap: anywhere;
-    letter-spacing: 0.02em !important;
+    letter-spacing: normal !important;
     text-transform: none;
     text-align: start;
   }

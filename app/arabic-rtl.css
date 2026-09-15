@@ -31,6 +31,29 @@ html[data-locale='ar'] *:not(svg):not(svg *):not(code):not(pre):not(kbd):not(sam
   font-family: var(--asas-font-ar) !important;
 }
 
+/*
+  Critical: any non-zero letter-spacing breaks Arabic cursive joining
+  (letters look disconnected — e.g. البنية التحتية).
+  Kill tracking everywhere in Arabic; English keeps its own rules.
+*/
+html[dir='rtl'],
+html.locale-ar,
+html[data-locale='ar'] {
+  --asas-tracking-display: 0;
+  --asas-tracking-label: 0;
+  --asas-tracking-tight: 0;
+  letter-spacing: normal;
+}
+
+html[dir='rtl'] body,
+html[dir='rtl'] body *:not(svg):not(svg *),
+html.locale-ar body,
+html.locale-ar body *:not(svg):not(svg *),
+html[data-locale='ar'] body,
+html[data-locale='ar'] body *:not(svg):not(svg *) {
+  letter-spacing: normal !important;
+}
+
 /* Soften Latin-biased label treatments for Arabic — no English tracking */
 html[dir='rtl'] .eyebrow,
 html[dir='rtl'] .atlas-kicker,
@@ -52,7 +75,7 @@ html[dir='rtl'] .asas-ph-kicker,
 html[dir='rtl'] .asas-ph-meta,
 html[dir='rtl'] .asas-ph-fact,
 html[dir='rtl'] .home-contact-form button {
-  letter-spacing: 0 !important;
+  letter-spacing: normal !important;
   text-transform: none !important;
 }
 
@@ -335,8 +358,21 @@ html[dir='rtl'] .asas-ph-title,
 html[dir='rtl'] .cp-story-copy h2,
 html[dir='rtl'] .hp-why-head h2,
 html[dir='rtl'] .home-contact-head h2,
-html[dir='rtl'] .insp-center-head h2 {
-  letter-spacing: 0 !important;
+html[dir='rtl'] .insp-center-head h2,
+html[dir='rtl'] .sv-hero-copy h1,
+html[dir='rtl'] .sd-hero-copy h1,
+html[dir='rtl'] .sc-hero-copy h1,
+html[dir='rtl'] .cp-hero-copy h1,
+html[dir='rtl'] .pd-hero-copy h1,
+html[dir='rtl'] .pl-hero-copy h1,
+html[dir='rtl'] .sv-hero-lede,
+html[dir='rtl'] .sd-hero-lede,
+html[dir='rtl'] .sc-hero-lede,
+html[dir='rtl'] .sv-kicker,
+html[dir='rtl'] .sd-kicker,
+html[dir='rtl'] .sc-kicker,
+html[dir='rtl'] .atlas-kicker {
+  letter-spacing: normal !important;
   line-height: 1.28;
 }
 
@@ -345,7 +381,7 @@ html[dir='rtl'] .asas-ph-note,
 html[dir='rtl'] .hp-about-lede,
 html[dir='rtl'] .insp-tab-copy p,
 html[dir='rtl'] .asas-t-card p {
-  letter-spacing: 0 !important;
+  letter-spacing: normal !important;
   line-height: 1.7;
 }
 
