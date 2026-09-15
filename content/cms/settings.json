@@ -25,33 +25,33 @@
     "parentGroupAr": "إحدى مبادرات مجموعة مير"
   },
   "socialLinks": {
-    "linkedin": "https://www.linkedin.com/company/asas-engineering",
-    "instagram": "https://www.instagram.com/",
-    "facebook": "https://www.facebook.com/",
-    "youtube": "https://www.youtube.com/"
+    "linkedin": "https://www.linkedin.com/company/asas-engineering/home/",
+    "instagram": "https://www.instagram.com/asas_engineering_consultancy/",
+    "facebook": "https://www.facebook.com/profile.php?id=100063518202423&sk=photos",
+    "youtube": "https://www.youtube.com/@AsasEngineering"
   },
   "socialNetworks": [
     {
       "id": "linkedin",
-      "href": "https://www.linkedin.com/company/asas-engineering",
+      "href": "https://www.linkedin.com/company/asas-engineering/home/",
       "labelKey": "linkedin",
       "ariaKey": "onLinkedIn"
     },
     {
       "id": "instagram",
-      "href": "https://www.instagram.com/",
+      "href": "https://www.instagram.com/asas_engineering_consultancy/",
       "labelKey": "instagram",
       "ariaKey": "onInstagram"
     },
     {
       "id": "facebook",
-      "href": "https://www.facebook.com/",
+      "href": "https://www.facebook.com/profile.php?id=100063518202423&sk=photos",
       "labelKey": "facebook",
       "ariaKey": "onFacebook"
     },
     {
       "id": "youtube",
-      "href": "https://www.youtube.com/",
+      "href": "https://www.youtube.com/@AsasEngineering",
       "labelKey": "youtube",
       "ariaKey": "onYouTube"
     }

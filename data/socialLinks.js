@@ -1,22 +1,12 @@
 /**
  * ASAS social profile URLs — single source of truth for footer + floating bar.
- *
- * LinkedIn: public company page (asasengg.ae).
- * Instagram / Facebook / YouTube: replace PLACEHOLDER values with official
- * profile URLs when confirmed. Do not invent company-specific paths.
  */
 
-export const SOCIAL_URL_PLACEHOLDER = {
-  instagram: 'https://www.instagram.com/', // PLACEHOLDER — official ASAS Instagram
-  facebook: 'https://www.facebook.com/', // PLACEHOLDER — official ASAS Facebook
-  youtube: 'https://www.youtube.com/', // PLACEHOLDER — official ASAS YouTube
-};
-
 export const socialLinks = {
-  linkedin: 'https://www.linkedin.com/company/asas-engineering',
-  instagram: SOCIAL_URL_PLACEHOLDER.instagram,
-  facebook: SOCIAL_URL_PLACEHOLDER.facebook,
-  youtube: SOCIAL_URL_PLACEHOLDER.youtube,
+  linkedin: 'https://www.linkedin.com/company/asas-engineering/home/',
+  instagram: 'https://www.instagram.com/asas_engineering_consultancy/',
+  facebook: 'https://www.facebook.com/profile.php?id=100063518202423&sk=photos',
+  youtube: 'https://www.youtube.com/@AsasEngineering',
 };
 
 /** Ordered network list — localize labels in UI via labelKey / ariaKey + t(). */
