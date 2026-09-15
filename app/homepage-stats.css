@@ -108,6 +108,12 @@ html[dir='rtl'] .asas-stats-item::after {
   text-transform: uppercase;
 }
 
+html[dir='rtl'] .asas-stats-label {
+  max-width: none;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
 @media (max-width: 900px) {
   .asas-stats {
     padding: var(--asas-m-section-y, 52px) 0;

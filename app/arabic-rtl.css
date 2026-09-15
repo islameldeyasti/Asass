@@ -64,6 +64,28 @@ html[dir='rtl'] [dir='ltr'].ltr-isolate {
   text-align: start;
 }
 
+/* Stat counters: keep digit order LTR, but sit on the right in Arabic */
+html[dir='rtl'] .asas-stats-value,
+html[dir='rtl'] .asas-stats-value.ltr-isolate,
+html[dir='rtl'] .asas-stats-value[dir='ltr'],
+html[dir='rtl'] .about-stat strong,
+html[dir='rtl'] .about-stat strong.ltr-isolate,
+html[dir='rtl'] .about-stat strong[dir='ltr'],
+html[dir='rtl'] .cp-metric dt,
+html[dir='rtl'] .cp-metric dt.ltr-isolate,
+html[dir='rtl'] .cp-metric dt[dir='ltr'],
+html[dir='rtl'] .atlas-home .hp-about-stats strong,
+html[dir='rtl'] .atlas-home .hp-about-stats strong.ltr-isolate,
+html[dir='rtl'] .atlas-home .hp-about-stats strong[dir='ltr'],
+html[dir='rtl'] .sv-metric dt,
+html[dir='rtl'] .sv-metric dt.ltr-isolate,
+html[dir='rtl'] .sv-metric dt[dir='ltr'] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: right;
+  width: 100%;
+}
+
 /*
   Legacy per-component Arabic font overrides — kept for specificity
   against older Georgia !important rules. Universal rule above covers

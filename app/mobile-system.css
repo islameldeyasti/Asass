@@ -721,25 +721,47 @@
   /* Stats / metrics: keep number + label stacked and fully on-screen */
   .about-stat,
   .cp-metric,
+  .asas-stats-item,
   .sc-expertise-item {
     display: grid !important;
-    justify-items: start !important;
+    justify-items: stretch !important;
     gap: 8px !important;
     padding-inline: 16px !important;
+    padding-right: max(16px, var(--asas-m-fab-clear)) !important;
     max-width: 100%;
+    box-sizing: border-box;
   }
 
   .about-stat strong,
-  .cp-metric dt {
-    text-align: start;
+  .cp-metric dt,
+  .asas-stats-value {
+    width: 100%;
+  }
+
+  html[dir='rtl'] .about-stat strong,
+  html[dir='rtl'] .cp-metric dt,
+  html[dir='rtl'] .asas-stats-value {
+    text-align: right !important;
+  }
+
+  html[dir='ltr'] .about-stat strong,
+  html[dir='ltr'] .cp-metric dt,
+  html[dir='ltr'] .asas-stats-value {
+    text-align: left;
   }
 
   .about-stat span,
-  .cp-metric dd {
+  .cp-metric dd,
+  .asas-stats-label {
     max-width: none !important;
     overflow-wrap: anywhere;
     letter-spacing: 0.02em !important;
     text-transform: none;
+    text-align: start;
+  }
+
+  .asas-stats-grid {
+    grid-template-columns: 1fr !important;
   }
 
   .cp-metrics-grid,
