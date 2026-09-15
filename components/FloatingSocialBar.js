@@ -5,69 +5,132 @@ import {usePathname} from 'next/navigation';
 import SocialIconLinks from '@/components/social/SocialIconLinks';
 import {t} from '@/lib/i18n/ui';
 
-/** Fixed left-side social stack — hidden over home hero; on inside pages sits above the hero. */
+const HERO_SELECTORS = [
+  '[data-asas-hero]',
+  '.asas-ph',
+  '.sv-hero',
+  '.sd-hero',
+  '.sc-hero',
+  '.cp-hero',
+  '.pd-hero',
+  '.pl-hero',
+  '.pf-hero',
+  '.tm-page-hero',
+  '.about-hero',
+  '.contact-hero',
+  '.careers-hero',
+  '.careers-detail-hero',
+  '.downloads-hero',
+  '.enquiry-hero',
+  '.sectors-hero',
+  '.gallery-hero',
+  '.blog-hero',
+  'main#main > section:first-of-type',
+  'main > section:first-of-type',
+].join(', ');
+
+function findFirstBand() {
+  return document.querySelector(HERO_SELECTORS);
+}
+
+function findFooter() {
+  return document.querySelector('footer.site-footer, footer.asas-footer, footer');
+}
+
+function bandPastViewport(el) {
+  if (!el) return true;
+  const rect = el.getBoundingClientRect();
+  const vh = window.innerHeight || 1;
+  const visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+  const ratio = Math.max(0, Math.min(1, visible / Math.max(rect.height, 1)));
+  const pastByRatio = ratio < 0.4;
+  const pastByBottom = rect.bottom < vh * 0.55;
+  return pastByRatio || pastByBottom;
+}
+
+function footerInView(el) {
+  if (!el) return false;
+  const rect = el.getBoundingClientRect();
+  const vh = window.innerHeight || 1;
+  // Hide once the footer top reaches the lower half of the viewport.
+  return rect.top < vh * 0.72;
+}
+
+/** Fixed left-side social stack — hidden on first section and over the footer. */
 export default function FloatingSocialBar({locale = 'en'}) {
   const pathname = usePathname() || '';
-  const isHome =
-    pathname === `/${locale}` ||
-    pathname === `/${locale}/` ||
-    pathname === '/' ||
-    pathname === '';
-  const [pastHero, setPastHero] = useState(!isHome);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!isHome) {
-      setPastHero(true);
-      return undefined;
-    }
+    let cancelled = false;
+    let heroObserver;
+    let footerObserver;
+    let scrollRaf = 0;
 
-    setPastHero(false);
-    const hero = document.querySelector('[data-asas-hero], .asas-ph');
-    if (!hero) {
-      setPastHero(true);
-      return undefined;
-    }
-
-    const update = (entry) => {
-      // Show once most of the hero has scrolled away (into second section).
-      const ratio = entry?.intersectionRatio ?? 1;
-      const bottom = entry?.boundingClientRect?.bottom ?? hero.getBoundingClientRect().bottom;
-      const pastByRatio = ratio < 0.4;
-      const pastByBottom = bottom < window.innerHeight * 0.55;
-      setPastHero(pastByRatio || pastByBottom);
+    const sync = () => {
+      if (cancelled) return;
+      const hero = findFirstBand();
+      const footer = findFooter();
+      const pastHero = bandPastViewport(hero);
+      const overFooter = footerInView(footer);
+      setVisible(pastHero && !overFooter);
     };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry) update(entry);
-      },
-      {
-        threshold: [0, 0.15, 0.3, 0.4, 0.55, 0.75, 1],
-      },
-    );
-    observer.observe(hero);
+    const observe = () => {
+      heroObserver?.disconnect();
+      footerObserver?.disconnect();
 
-    // Sync once in case user landed mid-page / restored scroll.
-    update({
-      intersectionRatio: 1,
-      boundingClientRect: hero.getBoundingClientRect(),
+      const hero = findFirstBand();
+      const footer = findFooter();
+
+      if (hero) {
+        heroObserver = new IntersectionObserver(() => sync(), {
+          threshold: [0, 0.15, 0.3, 0.4, 0.55, 0.75, 1],
+        });
+        heroObserver.observe(hero);
+      }
+
+      if (footer) {
+        footerObserver = new IntersectionObserver(() => sync(), {
+          threshold: [0, 0.05, 0.15, 0.3, 0.5, 0.75, 1],
+          rootMargin: '0px 0px -20% 0px',
+        });
+        footerObserver.observe(footer);
+      }
+
+      sync();
+    };
+
+    const onScroll = () => {
+      if (scrollRaf) return;
+      scrollRaf = requestAnimationFrame(() => {
+        scrollRaf = 0;
+        sync();
+      });
+    };
+
+    // Allow route content to paint before querying heroes.
+    const boot = requestAnimationFrame(() => {
+      observe();
+      // Second pass after layout / images settle.
+      window.setTimeout(observe, 120);
     });
-    // Re-evaluate with a real IO-like reading after layout.
-    requestAnimationFrame(() => {
-      const rect = hero.getBoundingClientRect();
-      const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-      const ratio = Math.max(0, Math.min(1, visible / Math.max(rect.height, 1)));
-      update({intersectionRatio: ratio, boundingClientRect: rect});
-    });
 
-    return () => observer.disconnect();
-  }, [isHome, pathname]);
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onScroll, {passive: true});
 
-  const className = [
-    'asas-float-social',
-    isHome ? null : 'is-internal',
-    isHome && !pastHero ? 'is-hero-hidden' : 'is-past-hero',
-  ]
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(boot);
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      heroObserver?.disconnect();
+      footerObserver?.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [pathname]);
+
+  const className = ['asas-float-social', visible ? 'is-visible' : 'is-hidden']
     .filter(Boolean)
     .join(' ');
 
@@ -75,7 +138,7 @@ export default function FloatingSocialBar({locale = 'en'}) {
     <nav
       className={className}
       aria-label={t('socialMedia', locale)}
-      aria-hidden={isHome && !pastHero ? true : undefined}
+      aria-hidden={visible ? undefined : true}
     >
       <SocialIconLinks variant="float" locale={locale} />
     </nav>
