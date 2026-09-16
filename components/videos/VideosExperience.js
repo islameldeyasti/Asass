@@ -66,7 +66,7 @@ export default function VideosExperience({locale, videos = []}) {
               : 'Moments from ASAS projects and practice — curated from the official archive and managed in the CMS.'}
           </p>
           <div className="vd-hero-actions">
-            <ActionButton variant="outline" href={`/${locale}/gallery`} icon="arrow-up">
+            <ActionButton variant="primary" href={`/${locale}/gallery`} icon="arrow-up">
               {ar ? 'معرض الصور' : 'Photo Gallery'}
             </ActionButton>
             <ActionButton
