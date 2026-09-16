@@ -43,26 +43,46 @@
   position: relative;
   overflow: hidden;
   padding: clamp(72px, 12vw, 120px) 0 clamp(56px, 8vw, 88px);
-  background:
-    radial-gradient(1200px 420px at 12% -10%, rgba(139, 30, 30, 0.28), transparent 55%),
-    linear-gradient(160deg, #05033a 0%, #070463 48%, #1a1630 100%);
+  background: #05033a;
   color: #fff;
+}
+
+.vd-hero-photo,
+.vd-bridge-media {
+  position: absolute;
+  inset: 0;
+}
+
+.vd-hero-photo img,
+.vd-bridge-media img {
+  object-fit: cover;
+}
+
+.vd-hero-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(105deg, rgba(5, 3, 40, 0.88) 0%, rgba(7, 4, 99, 0.72) 48%, rgba(5, 3, 30, 0.55) 100%),
+    linear-gradient(180deg, rgba(5, 3, 30, 0.35) 0%, rgba(5, 3, 30, 0.78) 100%);
+  pointer-events: none;
 }
 
 .vd-hero-grid {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 72px 52px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 88%);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 88%);
   pointer-events: none;
 }
 
 .vd-hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 720px;
 }
 
@@ -261,10 +281,6 @@ html[dir='rtl'] .vd-card-play,
   color: inherit;
 }
 
-.vd-card.is-wide {
-  grid-column: span 2;
-}
-
 .vd-card-media {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -272,21 +288,22 @@ html[dir='rtl'] .vd-card-play,
   background: #111;
 }
 
-.vd-card.is-wide .vd-card-media {
-  aspect-ratio: 21 / 10;
-}
-
 .vd-card-copy {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
+  min-height: 2.8em;
 }
 
 .vd-card-copy strong {
   font-size: 15px;
   line-height: 1.35;
   color: var(--vd-ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .vd-card-copy em {
@@ -298,12 +315,25 @@ html[dir='rtl'] .vd-card-play,
 }
 
 .vd-bridge {
+  position: relative;
+  overflow: hidden;
   padding: 56px 0;
   background: var(--vd-navy);
   color: #fff;
 }
 
+.vd-bridge-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(100deg, rgba(5, 3, 40, 0.9) 0%, rgba(7, 4, 99, 0.78) 55%, rgba(5, 3, 30, 0.62) 100%);
+  pointer-events: none;
+}
+
 .vd-bridge-inner {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   align-items: end;
@@ -398,13 +428,6 @@ html[dir='rtl'] .vd-card-play,
     grid-template-columns: 1fr;
   }
 
-  .vd-card.is-wide {
-    grid-column: auto;
-  }
-
-  .vd-card.is-wide .vd-card-media {
-    aspect-ratio: 16 / 10;
-  }
 }
 
 @media (max-width: 640px) {

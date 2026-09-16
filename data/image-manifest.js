@@ -325,6 +325,8 @@ export const ctaBandImages = {
   sectors: roleImages.SECTORS_HERO || roleImages.ENQUIRY_HERO,
   downloads: roleImages.DOWNLOADS_HERO || roleImages.ENQUIRY_HERO,
   blog: roleImages.ABOUT_FEATURED || roleImages.ENQUIRY_HERO,
+  videos: roleImages.PROJECTS_HERO || roleImages.ENQUIRY_HERO,
+  videosHero: roleImages.COMPANY_HERO || roleImages.PROJECTS_HERO,
 };
 
 /** Company profile official-document card preview (reuse downloads editorial). */

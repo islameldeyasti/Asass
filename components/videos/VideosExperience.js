@@ -1,10 +1,12 @@
 'use client';
 
 import {useMemo, useState} from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {Play, X, ArrowUpRight} from 'lucide-react';
 import {localizeVideo} from '@/data/videos';
 import {ActionButton} from '@/components/ActionButton';
+import {ctaBandImages, roleImages} from '@/data/image-manifest';
 
 function youtubeThumb(item) {
   if (item.thumbnail) return item.thumbnail;
@@ -23,6 +25,8 @@ function embedSrc(item) {
 export default function VideosExperience({locale, videos = []}) {
   const ar = locale === 'ar';
   const [activeId, setActiveId] = useState(null);
+  const heroBg = ctaBandImages.videosHero || roleImages.COMPANY_HERO;
+  const ctaBg = ctaBandImages.videos || roleImages.PROJECTS_HERO;
 
   const items = useMemo(
     () => videos.map((item) => localizeVideo(item, locale)),
@@ -36,6 +40,19 @@ export default function VideosExperience({locale, videos = []}) {
   return (
     <div className="vd" dir={ar ? 'rtl' : 'ltr'}>
       <section className="vd-hero">
+        <div className="vd-hero-photo" aria-hidden="true">
+          {heroBg ? (
+            <Image
+              src={heroBg}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              style={{objectFit: 'cover', objectPosition: '50% 35%'}}
+            />
+          ) : null}
+        </div>
+        <div className="vd-hero-veil" aria-hidden="true" />
         <div className="vd-hero-grid" aria-hidden="true" />
         <div className="vd-shell vd-hero-inner">
           <p className="vd-kicker">
@@ -119,7 +136,7 @@ export default function VideosExperience({locale, videos = []}) {
               <button
                 type="button"
                 key={item.id}
-                className={`vd-card${index % 5 === 0 ? ' is-wide' : ''}`}
+                className="vd-card"
                 onClick={() => setActiveId(item.id)}
               >
                 <span className="vd-card-media">
@@ -140,6 +157,18 @@ export default function VideosExperience({locale, videos = []}) {
       </section>
 
       <section className="vd-bridge">
+        <div className="vd-bridge-media" aria-hidden="true">
+          {ctaBg ? (
+            <Image
+              src={ctaBg}
+              alt=""
+              fill
+              sizes="100vw"
+              style={{objectFit: 'cover', objectPosition: '50% 40%'}}
+            />
+          ) : null}
+        </div>
+        <div className="vd-bridge-veil" aria-hidden="true" />
         <div className="vd-shell vd-bridge-inner">
           <div>
             <p className="vd-kicker light">
