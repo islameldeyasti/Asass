@@ -322,6 +322,8 @@ html[data-theme='light'] .contact-hero h1,
 html[data-theme='light'] .careers-hero h1,
 html[data-theme='light'] .careers-detail-hero h1,
 html[data-theme='light'] .downloads-hero h1,
+html[data-theme='light'] .vd-hero h1,
+html[data-theme='light'] .vd-bridge h2,
 html[data-theme='light'] .enquiry-hero h1,
 html[data-theme='light'] .sectors-hero h1,
 html[data-theme='light'] .services-hero h1,
@@ -346,7 +348,9 @@ html[data-theme='light'] .downloads-hero,
 html[data-theme='light'] .enquiry-hero,
 html[data-theme='light'] .sectors-hero,
 html[data-theme='light'] .services-hero,
-html[data-theme='light'] .projects-hero {
+html[data-theme='light'] .projects-hero,
+html[data-theme='light'] .vd-hero,
+html[data-theme='light'] .vd-bridge {
   color: #fff;
 }
 
