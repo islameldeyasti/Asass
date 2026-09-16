@@ -23,6 +23,7 @@ import {
   getServices,
   getSettings,
   getTestimonials,
+  getVideos,
   listApplications,
   listContacts,
   listEnquiries,
@@ -37,6 +38,8 @@ import {
   saveSector,
   saveService,
   saveTestimonial,
+  saveVideo,
+  deleteVideo,
   updateApplication,
   updateEnquiry,
   updateFooter,
@@ -133,6 +136,14 @@ const RESOURCES = {
       await getGalleryItems();
       return deleteCollectionItem('gallery', id, 'id');
     },
+  },
+  videos: {
+    kind: 'collection',
+    read: PERMS.VIDEOS_READ,
+    write: PERMS.VIDEOS_WRITE,
+    list: getVideos,
+    save: saveVideo,
+    remove: async ({id}) => deleteVideo(id),
   },
   jobs: {
     kind: 'collection',

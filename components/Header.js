@@ -21,8 +21,15 @@ const DEFAULT_NAV_ITEMS = [
     path: 'about',
     children: [
       {label: 'Company Profile', path: 'company-profile'},
-      {label: 'Gallery', path: 'gallery'},
       {label: 'Team', path: 'team'},
+    ],
+  },
+  {
+    label: 'Gallery',
+    path: 'gallery',
+    children: [
+      {label: 'Photos', path: 'gallery'},
+      {label: 'Videos', path: 'videos'},
     ],
   },
   {label: 'Services', path: 'services'},

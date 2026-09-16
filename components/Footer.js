@@ -22,6 +22,7 @@ const companyLinkKeys = [
   ['About', 'about'],
   ['Projects', 'projects'],
   ['Gallery', 'gallery'],
+  ['Videos', 'videos'],
   ['Portfolio', 'portfolio'],
   ['Team', 'team'],
   ['Sectors', 'sectors'],

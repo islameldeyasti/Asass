@@ -25,6 +25,14 @@
       "hidden": false
     },
     {
+      "id": "videos",
+      "labelEn": "Videos",
+      "labelAr": "الفيديو",
+      "path": "videos",
+      "order": 35,
+      "hidden": false
+    },
+    {
       "id": "portfolio",
       "labelEn": "Portfolio",
       "labelAr": "الأعمال",
