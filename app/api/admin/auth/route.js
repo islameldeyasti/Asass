@@ -42,19 +42,24 @@ export async function POST(request) {
     }
 
     const token = createSessionToken(user);
-    await writeAudit({
-      actorId: user.id,
-      actorEmail: user.email,
-      action: 'auth.login',
-      entity: 'user',
-      entityId: user.id,
-    });
+    try {
+      await writeAudit({
+        actorId: user.id,
+        actorEmail: user.email,
+        action: 'auth.login',
+        entity: 'user',
+        entityId: user.id,
+      });
+    } catch {
+      // Audit must never block login.
+    }
 
     const response = NextResponse.json({ok: true, user: publicUser(user)});
     response.cookies.set(sessionCookieOptions(token));
     response.cookies.set(clearLegacyCookieOptions());
     return response;
-  } catch {
+  } catch (error) {
+    console.error('[admin/auth] login failed', error);
     return NextResponse.json({error: 'Unable to sign in'}, {status: 400});
   }
 }
