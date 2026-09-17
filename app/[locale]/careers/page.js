@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import {
-  ArrowRight,
   Building2,
   Calculator,
   CircuitBoard,
@@ -16,7 +14,8 @@ import ApplicationForm from '@/components/careers/ApplicationForm';
 import {careerDepartments} from '@/data/careers';
 import {company} from '@/data/company';
 import {ctaBandImages, roleImages} from '@/data/image-manifest';
-import {getPublicOpenJobs} from '@/lib/cms/public-data';
+import {getPublicOpenJobs, getPublicPageCopy} from '@/lib/cms/public-data';
+import {resolvePageChromeForLocale} from '@/lib/cms/page-chrome';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 export const dynamic = 'force-dynamic';
@@ -30,10 +29,6 @@ const departmentIcons = {
   'admin-support': ClipboardList,
 };
 
-function NextArrow({ar}) {
-  return <ArrowRight size={16} className={ar ? 'reverse-arrow' : ''} />;
-}
-
 export const generateMetadata = staticPageMetadata({
   path: 'careers',
   titleEn: 'Careers at ASAS',
@@ -42,13 +37,39 @@ export const generateMetadata = staticPageMetadata({
   descriptionAr: 'تخصصات هندسية تعمل ضمن فريق واحد في أبوظبي.',
 });
 
-
 export default async function Careers({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
   const openJobs = await getPublicOpenJobs();
+  const pageCopy = await getPublicPageCopy('careers');
   const openCount = openJobs.length;
-  const ctaImage = ctaBandImages.careers;
+  const chrome = resolvePageChromeForLocale(pageCopy, locale, {
+    heroImage: roleImages.CAREERS_HERO,
+    heroImageFocal: '50% 35%',
+    heroTitleEn: 'Engineering disciplines working as one team',
+    heroTitleAr: 'تخصصات هندسية تعمل ضمن فريق واحد',
+    heroLedeEn:
+      'Staffing is set according to each project, with external associates supplementing ASAS teams for large-scale work when required.',
+    heroLedeAr:
+      'تحدد احتياجات التوظيف وفق كل مشروع، مع دعم فرق أساس للاستشارات الهندسية وإدارة المشاريع بخبرات خارجية عند الحاجة للأعمال واسعة النطاق.',
+    heroCtaLabelEn: 'Browse openings',
+    heroCtaLabelAr: 'عرض الشواغر',
+    heroCtaHref: '#openings',
+    ctaImage: ctaBandImages.careers,
+    ctaImageFocal: '50% 30%',
+    ctaKickerEn: 'Contact',
+    ctaKickerAr: 'تواصل',
+    ctaTitleEn: 'Questions about hiring?',
+    ctaTitleAr: 'أسئلة حول التوظيف؟',
+    ctaLedeEn: 'For career questions, reach the Abu Dhabi office through the official email.',
+    ctaLedeAr: 'للاستفسارات المهنية يمكن التواصل مع مكتب أبوظبي عبر البريد الرسمي.',
+    ctaPrimaryLabelEn: company.email,
+    ctaPrimaryLabelAr: company.email,
+    ctaPrimaryHref: `mailto:${company.email}?subject=${encodeURIComponent('Career enquiry')}`,
+    ctaSecondaryLabelEn: 'Contact page',
+    ctaSecondaryLabelAr: 'صفحة التواصل',
+    ctaSecondaryHref: '/contact',
+  });
 
   const deptCounts = Object.fromEntries(
     careerDepartments.map((dept) => [
@@ -62,29 +83,30 @@ export default async function Careers({params}) {
       <section className="careers-hero">
         <div className="careers-hero-photo" aria-hidden="true">
           <Image
-            src={roleImages.CAREERS_HERO}
+            src={chrome.heroImage}
             alt=""
             fill
             priority
             sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: chrome.heroImageFocal}}
           />
         </div>
         <Container>
-          <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'الوظائف' : 'Careers'}</span>
-          <h1>
-            {ar ? 'تخصصات هندسية تعمل ضمن فريق واحد' : 'Engineering disciplines working as one team'}
-          </h1>
-          <p>
-            {ar
-              ? 'تحدد احتياجات التوظيف وفق كل مشروع، مع دعم فرق أساس للاستشارات الهندسية وإدارة المشاريع بخبرات خارجية عند الحاجة للأعمال واسعة النطاق.'
-              : 'Staffing is set according to each project, with external associates supplementing ASAS teams for large-scale work when required.'}
-          </p>
+          <span className="breadcrumb">
+            {ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'الوظائف' : 'Careers'}
+          </span>
+          <h1>{chrome.heroTitle}</h1>
+          <p>{chrome.heroLede}</p>
           <div className="careers-hero-meta">
             <span>
               {openCount} {ar ? 'شواغر مفتوحة' : openCount === 1 ? 'open role' : 'open roles'}
             </span>
-            <span>{ar ? company.cityAr : company.city} · {company.year}</span>
-            <a href="#openings">{ar ? 'عرض الشواغر' : 'Browse openings'}</a>
+            <span>
+              {ar ? company.cityAr : company.city} · {company.year}
+            </span>
+            {chrome.heroCtaLabel ? (
+              <a href={chrome.heroCtaHref || '#openings'}>{chrome.heroCtaLabel}</a>
+            ) : null}
           </div>
         </Container>
       </section>
@@ -105,11 +127,7 @@ export default async function Careers({params}) {
               const Icon = departmentIcons[dept.id] || Building2;
               const count = deptCounts[dept.id] || 0;
               return (
-                <a
-                  className="careers-discipline-card"
-                  href={`#openings`}
-                  key={dept.id}
-                >
+                <a className="careers-discipline-card" href="#openings" key={dept.id}>
                   <span className="careers-discipline-icon" aria-hidden="true">
                     <Icon size={18} />
                   </span>
@@ -163,8 +181,14 @@ export default async function Careers({params}) {
 
       <section className="careers-cta asas-cta-band">
         <div className="careers-cta-media" aria-hidden="true">
-          {ctaImage ? (
-            <Image src={ctaImage} alt="" fill sizes="100vw" style={{objectFit: 'cover', objectPosition: '50% 30%'}} />
+          {chrome.ctaImage ? (
+            <Image
+              src={chrome.ctaImage}
+              alt=""
+              fill
+              sizes="100vw"
+              style={{objectFit: 'cover', objectPosition: chrome.ctaImageFocal}}
+            />
           ) : null}
         </div>
         <div className="careers-cta-veil" aria-hidden="true" />
@@ -172,25 +196,21 @@ export default async function Careers({params}) {
           <div className="careers-cta-copy">
             <p className="careers-cta-kicker">
               <i />
-              {ar ? 'تواصل' : 'Contact'}
+              {chrome.ctaKicker}
             </p>
-            <h2>{ar ? 'أسئلة حول التوظيف؟' : 'Questions about hiring?'}</h2>
-            <p>
-              {ar
-                ? 'للاستفسارات المهنية يمكن التواصل مع مكتب أبوظبي عبر البريد الرسمي.'
-                : 'For career questions, reach the Abu Dhabi office through the official email.'}
-            </p>
+            <h2>{chrome.ctaTitle}</h2>
+            <p>{chrome.ctaLede}</p>
             <ActionGroup className="careers-cta-actions">
-              <ActionButton
-                variant="primary"
-                href={`mailto:${company.email}?subject=${encodeURIComponent('Career enquiry')}`}
-                icon={false}
-              >
-                {company.email}
-              </ActionButton>
-              <ActionButton variant="ghost" href={`/${locale}/contact`}>
-                {ar ? 'صفحة التواصل' : 'Contact page'}
-              </ActionButton>
+              {chrome.ctaPrimaryLabel ? (
+                <ActionButton variant="primary" href={chrome.ctaPrimaryHref} icon={false}>
+                  {chrome.ctaPrimaryLabel}
+                </ActionButton>
+              ) : null}
+              {chrome.ctaSecondaryLabel ? (
+                <ActionButton variant="ghost" href={chrome.ctaSecondaryHref}>
+                  {chrome.ctaSecondaryLabel}
+                </ActionButton>
+              ) : null}
             </ActionGroup>
           </div>
           <ul className="careers-cta-words" aria-hidden="true">

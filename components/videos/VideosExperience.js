@@ -6,7 +6,6 @@ import Link from 'next/link';
 import {Play, X, ArrowUpRight} from 'lucide-react';
 import {localizeVideo} from '@/data/videos';
 import {ActionButton} from '@/components/ActionButton';
-import {ctaBandImages, roleImages} from '@/data/image-manifest';
 
 function youtubeThumb(item) {
   if (item.thumbnail) return item.thumbnail;
@@ -22,11 +21,11 @@ function embedSrc(item) {
   return '';
 }
 
-export default function VideosExperience({locale, videos = []}) {
+export default function VideosExperience({locale, videos = [], chrome = {}}) {
   const ar = locale === 'ar';
   const [activeId, setActiveId] = useState(null);
-  const heroBg = ctaBandImages.videosHero || roleImages.COMPANY_HERO;
-  const ctaBg = ctaBandImages.videos || roleImages.PROJECTS_HERO;
+  const heroBg = chrome.heroImage || '';
+  const ctaBg = chrome.ctaImage || '';
 
   const items = useMemo(
     () => videos.map((item) => localizeVideo(item, locale)),
@@ -48,7 +47,7 @@ export default function VideosExperience({locale, videos = []}) {
               fill
               priority
               sizes="100vw"
-              style={{objectFit: 'cover', objectPosition: '50% 35%'}}
+              style={{objectFit: 'cover', objectPosition: chrome.heroImageFocal || '50% 35%'}}
             />
           ) : null}
         </div>
@@ -59,15 +58,20 @@ export default function VideosExperience({locale, videos = []}) {
             <i />
             {ar ? 'المعرض / الفيديو' : 'Gallery / Videos'}
           </p>
-          <h1>{ar ? 'أرشيف فيديو أساس' : 'ASAS Video Archive'}</h1>
+          <h1>{chrome.heroTitle || (ar ? 'أرشيف فيديو أساس' : 'ASAS Video Archive')}</h1>
           <p className="vd-lede">
-            {ar
-              ? 'مشاهد من مشاريع ومكاتب أساس — مختارة من الأرشيف الرسمي ومُدارة من لوحة التحكم.'
-              : 'Moments from ASAS projects and practice — curated from the official archive and managed in the CMS.'}
+            {chrome.heroLede ||
+              (ar
+                ? 'مشاهد من مشاريع ومكاتب أساس — مختارة من الأرشيف الرسمي ومُدارة من لوحة التحكم.'
+                : 'Moments from ASAS projects and practice — curated from the official archive and managed in the CMS.')}
           </p>
           <div className="vd-hero-actions">
-            <ActionButton variant="primary" href={`/${locale}/gallery`} icon="arrow-up">
-              {ar ? 'معرض الصور' : 'Photo Gallery'}
+            <ActionButton
+              variant="primary"
+              href={chrome.heroCtaHref || `/${locale}/gallery`}
+              icon="arrow-up"
+            >
+              {chrome.heroCtaLabel || (ar ? 'معرض الصور' : 'Photo Gallery')}
             </ActionButton>
             <ActionButton
               variant="ghost"
@@ -164,7 +168,7 @@ export default function VideosExperience({locale, videos = []}) {
               alt=""
               fill
               sizes="100vw"
-              style={{objectFit: 'cover', objectPosition: '50% 40%'}}
+              style={{objectFit: 'cover', objectPosition: chrome.ctaImageFocal || '50% 40%'}}
             />
           ) : null}
         </div>
@@ -173,21 +177,22 @@ export default function VideosExperience({locale, videos = []}) {
           <div>
             <p className="vd-kicker light">
               <i />
-              {ar ? 'استكشف أكثر' : 'Explore more'}
+              {chrome.ctaKicker || (ar ? 'استكشف أكثر' : 'Explore more')}
             </p>
-            <h2>{ar ? 'الصور والمشاريع' : 'Photos & projects'}</h2>
+            <h2>{chrome.ctaTitle || (ar ? 'الصور والمشاريع' : 'Photos & projects')}</h2>
             <p>
-              {ar
-                ? 'انتقل إلى معرض الصور أو تصفح المشاريع المختارة من ملف الشركة.'
-                : 'Continue to the photo gallery or browse selected projects from the company profile.'}
+              {chrome.ctaLede ||
+                (ar
+                  ? 'انتقل إلى معرض الصور أو تصفح المشاريع المختارة من ملف الشركة.'
+                  : 'Continue to the photo gallery or browse selected projects from the company profile.')}
             </p>
           </div>
           <div className="vd-bridge-actions">
-            <Link className="vd-bridge-link" href={`/${locale}/gallery`}>
-              {ar ? 'الصور' : 'Photos'}
+            <Link className="vd-bridge-link" href={chrome.ctaPrimaryHref || `/${locale}/gallery`}>
+              {chrome.ctaPrimaryLabel || (ar ? 'الصور' : 'Photos')}
             </Link>
-            <Link className="vd-bridge-link" href={`/${locale}/projects`}>
-              {ar ? 'المشاريع' : 'Projects'}
+            <Link className="vd-bridge-link" href={chrome.ctaSecondaryHref || `/${locale}/projects`}>
+              {chrome.ctaSecondaryLabel || (ar ? 'المشاريع' : 'Projects')}
             </Link>
           </div>
         </div>

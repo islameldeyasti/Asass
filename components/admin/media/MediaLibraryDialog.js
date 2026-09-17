@@ -1,6 +1,7 @@
 'use client';
 
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
 
 function isImageItem(item) {
   return String(item?.mime || '').startsWith('image/') || /\.(jpe?g|png|webp|gif)$/i.test(item?.url || '');
@@ -116,9 +117,7 @@ export default function MediaLibraryDialog({
       >
         <div className="adm-modal-head">
           <h2>{title}</h2>
-          <button type="button" className="adm-btn-ghost" onClick={onClose} disabled={uploading}>
-            Close
-          </button>
+          <AdminCloseButton onClick={onClose} disabled={uploading} />
         </div>
 
         <div className="adm-modal-body">

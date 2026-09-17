@@ -18,7 +18,11 @@ import {
   workLocations,
 } from '@/data/company';
 import {ctaBandImages, roleImages} from '@/data/image-manifest';
+import {getPublicPageCopy} from '@/lib/cms/public-data';
+import {resolvePageChromeForLocale} from '@/lib/cms/page-chrome';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
+
+export const dynamic = 'force-dynamic';
 
 const strengthIcons = [CheckCircle2, Clock3, Handshake];
 
@@ -35,36 +39,60 @@ export const generateMetadata = staticPageMetadata({
 export default async function About({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const ctaImage = ctaBandImages.about;
+  const pageCopy = await getPublicPageCopy('about');
+  const chrome = resolvePageChromeForLocale(pageCopy, locale, {
+    heroImage: roleImages.ABOUT_HERO,
+    heroImageFocal: '50% 40%',
+    heroTitleEn: 'Engineering expertise founded in Abu Dhabi in 2009',
+    heroTitleAr: 'خبرة هندسية تأسست في أبوظبي عام 2009',
+    heroLedeEn: company.description,
+    heroLedeAr: company.descriptionAr,
+    heroCtaLabelEn: 'Company profile',
+    heroCtaLabelAr: 'الملف التعريفي',
+    heroCtaHref: '/downloads',
+    ctaImage: ctaBandImages.about,
+    ctaImageFocal: '50% 40%',
+    ctaKickerEn: 'Next',
+    ctaKickerAr: 'التالي',
+    ctaTitleEn: 'Explore services or projects',
+    ctaTitleAr: 'استكشف الخدمات أو المشاريع',
+    ctaLedeEn: 'Review service scopes or selected work from the official portfolio.',
+    ctaLedeAr: 'اطّلع على نطاقات الخدمات أو الأعمال المختارة من الملف الرسمي.',
+    ctaPrimaryLabelEn: 'Services',
+    ctaPrimaryLabelAr: 'الخدمات',
+    ctaPrimaryHref: '/services',
+    ctaSecondaryLabelEn: 'Projects',
+    ctaSecondaryLabelAr: 'المشاريع',
+    ctaSecondaryHref: '/projects',
+  });
 
   return (
     <div className="about-page">
       <section className="about-hero">
         <div className="about-hero-photo" aria-hidden="true">
           <Image
-            src={roleImages.ABOUT_HERO}
+            src={chrome.heroImage}
             alt=""
             fill
             priority
             sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: chrome.heroImageFocal}}
           />
         </div>
         <Container>
           <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'عن أساس للاستشارات الهندسية وإدارة المشاريع' : 'About'}</span>
-          <h1>
-            {ar
-              ? 'خبرة هندسية تأسست في أبوظبي عام 2009'
-              : 'Engineering expertise founded in Abu Dhabi in 2009'}
-          </h1>
-          <p>{ar ? company.descriptionAr : company.description}</p>
+          <h1>{chrome.heroTitle}</h1>
+          <p>{chrome.heroLede}</p>
           <div className="about-hero-meta">
             <span>
               {ar ? company.cityAr : company.city} · {company.year}
             </span>
             <span>{ar ? company.parentGroupAr : company.parentGroup}</span>
-            <ActionButton variant="ghost" href={`/${locale}/downloads`} icon="file">
-              {ar ? 'الملف التعريفي' : 'Company profile'}
-            </ActionButton>
+            {chrome.heroCtaLabel ? (
+              <ActionButton variant="ghost" href={chrome.heroCtaHref || `/${locale}/downloads`} icon="file">
+                {chrome.heroCtaLabel}
+              </ActionButton>
+            ) : null}
           </div>
         </Container>
       </section>
@@ -214,8 +242,14 @@ export default async function About({params}) {
 
       <section className="about-cta asas-cta-band">
         <div className="about-cta-media" aria-hidden="true">
-          {ctaImage ? (
-            <Image src={ctaImage} alt="" fill sizes="100vw" style={{objectFit: 'cover', objectPosition: '50% 40%'}} />
+          {chrome.ctaImage ? (
+            <Image
+              src={chrome.ctaImage}
+              alt=""
+              fill
+              sizes="100vw"
+              style={{objectFit: 'cover', objectPosition: chrome.ctaImageFocal}}
+            />
           ) : null}
         </div>
         <div className="about-cta-veil" aria-hidden="true" />
@@ -223,21 +257,21 @@ export default async function About({params}) {
           <div className="about-cta-copy">
             <p className="about-cta-kicker">
               <i />
-              {ar ? 'التالي' : 'Next'}
+              {chrome.ctaKicker}
             </p>
-            <h2>{ar ? 'استكشف الخدمات أو المشاريع' : 'Explore services or projects'}</h2>
-            <p>
-              {ar
-                ? 'اطّلع على نطاقات الخدمات أو الأعمال المختارة من الملف الرسمي.'
-                : 'Review service scopes or selected work from the official portfolio.'}
-            </p>
+            <h2>{chrome.ctaTitle}</h2>
+            <p>{chrome.ctaLede}</p>
             <ActionGroup className="about-cta-actions">
-              <ActionButton variant="primary" href={`/${locale}/services`}>
-                {ar ? 'الخدمات' : 'Services'}
-              </ActionButton>
-              <ActionButton variant="ghost" href={`/${locale}/projects`}>
-                {ar ? 'المشاريع' : 'Projects'}
-              </ActionButton>
+              {chrome.ctaPrimaryLabel ? (
+                <ActionButton variant="primary" href={chrome.ctaPrimaryHref}>
+                  {chrome.ctaPrimaryLabel}
+                </ActionButton>
+              ) : null}
+              {chrome.ctaSecondaryLabel ? (
+                <ActionButton variant="ghost" href={chrome.ctaSecondaryHref}>
+                  {chrome.ctaSecondaryLabel}
+                </ActionButton>
+              ) : null}
             </ActionGroup>
           </div>
           <ul className="about-cta-words" aria-hidden="true">

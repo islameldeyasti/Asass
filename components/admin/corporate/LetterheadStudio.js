@@ -12,7 +12,6 @@ import {
   Focus,
   MoreHorizontal,
   Printer,
-  X,
   ZoomIn,
   ZoomOut,
 } from 'lucide-react';
@@ -20,6 +19,7 @@ import MediaPicker from '@/components/admin/media/MediaPicker';
 import LetterheadToolbar from '@/components/admin/corporate/LetterheadToolbar';
 import LetterheadChromeControls from '@/components/admin/corporate/LetterheadChromeControls';
 import LetterheadDesignTools from '@/components/admin/corporate/LetterheadDesignTools';
+import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
 import {useToast} from '@/components/admin/ui/ToastProvider';
 import LetterheadDocument from '@/components/corporate/letterhead/LetterheadDocument';
 import {
@@ -761,9 +761,7 @@ export default function LetterheadStudio({
         <div className="lhs-wizard" role="dialog" aria-label="New letter">
           <div className="lhs-wizard-head">
             <h2>New Letter</h2>
-            <button type="button" className="lhs-icon-btn" onClick={goList} aria-label="Close">
-              <X size={18} />
-            </button>
+            <AdminCloseButton onClick={goList} />
           </div>
 
           <label className="lhs-field">
@@ -1975,14 +1973,7 @@ export default function LetterheadStudio({
           <div className="lhs-gallery" role="dialog" aria-label="Template gallery">
             <div className="lhs-gallery-head">
               <h2>Choose template</h2>
-              <button
-                type="button"
-                className="lhs-icon-btn"
-                onClick={() => setGalleryOpen(false)}
-                aria-label="Close"
-              >
-                <X size={18} />
-              </button>
+              <AdminCloseButton onClick={() => setGalleryOpen(false)} />
             </div>
             <div className="lhs-gallery-grid">
               {LETTERHEAD_TEMPLATES.map((tpl) => (

@@ -1,9 +1,10 @@
 'use client';
 
 import {useCallback, useEffect, useMemo, useState} from 'react';
-import {Columns3, List, MessageSquare, Search, X} from 'lucide-react';
+import {Columns3, List, MessageSquare, Search} from 'lucide-react';
 import EmptyState from '@/components/admin/ui/EmptyState';
 import StatusBadge from '@/components/admin/ui/StatusBadge';
+import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
 import {useToast} from '@/components/admin/ui/ToastProvider';
 
 export const ENQUIRY_STATUSES = [
@@ -364,15 +365,7 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
                 <p className="cms-drawer-kicker">Enquiry</p>
                 <h2>{draft.name || 'Contact'}</h2>
               </div>
-              <button
-                type="button"
-                className="cms-btn-ghost"
-                onClick={() => setSelectedId(null)}
-                disabled={saving}
-                aria-label="Close"
-              >
-                <X size={16} />
-              </button>
+              <AdminCloseButton onClick={() => setSelectedId(null)} disabled={saving} />
             </header>
 
             <form className="cms-drawer-body" onSubmit={onSaveDrawer}>

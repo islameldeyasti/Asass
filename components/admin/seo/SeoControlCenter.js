@@ -3,10 +3,11 @@
 import {useCallback, useEffect, useMemo, useState} from 'react';
 import Link from 'next/link';
 import {useRouter, useSearchParams} from 'next/navigation';
-import {AlertTriangle, Search, X} from 'lucide-react';
+import {AlertTriangle, Search} from 'lucide-react';
 import MediaPicker from '@/components/admin/media/MediaPicker';
 import EmptyState from '@/components/admin/ui/EmptyState';
 import StatusBadge from '@/components/admin/ui/StatusBadge';
+import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
 import {useToast} from '@/components/admin/ui/ToastProvider';
 import {emptyPageSeo, seoChecklist} from '@/lib/cms/seo/model';
 import SeoBulkEditor from './SeoBulkEditor';
@@ -1056,15 +1057,7 @@ export default function SeoControlCenter({
                   {pathLabel(draft.path)}
                 </p>
               </div>
-              <button
-                type="button"
-                className="cms-btn-ghost"
-                onClick={closeEditor}
-                disabled={saving}
-                aria-label="Close"
-              >
-                <X size={16} />
-              </button>
+              <AdminCloseButton onClick={closeEditor} disabled={saving} />
             </header>
             <div className="cms-drawer-body">
               <SeoPanel

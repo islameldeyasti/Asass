@@ -5,6 +5,8 @@ import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {company} from '@/data/company';
 import {companyDocumentImage, roleImages, ctaBandImages} from '@/data/image-manifest';
+import {getPublicPageCopy} from '@/lib/cms/public-data';
+import {resolvePageChromeForLocale} from '@/lib/cms/page-chrome';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 const PROFILE_HREF = '/downloads/asas-company-profile.pdf';
@@ -88,27 +90,50 @@ export const generateMetadata = staticPageMetadata({
 export default async function Downloads({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
+  const pageCopy = await getPublicPageCopy('downloads');
+  const chrome = resolvePageChromeForLocale(pageCopy, locale, {
+    heroImage: roleImages.DOWNLOADS_HERO,
+    heroImageFocal: '50% 40%',
+    heroTitleEn: 'Official ASAS resources',
+    heroTitleAr: 'موارد أساس للاستشارات الهندسية وإدارة المشاريع الرسمية',
+    heroLedeEn:
+      'Explore the firm, capabilities, methodology and selected projects through the official company profile.',
+    heroLedeAr:
+      'تعرّف على الشركة وقدراتها ومنهجيتها ومشاريعها المختارة عبر الملف التعريفي الرسمي.',
+    ctaImage: ctaBandImages.downloads,
+    ctaImageFocal: '50% 40%',
+    ctaKickerEn: 'Next Step',
+    ctaKickerAr: 'الخطوة التالية',
+    ctaTitleEn: 'Ready to discuss a project?',
+    ctaTitleAr: 'هل ترغب بمناقشة مشروع؟',
+    ctaLedeEn:
+      'Review selected work from the portfolio, or contact the office to start a project enquiry.',
+    ctaLedeAr: 'راجع المشاريع المختارة أو تواصل مع المكتب لبدء استفسار مشروع.',
+    ctaPrimaryLabelEn: 'Submit a Project Enquiry',
+    ctaPrimaryLabelAr: 'أرسل استفسار مشروع',
+    ctaPrimaryHref: '/project-enquiry',
+    ctaSecondaryLabelEn: 'View projects',
+    ctaSecondaryLabelAr: 'عرض المشاريع',
+    ctaSecondaryHref: '/projects',
+  });
 
   return (
     <div className="downloads-index">
       <section className="downloads-hero">
         <div className="downloads-hero-photo" aria-hidden="true">
           <Image
-            src={roleImages.DOWNLOADS_HERO}
+            src={chrome.heroImage}
             alt=""
             fill
             priority
             sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: chrome.heroImageFocal}}
           />
         </div>
         <Container>
           <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'التحميلات' : 'Downloads'}</span>
-          <h1>{ar ? 'موارد أساس للاستشارات الهندسية وإدارة المشاريع الرسمية' : 'Official ASAS resources'}</h1>
-          <p>
-            {ar
-              ? 'تعرّف على الشركة وقدراتها ومنهجيتها ومشاريعها المختارة عبر الملف التعريفي الرسمي.'
-              : 'Explore the firm, capabilities, methodology and selected projects through the official company profile.'}
-          </p>
+          <h1>{chrome.heroTitle}</h1>
+          <p>{chrome.heroLede}</p>
           <div className="downloads-hero-meta">
             <span>PDF</span>
             <span>{PROFILE_SIZE}</span>
@@ -219,34 +244,36 @@ export default async function Downloads({params}) {
 
       <section className="downloads-cta asas-cta-band">
         <div className="downloads-cta-media" aria-hidden="true">
-          <Image
-            src={ctaBandImages.downloads}
-            alt=""
-            fill
-            sizes="100vw"
-            style={{objectFit: 'cover', objectPosition: '50% 40%'}}
-          />
+          {chrome.ctaImage ? (
+            <Image
+              src={chrome.ctaImage}
+              alt=""
+              fill
+              sizes="100vw"
+              style={{objectFit: 'cover', objectPosition: chrome.ctaImageFocal}}
+            />
+          ) : null}
         </div>
         <div className="downloads-cta-veil" aria-hidden="true" />
         <Container className="downloads-cta-inner">
           <div className="downloads-cta-copy">
             <p className="downloads-cta-kicker">
               <i />
-              {ar ? 'الخطوة التالية' : 'Next Step'}
+              {chrome.ctaKicker}
             </p>
-            <h2>{ar ? 'هل ترغب بمناقشة مشروع؟' : 'Ready to discuss a project?'}</h2>
-            <p>
-              {ar
-                ? 'راجع المشاريع المختارة أو تواصل مع المكتب لبدء استفسار مشروع.'
-                : 'Review selected work from the portfolio, or contact the office to start a project enquiry.'}
-            </p>
+            <h2>{chrome.ctaTitle}</h2>
+            <p>{chrome.ctaLede}</p>
             <ActionGroup className="downloads-cta-actions">
-              <ActionButton variant="primary" href={`/${locale}/project-enquiry`}>
-                {ar ? 'أرسل استفسار مشروع' : 'Submit a Project Enquiry'}
-              </ActionButton>
-              <ActionButton variant="ghost" href={`/${locale}/projects`}>
-                {ar ? 'عرض المشاريع' : 'View projects'}
-              </ActionButton>
+              {chrome.ctaPrimaryLabel ? (
+                <ActionButton variant="primary" href={chrome.ctaPrimaryHref}>
+                  {chrome.ctaPrimaryLabel}
+                </ActionButton>
+              ) : null}
+              {chrome.ctaSecondaryLabel ? (
+                <ActionButton variant="ghost" href={chrome.ctaSecondaryHref}>
+                  {chrome.ctaSecondaryLabel}
+                </ActionButton>
+              ) : null}
               <ActionButton variant="ghost" href={`/${locale}/contact`}>
                 {ar ? 'صفحة التواصل' : 'Contact page'}
               </ActionButton>

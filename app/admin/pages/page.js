@@ -16,7 +16,7 @@ export default async function AdminPagesPage() {
       user={user}
       navItems={navItems}
       title="Pages"
-      subtitle="Bilingual copy for about, contact, careers, downloads, and legal pages"
+      subtitle="Edit bilingual meta, hero, and CTA bands — including background image uploads"
     >
       <PageCopyManager initialDocument={document} canWrite={canWrite} />
     </AdminShell>

@@ -2084,8 +2084,44 @@
 
 .adm-modal-head h2 {
   margin: 0;
+  margin-inline-end: auto;
   font-size: 18px;
   color: var(--cms-text);
+}
+
+.adm-close-btn {
+  margin-inline-start: auto;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: var(--cms-danger, #b42318);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.adm-close-btn:hover:not(:disabled) {
+  background: #8f1c14;
+}
+
+.adm-close-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.adm-close-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.adm-close-btn:focus-visible {
+  outline: 2px solid var(--cms-danger, #b42318);
+  outline-offset: 2px;
 }
 
 .adm-modal-body {

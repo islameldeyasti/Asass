@@ -7,6 +7,8 @@ import EnquiryForm from '@/components/EnquiryForm';
 import OfficeMap from '@/components/OfficeMap';
 import {company} from '@/data/company';
 import {roleImages, ctaBandImages} from '@/data/image-manifest';
+import {getPublicPageCopy} from '@/lib/cms/public-data';
+import {resolvePageChromeForLocale} from '@/lib/cms/page-chrome';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 function NextArrow({ar}) {
@@ -26,27 +28,47 @@ export const generateMetadata = staticPageMetadata({
 export default async function Contact({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
+  const pageCopy = await getPublicPageCopy('contact');
+  const chrome = resolvePageChromeForLocale(pageCopy, locale, {
+    heroImage: roleImages.CONTACT_HERO,
+    heroImageFocal: '50% 40%',
+    heroTitleEn: 'Reach ASAS offices in Abu Dhabi, Dubai & Syria',
+    heroTitleAr: 'تواصل مع مكاتب أساس في أبوظبي ودبي وسوريا',
+    heroLedeEn: 'Office details, location maps and a project enquiry form — all on one page.',
+    heroLedeAr: 'بيانات المكاتب والخرائط ونموذج استفسار المشروع في صفحة واحدةحدة.',
+    ctaImage: ctaBandImages.contact,
+    ctaImageFocal: '50% 40%',
+    ctaKickerEn: 'Explore',
+    ctaKickerAr: 'استكشف',
+    ctaTitleEn: 'Review services or projects first',
+    ctaTitleAr: 'راجع الخدمات أو المشاريع أولاً',
+    ctaLedeEn: 'If you are still exploring scope, start from the services or projects pages.',
+    ctaLedeAr: 'إذا كنت لا تزال تستكشف النطاق، ابدأ من صفحات الخدمات أو المشاريع.',
+    ctaPrimaryLabelEn: 'Services',
+    ctaPrimaryLabelAr: 'الخدمات',
+    ctaPrimaryHref: '/services',
+    ctaSecondaryLabelEn: 'Projects',
+    ctaSecondaryLabelAr: 'المشاريع',
+    ctaSecondaryHref: '/projects',
+  });
 
   return (
     <div className="contact-page">
       <section className="contact-hero">
         <div className="contact-hero-photo" aria-hidden="true">
           <Image
-            src={roleImages.CONTACT_HERO}
+            src={chrome.heroImage}
             alt=""
             fill
             priority
             sizes="100vw"
+            style={{objectFit: 'cover', objectPosition: chrome.heroImageFocal}}
           />
         </div>
         <Container>
           <span className="breadcrumb">{ar ? 'أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS'} / {ar ? 'تواصل' : 'Contact'}</span>
-          <h1>{ar ? 'تواصل مع مكاتب أساس في أبوظبي ودبي وسوريا' : 'Reach ASAS offices in Abu Dhabi, Dubai & Syria'}</h1>
-          <p>
-            {ar
-              ? 'بيانات المكاتب والخرائط ونموذج استفسار المشروع في صفحة واحدةحدة.'
-              : 'Office details, location maps and a project enquiry form — all on one page.'}
-          </p>
+          <h1>{chrome.heroTitle}</h1>
+          <p>{chrome.heroLede}</p>
           <div className="contact-hero-meta">
             <span>
               {ar ? company.cityAr : company.city} · {company.year}
@@ -149,11 +171,11 @@ export default async function Contact({params}) {
       <section className="contact-cta asas-cta-band">
         <div className="contact-cta-media" aria-hidden="true">
           <Image
-            src={ctaBandImages.contact}
+            src={chrome.ctaImage}
             alt=""
             fill
             sizes="100vw"
-            style={{objectFit: 'cover', objectPosition: '50% 40%'}}
+            style={{objectFit: 'cover', objectPosition: chrome.ctaImageFocal}}
           />
         </div>
         <div className="contact-cta-veil" aria-hidden="true" />
@@ -161,21 +183,21 @@ export default async function Contact({params}) {
           <div className="contact-cta-copy">
             <p className="contact-cta-kicker">
               <i />
-              {ar ? 'استكشف' : 'Explore'}
+              {chrome.ctaKicker}
             </p>
-            <h2>{ar ? 'راجع الخدمات أو المشاريع أولاً' : 'Review services or projects first'}</h2>
-            <p>
-              {ar
-                ? 'إذا كنت لا تزال تستكشف النطاق، ابدأ من صفحات الخدمات أو المشاريع.'
-                : 'If you are still exploring scope, start from the services or projects pages.'}
-            </p>
+            <h2>{chrome.ctaTitle}</h2>
+            <p>{chrome.ctaLede}</p>
             <ActionGroup className="contact-cta-actions">
-              <ActionButton variant="primary" href={`/${locale}/services`}>
-                {ar ? 'الخدمات' : 'Services'}
-              </ActionButton>
-              <ActionButton variant="ghost" href={`/${locale}/projects`}>
-                {ar ? 'المشاريع' : 'Projects'}
-              </ActionButton>
+              {chrome.ctaPrimaryLabel ? (
+                <ActionButton variant="primary" href={chrome.ctaPrimaryHref}>
+                  {chrome.ctaPrimaryLabel}
+                </ActionButton>
+              ) : null}
+              {chrome.ctaSecondaryLabel ? (
+                <ActionButton variant="ghost" href={chrome.ctaSecondaryHref}>
+                  {chrome.ctaSecondaryLabel}
+                </ActionButton>
+              ) : null}
             </ActionGroup>
           </div>
           <ul className="contact-cta-words" aria-hidden="true">

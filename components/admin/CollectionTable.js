@@ -6,6 +6,7 @@ import MediaPicker from '@/components/admin/media/MediaPicker';
 import GalleryMediaEditor from '@/components/admin/media/GalleryMediaEditor';
 import RelationPicker from '@/components/admin/ui/RelationPicker';
 import TranslationTabs from '@/components/admin/ui/TranslationTabs';
+import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
 
 function getValue(obj, key) {
   if (!obj || !key) return undefined;
@@ -507,14 +508,7 @@ export default function CollectionTable({
           >
             <div className="adm-modal-head">
               <h2>{writable ? 'Edit content' : 'View content'}</h2>
-              <button
-                type="button"
-                className="adm-btn-ghost"
-                onClick={() => setDraft(null)}
-                disabled={saving}
-              >
-                Close
-              </button>
+              <AdminCloseButton onClick={() => setDraft(null)} disabled={saving} />
             </div>
 
             <form onSubmit={onSave}>

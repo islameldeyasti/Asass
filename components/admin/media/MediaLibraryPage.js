@@ -3,6 +3,7 @@
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import FocalPointPicker from '@/components/admin/media/FocalPointPicker';
 import ImageCropDialog from '@/components/admin/media/ImageCropDialog';
+import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
 
 function isImageItem(item) {
   return String(item?.mime || '').startsWith('image/') || /\.(jpe?g|png|webp|gif)$/i.test(item?.url || '');
@@ -442,13 +443,11 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
         <aside className={`adm-card adm-media-drawer${selected ? ' is-open' : ''}`}>
           {selected ? (
             <form onSubmit={saveMeta}>
-              <div style={{display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 12}}>
+              <div style={{display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 12, alignItems: 'center'}}>
                 <h2 className="adm-section-title" style={{margin: 0}}>
                   Details
                 </h2>
-                <button type="button" className="adm-btn-ghost" onClick={() => setSelected(null)}>
-                  Close
-                </button>
+                <AdminCloseButton onClick={() => setSelected(null)} />
               </div>
 
               <div className="adm-media-drawer-preview">

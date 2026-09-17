@@ -81,6 +81,11 @@ export default function DocumentForm({
     const used = new Set();
     for (const field of fields) {
       if (used.has(field.key) || field.key.endsWith('Ar')) continue;
+      if (field.type === 'heading') {
+        used.add(field.key);
+        rows.push([field]);
+        continue;
+      }
       const enPairedAr =
         field.key.endsWith('En') && map[`${field.key.slice(0, -2)}Ar`]
           ? map[`${field.key.slice(0, -2)}Ar`]
@@ -202,6 +207,18 @@ export default function DocumentForm({
 
   function renderField(field) {
     const disabled = !canWrite;
+
+    if (field.type === 'heading') {
+      return (
+        <div className="adm-field-heading" style={{marginTop: 8}}>
+          <h2 className="adm-section-title" style={{marginTop: 12, marginBottom: 4}}>
+            {field.label}
+          </h2>
+          {field.help ? <p className="adm-section-help">{field.help}</p> : null}
+        </div>
+      );
+    }
+
     if (field.type === 'checkbox') {
       return (
         <label className="adm-check" style={{marginTop: 0}}>

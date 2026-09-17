@@ -2,6 +2,7 @@
 
 import {useCallback, useState} from 'react';
 import Cropper from 'react-easy-crop';
+import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
 
 async function createImage(url) {
   return new Promise((resolve, reject) => {
@@ -104,9 +105,7 @@ export default function ImageCropDialog({
       >
         <div className="adm-modal-head">
           <h2>{title}</h2>
-          <button type="button" className="adm-btn-ghost" onClick={onClose} disabled={saving}>
-            Close
-          </button>
+          <AdminCloseButton onClick={onClose} disabled={saving} />
         </div>
         <div className="adm-modal-body">
           {error ? <p className="adm-error">{error}</p> : null}
