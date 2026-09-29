@@ -9,7 +9,7 @@ import {
   sessionCookieOptions,
 } from '@/lib/cms/auth';
 import {writeAudit} from '@/lib/cms/audit';
-import {permissionsForRole} from '@/lib/cms/permissions';
+import {permissionsForRole, homePathForRole} from '@/lib/cms/permissions';
 
 export const runtime = 'nodejs';
 
@@ -23,6 +23,7 @@ export async function GET() {
     user: session.user,
     role: session.role,
     permissions: permissionsForRole(session.role),
+    redirectTo: homePathForRole(session.role),
   });
 }
 
@@ -54,7 +55,11 @@ export async function POST(request) {
       // Audit must never block login.
     }
 
-    const response = NextResponse.json({ok: true, user: publicUser(user)});
+    const response = NextResponse.json({
+      ok: true,
+      user: publicUser(user),
+      redirectTo: homePathForRole(user.role),
+    });
     response.cookies.set(sessionCookieOptions(token));
     response.cookies.set(clearLegacyCookieOptions());
     return response;

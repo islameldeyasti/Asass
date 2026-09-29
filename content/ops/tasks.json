@@ -1,0 +1,214 @@
+[
+  {
+    "parentTaskId": null,
+    "createdByUserId": "usr_85c1830783bbcab3",
+    "actualHours": null,
+    "completionDate": null,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z",
+    "id": "tsk_demo_01",
+    "title": "Issue concept options pack",
+    "description": "Three façade options for client workshop.",
+    "projectId": "opr_demo_marina",
+    "stageId": "pstg_m05",
+    "assigneeIds": [
+      "emp_demo_arch"
+    ],
+    "departmentId": "dept_mu5m7ai9_imxdpz",
+    "createdByEmployeeId": "emp_demo_pm",
+    "priority": "high",
+    "status": "in_progress",
+    "startDate": "2026-09-07",
+    "dueDate": "2026-09-20",
+    "progress": 60,
+    "estimatedHours": 24,
+    "dependencyIds": [],
+    "checklist": [
+      {
+        "id": "chk_1",
+        "text": "Massing studies",
+        "done": true
+      },
+      {
+        "id": "chk_2",
+        "text": "Material board",
+        "done": false
+      }
+    ],
+    "assigneeId": "emp_demo_arch"
+  },
+  {
+    "parentTaskId": null,
+    "createdByUserId": "usr_85c1830783bbcab3",
+    "actualHours": null,
+    "completionDate": null,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z",
+    "id": "tsk_demo_02",
+    "title": "Structural framing model update",
+    "description": "Align columns with latest architectural grids.",
+    "projectId": "opr_demo_marina",
+    "stageId": "pstg_m05",
+    "assigneeIds": [
+      "emp_demo_str"
+    ],
+    "departmentId": "dept_mu5m7ai9_33px0y",
+    "createdByEmployeeId": "emp_demo_pm",
+    "priority": "normal",
+    "status": "todo",
+    "startDate": "2026-09-15",
+    "dueDate": "2026-09-24",
+    "progress": 10,
+    "estimatedHours": 16,
+    "dependencyIds": [
+      "tsk_demo_01"
+    ],
+    "checklist": [],
+    "assigneeId": "emp_demo_str"
+  },
+  {
+    "parentTaskId": null,
+    "createdByUserId": "usr_85c1830783bbcab3",
+    "actualHours": null,
+    "completionDate": null,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z",
+    "id": "tsk_demo_03",
+    "title": "MEP riser coordination markups",
+    "description": "Clash notes for shaft A/B.",
+    "projectId": "opr_demo_marina",
+    "stageId": "pstg_m05",
+    "assigneeIds": [
+      "emp_demo_mep",
+      "emp_demo_arch"
+    ],
+    "departmentId": "dept_mu5m7ai9_fjfz5g",
+    "createdByEmployeeId": "emp_demo_pm",
+    "priority": "urgent",
+    "status": "blocked",
+    "startDate": "2026-09-12",
+    "dueDate": "2026-09-16",
+    "progress": 30,
+    "estimatedHours": 12,
+    "dependencyIds": [
+      "tsk_demo_02"
+    ],
+    "checklist": [],
+    "assigneeId": "emp_demo_mep"
+  },
+  {
+    "parentTaskId": null,
+    "createdByUserId": "usr_85c1830783bbcab3",
+    "actualHours": null,
+    "completionDate": null,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z",
+    "id": "tsk_demo_04",
+    "title": "Draft BOQ for basement",
+    "description": "Preliminary quantities for cost plan.",
+    "projectId": "opr_demo_marina",
+    "stageId": "pstg_m11",
+    "assigneeIds": [
+      "emp_demo_qs"
+    ],
+    "departmentId": "dept_mu5m7ai9_q7fs03",
+    "createdByEmployeeId": "emp_demo_pm",
+    "priority": "normal",
+    "status": "todo",
+    "startDate": null,
+    "dueDate": "2026-10-08",
+    "progress": 0,
+    "estimatedHours": 40,
+    "dependencyIds": [],
+    "checklist": [],
+    "assigneeId": "emp_demo_qs"
+  },
+  {
+    "parentTaskId": null,
+    "createdByUserId": "usr_85c1830783bbcab3",
+    "actualHours": null,
+    "completionDate": null,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z",
+    "id": "tsk_demo_05",
+    "title": "School classroom wing layouts",
+    "description": "DD plans for blocks B and C.",
+    "projectId": "opr_demo_school",
+    "stageId": "pstg_s05",
+    "assigneeIds": [
+      "emp_demo_arch"
+    ],
+    "departmentId": "dept_mu5m7ai9_imxdpz",
+    "createdByEmployeeId": "emp_demo_pm",
+    "priority": "high",
+    "status": "in_progress",
+    "startDate": "2026-09-03",
+    "dueDate": "2026-09-22",
+    "progress": 45,
+    "estimatedHours": 32,
+    "dependencyIds": [],
+    "checklist": [
+      {
+        "id": "chk_3",
+        "text": "Furniture layouts",
+        "done": false
+      }
+    ],
+    "assigneeId": "emp_demo_arch"
+  },
+  {
+    "parentTaskId": null,
+    "createdByUserId": "usr_85c1830783bbcab3",
+    "actualHours": null,
+    "completionDate": null,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z",
+    "id": "tsk_demo_06",
+    "title": "Authority comment response matrix",
+    "description": "Compile responses for road upgrade hold.",
+    "projectId": "opr_demo_road",
+    "stageId": null,
+    "assigneeIds": [
+      "emp_demo_pm",
+      "emp_demo_site"
+    ],
+    "departmentId": "dept_mu5m7ai9_xhun8d",
+    "createdByEmployeeId": "emp_demo_gm",
+    "priority": "urgent",
+    "status": "in_progress",
+    "startDate": "2026-09-14",
+    "dueDate": "2026-09-19",
+    "progress": 20,
+    "estimatedHours": 8,
+    "dependencyIds": [],
+    "checklist": [],
+    "assigneeId": "emp_demo_pm"
+  },
+  {
+    "parentTaskId": null,
+    "createdByUserId": "usr_85c1830783bbcab3",
+    "actualHours": 3,
+    "completionDate": "2026-09-13",
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z",
+    "id": "tsk_demo_07",
+    "title": "Weekly site progress photos",
+    "description": "Upload and caption Marina site visit set.",
+    "projectId": "opr_demo_marina",
+    "stageId": "pstg_m05",
+    "assigneeIds": [
+      "emp_demo_site"
+    ],
+    "departmentId": "dept_mu5m7ai9_82y8sm",
+    "createdByEmployeeId": "emp_demo_pm",
+    "priority": "low",
+    "status": "completed",
+    "startDate": "2026-09-10",
+    "dueDate": "2026-09-13",
+    "progress": 100,
+    "estimatedHours": 4,
+    "dependencyIds": [],
+    "checklist": [],
+    "assigneeId": "emp_demo_site"
+  }
+]

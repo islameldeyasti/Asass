@@ -1,9 +1,11 @@
-import Link from 'next/link';
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getSettings} from '@/lib/cms/content-service';
 import AdminShell from '@/components/admin/AdminShell';
 import DocumentForm from '@/components/admin/DocumentForm';
+import SettingsLayout, {CMS_SETTINGS_NAV} from '@/components/admin/ui/SettingsLayout';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,29 +28,18 @@ export default async function AdminContactSettingsPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Contact"
-      subtitle="Phone, email, WhatsApp, and office address"
-      actions={
-        <div style={{display: 'flex', gap: 8, flexWrap: 'wrap'}}>
-          <Link className="adm-btn-ghost" href="/admin/settings">
-            General
-          </Link>
-          <Link className="adm-btn-ghost" href="/admin/settings/branding">
-            Branding
-          </Link>
-          <Link className="adm-btn-ghost" href="/admin/settings/social">
-            Social
-          </Link>
-        </div>
-      }
+      title={adminText("Contact")}
+      subtitle={adminText("Phone, email, WhatsApp, and office address")}
     >
+      <SettingsLayout items={CMS_SETTINGS_NAV} active="contact">
       <DocumentForm
-        title="Contact details"
+        title={adminText("Contact details")}
         resource="settings"
         initialValue={document}
         fields={FIELDS}
         canWrite={canWrite}
       />
+      </SettingsLayout>
     </AdminShell>
   );
 }

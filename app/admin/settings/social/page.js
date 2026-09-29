@@ -1,9 +1,11 @@
-import Link from 'next/link';
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getSettings} from '@/lib/cms/content-service';
 import AdminShell from '@/components/admin/AdminShell';
 import DocumentForm from '@/components/admin/DocumentForm';
+import SettingsLayout, {CMS_SETTINGS_NAV} from '@/components/admin/ui/SettingsLayout';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,29 +25,18 @@ export default async function AdminSocialSettingsPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Social"
-      subtitle="Profiles used by the footer and floating social bar"
-      actions={
-        <div style={{display: 'flex', gap: 8, flexWrap: 'wrap'}}>
-          <Link className="adm-btn-ghost" href="/admin/settings">
-            General
-          </Link>
-          <Link className="adm-btn-ghost" href="/admin/settings/branding">
-            Branding
-          </Link>
-          <Link className="adm-btn-ghost" href="/admin/settings/contact">
-            Contact
-          </Link>
-        </div>
-      }
+      title={adminText("Social")}
+      subtitle={adminText("Profiles used by the footer and floating social bar")}
     >
+      <SettingsLayout items={CMS_SETTINGS_NAV} active="social">
       <DocumentForm
-        title="Social profiles"
+        title={adminText("Social profiles")}
         resource="settings"
         initialValue={document}
         fields={FIELDS}
         canWrite={canWrite}
       />
+      </SettingsLayout>
     </AdminShell>
   );
 }

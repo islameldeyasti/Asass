@@ -1,9 +1,12 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import FocalPointPicker from '@/components/admin/media/FocalPointPicker';
 import ImageCropDialog from '@/components/admin/media/ImageCropDialog';
 import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
+import {formatAdminDateTime} from '@/lib/admin/locale';
 
 function isImageItem(item) {
   return String(item?.mime || '').startsWith('image/') || /\.(jpe?g|png|webp|gif)$/i.test(item?.url || '');
@@ -165,7 +168,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
   async function onDelete(item, {force = false} = {}) {
     if (!canWrite || !item?.id) return;
     const label = item.titleEn || item.filename || item.id;
-    if (!force && !window.confirm(`Delete “${label}”?`)) return;
+    if (!force && !window.confirm(adminText(`Delete “${label}”?`))) return;
     setError('');
     setMessage('');
     setUsageConflict(null);
@@ -198,41 +201,34 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
 
   return (
     <div className="adm-media-page">
-      {error ? <p className="adm-error">{error}</p> : null}
-      {message ? <p className="adm-success">{message}</p> : null}
+      {error ? <p className="adm-error">{adminText(error)}</p> : null}
+      {message ? <p className="adm-success">{adminText(message)}</p> : null}
 
       {usageConflict ? (
         <div className="adm-card" style={{marginBottom: 16, borderColor: '#A02315'}}>
-          <strong>{usageConflict.message}</strong>
+          <strong>{adminText(usageConflict.message)}</strong>
           <ul style={{margin: '10px 0', paddingLeft: 18}}>
             {usageConflict.usages.map((usage, index) => (
               <li key={`${usage.path}-${index}`} style={{fontSize: 13, marginBottom: 4}}>
-                <strong>{usage.module}</strong>
-                {usage.label ? ` → ${usage.label}` : ''}
+                <strong>{adminText(usage.module)}</strong>
+                {adminText(usage.label ? ` → ${usage.label}` : '')}
                 {usage.href ? (
                   <>
-                    {' '}
-                    <a href={usage.href}>Open</a>
+                    {adminText(' ')}
+                    <a href={usage.href}>{adminText("Open")}</a>
                   </>
                 ) : null}
               </li>
             ))}
           </ul>
-          <p style={{fontSize: 13, color: 'var(--cms-muted)'}}>
-            Prefer Replace File to update the binary without breaking pages, or remove references
-            first. Force delete only if you accept broken images.
-          </p>
+          <p style={{fontSize: 13, color: 'var(--cms-muted)'}}>{adminText("Prefer Replace File to update the binary without breaking pages, or remove references first. Force delete only if you accept broken images.")}</p>
           <div className="adm-actions">
-            <button type="button" className="adm-btn-ghost" onClick={() => setUsageConflict(null)}>
-              Cancel
-            </button>
+            <button type="button" className="adm-btn-ghost" onClick={() => setUsageConflict(null)}>{adminText("Cancel")}</button>
             <button
               type="button"
               className="adm-btn-danger"
               onClick={() => onDelete(usageConflict.item, {force: true})}
-            >
-              Force delete
-            </button>
+            >{adminText("Force delete")}</button>
           </div>
         </div>
       ) : null}
@@ -240,34 +236,34 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
       <div className="adm-card" style={{marginBottom: 16}}>
         <div className="adm-media-toolbar" style={{flexWrap: 'wrap', gap: 12}}>
           <div className="adm-field" style={{marginBottom: 0, flex: 1, minWidth: 180}}>
-            <label htmlFor="media-page-search">Search</label>
+            <label htmlFor="media-page-search">{adminText("Search")}</label>
             <input
               id="media-page-search"
               type="search"
               value={query}
-              placeholder="Search media…"
+              placeholder={adminText("Search media…")}
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
           <div className="adm-field" style={{marginBottom: 0, minWidth: 140}}>
-            <label htmlFor="media-usage-filter">Usage</label>
+            <label htmlFor="media-usage-filter">{adminText("Usage")}</label>
             <select
               id="media-usage-filter"
               value={usageFilter}
               onChange={(e) => setUsageFilter(e.target.value)}
             >
-              <option value="">All</option>
-              <option value="used">Used</option>
-              <option value="unused">Unused</option>
+              <option value="">{adminText("All")}</option>
+              <option value="used">{adminText("Used")}</option>
+              <option value="unused">{adminText("Unused")}</option>
             </select>
           </div>
           <div className="adm-field" style={{marginBottom: 0, minWidth: 140}}>
-            <label htmlFor="media-sort">Sort</label>
+            <label htmlFor="media-sort">{adminText("Sort")}</label>
             <select id="media-sort" value={sort} onChange={(e) => setSort(e.target.value)}>
-              <option value="newest">Newest</option>
-              <option value="oldest">Oldest</option>
-              <option value="name">Name</option>
-              <option value="size">Size</option>
+              <option value="newest">{adminText("Newest")}</option>
+              <option value="oldest">{adminText("Oldest")}</option>
+              <option value="name">{adminText("Name")}</option>
+              <option value="size">{adminText("Size")}</option>
             </select>
           </div>
           <div className="adm-actions" style={{alignSelf: 'end'}}>
@@ -275,16 +271,12 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
               type="button"
               className={view === 'grid' ? 'adm-btn' : 'adm-btn-ghost'}
               onClick={() => setView('grid')}
-            >
-              Grid
-            </button>
+            >{adminText("Grid")}</button>
             <button
               type="button"
               className={view === 'list' ? 'adm-btn' : 'adm-btn-ghost'}
               onClick={() => setView('list')}
-            >
-              List
-            </button>
+            >{adminText("List")}</button>
           </div>
         </div>
 
@@ -304,18 +296,16 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
             }}
           >
             <p>
-              {uploading
+              {adminText(uploading
                 ? `Uploading… ${progress}%`
-                : 'Drop multiple files here (JPEG, PNG, WebP, GIF, PDF · max 12 MB each).'}
+                : 'Drop multiple files here (JPEG, PNG, WebP, GIF, PDF · max 12 MB each).')}
             </p>
             <button
               type="button"
               className="adm-btn"
               disabled={uploading}
               onClick={() => inputRef.current?.click()}
-            >
-              Browse files
-            </button>
+            >{adminText("Browse files")}</button>
             <input
               ref={inputRef}
               type="file"
@@ -339,17 +329,15 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
       <div className="adm-media-layout">
         <div className="adm-card">
           <strong style={{display: 'block', marginBottom: 12, color: '#070463'}}>
-            {filtered.length} asset{filtered.length === 1 ? '' : 's'}
-            {loading ? ' · loading…' : ''}
+            {adminText(filtered.length)}{adminText(" asset")}{adminText(filtered.length === 1 ? '' : 's')}
+            {adminText(loading ? ' · loading…' : '')}
           </strong>
 
           {filtered.length === 0 ? (
             <div className="adm-empty">
-              <p>No media yet. Upload files to build the library, then pick them from any editor.</p>
+              <p>{adminText("No media yet. Upload files to build the library, then pick them from any editor.")}</p>
               {canWrite ? (
-                <button type="button" className="adm-btn" onClick={() => inputRef.current?.click()}>
-                  Upload media
-                </button>
+                <button type="button" className="adm-btn" onClick={() => inputRef.current?.click()}>{adminText("Upload media")}</button>
               ) : null}
             </div>
           ) : view === 'grid' ? (
@@ -366,11 +354,11 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={item.url}
-                        alt={item.altEn || item.titleEn || ''}
+                        alt={adminText(item.altEn || item.titleEn || '')}
                         style={{objectPosition: item.focalPoint || '50% 50%'}}
                       />
                     ) : (
-                      <span className="adm-media-file-badge">PDF</span>
+                      <span className="adm-media-file-badge">{adminText("PDF")}</span>
                     )}
                   </div>
                   <span className="adm-media-tile-label">
@@ -378,7 +366,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                   </span>
                   {typeof item.usageCount === 'number' ? (
                     <span style={{fontSize: 11, color: 'var(--cms-muted)'}}>
-                      {item.usageCount ? `Used · ${item.usageCount}` : 'Unused'}
+                      {adminText(item.usageCount ? `Used · ${item.usageCount}` : 'Unused')}
                     </span>
                   ) : null}
                 </button>
@@ -388,11 +376,11 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
             <table className="adm-table">
               <thead>
                 <tr>
-                  <th>Preview</th>
-                  <th>Title</th>
-                  <th>Type</th>
-                  <th>Size</th>
-                  <th>Usage</th>
+                  <th>{adminText("Preview")}</th>
+                  <th>{adminText("Title")}</th>
+                  <th>{adminText("Type")}</th>
+                  <th>{adminText("Size")}</th>
+                  <th>{adminText("Usage")}</th>
                   <th />
                 </tr>
               </thead>
@@ -402,9 +390,9 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                     <td>
                       {isImageItem(item) ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img className="adm-thumb" src={item.url} alt="" />
+                        <img className="adm-thumb" src={item.url} alt={adminText("")} />
                       ) : (
-                        <span className="adm-media-file-badge">PDF</span>
+                        <span className="adm-media-file-badge">{adminText("PDF")}</span>
                       )}
                     </td>
                     <td>
@@ -417,10 +405,10 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                         {item.titleEn || item.filename || item.id}
                       </button>
                     </td>
-                    <td style={{color: '#5b6472', fontSize: 13}}>{item.mime || '—'}</td>
-                    <td style={{color: '#5b6472', fontSize: 13}}>{formatBytes(item.size)}</td>
+                    <td style={{color: '#5b6472', fontSize: 13}}>{adminText(item.mime || '—')}</td>
+                    <td style={{color: '#5b6472', fontSize: 13}}>{adminText(formatBytes(item.size))}</td>
                     <td style={{color: '#5b6472', fontSize: 13}}>
-                      {typeof item.usageCount === 'number' ? item.usageCount : '—'}
+                      {adminText(typeof item.usageCount === 'number' ? item.usageCount : '—')}
                     </td>
                     <td style={{textAlign: 'right'}}>
                       {canWrite ? (
@@ -428,9 +416,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                           type="button"
                           className="adm-btn-danger"
                           onClick={() => onDelete(item)}
-                        >
-                          Delete
-                        </button>
+                        >{adminText("Delete")}</button>
                       ) : null}
                     </td>
                   </tr>
@@ -444,9 +430,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
           {selected ? (
             <form onSubmit={saveMeta}>
               <div style={{display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 12, alignItems: 'center'}}>
-                <h2 className="adm-section-title" style={{margin: 0}}>
-                  Details
-                </h2>
+                <h2 className="adm-section-title" style={{margin: 0}}>{adminText("Details")}</h2>
                 <AdminCloseButton onClick={() => setSelected(null)} />
               </div>
 
@@ -455,11 +439,11 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={selected.url}
-                    alt={selected.altEn || ''}
+                    alt={adminText(selected.altEn || '')}
                     style={{objectPosition: selected.focalPoint || '50% 50%'}}
                   />
                 ) : (
-                  <span className="adm-media-file-badge">PDF</span>
+                  <span className="adm-media-file-badge">{adminText("PDF")}</span>
                 )}
               </div>
 
@@ -467,17 +451,16 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                 {selected.filename || selected.url}
               </p>
               <p style={{fontSize: 13, color: '#5b6472'}}>
-                {selected.mime || '—'} · {formatBytes(selected.size)}
-                {selected.uploadedBy ? ` · ${selected.uploadedBy}` : ''}
+                {adminText(selected.mime || '—')} · {adminText(formatBytes(selected.size))}
+                {adminText(selected.uploadedBy ? ` · ${selected.uploadedBy}` : '')}
               </p>
               {selected.createdAt ? (
-                <p style={{fontSize: 12, color: '#5b6472'}}>
-                  Uploaded {new Date(selected.createdAt).toLocaleString()}
+                <p style={{fontSize: 12, color: '#5b6472'}}>{adminText("Uploaded ")}{selected.createdAt ? formatAdminDateTime(selected.createdAt) : '—'}
                 </p>
               ) : null}
 
               <div className="adm-field">
-                <label htmlFor="media-title-en">Title (EN)</label>
+                <label htmlFor="media-title-en">{adminText("Title (EN)")}</label>
                 <input
                   id="media-title-en"
                   value={selected.titleEn || ''}
@@ -486,7 +469,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                 />
               </div>
               <div className="adm-field">
-                <label htmlFor="media-title-ar">Title (AR)</label>
+                <label htmlFor="media-title-ar">{adminText("Title (AR)")}</label>
                 <input
                   id="media-title-ar"
                   dir="rtl"
@@ -496,7 +479,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                 />
               </div>
               <div className="adm-field">
-                <label htmlFor="media-alt-en">Alt text (EN)</label>
+                <label htmlFor="media-alt-en">{adminText("Alt text (EN)")}</label>
                 <input
                   id="media-alt-en"
                   value={selected.altEn || ''}
@@ -505,7 +488,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                 />
               </div>
               <div className="adm-field">
-                <label htmlFor="media-alt-ar">Alt text (AR)</label>
+                <label htmlFor="media-alt-ar">{adminText("Alt text (AR)")}</label>
                 <input
                   id="media-alt-ar"
                   dir="rtl"
@@ -515,7 +498,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                 />
               </div>
               <div className="adm-field">
-                <label htmlFor="media-caption-en">Caption (EN)</label>
+                <label htmlFor="media-caption-en">{adminText("Caption (EN)")}</label>
                 <input
                   id="media-caption-en"
                   value={selected.captionEn || ''}
@@ -524,7 +507,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                 />
               </div>
               <div className="adm-field">
-                <label htmlFor="media-caption-ar">Caption (AR)</label>
+                <label htmlFor="media-caption-ar">{adminText("Caption (AR)")}</label>
                 <input
                   id="media-caption-ar"
                   dir="rtl"
@@ -534,7 +517,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                 />
               </div>
               <div className="adm-field">
-                <label htmlFor="media-folder">Folder</label>
+                <label htmlFor="media-folder">{adminText("Folder")}</label>
                 <input
                   id="media-folder"
                   value={selected.folder || ''}
@@ -553,62 +536,50 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
                   />
                   {canWrite ? (
                     <div className="adm-actions" style={{marginTop: 4}}>
-                      <button type="button" className="adm-btn-ghost" onClick={() => setCropOpen(true)}>
-                        Crop as new file
-                      </button>
+                      <button type="button" className="adm-btn-ghost" onClick={() => setCropOpen(true)}>{adminText("Crop as new file")}</button>
                     </div>
                   ) : null}
                 </>
               ) : null}
 
               <div style={{marginTop: 8}}>
-                <strong style={{fontSize: 13}}>Used in</strong>
+                <strong style={{fontSize: 13}}>{adminText("Used in")}</strong>
                 {Array.isArray(selected.usages) && selected.usages.length ? (
                   <ul style={{margin: '8px 0 0', paddingLeft: 18}}>
                     {selected.usages.map((usage, index) => (
                       <li key={`${usage.path}-${index}`} style={{fontSize: 12, marginBottom: 4}}>
-                        {usage.module}
-                        {usage.label ? ` → ${usage.label}` : ''}
+                        {adminText(usage.module)}
+                        {adminText(usage.label ? ` → ${usage.label}` : '')}
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <p style={{margin: '6px 0 0', fontSize: 12, color: 'var(--cms-muted)'}}>
-                    Not referenced in CMS content yet.
-                  </p>
+                  <p style={{margin: '6px 0 0', fontSize: 12, color: 'var(--cms-muted)'}}>{adminText("Not referenced in CMS content yet.")}</p>
                 )}
               </div>
 
               {canWrite ? (
                 <div className="adm-actions" style={{flexWrap: 'wrap'}}>
                   <button type="submit" className="adm-btn" disabled={savingMeta}>
-                    {savingMeta ? 'Saving…' : 'Save'}
+                    {adminText(savingMeta ? 'Saving…' : 'Save')}
                   </button>
                   <button
                     type="button"
                     className="adm-btn-ghost"
                     onClick={() => replaceRef.current?.click()}
                     disabled={uploading}
-                  >
-                    Replace file
-                  </button>
+                  >{adminText("Replace file")}</button>
                   <button
                     type="button"
                     className="adm-btn-ghost"
                     onClick={() => copyUrl(selected.url)}
-                  >
-                    Copy URL
-                  </button>
-                  <a className="adm-btn-ghost" href={selected.url} download>
-                    Download
-                  </a>
+                  >{adminText("Copy URL")}</button>
+                  <a className="adm-btn-ghost" href={selected.url} download>{adminText("Download")}</a>
                   <button
                     type="button"
                     className="adm-btn-danger"
                     onClick={() => onDelete(selected)}
-                  >
-                    Delete
-                  </button>
+                  >{adminText("Delete")}</button>
                   <input
                     ref={replaceRef}
                     type="file"
@@ -625,7 +596,7 @@ export default function MediaLibraryPage({initialItems = [], canWrite = false}) 
             </form>
           ) : (
             <div className="adm-empty">
-              <p>Select an asset to edit metadata, focal point, and usage.</p>
+              <p>{adminText("Select an asset to edit metadata, focal point, and usage.")}</p>
             </div>
           )}
         </aside>

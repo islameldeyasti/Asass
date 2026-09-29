@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useMemo, useState} from 'react';
 
@@ -52,7 +54,7 @@ export default function TranslationTabs({
 
   return (
     <div className="cms-i18n-tabs">
-      <div className="cms-i18n-tablist" role="tablist" aria-label="Language">
+      <div className="cms-i18n-tablist" role="tablist" aria-label={adminText("Language")}>
         {tabs.map((item) => (
           <button
             key={item.id}
@@ -65,31 +67,29 @@ export default function TranslationTabs({
             onClick={() => setTab(item.id)}
           >
             <span>
-              {item.id === 'en' ? `English ${item.mark}` : null}
-              {item.id === 'ar' ? `Arabic ${item.mark}` : null}
-              {item.id === 'general' ? item.label : null}
+              {adminText(item.label)}{item.mark ? ` ${item.mark}` : ''}
             </span>
           </button>
         ))}
       </div>
 
       <div className="cms-i18n-panel" role="tabpanel">
-        {typeof children === 'function'
+        {adminText(typeof children === 'function'
           ? children({tab, enComplete, arComplete})
-          : null}
+          : null)}
 
         {typeof children !== 'function' && renderField ? (
           <>
             {tab === 'en'
-              ? enFields.map((field) => <div key={field.key}>{renderField(field)}</div>)
+              ? enFields.map((field) => <div key={field.key}>{adminText(renderField(field))}</div>)
               : null}
             {tab === 'ar'
               ? arFields.map((field) => (
-                  <div key={field.key}>{renderField({...field, dir: field.dir || 'rtl'})}</div>
+                  <div key={field.key}>{adminText(renderField({...field, dir: field.dir || 'rtl'}))}</div>
                 ))
               : null}
             {tab === 'general'
-              ? generalFields.map((field) => <div key={field.key}>{renderField(field)}</div>)
+              ? generalFields.map((field) => <div key={field.key}>{adminText(renderField(field))}</div>)
               : null}
           </>
         ) : null}

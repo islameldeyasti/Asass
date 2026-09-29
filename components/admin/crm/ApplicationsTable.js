@@ -1,10 +1,14 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useMemo, useState} from 'react';
 import StatusBadge from '@/components/admin/ui/StatusBadge';
 import EmptyState from '@/components/admin/ui/EmptyState';
 import {useToast} from '@/components/admin/ui/ToastProvider';
+import {formatAdminDateTime} from '@/lib/admin/locale';
 import {Briefcase} from 'lucide-react';
+import TableDataBar from '@/components/admin/ui/TableDataBar';
 
 export const APPLICATION_STATUSES = [
   'NEW',
@@ -22,12 +26,7 @@ function normalizeStatus(value) {
 }
 
 function formatDate(value) {
-  if (!value) return '—';
-  try {
-    return new Date(value).toLocaleString();
-  } catch {
-    return String(value);
-  }
+  return formatAdminDateTime(value);
 }
 
 export default function ApplicationsTable({
@@ -38,11 +37,16 @@ export default function ApplicationsTable({
   const [items, setItems] = useState(initialItems);
   const [savingId, setSavingId] = useState(null);
   const [filter, setFilter] = useState('ALL');
+  const [query, setQuery] = useState('');
 
   const filtered = useMemo(() => {
-    if (filter === 'ALL') return items;
-    return items.filter((item) => normalizeStatus(item.status) === filter);
-  }, [items, filter]);
+    const q = query.trim().toLowerCase();
+    return items.filter((item) => {
+      if (filter !== 'ALL' && normalizeStatus(item.status) !== filter) return false;
+      if (!q) return true;
+      return [item.name, item.email, item.role, item.jobTitle].join(' ').toLowerCase().includes(q);
+    });
+  }, [items, filter, query]);
 
   async function updateStatus(id, status) {
     if (!canWrite) return;
@@ -84,21 +88,20 @@ export default function ApplicationsTable({
     return (
       <EmptyState
         icon={Briefcase}
-        title="No applications"
-        description="Career applications will appear in this pipeline."
+        title={adminText("No applications")}
+        description={adminText("Career applications will appear in this pipeline.")}
       />
     );
   }
 
   return (
     <div className="cms-stack">
-      <div className="cms-pipeline" role="tablist" aria-label="Application status">
+      <div className="cms-pipeline" role="tablist" aria-label={adminText("Application status")}>
         <button
           type="button"
           className={filter === 'ALL' ? 'is-active' : ''}
           onClick={() => setFilter('ALL')}
-        >
-          All ({items.length})
+        >{adminText("All (")}{adminText(items.length)})
         </button>
         {APPLICATION_STATUSES.map((status) => {
           const count = items.filter((item) => normalizeStatus(item.status) === status).length;
@@ -109,21 +112,49 @@ export default function ApplicationsTable({
               className={filter === status ? 'is-active' : ''}
               onClick={() => setFilter(status)}
             >
-              {status} ({count})
+              {adminText(status)} ({adminText(count)})
             </button>
           );
         })}
       </div>
 
+      <TableDataBar
+        query={query}
+        onQuery={setQuery}
+        searchPlaceholder="Search candidates…"
+        columns={[
+          {key:'name',label:'Candidate'},
+          {key:'role',label:'Role'},
+          {key:'email',label:'Email'},
+          {key:'status',label:'Status'},
+          {key:'createdAt',label:'Submitted'},
+        ]}
+        rows={filtered}
+        filename="applications"
+        title="Applications"
+        canImport={canWrite}
+        onImport={async (mapped) => {
+          for (const row of mapped) {
+            const res = await fetch('/api/admin/content', {
+              method: 'PUT',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({resource: 'applications', item: row}),
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Import failed');
+          }
+        }}
+      />
+
       <div className="cms-card" style={{padding: 0, overflow: 'hidden'}}>
         <table className="cms-table">
           <thead>
             <tr>
-              <th>Candidate</th>
-              <th>Role</th>
-              <th>Email</th>
-              <th>Status</th>
-              <th>Submitted</th>
+              <th>{adminText("Candidate")}</th>
+              <th>{adminText("Role")}</th>
+              <th>{adminText("Email")}</th>
+              <th>{adminText("Status")}</th>
+              <th>{adminText("Submitted")}</th>
             </tr>
           </thead>
           <tbody>
@@ -134,7 +165,7 @@ export default function ApplicationsTable({
                   <td>
                     <strong>{item.name || item.fullName || '—'}</strong>
                   </td>
-                  <td>{item.role || item.jobTitle || item.position || '—'}</td>
+                  <td>{adminText(item.role || item.jobTitle || item.position || '—')}</td>
                   <td>{item.email || '—'}</td>
                   <td>
                     {canWrite ? (
@@ -142,19 +173,19 @@ export default function ApplicationsTable({
                         value={status}
                         disabled={savingId === item.id}
                         onChange={(e) => updateStatus(item.id, e.target.value)}
-                        aria-label={`Status for ${item.name || item.id}`}
+                        aria-label={adminText(`Status for ${item.name || item.id}`)}
                       >
                         {APPLICATION_STATUSES.map((option) => (
                           <option key={option} value={option}>
-                            {option}
+                            {adminText(option)}
                           </option>
                         ))}
                       </select>
                     ) : (
-                      <StatusBadge status={status.toLowerCase()}>{status}</StatusBadge>
+                      <StatusBadge status={status.toLowerCase()}>{adminText(status)}</StatusBadge>
                     )}
                   </td>
-                  <td>{formatDate(item.createdAt || item.submittedAt)}</td>
+                  <td>{adminText(formatDate(item.createdAt || item.submittedAt))}</td>
                 </tr>
               );
             })}

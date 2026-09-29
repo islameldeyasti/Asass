@@ -282,6 +282,13 @@ section {
   padding-block: var(--space-section-lg);
 }
 
+.cms-app section,
+.erp-modal,
+.adm-modal,
+.cms-dialog {
+  padding-block: 0;
+}
+
 /* Legacy announcement/header replaced by .asas-chrome */
 .announcement,
 .header:not(.asas-header) {
@@ -498,7 +505,6 @@ a.button {
 }
 
 /* ---------- Footer (presentation owned by premium-footer.css) ---------- */
-footer,
 .site-footer {
   background: #08111f;
   color: rgba(255, 255, 255, 0.68);
@@ -506,9 +512,9 @@ footer,
   overflow: hidden;
 }
 
-footer .brand,
-footer .brand b,
-footer .brand small {
+.site-footer .brand,
+.site-footer .brand b,
+.site-footer .brand small {
   color: var(--asas-white);
 }
 
@@ -696,6 +702,13 @@ footer .brand small {
 
   section {
     padding-block: var(--space-section-md);
+  }
+
+  .cms-app section,
+  .erp-modal,
+  .adm-modal,
+  .cms-dialog {
+    padding-block: 0;
   }
 
   .header .nav nav {

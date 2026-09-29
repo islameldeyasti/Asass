@@ -1,0 +1,2254 @@
+% complete	٪ مكتمل
+% complete ·	٪ مكتمل ·
+% pace	٪ معدل الإنجاز
+(one per line: text | employeeId | dueDate)	عنصر في كل سطر: النص | معرّف الموظف | تاريخ الاستحقاق
+(task linked)	(مهمة مرتبطة)
++ Add stage	+ إضافة مرحلة
++ New Letter	+ خطاب جديد
++ New task	+ مهمة جديدة
++ New workflow	+ سير عمل جديد
+, then link it here — every employee should have their own account.	، ثم اربطه هنا. يجب أن يكون لكل موظف حسابه الخاص.
+/ ERP	/ تخطيط موارد المؤسسة
+1000 · Bank	1000 · البنك
+1010 · Cash	1010 · النقدية
+A clear view of your delivery.	رؤية واضحة لتقدم أعمالك.
+A structured delivery plan for your project team.	خطة تنفيذ منظمة لفريق مشروعك.
+A4 page background	خلفية صفحة A4
+ASAS / Business workspace	أساس / مساحة إدارة الأعمال
+ASAS Admin	إدارة أساس
+ASAS CMS	نظام إدارة أساس
+ASAS Classic	أساس الكلاسيكي
+ASAS Dark	أساس الداكن
+ASAS Engineering	أساس للهندسة
+ASAS Engineering · People, projects and delivery	أساس للهندسة · الموظفون والمشاريع والتنفيذ
+ASAS Leadership	إدارة أساس
+ASAS Navy	كحلي أساس
+ASAS Rust	نحاسي أساس
+ASAS wordmark	الشعار النصي لأساس
+About	نبذة
+About block	قسم النبذة
+About image	صورة النبذة
+Absent / leave	غياب / إجازة
+Accent	اللون المميز
+Account	الحساب
+Account connections	ربط الحسابات
+Accounting closed through	الإقفال المحاسبي حتى
+Accounting date	التاريخ المحاسبي
+Accounts linked	الحسابات المرتبطة
+Accounts with email or phone	حسابات لها بريد أو هاتف
+Across delivery teams	على مستوى فرق التنفيذ
+Across your organization	على مستوى المؤسسة
+Action	الإجراء
+Action items	بنود المتابعة
+Actions top margin	المسافة أعلى الإجراءات
+Active	نشط
+Active accounts	الحسابات النشطة
+Active and on-leave employees	الموظفون النشطون وفي إجازة
+Active delivery	مشاريع قيد التنفيذ
+Active departments	الأقسام النشطة
+Active departments without a head	أقسام نشطة بدون مدير
+Active employees	الموظفون النشطون
+Active projects	المشاريع النشطة
+Active templates	القوالب النشطة
+Active units	الوحدات النشطة
+Active units requiring an owner	وحدات نشطة تحتاج مسؤولًا
+Activity	النشاط
+Activity overview	نظرة عامة على النشاط
+Actor	منفذ الإجراء
+Add 301/302 rules for moved URLs.	أضف تحويلات 301 أو 302 للروابط المنقولة.
+Add action items	إضافة بنود متابعة
+Add card	إضافة بطاقة
+Add client	إضافة عميل
+Add content to populate this list.	أضف محتوى لعرضه في هذه القائمة.
+Add department	إضافة قسم
+Add employee	إضافة موظف
+Add employee card	إضافة بطاقة موظف
+Add first redirect	إضافة أول إعادة توجيه
+Add image	إضافة صورة
+Add line	إضافة بند
+Add link	إضافة رابط
+Add new	إضافة جديد
+Add note	إضافة ملاحظة
+Add redirect	إضافة إعادة توجيه
+Add revision	إضافة إصدار
+Add stage	إضافة مرحلة
+Add step from employee…	إضافة خطوة لموظف…
+Add team member	إضافة عضو للفريق
+Address	العنوان
+Address & email	العنوان والبريد الإلكتروني
+Address line 1	سطر العنوان الأول
+Address line 2	سطر العنوان الثاني
+Address ↔ email gap	المسافة بين العنوان والبريد
+Admin	الإدارة
+Admin navigation	قائمة الإدارة
+Advanced	متقدم
+Agenda	جدول الأعمال
+Agenda:	جدول الأعمال:
+Agreed scope, commercial value and linked project delivery.	نطاق العمل المتفق عليه وقيمة العقد والمشروع المرتبط.
+Airy	متباعد
+Align center	محاذاة للوسط
+Align left	محاذاة لليسار
+Align right	محاذاة لليمين
+All	الكل
+All (	الكل (
+All assignees (filter)	جميع المكلفين (تصفية)
+All clients	جميع العملاء
+All delivery projects	جميع مشاريع التنفيذ
+All departments	جميع الأقسام
+All pages	جميع الصفحات
+All projects	جميع المشاريع
+All statuses	جميع الحالات
+All tracked pages pass the current audit checks.	اجتازت جميع الصفحات المتابعة فحوص التدقيق الحالية.
+Allow follow	السماح بتتبع الروابط
+Allow indexing	السماح بالفهرسة
+Allowances	البدلات
+Alt	النص البديل
+Alt text	النص البديل
+Amount	المبلغ
+Analytics (aggregate)	التحليلات الإجمالية
+Analytics overview for content, CRM, and digital cards	نظرة عامة على تحليلات المحتوى والعملاء والبطاقات الرقمية
+Answer	الإجابة
+Apple touch icon	أيقونة أجهزة آبل
+Application status	حالة طلب التوظيف
+Application updated	تم تحديث طلب التوظيف
+Applications	طلبات التوظيف
+Apply JSON to fields	تطبيق JSON على الحقول
+Apply crop	تطبيق القص
+Apply dates	تطبيق الفترة
+Apply workflow template	تطبيق قالب سير العمل
+Approval required	موافقة مطلوبة
+Approval required before completion	تجب الموافقة قبل الإكمال
+Approvals	الموافقات
+Approve	اعتماد
+Approve commitments, confirm receipt and create supplier bills.	اعتماد المشتريات وتأكيد الاستلام وإنشاء فواتير الموردين.
+Approve project hours and measure internal delivery effort.	اعتماد ساعات العمل وقياس جهد التنفيذ الداخلي.
+Arabic {0}	{0} بالعربية
+Archive	أرشفة
+Archive failed	تعذرت الأرشفة
+Archived	مؤرشف
+Asset	أصل ثابت
+Assign on project	تعيين في المشروع
+Assign team member	تعيين عضو فريق
+Assigned %	نسبة التخصيص ٪
+Assigned work	العمل المكلف به
+Assignee	المكلف
+Assignees	المكلفون
+Assignment % · open tasks · leave · capacity	نسبة التخصيص · المهام المفتوحة · الإجازات · الطاقة المتاحة
+Attached PDF letterhead	ترويسة PDF مرفقة
+Attachment	المرفق
+Attendance	الحضور
+Attendance today	حضور اليوم
+Attendees	الحاضرون
+Auto (template)	تلقائي (القالب)
+Auto / none	تلقائي / بدون
+Auto REV 0N	ترقيم الإصدار تلقائيًا
+Auto if blank	تلقائي عند تركه فارغًا
+Available for project setup	متاح لإعداد المشروع
+Available modules	الوحدات المتاحة
+Available:	المتاح:
+Avg checklist	متوسط إنجاز قائمة التحقق
+Awaiting a restart decision	بانتظار قرار استئناف
+Awaiting a review decision	بانتظار قرار المراجعة
+Awaiting approval	بانتظار الموافقة
+Awaiting review	بانتظار المراجعة
+Back	رجوع
+Back to Edit	العودة للتحرير
+Back to cards	العودة للبطاقات
+Back to team	العودة للفريق
+Balanced manual and automatically generated accounting entries.	قيود محاسبية متوازنة يدوية وآلية.
+Bank reconciliation	التسوية البنكية
+Bar	شريط
+Base	الأساسي
+Base currency	العملة الأساسية
+Base pay	الراتب الأساسي
+Based on your access	وفق صلاحياتك
+Bilingual	ثنائي اللغة
+Bill	فاتورة مورد
+Bio size	حجم النبذة
+Biography	السيرة المهنية
+Blank A4	صفحة A4 فارغة
+Block bottom	أسفل العنصر
+Block left	يسار العنصر
+Blocked	متعثر
+Blog	المدونة
+Body	المحتوى
+Bold	عريض
+Brand assets	ملفات الهوية البصرية
+Brand colors	ألوان الهوية
+Brand mark (A logo)	العلامة التجارية (شعار A)
+Branded or custom cover with overlapping circular portrait.	غلاف بالهوية أو مخصص مع صورة شخصية دائرية متداخلة.
+Branding	الهوية البصرية
+Branding saved	تم حفظ الهوية البصرية
+Breadcrumb	مسار التنقل
+Browse files	تصفح الملفات
+Browser tab icon.	أيقونة علامة تبويب المتصفح.
+Budget	الميزانية
+Build priced proposals and convert accepted work into contracts.	إعداد عروض مسعّرة وتحويل العروض المقبولة إلى عقود.
+Build your own header/footer: add shapes and upload logos, then move them on the A4 page.	صمم الترويسة والتذييل بإضافة الأشكال والشعارات وتحريكها على صفحة A4.
+Buildings	المباني
+Bulk SEO saved	تم حفظ تعديلات تحسين البحث المجمعة
+Bulk edit	تعديل جماعي
+Bullets	قائمة نقطية
+Button / chip gap	المسافة بين الأزرار
+Button page	صفحة الأزرار
+CRM	إدارة علاقات العملاء
+CSV exports · projects, tasks, HR, workload	تصدير CSV · المشاريع والمهام والموارد البشرية وأعباء العمل
+CTA background image	صورة خلفية الدعوة للإجراء
+CTA band	قسم الدعوة للإجراء
+CTA bottom	موضع الدعوة للإجراء من الأسفل
+CTA kicker	العنوان التمهيدي للدعوة للإجراء
+CTA lede	مقدمة الدعوة للإجراء
+CTA right	موضع الدعوة للإجراء من اليمين
+CTA title	عنوان الدعوة للإجراء
+Call-to-action band	قسم الدعوة للإجراء
+Calls:	المكالمات:
+Cancel	إلغاء
+Cancel reply	إلغاء الرد
+Candidate	المتقدم
+Canonical base URL	عنوان الرابط الأساسي
+Canonical override	تخصيص الرابط الأساسي
+Capabilities	الإمكانات
+Capacity	الطاقة المتاحة
+Capitalize assets, track custody and record monthly straight-line depreciation.	رسملة الأصول ومتابعة العهد وتسجيل الإهلاك الشهري بالقسط الثابت.
+Caption	التعليق
+Card background	خلفية البطاقة
+Card corner radius	استدارة زوايا البطاقة
+Card image	صورة البطاقة
+Card status	حالة البطاقة
+Card views	مشاهدات البطاقة
+Card {0}	البطاقة {0}
+Cards	البطاقات
+Career applications will appear in this pipeline.	ستظهر طلبات التوظيف في هذا المسار.
+Careers	التوظيف
+Cash & bank	النقدية والبنوك
+Category	الفئة
+Certifications	الشهادات
+Certifications (comma-separated)	الشهادات (مفصولة بفواصل)
+Change brand colors, card background, cover photo, and overlay. Works on every template.	غيّر ألوان الهوية وخلفية البطاقة وصورة الغلاف والطبقة اللونية في جميع القوالب.
+Change template	تغيير القالب
+Charcoal executive surface, white type, rust accents, large portrait.	خلفية فحمية مع نص أبيض ولمسات نحاسية وصورة كبيرة.
+Check-in	تسجيل الحضور
+Check-out	تسجيل الانصراف
+Checklist	قائمة التحقق
+Checklist (one item per line)	قائمة التحقق (عنصر في كل سطر)
+Choose a complete art direction — not a color swap.	اختر تصميمًا متكاملًا للبطاقة.
+Choose a team member to open their card editor on a full page.	اختر عضو الفريق لفتح محرر بطاقته في صفحة كاملة.
+Choose template	اختيار قالب
+Clear background	مسح الخلفية
+Clear formatting	مسح التنسيق
+Click any block on the letter to inspect it. The page is your primary editor.	اضغط على أي عنصر في الخطاب لتعديله مباشرة على الصفحة.
+Click the most important part of the photo. The website will keep that area in view when cropped.	اضغط على أهم جزء في الصورة ليظل ظاهرًا عند القص.
+Client	العميل
+Client accounts	حسابات العملاء
+Client code	رمز العميل
+Client contact:	جهة اتصال العميل:
+Client relationships, contacts and connected delivery projects	علاقات العملاء وجهات الاتصال ومشاريع التنفيذ المرتبطة
+Clients	العملاء
+Close dialog	إغلاق النافذة
+Close panel	إغلاق اللوحة
+Closed	مغلق
+Closing	الإقفال
+Closing a period blocks new postings and reversals on or before that date. Closed dates can only move forward. Base currency is fixed after the first document.	إقفال الفترة يمنع الترحيل والعكس في تاريخ الإقفال وما قبله. لا يمكن الرجوع بتاريخ الإقفال للخلف. تثبت العملة الأساسية بعد أول مستند.
+Code	الرمز
+Col after	عمود بعد
+Col before	عمود قبل
+Collapse	طي القائمة
+Collapse tools	طي الأدوات
+Color	اللون
+Colors & cover	الألوان والغلاف
+Comfortable	مريح
+Comma-separated:	مفصولة بفواصل:
+Command palette	لوحة الأوامر
+Comments:	التعليقات:
+Commercial & residential	تجاري وسكني
+Commercial, financial and people operations	إدارة المبيعات والمالية والموارد البشرية
+Communication	التواصل
+Compact	مدمج
+Compact credential layout with integrated QR and contact rows.	تصميم مدمج مع رمز QR وبيانات الاتصال.
+Company	الشركة
+Company & periods	الشركة والفترات المحاسبية
+Company Profile	الملف التعريفي للشركة
+Company configuration	إعدادات الشركة
+Company identity and site-wide defaults	هوية الشركة والإعدادات العامة للموقع
+Company links	روابط الشركة
+Company name	اسم الشركة
+Completed	مكتمل
+Completed control step	خطوة الرقابة مكتملة
+Compose, preview, and print branded ASAS letters	إنشاء خطابات أساس ومعاينتها وطباعتها
+Compound Villas Portfolio	مشاريع مجمعات الفلل
+Confidential	سري
+Confidential mark	علامة السرية
+Confidentiality	السرية
+Configure public profiles and QR codes for team members.	إعداد الملفات العامة ورموز QR لأعضاء الفريق.
+Confirm that all goods or services on this purchase order have been received.	أكد استلام جميع السلع أو الخدمات في أمر الشراء.
+Confirm {0} for this record.	تأكيد {0} لهذا السجل.
+Connected business modules	وحدات أعمال مترابطة
+Connected to project delivery	مرتبطة بتنفيذ المشاريع
+Contact	التواصل
+Contact & projects	التواصل والمشاريع
+Contact coverage	اكتمال بيانات التواصل
+Contact details	بيانات التواصل
+Contact name	اسم جهة الاتصال
+Contacts	جهات الاتصال
+Contacts are derived automatically from enquiry submissions.	تُستخرج جهات الاتصال تلقائيًا من الاستفسارات الواردة.
+Content & CRM volume	حجم المحتوى وعلاقات العملاء
+Content health	حالة المحتوى
+Content workspace	مساحة إدارة المحتوى
+Content, SEO, media, CRM, and careers health	حالة المحتوى وتحسين البحث والوسائط والعملاء والتوظيف
+Contract	العقد
+Contract value	قيمة العقد
+Contracts	العقود
+Control who can edit content and SEO	تحديد صلاحيات تحرير المحتوى وتحسين البحث
+Coordinate your teams, keep projects moving and focus on the decisions that need your attention.	نسّق بين الفرق وتابع المشاريع وركز على القرارات التي تحتاج تدخلك.
+Copy	النص
+Copy URL	نسخ الرابط
+Copy design	نسخ التصميم
+Copy design from employee	نسخ التصميم من موظف
+Copy link	نسخ الرابط
+Corporate Tools	أدوات الشركة
+Could not create letter	تعذر إنشاء الخطاب
+Could not load SEO data	تعذر تحميل بيانات تحسين البحث
+Could not load enquiries	تعذر تحميل الاستفسارات
+Could not load letterheads	تعذر تحميل الترويسات
+Could not open letterhead	تعذر فتح الترويسة
+Could not save branding	تعذر حفظ الهوية البصرية
+Country	الدولة
+Cover / header background image	صورة خلفية الغلاف / الترويسة
+Cover image	صورة الغلاف
+Cover image is saved on Profile. Switch to a cover-style template to display it.	حُفظت صورة الغلاف في الملف. اختر قالبًا يدعم الغلاف لإظهارها.
+Cover overlay color	لون طبقة الغلاف
+Cover overlay strength	شفافية طبقة الغلاف
+Create	إنشاء
+Create / configure cards	إنشاء البطاقات وإعدادها
+Create Letter	إنشاء خطاب
+Create a bilingual profile	إنشاء ملف ثنائي اللغة
+Create a project and assign its delivery team.	أنشئ مشروعًا وحدد فريق تنفيذه.
+Create and manage branded ASAS correspondence.	إنشاء وإدارة مراسلات أساس الرسمية.
+Create first letter	إنشاء أول خطاب
+Create project	إنشاء مشروع
+Create request	إنشاء طلب
+Create task	إنشاء مهمة
+Create team member	إنشاء عضو فريق
+Create the login under	أنشئ حساب الدخول من
+Create user	إنشاء مستخدم
+Create your first workflow	أنشئ أول سير عمل
+Created	تاريخ الإنشاء
+Creating…	جارٍ الإنشاء…
+Credit	دائن
+Crop	قص
+Crop as new file	قص وحفظ كملف جديد
+Cross-project approval inbox · decide steps from here or Project 360	صندوق موافقات جميع المشاريع · اتخذ القرار هنا أو من العرض الشامل للمشروع
+Current client base	قاعدة العملاء الحالية
+Current organization	الهيكل الحالي
+Current stage	المرحلة الحالية
+Current status:	الحالة الحالية:
+Currently in service	قيد الخدمة حاليًا
+Custom	مخصص
+Customer invoices	فواتير العملاء
+Daily presence · site / remote · HR only	الحضور اليومي · الموقع / عن بُعد · للموارد البشرية فقط
+Dark / reverse logo	الشعار الداكن / المعكوس
+Dark background	خلفية داكنة
+Dark logo	شعار داكن
+Darkens the cover image so logo and text stay readable.	يغمّق صورة الغلاف للحفاظ على وضوح الشعار والنص.
+Dashboard	لوحة المعلومات
+Database backup	نسخة احتياطية لقاعدة البيانات
+Date	التاريخ
+Dates	التواريخ
+Days	الأيام
+Debit	مدين
+Default	افتراضي
+Default OG image	صورة المشاركة الافتراضية
+Default description	الوصف الافتراضي
+Default for new projects	افتراضي للمشاريع الجديدة
+Default line tax rate %	نسبة الضريبة الافتراضية للبند ٪
+Default metadata	البيانات الوصفية الافتراضية
+Default social / OG image	صورة المشاركة الاجتماعية الافتراضية
+Default title	العنوان الافتراضي
+Default workflow	سير العمل الافتراضي
+Defaults	الإعدادات الافتراضية
+Define delivery stages, responsibilities and required documents.	حدد مراحل التنفيذ والمسؤوليات والمستندات المطلوبة.
+Define organizational units and clear accountability	تحديد الوحدات التنظيمية والمسؤوليات بوضوح
+Delete	حذف
+Delete col	حذف العمود
+Delete row	حذف الصف
+Delete table	حذف الجدول
+Deliverables:	المخرجات:
+Delivery health	حالة التنفيذ
+Delivery relationships	علاقات التنفيذ
+Delivery stage	مرحلة التنفيذ
+Density preset	مستوى كثافة العرض
+Department	القسم
+Department head	مدير القسم
+Department leadership	إدارة الأقسام
+Department leadership and delivery teams	مديرو الأقسام وفرق التنفيذ
+Department leadership, reporting lines and team structure	مديرو الأقسام والتبعية الإدارية وهيكل الفريق
+Departments	الأقسام
+Departments represented	الأقسام الممثلة
+Departments with a named head	أقسام لها مدير محدد
+Depends on	يعتمد على
+Description	الوصف
+Description EN	الوصف بالإنجليزية
+Design	التصميم
+Design your own layout	صمم تخطيطك الخاص
+Desktop	سطح المكتب
+Details	التفاصيل
+Developer tools	أدوات المطور
+Digital business card studio	استوديو بطاقات العمل الرقمية
+Digital profiles, printable cards, and QR codes	الملفات الرقمية والبطاقات القابلة للطباعة ورموز QR
+Disable	تعطيل
+Disable card	تعطيل البطاقة
+Disable cards	تعطيل البطاقات
+Disabled	معطل
+Disabled cards keep their public ID and QR. Scanners see a branded unavailable state — not a broken 404.	تحتفظ البطاقات المعطلة بمعرفها ورمز QR، ويظهر للزائر إشعار بعدم إتاحة البطاقة.
+Disallow all is active	حظر الفهرسة الكامل مفعّل
+Dismiss	إغلاق
+Display order	ترتيب العرض
+Docs / approvals	المستندات / الموافقات
+Document	المستند
+Document date	تاريخ المستند
+Document name	اسم المستند
+Documents	المستندات
+Documents:	المستندات:
+Download	تنزيل
+Download CSV	تنزيل CSV
+Download PDF	تنزيل PDF
+Download QR ZIP (PNG)	تنزيل رموز QR بصيغة PNG مضغوطة
+Download QR ZIP (SVG)	تنزيل رموز QR بصيغة SVG مضغوطة
+Download a consistent backup of ERP records, ledger entries and audit history. Keep it in a protected location.	نزّل نسخة متسقة من سجلات النظام والقيود وسجل التدقيق، واحفظها في مكان آمن.
+Download backup	تنزيل نسخة احتياطية
+Downloading PDF…	جارٍ تنزيل PDF…
+Downloads	التنزيلات
+Draft	مسودة
+Drafts	المسودات
+Drag & drop a file here, or browse from your computer.	اسحب ملفًا وأفلته هنا أو تصفح ملفات جهازك.
+Draw & logos	الرسم والشعارات
+Drawing, Spec, Report…	رسم، مواصفات، تقرير…
+Drop multiple files here (JPEG, PNG, WebP, GIF, PDF · max 12 MB each).	أفلت الملفات هنا (JPEG وPNG وWebP وGIF وPDF، بحد أقصى 12 ميغابايت للملف).
+Due	الاستحقاق
+Due date	تاريخ الاستحقاق
+Due this week	مستحق هذا الأسبوع
+Due today	مستحق اليوم
+Due:	الاستحقاق:
+Duplicate	إنشاء نسخة
+Duplicate failed	تعذر إنشاء النسخة
+Duplicated	تم إنشاء النسخة
+ERP audit trail	سجل تدقيق موارد المؤسسة
+ERP workspace	إدارة موارد المؤسسة
+Edit	تعديل
+Edit assignment	تعديل التكليف
+Edit attendance	تعديل الحضور
+Edit bilingual meta, hero, and CTA bands — including background image uploads	تعديل البيانات الوصفية والواجهة الرئيسية وأقسام الدعوة للإجراء باللغتين، مع صور الخلفية
+Edit client	تعديل العميل
+Edit content	تعديل المحتوى
+Edit department	تعديل القسم
+Edit document	تعديل المستند
+Edit employee	تعديل الموظف
+Edit footer links and the call-to-action band. Logo lives in Branding.	تعديل روابط التذييل وقسم الدعوة للإجراء. الشعار في إعدادات الهوية.
+Edit global robots toggles	تعديل إعدادات زواحف البحث العامة
+Edit labels visitors see in the site header. Use arrows conceptually via order — lower numbers appear first.	عدّل مسميات روابط الترويسة وترتيبها؛ تظهر الأرقام الأصغر أولًا.
+Edit meeting	تعديل الاجتماع
+Edit on the page	التعديل على الصفحة
+Edit page SEO	تعديل تحسين البحث للصفحة
+Edit project	تعديل المشروع
+Edit stage	تعديل المرحلة
+Edit task	تعديل المهمة
+Edit workflow	تعديل سير العمل
+Editor sections	أقسام المحرر
+Education	التعليم
+Effective robots rules	قواعد الزواحف المطبقة
+Email	البريد الإلكتروني
+Email (optional, public if set)	البريد الإلكتروني (اختياري ويظهر للعامة عند إضافته)
+Email / PO Box	البريد الإلكتروني / صندوق البريد
+Email / document logo	شعار البريد / المستندات
+Email:	البريد الإلكتروني:
+Embed URL	رابط التضمين
+Emirate	الإمارة
+Employee	الموظف
+Employee Cards	بطاقات الموظفين
+Employee ID	معرف الموظف
+Employee card	بطاقة الموظف
+Employee digital cards	بطاقات الموظفين الرقمية
+Employee directory	دليل الموظفين
+Employee pay components	مكونات راتب الموظف
+Employees	الموظفون
+Employees without a linked login	موظفون بدون حساب دخول مرتبط
+Employees without an active department	موظفون بدون قسم نشط
+Employment type	نوع التوظيف
+Empty A4 — upload logos and draw your own shapes, bars, and lines.	صفحة A4 فارغة لإضافة الشعارات ورسم الأشكال والخطوط.
+Enable	تفعيل
+Enabled	مفعّل
+End	النهاية
+Engineering operations /	العمليات الهندسية /
+English	الإنجليزية
+English title gaps	عناوين إنجليزية ناقصة
+English {0}	{0} بالإنجليزية
+Enquiries	الاستفسارات
+Enquiries trend	اتجاه الاستفسارات
+Enquiry	الاستفسار
+Enquiry details	تفاصيل الاستفسار
+Enquiry saved	تم حفظ الاستفسار
+Enter approved salary amounts. Statutory deductions and payment files are not calculated automatically.	أدخل مبالغ الرواتب المعتمدة. لا تُحسب الاستقطاعات النظامية أو ملفات الدفع تلقائيًا.
+Enterprise ERP	تخطيط موارد المؤسسة
+Enterprise workspace	مساحة إدارة المؤسسة
+Entity	الكيان
+Error correction: Q · quiet zone preserved	تصحيح الخطأ: Q · مع الحفاظ على المنطقة الهادئة
+Estimated effort (hours)	الجهد المقدر (ساعات)
+Estimated hours	الساعات المقدرة
+Every transaction connected.	كل المعاملات مترابطة.
+Excerpt	المقتطف
+Excluded	مستبعد
+Executive KPIs · attention queue · recent activity	مؤشرات الإدارة · أولويات المتابعة · آخر الأنشطة
+Existing actions	الإجراءات الحالية
+Exit Focus	إنهاء التركيز
+Exit Focus Mode	إنهاء وضع التركيز
+Exit focus	إنهاء التركيز
+Expense claim	مطالبة مصروفات
+Expense claims	مطالبات المصروفات
+Expenses in period	مصروفات الفترة
+Expertise & credentials	الخبرات والمؤهلات
+Expertise	الخبرات
+Expertise (EN) — one per line	الخبرات بالإنجليزية — عنصر في كل سطر
+Export	تصدير
+Export CSV	تصدير CSV
+Export report	تصدير التقرير
+Eyebrow	العنوان التمهيدي
+FAQ {0}	سؤال شائع {0}
+FAQs	الأسئلة الشائعة
+Facebook URL	رابط فيسبوك
+Fallback image for link previews.	صورة افتراضية لمعاينات الروابط.
+Favicon	أيقونة الموقع
+Fax	الفاكس
+Featured	مميز
+Featured on homepage	مميز في الرئيسية
+File	الملف
+File name	اسم الملف
+Filter bulk SEO rows	تصفية صفوف تحسين البحث
+Filter by key, path, or title…	تصفية بالمفتاح أو المسار أو العنوان…
+Filter by status	تصفية حسب الحالة
+Filter client	تصفية العملاء
+Filter department	تصفية الأقسام
+Filter employee status	تصفية حالة الموظف
+Filter project status	تصفية حالة المشروع
+Filter status	تصفية الحالات
+Filter tasks by assignee	تصفية المهام حسب المكلف
+Filter tasks by project	تصفية المهام حسب المشروع
+Final	نهائي
+Financial reports	التقارير المالية
+Find a department or colleague…	ابحث عن قسم أو زميل…
+Find out more at	تعرف على المزيد عبر
+Find out more label	نص رابط معرفة المزيد
+Finished deliverables	المخرجات المنجزة
+Fit Width	ملاءمة العرض
+Fit Width (	ملاءمة العرض (
+Fit width	ملاءمة العرض
+Fix	إصلاح
+Fixed assets	الأصول الثابتة
+Flags	التنبيهات
+Focus	تركيز
+Focus Mode	وضع التركيز
+Focus on page	التركيز على الصفحة
+Focus point	نقطة التركيز
+Focus preview	معاينة مركزة
+Folder	المجلد
+Follow	تتبع الروابط
+Follow-up details…	تفاصيل المتابعة…
+Font size	حجم الخط
+Footer	التذييل
+Footer (PDF design)	التذييل (تصميم PDF)
+Footer detail	تفصيل التذييل
+Footer details (editable)	تفاصيل التذييل (قابلة للتعديل)
+Footer logo	شعار التذييل
+For light backgrounds (header in light mode).	للخلفيات الفاتحة (ترويسة الوضع الفاتح).
+For technical support only. Normal editors can ignore this section.	للدعم الفني فقط. يمكن للمحررين تجاهل هذا القسم.
+For the selected assignee	للمكلف المحدد
+Forbidden	غير مصرح
+Force delete	حذف إجباري
+Formatting	التنسيق
+Free	متاح
+From	من
+From opportunity to delivery.	من الفرصة إلى التنفيذ.
+Full	كامل
+Full ASAS lockup for official PDF letterhead.	شعار أساس الكامل لترويسة PDF الرسمية.
+Full bio	السيرة الكاملة
+Full name	الاسم الكامل
+Full reports	التقارير الكاملة
+Gallery	المعرض
+General	عام
+General Management	الإدارة العامة
+General settings	الإعدادات العامة
+Geometric bars (navy / rust)	أشرطة هندسية (كحلي / نحاسي)
+Global	عام
+Global defaults	الإعدادات العامة الافتراضية
+Google Analytics ID	معرف تحليلات جوجل
+Google Tag Manager ID	معرف إدارة وسوم جوجل
+Grid	شبكة
+Group	المجموعة
+HR-scoped export	تصدير حسب صلاحيات الموارد البشرية
+Head	مدير القسم
+Head:	مدير القسم:
+Header	الترويسة
+Header (PDF design)	الترويسة (تصميم PDF)
+Header / cover color	لون الترويسة / الغلاف
+Header logo	شعار الترويسة
+Header logo (dark)	شعار الترويسة (داكن)
+Header logo (light)	شعار الترويسة (فاتح)
+Header mark / logo	علامة / شعار الترويسة
+Header padding	المسافة الداخلية للترويسة
+Header text	نص الترويسة
+Heading 1	عنوان رئيسي
+Heading 2	عنوان فرعي
+Heading 3	عنوان فرعي ثانوي
+Heads assigned	المديرون المعينون
+Health	الحالة
+Health & pipeline table	جدول الحالة ومسار العمل
+Health score	مؤشر الحالة
+Height	الارتفاع
+Hero	الواجهة الرئيسية
+Hero / cover image	صورة الواجهة / الغلاف
+Hero background image	صورة خلفية الواجهة
+Hero lede	مقدمة الواجهة
+Hero link URL (e.g. #openings or /en/contact)	رابط الواجهة (مثل ‎#openings أو ‎/en/contact)
+Hero link label	نص رابط الواجهة
+Hero slides	شرائح الواجهة
+Hero title	عنوان الواجهة
+Hidden	مخفي
+Hide empty departments	إخفاء الأقسام الفارغة
+Hide tools	إخفاء الأدوات
+High Contrast	تباين عالٍ
+Home	الرئيسية
+Home-screen icon for iOS.	أيقونة الشاشة الرئيسية لأجهزة iOS.
+Homepage	الصفحة الرئيسية
+Homepage sections	أقسام الصفحة الرئيسية
+Homepage sector mosaic images and labels.	صور ومسميات شبكة القطاعات في الصفحة الرئيسية.
+Homepage shows	تعرض الصفحة الرئيسية
+Horizontal rule	خط أفقي
+ID	المعرف
+Identity	الهوية
+Image	الصورة
+In / Out	الحضور / الانصراف
+In review	قيد المراجعة
+Inactive	غير نشط
+Include in sitemap	تضمين في خريطة الموقع
+Included	مضمّن
+Indent	زيادة المسافة البادئة
+Index	الفهرسة
+Indexing	الفهرسة
+Indexing allowed	الفهرسة مسموحة
+Individual access connections	حسابات الدخول الفردية
+Infrastructure	البنية التحتية
+Infrastructure & planning	البنية التحتية والتخطيط
+Initial file	الملف الأولي
+Insert table	إدراج جدول
+Inspector	فاحص العناصر
+Instagram URL	رابط إنستغرام
+Interior design	التصميم الداخلي
+Interiors	التصميمات الداخلية
+Internal effort is a management estimate from approved timesheets; it is not an additional general-ledger payroll posting.	تكلفة الجهد الداخلي تقدير إداري من ساعات العمل المعتمدة، وليست قيد رواتب إضافيًا في دفتر الأستاذ.
+Invite user	دعوة مستخدم
+Invoice	الفاتورة
+Issue	المشكلة
+Issues	المشكلات
+Italic	مائل
+Job title	المسمى الوظيفي
+Job title (EN) *	المسمى الوظيفي (الإنجليزية) *
+Jobs	الوظائف
+Join link	رابط الانضمام
+Joining date	تاريخ الالتحاق
+Journal	قيد يومية
+Journal entries	قيود اليومية
+Journal lines	بنود القيد
+Justify	ضبط المحاذاة
+Kanban	لوحة المهام
+Key	المفتاح
+Kind	النوع
+Label	التسمية
+Language	اللغة
+Large cover image with circular overlapping portrait and centered hierarchy.	صورة غلاف كبيرة مع صورة شخصية دائرية متداخلة ومحاذاة وسطية.
+Large portrait, name, role, few actions — senior management whitespace.	صورة كبيرة واسم ومسمى وظيفي وإجراءات محدودة بتصميم مناسب للإدارة العليا.
+Last 30 days ·	آخر 30 يومًا ·
+Last login	آخر دخول
+Leadership	الإدارة
+Leadership assigned	إدارة محددة
+Leave	الإجازات
+Leave type	نوع الإجازة
+Lede	المقدمة
+Left	يسار
+Legal company name	الاسم القانوني للشركة
+Letterhead Studio	استوديو الخطابات
+Letterhead lockup	شعار الترويسة المركب
+Light background	خلفية فاتحة
+Light logo	شعار فاتح
+Line	خط
+Line items	بنود المستند
+Line spacing	تباعد الأسطر
+Link	الرابط
+Link your CMS user to an employee profile (Employees → Edit → CMS user) to request leave.	اربط حسابك بملف موظف لطلب إجازة من: الموظفون ← تعديل ← مستخدم النظام.
+Linked	مرتبط
+LinkedIn	لينكدإن
+LinkedIn URL	رابط لينكدإن
+List	قائمة
+Listing / hero image	صورة القائمة / الواجهة
+Live CMS	إدارة المحتوى المباشرة
+Live counts from the CMS. Use each card to jump to the module and fix issues.	إحصاءات مباشرة من النظام. افتح الوحدة من بطاقتها لمراجعة المشكلات.
+Loading SEO Control Center…	جارٍ تحميل مركز تحسين البحث…
+Loading enquiries…	جارٍ تحميل الاستفسارات…
+Loading…	جارٍ التحميل…
+Locale	اللغة
+Locales	اللغات
+Location	الموقع
+Logo	الشعار
+Logo image	صورة الشعار
+Logo left	موضع الشعار من اليسار
+Logo padding	المسافة حول الشعار
+Logo scale	حجم الشعار
+Logo top	موضع الشعار من الأعلى
+Logo variant	نسخة الشعار
+Logos, favicon, and social sharing images	الشعارات وأيقونة الموقع وصور المشاركة
+Main brand mark used as the default logo.	العلامة الرئيسية المستخدمة شعارًا افتراضيًا.
+Main menu	القائمة الرئيسية
+Manage commitments, approvals and financial records in one workspace.	أدر الالتزامات والموافقات والسجلات المالية من مساحة واحدة.
+Manage the main website menu — labels, pages, and visibility	إدارة قائمة الموقع الرئيسية ومسمياتها وصفحاتها وظهورها
+Manage your operations	إدارة عملياتك
+Manager unassigned	لم يُحدد المدير
+Mark Final	اعتماد كنسخة نهائية
+Mark all read	تعيين الكل كمقروء
+Mark read	تعيين كمقروء
+Media	الوسائط
+Media Library	مكتبة الوسائط
+Meetings	الاجتماعات
+Message	الرسالة
+Meta Pixel ID	معرف بكسل ميتا
+Meta description (	الوصف لمحركات البحث (
+Meta description will appear here once you add copy.	سيظهر وصف محركات البحث هنا بعد إدخال النص.
+Metric	المؤشر
+Minimal	بسيط
+Minutes	محضر الاجتماع
+Minutes:	المحضر:
+Missing photo	صورة ناقصة
+Missing titles	عناوين ناقصة
+Mobile	الهاتف المحمول
+Mobile / WhatsApp	الهاتف / واتساب
+Mobile logo (optional)	شعار الهاتف (اختياري)
+Monthly activity chart	مخطط النشاط الشهري
+More	المزيد
+Most recent 500 events. Business mutations and ledger postings commit together with their audit event.	آخر 500 حدث. تُحفظ تغييرات الأعمال والقيود المحاسبية مع حدث التدقيق في معاملة واحدة.
+Move & padding	الموضع والمسافات
+Move down	نقل لأسفل
+Move pending decisions forward	متابعة القرارات المعلقة
+Move up	نقل لأعلى
+Muted text	نص ثانوي
+My Tasks	مهامي
+My lists	قوائمي
+My work ↗	مهامي ↖
+Name	الاسم
+Name (EN) *	الاسم (الإنجليزية) *
+Name or email	الاسم أو البريد الإلكتروني
+Name size	حجم الاسم
+Named department leadership	مديرو الأقسام المحددون
+Navigation	التنقل
+Need publish	بانتظار النشر
+Needs attention	يحتاج متابعة
+Net book value	صافي القيمة الدفترية
+Net pay	صافي الراتب
+Net result	صافي النتيجة
+Net result · year to date	صافي النتيجة منذ بداية السنة
+New	جديد
+New Letter	خطاب جديد
+New blog post	تدوينة جديدة
+New comment	تعليق جديد
+New document	مستند جديد
+New file	ملف جديد
+New letter	خطاب جديد
+New letterhead	ترويسة جديدة
+New meeting	اجتماع جديد
+New page	صفحة جديدة
+New project	مشروع جديد
+New rev	إصدار جديد
+New stage	مرحلة جديدة
+New task	مهمة جديدة
+New team member	عضو فريق جديد
+New workflow	سير عمل جديد
+Newest	الأحدث
+Next	التالي
+Next page	الصفحة التالية
+No	لا
+No OG image	لا توجد صورة مشاركة
+No SEO issues	لا توجد مشكلات تحسين بحث
+No SEO records	لا توجد سجلات تحسين بحث
+No activity yet	لا يوجد نشاط بعد
+No activity yet.	لا يوجد نشاط بعد.
+No applications	لا توجد طلبات توظيف
+No approval requests yet. Create multi-step reviews for documents, stages, or project gates.	لا توجد طلبات موافقة بعد. أنشئ مراجعات متعددة الخطوات للمستندات أو مراحل المشروع.
+No approvals in this filter. Create requests from a project’s Approvals tab.	لا توجد موافقات مطابقة. أنشئ الطلبات من تبويب الموافقات في المشروع.
+No attendance for this date.	لا يوجد حضور مسجل لهذا التاريخ.
+No baseline	لا توجد ميزانية أساسية
+No client	بدون عميل
+No client assigned	لم يُحدد العميل
+No completion date	لا يوجد تاريخ إكمال
+No contacts yet	لا توجد جهات اتصال بعد
+No custom layers yet. Start with Bar / Logo for a simple brand header.	لا توجد طبقات مخصصة. ابدأ بشريط أو شعار لإنشاء ترويسة بسيطة.
+No delivery projects yet. Create a client first, then add an ops project (separate from Website CMS Portfolio).	لا توجد مشاريع تنفيذ. أنشئ عميلًا ثم أضف مشروع عمليات مستقلًا عن معرض مشاريع الموقع.
+No department head set	لم يُحدد مدير القسم
+No description yet.	لا يوجد وصف بعد.
+No due	بدون استحقاق
+No due date	لا يوجد تاريخ استحقاق
+No employees assigned	لا يوجد موظفون معينون
+No employees in this view.	لا يوجد موظفون في هذا العرض.
+No employees yet. Add staff profiles and link each to their own user account.	لا يوجد موظفون بعد. أضف ملفاتهم واربط كل موظف بحسابه الخاص.
+No enquiries	لا توجد استفسارات
+No gallery images yet. Add images to show multiple angles on the project page.	لا توجد صور للمعرض. أضف صورًا لإظهار جوانب المشروع المختلفة.
+No leave requests in this filter.	لا توجد طلبات إجازة مطابقة.
+No letters yet.	لا توجد خطابات بعد.
+No matches	لا توجد نتائج مطابقة
+No matching actions	لا توجد إجراءات مطابقة
+No matching ops audit entries.	لا توجد سجلات تدقيق عمليات مطابقة.
+No matching pages	لا توجد صفحات مطابقة
+No media found	لم يُعثر على وسائط
+No media selected for	لم تُحدد وسائط لـ
+No media selected yet	لم تُحدد وسائط بعد
+No media yet. Upload files to build the library, then pick them from any editor.	لا توجد وسائط. ارفع الملفات إلى المكتبة ثم اخترها من المحرر.
+No meetings logged. Capture agenda, minutes, and action items that become tasks.	لا توجد اجتماعات. سجّل جدول الأعمال والمحضر وبنود المتابعة لتحويلها إلى مهام.
+No notes yet.	لا توجد ملاحظات بعد.
+No notifications yet. Task assignments, approval decisions, leave outcomes, and @mentions appear here.	لا توجد إشعارات. ستظهر هنا التكليفات وقرارات الموافقة والإجازات والإشارات.
+No operations clients yet. These are delivery clients — separate from website logo clients.	لا يوجد عملاء للعمليات. هذه القائمة لعملاء التنفيذ ومستقلة عن شعارات العملاء على الموقع.
+No ops audit entries yet.	لا توجد سجلات تدقيق عمليات بعد.
+No other tasks yet	لا توجد مهام أخرى بعد
+No posted activity in this period	لا توجد معاملات مرحلة في هذه الفترة
+No project	بدون مشروع
+No project communication yet. Thread comments and @mentions live here.	لا توجد مراسلات للمشروع. تظهر هنا التعليقات والإشارات.
+No project documents yet. Upload files with revision history (never overwrite).	لا توجد مستندات للمشروع. ارفع الملفات مع الاحتفاظ بسجل الإصدارات.
+No redirects yet	لا توجد إعادات توجيه بعد
+No results	لا توجد نتائج
+No stages yet. Apply the ASAS standard workflow template (23 configurable stages) or add stages manually.	لا توجد مراحل. طبّق قالب أساس القياسي (23 مرحلة قابلة للتعديل) أو أضفها يدويًا.
+No tasks	لا توجد مهام
+No tasks in this category.	لا توجد مهام في هذه الفئة.
+No tasks yet. Create tasks and link them to stages. Incomplete dependencies keep dependent tasks blocked.	لا توجد مهام. أنشئ المهام واربطها بالمراحل. يظل العمل التابع متعثرًا حتى اكتمال متطلباته.
+No team assigned. Add directors, managers and discipline leads here.	لم يُحدد فريق. أضف المديرين ومسؤولي التخصصات هنا.
+No team members found. Add profiles in Team first.	لم يُعثر على أعضاء فريق. أضف الملفات من قسم الفريق أولًا.
+No team members found. Create a team profile first.	لم يُعثر على أعضاء فريق. أنشئ ملف عضو أولًا.
+No team members yet. Create the first profile to populate /en/team and the homepage section.	لا يوجد أعضاء بعد. أنشئ أول ملف ليظهر في صفحة الفريق والقسم المخصص في الرئيسية.
+No user	بدون مستخدم
+Nofollow	عدم تتبع الروابط
+Noindex	عدم الفهرسة
+None	لا يوجد
+Normal	عادي
+Not referenced in CMS content yet.	غير مستخدم في محتوى الموقع بعد.
+Notable project slugs — one per line	مسارات المشاريع البارزة — مسار في كل سطر
+Note	ملاحظة
+Notes	الملاحظات
+Notifications	الإشعارات
+Numbered list	قائمة مرقمة
+OG description (	وصف المشاركة (
+OG image	صورة المشاركة
+OG title (	عنوان المشاركة (
+Office extension	الرقم الداخلي
+Official ASAS letterhead — navy/rust geometric bars from brand PDF.	ترويسة أساس الرسمية بأشرطة هندسية كحلية ونحاسية من ملف الهوية.
+Official ASAS palette (protected). Editors cannot override the public design system from this screen.	ألوان أساس الرسمية محمية، ولا يمكن تغيير نظام التصميم العام من هذه الشاشة.
+Oldest	الأقدم
+On hold	معلق
+On leave	في إجازة
+On leave / overdue tasks	في إجازة / مهام متأخرة
+One capability per line.	إمكانية واحدة في كل سطر.
+One per line.	عنصر في كل سطر.
+Online link	رابط الاجتماع الإلكتروني
+Opacity	العتامة
+Open	فتح
+Open / overdue	المفتوح / المتأخر
+Open /robots.txt	فتح ملف robots.txt
+Open 360	العرض الشامل
+Open attendance	فتح الحضور
+Open card editor	فتح محرر البطاقة
+Open file	فتح الملف
+Open in new tab	فتح في علامة تبويب جديدة
+Open issues	المشكلات المفتوحة
+Open menu	فتح القائمة
+Open payment	فتح الدفعة
+Open public profile	فتح الملف العام
+Open reports	فتح التقارير
+Open robots	فتح ملف الزواحف
+Open sitemap.xml	فتح خريطة الموقع
+Open tasks	المهام المفتوحة
+Operations	العمليات
+Operations export	تصدير العمليات
+Operations overview	نظرة عامة على العمليات
+Opportunity	فرصة بيع
+Ops Audit	تدقيق العمليات
+Ops Clients	عملاء العمليات
+Ops Dashboard	لوحة العمليات
+Ops Projects	مشاريع العمليات
+Ops Reports	تقارير العمليات
+Optional compact mark for small screens.	علامة مدمجة اختيارية للشاشات الصغيرة.
+Optional logo for email and document systems.	شعار اختياري للبريد والمستندات.
+Optional section order	ترتيب الأقسام الاختيارية
+Optional. Leave blank to keep the default website wording.	اختياري. اتركه فارغًا للاحتفاظ بنص الموقع الافتراضي.
+Order	الترتيب
+Org Chart	الهيكل التنظيمي
+Organization Chart	الهيكل التنظيمي
+Organization JSON-LD	بيانات المؤسسة المنظمة JSON-LD
+Organizational units	الوحدات التنظيمية
+Organizer	المنظم
+Outdent	تقليل المسافة البادئة
+Outside recommended range	خارج النطاق الموصى به
+Outstanding	المتبقي المستحق
+Outstanding customer invoices	فواتير العملاء غير المسددة
+Outstanding supplier bills	فواتير الموردين غير المسددة
+Overallocated	تجاوز الطاقة المتاحة
+Overallocated (>100%)	تخصيص زائد (أكثر من 100٪)
+Overdue	متأخر
+Overdue deliverables	مخرجات متأخرة
+Overdue tasks	مهام متأخرة
+Overrides dark logo in the site header.	يستبدل الشعار الداكن في ترويسة الموقع.
+Overrides light logo in the site header.	يستبدل الشعار الفاتح في ترويسة الموقع.
+Overview	نظرة عامة
+Owner	المسؤول
+Owner:	المسؤول:
+PDF download failed	تعذر تنزيل PDF
+PDF downloaded	تم تنزيل PDF
+PM	مدير المشروع
+PM:	مدير المشروع:
+PO Box	صندوق البريد
+Padding left / right	المسافة الداخلية يمينًا ويسارًا
+Padding top / bottom	المسافة الداخلية أعلى وأسفل
+Page	الصفحة
+Page SEO	تحسين البحث للصفحة
+Page SEO saved	تم حفظ تحسين البحث للصفحة
+Page break	فاصل صفحة
+Page meta	البيانات الوصفية للصفحة
+Page metadata, redirects, sitemap, and robots for the public site	بيانات الصفحات وإعادات التوجيه وخريطة الموقع وقواعد الزواحف
+Page numbers	أرقام الصفحات
+Page title preview	معاينة عنوان الصفحة
+Page watermark	العلامة المائية للصفحة
+Pages	الصفحات
+Pages tracked	الصفحات المتابعة
+Pages view	عرض الصفحات
+Paragraph	فقرة
+Paragraph style	نمط الفقرة
+Password	كلمة المرور
+Past completion date	تجاوز تاريخ الإكمال
+Past the committed due date	تجاوز تاريخ الاستحقاق المحدد
+Payment	دفعة
+Payment draft saved.	تم حفظ مسودة الدفعة.
+Payroll run	مسير رواتب
+Payroll runs	مسيرات الرواتب
+Pending approvals	الموافقات المعلقة
+Pending leave	الإجازات المعلقة
+Pending review decisions	قرارات المراجعة المعلقة
+Pending reviews	المراجعات المعلقة
+People	الموظفون
+Phone	الهاتف
+Phone (optional, public if set)	الهاتف (اختياري ويظهر للعامة عند إضافته)
+Phone numbers	أرقام الهواتف
+Phone, email, WhatsApp, and office address	الهاتف والبريد وواتساب وعنوان المكتب
+Phones	الهواتف
+Phones bottom	موضع الهواتف من الأسفل
+Phones right	موضع الهواتف من اليمين
+Photo	الصورة
+Photos	الصور
+Photos and text for the homepage hero carousel. Upload or choose from the media library.	صور ونصوص شرائح الواجهة الرئيسية. ارفع الصور أو اخترها من مكتبة الوسائط.
+Pick employee ids from the list below, or paste ids from HR profiles.	اختر معرفات الموظفين من القائمة أو الصقها من ملفات الموارد البشرية.
+Plan delivery, assign ownership and monitor committed dates	خطط للتنفيذ وحدد المسؤوليات وتابع المواعيد المتفق عليها
+Plan, assign and track delivery across your projects	خطط ووزع وتابع التنفيذ في جميع مشاريعك
+Planned completion	الإكمال المخطط
+Portfolio	معرض المشاريع
+Portrait / visual left, content right — strong grid, minimal corporate.	صورة يسارًا ومحتوى يمينًا ضمن شبكة واضحة وتصميم مؤسسي بسيط.
+Portraits	الصور الشخصية
+Position	المنصب
+Position as of {0}. The start date applies only to profit & loss and general ledger.	المركز المالي حتى {0}. ينطبق تاريخ البداية على الأرباح والخسائر ودفتر الأستاذ فقط.
+Position the header logo and footer blocks (address, email, phones, website, QR). Values are in mm.	حدد مواضع الشعار وعناصر التذييل: العنوان والبريد والهواتف والموقع وQR. القيم بالمليمتر.
+Post	ترحيل
+Post invoices to receivables and track outstanding balances.	ترحيل الفواتير إلى الذمم المدينة ومتابعة الأرصدة المستحقة.
+Posted / approved	مرحّل / معتمد
+Posted expense accounts	حسابات المصروفات المرحلة
+Posted ledger balance	رصيد دفتر الأستاذ المرحّل
+Posted revenue less expenses	الإيرادات المرحلة مطروحًا منها المصروفات
+Posting creates a balanced accounting entry. Posted documents are corrected with a reversal.	ينشئ الترحيل قيدًا محاسبيًا متوازنًا. تُصحح المستندات المرحلة بقيد عكسي.
+Posting…	جارٍ الترحيل…
+Prefer Replace File to update the binary without breaking pages, or remove references first. Force delete only if you accept broken images.	استخدم استبدال الملف للحفاظ على الروابط أو أزل مراجع الملف أولًا. الحذف الإجباري قد يؤدي إلى صور مفقودة.
+Preparing editor…	جارٍ تجهيز المحرر…
+Present / remote / site	حاضر / عن بُعد / بالموقع
+Preview	معاينة
+Preview website	معاينة الموقع
+Preview ·	معاينة ·
+Previous	السابق
+Previous page	الصفحة السابقة
+Previous revisions are kept. New upload becomes the latest REV.	تُحفظ الإصدارات السابقة ويصبح الملف المرفوع أحدث إصدار.
+Primary (brand)	الأساسي (الهوية)
+Primary button URL	رابط الزر الرئيسي
+Primary button label	نص الزر الرئيسي
+Primary logo	الشعار الرئيسي
+Print	طباعة
+Print / letterhead mark	علامة الطباعة / الترويسة
+Print → Save as PDF	طباعة ← حفظ بصيغة PDF
+Priority	الأولوية
+Privacy	الخصوصية
+Privacy is explicit — only checked fields appear publicly / in vCard.	تظهر الحقول المحددة فقط للعامة وفي بطاقة الاتصال vCard.
+Processing…	جارٍ المعالجة…
+Profile	الملف الشخصي
+Profile image	صورة الملف الشخصي
+Profile photo	الصورة الشخصية
+Profiles used by the footer and floating social bar	الروابط المستخدمة في التذييل وشريط التواصل العائم
+Progress	التقدم
+Progress %	نسبة التقدم ٪
+Project	المشروع
+Project (optional)	المشروع (اختياري)
+Project budgets	ميزانيات المشاريع
+Project category	فئة المشروع
+Project code	رمز المشروع
+Project director	مدير إدارة المشروع
+Project gallery	معرض المشروع
+Project information	معلومات المشروع
+Project manager	مدير المشروع
+Project name	اسم المشروع
+Project not found.	المشروع غير موجود.
+Project portfolio	معرض المشاريع
+Project portfolio ↗	معرض المشاريع ↖
+Project role	الدور في المشروع
+Project sections	أقسام المشروع
+Project watchlist	المشاريع قيد المتابعة
+Projects	المشاريع
+Projects in progress	مشاريع قيد التنفيذ
+Public ID assigned on first save	يُحدد المعرف العام عند أول حفظ
+Public file	ملف عام
+Public pages may be crawled; /admin and /api/admin remain disallowed.	يمكن زحف الصفحات العامة، وتظل مسارات الإدارة وواجهاتها البرمجية محظورة.
+Public profile	الملف العام
+Publish	نشر
+Publish cards	نشر البطاقات
+Published	منشور
+Published + Featured	منشور ومميز
+Publishing and edits will appear here once audit events are recorded.	تظهر عمليات النشر والتعديل هنا عند تسجيل أحداث التدقيق.
+Purchase order	أمر شراء
+Purchase orders	أوامر الشراء
+QR & Share	رمز QR والمشاركة
+QR appears after public ID is assigned.	يظهر رمز QR بعد تعيين المعرف العام.
+QR bottom	موضع QR من الأسفل
+QR code	رمز QR
+QR code image	صورة رمز QR
+QR encodes stable URL only (not personal data)	يحتوي QR على رابط ثابت فقط دون بيانات شخصية
+QR keeps working when job/phone changes	يستمر QR في العمل عند تغيير الوظيفة أو الهاتف
+QR right	موضع QR من اليمين
+QR size	حجم QR
+Qty	الكمية
+Qualifications	المؤهلات
+Quantity	الكمية
+Question	السؤال
+Quick actions	إجراءات سريعة
+Quick create	إنشاء سريع
+Quotation	عرض سعر
+Quotations	عروض الأسعار
+Quote	الاقتباس
+Rating	التقييم
+Raw data	البيانات الخام
+Re-apply workflow template	إعادة تطبيق قالب سير العمل
+Read-only for your role.	للعرض فقط حسب صلاحياتك.
+Reason	السبب
+Receipts & payments	المقبوضات والمدفوعات
+Receivables	الذمم المدينة
+Recent activity	آخر الأنشطة
+Recent ops activity	آخر أنشطة العمليات
+Recipient	المستلم
+Record a receipt or payment against a posted document. No bank transfer is sent.	تسجيل قبض أو دفع مقابل مستند مرحّل. لا يُنفذ تحويل بنكي.
+Record attendance	تسجيل الحضور
+Record one month of straight-line depreciation for this asset.	تسجيل إهلاك شهر واحد بالقسط الثابت لهذا الأصل.
+Record statement lines and match them to posted receipts or payments.	تسجيل بنود كشف البنك ومطابقتها مع المقبوضات والمدفوعات المرحلة.
+Record supplier invoices and recognize project delivery costs.	تسجيل فواتير الموردين وتكاليف تنفيذ المشاريع.
+Records	السجلات
+Rectangle	مستطيل
+Redirects	إعادات التوجيه
+Redirects saved	تم حفظ إعادات التوجيه
+Redo	إعادة
+Reference	المرجع
+Reference / description	المرجع / الوصف
+Refresh	تحديث
+Refreshing…	جارٍ التحديث…
+Register	السجل
+Registered address	العنوان المسجل
+Reject	رفض
+Related record	السجل المرتبط
+Relationship	العلاقة
+Remove	إزالة
+Remove signature	إزالة التوقيع
+Rendering letter pages	جارٍ تجهيز صفحات الخطاب
+Replace	استبدال
+Replace file	استبدال الملف
+Reply	رد
+Replying to a thread.	الرد على محادثة.
+Reporting manager	المدير المباشر
+Reports	التقارير
+Reports hub	مركز التقارير
+Reports update from posted documents and approved project time.	تتحدث التقارير من المستندات المرحلة وساعات المشاريع المعتمدة.
+Request approval	طلب موافقة
+Request leave	طلب إجازة
+Required deliverables	المخرجات المطلوبة
+Requirements	المتطلبات
+Requires a delivery update	يتطلب تحديث التنفيذ
+Reset	إعادة ضبط
+Reset colors	إعادة ضبط الألوان
+Reset positions	إعادة ضبط المواضع
+Residential	سكني
+Responsibilities	المسؤوليات
+Responsible	المسؤول
+Responsible department	القسم المسؤول
+Responsible role	الدور المسؤول
+Return	عودة
+Reusable delivery plans	خطط تنفيذ قابلة لإعادة الاستخدام
+Revenue in period	إيرادات الفترة
+Revenue less expenses	الإيرادات ناقص المصروفات
+Reversal reason:	سبب العكس:
+Review entered salary components and post payroll liabilities.	مراجعة مكونات الرواتب وترحيل الالتزامات المستحقة.
+Review gates	نقاط المراجعة
+Review issues	مراجعة المشكلات
+Review owners and committed dates	مراجعة المسؤولين والمواعيد المحددة
+Review queue	قائمة المراجعة
+Review reimbursable employee expenses before posting.	مراجعة مصروفات الموظفين المستردة قبل الترحيل.
+Review the delivery baseline	مراجعة خطة التنفيذ الأساسية
+Review:	المراجعة:
+Revision	الإصدار
+Revision history	سجل الإصدارات
+Revision label (optional)	اسم الإصدار (اختياري)
+Robots	زواحف البحث
+Robots currently disallow all crawlers. Review the Robots tab.	قواعد الزواحف تمنع جميع محركات البحث حاليًا. راجع تبويب الزواحف.
+Robots follow	تتبع الروابط
+Robots index	فهرسة الصفحة
+Role	الدور
+Row after	صف بعد
+Row before	صف قبل
+SEO	تحسين محركات البحث
+SEO Control Center	مركز تحسين محركات البحث
+SEO Overview	نظرة عامة على تحسين البحث
+SEO defaults saved	تم حفظ إعدادات تحسين البحث الافتراضية
+SEO description	وصف محركات البحث
+SEO sections	أقسام تحسين البحث
+SEO targets	أهداف تحسين البحث
+SEO title	عنوان محركات البحث
+SERP preview size	حجم معاينة نتائج البحث
+Sales pipeline	مسار المبيعات
+Save	حفظ
+Save Draft	حفظ المسودة
+Save SEO defaults	حفظ إعدادات تحسين البحث الافتراضية
+Save SEO settings	حفظ إعدادات تحسين البحث
+Save assignment	حفظ التكليف
+Save batch	حفظ المجموعة
+Save branding	حفظ الهوية البصرية
+Save client	حفظ العميل
+Save department	حفظ القسم
+Save document	حفظ المستند
+Save draft	حفظ المسودة
+Save employee	حفظ الموظف
+Save failed	تعذر الحفظ
+Save footer	حفظ التذييل
+Save meeting	حفظ الاجتماع
+Save once to allocate a stable public ID.	احفظ أولًا لتخصيص معرف عام ثابت.
+Save project	حفظ المشروع
+Save redirects	حفظ إعادات التوجيه
+Save settings	حفظ الإعدادات
+Save stage	حفظ المرحلة
+Save task	حفظ المهمة
+Save team member	حفظ عضو الفريق
+Save workflow	حفظ سير العمل
+Saved	تم الحفظ
+Saving…	جارٍ الحفظ…
+Schedule TBD	الجدول غير محدد
+Schema type	نوع البيانات المنظمة
+Schools	المدارس
+Score	النتيجة
+Search	بحث
+Search Console verification	التحقق من ملكية الموقع في Search Console
+Search action, actor, entity…	ابحث بالإجراء أو المنفذ أو الكيان…
+Search actions	بحث الإجراءات
+Search actions…	ابحث عن إجراء…
+Search admin	بحث لوحة الإدارة
+Search appearance	مظهر نتائج البحث
+Search by name, alt, or path…	ابحث بالاسم أو النص البديل أو المسار…
+Search clients	بحث العملاء
+Search clients…	ابحث عن عميل…
+Search departments	بحث الأقسام
+Search departments…	ابحث عن قسم…
+Search employees	بحث الموظفين
+Search enquiries	بحث الاستفسارات
+Search full audit →	البحث في سجل التدقيق الكامل ←
+Search media…	ابحث عن وسائط…
+Search name, email, message…	ابحث بالاسم أو البريد أو الرسالة…
+Search name, role, email…	ابحث بالاسم أو الدور أو البريد…
+Search names, skills or certifications…	ابحث بالأسماء أو المهارات أو الشهادات…
+Search organization	بحث الهيكل التنظيمي
+Search pages and content…	ابحث عن صفحات ومحتوى…
+Search pages, paths, titles…	ابحث بالصفحات أو المسارات أو العناوين…
+Search projects	بحث المشاريع
+Search projects…	ابحث عن مشروع…
+Search records	بحث السجلات
+Search reference, description or notes…	ابحث بالمرجع أو الوصف أو الملاحظات…
+Search tasks	بحث المهام
+Search tasks or projects…	ابحث عن مهمة أو مشروع…
+Search team member…	ابحث عن عضو فريق…
+Search workflow templates…	ابحث عن قوالب سير العمل…
+Search workflows	بحث مسارات العمل
+Search, edit, and publish content for the website.	ابحث عن محتوى الموقع وعدّله وانشره.
+Searchable operations activity trail	سجل أنشطة العمليات القابل للبحث
+Searching…	جارٍ البحث…
+Secondary button URL	رابط الزر الثانوي
+Secondary button label	نص الزر الثانوي
+Secondary image	الصورة الثانوية
+Section spacing	المسافة بين الأقسام
+Sections, hero slides, sector cards, about, and FAQs	الأقسام وشرائح الواجهة وبطاقات القطاعات والنبذة والأسئلة الشائعة
+Sector	القطاع
+Sector cards	بطاقات القطاعات
+Sectors	القطاعات
+Seed page SEO entries from the All pages tab first.	أنشئ سجلات تحسين البحث من تبويب جميع الصفحات أولًا.
+Select	اختيار
+Select a team member to configure their digital card	اختر عضو فريق لإعداد بطاقته الرقمية
+Select account	اختر الحساب
+Select all	تحديد الكل
+Select an asset to edit metadata, focal point, and usage.	اختر ملفًا لتعديل بياناته ونقطة التركيز واستخدامه.
+Select an image first to set the focal point.	اختر صورة أولًا لتحديد نقطة التركيز.
+Select employee	اختر الموظف
+Select project	اختر المشروع
+Selected	محدد
+Selected file	الملف المحدد
+Select…	اختر…
+Separate paragraphs with a blank line.	افصل الفقرات بسطر فارغ.
+Services	الخدمات
+Set a completion date	حدد تاريخ الإكمال
+Set a project cost baseline and compare recorded delivery costs.	تحديد ميزانية أساسية للمشروع ومقارنتها بتكاليف التنفيذ المسجلة.
+Set company details and your applicable tax rate before issuing documents. The default tax rate is 0% until configured. This setting does not determine tax eligibility.	اضبط بيانات الشركة ونسبة الضريبة المطبقة قبل إصدار المستندات. النسبة الافتراضية 0٪ حتى إعدادها، ولا يحدد هذا الإعداد الخضوع للضريبة.
+Set image focal point	تحديد نقطة تركيز الصورة
+Settings	الإعدادات
+Severity	درجة الخطورة
+Shape	الشكل
+Shares:	المشاركات:
+Short bio	نبذة مختصرة
+Short description	وصف مختصر
+Short name	الاسم المختصر
+Show QR on card	إظهار QR على البطاقة
+Show bio	إظهار النبذة
+Show contact actions	إظهار إجراءات التواصل
+Show department	إظهار القسم
+Show footer	إظهار التذييل
+Show footer bars	إظهار أشرطة التذييل
+Show languages	إظهار اللغات
+Show qualifications	إظهار المؤهلات
+Show social buttons	إظهار أزرار التواصل الاجتماعي
+Show specialties	إظهار التخصصات
+Show tools	إظهار الأدوات
+Shown in the site footer.	يظهر في تذييل الموقع.
+Shown publicly	يظهر للعامة
+Sign in	تسجيل الدخول
+Sign out	تسجيل الخروج
+Signatory name	اسم الموقّع
+Signatory title	منصب الموقّع
+Signature	التوقيع
+Signature image	صورة التوقيع
+Signed in as	تم الدخول باسم
+Signing in…	جارٍ تسجيل الدخول…
+Site	الموقع
+Site identity	هوية الموقع
+Site name	اسم الموقع
+Site settings	إعدادات الموقع
+Site-wide indexing is disabled	الفهرسة معطلة على مستوى الموقع
+Sitemap	خريطة الموقع
+Size	الحجم
+Size label	تسمية الحجم
+Skills (comma-separated)	المهارات (مفصولة بفواصل)
+Slide	الشريحة
+Slide image	صورة الشريحة
+Slightly off ideal range	خارج النطاق المثالي قليلًا
+Slug	الاسم في الرابط
+Social	التواصل الاجتماعي
+Social description preview	معاينة وصف المشاركة
+Social profiles	حسابات التواصل الاجتماعي
+Social title	عنوان المشاركة
+Soon	قريبًا
+Sort	الترتيب
+Spacing	المسافات
+Spacing & type	المسافات والخطوط
+Specializations (comma-separated)	التخصصات (مفصولة بفواصل)
+Specialties	التخصصات
+Staff	الموظفون
+Stage	المرحلة
+Stage name	اسم المرحلة
+Stages	المراحل
+Stages marked for approval	مراحل تتطلب موافقة
+Stages:	المراحل:
+Stamp	الختم
+Stamp image	صورة الختم
+Standardize delivery stages, ownership and review gates	توحيد مراحل التنفيذ والمسؤوليات ونقاط المراجعة
+Start	البداية
+Start date	تاريخ البداية
+Statement line	بند كشف البنك
+Stats (JSON — advanced)	الإحصاءات (JSON — متقدم)
+Status	الحالة
+Status:	الحالة:
+Steps (one per line: Title | employeeId)	الخطوات (واحدة في كل سطر: العنوان | معرف الموظف)
+Strikethrough	يتوسطه خط
+Subject	الموضوع
+Subject type	نوع الموضوع
+Submit request	إرسال الطلب
+Submitted	مقدم
+Submitted documents	المستندات المقدمة
+Submitted for approval	مقدم للموافقة
+Submitting…	جارٍ الإرسال…
+Subtitle / place	العنوان الفرعي / المكان
+Subtle technical lines and structured photo placement — engineering language.	خطوط هندسية هادئة وصورة في موضع منظم.
+Subtotal	الإجمالي قبل الضريبة
+Summary	الملخص
+Supplier	المورد
+Supplier bills	فواتير الموردين
+Supplier payables	الذمم الدائنة للموردين
+Supplier records for purchasing and accounts payable.	سجلات الموردين للمشتريات والذمم الدائنة.
+Suppliers	الموردون
+System	النظام
+Table	جدول
+Tagline under ASAS	العبارة أسفل أساس
+Task	المهمة
+Task title	عنوان المهمة
+Tasks	المهام
+Tasks appear here as work progresses.	تظهر المهام هنا مع تقدم العمل.
+Tasks · approvals · leave · mentions	المهام · الموافقات · الإجازات · الإشارات
+Tax	الضريبة
+Tax %	الضريبة ٪
+Tax registration number	رقم التسجيل الضريبي
+Tax registration:	التسجيل الضريبي:
+Team	الفريق
+Team card leaders	أعلى بطاقات الفريق تفاعلًا
+Team members	أعضاء الفريق
+Team size	حجم الفريق
+Technical SEO	تحسين البحث الفني
+Template	القالب
+Template gallery	معرض القوالب
+Templates	القوالب
+Temporary password	كلمة مرور مؤقتة
+Terms	الشروط
+Testimonials	آراء العملاء
+Text	النص
+The display and export include the latest 2,000 lines for the selected period.	يشمل العرض والتصدير أحدث 2000 بند في الفترة المحددة.
+The live sitemap is generated from public routes. Per-page	تُنشأ خريطة الموقع من المسارات العامة. إعدادات كل صفحة
+Theme preset	نمط جاهز
+These lines print on the letter footer — address, email, phones, website. Leave blank to use company defaults.	تُطبع هذه البيانات في تذييل الخطاب: العنوان والبريد والهواتف والموقع. اتركها فارغة لاستخدام بيانات الشركة.
+These links appear in the website footer. Logo is managed in Settings → Branding. Contact details come from Settings → Contact.	تظهر هذه الروابط في تذييل الموقع. الشعار من إعدادات الهوية، وبيانات التواصل من إعدادات التواصل.
+This template uses the cover image from the Profile tab. Change it there anytime.	يستخدم القالب صورة الغلاف من تبويب الملف الشخصي ويمكن تغييرها هناك.
+Through	حتى
+Thumbnail	الصورة المصغرة
+Time	الوقت
+Time entry	سجل ساعات عمل
+Timesheets	ساعات العمل
+Title	العنوان
+Title (	العنوان (
+Title AR	العنوان بالعربية
+Title EN	العنوان بالإنجليزية
+Title size	حجم العنوان
+Title template	قالب العنوان
+To	إلى
+Tools	الأدوات
+Top	أعلى
+Top projects	أبرز المشاريع
+Total	الإجمالي
+Total content	إجمالي المحتوى
+Towers	الأبراج
+Towers & high-rise	الأبراج والمباني الشاهقة
+Track content health, enquiry pipeline, and digital card engagement across the ASAS platform.	تابع حالة المحتوى ومسار الاستفسارات وتفاعل البطاقات الرقمية عبر منصة أساس.
+Track qualified opportunities and their next commercial step.	متابعة فرص البيع المؤهلة وخطواتها التجارية التالية.
+Traffic & Access Studies	دراسات المرور والمداخل
+Transactions from {0} through {1}.	المعاملات من {0} حتى {1}.
+Trial balance	ميزان المراجعة
+Try a different search.	جرّب بحثًا مختلفًا.
+Turn sections on or off and set the order visitors see them. Lower numbers appear first.	فعّل الأقسام أو أخفها وحدد ترتيب ظهورها للزائر؛ تظهر الأرقام الأصغر أولًا.
+Twitter / X handle	اسم المستخدم على إكس
+Twitter card type	نوع بطاقة إكس
+Type	النوع
+Type / Sector	النوع / القطاع
+Typography-led expert profile with large editorial portrait.	ملف خبير بتصميم يبرز الخطوط وصورة شخصية كبيرة.
+Unassigned	غير معين
+Unassigned employees	الموظفون غير المعينين
+Unassigned people	أشخاص غير معينين
+Underline	تسطير
+Undo	تراجع
+Unit price	سعر الوحدة
+Unknown	غير معروف
+Unsaved changes	تغييرات غير محفوظة
+Untitled	بدون عنوان
+Untitled letter	خطاب بدون عنوان
+Unused	غير مستخدم
+Upcoming	قادم
+Update failed	تعذر التحديث
+Updated	آخر تحديث
+Upload / choose	رفع / اختيار
+Upload a cover image to enable the overlay.	ارفع صورة غلاف لتفعيل الطبقة اللونية.
+Upload logos, favicon, and social images here. Header, footer, SEO, and letterhead read from these settings — no file paths required.	ارفع الشعارات وأيقونة الموقع وصور المشاركة هنا لتستخدمها الترويسة والتذييل وتحسين البحث والخطابات تلقائيًا.
+Upload media	رفع وسائط
+Upload your QR, or leave empty to use the generated / default QR.	ارفع رمز QR أو اتركه فارغًا لاستخدام الرمز المولد أو الافتراضي.
+Uploaded	تم الرفع
+Uploading… {0}%	جارٍ الرفع… {0}٪
+Usage	الاستخدام
+Use @name to mention someone	استخدم ‎@name للإشارة إلى شخص
+Use ASAS Official (PDF)	استخدام أساس الرسمي (PDF)
+Use official ASAS page	استخدام صفحة أساس الرسمية
+Use template	استخدام القالب
+Use the Word toolbar above for formatting, lists, links, and tables.	استخدم شريط الأدوات بالأعلى للتنسيق والقوائم والروابط والجداول.
+Use your admin account to continue.	استخدم حساب الإدارة للمتابعة.
+Used	مستخدم
+Used by Letterhead Studio defaults.	يُستخدم في الإعدادات الافتراضية لاستوديو الخطابات.
+Used in	مستخدم في
+Used on sectors listing, detail hero, and related cards.	يُستخدم في قائمة القطاعات وواجهة التفاصيل والبطاقات المرتبطة.
+Used on services listing, detail hero, and related cards.	يُستخدم في قائمة الخدمات وواجهة التفاصيل والبطاقات المرتبطة.
+Used · {0}	مستخدم · {0}
+User	المستخدم
+User account (CMS login)	حساب المستخدم (دخول النظام)
+Users	المستخدمون
+Users & roles	المستخدمون والأدوار
+Value	القيمة
+Videos	الفيديوهات
+View	عرض
+View Details	عرض التفاصيل
+View content	عرض المحتوى
+View workflow	عرض سير العمل
+Views	المشاهدات
+Views:	المشاهدات:
+Villas & compounds	الفلل والمجمعات
+Visible	ظاهر
+Warm Neutral	محايد دافئ
+Warm stone surfaces, sparse navy/rust — MD and client-facing staff.	خلفيات حجرية دافئة ولمسات كحلية ونحاسية للإدارة وفرق التعامل مع العملاء.
+Watch URL	رابط المشاهدة
+Web address	عنوان الموقع
+Website	الموقع الإلكتروني
+Website / CTA	الموقع / الدعوة للإجراء
+Website CMS	إدارة محتوى الموقع
+Website branding	هوية الموقع
+Website line	سطر الموقع الإلكتروني
+Website team profile (optional)	ملف الفريق على الموقع (اختياري)
+Welcome,	مرحبًا،
+WhatsApp	واتساب
+WhatsApp:	واتساب:
+When	الوقت
+White corporate card with strong ASAS brand header and overlapping portrait.	بطاقة بيضاء بترويسة تحمل هوية أساس وصورة متداخلة.
+White or light mark for navy/dark surfaces.	شعار أبيض أو فاتح للخلفيات الداكنة والكحلية.
+Width	العرض
+With projects	لديهم مشاريع
+Withholdings	الاستقطاعات
+Without leadership	بدون مدير
+Work email	بريد العمل
+Workflow editor	محرر سير العمل
+Workflow templates	قوالب سير العمل
+Workflows	مسارات العمل
+Workload	أعباء العمل
+Workload %	نسبة عبء العمل ٪
+Works on every template. Adjust padding, margins, gaps, corners, and text sizes — preview updates live.	يعمل مع جميع القوالب. عدّل المسافات والهوامش والزوايا وأحجام النصوص مع معاينة مباشرة.
+Years experience	سنوات الخبرة
+Yes	نعم
+You do not have permission to add cards.	ليست لديك صلاحية إضافة بطاقات.
+You do not have permission to view workload.	ليست لديك صلاحية عرض أعباء العمل.
+You have read-only access to SEO.	صلاحيتك في تحسين البحث للعرض فقط.
+YouTube ID	معرف يوتيوب
+YouTube URL	رابط يوتيوب
+Your PDF	ملف PDF الخاص بك
+Your daily workspace	مساحة عملك اليومية
+Your people, disciplines, expertise and access connections	موظفوك وتخصصاتهم وخبراتهم وحسابات دخولهم
+Your portfolio starts here	ابدأ معرض مشاريعك هنا
+Your workspace	مساحة عملك
+Zoom	التكبير
+Zoom in	تكبير
+Zoom out	تصغير
+absent ·	غائب ·
+auto from English name	تلقائي من الاسم الإنجليزي
+awaiting review	بانتظار المراجعة
+characters	حرفًا
+d)	يومًا)
+due	الاستحقاق
+e.g. 20+	مثل: أكثر من 20
+e.g. Design drawings, calculation report	مثل: رسومات التصميم، تقرير الحسابات
+e.g. Lead architect	مثل: مهندس معماري رئيسي
+en · ar	إنجليزي · عربي
+events	أحداث
+films	فيديوهات
+flags are managed in the page SEO editor.	تُدار من محرر تحسين البحث للصفحة.
+for “{0}”	لـ «{0}»
+in 7 days	خلال 7 أيام
+is false — crawlers receive	معطل — تتلقى الزواحف
+leave ·	إجازة ·
+matching employees	موظفون مطابقون
+members	أعضاء
+members first. If nobody is Featured, it falls back to published members by display order. Draft members never appear publicly.	الأعضاء المميزون أولًا، وإلا يظهر الأعضاء المنشورون حسب ترتيب العرض. لا تظهر المسودات للعامة.
+mm	مم
+more	المزيد
+new enquiries	استفسارات جديدة
+noindex ·	عدم الفهرسة ·
+of	من
+opted out of sitemap	مستبعد من خريطة الموقع
+pages affected	صفحات متأثرة
+pending	معلق
+present/remote/site ·	حاضر / عن بُعد / بالموقع ·
+project-enquiry	استفسار عن مشروع
+projects · Delivery dates reflect the current baseline	مشاريع · مواعيد التنفيذ وفق الخطة الأساسية الحالية
+published mix	توزيع المنشور
+records	سجلات
+records ·	سجلات ·
+remaining ·	متبقي ·
+review gates	نقاط مراجعة
+rows	صفوف
+selected	محدد
+stages	مراحل
+stages ·	مراحل ·
+task(s)	مهمة
+to review and post it.	لمراجعتها وترحيلها.
+unread	غير مقروء
+used ·	مستخدم ·
+vCard saves:	عمليات حفظ بطاقة الاتصال:
+with OG	بصورة مشاركة
+{0}mm	{0} مم
+· Active team:	· الفريق النشط:
+· Blocked:	· المتعثر:
+· CSV download	· تنزيل CSV
+· Director:	· مدير الإدارة:
+· Meetings:	· الاجتماعات:
+· Pending approvals:	· الموافقات المعلقة:
+· Posted {0}	· رُحّل في {0}
+· Revision	· الإصدار
+· Tasks:	· المهام:
+· due {0}	· الاستحقاق {0}
+· linked task	· مهمة مرتبطة
+· loading…	· جارٍ التحميل…
+· on leave	· في إجازة
+· {0} pending review	· {0} بانتظار المراجعة
+— Link later —	— الربط لاحقًا —
+— None —	— بدون —
+← All projects	→ جميع المشاريع
+active	نشط
+inactive	غير نشط
+draft	مسودة
+posted	مرحّل
+approved	معتمد
+submitted	مقدم
+rejected	مرفوض
+received	مستلم
+matched	مطابق
+cancelled	ملغي
+reversed	معكوس
+archived	مؤرشف
+in_progress	قيد التنفيذ
+in progress	قيد التنفيذ
+not_started	لم يبدأ
+not started	لم يبدأ
+on_hold	معلق
+on hold	معلق
+on_leave	في إجازة
+on leave	في إجازة
+completed	مكتمل
+blocked	متعثر
+pending_review	بانتظار المراجعة
+in_review	قيد المراجعة
+todo	لم يبدأ
+done	منجز
+high	عالية
+medium	متوسطة
+low	منخفضة
+urgent	عاجلة
+critical	حرجة
+normal	عادية
+qualified	مؤهلة
+proposal	عرض مقدم
+negotiation	تفاوض
+won	ناجحة
+lost	خاسرة
+receipt	قبض
+payment	دفع
+finance	المالية
+sales	المبيعات
+purchase	المشتريات
+hr	الموارد البشرية
+time	ساعات العمل
+assets	الأصول الثابتة
+asset	أصل
+liability	التزام
+equity	حقوق ملكية
+income	إيراد
+expense	مصروف
+debit	مدين
+credit	دائن
+annual	سنوية
+sick	مرضية
+unpaid	بدون راتب
+emergency	طارئة
+remote	عن بُعد
+site	بالموقع
+present	حاضر
+absent	غائب
+late	متأخر
+half_day	نصف يوم
+other	أخرى
+public	عام
+private	خاص
+internal	داخلي
+restricted	مقيد
+confidential	سري
+open	مفتوح
+closed	مغلق
+read	مقروء
+unread	غير مقروء
+new	جديد
+contacted	تم التواصل
+converted	تم التحويل
+spam	غير مرغوب
+shortlisted	قائمة مختصرة
+interview	مقابلة
+hired	تم التوظيف
+full_time	دوام كامل
+part_time	دوام جزئي
+contract	عقد
+internship	تدريب
+Super Admin	المدير العام للنظام
+Admin	مدير النظام
+Editor	محرر
+Viewer	مشاهد
+Finance Manager	المدير المالي
+Finance Clerk	موظف المالية
+Sales Manager	مدير المبيعات
+Purchase Manager	مدير المشتريات
+Payroll Manager	مسؤول الرواتب
+Operations Manager	مدير العمليات
+HR Manager	مدير الموارد البشرية
+Project Manager	مدير المشروع
+Department Head	مدير القسم
+Employee	الموظف
+ASAS Super Admin	مدير نظام أساس
+Description / title	الوصف / العنوان
+Probability %	احتمال النجاح ٪
+Expected close	تاريخ الإغلاق المتوقع
+Sales stage	مرحلة البيع
+Signed contract reference	مرجع العقد الموقع
+Supplier name	اسم المورد
+Contract / client reference	مرجع العقد / العميل
+Supplier invoice number	رقم فاتورة المورد
+Receipt reference	مرجع الإيصال
+Open document	المستند المستحق
+Cash / bank account	حساب النقدية / البنك
+Bank reference	المرجع البنكي
+Hours	الساعات
+Internal cost per hour	التكلفة الداخلية للساعة
+Billable	قابل للفوترة
+Pay period	فترة الراتب
+Custodian	مسؤول العهدة
+Serial / asset tag	الرقم التسلسلي / رمز الأصل
+Residual value	القيمة المتبقية
+Useful life in months	العمر الإنتاجي بالأشهر
+Planned hours	الساعات المخططة
+Bank account	الحساب البنكي
+Direction	الاتجاه
+Statement reference	مرجع كشف البنك
+Recorded payment	الدفعة المسجلة
+Submit for review	تقديم للمراجعة
+Post to ledger	ترحيل إلى دفتر الأستاذ
+Record payment	تسجيل دفعة
+Reverse posting	عكس الترحيل
+Cancel document	إلغاء المستند
+Confirm receipt	تأكيد الاستلام
+Create bill	إنشاء فاتورة مورد
+Create contract	إنشاء عقد
+Create invoice	إنشاء فاتورة
+Record depreciation	تسجيل الإهلاك
+Match payment	مطابقة الدفعة
+Unmatch	إلغاء المطابقة
+Reject request	رفض الطلب
+Record saved.	تم حفظ السجل.
+No matching records	لا توجد سجلات مطابقة
+Try another search or adjust your filters.	جرّب بحثًا آخر أو عدّل عوامل التصفية.
+Adjust your search or status filter.	عدّل البحث أو تصفية الحالة.
+Active record value	قيمة السجلات النشطة
+Sum across active records	المجموع عبر السجلات النشطة
+Posted documents, less settlements	المستندات المرحلة بعد خصم التسويات
+Accounts receivable	الذمم المدينة
+Accounts payable	الذمم الدائنة
+Bank	البنك
+Cash	النقدية
+Input tax	ضريبة المدخلات
+Output tax	ضريبة المخرجات
+Accumulated depreciation	مجمع الإهلاك
+Employee reimbursements payable	مستحقات مصروفات الموظفين
+Payroll payable	رواتب مستحقة
+Payroll withholdings payable	استقطاعات الرواتب المستحقة
+Opening equity	حقوق الملكية الافتتاحية
+Engineering service revenue	إيرادات الخدمات الهندسية
+Project procurement costs	تكاليف مشتريات المشاريع
+Employee expenses	مصروفات الموظفين
+Payroll expense	مصروف الرواتب
+Depreciation expense	مصروف الإهلاك
+Profit & loss	الأرباح والخسائر
+Balance sheet	الميزانية العمومية
+Aging	أعمار الديون
+General ledger	دفتر الأستاذ
+Project costs	تكاليف المشاريع
+Assets	الأصول
+Liabilities	الالتزامات
+Equity	حقوق الملكية
+Retained earnings	الأرباح المحتجزة
+Current	حالي
+1–30 days	1–30 يومًا
+31–60 days	31–60 يومًا
+61–90 days	61–90 يومًا
+90+ days	أكثر من 90 يومًا
+Sign-in failed	تعذر تسجيل الدخول
+Invalid credentials	بيانات الدخول غير صحيحة
+Invalid email or password	البريد الإلكتروني أو كلمة المرور غير صحيحة
+Unauthorized	غير مصرح
+Operation failed	تعذر تنفيذ العملية
+Request failed	تعذر تنفيذ الطلب
+Could not refresh	تعذر التحديث
+Failed to fetch	تعذر الاتصال بالخادم
+Save changes	حفظ التغييرات
+View all	عرض الكل
+New {0}	إضافة {0}
+Edit {0}	تعديل {0}
+Open {0}	فتح {0}
+No {0} yet	لا توجد سجلات {0} بعد
+{0} completed.	تم {0}.
+{0} records	{0} سجلات
+{0} awaiting review	{0} بانتظار المراجعة
+{0} pending review	{0} بانتظار المراجعة
+ASAS Executive	أساس التنفيذي
+ASAS Official	أساس الرسمي
+ASAS Standard Engineering Workflow	سير العمل الهندسي القياسي لأساس
+ASAS Standard Workflow	سير العمل القياسي لأساس
+Accounting & Finance	المحاسبة والمالية
+Action centre	مركز الإجراءات
+Add at least two journal lines	أضف بندين على الأقل للقيد
+Add between 1 and 200 line items	أضف من بند واحد إلى 200 بند
+Add employees to this payroll run	أضف موظفين إلى مسير الرواتب
+Administration	الشؤون الإدارية
+Age	العمر
+All clear	لا توجد ملاحظات
+Amount must be greater than zero	يجب أن يكون المبلغ أكبر من صفر
+An approved budget already exists for this project	توجد ميزانية معتمدة لهذا المشروع بالفعل
+An asset with posted depreciation cannot be reversed	لا يمكن عكس أصل له إهلاك مرحّل
+An employee already has payroll for this period	يوجد راتب مسجل لأحد الموظفين في هذه الفترة
+An employee may appear only once in a payroll run	لا يمكن تكرار الموظف في مسير الرواتب
+Annual Leave	إجازة سنوية
+Application not found	طلب التوظيف غير موجود
+Approval is required before posting	يجب الاعتماد قبل الترحيل
+Approval not found	طلب الموافقة غير موجود
+Approval step not found	خطوة الموافقة غير موجودة
+Approval steps must have unique identifiers	يجب أن تكون معرفات خطوات الموافقة فريدة
+Approval title is required	عنوان طلب الموافقة مطلوب
+Approved hours	الساعات المعتمدة
+Arabic	العربية
+Ar	العربية
+En	الإنجليزية
+Architectural Design	التصميم المعماري
+Architectural Grid	شبكة معمارية
+Architectural Plans Finalization	اعتماد المخططات المعمارية النهائية
+Architecture	الهندسة المعمارية
+Archive this letterhead?	هل تريد أرشفة هذه الترويسة؟
+Are you sure?	هل أنت متأكد؟
+Article	مقال
+Asset tag already exists	رمز الأصل مستخدم بالفعل
+Assign a reviewer to every approval step	حدد مراجعًا لكل خطوة موافقة
+Assignment % and capacity	نسبة التخصيص والطاقة المتاحة
+At least one active Super Admin is required	يجب وجود مدير نظام عام نشط واحد على الأقل
+Attendance record not found	سجل الحضور غير موجود
+Audit failed	تعذر التدقيق
+Balanced	متوازن
+Bill of Quantities	جدول الكميات
+Blank	فارغ
+Blog post slug is required	مسار التدوينة مطلوب
+Bottom call-to-action strip — copy, buttons, and background image.	قسم الدعوة للإجراء السفلي: النص والأزرار وصورة الخلفية.
+Brand Cover	غلاف الهوية
+Budget remaining	المتبقي من الميزانية
+Bulk create failed	تعذر الإنشاء الجماعي
+Bulk save failed	تعذر الحفظ الجماعي
+Bulk update failed	تعذر التحديث الجماعي
+Business card preview not found	معاينة بطاقة العمل غير موجودة
+Cancel failed	تعذر الإلغاء
+Cannot delete the default workflow template	لا يمكن حذف قالب سير العمل الافتراضي
+Cannot delete the last Super Admin	لا يمكن حذف آخر مدير نظام عام
+Changes were not saved. Operations storage is unavailable; please retry.	لم تُحفظ التغييرات. تخزين العمليات غير متاح؛ حاول مجددًا.
+Client id is required	معرف العميل مطلوب
+Client name (EN) is required	اسم العميل بالإنجليزية مطلوب
+Client not found	العميل غير موجود
+Clients missing logo	عملاء بدون شعار
+Close	إغلاق
+Collapse sidebar	طي الشريط الجانبي
+Comment (optional)	تعليق (اختياري)
+Comment body is required	نص التعليق مطلوب
+Comment not found	التعليق غير موجود
+Company & accounting periods	الشركة والفترات المحاسبية
+Company name is required	اسم الشركة مطلوب
+Company settings saved.	تم حفظ إعدادات الشركة.
+Complete the earlier review steps first	أكمل خطوات المراجعة السابقة أولًا
+Compounds	المجمعات
+Concept Study	دراسة الفكرة
+Configurable stage templates	قوالب مراحل قابلة للتعديل
+Confirm	تأكيد
+Confirm full receipt	تأكيد الاستلام الكامل
+Construction Management	إدارة الإنشاءات
+Construction Preparation	التحضير للإنشاء
+Consultant	استشاري
+Contract value must be a non-negative number	يجب أن تكون قيمة العقد رقمًا غير سالب
+Could not apply workflow	تعذر تطبيق سير العمل
+Could not copy URL.	تعذر نسخ الرابط.
+Could not create task	تعذر إنشاء المهمة
+Could not create tasks	تعذر إنشاء المهام
+Could not create user	تعذر إنشاء المستخدم
+Could not crop image	تعذر قص الصورة
+Could not load tasks	تعذر تحميل المهام
+Could not save bulk edits	تعذر حفظ التعديلات المجمعة
+Could not save defaults	تعذر حفظ الإعدادات الافتراضية
+Could not save workflow	تعذر حفظ سير العمل
+Could not update status	تعذر تحديث الحالة
+Could not update task	تعذر تحديث المهمة
+Counterparty	الطرف المقابل
+Cover Profile	ملف بغلاف
+Create failed	تعذر الإنشاء
+Create supplier bill	إنشاء فاتورة مورد
+Create tasks from open action items?	هل تريد إنشاء مهام من بنود المتابعة المفتوحة؟
+Create your first record to start this workflow.	أنشئ أول سجل لبدء سير العمل.
+Credits	إجمالي الدائن
+Crop and set focus so the face stays centered in cards and team pages.	قص الصورة وحدد نقطة التركيز ليظل الوجه في وسط البطاقات وصفحات الفريق.
+Crop failed	تعذر القص
+Crop image	قص الصورة
+Cropped image saved to Media Library.	حُفظت الصورة المقصوصة في مكتبة الوسائط.
+Cross-discipline checking	المراجعة بين التخصصات
+Cumulative earnings	الأرباح التراكمية
+Currency cannot change after documents are created	لا يمكن تغيير العملة بعد إنشاء المستندات
+Daily presence (HR)	الحضور اليومي (الموارد البشرية)
+Date is required	التاريخ مطلوب
+Debits	إجمالي المدين
+Decision failed	تعذر تسجيل القرار
+Default configurable stages for consultancy delivery. Edit or clone anytime.	مراحل افتراضية قابلة للتعديل لتنفيذ الأعمال الاستشارية. يمكن تعديلها أو نسخها.
+Delete failed	تعذر الحذف
+Delete this approval request?	هل تريد حذف طلب الموافقة؟
+Delete this attendance record?	هل تريد حذف سجل الحضور؟
+Delete this client?	هل تريد حذف العميل؟
+Delete this comment and its replies?	هل تريد حذف التعليق وردوده؟
+Delete this department?	هل تريد حذف القسم؟
+Delete this document and all revisions?	هل تريد حذف المستند وجميع إصداراته؟
+Delete this employee profile?	هل تريد حذف ملف الموظف؟
+Delete this meeting?	هل تريد حذف الاجتماع؟
+Delete this operations project and its team assignments?	هل تريد حذف مشروع العمليات وتكليفات فريقه؟
+Delete this team member permanently?	هل تريد حذف عضو الفريق نهائيًا؟
+Delete this user?	هل تريد حذف المستخدم؟
+Deleted (forced).	تم الحذف الإجباري.
+Delivery portfolio	محفظة مشاريع التنفيذ
+Department name (EN) is required	اسم القسم بالإنجليزية مطلوب
+Department not found	القسم غير موجود
+Department slug	رمز القسم في الرابط
+Dependencies must belong to the same project	يجب أن تنتمي المتطلبات السابقة إلى المشروع نفسه
+Depreciation cannot precede acquisition	لا يمكن أن يسبق الإهلاك تاريخ الاقتناء
+Depreciation is already posted for this month	تم ترحيل إهلاك هذا الشهر بالفعل
+Design Development	تطوير التصميم
+Design copied (personal data unchanged).	تم نسخ التصميم دون تغيير البيانات الشخصية.
+Detailed Drawings	الرسومات التفصيلية
+Disabled selected cards	تم تعطيل البطاقات المحددة
+Document Controller	مسؤول المستندات
+Document name is required	اسم المستند مطلوب
+Document not found	المستند غير موجود
+Document total exceeds supported limit	إجمالي المستند يتجاوز الحد المسموح
+Document total must be greater than zero	يجب أن يكون إجمالي المستند أكبر من صفر
+Document value exceeds the supported limit	قيمة المستند تتجاوز الحد المسموح
+Documentation	التوثيق
+Download id is required	معرف التنزيل مطلوب
+Draft items	عناصر مسودة
+Due date cannot precede the document date	لا يمكن أن يسبق الاستحقاق تاريخ المستند
+Each journal line must have either a debit or a credit	يجب أن يحتوي كل بند على قيمة مدينة أو دائنة فقط
+Edit card	تعديل البطاقة
+Edit team member	تعديل عضو الفريق
+Editorial Profile	ملف تحريري
+Electromechanical	الكهروميكانيك
+Email and password are required	البريد الإلكتروني وكلمة المرور مطلوبان
+Emergency Leave	إجازة طارئة
+Employee code	رمز الموظف
+Employee email	بريد الموظف
+Employee is required	الموظف مطلوب
+Employee not found	الموظف غير موجود
+End date must be on or after start date	يجب ألا يسبق تاريخ النهاية تاريخ البداية
+Engineering Consultancy	الاستشارات الهندسية
+Enquiry not found	الاستفسار غير موجود
+Enter a rejection reason	أدخل سبب الرفض
+Enter a reversal reason	أدخل سبب العكس
+Enter a valid email address	أدخل بريدًا إلكترونيًا صحيحًا
+Enter an ISO currency code	أدخل رمز عملة وفق ISO
+Equity accounts	حسابات حقوق الملكية
+Every line needs a description	يجب إدخال وصف لكل بند
+Every workflow requires at least one named stage	يجب أن يحتوي سير العمل على مرحلة مسماة واحدة على الأقل
+Excluded from sitemap	مستبعد من خريطة الموقع
+Executive Dark	تنفيذي داكن
+Existing stages have linked delivery records. Edit the stages individually instead.	للمراحل الحالية سجلات تنفيذ مرتبطة. عدّل المراحل كلًا على حدة.
+Expand sidebar	توسيع الشريط الجانبي
+Failed	فشل
+Failed to load	تعذر التحميل
+Failed to load enquiries	تعذر تحميل الاستفسارات
+Failed to load letterheads	تعذر تحميل الترويسات
+Failed to load media	تعذر تحميل الوسائط
+File replaced. Existing references keep working.	تم استبدال الملف مع الحفاظ على الروابط الحالية.
+Final Handover	التسليم النهائي
+Financial reporting	التقارير المالية
+Floors	الطوابق
+Focal point	نقطة التركيز
+Footer off	التذييل مخفي
+Footer on	التذييل ظاهر
+Footer saved.	تم حفظ التذييل.
+From concept to financial closure	من الفكرة إلى الإقفال المالي
+Full name (EN) is required	الاسم الكامل بالإنجليزية مطلوب
+Full-page artwork (header + footer bars). Geometric CSS bars are hidden while a background is set.	تصميم يغطي الصفحة كاملة بما فيها الترويسة والتذييل. تُخفى الأشرطة الهندسية عند تعيين خلفية.
+HSE Integration	تكامل الصحة والسلامة والبيئة
+Hajj Leave	إجازة حج
+Half Day	نصف يوم
+Healthy	جيد
+Hero carousel	شرائح الواجهة الرئيسية
+Holiday	عطلة
+Hours must be a non-negative number	يجب أن تكون الساعات رقمًا غير سالب
+Hours must be between 0 and 24	يجب أن تكون الساعات بين صفر و24
+Ideal 120–160 characters	الطول المناسب من 120 إلى 160 حرفًا
+Ideal 30–60 characters	الطول المناسب من 30 إلى 60 حرفًا
+Ideal length	طول مناسب
+Images missing EN alt	صور بدون نص بديل إنجليزي
+Included in sitemap	مضمّن في خريطة الموقع
+Incomplete	غير مكتمل
+Inspections	الفحوصات
+Integrated project cycle	دورة مشروع متكاملة
+Interior fit-out	التجهيز الداخلي
+Internal effort estimate	تقدير الجهد الداخلي
+Invalid JSON	صيغة JSON غير صحيحة
+Invalid currency	عملة غير صحيحة
+Invalid decision status	حالة القرار غير صحيحة
+Invalid leave decision	قرار الإجازة غير صحيح
+Invalid operations collection	مجموعة العمليات غير صحيحة
+Invalid operations collection data	بيانات مجموعة العمليات غير صحيحة
+Invalid operations reference data	بيانات مراجع العمليات غير صحيحة
+Invalid role	دور غير صحيح
+Invalid task status	حالة المهمة غير صحيحة
+Item not found	العنصر غير موجود
+Job slug is required	مسار الوظيفة مطلوب
+Journal debits and credits must balance	يجب تساوي إجمالي المدين والدائن في القيد
+Key statistics	الإحصاءات الرئيسية
+Lead Architect	مهندس معماري رئيسي
+Leadership team	فريق الإدارة
+Leave request already decided	تم اتخاذ قرار في طلب الإجازة بالفعل
+Leave request not found	طلب الإجازة غير موجود
+Leave requests · approve/reject · balances	طلبات الإجازة · اعتماد أو رفض · الأرصدة
+Legacy Admin	مدير النظام السابق
+Legal	قانوني
+Letter document not found	مستند الخطاب غير موجود
+Letterhead not found	الترويسة غير موجودة
+Liabilities + equity + earnings	الالتزامات وحقوق الملكية والأرباح
+Library items	ملفات المكتبة
+Line total exceeds supported limit	إجمالي البند يتجاوز الحد المسموح
+Link URL	عنوان الرابط
+Lists + Kanban with dependencies	قوائم ولوحة مهام مع المتطلبات السابقة
+MEP Engineer	مهندس كهروميكانيك
+Maintenance / Post-Delivery	الصيانة / ما بعد التسليم
+Manage under SEO tabs	تُدار من تبويبات تحسين البحث
+Marked final	تم الاعتماد كنسخة نهائية
+Match statement	مطابقة كشف البنك
+Maternity Leave	إجازة أمومة
+Media id is required	معرف الوسائط مطلوب
+Media not found	الوسائط غير موجودة
+Meeting must belong to a project to create tasks	يجب ربط الاجتماع بمشروع لإنشاء مهام
+Meeting not found	الاجتماع غير موجود
+Meeting title is required	عنوان الاجتماع مطلوب
+Meta description	وصف محركات البحث
+Metadata saved.	تم حفظ البيانات الوصفية.
+Minimal Signature	توقيع بسيط
+Missing Open Graph image	صورة المشاركة غير موجودة
+Missing destination path	مسار الوجهة غير موجود
+Missing source path	مسار المصدر غير موجود
+Missing task	المهمة غير موجودة
+Modern Split	تصميم مقسم حديث
+Module mismatch	الوحدة غير مطابقة
+Monthly depreciation rounds to zero	قيمة الإهلاك الشهري تؤول إلى صفر بعد التقريب
+Navigate	تنقل
+Needs work	يحتاج تحسينًا
+Net debit / credit	صافي المدين / الدائن
+Net pay must be positive	يجب أن يكون صافي الراتب أكبر من صفر
+New / open	جديد / مفتوح
+New link	رابط جديد
+New project enquiries will appear here.	ستظهر استفسارات المشاريع الجديدة هنا.
+Next Step	الخطوة التالية
+No A4 pages to export	لا توجد صفحات A4 للتصدير
+No card faces to export	لا توجد أوجه بطاقات للتصدير
+No enquiries match the current filters.	لا توجد استفسارات مطابقة للتصفية الحالية.
+No items yet.	لا توجد عناصر بعد.
+No projects yet	لا توجد مشاريع بعد
+No publish mix yet	لا يوجد توزيع للمحتوى المنشور بعد
+No recipient	بدون مستلم
+No records yet	لا توجد سجلات بعد
+No signature assets	لا توجد ملفات توقيع
+No team cards yet	لا توجد بطاقات فريق بعد
+Not found	غير موجود
+Note (optional)	ملاحظة (اختيارية)
+Note added	تمت إضافة الملاحظة
+Nothing here yet	لا يوجد شيء هنا بعد
+Notification not found	الإشعار غير موجود
+Office	المكتب
+On Site	بالموقع
+Only draft records can be edited	يمكن تعديل المسودات فقط
+Only pending leave can be edited	يمكن تعديل الإجازات المعلقة فقط
+Open Graph image is set	تم تحديد صورة المشاركة
+Open issues & fix	فتح المشكلات وإصلاحها
+Open roles	الوظائف المتاحة
+Operations collection must be an array	يجب أن تكون مجموعة العمليات مصفوفة
+Operations data could not be read. Restore the affected data file before continuing.	تعذرت قراءة بيانات العمليات. استعد ملف البيانات المتأثر قبل المتابعة.
+Optional. Used on headers and cover bands across all templates.	اختياري. يُستخدم في الترويسات وأغلفة جميع القوالب.
+Organization	المؤسسة
+Other staff	موظفون آخرون
+Out of balance	غير متوازن
+Page #	صفحة رقم
+Page has a single clear H1	تحتوي الصفحة على عنوان رئيسي واحد واضح
+Page is set to index	الصفحة مفعلة للفهرسة
+Page is set to noindex	الصفحة غير مفعلة للفهرسة
+Page title	عنوان الصفحة
+Pages load failed	تعذر تحميل الصفحات
+Paternity Leave	إجازة أبوة
+Payment / Certification	الدفع / الاعتماد
+Payment cannot precede the source document	لا يمكن أن تسبق الدفعة تاريخ المستند الأصلي
+Payment exceeds the outstanding balance	الدفعة تتجاوز الرصيد المستحق
+Payroll access is required for this payment	هذه الدفعة تتطلب صلاحية الرواتب
+Payroll employee	موظف الرواتب
+Pending decisions across projects	قرارات معلقة عبر المشاريع
+Person	شخص
+Photo Gallery	معرض الصور
+Photos & projects	الصور والمشاريع
+Place	المكان
+Planned	مخطط
+Planning	التخطيط
+Planning & design	التخطيط والتصميم
+Planning study	دراسة تخطيطية
+Please choose a PDF document.	اختر مستند PDF.
+Please choose an image file (JPEG, PNG, WebP, or GIF).	اختر صورة بصيغة JPEG أو PNG أو WebP أو GIF.
+Post depreciation in chronological order	رحّل الإهلاك بالترتيب الزمني
+Post monthly depreciation	ترحيل الإهلاك الشهري
+Posted costs	التكاليف المرحلة
+Preliminary Study	الدراسة المبدئية
+Preparing PDF…	جارٍ تجهيز PDF…
+Primary images have alt text	للصور الرئيسية نص بديل
+Probability must be between 0 and 100	يجب أن يكون الاحتمال بين صفر و100
+Professional ID	المعرف المهني
+Progress Monitoring	متابعة التقدم
+Project Closure	إقفال المشروع
+Project Completion	إكمال المشروع
+Project Enquiry	استفسار عن مشروع
+Project Initiation	بدء المشروع
+Project Management	إدارة المشاريع
+Project and employee are required	المشروع والموظف مطلوبان
+Project and stage name are required	المشروع واسم المرحلة مطلوبان
+Project does not exist	المشروع غير موجود
+Project is required	المشروع مطلوب
+Project lifecycle	دورة حياة المشروع
+Project name (EN) is required	اسم المشروع بالإنجليزية مطلوب
+Project not found	المشروع غير موجود
+Project slug is required	مسار المشروع مطلوب
+Projects missing image	مشاريع بدون صورة
+Provide a reason for returning or rejecting a review	أدخل سبب إرجاع المراجعة أو رفضها
+Public Relations	العلاقات العامة
+Public URL copied.	تم نسخ الرابط العام.
+Publish permission required	صلاحية النشر مطلوبة
+Published selected cards	تم نشر البطاقات المحددة
+Purchasing Manager	مدير المشتريات
+QR ZIP downloaded.	تم تنزيل ملف رموز QR المضغوط.
+Quantity Surveying	حصر الكميات
+Quantity Surveyor	مهندس حصر كميات
+Quantity must be greater than zero	يجب أن تكون الكمية أكبر من صفر
+Reason / comment	السبب / التعليق
+Receivables & payables	الذمم المدينة والدائنة
+Record not found	السجل غير موجود
+Records and commitment	السجلات والالتزام
+Redirect chain is too long	سلسلة إعادة التوجيه طويلة جدًا
+Redirect loop detected	اكتُشفت حلقة إعادة توجيه
+Redirect points to itself	إعادة التوجيه تشير إلى الرابط نفسه
+Redirects / sitemap	إعادات التوجيه / خريطة الموقع
+Redirects save failed	تعذر حفظ إعادات التوجيه
+Rejection reason	سبب الرفض
+Relations	العلاقات
+Remove this team assignment?	هل تريد إزالة تكليف عضو الفريق؟
+Removed	تمت الإزالة
+Replace existing stages with the default workflow template?	هل تريد استبدال المراحل الحالية بقالب سير العمل الافتراضي؟
+Replace failed	تعذر الاستبدال
+Report start date must precede end date	يجب أن يسبق تاريخ بداية التقرير تاريخ نهايته
+Reporting lines cannot contain a cycle	لا يمكن أن تحتوي التبعية الإدارية على حلقة مغلقة
+Request & approve leave	طلب الإجازات واعتمادها
+Request leave and track your own requests	طلب إجازة ومتابعة طلباتك
+Residual value must be lower than acquisition cost	يجب أن تكون القيمة المتبقية أقل من تكلفة الاقتناء
+Resigned	مستقيل
+Result	النتيجة
+Results	النتائج
+Return for changes	إرجاع للتعديل
+Returned for Revision	معاد للمراجعة
+Reversal date cannot precede the document	لا يمكن أن يسبق تاريخ العكس تاريخ المستند
+Reverse the linked payments before reversing this document	اعكس الدفعات المرتبطة قبل عكس المستند
+Revision failed	تعذر إنشاء الإصدار
+SEO Manager	مدير تحسين محركات البحث
+Scope	النطاق
+Search failed	تعذر البحث
+Search relations	بحث العلاقات
+Searchable activity trail	سجل نشاط قابل للبحث
+Search…	بحث…
+Sector slug is required	مسار القطاع مطلوب
+Sectors missing image	قطاعات بدون صورة
+Select a cash or bank account	اختر حساب نقدية أو بنك
+Select a payroll employee	اختر موظف الرواتب
+Select a posted document with an outstanding balance	اختر مستندًا مرحّلًا له رصيد مستحق
+Select a posted payment	اختر دفعة مرحلة
+Select a valid pay period	اختر فترة راتب صحيحة
+Select an active supplier	اختر موردًا نشطًا
+Select an active workflow template	اختر قالب سير عمل نشطًا
+Selected project	المشروع المحدد
+Separate background/cover for templates that show a cover. Optional but recommended.	خلفية أو غلاف مستقل للقوالب التي تعرض غلافًا. اختياري ويُوصى به.
+Service	الخدمة
+Service slug is required	مسار الخدمة مطلوب
+Services missing image	خدمات بدون صورة
+Settings → Branding	الإعدادات ← الهوية البصرية
+Sick Leave	إجازة مرضية
+Sign in to continue	سجل الدخول للمتابعة
+Site Engineer	مهندس موقع
+Site Study	دراسة الموقع
+Site Supervision	الإشراف على الموقع
+Site Supervisor	مشرف موقع
+Snagging	حصر الملاحظات
+Source	المصدر
+Specifications	المواصفات
+Stage identifiers must be unique	يجب أن تكون معرفات المراحل فريدة
+Stage not found	المرحلة غير موجودة
+Start and end dates are required	تاريخا البداية والنهاية مطلوبان
+Statement reference already exists for this account	مرجع كشف البنك موجود بالفعل لهذا الحساب
+Status update failed	تعذر تحديث الحالة
+Structural Design	التصميم الإنشائي
+Structural Engineer	مهندس إنشائي
+Submittals & Shop Drawings	الاعتمادات والمخططات التنفيذية
+Superseded	مستبدل بإصدار أحدث
+Suspended	موقوف
+Sustainability Assessment	تقييم الاستدامة
+Task dependencies cannot contain a cycle	لا يمكن أن تحتوي تبعيات المهام على حلقة مغلقة
+Task not found	المهمة غير موجودة
+Task title is required	عنوان المهمة مطلوب
+Tasks · approvals · mentions	المهام · الموافقات · الإشارات
+Tax rate	نسبة الضريبة
+Tax rate cannot exceed 100%	لا يمكن أن تتجاوز الضريبة 100٪
+Team assignments	تكليفات الفريق
+Team member	عضو الفريق
+Team member not found	عضو الفريق غير موجود
+Team missing photo	أعضاء فريق بدون صورة
+Template name is required	اسم القالب مطلوب
+Template not found	القالب غير موجود
+Tender / Procurement	المناقصة / المشتريات
+Testimonial id is required	معرف رأي العميل مطلوب
+The bank account, direction and amount must match	يجب تطابق الحساب البنكي والاتجاه والمبلغ
+The default workflow must be active	يجب أن يكون سير العمل الافتراضي نشطًا
+The end date cannot be before the start date	لا يمكن أن يسبق تاريخ النهاية تاريخ البداية
+The project belongs to a different client	المشروع تابع لعميل آخر
+The stage must belong to the selected project	يجب أن تتبع المرحلة المشروع المحدد
+This accounting period is closed	هذه الفترة المحاسبية مقفلة
+This action is not available in the current state	هذا الإجراء غير متاح في الحالة الحالية
+This asset is fully depreciated	تم إهلاك هذا الأصل بالكامل
+This bank reference is already recorded	هذا المرجع البنكي مسجل بالفعل
+This document cannot be posted	لا يمكن ترحيل هذا المستند
+This document has already been converted	تم تحويل هذا المستند بالفعل
+This employee already has that role on the project	الموظف مكلف بهذا الدور في المشروع بالفعل
+This employee has assigned tasks. Reassign them before deleting.	للموظف مهام مكلف بها. أعد تعيينها قبل الحذف.
+This employee is linked to operational records. Change their status instead of deleting them.	الموظف مرتبط بسجلات عمليات. غيّر حالته بدلًا من حذفه.
+This payment is already reconciled	تمت تسوية هذه الدفعة بالفعل
+This project has delivery records. Change its status instead of deleting it.	للمشروع سجلات تنفيذ. غيّر حالته بدلًا من حذفه.
+This record changed. Refresh before trying again.	تم تغيير هذا السجل. حدّث الصفحة قبل المحاولة مجددًا.
+This record has a downstream document and cannot be cancelled	لهذا السجل مستند ناتج مرتبط ولا يمكن إلغاؤه
+This record is in use. Set it inactive instead of deleting it.	هذا السجل مستخدم. عطّله بدلًا من حذفه.
+This record is referenced by ERP documents. Set it inactive instead of deleting it.	هذا السجل مرتبط بمستندات موارد المؤسسة. عطّله بدلًا من حذفه.
+This request was already saved with different data. Refresh the register.	حُفظ هذا الطلب سابقًا ببيانات مختلفة. حدّث السجل.
+This review is already decided	تم اتخاذ قرار في هذه المراجعة بالفعل
+This stage requires an approved review before completion	تتطلب هذه المرحلة مراجعة معتمدة قبل إكمالها
+This supplier invoice is already recorded	فاتورة المورد مسجلة بالفعل
+This user account is already linked to another employee	حساب المستخدم مرتبط بموظف آخر بالفعل
+This workflow is already in progress. Edit its stages individually.	سير العمل قيد التنفيذ بالفعل. عدّل مراحله كلًا على حدة.
+To Do	لم يبدأ
+Top-of-page headline, lede, and background image. Leave a field blank to keep the site default.	العنوان والمقدمة وصورة الخلفية أعلى الصفحة. اترك الحقل فارغًا للإبقاء على الإعداد الافتراضي.
+Total hours for this employee exceed 24 on this date	إجمالي ساعات الموظف يتجاوز 24 ساعة في هذا التاريخ
+Try Print → Save as PDF	جرّب طباعة ← حفظ بصيغة PDF
+UAE Premium	إماراتي مميز
+Under Review	قيد المراجعة
+Unknown ERP module	وحدة موارد مؤسسة غير معروفة
+Unknown ledger account	حساب محاسبي غير معروف
+Unknown report type	نوع تقرير غير معروف
+Unmatch the bank statement line before reversing this payment	ألغ مطابقة بند كشف البنك قبل عكس هذه الدفعة
+Unpaid Leave	إجازة بدون راتب
+Untitled page	صفحة بدون عنوان
+Upload failed	تعذر الرفع
+Use a valid calendar date	استخدم تاريخًا صحيحًا
+Use the relevant document module for receivables, payables, payroll and fixed-asset accounts	استخدم وحدة المستندات المناسبة لحسابات الذمم والرواتب والأصول الثابتة
+Used for the employee portrait on the digital card.	يُستخدم لصورة الموظف على البطاقة الرقمية.
+Used in admin lists and SEO-adjacent summaries.	يُستخدم في قوائم الإدارة وملخصات تحسين البحث.
+Useful life must be 1–1200 months	يجب أن يكون العمر الإنتاجي من شهر إلى 1200 شهر
+User not found	المستخدم غير موجود
+Video id or YouTube id is required	معرف الفيديو أو معرف يوتيوب مطلوب
+View project	عرض المشروع
+Visual structure · open employee from chart	الهيكل المرئي · افتح ملف الموظف من المخطط
+Waiting	بانتظار
+Within due date	ضمن موعد الاستحقاق
+You do not have permission for this operation	ليست لديك صلاحية تنفيذ هذه العملية
+{0} is required	{0} مطلوب
+{0} must be a valid calendar date	يجب أن يكون {0} تاريخًا صحيحًا
+{0} must be a non-negative number	يجب أن يكون {0} رقمًا غير سالب
+{0} exceeds the supported limit	{0} يتجاوز الحد المسموح
+{0} no longer exists	{0} لم يعد موجودًا
+Debits {0} · Credits {1}	المدين {0} · الدائن {1}
+No matching {0}	لا توجد نتائج مطابقة لـ {0}
+New invoice	فاتورة جديدة
+New bill	فاتورة مورد جديدة
+New quotation	عرض سعر جديد
+New contract	عقد جديد
+New supplier	مورد جديد
+New opportunity	فرصة بيع جديدة
+New purchase order	أمر شراء جديد
+New expense claim	مطالبة مصروفات جديدة
+New payment	دفعة جديدة
+New time entry	ساعات عمل جديدة
+New payroll run	مسير رواتب جديد
+New asset	أصل جديد
+New budget	ميزانية جديدة
+New journal	قيد جديد
+New statement line	بند كشف بنك جديد
+{0} copy	المحتوى: {0}
+Select {0}	اختيار {0}
+Status for {0}	حالة {0}
+{0} line {1}	{0} للبند {1}
+Description line {0}	وصف البند {0}
+Remove line {0}	إزالة البند {0}
+Remove employee {0}	إزالة الموظف {0}
+Toggle {0}	تبديل {0}
+Move stage {0} up	نقل المرحلة {0} لأعلى
+Move stage {0} down	نقل المرحلة {0} لأسفل
+{0} search	بحث {0}
+invoices	فواتير العملاء
+bills	فواتير الموردين
+payments	الدفعات
+reconciliation	التسوية البنكية
+opportunities	فرص البيع
+payroll	الرواتب
+journals	قيود اليومية
+time-entries	ساعات العمل
+purchase-orders	أوامر الشراء
+under_review	قيد المراجعة
+project_director	مدير إدارة المشروع
+project_manager	مدير المشروع
+lead_architect	المهندس المعماري الرئيسي
+structural_engineer	المهندس الإنشائي
+mep_engineer	مهندس الكهروميكانيك
+quantity_surveyor	مهندس حصر الكميات
+site_engineer	مهندس الموقع
+site_supervisor	مشرف الموقع
+document_controller	مسؤول المستندات
+nameEn	الاسم بالإنجليزية
+fullNameEn	الاسم الكامل بالإنجليزية
+jobTitleEn	المسمى الوظيفي بالإنجليزية
+startDate	تاريخ البداية
+endDate	تاريخ النهاية
+plannedEndDate	تاريخ النهاية المخطط
+employeeCode	رمز الموظف
+joiningDate	تاريخ الالتحاق
+leaveType	نوع الإجازة
+checkIn	الحضور
+checkOut	الانصراف
+projectId	معرف المشروع
+subjectType	نوع الموضوع
+updatedAt	آخر تحديث
+projectRole	الدور في المشروع
+workloadPercent	نسبة عبء العمل
+steps	الخطوات
+IT / Network	تقنية المعلومات / الشبكات
+
+Proposal Letter — Client ABC	خطاب عرض — العميل ABC
+PM Review | emp_xxx	مراجعة مدير المشروع | emp_xxx
+Director Sign-off | emp_yyy	اعتماد المدير | emp_yyy
+Send revised BOQ | emp_xxx | 2026-10-01	إرسال جدول الكميات المعدل | emp_xxx | 2026-10-01

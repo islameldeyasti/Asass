@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getPublicCompany} from '@/lib/cms/public-data';
@@ -17,8 +19,8 @@ export default async function AdminLetterheadsPage({searchParams}) {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Letterhead Studio"
-      subtitle="Compose, preview, and print branded ASAS letters"
+      title={adminText("Letterhead Studio")}
+      subtitle={adminText("Compose, preview, and print branded ASAS letters")}
     >
       <LetterheadStudio
         company={company}

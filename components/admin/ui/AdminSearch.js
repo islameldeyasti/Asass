@@ -1,8 +1,11 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import Link from 'next/link';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {Search} from 'lucide-react';
+import AdminPortal from '@/components/admin/ui/AdminPortal';
 
 const STATIC_LINKS = [
   {label: 'Dashboard', href: '/admin/dashboard', group: 'Navigate'},
@@ -79,7 +82,7 @@ export default function AdminSearch({open, onClose, links = STATIC_LINKS}) {
       ? links.slice(0, 8)
       : links.filter(
           (item) =>
-            item.label.toLowerCase().includes(q) ||
+            `${item.label} ${adminText(item.label)}`.toLowerCase().includes(q) ||
             item.href.toLowerCase().includes(q),
         );
 
@@ -130,12 +133,13 @@ export default function AdminSearch({open, onClose, links = STATIC_LINKS}) {
   let flatIndex = -1;
 
   return (
+    <AdminPortal>
     <div className="cms-overlay" role="presentation" onClick={onClose}>
       <div
         className="cms-palette"
         role="dialog"
         aria-modal="true"
-        aria-label="Search admin"
+        aria-label={adminText("Search admin")}
         onClick={(event) => event.stopPropagation()}
       >
         <div className="cms-palette-input-wrap">
@@ -147,17 +151,17 @@ export default function AdminSearch({open, onClose, links = STATIC_LINKS}) {
               setQuery(event.target.value);
               setActive(0);
             }}
-            placeholder="Search pages and content…"
-            aria-label="Search"
+            placeholder={adminText("Search pages and content…")}
+            aria-label={adminText("Search")}
           />
         </div>
         <div className="cms-palette-list">
           {filtered.length === 0 ? (
-            <div className="cms-palette-empty">No results</div>
+            <div className="cms-palette-empty">{adminText("No results")}</div>
           ) : (
             Object.entries(groups).map(([group, items]) => (
               <div key={group}>
-                <div className="cms-palette-group">{group}</div>
+                <div className="cms-palette-group">{adminText(group)}</div>
                 {items.map((item) => {
                   flatIndex += 1;
                   const index = flatIndex;
@@ -169,8 +173,8 @@ export default function AdminSearch({open, onClose, links = STATIC_LINKS}) {
                       onClick={onClose}
                       onMouseEnter={() => setActive(index)}
                     >
-                      {item.label}
-                      {item.hint ? <span>{item.hint}</span> : null}
+                      {adminText(item.label)}
+                      {item.hint ? <span>{adminText(item.hint)}</span> : null}
                     </Link>
                   );
                 })}
@@ -180,5 +184,6 @@ export default function AdminSearch({open, onClose, links = STATIC_LINKS}) {
         </div>
       </div>
     </div>
+    </AdminPortal>
   );
 }

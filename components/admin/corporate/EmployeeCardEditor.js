@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useEffect, useMemo, useState} from 'react';
 import Link from 'next/link';
@@ -52,9 +54,9 @@ function VisibilityToggle({label, checked, onChange, disabled}) {
       <input type="checkbox" checked={checked} disabled={disabled} onChange={onChange} />
       <span className="adm-switch-track" aria-hidden />
       <span>
-        {checked ? 'Shown publicly' : 'Hidden'}
+        {adminText(checked ? 'Shown publicly' : 'Hidden')}
         <em style={{display: 'block', color: 'var(--cms-muted)', fontStyle: 'normal', fontWeight: 400}}>
-          {label}
+          {adminText(label)}
         </em>
       </span>
     </label>
@@ -224,42 +226,39 @@ export default function EmployeeCardEditor({
       <header className="ecs-topbar">
         <div>
           <Link className="adm-btn-ghost" href="/admin/corporate/employee-cards">
-            <ArrowLeft size={14} /> Cards
-          </Link>
-          <h1>{draft.name_en || 'Employee card'}</h1>
+            <ArrowLeft size={14} />{adminText(" Cards")}</Link>
+          <h1>{adminText(draft.name_en || 'Employee card')}</h1>
           <p>
-            <span className={`cms-badge cms-badge--${status}`}>{status}</span>
+            <span className={`cms-badge cms-badge--${status}`}>{adminText(status)}</span>
             {publicPath ? (
               <a href={publicPath} target="_blank" rel="noreferrer">
-                {publicPath} <ExternalLink size={12} />
+                {adminText(publicPath)} <ExternalLink size={12} />
               </a>
             ) : (
-              <span>Public ID assigned on first save</span>
+              <span>{adminText("Public ID assigned on first save")}</span>
             )}
           </p>
         </div>
         <div className="ecs-topbar-actions">
           <button type="button" className="adm-btn-ghost" onClick={() => setFocusPreview((v) => !v)}>
-            <Eye size={14} /> {focusPreview ? 'Exit focus' : 'Focus preview'}
+            <Eye size={14} /> {adminText(focusPreview ? 'Exit focus' : 'Focus preview')}
           </button>
           <button type="button" className="adm-btn-ghost" disabled={!canWrite || saving} onClick={() => save()}>
-            <Save size={14} /> {saving ? 'Saving…' : 'Save'}
+            <Save size={14} /> {adminText(saving ? 'Saving…' : 'Save')}
           </button>
           {canPublish ? (
-            <button type="button" className="adm-btn" disabled={!canWrite || saving} onClick={() => save({publish: true})}>
-              Publish
-            </button>
+            <button type="button" className="adm-btn" disabled={!canWrite || saving} onClick={() => save({publish: true})}>{adminText("Publish")}</button>
           ) : null}
         </div>
       </header>
 
-      {error ? <p className="adm-error">{error}</p> : null}
-      {message ? <p className="adm-success">{message}</p> : null}
+      {error ? <p className="adm-error">{adminText(error)}</p> : null}
+      {message ? <p className="adm-success">{adminText(message)}</p> : null}
 
       <div className="ecs-layout">
         {!focusPreview ? (
           <aside className="ecs-panel ecs-panel--left">
-            <nav className="ecs-tabs" aria-label="Editor sections">
+            <nav className="ecs-tabs" aria-label={adminText("Editor sections")}>
               {TABS.map((item) => (
                 <button
                   key={item.id}
@@ -267,7 +266,7 @@ export default function EmployeeCardEditor({
                   className={tab === item.id ? 'is-active' : ''}
                   onClick={() => setTab(item.id)}
                 >
-                  {item.label}
+                  {adminText(item.label)}
                 </button>
               ))}
             </nav>
@@ -276,7 +275,7 @@ export default function EmployeeCardEditor({
               {tab === 'profile' ? (
                 <div className="ecs-stack">
                   <MediaPicker
-                    label="Profile photo"
+                    label={adminText("Profile photo")}
                     hint="Used for the employee portrait on the digital card."
                     value={draft.profile_image || ''}
                     canWrite={canWrite}
@@ -286,7 +285,7 @@ export default function EmployeeCardEditor({
                     onFocalChange={(focal) => setMemberField('profile_image_focal', focal)}
                   />
                   <MediaPicker
-                    label="Cover image"
+                    label={adminText("Cover image")}
                     hint="Separate background/cover for templates that show a cover. Optional but recommended."
                     value={card.coverImage || ''}
                     canWrite={canWrite}
@@ -297,61 +296,61 @@ export default function EmployeeCardEditor({
                   />
                   <div className="adm-grid-2">
                     <div className="adm-field">
-                      <label>Full name (EN)</label>
+                      <label>{adminText("Full name (EN)")}</label>
                       <input value={draft.name_en || ''} disabled={!canWrite} onChange={(e) => setMemberField('name_en', e.target.value)} />
                     </div>
                     <div className="adm-field">
-                      <label>Full name (AR)</label>
+                      <label>{adminText("Full name (AR)")}</label>
                       <input dir="rtl" value={draft.name_ar || ''} disabled={!canWrite} onChange={(e) => setMemberField('name_ar', e.target.value)} />
                     </div>
                   </div>
                   <div className="adm-grid-2">
                     <div className="adm-field">
-                      <label>Position (EN)</label>
+                      <label>{adminText("Position (EN)")}</label>
                       <input value={draft.job_title_en || ''} disabled={!canWrite} onChange={(e) => setMemberField('job_title_en', e.target.value)} />
                     </div>
                     <div className="adm-field">
-                      <label>Position (AR)</label>
+                      <label>{adminText("Position (AR)")}</label>
                       <input dir="rtl" value={draft.job_title_ar || ''} disabled={!canWrite} onChange={(e) => setMemberField('job_title_ar', e.target.value)} />
                     </div>
                   </div>
                   <div className="adm-grid-2">
                     <div className="adm-field">
-                      <label>Department (EN)</label>
+                      <label>{adminText("Department (EN)")}</label>
                       <input value={draft.department_en || ''} disabled={!canWrite} onChange={(e) => setMemberField('department_en', e.target.value)} />
                     </div>
                     <div className="adm-field">
-                      <label>Department (AR)</label>
+                      <label>{adminText("Department (AR)")}</label>
                       <input dir="rtl" value={draft.department_ar || ''} disabled={!canWrite} onChange={(e) => setMemberField('department_ar', e.target.value)} />
                     </div>
                   </div>
                   <div className="adm-grid-2">
                     <div className="adm-field">
-                      <label>Short bio (EN)</label>
+                      <label>{adminText("Short bio (EN)")}</label>
                       <textarea rows={4} value={draft.short_bio_en || ''} disabled={!canWrite} onChange={(e) => setMemberField('short_bio_en', e.target.value)} />
                     </div>
                     <div className="adm-field">
-                      <label>Short bio (AR)</label>
+                      <label>{adminText("Short bio (AR)")}</label>
                       <textarea rows={4} dir="rtl" value={draft.short_bio_ar || ''} disabled={!canWrite} onChange={(e) => setMemberField('short_bio_ar', e.target.value)} />
                     </div>
                   </div>
                   <div className="adm-grid-2">
                     <div className="adm-field">
-                      <label>Specialties (EN)</label>
+                      <label>{adminText("Specialties (EN)")}</label>
                       <textarea rows={3} value={specialtiesEnText} disabled={!canWrite} onChange={(e) => setSpecialtiesEnText(e.target.value)} />
                     </div>
                     <div className="adm-field">
-                      <label>Specialties (AR)</label>
+                      <label>{adminText("Specialties (AR)")}</label>
                       <textarea rows={3} dir="rtl" value={specialtiesArText} disabled={!canWrite} onChange={(e) => setSpecialtiesArText(e.target.value)} />
                     </div>
                   </div>
                   <div className="adm-grid-2">
                     <div className="adm-field">
-                      <label>Location (EN)</label>
+                      <label>{adminText("Location (EN)")}</label>
                       <input value={card.officeLocationEn || ''} disabled={!canWrite} onChange={(e) => setCard({officeLocationEn: e.target.value})} />
                     </div>
                     <div className="adm-field">
-                      <label>Location (AR)</label>
+                      <label>{adminText("Location (AR)")}</label>
                       <input dir="rtl" value={card.officeLocationAr || ''} disabled={!canWrite} onChange={(e) => setCard({officeLocationAr: e.target.value})} />
                     </div>
                   </div>
@@ -360,8 +359,8 @@ export default function EmployeeCardEditor({
 
               {tab === 'design' ? (
                 <div className="ecs-stack">
-                  <strong>Templates</strong>
-                  <p className="ecs-help">Choose a complete art direction — not a color swap.</p>
+                  <strong>{adminText("Templates")}</strong>
+                  <p className="ecs-help">{adminText("Choose a complete art direction — not a color swap.")}</p>
                   <TemplateGallery
                     member={previewMember}
                     card={card}
@@ -373,16 +372,12 @@ export default function EmployeeCardEditor({
                     qrDataUrl={qrDataUrl}
                   />
                   {template.supportsCover ? (
-                    <p className="ecs-help">
-                      This template uses the cover image from the Profile tab. Change it there anytime.
-                    </p>
+                    <p className="ecs-help">{adminText("This template uses the cover image from the Profile tab. Change it there anytime.")}</p>
                   ) : (
-                    <p className="ecs-help">
-                      Cover image is saved on Profile. Switch to a cover-style template to display it.
-                    </p>
+                    <p className="ecs-help">{adminText("Cover image is saved on Profile. Switch to a cover-style template to display it.")}</p>
                   )}
                   <div className="adm-field">
-                    <label>Theme preset</label>
+                    <label>{adminText("Theme preset")}</label>
                     <select
                       value={card.themePreset}
                       disabled={!canWrite}
@@ -390,21 +385,21 @@ export default function EmployeeCardEditor({
                     >
                       {THEME_PRESETS.map((preset) => (
                         <option key={preset.id} value={preset.id}>
-                          {preset.label}
+                          {adminText(preset.label)}
                         </option>
                       ))}
                     </select>
                   </div>
                   <div className="adm-field">
-                    <label>Logo variant</label>
+                    <label>{adminText("Logo variant")}</label>
                     <select
                       value={card.logoVariant}
                       disabled={!canWrite}
                       onChange={(e) => setCard({logoVariant: e.target.value})}
                     >
-                      <option value="auto">Auto (template)</option>
-                      <option value="light">Light logo</option>
-                      <option value="dark">Dark logo</option>
+                      <option value="auto">{adminText("Auto (template)")}</option>
+                      <option value="light">{adminText("Light logo")}</option>
+                      <option value="dark">{adminText("Dark logo")}</option>
                     </select>
                   </div>
 
@@ -441,13 +436,13 @@ export default function EmployeeCardEditor({
                           disabled={!canWrite}
                           onChange={(e) => setCard({[key]: e.target.checked})}
                         />
-                        {label}
+                        {adminText(label)}
                       </label>
                     ))}
                   </div>
                   <div className="adm-field">
-                    <label>Optional section order</label>
-                    <p className="ecs-help">Comma-separated: {SECTION_KEYS.join(', ')}</p>
+                    <label>{adminText("Optional section order")}</label>
+                    <p className="ecs-help">{adminText("Comma-separated: ")}{adminText(SECTION_KEYS.join(', '))}</p>
                     <input
                       value={(card.sectionsOrder || []).join(', ')}
                       disabled={!canWrite}
@@ -462,21 +457,20 @@ export default function EmployeeCardEditor({
                     />
                   </div>
                   <div className="adm-field">
-                    <label>Copy design from employee</label>
+                    <label>{adminText("Copy design from employee")}</label>
                     <div className="ecs-inline">
                       <select value={copyFromId} onChange={(e) => setCopyFromId(e.target.value)} disabled={!canWrite}>
-                        <option value="">Select…</option>
+                        <option value="">{adminText("Select…")}</option>
                         {peers
                           .filter((peer) => peer.id !== draft.id)
                           .map((peer) => (
                             <option key={peer.id} value={peer.id}>
-                              {peer.name_en}
+                              {adminText(peer.name_en)}
                             </option>
                           ))}
                       </select>
                       <button type="button" className="adm-btn-ghost" disabled={!canWrite || !copyFromId} onClick={applyDesignCopy}>
-                        <Copy size={14} /> Copy design
-                      </button>
+                        <Copy size={14} />{adminText(" Copy design")}</button>
                     </div>
                   </div>
                 </div>
@@ -484,69 +478,64 @@ export default function EmployeeCardEditor({
 
               {tab === 'contact' ? (
                 <div className="ecs-stack">
-                  <p className="ecs-help">Privacy is explicit — only checked fields appear publicly / in vCard.</p>
+                  <p className="ecs-help">{adminText("Privacy is explicit — only checked fields appear publicly / in vCard.")}</p>
                   <div className="adm-field">
-                    <label>Work email</label>
+                    <label>{adminText("Work email")}</label>
                     <input type="email" value={draft.email || ''} disabled={!canWrite} onChange={(e) => setMemberField('email', e.target.value)} />
-                    <VisibilityToggle label="Email" checked={card.showEmail} disabled={!canWrite} onChange={(e) => setCard({showEmail: e.target.checked})} />
+                    <VisibilityToggle label={adminText("Email")} checked={card.showEmail} disabled={!canWrite} onChange={(e) => setCard({showEmail: e.target.checked})} />
                   </div>
                   <div className="adm-field">
-                    <label>Phone</label>
+                    <label>{adminText("Phone")}</label>
                     <input value={draft.phone || ''} disabled={!canWrite} onChange={(e) => setMemberField('phone', e.target.value)} dir="ltr" />
-                    <VisibilityToggle label="Phone" checked={card.showPhone} disabled={!canWrite} onChange={(e) => setCard({showPhone: e.target.checked})} />
+                    <VisibilityToggle label={adminText("Phone")} checked={card.showPhone} disabled={!canWrite} onChange={(e) => setCard({showPhone: e.target.checked})} />
                   </div>
                   <div className="adm-field">
-                    <label>Mobile</label>
+                    <label>{adminText("Mobile")}</label>
                     <input value={card.mobile || ''} disabled={!canWrite} onChange={(e) => setCard({mobile: e.target.value})} dir="ltr" />
-                    <VisibilityToggle label="Mobile" checked={card.showMobile} disabled={!canWrite} onChange={(e) => setCard({showMobile: e.target.checked})} />
+                    <VisibilityToggle label={adminText("Mobile")} checked={card.showMobile} disabled={!canWrite} onChange={(e) => setCard({showMobile: e.target.checked})} />
                   </div>
                   <div className="adm-field">
-                    <label>WhatsApp</label>
-                    <input value={card.whatsapp || ''} disabled={!canWrite} onChange={(e) => setCard({whatsapp: e.target.value})} dir="ltr" placeholder="9715…" />
-                    <VisibilityToggle label="WhatsApp" checked={card.showWhatsapp} disabled={!canWrite} onChange={(e) => setCard({showWhatsapp: e.target.checked})} />
+                    <label>{adminText("WhatsApp")}</label>
+                    <input value={card.whatsapp || ''} disabled={!canWrite} onChange={(e) => setCard({whatsapp: e.target.value})} dir="ltr" placeholder={adminText("9715…")} />
+                    <VisibilityToggle label={adminText("WhatsApp")} checked={card.showWhatsapp} disabled={!canWrite} onChange={(e) => setCard({showWhatsapp: e.target.checked})} />
                   </div>
                   <div className="adm-field">
-                    <label>LinkedIn</label>
+                    <label>{adminText("LinkedIn")}</label>
                     <input value={draft.linkedin_url || ''} disabled={!canWrite} onChange={(e) => setMemberField('linkedin_url', e.target.value)} dir="ltr" />
-                    <VisibilityToggle label="LinkedIn" checked={card.showLinkedin} disabled={!canWrite} onChange={(e) => setCard({showLinkedin: e.target.checked})} />
+                    <VisibilityToggle label={adminText("LinkedIn")} checked={card.showLinkedin} disabled={!canWrite} onChange={(e) => setCard({showLinkedin: e.target.checked})} />
                   </div>
                   <div className="adm-field">
-                    <label>Website</label>
+                    <label>{adminText("Website")}</label>
                     <input value={card.website || ''} disabled={!canWrite} onChange={(e) => setCard({website: e.target.value})} dir="ltr" />
                   </div>
                   <div className="adm-field">
-                    <label>Office extension</label>
+                    <label>{adminText("Office extension")}</label>
                     <input value={card.officeExtension || ''} disabled={!canWrite} onChange={(e) => setCard({officeExtension: e.target.value})} />
                   </div>
-                  <VisibilityToggle label="Location" checked={card.showLocation} disabled={!canWrite} onChange={(e) => setCard({showLocation: e.target.checked})} />
+                  <VisibilityToggle label={adminText("Location")} checked={card.showLocation} disabled={!canWrite} onChange={(e) => setCard({showLocation: e.target.checked})} />
                 </div>
               ) : null}
 
               {tab === 'qr' ? (
                 <div className="ecs-stack">
                   <div className="ecs-qr-panel">
-                    <strong>Public profile</strong>
-                    <p>
-                      Status: <b>{status}</b>
+                    <strong>{adminText("Public profile")}</strong>
+                    <p>{adminText("Status: ")}<b>{adminText(status)}</b>
                     </p>
                     <p className="ecs-help" dir="ltr">
-                      {publicPath || 'Save once to allocate a stable public ID.'}
+                      {adminText(publicPath || 'Save once to allocate a stable public ID.')}
                     </p>
                     <div className="ecs-inline">
-                      <button type="button" className="adm-btn-ghost" disabled={!publicPath} onClick={copyLink}>
-                        Copy link
-                      </button>
+                      <button type="button" className="adm-btn-ghost" disabled={!publicPath} onClick={copyLink}>{adminText("Copy link")}</button>
                       {publicPath ? (
-                        <a className="adm-btn-ghost" href={publicPath} target="_blank" rel="noreferrer">
-                          Open public profile
-                        </a>
+                        <a className="adm-btn-ghost" href={publicPath} target="_blank" rel="noreferrer">{adminText("Open public profile")}</a>
                       ) : null}
                     </div>
                     {qrDataUrl ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img className="ecs-qr-large" src={qrDataUrl} alt="QR code" />
+                      <img className="ecs-qr-large" src={qrDataUrl} alt={adminText("QR code")} />
                     ) : (
-                      <p className="ecs-help">QR appears after public ID is assigned.</p>
+                      <p className="ecs-help">{adminText("QR appears after public ID is assigned.")}</p>
                     )}
                     <div className="ecs-inline">
                       <a
@@ -557,8 +546,7 @@ export default function EmployeeCardEditor({
                             : '#'
                         }
                       >
-                        <Download size={14} /> PNG
-                      </a>
+                        <Download size={14} />{adminText(" PNG")}</a>
                       <a
                         className="adm-btn-ghost"
                         href={
@@ -566,14 +554,12 @@ export default function EmployeeCardEditor({
                             ? `/api/public/card-qr?publicId=${encodeURIComponent(card.publicId)}&format=svg&size=1024`
                             : '#'
                         }
-                      >
-                        SVG
-                      </a>
+                      >{adminText("SVG")}</a>
                     </div>
                     <ul className="ecs-health">
-                      <li>QR encodes stable URL only (not personal data)</li>
-                      <li>QR keeps working when job/phone changes</li>
-                      <li>Error correction: Q · quiet zone preserved</li>
+                      <li>{adminText("QR encodes stable URL only (not personal data)")}</li>
+                      <li>{adminText("QR keeps working when job/phone changes")}</li>
+                      <li>{adminText("Error correction: Q · quiet zone preserved")}</li>
                     </ul>
                   </div>
                 </div>
@@ -581,32 +567,23 @@ export default function EmployeeCardEditor({
 
               {tab === 'publish' ? (
                 <div className="ecs-stack">
-                  <p>
-                    Current status: <strong>{status}</strong>
+                  <p>{adminText("Current status: ")}<strong>{adminText(status)}</strong>
                   </p>
                   <div className="ecs-inline">
-                    <button type="button" className="adm-btn" disabled={!canWrite || !canPublish || saving} onClick={() => save({publish: true})}>
-                      Publish
-                    </button>
-                    <button type="button" className="adm-btn-ghost" disabled={!canWrite || saving} onClick={() => save()}>
-                      Save draft
-                    </button>
-                    <button type="button" className="adm-btn-danger" disabled={!canWrite || saving} onClick={() => save({disable: true})}>
-                      Disable card
-                    </button>
+                    <button type="button" className="adm-btn" disabled={!canWrite || !canPublish || saving} onClick={() => save({publish: true})}>{adminText("Publish")}</button>
+                    <button type="button" className="adm-btn-ghost" disabled={!canWrite || saving} onClick={() => save()}>{adminText("Save draft")}</button>
+                    <button type="button" className="adm-btn-danger" disabled={!canWrite || saving} onClick={() => save({disable: true})}>{adminText("Disable card")}</button>
                   </div>
-                  <p className="ecs-help">
-                    Disabled cards keep their public ID and QR. Scanners see a branded unavailable state — not a broken 404.
-                  </p>
+                  <p className="ecs-help">{adminText("Disabled cards keep their public ID and QR. Scanners see a branded unavailable state — not a broken 404.")}</p>
                   <div className="ecs-analytics">
-                    <strong>Analytics (aggregate)</strong>
+                    <strong>{adminText("Analytics (aggregate)")}</strong>
                     <ul>
-                      <li>Views: {card.views || 0}</li>
-                      <li>vCard saves: {card.vcardDownloads || 0}</li>
-                      <li>Calls: {card.callClicks || 0}</li>
-                      <li>Email: {card.emailClicks || 0}</li>
-                      <li>WhatsApp: {card.whatsappClicks || 0}</li>
-                      <li>Shares: {card.shareClicks || 0}</li>
+                      <li>{adminText("Views: ")}{adminText(card.views || 0)}</li>
+                      <li>{adminText("vCard saves: ")}{adminText(card.vcardDownloads || 0)}</li>
+                      <li>{adminText("Calls: ")}{adminText(card.callClicks || 0)}</li>
+                      <li>{adminText("Email: ")}{adminText(card.emailClicks || 0)}</li>
+                      <li>{adminText("WhatsApp: ")}{adminText(card.whatsappClicks || 0)}</li>
+                      <li>{adminText("Shares: ")}{adminText(card.shareClicks || 0)}</li>
                     </ul>
                   </div>
                 </div>
@@ -618,17 +595,11 @@ export default function EmployeeCardEditor({
         <section className="ecs-preview">
           <div className="ecs-preview-toolbar no-print">
             <div className="ecs-inline">
-              <button type="button" className={previewDevice === 'mobile' ? 'adm-btn' : 'adm-btn-ghost'} onClick={() => setPreviewDevice('mobile')}>
-                Mobile
-              </button>
-              <button type="button" className={previewDevice === 'desktop' ? 'adm-btn' : 'adm-btn-ghost'} onClick={() => setPreviewDevice('desktop')}>
-                Desktop
-              </button>
+              <button type="button" className={previewDevice === 'mobile' ? 'adm-btn' : 'adm-btn-ghost'} onClick={() => setPreviewDevice('mobile')}>{adminText("Mobile")}</button>
+              <button type="button" className={previewDevice === 'desktop' ? 'adm-btn' : 'adm-btn-ghost'} onClick={() => setPreviewDevice('desktop')}>{adminText("Desktop")}</button>
             </div>
             <div className="ecs-inline">
-              <button type="button" className={previewLocale === 'en' ? 'adm-btn' : 'adm-btn-ghost'} onClick={() => setPreviewLocale('en')}>
-                EN
-              </button>
+              <button type="button" className={previewLocale === 'en' ? 'adm-btn' : 'adm-btn-ghost'} onClick={() => setPreviewLocale('en')}>{adminText("EN")}</button>
               <button type="button" className={previewLocale === 'ar' ? 'adm-btn' : 'adm-btn-ghost'} onClick={() => setPreviewLocale('ar')}>
                 العربية
               </button>

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "mtg_demo_01",
+    "title": "Marina design coordination",
+    "projectId": "opr_demo_marina",
+    "date": "2026-09-16",
+    "time": "10:00",
+    "location": "ASAS HQ — Meeting Room 2",
+    "onlineLink": "",
+    "organizerEmployeeId": "emp_demo_pm",
+    "attendeeIds": [
+      "emp_demo_pm",
+      "emp_demo_arch",
+      "emp_demo_str",
+      "emp_demo_mep"
+    ],
+    "agenda": "1. Concept options\n2. Structure clashes\n3. MEP risers",
+    "minutes": "Agreed to freeze option C pending director approval. Structure to update grids after architecture freeze.",
+    "attachmentUrl": "",
+    "actions": [
+      {
+        "id": "mact_1",
+        "text": "Issue REV 02 concept pack to client",
+        "assigneeEmployeeId": "emp_demo_arch",
+        "dueDate": "2026-09-19",
+        "taskId": "tsk_demo_01",
+        "done": false
+      },
+      {
+        "id": "mact_2",
+        "text": "Publish clash list for shaft B",
+        "assigneeEmployeeId": "emp_demo_mep",
+        "dueDate": "2026-09-21",
+        "taskId": null,
+        "done": false
+      }
+    ],
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  },
+  {
+    "id": "mtg_demo_02",
+    "title": "School client progress call",
+    "projectId": "opr_demo_school",
+    "date": "2026-09-22",
+    "time": "15:00",
+    "location": "",
+    "onlineLink": "https://meet.example/asas-school",
+    "organizerEmployeeId": "emp_demo_pm",
+    "attendeeIds": [
+      "emp_demo_pm",
+      "emp_demo_arch",
+      "emp_demo_gm"
+    ],
+    "agenda": "DD progress and tender timeline",
+    "minutes": "",
+    "attachmentUrl": "",
+    "actions": [],
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  }
+]

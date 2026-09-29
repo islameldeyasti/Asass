@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getTestimonials} from '@/lib/cms/content-service';
@@ -28,8 +30,8 @@ export default async function AdminTestimonialsPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Testimonials"
-      subtitle={`${items.length} testimonials`}
+      title={adminText("Testimonials")}
+      subtitle={adminText(`${items.length} testimonials`)}
     >
       <CollectionTable
         resource="testimonials"

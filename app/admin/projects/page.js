@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getProjects} from '@/lib/cms/content-service';
@@ -38,8 +40,8 @@ export default async function AdminProjectsPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Projects"
-      subtitle={`${items.length} projects`}
+      title={adminText("Projects")}
+      subtitle={adminText(`${items.length} projects`)}
     >
       <CollectionTable
         resource="projects"

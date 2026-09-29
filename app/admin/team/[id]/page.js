@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {requireAdminPage} from '@/lib/cms/guard';
@@ -19,12 +21,10 @@ export default async function AdminTeamEditPage({params}) {
     <AdminShell
       user={user}
       navItems={navItems}
-      title={member.name_en || 'Edit team member'}
-      subtitle={member.slug}
+      title={adminText(member.name_en || 'Edit team member')}
+      subtitle={adminText(member.slug)}
       actions={
-        <Link className="adm-btn-ghost" href="/admin/team">
-          Back to team
-        </Link>
+        <Link className="adm-btn-ghost" href="/admin/team">{adminText("Back to team")}</Link>
       }
     >
       <TeamMemberForm

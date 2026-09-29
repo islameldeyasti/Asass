@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import Link from 'next/link';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {PERMS} from '@/lib/cms/permissions';
@@ -15,12 +17,10 @@ export default async function AdminTeamNewPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="New team member"
-      subtitle="Create a bilingual profile"
+      title={adminText("New team member")}
+      subtitle={adminText("Create a bilingual profile")}
       actions={
-        <Link className="adm-btn-ghost" href="/admin/team">
-          Back to team
-        </Link>
+        <Link className="adm-btn-ghost" href="/admin/team">{adminText("Back to team")}</Link>
       }
     >
       <TeamMemberForm

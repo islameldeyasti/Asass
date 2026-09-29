@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useMemo, useState} from 'react';
 import EmptyState from '@/components/admin/ui/EmptyState';
@@ -84,8 +86,8 @@ export default function SeoBulkEditor({
   if (!rows.length) {
     return (
       <EmptyState
-        title="No SEO records"
-        description="Seed page SEO entries from the All pages tab first."
+        title={adminText("No SEO records")}
+        description={adminText("Seed page SEO entries from the All pages tab first.")}
       />
     );
   }
@@ -94,18 +96,18 @@ export default function SeoBulkEditor({
     <div className="cms-stack">
       <div className="cms-crm-toolbar">
         <label className="cms-crm-search">
-          <span className="sr-only">Search</span>
+          <span className="sr-only">{adminText("Search")}</span>
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Filter by key, path, or title…"
-            aria-label="Filter bulk SEO rows"
+            placeholder={adminText("Filter by key, path, or title…")}
+            aria-label={adminText("Filter bulk SEO rows")}
           />
         </label>
         {canWrite ? (
           <button type="button" className="cms-btn" onClick={onSave} disabled={saving}>
-            {saving ? 'Saving…' : 'Save batch'}
+            {adminText(saving ? 'Saving…' : 'Save batch')}
           </button>
         ) : null}
       </div>
@@ -114,11 +116,11 @@ export default function SeoBulkEditor({
         <table className="cms-table">
           <thead>
             <tr>
-              <th>Key</th>
-              <th>Title EN</th>
-              <th>Title AR</th>
-              <th>Description EN</th>
-              <th>Index</th>
+              <th>{adminText("Key")}</th>
+              <th>{adminText("Title EN")}</th>
+              <th>{adminText("Title AR")}</th>
+              <th>{adminText("Description EN")}</th>
+              <th>{adminText("Index")}</th>
             </tr>
           </thead>
           <tbody>
@@ -144,12 +146,12 @@ export default function SeoBulkEditor({
                       onChange={(e) => patchRow(row.key, 'titleAr', e.target.value)}
                     />
                   </td>
-                  <td title={draft.descriptionEn || ''}>
+                  <td title={adminText(draft.descriptionEn || '')}>
                     <input
                       value={draft.descriptionEn || ''}
                       disabled={!canWrite || saving}
                       onChange={(e) => patchRow(row.key, 'descriptionEn', e.target.value)}
-                      placeholder={truncate(row.descriptionEn, 40) || 'Description'}
+                      placeholder={adminText(truncate(row.descriptionEn, 40) || 'Description')}
                     />
                   </td>
                   <td>
@@ -159,9 +161,7 @@ export default function SeoBulkEditor({
                         checked={draft.robotsIndex !== false}
                         disabled={!canWrite || saving}
                         onChange={(e) => patchRow(row.key, 'robotsIndex', e.target.checked)}
-                      />
-                      Index
-                    </label>
+                      />{adminText("Index")}</label>
                   </td>
                 </tr>
               );

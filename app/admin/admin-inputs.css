@@ -1,0 +1,295 @@
+/* Flowbite-style controls — scoped to themed admin root (covers portaled modals). */
+
+.admin-ar,
+.admin-en,
+.cms-body {
+  --fb-input-bg: #f9fafb;
+  --fb-input-border: #d1d5db;
+  --fb-input-text: #111827;
+  --fb-input-placeholder: #9ca3af;
+  --fb-input-radius: 8px;
+  --fb-input-h: 42px;
+  --fb-ring: #3b82f6;
+  --fb-ring-soft: rgba(59, 130, 246, 0.25);
+  --fb-label: #111827;
+}
+
+.admin-ar fieldset,
+.admin-en fieldset,
+.cms-body fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.admin-ar :is(
+  input:not([type]),
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='number'],
+  input[type='url'],
+  input[type='tel'],
+  input[type='search'],
+  input[type='date'],
+  input[type='datetime-local'],
+  input[type='month'],
+  input[type='week'],
+  input[type='time']
+),
+.admin-ar select,
+.admin-ar textarea,
+.admin-en :is(
+  input:not([type]),
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='number'],
+  input[type='url'],
+  input[type='tel'],
+  input[type='search'],
+  input[type='date'],
+  input[type='datetime-local'],
+  input[type='month'],
+  input[type='week'],
+  input[type='time']
+),
+.admin-en select,
+.admin-en textarea {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: var(--fb-input-h);
+  margin: 0;
+  border: 1px solid var(--fb-input-border) !important;
+  border-radius: var(--fb-input-radius) !important;
+  background-color: var(--fb-input-bg) !important;
+  color: var(--fb-input-text) !important;
+  font: 400 14px/1.5 inherit !important;
+  padding: 10px 14px !important;
+  box-shadow: none;
+  outline: none !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.admin-ar textarea,
+.admin-en textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.admin-ar select,
+.admin-en select {
+  padding-inline-end: 40px !important;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'><path stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.6' d='M6 8l4 4 4-4'/></svg>") !important;
+  background-position: right 12px center !important;
+  background-repeat: no-repeat !important;
+  background-size: 18px 18px !important;
+}
+
+.admin-ar select[multiple],
+.admin-en select[multiple] {
+  background-image: none !important;
+  padding-inline-end: 14px !important;
+  min-height: 110px;
+}
+
+.admin-ar input[type='checkbox'],
+.admin-ar input[type='radio'],
+.admin-en input[type='checkbox'],
+.admin-en input[type='radio'] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 16px;
+  height: 16px;
+  min-height: 0;
+  min-width: 16px;
+  padding: 0 !important;
+  display: inline-grid;
+  place-content: center;
+  border: 1px solid var(--fb-input-border) !important;
+  background: #fff !important;
+  color: var(--fb-ring);
+}
+
+.admin-ar input[type='checkbox'],
+.admin-en input[type='checkbox'] {
+  border-radius: 4px !important;
+}
+
+.admin-ar input[type='radio'],
+.admin-en input[type='radio'] {
+  border-radius: 999px !important;
+}
+
+.admin-ar :is(input[type='checkbox'], input[type='radio']):checked,
+.admin-en :is(input[type='checkbox'], input[type='radio']):checked {
+  background-color: var(--fb-ring) !important;
+  border-color: var(--fb-ring) !important;
+}
+
+.admin-ar input[type='checkbox']:checked::after,
+.admin-en input[type='checkbox']:checked::after {
+  content: '';
+  width: 9px;
+  height: 5px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-inline-end: 0;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.admin-ar input[type='radio']:checked::after,
+.admin-en input[type='radio']:checked::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.admin-ar :is(
+  input:not([type='checkbox']):not([type='radio']):not([type='file']):not([type='hidden']):not([type='button']):not([type='submit']):not([type='reset']),
+  select,
+  textarea
+):focus,
+.admin-ar :is(
+  input:not([type='checkbox']):not([type='radio']):not([type='file']):not([type='hidden']):not([type='button']):not([type='submit']):not([type='reset']),
+  select,
+  textarea
+):focus-visible,
+.admin-en :is(
+  input:not([type='checkbox']):not([type='radio']):not([type='file']):not([type='hidden']):not([type='button']):not([type='submit']):not([type='reset']),
+  select,
+  textarea
+):focus,
+.admin-en :is(
+  input:not([type='checkbox']):not([type='radio']):not([type='file']):not([type='hidden']):not([type='button']):not([type='submit']):not([type='reset']),
+  select,
+  textarea
+):focus-visible {
+  border-color: var(--fb-ring) !important;
+  box-shadow: 0 0 0 4px var(--fb-ring-soft) !important;
+}
+
+.admin-ar :is(input, select, textarea):disabled,
+.admin-en :is(input, select, textarea):disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.admin-ar :is(input, textarea)::placeholder,
+.admin-en :is(input, textarea)::placeholder {
+  color: var(--fb-input-placeholder) !important;
+}
+
+.admin-ar :is(.cms-field, .adm-field, .erp-field),
+.admin-en :is(.cms-field, .adm-field, .erp-field) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.admin-ar :is(.cms-field, .adm-field) > label,
+.admin-ar .erp-field > span,
+.admin-en :is(.cms-field, .adm-field) > label,
+.admin-en .erp-field > span {
+  display: block;
+  font: 500 14px/1.4 inherit !important;
+  color: var(--fb-label) !important;
+  margin: 0;
+}
+
+.admin-ar .erp-form-grid,
+.admin-en .erp-form-grid {
+  gap: 16px 18px;
+}
+
+.admin-ar .erp-line,
+.admin-en .erp-line {
+  grid-template-columns: minmax(0, 2.2fr) minmax(96px, 0.7fr) minmax(120px, 0.9fr) minmax(88px, 0.7fr) 36px;
+  gap: 10px;
+  align-items: end;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.admin-ar .erp-line.journal,
+.admin-en .erp-line.journal {
+  grid-template-columns: minmax(0, 2fr) 1fr 1fr 36px;
+}
+
+.admin-ar .erp-search input,
+.admin-en .erp-search input,
+.admin-ar .cms-search-trigger input,
+.admin-en .cms-search-trigger input {
+  width: auto;
+  min-height: 0;
+  height: 38px;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 8px 0 !important;
+}
+
+.admin-ar .adm-table :is(input, select),
+.admin-en .adm-table :is(input, select) {
+  min-height: 38px;
+}
+
+[data-theme='dark'].admin-ar,
+[data-theme='dark'].admin-en {
+  --fb-input-bg: #1f2937;
+  --fb-input-border: #4b5563;
+  --fb-input-text: #f9fafb;
+  --fb-input-placeholder: #9ca3af;
+  --fb-label: #f3f4f6;
+}
+
+html[dir='rtl'] .admin-ar select,
+.admin-ar select {
+  background-position: left 12px center !important;
+  padding-inline-end: 14px !important;
+  padding-inline-start: 40px !important;
+}
+
+.admin-en select {
+  background-position: right 12px center !important;
+}
+
+.table-data-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 16px;
+  width: 100%;
+}
+
+.table-data-bar .table-data-search {
+  flex: 1;
+  min-width: 220px;
+}
+
+.table-data-bar > select {
+  width: auto;
+  min-width: 160px;
+  flex: 0 0 auto;
+}
+
+.table-data-bar .adm-error {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.erp-toolbar .table-data-bar {
+  padding: 0;
+}

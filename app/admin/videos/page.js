@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getVideos} from '@/lib/cms/content-service';
@@ -40,8 +42,8 @@ export default async function AdminVideosPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Videos"
-      subtitle={`${items.length} videos · seeded from asasengg.ae/videos`}
+      title={adminText("Videos")}
+      subtitle={adminText(`${items.length} videos · seeded from asasengg.ae/videos`)}
     >
       <CollectionTable
         resource="videos"

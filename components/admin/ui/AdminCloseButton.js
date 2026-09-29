@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {X} from 'lucide-react';
 
@@ -9,7 +11,7 @@ export default function AdminCloseButton({onClick, disabled = false, label = 'Cl
       className={`adm-close-btn${className ? ` ${className}` : ''}`}
       onClick={onClick}
       disabled={disabled}
-      aria-label={label}
+      aria-label={adminText(label)}
     >
       <X size={16} strokeWidth={2.5} aria-hidden="true" />
     </button>

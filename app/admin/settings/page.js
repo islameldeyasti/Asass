@@ -1,9 +1,11 @@
-import Link from 'next/link';
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getSettings} from '@/lib/cms/content-service';
 import AdminShell from '@/components/admin/AdminShell';
 import DocumentForm from '@/components/admin/DocumentForm';
+import SettingsLayout, {CMS_SETTINGS_NAV} from '@/components/admin/ui/SettingsLayout';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,29 +29,18 @@ export default async function AdminSettingsPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="General settings"
-      subtitle="Company identity and site-wide defaults"
-      actions={
-        <div style={{display: 'flex', gap: 8, flexWrap: 'wrap'}}>
-          <Link className="adm-btn" href="/admin/settings/branding">
-            Branding
-          </Link>
-          <Link className="adm-btn-ghost" href="/admin/settings/contact">
-            Contact
-          </Link>
-          <Link className="adm-btn-ghost" href="/admin/settings/social">
-            Social
-          </Link>
-        </div>
-      }
+      title={adminText("General settings")}
+      subtitle={adminText("Company identity and site-wide defaults")}
     >
-      <DocumentForm
-        title="Company"
-        resource="settings"
-        initialValue={document}
-        fields={FIELDS}
-        canWrite={canWrite}
-      />
+      <SettingsLayout items={CMS_SETTINGS_NAV} active="general">
+        <DocumentForm
+          title={adminText("Company")}
+          resource="settings"
+          initialValue={document}
+          fields={FIELDS}
+          canWrite={canWrite}
+        />
+      </SettingsLayout>
     </AdminShell>
   );
 }

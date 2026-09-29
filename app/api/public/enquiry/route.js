@@ -1,5 +1,6 @@
 import {NextResponse} from 'next/server';
 import {addEnquiry} from '@/lib/cms/content-service';
+import {notifyStaff, sendMail} from '@/lib/cms/mail';
 
 export const runtime = 'nodejs';
 
@@ -36,6 +37,19 @@ export async function POST(request) {
       locale,
       source,
       status: 'new',
+    });
+
+    await notifyStaff(
+      `New enquiry — ${name}`,
+      `${name} <${email}>\n${phone}\n${serviceLabel || service}\n${location}\n\n${message}`,
+    );
+    await sendMail({
+      to: email,
+      subject: locale === 'ar' ? 'استلمنا استفسارك — أساس للهندسة' : 'We received your enquiry — ASAS Engineering',
+      text:
+        locale === 'ar'
+          ? 'شكرًا لتواصلك مع أساس. فريقنا سيراجع الطلب ويتواصل معك.'
+          : 'Thank you for contacting ASAS Engineering. Our team will review your enquiry and reply shortly.',
     });
 
     return NextResponse.json({ok: true, id: record.id});

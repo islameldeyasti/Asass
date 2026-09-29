@@ -1,11 +1,6 @@
-'use client';
+import AdminAppShell, {AdminTopbar} from '@/components/admin/ui/AdminAppShell';
+import PageHeader from '@/components/admin/ui/PageHeader';
 
-import AdminAppShell from '@/components/admin/ui/AdminAppShell';
-
-/**
- * Thin wrapper so existing admin pages keep importing AdminShell
- * while the redesigned AdminAppShell provides the full CMS chrome.
- */
 export default function AdminShell({
   user,
   navItems = [],
@@ -16,15 +11,17 @@ export default function AdminShell({
   breadcrumb,
 }) {
   return (
-    <AdminAppShell
-      user={user}
-      navItems={navItems}
-      title={title}
-      subtitle={subtitle}
-      actions={actions}
-      breadcrumb={breadcrumb}
-    >
-      {children}
-    </AdminAppShell>
+    <div className="cms-app">
+      <AdminAppShell user={user} navItems={navItems} />
+      <div className="cms-main">
+        <AdminTopbar user={user} navItems={navItems} />
+        <div className="cms-workspace">
+          {title || subtitle || actions || breadcrumb ? (
+            <PageHeader title={title} subtitle={subtitle} actions={actions} breadcrumb={breadcrumb} />
+          ) : null}
+          {children}
+        </div>
+      </div>
+    </div>
   );
 }

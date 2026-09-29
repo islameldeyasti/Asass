@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getPageCopy} from '@/lib/cms/content-service';
@@ -15,8 +17,8 @@ export default async function AdminPagesPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Pages"
-      subtitle="Edit bilingual meta, hero, and CTA bands — including background image uploads"
+      title={adminText("Pages")}
+      subtitle={adminText("Edit bilingual meta, hero, and CTA bands — including background image uploads")}
     >
       <PageCopyManager initialDocument={document} canWrite={canWrite} />
     </AdminShell>

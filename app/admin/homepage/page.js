@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getHomepage} from '@/lib/cms/content-service';
@@ -15,8 +17,8 @@ export default async function AdminHomepagePage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Homepage"
-      subtitle="Sections, hero slides, sector cards, about, and FAQs"
+      title={adminText("Homepage")}
+      subtitle={adminText("Sections, hero slides, sector cards, about, and FAQs")}
     >
       <DocumentForm
         resource="homepage"

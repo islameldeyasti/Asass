@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {PERMS, ROLE_LABELS} from '@/lib/cms/permissions';
 import {listTeamMembers} from '@/lib/team/store';
@@ -52,7 +54,7 @@ function monthBuckets(items = [], dateFn = itemDate) {
   const values = [];
   for (let i = 11; i >= 0; i -= 1) {
     const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-    labels.push(d.toLocaleString('en', {month: 'short'}));
+    labels.push(d.toLocaleString('en-GB', {month: 'short'}));
     const start = d.getTime();
     const end = new Date(d.getFullYear(), d.getMonth() + 1, 1).getTime();
     values.push(items.filter((item) => {
@@ -292,8 +294,8 @@ export default async function AdminDashboardPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Dashboard"
-      subtitle="Analytics overview for content, CRM, and digital cards"
+      title={adminText("Dashboard")}
+      subtitle={adminText("Analytics overview for content, CRM, and digital cards")}
     >
       <DashboardHome
         firstName={firstName}

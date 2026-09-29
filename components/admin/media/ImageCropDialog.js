@@ -1,8 +1,11 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useCallback, useState} from 'react';
 import Cropper from 'react-easy-crop';
 import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
+import AdminPortal from '@/components/admin/ui/AdminPortal';
 
 async function createImage(url) {
   return new Promise((resolve, reject) => {
@@ -95,20 +98,21 @@ export default function ImageCropDialog({
   if (!open || !src) return null;
 
   return (
+    <AdminPortal>
     <div className="adm-modal-backdrop" role="presentation" onClick={() => !saving && onClose?.()}>
       <div
         className="adm-modal adm-crop-modal"
         role="dialog"
         aria-modal="true"
-        aria-label={title}
+        aria-label={adminText(title)}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="adm-modal-head">
-          <h2>{title}</h2>
+          <h2>{adminText(title)}</h2>
           <AdminCloseButton onClick={onClose} disabled={saving} />
         </div>
         <div className="adm-modal-body">
-          {error ? <p className="adm-error">{error}</p> : null}
+          {error ? <p className="adm-error">{adminText(error)}</p> : null}
           <div className="adm-crop-stage">
             <Cropper
               image={src}
@@ -123,7 +127,7 @@ export default function ImageCropDialog({
           </div>
           <div className="adm-crop-controls">
             <div className="adm-field" style={{marginBottom: 0}}>
-              <label htmlFor="crop-zoom">Zoom</label>
+              <label htmlFor="crop-zoom">{adminText("Zoom")}</label>
               <input
                 id="crop-zoom"
                 type="range"
@@ -135,7 +139,7 @@ export default function ImageCropDialog({
               />
             </div>
             <div className="adm-field" style={{marginBottom: 0}}>
-              <label>Shape</label>
+              <label>{adminText("Shape")}</label>
               <div className="adm-actions">
                 {ASPECT_OPTIONS.map((opt) => (
                   <button
@@ -144,7 +148,7 @@ export default function ImageCropDialog({
                     className={aspectId === opt.id ? 'adm-btn' : 'adm-btn-ghost'}
                     onClick={() => setAspectId(opt.id)}
                   >
-                    {opt.label}
+                    {adminText(opt.label)}
                   </button>
                 ))}
               </div>
@@ -152,14 +156,13 @@ export default function ImageCropDialog({
           </div>
         </div>
         <div className="adm-modal-foot">
-          <button type="button" className="adm-btn-ghost" onClick={onClose} disabled={saving}>
-            Cancel
-          </button>
+          <button type="button" className="adm-btn-ghost" onClick={onClose} disabled={saving}>{adminText("Cancel")}</button>
           <button type="button" className="adm-btn" onClick={applyCrop} disabled={saving}>
-            {saving ? 'Saving…' : 'Apply crop'}
+            {adminText(saving ? 'Saving…' : 'Apply crop')}
           </button>
         </div>
       </div>
     </div>
+    </AdminPortal>
   );
 }

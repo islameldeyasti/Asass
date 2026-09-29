@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useMemo, useState} from 'react';
 
@@ -39,18 +41,18 @@ export default function RelationPicker({
 
   return (
     <div className="cms-field cms-relation-picker">
-      {label ? <label>{label}</label> : null}
+      {label ? <label>{adminText(label)}</label> : null}
       <input
         type="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder={placeholder}
+        placeholder={adminText(placeholder)}
         disabled={disabled}
-        aria-label={label ? `${label} search` : 'Search relations'}
+        aria-label={adminText(label ? `${label} search` : 'Search relations')}
       />
-      <div className="cms-relation-list" role="group" aria-label={label}>
+      <div className="cms-relation-list" role="group" aria-label={adminText(label)}>
         {filtered.length === 0 ? (
-          <p className="cms-relation-empty">No matches</p>
+          <p className="cms-relation-empty">{adminText("No matches")}</p>
         ) : (
           filtered.map((opt) => {
             const key = String(opt.value);
@@ -63,14 +65,14 @@ export default function RelationPicker({
                   disabled={disabled}
                   onChange={() => toggle(opt.value)}
                 />
-                <span>{opt.label || key}</span>
+                <span>{adminText(opt.label || key)}</span>
               </label>
             );
           })
         )}
       </div>
       {selected.length > 0 ? (
-        <small className="cms-relation-count">{selected.length} selected</small>
+        <small className="cms-relation-count">{adminText(selected.length)}{adminText(" selected")}</small>
       ) : null}
     </div>
   );

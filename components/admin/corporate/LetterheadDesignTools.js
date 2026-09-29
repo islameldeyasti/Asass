@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useState} from 'react';
 import MediaPicker from '@/components/admin/media/MediaPicker';
@@ -67,32 +69,18 @@ export default function LetterheadDesignTools({
 
   return (
     <div className="lhs-design-tools">
-      <p className="lhs-label" style={{marginTop: 14}}>
-        Draw &amp; logos
-      </p>
-      <p className="lhs-help" style={{margin: '0 0 8px', fontSize: 12, color: '#5b6472'}}>
-        Build your own header/footer: add shapes and upload logos, then move them on the A4 page.
-      </p>
+      <p className="lhs-label" style={{marginTop: 14}}>{adminText("Draw & logos")}</p>
+      <p className="lhs-help" style={{margin: '0 0 8px', fontSize: 12, color: '#5b6472'}}>{adminText("Build your own header/footer: add shapes and upload logos, then move them on the A4 page.")}</p>
 
       <div className="lhs-segment" style={{flexWrap: 'wrap'}}>
-        <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={() => addLayer('rect')}>
-          Rectangle
-        </button>
-        <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={() => addLayer('bar')}>
-          Bar
-        </button>
-        <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={() => addLayer('line')}>
-          Line
-        </button>
-        <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={() => addLayer('logo')}>
-          Logo
-        </button>
+        <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={() => addLayer('rect')}>{adminText("Rectangle")}</button>
+        <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={() => addLayer('bar')}>{adminText("Bar")}</button>
+        <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={() => addLayer('line')}>{adminText("Line")}</button>
+        <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={() => addLayer('logo')}>{adminText("Logo")}</button>
       </div>
 
       {list.length === 0 ? (
-        <p className="lhs-help" style={{marginTop: 8, fontSize: 12, color: '#5b6472'}}>
-          No custom layers yet. Start with Bar / Logo for a simple brand header.
-        </p>
+        <p className="lhs-help" style={{marginTop: 8, fontSize: 12, color: '#5b6472'}}>{adminText("No custom layers yet. Start with Bar / Logo for a simple brand header.")}</p>
       ) : (
         <div className="lhs-layer-list">
           {list.map((layer) => (
@@ -102,10 +90,9 @@ export default function LetterheadDesignTools({
               className={`lhs-layer-item${selectedId === layer.id ? ' is-active' : ''}`}
               onClick={() => setSelectedId(layer.id)}
             >
-              <span>{layer.type}</span>
+              <span>{adminText(layer.type)}</span>
               <em>
-                {Math.round(layer.w)}×{Math.round(layer.h)}mm
-              </em>
+                {adminText(Math.round(layer.w))}×{adminText(Math.round(layer.h))}{adminText("mm")}</em>
             </button>
           ))}
         </div>
@@ -120,21 +107,19 @@ export default function LetterheadDesignTools({
             <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={() => moveSelected(1)}>
               ↓
             </button>
-            <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={removeSelected}>
-              Delete
-            </button>
+            <button type="button" className="lhs-segment-btn" disabled={!canWrite} onClick={removeSelected}>{adminText("Delete")}</button>
           </div>
 
           {selected.type === 'logo' ? (
             <MediaPicker
-              label="Logo image"
+              label={adminText("Logo image")}
               value={selected.src || ''}
               canWrite={canWrite}
               onChange={(url) => updateSelected({src: url || ''})}
             />
           ) : (
             <label className="lhs-field">
-              <span>Color</span>
+              <span>{adminText("Color")}</span>
               <div className="ecs-color-input" style={{display: 'flex', gap: 8}}>
                 <input
                   type="color"
@@ -156,11 +141,11 @@ export default function LetterheadDesignTools({
           {SLIDERS.map((slider) => (
             <label key={slider.key} className="lhs-field lhs-chrome-row">
               <span className="lhs-chrome-label">
-                {slider.label}
+                {adminText(slider.label)}
                 <em>
-                  {slider.key === 'opacity'
+                  {adminText(slider.key === 'opacity'
                     ? Number(selected[slider.key] ?? 1).toFixed(2)
-                    : `${Number(selected[slider.key] ?? 0).toFixed(1)}mm`}
+                    : `${Number(selected[slider.key] ?? 0).toFixed(1)}mm`)}
                 </em>
               </span>
               <input

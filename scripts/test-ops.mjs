@@ -1,0 +1,63 @@
+import assert from 'node:assert/strict';
+import {mkdtemp, mkdir, readFile, writeFile, readdir, rm} from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+const root=process.cwd();
+const temp=await mkdtemp(path.join(os.tmpdir(),'asas-ops-tests-'));
+let passed=0;
+try {
+  await mkdir(path.join(temp,'lib'),{recursive:true});
+  await writeFile(path.join(temp,'package.json'),' {"type":"module"}');
+  for(const name of await readdir(path.join(root,'lib/ops'))) {
+    if(!name.endsWith('.js'))continue;
+    const code=(await readFile(path.join(root,'lib/ops',name),'utf8')).replace(/(['"])(\.\/[a-z-]+)\1/g,'$1$2.js$1');
+    await writeFile(path.join(temp,'lib',name),code);
+  }
+  await mkdir(path.join(temp,'erp'),{recursive:true});
+  await writeFile(path.join(temp,'erp/references.js'),await readFile(path.join(root,'lib/erp/references.js'),'utf8'));
+  process.chdir(temp);
+  const load=name=>import(pathToFileURL(path.join(temp,'lib',`${name}.js`)));
+  const store=await load('store'), tasks=await load('tasks'), projects=await load('projects'), employees=await load('employees'), stages=await load('stages'), presentation=await load('presentation');
+  async function check(name,fn){await fn();passed++;console.log(`PASS ${name}`);}
+  await store.writeOpsCollection('projects',[{id:'p1',nameEn:'Project A',code:'A',status:'active'},{id:'p2',nameEn:'Project B',code:'B'}]);
+  await store.writeOpsCollection('departments',[{id:'d1',nameEn:'Architecture'}]);
+  await store.writeOpsCollection('employees',[{id:'e1',fullNameEn:'One',employeeCode:'E1',departmentId:'d1'},{id:'e2',fullNameEn:'Two',employeeCode:'E2',managerId:'e1'}]);
+  await check('duplicate project codes rejected',()=>assert.rejects(()=>projects.saveProject({nameEn:'Duplicate',code:'a'}),/already exists/));
+  await check('invalid project date range rejected',()=>assert.rejects(()=>projects.saveProject({nameEn:'Invalid',startDate:'2026-10-01',plannedEndDate:'2026-09-01'}),/end date/));
+  await check('missing project manager rejected',()=>assert.rejects(()=>projects.saveProject({nameEn:'Invalid',projectManagerId:'missing'}),/does not exist/));
+  await check('cyclic reporting line rejected',()=>assert.rejects(()=>employees.saveEmployee({id:'e1',managerId:'e2'}),/cycle/));
+  await check('duplicate employee codes rejected',()=>assert.rejects(()=>employees.saveEmployee({fullNameEn:'Duplicate',employeeCode:'e1'}),/already exists/));
+  const first=await tasks.saveTask({title:'First',projectId:'p1',assigneeIds:['e1']});
+  const second=await tasks.saveTask({title:'Second',projectId:'p1',dependencyIds:[first.id]});
+  await check('incomplete dependency blocks work',async()=>assert.equal((await tasks.updateTaskStatus(second.id,'in_progress')).status,'blocked'));
+  await check('dependency cycle rejected',()=>assert.rejects(()=>tasks.saveTask({id:first.id,dependencyIds:[second.id]}),/cycle/));
+  await check('cross project dependency rejected',()=>assert.rejects(()=>tasks.saveTask({title:'Cross',projectId:'p2',dependencyIds:[first.id]}),/same project/));
+  await check('negative effort rejected',()=>assert.rejects(()=>tasks.saveTask({title:'Hours',projectId:'p1',estimatedHours:-1}),/non-negative/));
+  await tasks.updateTaskStatus(first.id,'completed');
+  await check('completed dependency permits work',async()=>assert.equal((await tasks.updateTaskStatus(second.id,'in_progress')).status,'in_progress'));
+  await check('reopened task clears completion date',async()=>assert.equal((await tasks.updateTaskStatus(first.id,'todo')).completionDate,null));
+  const template=await stages.saveStageTemplate({nameEn:'Reviewed workflow',items:[{nameEn:'Design review',requiresApproval:true,requiredDocuments:'Design report',responsibleRole:'Lead engineer'}]});
+  const cloned=await stages.applyStageTemplateToProject('p2',template.id);
+  await check('workflow preserves review requirements',async()=>{assert.equal(cloned[0].requiresApproval,true);assert.equal(cloned[0].requiredDocuments,'Design report');});
+  await check('stage completion requires approval',()=>assert.rejects(()=>stages.saveProjectStage({id:cloned[0].id,status:'completed'}),/approved review/));
+  await store.writeOpsCollection('approvals',[{id:'approval',projectId:'p2',subjectType:'stage',subjectId:cloned[0].id,status:'approved'}]);
+  await check('approved stage can complete',async()=>assert.equal((await stages.saveProjectStage({id:cloned[0].id,status:'completed'})).progress,100));
+  const approvals = await load('approvals');
+  const review = await approvals.saveApproval({title:'Two-step review',projectId:'p1',steps:[{id:'s1',approverEmployeeId:'e1',order:1,status:'approved'},{id:'s2',approverEmployeeId:'e2',order:2}]});
+  await check('request payload cannot self-approve',async()=>assert.equal(review.steps[0].status,'pending'));
+  await check('review sequence enforced',()=>assert.rejects(()=>approvals.decideApprovalStep(review.id,'s2',{status:'approved'}),/earlier review/));
+  await check('missing review step rejected',()=>assert.rejects(()=>approvals.decideApprovalStep(review.id,'missing',{status:'approved'}),/not found/));
+  await approvals.decideApprovalStep(review.id,'s1',{status:'approved'});
+  await check('decided review cannot be overwritten',()=>assert.rejects(()=>approvals.saveApproval({id:review.id,title:'Overwrite'}),/cannot be rewritten/));
+  await check('sequential approval completes',async()=>assert.equal((await approvals.decideApprovalStep(review.id,'s2',{status:'approved'})).status,'approved'));
+  await check('in-progress workflow cannot be reset',()=>assert.rejects(()=>stages.applyStageTemplateToProject('p2',template.id,{force:true}),/linked delivery|in progress/));
+  await check('project records prevent destructive deletion',()=>assert.rejects(()=>projects.deleteProject('p1'),/delivery records/));
+  await check('Dubai calendar day rolls over independently of UTC',async()=>assert.equal(presentation.officeToday(new Date('2026-09-20T21:00:00Z')),'2026-09-21'));
+  await check('cancelled projects are not overdue',async()=>assert.equal(presentation.projectHealth({status:'cancelled',plannedEndDate:'2020-01-01'}).tone,'neutral'));
+  await check('concurrent API mutations are serialized',async()=>{await store.writeOpsCollection('counter',[]);await Promise.all(Array.from({length:20},(_,id)=>store.withOpsMutation(async()=>{const data=await store.readOpsCollection('counter');data.push({id});await store.writeOpsCollection('counter',data);})));assert.equal((await store.readOpsCollection('counter')).length,20);});
+  await check('corrupt runtime does not silently fall back',async()=>{await writeFile(path.join(temp,'.data/ops/counter.json'),'broken');await assert.rejects(()=>store.readOpsCollection('counter'),/could not be read/);});
+  await check('failed writes report failure',async()=>{await mkdir(path.join(temp,'.data/ops/failure.json'));await assert.rejects(()=>store.writeOpsCollection('failure',[]),/not saved/);});
+  await check('seed files remain unchanged',async()=>{await mkdir(path.join(temp,'content/ops'),{recursive:true});const file=path.join(temp,'content/ops/seed-check.json');await writeFile(file,'[{"id":"seed"}]');await store.writeOpsCollection('seed-check',[{id:'runtime'}]);assert.equal(await readFile(file,'utf8'),'[{"id":"seed"}]');assert.equal((await store.readOpsCollection('seed-check'))[0].id,'runtime');});
+  console.log(`${passed} operations checks passed in isolated temporary storage.`);
+} finally {process.chdir(root);await rm(temp,{recursive:true,force:true});}

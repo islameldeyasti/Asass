@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getFooter} from '@/lib/cms/content-service';
@@ -15,8 +17,8 @@ export default async function AdminFooterPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Footer"
-      subtitle="Edit footer links and the call-to-action band. Logo lives in Branding."
+      title={adminText("Footer")}
+      subtitle={adminText("Edit footer links and the call-to-action band. Logo lives in Branding.")}
     >
       <FooterManager initialValue={document} canWrite={canWrite} />
     </AdminShell>

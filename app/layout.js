@@ -51,6 +51,7 @@ import './chatbot.css';
 import './ai-assistant.css';
 import './gallery-page.css';
 import './videos-page.css';
+import './site-tour.css';
 import './blog-page.css';
 import './fonts-arabic.css';
 import './arabic-rtl.css';
@@ -59,7 +60,6 @@ import {THEME_BOOT_SCRIPT} from '@/lib/theme';
 import {LOCALE_HTML_BOOT} from '@/lib/i18n/locale-boot';
 import {getCmsRootMetadata} from '@/lib/cms/site-metadata';
 import {getBranding} from '@/lib/cms/branding-server';
-import Script from 'next/script';
 
 export async function generateMetadata() {
   const [cms, branding] = await Promise.all([getCmsRootMetadata(), getBranding()]);
@@ -80,18 +80,11 @@ export async function generateMetadata() {
 export default function RootLayout({children}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <Script
-          id="asas-theme-boot"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{__html: THEME_BOOT_SCRIPT}}
-        />
-        {/* Reads /en|/ar from path before paint — pairs with locale layout sync */}
-        <Script
-          id="asas-locale-boot"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{__html: LOCALE_HTML_BOOT}}
-        />
+      <head>
+        <script id="asas-theme-boot" dangerouslySetInnerHTML={{__html: THEME_BOOT_SCRIPT}} />
+        <script id="asas-locale-boot" dangerouslySetInnerHTML={{__html: LOCALE_HTML_BOOT}} />
+      </head>
+      <body suppressHydrationWarning>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

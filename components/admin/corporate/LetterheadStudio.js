@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {useRouter} from 'next/navigation';
@@ -66,7 +68,7 @@ function statusLabel(status) {
 function formatListDate(value) {
   if (!value) return '—';
   try {
-    return new Date(value).toLocaleDateString('en-GB', {
+    return new Date(value).toLocaleDateString('ar-AE-u-nu-latn', {
       day: '2-digit',
       month: 'short',
       year: 'numeric',
@@ -128,13 +130,13 @@ function Section({id, title, open, onToggle, summary, children}) {
   return (
     <section className="lhs-section">
       <button type="button" className="lhs-section-head" onClick={() => onToggle(id)}>
-        <span>{title}</span>
+        <span>{adminText(title)}</span>
         <ChevronDown size={14} className={open ? 'is-open' : ''} />
       </button>
       {open ? (
         <div className="lhs-section-body">{children}</div>
       ) : summary ? (
-        <p className="lhs-section-summary">{summary}</p>
+        <p className="lhs-section-summary">{adminText(summary)}</p>
       ) : null}
     </section>
   );
@@ -148,10 +150,10 @@ function ZoomMenu({zoom, fitZoom, onSelect, onFit}) {
         type="button"
         className="lhs-zoom-label"
         onClick={() => setOpen((v) => !v)}
-        title="Zoom"
+        title={adminText("Zoom")}
         aria-expanded={open}
       >
-        {Math.round(zoom * 100)}%
+        {adminText(Math.round(zoom * 100))}%
       </button>
       {open ? (
         <div className="lhs-zoom-dropdown" role="menu">
@@ -166,7 +168,7 @@ function ZoomMenu({zoom, fitZoom, onSelect, onFit}) {
                 setOpen(false);
               }}
             >
-              {Math.round(step * 100)}%
+              {adminText(Math.round(step * 100))}%
             </button>
           ))}
           <button
@@ -176,8 +178,7 @@ function ZoomMenu({zoom, fitZoom, onSelect, onFit}) {
               onFit(fitZoom);
               setOpen(false);
             }}
-          >
-            Fit Width ({Math.round(fitZoom * 100)}%)
+          >{adminText("Fit Width (")}{adminText(Math.round(fitZoom * 100))}%)
           </button>
         </div>
       ) : null}
@@ -562,7 +563,7 @@ export default function LetterheadStudio({
   async function onArchive() {
     if (!canWrite || !doc.id) return;
     setMoreOpen(false);
-    if (!window.confirm('Archive this letterhead?')) return;
+    if (!window.confirm(adminText('Archive this letterhead?'))) return;
     try {
       const res = await fetch(`${API}/${encodeURIComponent(doc.id)}`, {
         method: 'DELETE',
@@ -655,54 +656,50 @@ export default function LetterheadStudio({
       <div className="lhs-shell lhs-list no-print">
         <div className="lhs-list-head">
           <div>
-            <h2>Letterhead Studio</h2>
-            <p>Create and manage branded ASAS correspondence.</p>
+            <h2>{adminText("Letterhead Studio")}</h2>
+            <p>{adminText("Create and manage branded ASAS correspondence.")}</p>
           </div>
           {canWrite ? (
-            <button type="button" className="lhs-btn lhs-btn-primary" onClick={openWizard}>
-              + New Letter
-            </button>
+            <button type="button" className="lhs-btn lhs-btn-primary" onClick={openWizard}>{adminText("+ New Letter")}</button>
           ) : null}
         </div>
 
         <div className="lhs-stats">
           <div className="lhs-stat">
-            <span>Drafts</span>
-            <strong>{draftCount}</strong>
+            <span>{adminText("Drafts")}</span>
+            <strong>{adminText(draftCount)}</strong>
           </div>
           <div className="lhs-stat">
-            <span>Final</span>
-            <strong>{finalCount}</strong>
+            <span>{adminText("Final")}</span>
+            <strong>{adminText(finalCount)}</strong>
           </div>
           <div className="lhs-stat">
-            <span>Total</span>
-            <strong>{items.length}</strong>
+            <span>{adminText("Total")}</span>
+            <strong>{adminText(items.length)}</strong>
           </div>
         </div>
 
         <div className="lhs-list-card">
           {loading ? (
-            <p className="lhs-muted">Loading…</p>
+            <p className="lhs-muted">{adminText("Loading…")}</p>
           ) : items.length === 0 ? (
             <div className="lhs-empty">
               <FileText size={28} />
-              <p>No letters yet.</p>
+              <p>{adminText("No letters yet.")}</p>
               {canWrite ? (
-                <button type="button" className="lhs-btn lhs-btn-primary" onClick={openWizard}>
-                  Create first letter
-                </button>
+                <button type="button" className="lhs-btn lhs-btn-primary" onClick={openWizard}>{adminText("Create first letter")}</button>
               ) : null}
             </div>
           ) : (
             <table className="lhs-table">
               <thead>
                 <tr>
-                  <th>Document</th>
-                  <th>Template</th>
-                  <th>Language</th>
-                  <th>Recipient</th>
-                  <th>Updated</th>
-                  <th>Status</th>
+                  <th>{adminText("Document")}</th>
+                  <th>{adminText("Template")}</th>
+                  <th>{adminText("Language")}</th>
+                  <th>{adminText("Recipient")}</th>
+                  <th>{adminText("Updated")}</th>
+                  <th>{adminText("Status")}</th>
                   <th />
                 </tr>
               </thead>
@@ -719,16 +716,16 @@ export default function LetterheadStudio({
                           )
                         }
                       >
-                        {item.title || 'Untitled'}
+                        {adminText(item.title || 'Untitled')}
                       </button>
                     </td>
-                    <td>{tplName(item.templateId)}</td>
-                    <td>{String(item.language || 'en').toUpperCase()}</td>
-                    <td>{item.recipientName || '—'}</td>
-                    <td>{formatListDate(item.updatedAt)}</td>
+                    <td>{adminText(tplName(item.templateId))}</td>
+                    <td>{adminText(String(item.language || 'en').toUpperCase())}</td>
+                    <td>{adminText(item.recipientName || '—')}</td>
+                    <td>{adminText(formatListDate(item.updatedAt))}</td>
                     <td>
                       <span className={`lhs-badge lhs-badge-${item.status || 'draft'}`}>
-                        {statusLabel(item.status)}
+                        {adminText(statusLabel(item.status))}
                       </span>
                     </td>
                     <td>
@@ -740,9 +737,7 @@ export default function LetterheadStudio({
                             `/admin/corporate/letterheads/${encodeURIComponent(item.id)}`,
                           )
                         }
-                      >
-                        Open
-                      </button>
+                      >{adminText("Open")}</button>
                     </td>
                   </tr>
                 ))}
@@ -758,25 +753,25 @@ export default function LetterheadStudio({
   if (mode === 'wizard') {
     return (
       <div className="lhs-wizard-backdrop no-print">
-        <div className="lhs-wizard" role="dialog" aria-label="New letter">
+        <div className="lhs-wizard" role="dialog" aria-label={adminText("New letter")}>
           <div className="lhs-wizard-head">
-            <h2>New Letter</h2>
+            <h2>{adminText("New Letter")}</h2>
             <AdminCloseButton onClick={goList} />
           </div>
 
           <label className="lhs-field">
-            <span>Document name</span>
+            <span>{adminText("Document name")}</span>
             <input
               className="lhs-input"
               value={wizard.title}
               onChange={(e) => setWizard((w) => ({...w, title: e.target.value}))}
-              placeholder="Proposal Letter — Client ABC"
+              placeholder={adminText("Proposal Letter — Client ABC")}
               autoFocus
             />
           </label>
 
           <div className="lhs-field">
-            <span>Template</span>
+            <span>{adminText("Template")}</span>
             <div className="lhs-wizard-templates">
               {LETTERHEAD_TEMPLATES.map((tpl) => (
                 <button
@@ -787,36 +782,34 @@ export default function LetterheadStudio({
                 >
                   <span className={`lhs-tpl-thumb is-${tpl.id}`} />
                   <strong>{tpl.name}</strong>
-                  <em>{tpl.description}</em>
+                  <em>{adminText(tpl.description)}</em>
                 </button>
               ))}
             </div>
           </div>
 
           <label className="lhs-field">
-            <span>Language</span>
+            <span>{adminText("Language")}</span>
             <select
               className="lhs-input"
               value={wizard.language}
               onChange={(e) => setWizard((w) => ({...w, language: e.target.value}))}
             >
-              <option value="en">English</option>
+              <option value="en">{adminText("English")}</option>
               <option value="ar">العربية</option>
-              <option value="bilingual">Bilingual</option>
+              <option value="bilingual">{adminText("Bilingual")}</option>
             </select>
           </label>
 
           <div className="lhs-wizard-foot">
-            <button type="button" className="lhs-btn lhs-btn-ghost" onClick={goList}>
-              Cancel
-            </button>
+            <button type="button" className="lhs-btn lhs-btn-ghost" onClick={goList}>{adminText("Cancel")}</button>
             <button
               type="button"
               className="lhs-btn lhs-btn-primary"
               disabled={!canWrite || saving}
               onClick={createFromWizard}
             >
-              {saving ? 'Creating…' : 'Create Letter'}
+              {adminText(saving ? 'Creating…' : 'Create Letter')}
             </button>
           </div>
         </div>
@@ -834,15 +827,12 @@ export default function LetterheadStudio({
             className="lhs-btn lhs-btn-ghost"
             onClick={() => setViewMode('edit')}
           >
-            <ArrowLeft size={16} /> Back to Edit
-          </button>
+            <ArrowLeft size={16} />{adminText(" Back to Edit")}</button>
           <div className="lhs-topbar-right">
             <button type="button" className="lhs-btn lhs-btn-ghost" onClick={prepareAndPrint}>
-              <Printer size={16} /> Print
-            </button>
+              <Printer size={16} />{adminText(" Print")}</button>
             <button type="button" className="lhs-btn lhs-btn-secondary" onClick={downloadPdfFile}>
-              <Download size={16} /> Download PDF
-            </button>
+              <Download size={16} />{adminText(" Download PDF")}</button>
           </div>
         </div>
         <div className="lhs-canvas lhs-canvas-preview" ref={canvasRef}>
@@ -872,12 +862,12 @@ export default function LetterheadStudio({
     <>
       <Section
         id="design"
-        title="Design"
+        title={adminText("Design")}
         open={leftOpen.design}
         onToggle={toggleLeftSection}
         summary={designSummary(doc)}
       >
-        <p className="lhs-label">Template</p>
+        <p className="lhs-label">{adminText("Template")}</p>
         <button
           type="button"
           className="lhs-template-trigger"
@@ -886,13 +876,13 @@ export default function LetterheadStudio({
         >
           <span className={`lhs-tpl-thumb is-${doc.templateId}`} />
           <span>
-            <strong>{tplName(doc.templateId)}</strong>
+            <strong>{adminText(tplName(doc.templateId))}</strong>
             <em>
-              {doc.templateId === 'classic-executive'
+              {adminText(doc.templateId === 'classic-executive'
                 ? 'Attached PDF letterhead'
                 : doc.templateId === 'blank-canvas'
                   ? 'Design your own layout'
-                  : 'Change template'}
+                  : 'Change template')}
             </em>
           </span>
         </button>
@@ -921,9 +911,7 @@ export default function LetterheadStudio({
                 backgroundImageUrl: prev.backgroundImageUrl || OFFICIAL_LETTERHEAD_PAGE_BG,
               }))
             }
-          >
-            Use ASAS Official (PDF)
-          </button>
+          >{adminText("Use ASAS Official (PDF)")}</button>
         ) : null}
 
         {doc.templateId === 'blank-canvas' ? (
@@ -937,9 +925,9 @@ export default function LetterheadStudio({
         {doc.templateId !== 'blank-canvas' ? (
           <>
         <p className="lhs-label" style={{marginTop: 14}}>
-          {doc.templateId === 'classic-executive'
+          {adminText(doc.templateId === 'classic-executive'
             ? 'Header (PDF design)'
-            : 'Header'}
+            : 'Header')}
         </p>
         {doc.templateId === 'classic-executive' ? (
           <label className="lhs-check">
@@ -948,9 +936,7 @@ export default function LetterheadStudio({
               checked={doc.showGeoBars !== false}
               disabled={!canWrite}
               onChange={(e) => setField('showGeoBars', e.target.checked)}
-            />
-            Geometric bars (navy / rust)
-          </label>
+            />{adminText("Geometric bars (navy / rust)")}</label>
         ) : null}
         <label className="lhs-check">
           <input
@@ -962,7 +948,7 @@ export default function LetterheadStudio({
               setField('showCompanyName', e.target.checked);
             }}
           />
-          {doc.templateId === 'classic-executive' ? 'ASAS wordmark' : 'Company name'}
+          {adminText(doc.templateId === 'classic-executive' ? 'ASAS wordmark' : 'Company name')}
         </label>
         <label className="lhs-check">
           <input
@@ -971,9 +957,9 @@ export default function LetterheadStudio({
             disabled={!canWrite}
             onChange={(e) => setField('showTagline', e.target.checked)}
           />
-          {doc.templateId === 'classic-executive'
+          {adminText(doc.templateId === 'classic-executive'
             ? 'Tagline under ASAS'
-            : 'Subtitle / place'}
+            : 'Subtitle / place')}
         </label>
         <label className="lhs-check">
           <input
@@ -981,9 +967,7 @@ export default function LetterheadStudio({
             checked={doc.showMark !== false}
             disabled={!canWrite}
             onChange={(e) => setField('showMark', e.target.checked)}
-          />
-          Brand mark (A logo)
-        </label>
+          />{adminText("Brand mark (A logo)")}</label>
         {doc.templateId === 'classic-executive' ? (
           <label className="lhs-check">
             <input
@@ -991,14 +975,12 @@ export default function LetterheadStudio({
               checked={doc.showWatermark !== false}
               disabled={!canWrite}
               onChange={(e) => setField('showWatermark', e.target.checked)}
-            />
-            Page watermark
-          </label>
+            />{adminText("Page watermark")}</label>
         ) : null}
 
         <div style={{marginTop: 12}}>
           <MediaPicker
-            label="A4 page background"
+            label={adminText("A4 page background")}
             hint="Full-page artwork (header + footer bars). Geometric CSS bars are hidden while a background is set."
             value={doc.backgroundImageUrl || ''}
             canWrite={canWrite}
@@ -1014,9 +996,7 @@ export default function LetterheadStudio({
                 setField('backgroundImageUrl', OFFICIAL_LETTERHEAD_PAGE_BG);
                 setField('showGeoBars', false);
               }}
-            >
-              Use official ASAS page
-            </button>
+            >{adminText("Use official ASAS page")}</button>
             <button
               type="button"
               className="lhs-segment-btn"
@@ -1025,24 +1005,20 @@ export default function LetterheadStudio({
                 setField('backgroundImageUrl', '');
                 setField('showGeoBars', true);
               }}
-            >
-              Clear background
-            </button>
+            >{adminText("Clear background")}</button>
           </div>
         </div>
 
         <div style={{marginTop: 10}}>
           <MediaPicker
-            label="Header mark / logo"
+            label={adminText("Header mark / logo")}
             value={doc.headerMarkUrl || ''}
             canWrite={canWrite}
             onChange={(url) => setField('headerMarkUrl', url)}
           />
         </div>
 
-        <p className="lhs-label" style={{marginTop: 10}}>
-          Logo scale
-        </p>
+        <p className="lhs-label" style={{marginTop: 10}}>{adminText("Logo scale")}</p>
         <div className="lhs-segment">
           {['sm', 'md', 'lg'].map((size) => (
             <button
@@ -1052,7 +1028,7 @@ export default function LetterheadStudio({
               disabled={!canWrite}
               onClick={() => setField('logoScale', size)}
             >
-              {size.toUpperCase()}
+              {adminText(size.toUpperCase())}
             </button>
           ))}
         </div>
@@ -1073,9 +1049,9 @@ export default function LetterheadStudio({
         />
 
         <p className="lhs-label" style={{marginTop: 14}}>
-          {doc.templateId === 'classic-executive'
+          {adminText(doc.templateId === 'classic-executive'
             ? 'Footer (PDF design)'
-            : 'Footer'}
+            : 'Footer')}
         </p>
         <label className="lhs-check">
           <input
@@ -1084,34 +1060,28 @@ export default function LetterheadStudio({
             disabled={!canWrite}
             onChange={(e) => setField('showFooter', e.target.checked)}
           />
-          {doc.templateId === 'classic-executive'
+          {adminText(doc.templateId === 'classic-executive'
             ? 'Show footer bars'
-            : 'Show footer'}
+            : 'Show footer')}
         </label>
           </>
         ) : (
           <>
-            <p className="lhs-label" style={{marginTop: 14}}>
-              Page
-            </p>
+            <p className="lhs-label" style={{marginTop: 14}}>{adminText("Page")}</p>
             <label className="lhs-check">
               <input
                 type="checkbox"
                 checked={doc.showPageNumbers !== false}
                 disabled={!canWrite}
                 onChange={(e) => setField('showPageNumbers', e.target.checked)}
-              />
-              Page numbers
-            </label>
+              />{adminText("Page numbers")}</label>
             <label className="lhs-check">
               <input
                 type="checkbox"
                 checked={Boolean(doc.confidential)}
                 disabled={!canWrite}
                 onChange={(e) => setField('confidential', e.target.checked)}
-              />
-              Confidential mark
-            </label>
+              />{adminText("Confidential mark")}</label>
           </>
         )}
 
@@ -1123,27 +1093,21 @@ export default function LetterheadStudio({
             checked={doc.showFooterAddress !== false}
             disabled={!canWrite}
             onChange={(e) => setField('showFooterAddress', e.target.checked)}
-          />
-          Address
-        </label>
+          />{adminText("Address")}</label>
         <label className="lhs-check">
           <input
             type="checkbox"
             checked={doc.showFooterEmail !== false}
             disabled={!canWrite}
             onChange={(e) => setField('showFooterEmail', e.target.checked)}
-          />
-          Email / PO Box
-        </label>
+          />{adminText("Email / PO Box")}</label>
         <label className="lhs-check">
           <input
             type="checkbox"
             checked={doc.showFooterPhones !== false}
             disabled={!canWrite}
             onChange={(e) => setField('showFooterPhones', e.target.checked)}
-          />
-          Phone numbers
-        </label>
+          />{adminText("Phone numbers")}</label>
         <label className="lhs-check">
           <input
             type="checkbox"
@@ -1151,9 +1115,9 @@ export default function LetterheadStudio({
             disabled={!canWrite}
             onChange={(e) => setField('showFooterWebsite', e.target.checked)}
           />
-          {doc.templateId === 'classic-executive'
+          {adminText(doc.templateId === 'classic-executive'
             ? 'Website line'
-            : 'Website'}
+            : 'Website')}
         </label>
         {doc.templateId === 'classic-executive' ? (
           <>
@@ -1163,20 +1127,16 @@ export default function LetterheadStudio({
                 checked={doc.showQr !== false}
                 disabled={!canWrite}
                 onChange={(e) => setField('showQr', e.target.checked)}
-              />
-              QR code
-            </label>
+              />{adminText("QR code")}</label>
             {doc.showQr !== false ? (
               <div style={{marginTop: 8}}>
                 <MediaPicker
-                  label="QR code image"
+                  label={adminText("QR code image")}
                   value={doc.qrImageUrl || ''}
                   canWrite={canWrite}
                   onChange={(url) => setField('qrImageUrl', url)}
                 />
-                <p className="lhs-hint" style={{marginTop: 6}}>
-                  Upload your QR, or leave empty to use the generated / default QR.
-                </p>
+                <p className="lhs-hint" style={{marginTop: 6}}>{adminText("Upload your QR, or leave empty to use the generated / default QR.")}</p>
               </div>
             ) : null}
           </>
@@ -1187,102 +1147,94 @@ export default function LetterheadStudio({
             checked={Boolean(doc.showPageNumbers)}
             disabled={!canWrite}
             onChange={(e) => setField('showPageNumbers', e.target.checked)}
-          />
-          Page numbers
-        </label>
+          />{adminText("Page numbers")}</label>
         <label className="lhs-check">
           <input
             type="checkbox"
             checked={Boolean(doc.confidential)}
             disabled={!canWrite}
             onChange={(e) => setField('confidential', e.target.checked)}
-          />
-          Confidential mark
-        </label>
+          />{adminText("Confidential mark")}</label>
 
-        <p className="lhs-label" style={{marginTop: 14}}>
-          Footer details (editable)
-        </p>
-        <p className="lhs-help" style={{margin: '0 0 8px', fontSize: 12, color: '#5b6472'}}>
-          These lines print on the letter footer — address, email, phones, website. Leave blank to use company defaults.
-        </p>
+        <p className="lhs-label" style={{marginTop: 14}}>{adminText("Footer details (editable)")}</p>
+        <p className="lhs-help" style={{margin: '0 0 8px', fontSize: 12, color: '#5b6472'}}>{adminText("These lines print on the letter footer — address, email, phones, website. Leave blank to use company defaults.")}</p>
         <label className="lhs-field">
-          <span>Find out more label</span>
+          <span>{adminText("Find out more label")}</span>
           <input
             className="lhs-input"
             value={doc.footerCtaLabel || ''}
             disabled={!canWrite}
-            placeholder="Find out more at"
+            placeholder={adminText("Find out more at")}
             onChange={(e) => setField('footerCtaLabel', e.target.value)}
           />
         </label>
         <label className="lhs-field">
-          <span>Address line 1</span>
+          <span>{adminText("Address line 1")}</span>
           <input
             className="lhs-input"
             value={doc.footerAddressLine1 || ''}
             disabled={!canWrite}
-            placeholder="East 9 - Behind Safeer Mall"
+            placeholder={adminText("East 9 - Behind Safeer Mall")}
             onChange={(e) => setField('footerAddressLine1', e.target.value)}
           />
         </label>
         <label className="lhs-field">
-          <span>Address line 2</span>
+          <span>{adminText("Address line 2")}</span>
           <input
             className="lhs-input"
             value={doc.footerAddressLine2 || ''}
             disabled={!canWrite}
-            placeholder="Mussafah Residential, Abu Dhabi"
+            placeholder={adminText("Mussafah Residential, Abu Dhabi")}
             onChange={(e) => setField('footerAddressLine2', e.target.value)}
           />
         </label>
         <label className="lhs-field">
-          <span>Email</span>
+          <span>{adminText("Email")}</span>
           <input
             className="lhs-input"
             value={doc.footerEmail || ''}
             disabled={!canWrite}
-            placeholder="asas@asasengg.ae"
+            placeholder={adminText("asas@asasengg.ae")}
             onChange={(e) => setField('footerEmail', e.target.value)}
           />
         </label>
         <label className="lhs-field">
-          <span>PO Box</span>
+          <span>{adminText("PO Box")}</span>
           <input
             className="lhs-input"
             value={doc.footerPoBox || ''}
             disabled={!canWrite}
-            placeholder="P.O. Box 114789"
+            placeholder={adminText("P.O. Box 114789")}
             onChange={(e) => setField('footerPoBox', e.target.value)}
           />
         </label>
         <label className="lhs-field">
-          <span>Phone</span>
+          <span>{adminText("Phone")}</span>
           <input
             className="lhs-input"
             value={doc.footerPhone || ''}
             disabled={!canWrite}
-            placeholder="+971 2 63 11 320"
+            placeholder={adminText("+971 2 63 11 320")}
             onChange={(e) => setField('footerPhone', e.target.value)}
           />
         </label>
         <label className="lhs-field">
-          <span>Mobile</span>
+          <span>{adminText("Mobile")}</span>
           <input
             className="lhs-input"
             value={doc.footerMobile || ''}
             disabled={!canWrite}
-            placeholder="+971 55 410 5649"
+            placeholder={adminText("+971 55 410 5649")}
             onChange={(e) => setField('footerMobile', e.target.value)}
           />
         </label>
         <label className="lhs-field">
-          <span>Website</span>
+          <span>{adminText("Website")}</span>
           <input
             className="lhs-input"
             value={doc.footerWebsite || ''}
             disabled={!canWrite}
-            placeholder="www.asasengg.ae"
+            placeholder={adminText("www.asasengg.ae")}
             onChange={(e) => setField('footerWebsite', e.target.value)}
           />
         </label>
@@ -1292,13 +1244,13 @@ export default function LetterheadStudio({
 
       <Section
         id="document"
-        title="Document"
+        title={adminText("Document")}
         open={leftOpen.document}
         onToggle={toggleLeftSection}
         summary={documentSummary(doc)}
       >
         <label className="lhs-field">
-          <span>Title</span>
+          <span>{adminText("Title")}</span>
           <input
             className="lhs-input"
             value={doc.title || ''}
@@ -1307,20 +1259,20 @@ export default function LetterheadStudio({
           />
         </label>
         <label className="lhs-field">
-          <span>Language</span>
+          <span>{adminText("Language")}</span>
           <select
             className="lhs-input"
             value={doc.language || 'en'}
             disabled={!canWrite}
             onChange={(e) => setField('language', e.target.value)}
           >
-            <option value="en">English</option>
+            <option value="en">{adminText("English")}</option>
             <option value="ar">العربية</option>
-            <option value="bilingual">Bilingual</option>
+            <option value="bilingual">{adminText("Bilingual")}</option>
           </select>
         </label>
         <label className="lhs-field">
-          <span>Date</span>
+          <span>{adminText("Date")}</span>
           <input
             className="lhs-input"
             type="date"
@@ -1330,17 +1282,17 @@ export default function LetterheadStudio({
           />
         </label>
         <label className="lhs-field">
-          <span>Reference</span>
+          <span>{adminText("Reference")}</span>
           <input
             className="lhs-input"
             value={doc.reference || ''}
             disabled={!canWrite}
             onChange={(e) => setField('reference', e.target.value)}
-            placeholder="REF-…"
+            placeholder={adminText("REF-…")}
           />
         </label>
         <label className="lhs-field">
-          <span>Subject</span>
+          <span>{adminText("Subject")}</span>
           <input
             className="lhs-input"
             value={doc.subject || ''}
@@ -1352,13 +1304,13 @@ export default function LetterheadStudio({
 
       <Section
         id="recipient"
-        title="Recipient"
+        title={adminText("Recipient")}
         open={leftOpen.recipient}
         onToggle={toggleLeftSection}
         summary={recipientSummary(doc)}
       >
         <label className="lhs-field">
-          <span>Name</span>
+          <span>{adminText("Name")}</span>
           <input
             className="lhs-input"
             value={doc.recipientName || ''}
@@ -1367,7 +1319,7 @@ export default function LetterheadStudio({
           />
         </label>
         <label className="lhs-field">
-          <span>Company</span>
+          <span>{adminText("Company")}</span>
           <input
             className="lhs-input"
             value={doc.recipientCompany || ''}
@@ -1376,7 +1328,7 @@ export default function LetterheadStudio({
           />
         </label>
         <label className="lhs-field">
-          <span>Address</span>
+          <span>{adminText("Address")}</span>
           <textarea
             className="lhs-input"
             rows={3}
@@ -1389,32 +1341,30 @@ export default function LetterheadStudio({
           type="button"
           className="lhs-btn lhs-btn-ghost lhs-btn-block"
           onClick={() => setSelectedBlock('recipient')}
-        >
-          Focus on page
-        </button>
+        >{adminText("Focus on page")}</button>
       </Section>
 
       <Section
         id="signature"
-        title="Signature"
+        title={adminText("Signature")}
         open={leftOpen.signature}
         onToggle={toggleLeftSection}
         summary={signatureSummary(doc)}
       >
         <MediaPicker
-          label="Signature image"
+          label={adminText("Signature image")}
           value={doc.signatureImage || ''}
           canWrite={canWrite}
           onChange={(url) => setField('signatureImage', url)}
         />
         <MediaPicker
-          label="Stamp image"
+          label={adminText("Stamp image")}
           value={doc.stampImage || ''}
           canWrite={canWrite}
           onChange={(url) => setField('stampImage', url)}
         />
         <label className="lhs-field">
-          <span>Signatory name</span>
+          <span>{adminText("Signatory name")}</span>
           <input
             className="lhs-input"
             value={doc.signatoryName || ''}
@@ -1423,7 +1373,7 @@ export default function LetterheadStudio({
           />
         </label>
         <label className="lhs-field">
-          <span>Signatory title</span>
+          <span>{adminText("Signatory title")}</span>
           <input
             className="lhs-input"
             value={doc.signatoryTitle || ''}
@@ -1432,7 +1382,7 @@ export default function LetterheadStudio({
           />
         </label>
         <label className="lhs-field">
-          <span>Closing</span>
+          <span>{adminText("Closing")}</span>
           <input
             className="lhs-input"
             value={doc.closing || ''}
@@ -1444,7 +1394,7 @@ export default function LetterheadStudio({
 
       <Section
         id="page"
-        title="Page"
+        title={adminText("Page")}
         open={leftOpen.page}
         onToggle={toggleLeftSection}
         summary={pageSummary(doc)}
@@ -1455,49 +1405,43 @@ export default function LetterheadStudio({
             checked={Boolean(doc.showFooter)}
             disabled={!canWrite}
             onChange={(e) => setField('showFooter', e.target.checked)}
-          />
-          Show footer
-        </label>
+          />{adminText("Show footer")}</label>
         <label className="lhs-check">
           <input
             type="checkbox"
             checked={Boolean(doc.showPageNumbers)}
             disabled={!canWrite}
             onChange={(e) => setField('showPageNumbers', e.target.checked)}
-          />
-          Page numbers
-        </label>
+          />{adminText("Page numbers")}</label>
         <label className="lhs-check">
           <input
             type="checkbox"
             checked={Boolean(doc.confidential)}
             disabled={!canWrite}
             onChange={(e) => setField('confidential', e.target.checked)}
-          />
-          Confidential
-        </label>
+          />{adminText("Confidential")}</label>
         <label className="lhs-field">
-          <span>Footer detail</span>
+          <span>{adminText("Footer detail")}</span>
           <select
             className="lhs-input"
             value={doc.footerDetail || 'full'}
             disabled={!canWrite}
             onChange={(e) => setField('footerDetail', e.target.value)}
           >
-            <option value="full">Full</option>
-            <option value="compact">Compact</option>
-            <option value="minimal">Minimal</option>
+            <option value="full">{adminText("Full")}</option>
+            <option value="compact">{adminText("Compact")}</option>
+            <option value="minimal">{adminText("Minimal")}</option>
           </select>
         </label>
       </Section>
 
       {pageCount > 1 ? (
         <div className="lhs-pages-nav">
-          <p className="lhs-label">Pages</p>
+          <p className="lhs-label">{adminText("Pages")}</p>
           <div className="lhs-page-thumbs">
             {Array.from({length: pageCount}, (_, i) => (
               <span key={i} className="lhs-page-thumb">
-                {i + 1}
+                {adminText(i + 1)}
               </span>
             ))}
           </div>
@@ -1511,101 +1455,83 @@ export default function LetterheadStudio({
     <div className="lhs-inspector">
       {!selectedBlock ? (
         <>
-          <h3>Document</h3>
+          <h3>{adminText("Document")}</h3>
           <dl className="lhs-overview">
             <div>
-              <dt>Pages</dt>
-              <dd>{pageCount}</dd>
+              <dt>{adminText("Pages")}</dt>
+              <dd>{adminText(pageCount)}</dd>
             </div>
             <div>
-              <dt>Template</dt>
-              <dd>{tplName(doc.templateId)}</dd>
+              <dt>{adminText("Template")}</dt>
+              <dd>{adminText(tplName(doc.templateId))}</dd>
             </div>
             <div>
-              <dt>Language</dt>
-              <dd>{String(doc.language || 'en').toUpperCase()}</dd>
+              <dt>{adminText("Language")}</dt>
+              <dd>{adminText(String(doc.language || 'en').toUpperCase())}</dd>
             </div>
             <div>
-              <dt>Status</dt>
-              <dd>{statusLabel(doc.status)}</dd>
+              <dt>{adminText("Status")}</dt>
+              <dd>{adminText(statusLabel(doc.status))}</dd>
             </div>
             <div>
-              <dt>Zoom</dt>
-              <dd>{Math.round(zoom * 100)}%</dd>
+              <dt>{adminText("Zoom")}</dt>
+              <dd>{adminText(Math.round(zoom * 100))}%</dd>
             </div>
           </dl>
-          <p className="lhs-hint">
-            Click any block on the letter to inspect it. The page is your primary editor.
-          </p>
+          <p className="lhs-hint">{adminText("Click any block on the letter to inspect it. The page is your primary editor.")}</p>
         </>
       ) : null}
 
       {selectedBlock === 'body' ? (
         <>
-          <h3>Text</h3>
-          <p className="lhs-hint">
-            Use the Word toolbar above for formatting, lists, links, and tables.
-          </p>
+          <h3>{adminText("Text")}</h3>
+          <p className="lhs-hint">{adminText("Use the Word toolbar above for formatting, lists, links, and tables.")}</p>
           {editor && inTable ? (
             <div className="lhs-table-controls">
-              <p className="lhs-label">Table</p>
+              <p className="lhs-label">{adminText("Table")}</p>
               <div className="lhs-table-actions">
                 <button
                   type="button"
                   className="lhs-btn lhs-btn-ghost"
                   disabled={!canWrite}
                   onClick={() => editor.chain().focus().addRowBefore().run()}
-                >
-                  Row before
-                </button>
+                >{adminText("Row before")}</button>
                 <button
                   type="button"
                   className="lhs-btn lhs-btn-ghost"
                   disabled={!canWrite}
                   onClick={() => editor.chain().focus().addRowAfter().run()}
-                >
-                  Row after
-                </button>
+                >{adminText("Row after")}</button>
                 <button
                   type="button"
                   className="lhs-btn lhs-btn-ghost"
                   disabled={!canWrite}
                   onClick={() => editor.chain().focus().deleteRow().run()}
-                >
-                  Delete row
-                </button>
+                >{adminText("Delete row")}</button>
                 <button
                   type="button"
                   className="lhs-btn lhs-btn-ghost"
                   disabled={!canWrite}
                   onClick={() => editor.chain().focus().addColumnBefore().run()}
-                >
-                  Col before
-                </button>
+                >{adminText("Col before")}</button>
                 <button
                   type="button"
                   className="lhs-btn lhs-btn-ghost"
                   disabled={!canWrite}
                   onClick={() => editor.chain().focus().addColumnAfter().run()}
-                >
-                  Col after
-                </button>
+                >{adminText("Col after")}</button>
                 <button
                   type="button"
                   className="lhs-btn lhs-btn-ghost"
                   disabled={!canWrite}
                   onClick={() => editor.chain().focus().deleteColumn().run()}
-                >
-                  Delete col
-                </button>
+                >{adminText("Delete col")}</button>
                 <button
                   type="button"
                   className="lhs-btn lhs-btn-ghost"
                   disabled={!canWrite}
                   onClick={() => editor.chain().focus().deleteTable().run()}
-                >
-                  Delete table
-                </button>
+                >{adminText("Delete table")}</button>
               </div>
             </div>
           ) : null}
@@ -1614,15 +1540,15 @@ export default function LetterheadStudio({
 
       {selectedBlock === 'signature' ? (
         <>
-          <h3>Signature</h3>
+          <h3>{adminText("Signature")}</h3>
           <MediaPicker
-            label="Signature"
+            label={adminText("Signature")}
             value={doc.signatureImage || ''}
             canWrite={canWrite}
             onChange={(url) => setField('signatureImage', url)}
           />
           <MediaPicker
-            label="Stamp"
+            label={adminText("Stamp")}
             value={doc.stampImage || ''}
             canWrite={canWrite}
             onChange={(url) => setField('stampImage', url)}
@@ -1633,9 +1559,7 @@ export default function LetterheadStudio({
               className="lhs-btn lhs-btn-ghost lhs-btn-block"
               disabled={!canWrite}
               onClick={() => setField('signatureImage', '')}
-            >
-              Remove signature
-            </button>
+            >{adminText("Remove signature")}</button>
           ) : null}
         </>
       ) : null}
@@ -1645,13 +1569,13 @@ export default function LetterheadStudio({
       selectedBlock === 'subject' ? (
         <>
           <h3>
-            {selectedBlock === 'recipient'
+            {adminText(selectedBlock === 'recipient'
               ? 'Recipient'
               : selectedBlock === 'meta'
                 ? 'Reference'
-                : 'Subject'}
+                : 'Subject')}
           </h3>
-          <p className="lhs-hint">Edit on the page</p>
+          <p className="lhs-hint">{adminText("Edit on the page")}</p>
         </>
       ) : null}
     </div>
@@ -1667,8 +1591,7 @@ export default function LetterheadStudio({
       <header className="lhs-topbar no-print">
         <div className="lhs-topbar-left">
           <button type="button" className="lhs-btn lhs-btn-ghost" onClick={goList}>
-            <ArrowLeft size={16} /> Back
-          </button>
+            <ArrowLeft size={16} />{adminText(" Back")}</button>
           <div className="lhs-title-wrap">
             <input
               ref={titleInputRef}
@@ -1676,18 +1599,18 @@ export default function LetterheadStudio({
               value={doc.title || ''}
               disabled={!canWrite}
               onChange={(e) => setField('title', e.target.value)}
-              placeholder="Document name"
-              aria-label="Document name"
+              placeholder={adminText("Document name")}
+              aria-label={adminText("Document name")}
             />
             <span className={`lhs-save-pill lhs-save-${saveState}`}>
               {saveState === 'saved' ? <Check size={12} /> : null}
-              {saveLabel}
+              {adminText(saveLabel)}
             </span>
           </div>
         </div>
 
         <div className="lhs-topbar-center">
-          <button type="button" className="lhs-icon-btn" onClick={zoomOut} aria-label="Zoom out">
+          <button type="button" className="lhs-icon-btn" onClick={zoomOut} aria-label={adminText("Zoom out")}>
             <ZoomOut size={16} />
           </button>
           <ZoomMenu
@@ -1696,17 +1619,15 @@ export default function LetterheadStudio({
             onSelect={setZoom}
             onFit={(z) => setZoom(z)}
           />
-          <button type="button" className="lhs-icon-btn" onClick={zoomIn} aria-label="Zoom in">
+          <button type="button" className="lhs-icon-btn" onClick={zoomIn} aria-label={adminText("Zoom in")}>
             <ZoomIn size={16} />
           </button>
           <button
             type="button"
             className="lhs-btn lhs-btn-ghost lhs-hide-sm"
             onClick={fitWidth}
-            title="Fit width"
-          >
-            Fit Width
-          </button>
+            title={adminText("Fit width")}
+          >{adminText("Fit Width")}</button>
         </div>
 
         <div className="lhs-topbar-right">
@@ -1725,40 +1646,34 @@ export default function LetterheadStudio({
               });
               setMobilePanel(null);
             }}
-            title="Focus Mode"
+            title={adminText("Focus Mode")}
           >
-            <Focus size={16} /> Focus Mode
-          </button>
+            <Focus size={16} />{adminText(" Focus Mode")}</button>
           <button
             type="button"
             className="lhs-btn lhs-btn-ghost lhs-hide-sm"
             onClick={() => setViewMode('preview')}
           >
-            <Eye size={16} /> Preview
-          </button>
+            <Eye size={16} />{adminText(" Preview")}</button>
           <button
             type="button"
             className="lhs-btn lhs-btn-ghost lhs-hide-sm"
             onClick={prepareAndPrint}
           >
-            <Printer size={16} /> Print
-          </button>
+            <Printer size={16} />{adminText(" Print")}</button>
           <button
             type="button"
             className="lhs-btn lhs-btn-secondary lhs-hide-sm"
             onClick={downloadPdfFile}
           >
-            <Download size={16} /> Download PDF
-          </button>
+            <Download size={16} />{adminText(" Download PDF")}</button>
           {canWrite ? (
             <button
               type="button"
               className="lhs-btn lhs-btn-ghost"
               disabled={saving}
               onClick={() => save('draft')}
-            >
-              Save Draft
-            </button>
+            >{adminText("Save Draft")}</button>
           ) : null}
           {canWrite ? (
             <button
@@ -1766,16 +1681,14 @@ export default function LetterheadStudio({
               className="lhs-btn lhs-btn-primary"
               disabled={saving}
               onClick={() => save('final')}
-            >
-              Mark Final
-            </button>
+            >{adminText("Mark Final")}</button>
           ) : null}
           <div className="lhs-more" ref={moreRef}>
             <button
               type="button"
               className="lhs-icon-btn"
               onClick={() => setMoreOpen((v) => !v)}
-              aria-label="More"
+              aria-label={adminText("More")}
               aria-expanded={moreOpen}
             >
               <MoreHorizontal size={18} />
@@ -1788,30 +1701,22 @@ export default function LetterheadStudio({
                     setMoreOpen(false);
                     setViewMode('preview');
                   }}
-                >
-                  Preview
-                </button>
+                >{adminText("Preview")}</button>
                 <button
                   type="button"
                   onClick={() => {
                     setMoreOpen(false);
                     prepareAndPrint();
                   }}
-                >
-                  Print
-                </button>
-                <button type="button" onClick={downloadPdfFile}>
-                  Download PDF
-                </button>
+                >{adminText("Print")}</button>
+                <button type="button" onClick={downloadPdfFile}>{adminText("Download PDF")}</button>
                 <button
                   type="button"
                   onClick={() => {
                     setMoreOpen(false);
                     exportPdfPrint();
                   }}
-                >
-                  Print → Save as PDF
-                </button>
+                >{adminText("Print → Save as PDF")}</button>
                 <button
                   type="button"
                   onClick={() => {
@@ -1819,7 +1724,7 @@ export default function LetterheadStudio({
                     setFocusMode((v) => !v);
                   }}
                 >
-                  {focusMode ? 'Exit Focus Mode' : 'Focus Mode'}
+                  {adminText(focusMode ? 'Exit Focus Mode' : 'Focus Mode')}
                 </button>
                 <button
                   type="button"
@@ -1828,14 +1733,10 @@ export default function LetterheadStudio({
                     setLeftCollapsed((v) => !v);
                   }}
                 >
-                  {leftCollapsed ? 'Show tools' : 'Hide tools'}
+                  {adminText(leftCollapsed ? 'Show tools' : 'Hide tools')}
                 </button>
-                <button type="button" disabled={!canWrite || !doc.id} onClick={onDuplicate}>
-                  Duplicate
-                </button>
-                <button type="button" disabled={!canWrite || !doc.id} onClick={onArchive}>
-                  Archive
-                </button>
+                <button type="button" disabled={!canWrite || !doc.id} onClick={onDuplicate}>{adminText("Duplicate")}</button>
+                <button type="button" disabled={!canWrite || !doc.id} onClick={onArchive}>{adminText("Archive")}</button>
               </div>
             ) : null}
           </div>
@@ -1847,7 +1748,7 @@ export default function LetterheadStudio({
         <LetterheadToolbar editor={editor} canWrite={canWrite} dir={dir} />
       ) : (
         <div className="lhs-word-toolbar lhs-word-toolbar-placeholder no-print" aria-hidden>
-          <span className="lhs-muted">Preparing editor…</span>
+          <span className="lhs-muted">{adminText("Preparing editor…")}</span>
         </div>
       )}
 
@@ -1864,17 +1765,17 @@ export default function LetterheadStudio({
             style={{width: RAIL_WIDTH, minWidth: RAIL_WIDTH}}
           >
             <div className="lhs-rail-head">
-              <strong>Tools</strong>
+              <strong>{adminText("Tools")}</strong>
               <button
                 type="button"
                 className="lhs-icon-btn"
-                aria-label="Collapse tools"
+                aria-label={adminText("Collapse tools")}
                 onClick={() => setLeftCollapsed(true)}
               >
                 <ChevronDown size={14} style={{transform: 'rotate(90deg)'}} />
               </button>
             </div>
-            {leftRail}
+            {adminText(leftRail)}
           </aside>
         ) : null}
 
@@ -1887,16 +1788,12 @@ export default function LetterheadStudio({
                 setLeftCollapsed(false);
                 setMobilePanel('tools');
               }}
-            >
-              Tools
-            </button>
+            >{adminText("Tools")}</button>
             {!focusMode ? (
-              <button type="button" onClick={() => setMobilePanel('inspector')}>
-                Inspector
-              </button>
+              <button type="button" onClick={() => setMobilePanel('inspector')}>{adminText("Inspector")}</button>
             ) : null}
             <button type="button" onClick={() => setFocusMode((v) => !v)}>
-              {focusMode ? 'Exit Focus' : 'Focus'}
+              {adminText(focusMode ? 'Exit Focus' : 'Focus')}
             </button>
           </div>
 
@@ -1905,9 +1802,7 @@ export default function LetterheadStudio({
               type="button"
               className="lhs-rail-peek no-print lhs-hide-sm"
               onClick={() => setLeftCollapsed(false)}
-            >
-              Tools
-            </button>
+            >{adminText("Tools")}</button>
           ) : null}
 
           <div className="lhs-page-sticky">
@@ -1954,7 +1849,7 @@ export default function LetterheadStudio({
             }`}
             style={{width: RAIL_WIDTH, minWidth: RAIL_WIDTH}}
           >
-            {rightInspector}
+            {adminText(rightInspector)}
           </aside>
         ) : null}
       </div>
@@ -1963,16 +1858,16 @@ export default function LetterheadStudio({
         <button
           type="button"
           className="lhs-drawer-backdrop no-print"
-          aria-label="Close panel"
+          aria-label={adminText("Close panel")}
           onClick={() => setMobilePanel(null)}
         />
       ) : null}
 
       {galleryOpen ? (
         <div className="lhs-gallery-backdrop no-print" role="presentation">
-          <div className="lhs-gallery" role="dialog" aria-label="Template gallery">
+          <div className="lhs-gallery" role="dialog" aria-label={adminText("Template gallery")}>
             <div className="lhs-gallery-head">
-              <h2>Choose template</h2>
+              <h2>{adminText("Choose template")}</h2>
               <AdminCloseButton onClick={() => setGalleryOpen(false)} />
             </div>
             <div className="lhs-gallery-grid">
@@ -1985,13 +1880,13 @@ export default function LetterheadStudio({
                     {tpl.id === 'classic-executive' ? (
                       <div className="lhs-gallery-official">
                         <span className="lhs-go-bars" />
-                        <span className="lhs-go-asas">ASAS</span>
+                        <span className="lhs-go-asas">{adminText("ASAS")}</span>
                         <span className="lhs-go-foot" />
                       </div>
                     ) : tpl.id === 'blank-canvas' ? (
                       <div className="lhs-gallery-blank">
                         <span className="lhs-gb-guide" />
-                        <span className="lhs-gb-label">Blank A4</span>
+                        <span className="lhs-gb-label">{adminText("Blank A4")}</span>
                       </div>
                     ) : (
                       <div className="lhs-gallery-mini">
@@ -2004,13 +1899,13 @@ export default function LetterheadStudio({
                     <strong>
                       {tpl.name}
                       {tpl.id === 'classic-executive' ? (
-                        <em className="lhs-official-badge"> Your PDF</em>
+                        <em className="lhs-official-badge">{adminText(" Your PDF")}</em>
                       ) : null}
                       {tpl.id === 'blank-canvas' ? (
-                        <em className="lhs-official-badge"> Custom</em>
+                        <em className="lhs-official-badge">{adminText(" Custom")}</em>
                       ) : null}
                     </strong>
-                    <p>{tpl.description}</p>
+                    <p>{adminText(tpl.description)}</p>
                     <button
                       type="button"
                       className="lhs-btn lhs-btn-primary"
@@ -2054,7 +1949,7 @@ export default function LetterheadStudio({
                         setGalleryOpen(false);
                       }}
                     >
-                      {doc.templateId === tpl.id ? 'Selected' : 'Select'}
+                      {adminText(doc.templateId === tpl.id ? 'Selected' : 'Select')}
                     </button>
                   </div>
                 </article>

@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {
   DEFAULT_LETTERHEAD_CHROME_LAYOUT,
@@ -70,32 +72,24 @@ export default function LetterheadChromeControls({
 
   return (
     <div className="lhs-chrome-controls">
-      <p className="lhs-label" style={{marginTop: 14}}>
-        Move &amp; padding
-      </p>
-      <p className="lhs-help" style={{margin: '0 0 8px', fontSize: 12, color: '#5b6472'}}>
-        Position the header logo and footer blocks (address, email, phones, website, QR). Values are in mm.
-      </p>
+      <p className="lhs-label" style={{marginTop: 14}}>{adminText("Move & padding")}</p>
+      <p className="lhs-help" style={{margin: '0 0 8px', fontSize: 12, color: '#5b6472'}}>{adminText("Position the header logo and footer blocks (address, email, phones, website, QR). Values are in mm.")}</p>
       <button
         type="button"
         className="lhs-btn lhs-btn-ghost lhs-btn-block"
         disabled={!canWrite}
         onClick={reset}
         style={{marginBottom: 10}}
-      >
-        Reset positions
-      </button>
+      >{adminText("Reset positions")}</button>
       {GROUPS.map((group) => (
         <div key={group.title} className="lhs-chrome-group">
-          <strong>{group.title}</strong>
+          <strong>{adminText(group.title)}</strong>
           {group.items.map((item) => (
             <label key={item.key} className="lhs-field lhs-chrome-row">
               <span className="lhs-chrome-label">
-                {item.label}
+                {adminText(item.label)}
                 <em>
-                  {Number(L[item.key]).toFixed(1)}
-                  mm
-                </em>
+                  {adminText(Number(L[item.key]).toFixed(1))}{adminText("mm")}</em>
               </span>
               <input
                 type="range"

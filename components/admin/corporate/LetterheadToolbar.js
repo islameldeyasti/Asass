@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {
   AlignCenter,
@@ -29,8 +31,8 @@ function Btn({title, onClick, active, disabled, children}) {
     <button
       type="button"
       className={`lhs-tb-btn${active ? ' is-active' : ''}`}
-      title={title}
-      aria-label={title}
+      title={adminText(title)}
+      aria-label={adminText(title)}
       disabled={disabled}
       onMouseDown={(e) => {
         e.preventDefault();
@@ -66,11 +68,11 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
   }
 
   return (
-    <div className="lhs-word-toolbar no-print" role="toolbar" aria-label="Formatting">
-      <Btn title="Undo" disabled={disabled} onClick={() => editor.chain().focus().undo().run()}>
+    <div className="lhs-word-toolbar no-print" role="toolbar" aria-label={adminText("Formatting")}>
+      <Btn title={adminText("Undo")} disabled={disabled} onClick={() => editor.chain().focus().undo().run()}>
         <Undo2 size={15} />
       </Btn>
-      <Btn title="Redo" disabled={disabled} onClick={() => editor.chain().focus().redo().run()}>
+      <Btn title={adminText("Redo")} disabled={disabled} onClick={() => editor.chain().focus().redo().run()}>
         <Redo2 size={15} />
       </Btn>
       <Sep />
@@ -78,7 +80,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
       <select
         className="lhs-tb-select"
         disabled={disabled}
-        title="Paragraph style"
+        title={adminText("Paragraph style")}
         value={
           editor.isActive('heading', {level: 1})
             ? 'h1'
@@ -94,16 +96,16 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
           else editor.chain().focus().toggleHeading({level: Number(v.slice(1))}).run();
         }}
       >
-        <option value="p">Normal</option>
-        <option value="h1">Heading 1</option>
-        <option value="h2">Heading 2</option>
-        <option value="h3">Heading 3</option>
+        <option value="p">{adminText("Normal")}</option>
+        <option value="h1">{adminText("Heading 1")}</option>
+        <option value="h2">{adminText("Heading 2")}</option>
+        <option value="h3">{adminText("Heading 3")}</option>
       </select>
 
       <select
         className="lhs-tb-select"
         disabled={disabled}
-        title="Font size"
+        title={adminText("Font size")}
         defaultValue=""
         onChange={(e) => {
           const v = e.target.value;
@@ -111,7 +113,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
           else editor.chain().focus().setFontSize(v).run();
         }}
       >
-        <option value="">Size</option>
+        <option value="">{adminText("Size")}</option>
         <option value="10pt">10</option>
         <option value="11pt">11</option>
         <option value="12pt">12</option>
@@ -123,14 +125,14 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
       <select
         className="lhs-tb-select"
         disabled={disabled}
-        title="Line spacing"
+        title={adminText("Line spacing")}
         defaultValue=""
         onChange={(e) => {
           const v = e.target.value;
           if (v) editor.chain().focus().setLineHeight(v).run();
         }}
       >
-        <option value="">Spacing</option>
+        <option value="">{adminText("Spacing")}</option>
         <option value="1.15">1.15</option>
         <option value="1.5">1.5</option>
         <option value="1.75">1.75</option>
@@ -140,7 +142,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
       <Sep />
 
       <Btn
-        title="Bold"
+        title={adminText("Bold")}
         disabled={disabled}
         active={editor.isActive('bold')}
         onClick={() => editor.chain().focus().toggleBold().run()}
@@ -148,7 +150,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <Bold size={15} />
       </Btn>
       <Btn
-        title="Italic"
+        title={adminText("Italic")}
         disabled={disabled}
         active={editor.isActive('italic')}
         onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -156,7 +158,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <Italic size={15} />
       </Btn>
       <Btn
-        title="Underline"
+        title={adminText("Underline")}
         disabled={disabled}
         active={editor.isActive('underline')}
         onClick={() => editor.chain().focus().toggleUnderline().run()}
@@ -164,7 +166,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <Underline size={15} />
       </Btn>
       <Btn
-        title="Strikethrough"
+        title={adminText("Strikethrough")}
         disabled={disabled}
         active={editor.isActive('strike')}
         onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -175,7 +177,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
       <Sep />
 
       <Btn
-        title="Align left"
+        title={adminText("Align left")}
         disabled={disabled}
         active={editor.isActive({textAlign: 'left'})}
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
@@ -183,7 +185,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <AlignLeft size={15} />
       </Btn>
       <Btn
-        title="Align center"
+        title={adminText("Align center")}
         disabled={disabled}
         active={editor.isActive({textAlign: 'center'})}
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
@@ -191,7 +193,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <AlignCenter size={15} />
       </Btn>
       <Btn
-        title="Align right"
+        title={adminText("Align right")}
         disabled={disabled}
         active={editor.isActive({textAlign: 'right'})}
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
@@ -199,7 +201,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <AlignRight size={15} />
       </Btn>
       <Btn
-        title="Justify"
+        title={adminText("Justify")}
         disabled={disabled}
         active={editor.isActive({textAlign: 'justify'})}
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
@@ -210,7 +212,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
       <Sep />
 
       <Btn
-        title="Bullets"
+        title={adminText("Bullets")}
         disabled={disabled}
         active={editor.isActive('bulletList')}
         onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -218,7 +220,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <List size={15} />
       </Btn>
       <Btn
-        title="Numbered list"
+        title={adminText("Numbered list")}
         disabled={disabled}
         active={editor.isActive('orderedList')}
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
@@ -226,14 +228,14 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <ListOrdered size={15} />
       </Btn>
       <Btn
-        title="Indent"
+        title={adminText("Indent")}
         disabled={disabled}
         onClick={() => editor.chain().focus().sinkListItem('listItem').run()}
       >
         <IndentIncrease size={15} />
       </Btn>
       <Btn
-        title="Outdent"
+        title={adminText("Outdent")}
         disabled={disabled}
         onClick={() => editor.chain().focus().liftListItem('listItem').run()}
       >
@@ -242,11 +244,11 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
 
       <Sep />
 
-      <Btn title="Link" disabled={disabled} active={editor.isActive('link')} onClick={setLink}>
+      <Btn title={adminText("Link")} disabled={disabled} active={editor.isActive('link')} onClick={setLink}>
         <Link2 size={15} />
       </Btn>
       <Btn
-        title="Insert table"
+        title={adminText("Insert table")}
         disabled={disabled}
         onClick={() =>
           editor.chain().focus().insertTable({rows: 3, cols: 3, withHeaderRow: true}).run()
@@ -255,21 +257,21 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <Table size={15} />
       </Btn>
       <Btn
-        title="Horizontal rule"
+        title={adminText("Horizontal rule")}
         disabled={disabled}
         onClick={() => editor.chain().focus().setHorizontalRule().run()}
       >
         ―
       </Btn>
       <Btn
-        title="Page break"
+        title={adminText("Page break")}
         disabled={disabled}
         onClick={() => editor.chain().focus().setPageBreak().run()}
       >
         ⤵
       </Btn>
       <Btn
-        title="Clear formatting"
+        title={adminText("Clear formatting")}
         disabled={disabled}
         onClick={() => editor.chain().focus().unsetAllMarks().clearNodes().run()}
       >
@@ -279,7 +281,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
       <Sep />
 
       <Btn
-        title="Paragraph"
+        title={adminText("Paragraph")}
         disabled={disabled}
         active={editor.isActive('paragraph')}
         onClick={() => editor.chain().focus().setParagraph().run()}
@@ -287,7 +289,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <Pilcrow size={15} />
       </Btn>
       <Btn
-        title="Heading 1"
+        title={adminText("Heading 1")}
         disabled={disabled}
         active={editor.isActive('heading', {level: 1})}
         onClick={() => editor.chain().focus().toggleHeading({level: 1}).run()}
@@ -295,7 +297,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <Heading1 size={15} />
       </Btn>
       <Btn
-        title="Heading 2"
+        title={adminText("Heading 2")}
         disabled={disabled}
         active={editor.isActive('heading', {level: 2})}
         onClick={() => editor.chain().focus().toggleHeading({level: 2}).run()}
@@ -303,7 +305,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <Heading2 size={15} />
       </Btn>
       <Btn
-        title="Heading 3"
+        title={adminText("Heading 3")}
         disabled={disabled}
         active={editor.isActive('heading', {level: 3})}
         onClick={() => editor.chain().focus().toggleHeading({level: 3}).run()}
@@ -311,7 +313,7 @@ export default function LetterheadToolbar({editor, canWrite = false, dir = 'ltr'
         <Heading3 size={15} />
       </Btn>
 
-      <span className="lhs-tb-dir">{dir === 'rtl' ? 'RTL' : 'LTR'}</span>
+      <span className="lhs-tb-dir">{adminText(dir === 'rtl' ? 'RTL' : 'LTR')}</span>
     </div>
   );
 }

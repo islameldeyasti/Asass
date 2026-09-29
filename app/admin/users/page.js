@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {listUsers, toPublicUser} from '@/lib/cms/users-store';
@@ -15,8 +17,8 @@ export default async function AdminUsersPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Users & roles"
-      subtitle="Control who can edit content and SEO"
+      title={adminText("Users & roles")}
+      subtitle={adminText("Control who can edit content and SEO")}
     >
       <UsersManager initialUsers={users} canWrite={canWrite} />
     </AdminShell>

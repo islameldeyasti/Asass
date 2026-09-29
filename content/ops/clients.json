@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ocl_demo_aldar",
+    "nameEn": "Al Dar Developments",
+    "nameAr": "الدار للتطوير",
+    "code": "CL-ALD",
+    "contactName": "Ahmed Rashed",
+    "email": "projects@aldar.example",
+    "phone": "+97126100000",
+    "address": "Abu Dhabi, UAE",
+    "country": "UAE",
+    "notes": "Demo client",
+    "websiteClientId": null,
+    "active": true,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  },
+  {
+    "id": "ocl_demo_emaar",
+    "nameEn": "Emaar Properties",
+    "nameAr": "إعمار العقارية",
+    "code": "CL-EMR",
+    "contactName": "Fatima Al Zaabi",
+    "email": "delivery@emaar.example",
+    "phone": "+97143670000",
+    "address": "Dubai, UAE",
+    "country": "UAE",
+    "notes": "Demo client",
+    "websiteClientId": null,
+    "active": true,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  },
+  {
+    "id": "ocl_demo_gov",
+    "nameEn": "Municipal Infrastructure Authority",
+    "nameAr": "هيئة البنية التحتية",
+    "code": "CL-MIA",
+    "contactName": "Khalid Mansour",
+    "email": "tenders@mia.example",
+    "phone": "+97126700000",
+    "address": "Abu Dhabi, UAE",
+    "country": "UAE",
+    "notes": "Demo public-sector client",
+    "websiteClientId": null,
+    "active": true,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  }
+]

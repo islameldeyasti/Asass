@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useState} from 'react';
 import {useRouter} from 'next/navigation';
@@ -93,16 +95,11 @@ export default function FooterManager({initialValue, canWrite = false}) {
 
   return (
     <form className="adm-card" onSubmit={onSave}>
-      {error ? <p className="adm-error">{error}</p> : null}
-      {message ? <p className="adm-success">{message}</p> : null}
+      {error ? <p className="adm-error">{adminText(error)}</p> : null}
+      {message ? <p className="adm-success">{adminText(message)}</p> : null}
 
-      <h2 className="adm-section-title" style={{marginTop: 0}}>
-        Company links
-      </h2>
-      <p className="adm-section-help">
-        These links appear in the website footer. Logo is managed in Settings → Branding. Contact
-        details come from Settings → Contact.
-      </p>
+      <h2 className="adm-section-title" style={{marginTop: 0}}>{adminText("Company links")}</h2>
+      <p className="adm-section-help">{adminText("These links appear in the website footer. Logo is managed in Settings → Branding. Contact details come from Settings → Contact.")}</p>
 
       <div className="adm-link-list">
         {links.map((link, index) => {
@@ -111,16 +108,16 @@ export default function FooterManager({initialValue, canWrite = false}) {
           return (
             <div key={link.id || index} className="adm-link-row">
               <div className="adm-link-order">
-                <button type="button" className="adm-btn-ghost" disabled={!canWrite} onClick={() => moveLink(i, -1)} aria-label="Move up">
+                <button type="button" className="adm-btn-ghost" disabled={!canWrite} onClick={() => moveLink(i, -1)} aria-label={adminText("Move up")}>
                   ↑
                 </button>
-                <button type="button" className="adm-btn-ghost" disabled={!canWrite} onClick={() => moveLink(i, 1)} aria-label="Move down">
+                <button type="button" className="adm-btn-ghost" disabled={!canWrite} onClick={() => moveLink(i, 1)} aria-label={adminText("Move down")}>
                   ↓
                 </button>
               </div>
               <div className="adm-grid-2" style={{flex: 1}}>
                 <div className="adm-field" style={{marginBottom: 0}}>
-                  <label>Label (English)</label>
+                  <label>{adminText("Label (English)")}</label>
                   <input
                     value={link.labelEn || ''}
                     disabled={!canWrite}
@@ -128,7 +125,7 @@ export default function FooterManager({initialValue, canWrite = false}) {
                   />
                 </div>
                 <div className="adm-field" style={{marginBottom: 0}}>
-                  <label>Label (Arabic)</label>
+                  <label>{adminText("Label (Arabic)")}</label>
                   <input
                     dir="rtl"
                     value={link.labelAr || ''}
@@ -137,11 +134,11 @@ export default function FooterManager({initialValue, canWrite = false}) {
                   />
                 </div>
                 <div className="adm-field" style={{marginBottom: 0}}>
-                  <label>Page</label>
+                  <label>{adminText("Page")}</label>
                   <input
                     value={link.path || ''}
                     disabled={!canWrite}
-                    placeholder="about"
+                    placeholder={adminText("about")}
                     onChange={(e) => updateLink(i, {path: e.target.value})}
                   />
                 </div>
@@ -154,14 +151,12 @@ export default function FooterManager({initialValue, canWrite = false}) {
                       onChange={(e) => updateLink(i, {hidden: !e.target.checked})}
                     />
                     <span className="adm-switch-track" aria-hidden />
-                    <span>{link.hidden ? 'Hidden' : 'Visible'}</span>
+                    <span>{adminText(link.hidden ? 'Hidden' : 'Visible')}</span>
                   </label>
                 </div>
               </div>
               {canWrite ? (
-                <button type="button" className="adm-btn-danger" onClick={() => removeLink(i)}>
-                  Remove
-                </button>
+                <button type="button" className="adm-btn-danger" onClick={() => removeLink(i)}>{adminText("Remove")}</button>
               ) : null}
             </div>
           );
@@ -169,16 +164,14 @@ export default function FooterManager({initialValue, canWrite = false}) {
       </div>
 
       {canWrite ? (
-        <button type="button" className="adm-btn-ghost" style={{marginTop: 12}} onClick={addLink}>
-          Add link
-        </button>
+        <button type="button" className="adm-btn-ghost" style={{marginTop: 12}} onClick={addLink}>{adminText("Add link")}</button>
       ) : null}
 
-      <h2 className="adm-section-title">Call-to-action band</h2>
-      <p className="adm-section-help">Optional. Leave blank to keep the default website wording.</p>
+      <h2 className="adm-section-title">{adminText("Call-to-action band")}</h2>
+      <p className="adm-section-help">{adminText("Optional. Leave blank to keep the default website wording.")}</p>
       <div className="adm-grid-2">
         <div className="adm-field">
-          <label>Eyebrow (English)</label>
+          <label>{adminText("Eyebrow (English)")}</label>
           <input
             value={doc.cta?.eyebrowEn || ''}
             disabled={!canWrite}
@@ -186,7 +179,7 @@ export default function FooterManager({initialValue, canWrite = false}) {
           />
         </div>
         <div className="adm-field">
-          <label>Eyebrow (Arabic)</label>
+          <label>{adminText("Eyebrow (Arabic)")}</label>
           <input
             dir="rtl"
             value={doc.cta?.eyebrowAr || ''}
@@ -195,7 +188,7 @@ export default function FooterManager({initialValue, canWrite = false}) {
           />
         </div>
         <div className="adm-field">
-          <label>Title (English)</label>
+          <label>{adminText("Title (English)")}</label>
           <input
             value={doc.cta?.titleEn || ''}
             disabled={!canWrite}
@@ -203,7 +196,7 @@ export default function FooterManager({initialValue, canWrite = false}) {
           />
         </div>
         <div className="adm-field">
-          <label>Title (Arabic)</label>
+          <label>{adminText("Title (Arabic)")}</label>
           <input
             dir="rtl"
             value={doc.cta?.titleAr || ''}
@@ -213,11 +206,11 @@ export default function FooterManager({initialValue, canWrite = false}) {
         </div>
       </div>
       <div className="adm-field">
-        <label>Button page</label>
+        <label>{adminText("Button page")}</label>
         <input
           value={doc.cta?.href || ''}
           disabled={!canWrite}
-          placeholder="project-enquiry"
+          placeholder={adminText("project-enquiry")}
           onChange={(e) => updateCta({href: e.target.value})}
         />
       </div>
@@ -225,13 +218,11 @@ export default function FooterManager({initialValue, canWrite = false}) {
       {canWrite ? (
         <div style={{marginTop: 16}}>
           <button type="submit" className="adm-btn" disabled={saving}>
-            {saving ? 'Saving…' : 'Save footer'}
+            {adminText(saving ? 'Saving…' : 'Save footer')}
           </button>
         </div>
       ) : (
-        <p className="adm-section-help" style={{marginTop: 16}}>
-          Read-only for your role.
-        </p>
+        <p className="adm-section-help" style={{marginTop: 16}}>{adminText("Read-only for your role.")}</p>
       )}
     </form>
   );

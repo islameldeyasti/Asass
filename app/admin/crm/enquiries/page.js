@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {listEnquiries} from '@/lib/cms/content-service';
@@ -15,13 +17,13 @@ export default async function AdminCrmEnquiriesPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Enquiries"
-      subtitle={`${items.length} in CRM pipeline`}
+      title={adminText("Enquiries")}
+      subtitle={adminText(`${items.length} in CRM pipeline`)}
       breadcrumb={
-        <nav className="cms-breadcrumb" aria-label="Breadcrumb">
-          <span>CRM</span>
+        <nav className="cms-breadcrumb" aria-label={adminText("Breadcrumb")}>
+          <span>{adminText("CRM")}</span>
           <span aria-hidden>/</span>
-          <span>Enquiries</span>
+          <span>{adminText("Enquiries")}</span>
         </nav>
       }
     >

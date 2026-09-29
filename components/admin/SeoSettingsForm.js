@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useState} from 'react';
 import MediaPicker from '@/components/admin/media/MediaPicker';
@@ -41,16 +43,14 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
 
   return (
     <form className="cms-card cms-stack" onSubmit={onSubmit}>
-      {error ? <p className="adm-error">{error}</p> : null}
-      {message ? <p className="adm-success">{message}</p> : null}
+      {error ? <p className="adm-error">{adminText(error)}</p> : null}
+      {message ? <p className="adm-success">{adminText(message)}</p> : null}
 
       <div>
-        <h2 className="cms-dash-section-title" style={{marginTop: 0}}>
-          Site identity
-        </h2>
+        <h2 className="cms-dash-section-title" style={{marginTop: 0}}>{adminText("Site identity")}</h2>
         <div className="cms-grid-2">
           <div className="cms-field">
-            <label htmlFor="siteNameEn">Site name (EN)</label>
+            <label htmlFor="siteNameEn">{adminText("Site name (EN)")}</label>
             <input
               id="siteNameEn"
               value={settings.siteNameEn || ''}
@@ -59,7 +59,7 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
             />
           </div>
           <div className="cms-field">
-            <label htmlFor="siteNameAr">Site name (AR)</label>
+            <label htmlFor="siteNameAr">{adminText("Site name (AR)")}</label>
             <input
               id="siteNameAr"
               value={settings.siteNameAr || ''}
@@ -72,10 +72,10 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
       </div>
 
       <div>
-        <h2 className="cms-dash-section-title">Default metadata</h2>
+        <h2 className="cms-dash-section-title">{adminText("Default metadata")}</h2>
         <div className="cms-grid-2">
           <div className="cms-field">
-            <label htmlFor="defaultTitleEn">Default title (EN)</label>
+            <label htmlFor="defaultTitleEn">{adminText("Default title (EN)")}</label>
             <input
               id="defaultTitleEn"
               value={settings.defaultTitleEn || ''}
@@ -84,7 +84,7 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
             />
           </div>
           <div className="cms-field">
-            <label htmlFor="defaultTitleAr">Default title (AR)</label>
+            <label htmlFor="defaultTitleAr">{adminText("Default title (AR)")}</label>
             <input
               id="defaultTitleAr"
               value={settings.defaultTitleAr || ''}
@@ -94,28 +94,28 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
             />
           </div>
           <div className="cms-field">
-            <label htmlFor="titleTemplateEn">Title template (EN)</label>
+            <label htmlFor="titleTemplateEn">{adminText("Title template (EN)")}</label>
             <input
               id="titleTemplateEn"
               value={settings.titleTemplateEn || ''}
               onChange={(e) => setField('titleTemplateEn', e.target.value)}
               disabled={!canWrite}
-              placeholder="%page% | ASAS Engineering"
+              placeholder={adminText("%page% | ASAS Engineering")}
             />
           </div>
           <div className="cms-field">
-            <label htmlFor="titleTemplateAr">Title template (AR)</label>
+            <label htmlFor="titleTemplateAr">{adminText("Title template (AR)")}</label>
             <input
               id="titleTemplateAr"
               value={settings.titleTemplateAr || ''}
               onChange={(e) => setField('titleTemplateAr', e.target.value)}
               disabled={!canWrite}
               dir="rtl"
-              placeholder="%page% | أساس للهندسة"
+              placeholder={adminText("%page% | أساس للهندسة")}
             />
           </div>
           <div className="cms-field">
-            <label htmlFor="defaultDescriptionEn">Default description (EN)</label>
+            <label htmlFor="defaultDescriptionEn">{adminText("Default description (EN)")}</label>
             <textarea
               id="defaultDescriptionEn"
               value={settings.defaultDescriptionEn || ''}
@@ -125,7 +125,7 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
             />
           </div>
           <div className="cms-field">
-            <label htmlFor="defaultDescriptionAr">Default description (AR)</label>
+            <label htmlFor="defaultDescriptionAr">{adminText("Default description (AR)")}</label>
             <textarea
               id="defaultDescriptionAr"
               value={settings.defaultDescriptionAr || ''}
@@ -139,10 +139,10 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
       </div>
 
       <div>
-        <h2 className="cms-dash-section-title">Technical SEO</h2>
+        <h2 className="cms-dash-section-title">{adminText("Technical SEO")}</h2>
         <div className="cms-grid-2">
           <div className="cms-field">
-            <label htmlFor="canonicalBase">Canonical base URL</label>
+            <label htmlFor="canonicalBase">{adminText("Canonical base URL")}</label>
             <input
               id="canonicalBase"
               value={settings.canonicalBase || ''}
@@ -151,7 +151,7 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
             />
           </div>
           <MediaPicker
-            label="Default OG image"
+            label={adminText("Default OG image")}
             value={settings.defaultOgImage || ''}
             onChange={(url) => setField('defaultOgImage', url)}
             mode="IMAGE"
@@ -159,27 +159,27 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
             cropAspect={1.91}
           />
           <div className="cms-field">
-            <label htmlFor="googleAnalyticsId">Google Analytics ID</label>
+            <label htmlFor="googleAnalyticsId">{adminText("Google Analytics ID")}</label>
             <input
               id="googleAnalyticsId"
               value={settings.googleAnalyticsId || ''}
               onChange={(e) => setField('googleAnalyticsId', e.target.value)}
               disabled={!canWrite}
-              placeholder="G-XXXXXXXX"
+              placeholder={adminText("G-XXXXXXXX")}
             />
           </div>
           <div className="cms-field">
-            <label htmlFor="googleTagManagerId">Google Tag Manager ID</label>
+            <label htmlFor="googleTagManagerId">{adminText("Google Tag Manager ID")}</label>
             <input
               id="googleTagManagerId"
               value={settings.googleTagManagerId || ''}
               onChange={(e) => setField('googleTagManagerId', e.target.value)}
               disabled={!canWrite}
-              placeholder="GTM-XXXXXXX"
+              placeholder={adminText("GTM-XXXXXXX")}
             />
           </div>
           <div className="cms-field">
-            <label htmlFor="searchConsoleVerification">Search Console verification</label>
+            <label htmlFor="searchConsoleVerification">{adminText("Search Console verification")}</label>
             <input
               id="searchConsoleVerification"
               value={settings.searchConsoleVerification || ''}
@@ -188,7 +188,7 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
             />
           </div>
           <div className="cms-field">
-            <label htmlFor="metaPixelId">Meta Pixel ID</label>
+            <label htmlFor="metaPixelId">{adminText("Meta Pixel ID")}</label>
             <input
               id="metaPixelId"
               value={settings.metaPixelId || ''}
@@ -205,36 +205,30 @@ export default function SeoSettingsForm({initialSettings, canWrite}) {
               checked={Boolean(settings.robotsIndex)}
               onChange={(e) => setField('robotsIndex', e.target.checked)}
               disabled={!canWrite}
-            />
-            Allow indexing
-          </label>
+            />{adminText("Allow indexing")}</label>
           <label className="cms-check">
             <input
               type="checkbox"
               checked={Boolean(settings.robotsFollow)}
               onChange={(e) => setField('robotsFollow', e.target.checked)}
               disabled={!canWrite}
-            />
-            Allow follow
-          </label>
+            />{adminText("Allow follow")}</label>
           <label className="cms-check">
             <input
               type="checkbox"
               checked={Boolean(settings.organizationJsonLd)}
               onChange={(e) => setField('organizationJsonLd', e.target.checked)}
               disabled={!canWrite}
-            />
-            Organization JSON-LD
-          </label>
+            />{adminText("Organization JSON-LD")}</label>
         </div>
       </div>
 
       {canWrite ? (
         <button className="cms-btn" type="submit" disabled={saving}>
-          {saving ? 'Saving…' : 'Save SEO settings'}
+          {adminText(saving ? 'Saving…' : 'Save SEO settings')}
         </button>
       ) : (
-        <p style={{margin: 0, color: 'var(--cms-muted)'}}>You have read-only access to SEO.</p>
+        <p style={{margin: 0, color: 'var(--cms-muted)'}}>{adminText("You have read-only access to SEO.")}</p>
       )}
     </form>
   );

@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {createContext, useCallback, useContext, useMemo, useState} from 'react';
 import {X} from 'lucide-react';
@@ -35,13 +37,13 @@ export function ToastProvider({children}) {
         {toasts.map((item) => (
           <div key={item.id} className={`cms-toast is-${item.variant}`} role="status">
             <div className="cms-toast-body">
-              {item.title ? <strong>{item.title}</strong> : null}
-              {item.description ? <p>{item.description}</p> : null}
+              {item.title ? <strong>{adminText(item.title)}</strong> : null}
+              {item.description ? <p>{adminText(item.description)}</p> : null}
             </div>
             <button
               type="button"
               className="cms-toast-close"
-              aria-label="Dismiss"
+              aria-label={adminText("Dismiss")}
               onClick={() => dismiss(item.id)}
             >
               <X size={14} />

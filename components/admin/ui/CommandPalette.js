@@ -1,7 +1,10 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import Link from 'next/link';
 import {useEffect, useMemo, useRef, useState} from 'react';
+import AdminPortal from '@/components/admin/ui/AdminPortal';
 import {
   FilePlus2,
   FolderPlus,
@@ -29,7 +32,7 @@ export default function CommandPalette({open, onClose, actions = DEFAULT_ACTIONS
     if (!q) return actions;
     return actions.filter(
       (item) =>
-        item.label.toLowerCase().includes(q) ||
+        `${item.label} ${adminText(item.label)}`.toLowerCase().includes(q) ||
         (item.hint && item.hint.toLowerCase().includes(q)) ||
         (item.href && item.href.toLowerCase().includes(q)),
     );
@@ -71,12 +74,13 @@ export default function CommandPalette({open, onClose, actions = DEFAULT_ACTIONS
   if (!open) return null;
 
   return (
+    <AdminPortal>
     <div className="cms-overlay" role="presentation" onClick={onClose}>
       <div
         className="cms-palette"
         role="dialog"
         aria-modal="true"
-        aria-label="Command palette"
+        aria-label={adminText("Command palette")}
         onClick={(event) => event.stopPropagation()}
       >
         <div className="cms-palette-input-wrap">
@@ -88,13 +92,13 @@ export default function CommandPalette({open, onClose, actions = DEFAULT_ACTIONS
               setQuery(event.target.value);
               setActive(0);
             }}
-            placeholder="Search actions…"
-            aria-label="Search actions"
+            placeholder={adminText("Search actions…")}
+            aria-label={adminText("Search actions")}
           />
         </div>
         <div className="cms-palette-list">
           {filtered.length === 0 ? (
-            <div className="cms-palette-empty">No matching actions</div>
+            <div className="cms-palette-empty">{adminText("No matching actions")}</div>
           ) : (
             filtered.map((item, index) => {
               const Icon = item.icon || FilePlus2;
@@ -107,8 +111,8 @@ export default function CommandPalette({open, onClose, actions = DEFAULT_ACTIONS
                   onMouseEnter={() => setActive(index)}
                 >
                   <Icon aria-hidden />
-                  {item.label}
-                  {item.hint ? <span>{item.hint}</span> : null}
+                  {adminText(item.label)}
+                  {item.hint ? <span>{adminText(item.hint)}</span> : null}
                 </Link>
               );
             })
@@ -116,5 +120,6 @@ export default function CommandPalette({open, onClose, actions = DEFAULT_ACTIONS
         </div>
       </div>
     </div>
+    </AdminPortal>
   );
 }

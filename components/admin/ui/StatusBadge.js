@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 export default function StatusBadge({status = 'draft', children}) {
   const value = String(status || 'draft').toLowerCase();
   const label = children || value.replace(/_/g, ' ');
@@ -5,7 +7,7 @@ export default function StatusBadge({status = 'draft', children}) {
   return (
     <span className={`cms-badge ${value}`}>
       <span className="cms-badge-dot" aria-hidden />
-      {label}
+      {adminText(label)}
     </span>
   );
 }

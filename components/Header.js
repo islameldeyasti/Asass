@@ -10,9 +10,6 @@ import ThemeLogo from '@/components/theme/ThemeLogo';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import SiteSearch from '@/components/SiteSearch';
 import {t, tNav} from '@/lib/i18n/ui';
-import {enterX} from '@/lib/motion/rtl';
-
-const EASE = [0.16, 1, 0.3, 1];
 
 const DEFAULT_NAV_ITEMS = [
   {label: 'Home', path: '', home: true},
@@ -22,15 +19,14 @@ const DEFAULT_NAV_ITEMS = [
     children: [
       {label: 'Company Profile', path: 'company-profile'},
       {label: 'Team', path: 'team'},
+      {label: 'Photos', path: 'gallery'},
+      {label: 'Videos', path: 'videos'},
     ],
   },
   {
     label: 'Gallery',
     path: 'gallery',
-    children: [
-      {label: 'Photos', path: 'gallery'},
-      {label: 'Videos', path: 'videos'},
-    ],
+    hidden: true,
   },
   {label: 'Services', path: 'services'},
   {label: 'Projects', path: 'projects'},
@@ -50,7 +46,7 @@ function navLabel(item, locale) {
   return tNav(item?.label, locale) || item?.label || '';
 }
 
-function NavDropdown({item, locale, pathname, onNavigate, delay = 0}) {
+function NavDropdown({item, locale, pathname, onNavigate}) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef(null);
   const closeTimerRef = useRef(null);
@@ -96,12 +92,10 @@ function NavDropdown({item, locale, pathname, onNavigate, delay = 0}) {
   }, [open]);
 
   return (
-    <motion.div
+    <div
       ref={rootRef}
       className={`asas-nav-item asas-nav-item--drop${open ? ' is-open' : ''}${active ? ' is-active' : ''}`}
-      initial={{opacity: 0, y: -8}}
-      animate={{opacity: 1, y: 0}}
-      transition={{duration: 0.4, delay, ease: EASE}}
+      data-tour={`nav-${item.path}`}
       onMouseEnter={openMenu}
       onMouseLeave={scheduleClose}
     >
@@ -146,7 +140,7 @@ function NavDropdown({item, locale, pathname, onNavigate, delay = 0}) {
           );
         })}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -241,19 +235,9 @@ export default function Header({locale, navItems, companyData, branding}) {
         </div>
       </div>
 
-      <motion.header
-        className="asas-header"
-        initial={{y: -10, opacity: 0}}
-        animate={{y: 0, opacity: 1}}
-        transition={{duration: 0.7, delay: 0.06, ease: EASE}}
-      >
+      <header className="asas-header">
         <div className="asas-header-inner">
-          <motion.div
-            className="asas-logo"
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            transition={{duration: 0.55, delay: 0.16, ease: EASE}}
-          >
+          <div className="asas-logo">
             <Link href={`/${locale}`} aria-label={t('homeAria', locale)} className="asas-logo-link">
               <ThemeLogo
                 width={62}
@@ -263,10 +247,10 @@ export default function Header({locale, navItems, companyData, branding}) {
                 darkSrc={branding?.headerLogoDark || branding?.darkLogo}
               />
             </Link>
-          </motion.div>
+          </div>
 
           <nav className={`asas-nav${open ? ' is-open' : ''}`} aria-label={t('primaryNav', locale)}>
-            {visibleItems.map((item, i) => {
+            {visibleItems.map((item) => {
               if (item.children?.length) {
                 return (
                   <NavDropdown
@@ -274,7 +258,6 @@ export default function Header({locale, navItems, companyData, branding}) {
                     item={item}
                     locale={locale}
                     pathname={pathname}
-                    delay={0.2 + i * 0.045}
                     onNavigate={() => setOpen(false)}
                   />
                 );
@@ -285,12 +268,10 @@ export default function Header({locale, navItems, companyData, branding}) {
                 ? pathname === `/${locale}` || pathname === `/${locale}/`
                 : pathActive(pathname, href);
               return (
-                <motion.div
+                <div
                   key={item.path || item.label}
                   className="asas-nav-item"
-                  initial={{opacity: 0, y: -8}}
-                  animate={{opacity: 1, y: 0}}
-                  transition={{duration: 0.4, delay: 0.2 + i * 0.045, ease: EASE}}
+                  data-tour={`nav-${item.path || 'home'}`}
                 >
                   <Link
                     href={href}
@@ -300,7 +281,7 @@ export default function Header({locale, navItems, companyData, branding}) {
                   >
                     {navLabel(item, locale)}
                   </Link>
-                </motion.div>
+                </div>
               );
             })}
             <Link
@@ -327,16 +308,10 @@ export default function Header({locale, navItems, companyData, branding}) {
               <Search size={18} aria-hidden="true" />
             </button>
             <LanguageSwitcher locale={locale} />
-            <motion.div
-              initial={{opacity: 0, x: enterX(locale, 12)}}
-              animate={{opacity: 1, x: 0}}
-              transition={{duration: 0.5, delay: 0.48, ease: EASE}}
-            >
-              <Link className="asas-cta" href={`/${locale}/project-enquiry`}>
-                <span>{t('startProject', locale)}</span>
-                <ArrowUpRight size={16} className={ar ? 'reverse-arrow' : ''} />
-              </Link>
-            </motion.div>
+            <Link className="asas-cta" data-tour="nav-cta" href={`/${locale}/project-enquiry`}>
+              <span>{t('startProject', locale)}</span>
+              <ArrowUpRight size={16} className={ar ? 'reverse-arrow' : ''} />
+            </Link>
             <button
               type="button"
               className="asas-menu"
@@ -348,7 +323,7 @@ export default function Header({locale, navItems, companyData, branding}) {
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {open && (

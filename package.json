@@ -7,11 +7,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "seed:team": "node scripts/seed-team-demo.mjs"
+    "seed:team": "node scripts/seed-team-demo.mjs",
+    "seed:ops": "node scripts/seed-ops-demo.mjs",
+    "test:erp": "node scripts/test-erp.mjs",
+    "test:ops": "node scripts/test-ops.mjs",
+    "erp:backup": "node scripts/erp-backup.mjs",
+    "erp:verify-backup": "node scripts/erp-verify-backup.mjs",
+    "seed:erp": "node scripts/seed-erp-demo.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.21.0",
     "@next/third-parties": "latest",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/postcss": "^4.3.3",
     "@tiptap/extension-color": "^3.31.3",
     "@tiptap/extension-dropcursor": "^3.31.3",
     "@tiptap/extension-gapcursor": "^3.31.3",
@@ -39,11 +47,15 @@
     "qrcode": "^1.5.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-easy-crop": "^6.2.3"
+    "react-easy-crop": "^6.2.3",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "eslint": "latest",
     "eslint-config-next": "latest"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

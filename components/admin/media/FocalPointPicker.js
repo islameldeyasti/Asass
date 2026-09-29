@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useRef} from 'react';
 
@@ -40,27 +42,23 @@ export default function FocalPointPicker({
   if (!src) {
     return (
       <div className="adm-field">
-        <label>{label}</label>
-        <p style={{margin: 0, color: 'var(--cms-muted)', fontSize: 13}}>
-          Select an image first to set the focal point.
-        </p>
+        <label>{adminText(label)}</label>
+        <p style={{margin: 0, color: 'var(--cms-muted)', fontSize: 13}}>{adminText("Select an image first to set the focal point.")}</p>
       </div>
     );
   }
 
   return (
     <div className="adm-field">
-      <label>{label}</label>
-      <p style={{margin: '0 0 8px', color: 'var(--cms-muted)', fontSize: 13}}>
-        Click the most important part of the photo. The website will keep that area in view when cropped.
-      </p>
+      <label>{adminText(label)}</label>
+      <p style={{margin: '0 0 8px', color: 'var(--cms-muted)', fontSize: 13}}>{adminText("Click the most important part of the photo. The website will keep that area in view when cropped.")}</p>
       <button
         type="button"
         ref={frameRef}
         className="adm-focal-frame"
         disabled={disabled}
         onClick={setFromEvent}
-        aria-label="Set image focal point"
+        aria-label={adminText("Set image focal point")}
         style={{
           position: 'relative',
           display: 'block',
@@ -78,7 +76,7 @@ export default function FocalPointPicker({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
-          alt=""
+          alt={adminText("")}
           style={{
             width: '100%',
             height: '100%',

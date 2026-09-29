@@ -1,0 +1,40 @@
+[
+  {
+    "id": "ntf_demo_01",
+    "userId": "usr_85c1830783bbcab3",
+    "employeeId": "emp_demo_gm",
+    "title": "Approval waiting",
+    "body": "Approve Marina Concept Report REV 02 — Director Sign-off",
+    "href": "/admin/ops/approvals",
+    "type": "approval",
+    "readAt": null,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "meta": {
+      "approvalId": "apr_demo_01"
+    }
+  },
+  {
+    "id": "ntf_demo_02",
+    "userId": "usr_85c1830783bbcab3",
+    "employeeId": "emp_demo_gm",
+    "title": "You were mentioned",
+    "body": "Please confirm director review window for concept pack. @omar",
+    "href": "/admin/ops/projects/opr_demo_marina",
+    "type": "mention",
+    "readAt": null,
+    "createdAt": "2026-09-16T09:31:00.000Z",
+    "meta": null
+  },
+  {
+    "id": "ntf_demo_03",
+    "userId": null,
+    "employeeId": "emp_demo_arch",
+    "title": "New task assigned",
+    "body": "Issue concept options pack",
+    "href": "/admin/ops/projects/opr_demo_marina",
+    "type": "task",
+    "readAt": null,
+    "createdAt": "2026-09-07T08:00:00.000Z",
+    "meta": null
+  }
+]

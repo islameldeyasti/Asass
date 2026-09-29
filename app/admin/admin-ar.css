@@ -1,0 +1,26 @@
+/* Arabic admin chrome. Document design canvases keep their chosen content direction. */
+.admin-ar { --cms-font: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', Tahoma, Arial, sans-serif; direction:rtl; text-align:start; font-family:var(--cms-font); line-height:1.7; }
+.admin-ar .cms-body { font-family:var(--cms-font); line-height:1.7; }
+.admin-ar :is(button,input,select,textarea) { font-family:inherit; }
+.admin-ar :is(.cms-sidebar-brand,.cms-nav-group-label,.cms-breadcrumb,.cms-table th,.ops-eyebrow,.erp-eyebrow,.erp-table th,.erp-status) { letter-spacing:normal; text-transform:none; }
+.admin-ar :is(.cms-sidebar,.adm-sidebar) { border-right:0; border-left:1px solid var(--cms-sidebar-border); }
+.admin-ar :is(input[type=email],input[type=url],input[type=tel],input[type=number],input[type=date],input[type=datetime-local],input[type=month],input[type=password],code,pre) { direction:ltr; text-align:start; unicode-bidi:plaintext; }
+.admin-ar [dir=ltr] { direction:ltr; text-align:left; }
+.admin-ar [dir=rtl] { direction:rtl; text-align:right; }
+.admin-ar :is(.cms-breadcrumb,.erp-breadcrumb,.erp-record-link) { unicode-bidi:plaintext; }
+.admin-ar .erp-totals { margin-inline-start:auto; margin-inline-end:0; }
+.admin-ar .erp-table .numeric { text-align:end; }
+.admin-ar .erp-details dd { unicode-bidi:plaintext; }
+.admin-ar .cms-toast-stack { right:auto; left:20px; }
+.admin-ar .cms-toast { border-left:0; border-inline-start:3px solid var(--cms-navy); }
+.admin-ar .cms-toast.is-success { border-inline-start-color:var(--cms-success); }
+.admin-ar .cms-toast.is-error { border-inline-start-color:var(--cms-danger); }
+.admin-ar :is(.lucide-chevron-right,.lucide-chevron-left,.lucide-arrow-up-right,.lucide-arrow-right,.lucide-arrow-left,.lucide-panel-left) { transform:scaleX(-1); }
+.admin-ar :is(.erp-eyebrow,.erp-metric>small,.erp-table th,.erp-field>span) { font-size:12px; }
+.admin-ar .erp-metric>strong { letter-spacing:normal; }
+@media(max-width:900px){
+  .admin-ar .cms-navframe { left:auto; right:0; transform:translateX(100%); }
+  .admin-ar .cms-navframe.is-open { transform:translateX(0); }
+  .admin-ar .cms-sidebar { left:auto; right:0; transform:translateX(100%); }
+  .admin-ar .cms-sidebar.is-open { transform:translateX(0); }
+}

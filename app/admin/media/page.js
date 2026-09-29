@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {listMedia} from '@/lib/cms/content-service';
@@ -15,8 +17,8 @@ export default async function AdminMediaPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Media"
-      subtitle={`${items.length} assets`}
+      title={adminText("Media")}
+      subtitle={adminText(`${items.length} assets`)}
     >
       <MediaLibraryPage initialItems={items} canWrite={canWrite} />
     </AdminShell>

@@ -28,17 +28,7 @@
           "label": "Team",
           "labelAr": "الفريق",
           "path": "team"
-        }
-      ]
-    },
-    {
-      "id": "gallery",
-      "label": "Gallery",
-      "labelAr": "المعرض",
-      "path": "gallery",
-      "hidden": false,
-      "order": 25,
-      "children": [
+        },
         {
           "id": "gallery-photos",
           "label": "Photos",
@@ -52,6 +42,15 @@
           "path": "videos"
         }
       ]
+    },
+    {
+      "id": "gallery",
+      "label": "Gallery",
+      "labelAr": "المعرض",
+      "path": "gallery",
+      "hidden": true,
+      "order": 25,
+      "children": []
     },
     {
       "id": "services",
@@ -110,5 +109,5 @@
       "order": 90
     }
   ],
-  "updatedAt": "2026-09-16T08:00:00.000Z"
+  "updatedAt": "2026-09-29T05:31:13.156Z"
 }

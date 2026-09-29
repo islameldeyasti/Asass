@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useMemo, useState} from 'react';
 import {useRouter} from 'next/navigation';
@@ -212,9 +214,9 @@ export default function DocumentForm({
       return (
         <div className="adm-field-heading" style={{marginTop: 8}}>
           <h2 className="adm-section-title" style={{marginTop: 12, marginBottom: 4}}>
-            {field.label}
+            {adminText(field.label)}
           </h2>
-          {field.help ? <p className="adm-section-help">{field.help}</p> : null}
+          {field.help ? <p className="adm-section-help">{adminText(field.help)}</p> : null}
         </div>
       );
     }
@@ -228,7 +230,7 @@ export default function DocumentForm({
             onChange={(e) => setField(field.key, e.target.checked)}
             disabled={disabled}
           />
-          {field.label}
+          {adminText(field.label)}
         </label>
       );
     }
@@ -236,7 +238,7 @@ export default function DocumentForm({
     if (field.type === 'json') {
       return (
         <div className="adm-field">
-          <label htmlFor={`df-${field.key}`}>{field.label}</label>
+          <label htmlFor={`df-${field.key}`}>{adminText(field.label)}</label>
           <textarea
             id={`df-${field.key}`}
             rows={field.rows || 8}
@@ -252,7 +254,7 @@ export default function DocumentForm({
     if (field.type === 'textarea') {
       return (
         <div className="adm-field">
-          <label htmlFor={`df-${field.key}`}>{field.label}</label>
+          <label htmlFor={`df-${field.key}`}>{adminText(field.label)}</label>
           <textarea
             id={`df-${field.key}`}
             rows={field.rows || 4}
@@ -268,7 +270,7 @@ export default function DocumentForm({
     if (field.type === 'select') {
       return (
         <div className="adm-field">
-          <label htmlFor={`df-${field.key}`}>{field.label}</label>
+          <label htmlFor={`df-${field.key}`}>{adminText(field.label)}</label>
           <select
             id={`df-${field.key}`}
             value={toUiValue(doc, field)}
@@ -277,7 +279,7 @@ export default function DocumentForm({
           >
             {(field.options || []).map((opt) => (
               <option key={String(opt.value)} value={opt.value}>
-                {opt.label}
+                {adminText(opt.label)}
               </option>
             ))}
           </select>
@@ -289,7 +291,7 @@ export default function DocumentForm({
       const focalKey = field.focalKey || (field.type === 'image' ? `${field.key}Focal` : null);
       return (
         <MediaPicker
-          label={field.label}
+          label={adminText(field.label)}
           value={String(toUiValue(doc, field) || '')}
           onChange={(url) => setField(field.key, url)}
           mode={field.mode || (field.type === 'media' ? 'DOCUMENT' : 'IMAGE')}
@@ -307,7 +309,7 @@ export default function DocumentForm({
 
     return (
       <div className="adm-field">
-        <label htmlFor={`df-${field.key}`}>{field.label}</label>
+        <label htmlFor={`df-${field.key}`}>{adminText(field.label)}</label>
         <input
           id={`df-${field.key}`}
           type={field.type === 'number' ? 'number' : 'text'}
@@ -326,24 +328,22 @@ export default function DocumentForm({
     <form className="adm-card" onSubmit={onSubmit}>
       {title ? (
         <h2 className="adm-section-title" style={{marginTop: 0}}>
-          {title}
+          {adminText(title)}
         </h2>
       ) : null}
-      {error ? <p className="adm-error">{error}</p> : null}
-      {message ? <p className="adm-success">{message}</p> : null}
+      {error ? <p className="adm-error">{adminText(error)}</p> : null}
+      {message ? <p className="adm-success">{adminText(message)}</p> : null}
 
       {sectionEditor ? (
         <>
-          <h2 className="adm-section-title">Homepage sections</h2>
-          <p className="adm-section-help">
-            Turn sections on or off and set the order visitors see them. Lower numbers appear first.
-          </p>
+          <h2 className="adm-section-title">{adminText("Homepage sections")}</h2>
+          <p className="adm-section-help">{adminText("Turn sections on or off and set the order visitors see them. Lower numbers appear first.")}</p>
           <div className="adm-section-list">
             {(doc.sections || []).map((section, index) => (
               <div key={section.id || index} className="adm-section-row">
                 <div>
-                  <strong>{HOMEPAGE_SECTION_LABELS[section.id] || section.id}</strong>
-                  <span>{section.id}</span>
+                  <strong>{adminText(HOMEPAGE_SECTION_LABELS[section.id] || section.id)}</strong>
+                  <span>{adminText(section.id)}</span>
                 </div>
                 <label className="adm-switch">
                   <input
@@ -353,10 +353,10 @@ export default function DocumentForm({
                     onChange={(e) => updateSection(index, {enabled: e.target.checked})}
                   />
                   <span className="adm-switch-track" aria-hidden />
-                  <span>{section.enabled !== false ? 'Visible' : 'Hidden'}</span>
+                  <span>{adminText(section.enabled !== false ? 'Visible' : 'Hidden')}</span>
                 </label>
                 <div className="adm-field" style={{marginBottom: 0, maxWidth: 100}}>
-                  <label htmlFor={`section-order-${index}`}>Order</label>
+                  <label htmlFor={`section-order-${index}`}>{adminText("Order")}</label>
                   <input
                     id={`section-order-${index}`}
                     type="number"
@@ -373,22 +373,19 @@ export default function DocumentForm({
 
       {heroSlidesEditor ? (
         <>
-          <h2 className="adm-section-title">Hero slides</h2>
-          <p className="adm-section-help">
-            Photos and text for the homepage hero carousel. Upload or choose from the media library.
-          </p>
+          <h2 className="adm-section-title">{adminText("Hero slides")}</h2>
+          <p className="adm-section-help">{adminText("Photos and text for the homepage hero carousel. Upload or choose from the media library.")}</p>
           {(doc.heroSlides || []).map((slide, index) => (
             <div
               key={slide.id || index}
               className="adm-card"
               style={{marginBottom: 16, padding: 14, display: 'grid', gap: 10}}
             >
-              <strong>
-                Slide {index + 1}
-                {slide.strip ? ` · ${slide.strip}` : ''}
+              <strong>{adminText("Slide ")}{adminText(index + 1)}
+                {adminText(slide.strip ? ` · ${slide.strip}` : '')}
               </strong>
               <MediaPicker
-                label="Slide image"
+                label={adminText("Slide image")}
                 value={slide.image || ''}
                 canWrite={canWrite}
                 onChange={(url) => updateHeroSlide(index, {image: url || ''})}
@@ -397,7 +394,7 @@ export default function DocumentForm({
               />
               <div className="adm-grid-2">
                 <div className="adm-field">
-                  <label>Title (EN)</label>
+                  <label>{adminText("Title (EN)")}</label>
                   <input
                     value={slide.title || ''}
                     disabled={!canWrite}
@@ -405,7 +402,7 @@ export default function DocumentForm({
                   />
                 </div>
                 <div className="adm-field">
-                  <label>Title (AR)</label>
+                  <label>{adminText("Title (AR)")}</label>
                   <input
                     dir="rtl"
                     value={slide.titleAr || ''}
@@ -416,7 +413,7 @@ export default function DocumentForm({
               </div>
               <div className="adm-grid-2">
                 <div className="adm-field">
-                  <label>Note (EN)</label>
+                  <label>{adminText("Note (EN)")}</label>
                   <textarea
                     rows={3}
                     value={slide.note || ''}
@@ -425,7 +422,7 @@ export default function DocumentForm({
                   />
                 </div>
                 <div className="adm-field">
-                  <label>Note (AR)</label>
+                  <label>{adminText("Note (AR)")}</label>
                   <textarea
                     rows={3}
                     dir="rtl"
@@ -437,7 +434,7 @@ export default function DocumentForm({
               </div>
               <div className="adm-grid-2">
                 <div className="adm-field">
-                  <label>Location (EN)</label>
+                  <label>{adminText("Location (EN)")}</label>
                   <input
                     value={slide.location || ''}
                     disabled={!canWrite}
@@ -445,7 +442,7 @@ export default function DocumentForm({
                   />
                 </div>
                 <div className="adm-field">
-                  <label>Location (AR)</label>
+                  <label>{adminText("Location (AR)")}</label>
                   <input
                     dir="rtl"
                     value={slide.locationAr || ''}
@@ -461,19 +458,17 @@ export default function DocumentForm({
 
       {sectorCardsEditor ? (
         <>
-          <h2 className="adm-section-title">Sector cards</h2>
-          <p style={{marginTop: 0, color: '#5b6472', fontSize: 14}}>
-            Homepage sector mosaic images and labels.
-          </p>
+          <h2 className="adm-section-title">{adminText("Sector cards")}</h2>
+          <p style={{marginTop: 0, color: '#5b6472', fontSize: 14}}>{adminText("Homepage sector mosaic images and labels.")}</p>
           {(doc.sectorCards || []).map((card, index) => (
             <div
               key={card.key || index}
               className="adm-card"
               style={{marginBottom: 16, padding: 14, display: 'grid', gap: 10}}
             >
-              <strong>{card.title || card.key || `Card ${index + 1}`}</strong>
+              <strong>{adminText(card.title || card.key || `Card ${index + 1}`)}</strong>
               <MediaPicker
-                label="Card image"
+                label={adminText("Card image")}
                 value={card.image || ''}
                 canWrite={canWrite}
                 onChange={(url) => updateSectorCard(index, {image: url || ''})}
@@ -482,7 +477,7 @@ export default function DocumentForm({
               />
               <div className="adm-grid-2">
                 <div className="adm-field">
-                  <label>Title (EN)</label>
+                  <label>{adminText("Title (EN)")}</label>
                   <input
                     value={card.title || ''}
                     disabled={!canWrite}
@@ -490,7 +485,7 @@ export default function DocumentForm({
                   />
                 </div>
                 <div className="adm-field">
-                  <label>Title (AR)</label>
+                  <label>{adminText("Title (AR)")}</label>
                   <input
                     dir="rtl"
                     value={card.titleAr || ''}
@@ -501,7 +496,7 @@ export default function DocumentForm({
               </div>
               <div className="adm-grid-2">
                 <div className="adm-field">
-                  <label>Copy (EN)</label>
+                  <label>{adminText("Copy (EN)")}</label>
                   <textarea
                     rows={2}
                     value={card.copy || ''}
@@ -510,7 +505,7 @@ export default function DocumentForm({
                   />
                 </div>
                 <div className="adm-field">
-                  <label>Copy (AR)</label>
+                  <label>{adminText("Copy (AR)")}</label>
                   <textarea
                     rows={2}
                     dir="rtl"
@@ -527,10 +522,10 @@ export default function DocumentForm({
 
       {aboutEditor ? (
         <>
-          <h2 className="adm-section-title">About block</h2>
+          <h2 className="adm-section-title">{adminText("About block")}</h2>
           <div className="adm-grid-2">
             <div className="adm-field">
-              <label htmlFor="about-titleEn">Title (EN)</label>
+              <label htmlFor="about-titleEn">{adminText("Title (EN)")}</label>
               <input
                 id="about-titleEn"
                 value={doc.about?.titleEn || ''}
@@ -539,7 +534,7 @@ export default function DocumentForm({
               />
             </div>
             <div className="adm-field">
-              <label htmlFor="about-titleAr">Title (AR)</label>
+              <label htmlFor="about-titleAr">{adminText("Title (AR)")}</label>
               <input
                 id="about-titleAr"
                 dir="rtl"
@@ -551,7 +546,7 @@ export default function DocumentForm({
           </div>
           <div className="adm-grid-2">
             <div className="adm-field">
-              <label htmlFor="about-bodyEn">Body (EN)</label>
+              <label htmlFor="about-bodyEn">{adminText("Body (EN)")}</label>
               <textarea
                 id="about-bodyEn"
                 rows={5}
@@ -561,7 +556,7 @@ export default function DocumentForm({
               />
             </div>
             <div className="adm-field">
-              <label htmlFor="about-bodyAr">Body (AR)</label>
+              <label htmlFor="about-bodyAr">{adminText("Body (AR)")}</label>
               <textarea
                 id="about-bodyAr"
                 rows={5}
@@ -574,7 +569,7 @@ export default function DocumentForm({
           </div>
           <div className="adm-grid-2">
             <div className="adm-field">
-              <label htmlFor="about-noteEn">Note (EN)</label>
+              <label htmlFor="about-noteEn">{adminText("Note (EN)")}</label>
               <textarea
                 id="about-noteEn"
                 rows={3}
@@ -584,7 +579,7 @@ export default function DocumentForm({
               />
             </div>
             <div className="adm-field">
-              <label htmlFor="about-noteAr">Note (AR)</label>
+              <label htmlFor="about-noteAr">{adminText("Note (AR)")}</label>
               <textarea
                 id="about-noteAr"
                 rows={3}
@@ -597,7 +592,7 @@ export default function DocumentForm({
           </div>
           <div className="adm-field" style={{marginTop: 12}}>
             <MediaPicker
-              label="About image"
+              label={adminText("About image")}
               value={doc.about?.image || ''}
               canWrite={canWrite}
               onChange={(url) => updateAbout({image: url})}
@@ -610,13 +605,13 @@ export default function DocumentForm({
 
       {faqEditor ? (
         <>
-          <h2 className="adm-section-title">FAQs</h2>
+          <h2 className="adm-section-title">{adminText("FAQs")}</h2>
           {(doc.faqs || []).map((faq, index) => (
             <div key={faq.id || index} style={{marginBottom: 18, paddingBottom: 12, borderBottom: '1px solid rgba(7,4,99,0.08)'}}>
-              <strong style={{display: 'block', marginBottom: 10}}>{faq.id || `FAQ ${index + 1}`}</strong>
+              <strong style={{display: 'block', marginBottom: 10}}>{adminText(faq.id || `FAQ ${index + 1}`)}</strong>
               <div className="adm-grid-2">
                 <div className="adm-field">
-                  <label>Question (EN)</label>
+                  <label>{adminText("Question (EN)")}</label>
                   <input
                     value={faq.questionEn || ''}
                     disabled={!canWrite}
@@ -624,7 +619,7 @@ export default function DocumentForm({
                   />
                 </div>
                 <div className="adm-field">
-                  <label>Question (AR)</label>
+                  <label>{adminText("Question (AR)")}</label>
                   <input
                     dir="rtl"
                     value={faq.questionAr || ''}
@@ -635,7 +630,7 @@ export default function DocumentForm({
               </div>
               <div className="adm-grid-2">
                 <div className="adm-field">
-                  <label>Answer (EN)</label>
+                  <label>{adminText("Answer (EN)")}</label>
                   <textarea
                     rows={3}
                     value={faq.answerEn || ''}
@@ -644,7 +639,7 @@ export default function DocumentForm({
                   />
                 </div>
                 <div className="adm-field">
-                  <label>Answer (AR)</label>
+                  <label>{adminText("Answer (AR)")}</label>
                   <textarea
                     rows={3}
                     dir="rtl"
@@ -661,16 +656,14 @@ export default function DocumentForm({
 
       {navEditor ? (
         <>
-          <h2 className="adm-section-title">Main menu</h2>
-          <p className="adm-section-help">
-            Edit labels visitors see in the site header. Use arrows conceptually via order — lower numbers appear first.
-          </p>
+          <h2 className="adm-section-title">{adminText("Main menu")}</h2>
+          <p className="adm-section-help">{adminText("Edit labels visitors see in the site header. Use arrows conceptually via order — lower numbers appear first.")}</p>
           <div className="adm-link-list">
             {(doc.items || []).map((item, index) => (
               <div key={item.id || index} className="adm-link-row">
                 <div className="adm-grid-2" style={{flex: 1}}>
                   <div className="adm-field" style={{marginBottom: 0}}>
-                    <label>Label (English)</label>
+                    <label>{adminText("Label (English)")}</label>
                     <input
                       value={item.label || ''}
                       disabled={!canWrite}
@@ -678,7 +671,7 @@ export default function DocumentForm({
                     />
                   </div>
                   <div className="adm-field" style={{marginBottom: 0}}>
-                    <label>Label (Arabic)</label>
+                    <label>{adminText("Label (Arabic)")}</label>
                     <input
                       dir="rtl"
                       value={item.labelAr || ''}
@@ -687,7 +680,7 @@ export default function DocumentForm({
                     />
                   </div>
                   <div className="adm-field" style={{marginBottom: 0}}>
-                    <label>Page</label>
+                    <label>{adminText("Page")}</label>
                     <input
                       value={item.path || ''}
                       disabled={!canWrite}
@@ -695,7 +688,7 @@ export default function DocumentForm({
                     />
                   </div>
                   <div className="adm-field" style={{marginBottom: 0, maxWidth: 120}}>
-                    <label>Order</label>
+                    <label>{adminText("Order")}</label>
                     <input
                       type="number"
                       value={item.order ?? ''}
@@ -712,7 +705,7 @@ export default function DocumentForm({
                     onChange={(e) => updateNavItem(index, {hidden: !e.target.checked})}
                   />
                   <span className="adm-switch-track" aria-hidden />
-                  <span>{item.hidden ? 'Hidden' : 'Visible'}</span>
+                  <span>{adminText(item.hidden ? 'Hidden' : 'Visible')}</span>
                 </label>
               </div>
             ))}
@@ -724,22 +717,22 @@ export default function DocumentForm({
         row.length === 2 ? (
           <div className="adm-grid-2" key={row[0].key}>
             {row.map((field) => (
-              <div key={field.key}>{renderField(field)}</div>
+              <div key={field.key}>{adminText(renderField(field))}</div>
             ))}
           </div>
         ) : (
-          <div key={row[0].key}>{renderField(row[0])}</div>
+          <div key={row[0].key}>{adminText(renderField(row[0]))}</div>
         ),
       )}
 
       {canWrite ? (
         <div style={{marginTop: 16}}>
           <button type="submit" className="adm-btn" disabled={saving}>
-            {saving ? 'Saving…' : 'Save'}
+            {adminText(saving ? 'Saving…' : 'Save')}
           </button>
         </div>
       ) : (
-        <p style={{marginTop: 16, color: '#5b6472', fontSize: 14}}>Read-only for your role.</p>
+        <p style={{marginTop: 16, color: '#5b6472', fontSize: 14}}>{adminText("Read-only for your role.")}</p>
       )}
     </form>
   );

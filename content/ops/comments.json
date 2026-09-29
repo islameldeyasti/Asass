@@ -1,0 +1,46 @@
+[
+  {
+    "id": "cmt_demo_01",
+    "projectId": "opr_demo_marina",
+    "subjectType": "project",
+    "subjectId": "opr_demo_marina",
+    "parentId": null,
+    "body": "Please confirm director review window for concept pack. @omar",
+    "authorEmployeeId": "emp_demo_pm",
+    "authorUserId": null,
+    "mentionKeys": [
+      "omar"
+    ],
+    "attachmentUrl": "",
+    "createdAt": "2026-09-16T09:30:00.000Z",
+    "updatedAt": "2026-09-16T09:30:00.000Z"
+  },
+  {
+    "id": "cmt_demo_02",
+    "projectId": "opr_demo_marina",
+    "subjectType": "project",
+    "subjectId": "opr_demo_marina",
+    "parentId": "cmt_demo_01",
+    "body": "I can review Thursday morning — leave the pack on Approvals.",
+    "authorEmployeeId": "emp_demo_gm",
+    "authorUserId": "usr_85c1830783bbcab3",
+    "mentionKeys": [],
+    "attachmentUrl": "",
+    "createdAt": "2026-09-16T11:00:00.000Z",
+    "updatedAt": "2026-09-16T11:00:00.000Z"
+  },
+  {
+    "id": "cmt_demo_03",
+    "projectId": "opr_demo_school",
+    "subjectType": "task",
+    "subjectId": "tsk_demo_05",
+    "parentId": null,
+    "body": "Furniture layouts pending client room schedule.",
+    "authorEmployeeId": "emp_demo_arch",
+    "authorUserId": null,
+    "mentionKeys": [],
+    "attachmentUrl": "",
+    "createdAt": "2026-09-15T16:00:00.000Z",
+    "updatedAt": "2026-09-15T16:00:00.000Z"
+  }
+]

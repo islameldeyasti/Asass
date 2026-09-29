@@ -1,74 +1,196 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import Link from 'next/link';
 import {usePathname, useRouter} from 'next/navigation';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {
   Activity,
-  Briefcase,
+  Banknote,
+  BarChart3,
+  Bell,
+  BookOpen,
+  BriefcaseBusiness,
   Building2,
+  Calculator,
+  CalendarDays,
+  CheckSquare,
+  ChevronDown,
   ChevronRight,
+  ClipboardList,
+  Clock,
+  Coins,
+  Contact,
+  CreditCard,
   Download,
   ExternalLink,
+  Factory,
+  FileSignature,
+  FileSpreadsheet,
   FileText,
   FolderKanban,
+  Footprints,
+  GitBranch,
+  Globe,
+  Handshake,
+  HardHat,
+  Hash,
+  HeartPulse,
   Home,
+  IdCard,
   Image,
   Images,
+  Inbox,
+  Landmark,
+  Layers,
   LayoutDashboard,
   LayoutTemplate,
   LogOut,
   Menu,
   MessageSquare,
+  Moon,
   Newspaper,
-  PanelLeft,
+  Network,
+  Palette,
+  PenLine,
+  Phone,
+  PieChart,
   Plus,
   Quote,
+  Receipt,
+  Scale,
+  ScrollText,
   Search,
   Settings,
   Share2,
   Shield,
-  IdCard,
+  ShoppingCart,
+  Sun,
+  Timer,
+  Truck,
+  UserRound,
   Users,
+  Video,
+  Wallet,
+  Warehouse,
   Wrench,
 } from 'lucide-react';
 import CommandPalette from '@/components/admin/ui/CommandPalette';
 import AdminSearch from '@/components/admin/ui/AdminSearch';
-import PageHeader from '@/components/admin/ui/PageHeader';
+import AdminLanguageSwitcher from '@/components/admin/ui/AdminLanguageSwitcher';
+import {useAdminLang} from '@/components/admin/ui/AdminLangRoot';
 
 const SIDEBAR_KEY = 'asas-cms-sidebar';
+const MENU_OPEN_KEY = 'asas-cms-menu-open';
 
 const ICON_BY_HREF = {
   '/admin/dashboard': LayoutDashboard,
+  '/admin/profile': UserRound,
   '/admin/homepage': Home,
   '/admin/pages': FileText,
   '/admin/projects': FolderKanban,
   '/admin/services': Wrench,
-  '/admin/sectors': Building2,
+  '/admin/sectors': Factory,
   '/admin/team': Users,
   '/admin/blog': Newspaper,
   '/admin/gallery': Images,
-  '/admin/clients': Briefcase,
+  '/admin/videos': Video,
+  '/admin/clients': Handshake,
   '/admin/testimonials': Quote,
   '/admin/downloads': Download,
-  '/admin/careers': Briefcase,
-  '/admin/careers/applications': Briefcase,
+  '/admin/careers': HardHat,
+  '/admin/careers/applications': Inbox,
   '/admin/media': Image,
-  '/admin/seo': Share2,
+  '/admin/seo': Globe,
   '/admin/navigation': LayoutTemplate,
+  '/admin/footer': Footprints,
   '/admin/settings': Settings,
+  '/admin/settings/branding': Palette,
+  '/admin/settings/contact': Phone,
+  '/admin/settings/social': Hash,
+  '/admin/reports': PieChart,
   '/admin/users': Shield,
   '/admin/enquiries': MessageSquare,
   '/admin/crm/enquiries': MessageSquare,
-  '/admin/crm/contacts': Users,
-  '/admin/corporate/letterheads': FileText,
+  '/admin/crm/contacts': Contact,
+  '/admin/corporate/letterheads': PenLine,
   '/admin/corporate/employee-cards': IdCard,
+  '/admin/erp': Landmark,
+  '/admin/erp/opportunities': BriefcaseBusiness,
+  '/admin/erp/quotations': FileSpreadsheet,
+  '/admin/erp/contracts': FileSignature,
+  '/admin/erp/vendors': Truck,
+  '/admin/erp/purchase-orders': ShoppingCart,
+  '/admin/erp/invoices': Receipt,
+  '/admin/erp/bills': Wallet,
+  '/admin/erp/expenses': CreditCard,
+  '/admin/erp/payments': Banknote,
+  '/admin/erp/reconciliation': Scale,
+  '/admin/erp/budgets': Calculator,
+  '/admin/erp/journals': BookOpen,
+  '/admin/erp/reports': BarChart3,
+  '/admin/erp/time-entries': Timer,
+  '/admin/erp/payroll': Coins,
+  '/admin/erp/assets': Warehouse,
+  '/admin/erp/settings': Building2,
+  '/admin/erp/audit': ScrollText,
+  '/admin/ops': Layers,
+  '/admin/ops/dashboard': LayoutDashboard,
+  '/admin/ops/employees': UserRound,
+  '/admin/ops/departments': Building2,
+  '/admin/ops/org-chart': Network,
+  '/admin/ops/clients': Handshake,
+  '/admin/ops/projects': FolderKanban,
+  '/admin/ops/workflows': GitBranch,
+  '/admin/ops/tasks': ClipboardList,
+  '/admin/ops/approvals': CheckSquare,
+  '/admin/ops/leave': CalendarDays,
+  '/admin/ops/attendance': Clock,
+  '/admin/ops/workload': HeartPulse,
+  '/admin/ops/notifications': Bell,
+  '/admin/ops/reports': PieChart,
+  '/admin/ops/audit': Activity,
 };
 
 const NAV_GROUPS = [
+  {id:'erp',label:'ERP',hrefs:['/admin/erp']},
+  {id:'erp-sales',label:'Sales',hrefs:['/admin/erp/opportunities','/admin/erp/quotations','/admin/erp/contracts']},
+  {id:'erp-purchase',label:'Purchasing',hrefs:['/admin/erp/vendors','/admin/erp/purchase-orders']},
+  {id:'erp-finance',label:'Finance',hrefs:['/admin/erp/invoices','/admin/erp/bills','/admin/erp/expenses','/admin/erp/payments','/admin/erp/reconciliation','/admin/erp/budgets','/admin/erp/journals','/admin/erp/reports']},
+  {id:'erp-people',label:'People & assets',hrefs:['/admin/erp/time-entries','/admin/erp/payroll','/admin/erp/assets']},
+  {id:'erp-control',label:'ERP control',hrefs:['/admin/erp/settings','/admin/erp/audit']},
+  {
+    id: 'operations',
+    label: 'Delivery',
+    hrefs: [
+      '/admin/ops',
+      '/admin/ops/dashboard',
+      '/admin/ops/clients',
+      '/admin/ops/projects',
+      '/admin/ops/workflows',
+      '/admin/ops/tasks',
+      '/admin/ops/approvals',
+      '/admin/ops/notifications',
+      '/admin/ops/reports',
+      '/admin/ops/audit',
+    ],
+  },
+  {
+    id: 'people',
+    label: 'People',
+    hrefs: [
+      '/admin/ops/employees',
+      '/admin/ops/departments',
+      '/admin/ops/org-chart',
+      '/admin/ops/leave',
+      '/admin/ops/attendance',
+      '/admin/ops/workload',
+    ],
+  },
   {
     id: 'content',
-    label: 'Content',
+    label: 'Website',
     hrefs: [
       '/admin/homepage',
       '/admin/pages',
@@ -78,6 +200,7 @@ const NAV_GROUPS = [
       '/admin/team',
       '/admin/blog',
       '/admin/gallery',
+      '/admin/videos',
       '/admin/clients',
       '/admin/testimonials',
       '/admin/downloads',
@@ -100,7 +223,7 @@ const NAV_GROUPS = [
   },
   {
     id: 'corporate',
-    label: 'Corporate Tools',
+    label: 'Corporate',
     hrefs: ['/admin/corporate/letterheads', '/admin/corporate/employee-cards'],
   },
   {
@@ -130,6 +253,35 @@ const NAV_GROUPS = [
   },
 ];
 
+const MENU_FAMILIES = [
+  {id: 'overview', label: 'Overview', groupIds: ['overview']},
+  {id: 'erp', label: 'ERP', groupIds: ['erp', 'erp-sales', 'erp-purchase', 'erp-finance', 'erp-people', 'erp-control']},
+  {id: 'ops', label: 'Operations', groupIds: ['operations', 'people']},
+  {id: 'website', label: 'Website', groupIds: ['content', 'crm', 'media', 'corporate', 'seo', 'site']},
+  {id: 'admin', label: 'Settings', groupIds: ['settings', 'system']},
+];
+
+const GROUP_ICONS = {
+  overview: LayoutDashboard,
+  erp: Landmark,
+  'erp-sales': BriefcaseBusiness,
+  'erp-purchase': ShoppingCart,
+  'erp-finance': Wallet,
+  'erp-people': Timer,
+  'erp-control': Settings,
+  operations: Layers,
+  people: UserRound,
+  content: Newspaper,
+  crm: MessageSquare,
+  media: Image,
+  corporate: IdCard,
+  seo: Globe,
+  site: LayoutTemplate,
+  settings: Settings,
+  system: Shield,
+  more: FileText,
+};
+
 const QUICK_CREATE_ACTIONS = [
   {label: 'Create project', href: '/admin/projects', hint: 'Projects', icon: FolderKanban},
   {label: 'New blog post', href: '/admin/blog', hint: 'Blog', icon: Newspaper},
@@ -155,9 +307,11 @@ function groupNavItems(navItems) {
   const groups = [];
 
   const dashboard = byHref.get('/admin/dashboard');
-  if (dashboard) {
-    used.add(dashboard.href);
-    groups.push({id: 'overview', label: 'Overview', items: [dashboard]});
+  const profile = byHref.get('/admin/profile');
+  const overviewItems = [dashboard, profile].filter(Boolean);
+  if (overviewItems.length) {
+    overviewItems.forEach((item) => used.add(item.href));
+    groups.push({id: 'overview', label: 'Overview', items: overviewItems});
   }
 
   for (const group of NAV_GROUPS) {
@@ -173,9 +327,9 @@ function groupNavItems(navItems) {
     groups.push({id: 'more', label: 'More', items: leftover});
   }
 
-  // Activity shortcut under System (hash link on dashboard)
   const system = groups.find((g) => g.id === 'system');
-  if (system && !system.items.some((i) => i.href.includes('#activity'))) {
+  const hasDashboard = used.has('/admin/dashboard') || Boolean(byHref.get('/admin/dashboard'));
+  if (hasDashboard && system && !system.items.some((i) => i.href.includes('#activity'))) {
     system.items = [
       ...system.items,
       {
@@ -199,42 +353,183 @@ function initials(name = '') {
     .join('');
 }
 
-export default function AdminAppShell({
-  user,
-  navItems = [],
-  children,
-  title,
-  subtitle,
-  actions,
-  breadcrumb,
-}) {
+
+const NAV_EVENT = "asas-admin-nav";
+
+function openAdminNav() {
+  window.dispatchEvent(new CustomEvent(NAV_EVENT, {detail: {open: true}}));
+}
+
+export default function AdminAppShell({user, navItems = []}) {
   const pathname = usePathname();
-  const router = useRouter();
-  const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [paletteOpen, setPaletteOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const userMenuRef = useRef(null);
+  const [openMap, setOpenMap] = useState({});
 
   useEffect(() => {
     try {
-      const stored = window.localStorage.getItem(SIDEBAR_KEY);
-      if (stored === 'collapsed') setCollapsed(true);
+      window.localStorage.setItem(SIDEBAR_KEY, "expanded");
+      const saved = window.localStorage.getItem(MENU_OPEN_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === "object") setOpenMap(parsed);
+      }
     } catch {
       // ignore
     }
   }, []);
 
   useEffect(() => {
+    try {
+      window.localStorage.setItem(MENU_OPEN_KEY, JSON.stringify(openMap));
+    } catch {
+      // ignore
+    }
+  }, [openMap]);
+
+  useEffect(() => {
     setMobileOpen(false);
-    setUserMenuOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    function onNav(event) {
+      setMobileOpen(Boolean(event.detail?.open));
+    }
+    window.addEventListener(NAV_EVENT, onNav);
+    return () => window.removeEventListener(NAV_EVENT, onNav);
+  }, []);
+
+  const groups = useMemo(() => groupNavItems(navItems), [navItems]);
+
+  function isItemActive(item) {
+    if (!item?.href || item.href.includes("#")) return false;
+    return (
+      pathname === item.href ||
+      (!["/admin/ops", "/admin/erp"].includes(item.href) && pathname.startsWith(`${item.href}/`))
+    );
+  }
+
+  const usedFamilyIds = new Set(MENU_FAMILIES.flatMap((family) => family.groupIds));
+  const leftoverGroups = groups.filter((group) => !usedFamilyIds.has(group.id));
+  const menuGroups = [
+    ...MENU_FAMILIES.flatMap((family) => family.groupIds.map((id) => groups.find((group) => group.id === id)).filter(Boolean)),
+    ...leftoverGroups,
+  ];
+
+  function isGroupOpen(groupId) {
+    if (Object.prototype.hasOwnProperty.call(openMap, groupId)) return Boolean(openMap[groupId]);
+    return true;
+  }
+
+  function toggleGroup(groupId) {
+    setOpenMap((prev) => ({...prev, [groupId]: !isGroupOpen(groupId)}));
+  }
+
+  const sidebarClass = ["cms-navframe", mobileOpen ? "is-open" : ""]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <>
+      {mobileOpen ? (
+        <div className="cms-overlay" style={{zIndex: 25}} onClick={() => setMobileOpen(false)} aria-hidden />
+      ) : null}
+
+      <aside className={sidebarClass} aria-label={adminText("Admin navigation")} suppressHydrationWarning>
+        <div className="cms-menu-head">
+          <div className="cms-sidebar-logo" aria-hidden>
+            {adminText("AS")}
+          </div>
+          <strong>{adminText("Menu")}</strong>
+        </div>
+        <nav className="cms-menu-nav">
+          {menuGroups.map((group) => {
+            const open = isGroupOpen(group.id);
+            const GroupIcon = GROUP_ICONS[group.id] || iconFor(group.items[0]?.href);
+            const current = group.items.some(isItemActive);
+            return (
+              <div
+                key={group.id}
+                data-menu-group={group.id}
+                className={`cms-menu-dropdown${open ? " is-open" : ""}${current ? " is-current" : ""}`}
+              >
+                <button
+                  type="button"
+                  className={`cms-menu-dropdown-btn${open ? " is-open" : ""}${current ? " is-current" : ""}`}
+                  aria-expanded={open}
+                  title={adminText(group.label)}
+                  onClick={() => toggleGroup(group.id)}
+                >
+                  <GroupIcon size={16} aria-hidden />
+                  <span>{adminText(group.label)}</span>
+                  {open ? <ChevronDown className="cms-menu-chevron" size={16} aria-hidden /> : <ChevronRight className="cms-menu-chevron" size={16} aria-hidden />}
+                </button>
+                {open ? (
+                  <div className="cms-menu-dropdown-items">
+                    {group.items.map((item) => {
+                      const Icon = item.href.includes("#activity") ? Activity : iconFor(item.href);
+                      const active = isItemActive(item);
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={`cms-nav-link${active ? " is-active" : ""}${item.comingSoon ? " is-soon" : ""}`}
+                          title={adminText(item.label)}
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <Icon aria-hidden />
+                          <span>{adminText(item.label)}</span>
+                          {item.comingSoon ? <em>{adminText("Soon")}</em> : null}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+        </nav>
+        <div className="cms-menu-foot">
+          <div className="cms-sidebar-avatar" aria-hidden>
+            {user?.photoUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={user.photoUrl} alt="" />
+            ) : (
+              adminText(initials(user?.name))
+            )}
+          </div>
+        </div>
+      </aside>
+    </>
+  );
+}
+
+export function AdminTopbar({user, navItems = []}) {
+  const {lang, theme, setTheme} = useAdminLang();
+  const router = useRouter();
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef(null);
+  const hasNotifications = navItems.some((item) => item.href === "/admin/ops/notifications");
+  const allowedHrefs = useMemo(() => navItems.map((item) => item.href), [navItems]);
+  const paletteActions = useMemo(
+    () =>
+      QUICK_CREATE_ACTIONS.filter((action) =>
+        allowedHrefs.some(
+          (href) => action.href === href || action.href.startsWith(`${href}/`) || action.href.startsWith(`${href}?`),
+        ),
+      ),
+    [allowedHrefs],
+  );
+  const searchLinks = useMemo(
+    () => navItems.map((item) => ({label: item.label, href: item.href, group: "Navigate"})),
+    [navItems],
+  );
 
   useEffect(() => {
     function onKey(event) {
       const meta = event.metaKey || event.ctrlKey;
-      if (meta && event.key.toLowerCase() === 'k') {
+      if (meta && event.key.toLowerCase() === "k") {
         event.preventDefault();
         if (event.shiftKey) {
           setPaletteOpen(false);
@@ -245,230 +540,124 @@ export default function AdminAppShell({
         setPaletteOpen((v) => !v);
       }
     }
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   useEffect(() => {
     function onClick(event) {
-      if (!userMenuRef.current?.contains(event.target)) {
-        setUserMenuOpen(false);
-      }
+      if (!userMenuRef.current?.contains(event.target)) setUserMenuOpen(false);
     }
     if (userMenuOpen) {
-      window.addEventListener('mousedown', onClick);
-      return () => window.removeEventListener('mousedown', onClick);
+      window.addEventListener("mousedown", onClick);
+      return () => window.removeEventListener("mousedown", onClick);
     }
     return undefined;
   }, [userMenuOpen]);
 
-  const groups = useMemo(() => groupNavItems(navItems), [navItems]);
-
-  function toggleCollapsed() {
-    setCollapsed((prev) => {
-      const next = !prev;
-      try {
-        window.localStorage.setItem(SIDEBAR_KEY, next ? 'collapsed' : 'expanded');
-      } catch {
-        // ignore
-      }
-      return next;
-    });
-  }
-
   async function signOut() {
-    await fetch('/api/admin/auth', {method: 'DELETE'});
-    router.replace('/admin/login');
+    await fetch("/api/admin/auth", {method: "DELETE"});
+    router.replace("/admin/login");
     router.refresh();
   }
 
-  const crumb =
-    breadcrumb ||
-    (title ? (
-      <nav className="cms-breadcrumb" aria-label="Breadcrumb">
-        <Link href="/admin/dashboard">Admin</Link>
-        <span className="cms-breadcrumb-sep" aria-hidden>
-          /
-        </span>
-        <span className="cms-breadcrumb-current">{title}</span>
-      </nav>
-    ) : null);
-
-  const sidebarClass = [
-    'cms-sidebar',
-    collapsed ? 'is-collapsed' : '',
-    mobileOpen ? 'is-open' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   return (
-    <div className="cms-app">
-      {mobileOpen ? (
-        <div
-          className="cms-overlay"
-          style={{zIndex: 25}}
-          onClick={() => setMobileOpen(false)}
-          aria-hidden
-        />
-      ) : null}
-
-      <aside className={sidebarClass} aria-label="Admin navigation">
-        <div className="cms-sidebar-brand">
-          <div className="cms-sidebar-logo" aria-hidden>
-            AS
-          </div>
-          <div className="cms-sidebar-brand-text">
-            <strong>ASAS CMS</strong>
-            <span>Content workspace</span>
-          </div>
-        </div>
-
-        <nav className="cms-sidebar-nav">
-          {groups.map((group) => (
-            <div key={group.id} className="cms-nav-group">
-              {group.id !== 'overview' ? (
-                <div className="cms-nav-group-label">{group.label}</div>
-              ) : null}
-              {group.items.map((item) => {
-                const Icon = item.href.includes('#activity')
-                  ? Activity
-                  : iconFor(item.href);
-                const active =
-                  !item.href.includes('#') &&
-                  (pathname === item.href || pathname.startsWith(`${item.href}/`));
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`cms-nav-link${active ? ' is-active' : ''}${
-                      item.comingSoon ? ' is-soon' : ''
-                    }`}
-                    title={item.label}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <Icon aria-hidden />
-                    <span>{item.label}</span>
-                    {item.comingSoon ? <em>Soon</em> : null}
-                  </Link>
-                );
-              })}
-            </div>
-          ))}
-        </nav>
-
-        <div className="cms-sidebar-footer">
+    <>
+      <header className="cms-topbar">
+        <button
+          type="button"
+          className="cms-icon-btn cms-mobile-menu-btn"
+          aria-label={adminText("Open menu")}
+          onClick={() => openAdminNav()}
+        >
+          <Menu size={16} />
+        </button>
+        <div className="cms-topbar-grow" />
+        <div className="cms-topbar-actions">
           <button
             type="button"
-            className="cms-sidebar-collapse"
-            onClick={toggleCollapsed}
-            aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            className="cms-search-trigger"
+            onClick={() => {
+              setSearchOpen(false);
+              setPaletteOpen(true);
+            }}
           >
-            {collapsed ? <ChevronRight size={16} /> : <PanelLeft size={16} />}
-            {!collapsed ? <span>Collapse</span> : null}
+            <Search size={14} aria-hidden />
+            <span>{adminText("Search")}</span>
+            <kbd>{adminText("⌘K")}</kbd>
           </button>
-          <div className="cms-sidebar-user">
-            <div className="cms-sidebar-avatar" aria-hidden>
-              {initials(user?.name)}
-            </div>
-            <div className="cms-sidebar-user-meta">
-              <strong>{user?.name || 'Admin'}</strong>
-              <span>{user?.role ? user.role.split('_').join(' ') : '—'}</span>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      <div className="cms-main">
-        <header className="cms-topbar">
           <button
             type="button"
-            className="cms-icon-btn cms-mobile-menu-btn"
-            aria-label="Open menu"
-            onClick={() => setMobileOpen(true)}
+            className="cms-icon-btn is-primary"
+            aria-label={adminText("Quick create")}
+            onClick={() => {
+              setSearchOpen(false);
+              setPaletteOpen(true);
+            }}
           >
-            <Menu size={16} />
+            <Plus size={16} />
           </button>
-
-          {crumb}
-
-          <div className="cms-topbar-actions">
-            <button
-              type="button"
-              className="cms-search-trigger"
-              onClick={() => {
-                setSearchOpen(false);
-                setPaletteOpen(true);
-              }}
-            >
-              <Search size={14} aria-hidden />
-              <span>Search</span>
-              <kbd>⌘K</kbd>
-            </button>
-
-            <button
-              type="button"
-              className="cms-icon-btn is-primary"
-              aria-label="Quick create"
-              onClick={() => {
-                setSearchOpen(false);
-                setPaletteOpen(true);
-              }}
-            >
-              <Plus size={16} />
-            </button>
-
-            <Link
-              href="/en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cms-icon-btn"
-              title="Preview website"
-            >
-              <ExternalLink size={16} />
-              <span className="cms-topbar-label">Preview</span>
+          <AdminLanguageSwitcher />
+          <button
+            type="button"
+            className="cms-icon-btn"
+            aria-label={adminText(theme === "dark" ? "Switch to light mode" : "Switch to dark mode")}
+            title={adminText(theme === "dark" ? "Light mode" : "Dark mode")}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          {hasNotifications ? (
+            <Link href="/admin/ops/notifications" className="cms-icon-btn" title={adminText("Notifications")} aria-label={adminText("Notifications")}>
+              <Bell size={16} />
             </Link>
-
-            <div className="cms-user-menu" ref={userMenuRef}>
-              <button
-                type="button"
-                className="cms-icon-btn"
-                aria-expanded={userMenuOpen}
-                aria-haspopup="menu"
-                onClick={() => setUserMenuOpen((v) => !v)}
-              >
-                <div className="cms-sidebar-avatar" style={{width: 24, height: 24, fontSize: 10}}>
-                  {initials(user?.name)}
-                </div>
-              </button>
-              {userMenuOpen ? (
-                <div className="cms-user-menu-panel" role="menu">
-                  <strong>{user?.name || 'Admin'}</strong>
-                  <span>{user?.email || user?.role || '—'}</span>
-                  <button type="button" role="menuitem" onClick={signOut}>
-                    <LogOut size={14} />
-                    Sign out
-                  </button>
-                </div>
-              ) : null}
-            </div>
+          ) : null}
+          <Link
+            href={lang === "ar" ? "/ar" : "/en"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cms-export-btn"
+            title={adminText("Preview website")}
+            aria-label={adminText("Preview website")}
+          >
+            <ExternalLink size={16} />
+            {adminText("Preview website")}
+          </Link>
+          <div className="cms-user-menu" ref={userMenuRef}>
+            <button
+              type="button"
+              className="cms-icon-btn"
+              aria-expanded={userMenuOpen}
+              aria-haspopup="menu"
+              onClick={() => setUserMenuOpen((v) => !v)}
+            >
+              <div className="cms-sidebar-avatar" style={{width: 24, height: 24, fontSize: 10}}>
+                {user?.photoUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={user.photoUrl} alt="" />
+                ) : (
+                  adminText(initials(user?.name))
+                )}
+              </div>
+            </button>
+            {userMenuOpen ? (
+              <div className="cms-user-menu-panel" role="menu">
+                <strong>{adminText(user?.name || "Admin")}</strong>
+                <span>{adminText(user?.email || user?.role || "—")}</span>
+                <Link href="/admin/profile" role="menuitem" onClick={() => setUserMenuOpen(false)}>
+                  {adminText("My profile")}
+                </Link>
+                <button type="button" role="menuitem" onClick={signOut}>
+                  <LogOut size={14} />
+                  {adminText("Sign out")}
+                </button>
+              </div>
+            ) : null}
           </div>
-        </header>
-
-        <div className="cms-workspace">
-          {(title || actions) && (
-            <PageHeader title={title} subtitle={subtitle} actions={actions} />
-          )}
-          {children}
         </div>
-      </div>
-
-      <CommandPalette
-        open={paletteOpen}
-        onClose={() => setPaletteOpen(false)}
-        actions={QUICK_CREATE_ACTIONS}
-      />
-      <AdminSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
-    </div>
+      </header>
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} actions={paletteActions} />
+      <AdminSearch open={searchOpen} onClose={() => setSearchOpen(false)} links={searchLinks} />
+    </>
   );
 }

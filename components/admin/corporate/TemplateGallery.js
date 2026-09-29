@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {CARD_TEMPLATES, normalizeDigitalCard} from '@/lib/cms/corporate/employee-cards';
 import DigitalCardProfile from '@/components/corporate/cards/DigitalCardProfile';
@@ -55,8 +57,8 @@ export default function TemplateGallery({
             </div>
             <div className="ecs-template-meta">
               <strong>{template.name}</strong>
-              <span>{template.description}</span>
-              {active ? <em>Selected</em> : <em>Use template</em>}
+              <span>{adminText(template.description)}</span>
+              {active ? <em>{adminText("Selected")}</em> : <em>{adminText("Use template")}</em>}
             </div>
           </div>
         );

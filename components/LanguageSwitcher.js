@@ -12,7 +12,7 @@ export default function LanguageSwitcher({locale}) {
   const arHref = switchLocalePath(pathname, 'ar');
 
   return (
-    <nav className="asas-lang-switch" aria-label={locale === 'ar' ? 'اللغة' : 'Language'}>
+    <nav className="asas-lang-switch" data-tour="nav-lang" aria-label={locale === 'ar' ? 'اللغة' : 'Language'}>
       <Link
         href={enHref}
         className={locale === 'en' ? 'is-active' : undefined}

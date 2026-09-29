@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useState} from 'react';
 import MediaPicker from '@/components/admin/media/MediaPicker';
@@ -76,8 +78,7 @@ const SLOTS = [
 function PreviewPair({src, label}) {
   if (!src) {
     return (
-      <div className="brand-preview-empty">
-        No media selected for {label}
+      <div className="brand-preview-empty">{adminText("No media selected for ")}{adminText(label)}
       </div>
     );
   }
@@ -85,13 +86,13 @@ function PreviewPair({src, label}) {
     <div className="brand-preview-pair">
       <div className="brand-preview brand-preview--light">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt="" />
-        <span>Light background</span>
+        <img src={src} alt={adminText("")} />
+        <span>{adminText("Light background")}</span>
       </div>
       <div className="brand-preview brand-preview--dark">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt="" />
-        <span>Dark background</span>
+        <img src={src} alt={adminText("")} />
+        <span>{adminText("Dark background")}</span>
       </div>
     </div>
   );
@@ -144,19 +145,16 @@ export default function BrandingSettingsForm({
     <div className="brand-settings">
       <div className="cms-card brand-settings-hero">
         <div>
-          <strong>Website branding</strong>
-          <p>
-            Upload logos, favicon, and social images here. Header, footer, SEO, and
-            letterhead read from these settings — no file paths required.
-          </p>
+          <strong>{adminText("Website branding")}</strong>
+          <p>{adminText("Upload logos, favicon, and social images here. Header, footer, SEO, and letterhead read from these settings — no file paths required.")}</p>
         </div>
         <div className="brand-settings-actions">
           <span className={`brand-save-pill is-${saveState}`}>
-            {saveState === 'unsaved'
+            {adminText(saveState === 'unsaved'
               ? 'Unsaved changes'
               : saveState === 'error'
                 ? 'Save failed'
-                : 'Saved'}
+                : 'Saved')}
           </span>
           <button
             type="button"
@@ -164,24 +162,21 @@ export default function BrandingSettingsForm({
             disabled={!canWrite || saving || saveState === 'saved'}
             onClick={save}
           >
-            {saving ? 'Saving…' : 'Save branding'}
+            {adminText(saving ? 'Saving…' : 'Save branding')}
           </button>
         </div>
       </div>
 
       <div className="cms-card brand-colors">
-        <h3>Brand colors</h3>
-        <p className="brand-hint">
-          Official ASAS palette (protected). Editors cannot override the public design system
-          from this screen.
-        </p>
+        <h3>{adminText("Brand colors")}</h3>
+        <p className="brand-hint">{adminText("Official ASAS palette (protected). Editors cannot override the public design system from this screen.")}</p>
         <div className="brand-color-row">
           <div className="brand-swatch" style={{background: BRAND_COLORS.navy}}>
-            <span>ASAS Navy</span>
+            <span>{adminText("ASAS Navy")}</span>
             <code>{BRAND_COLORS.navy}</code>
           </div>
           <div className="brand-swatch" style={{background: BRAND_COLORS.rust}}>
-            <span>ASAS Rust</span>
+            <span>{adminText("ASAS Rust")}</span>
             <code>{BRAND_COLORS.rust}</code>
           </div>
         </div>
@@ -192,13 +187,13 @@ export default function BrandingSettingsForm({
           <section key={slot.key} className="cms-card brand-slot">
             <div className="brand-slot-head">
               <div>
-                <h3>{slot.label}</h3>
-                <p>{slot.hint}</p>
+                <h3>{adminText(slot.label)}</h3>
+                <p>{adminText(slot.hint)}</p>
               </div>
             </div>
-            <PreviewPair src={branding[slot.key]} label={slot.label} />
+            <PreviewPair src={branding[slot.key]} label={adminText(slot.label)} />
             <MediaPicker
-              label={slot.label}
+              label={adminText(slot.label)}
               value={branding[slot.key] || ''}
               canWrite={canWrite}
               onChange={(url) => setSlot(slot.key, url)}

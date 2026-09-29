@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useState} from 'react';
 import MediaLibraryDialog from './MediaLibraryDialog';
@@ -39,8 +41,8 @@ export default function MediaPicker({
 
   return (
     <div className="adm-field adm-media-picker">
-      {label ? <label>{label}</label> : null}
-      {hint ? <p className="adm-section-help" style={{marginTop: 0}}>{hint}</p> : null}
+      {label ? <label>{adminText(label)}</label> : null}
+      {hint ? <p className="adm-section-help" style={{marginTop: 0}}>{adminText(hint)}</p> : null}
 
       <div
         className="adm-media-picker-preview"
@@ -54,27 +56,25 @@ export default function MediaPicker({
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={value}
-            alt=""
+            alt={adminText("")}
             style={{objectPosition: focalValue || '50% 50%', objectFit: 'cover'}}
           />
         ) : hasValue ? (
           <div className="adm-media-picker-file">
-            <strong>Selected file</strong>
-            <span>{String(value).split('/').pop()}</span>
+            <strong>{adminText("Selected file")}</strong>
+            <span>{adminText(String(value).split('/').pop())}</span>
           </div>
         ) : (
-          <div className="adm-media-picker-empty">No media selected yet</div>
+          <div className="adm-media-picker-empty">{adminText("No media selected yet")}</div>
         )}
       </div>
 
       <div className="adm-actions" style={{marginTop: 10}}>
         <button type="button" className="adm-btn" disabled={!canWrite} onClick={() => setOpen(true)}>
-          {hasValue ? 'Replace' : 'Upload / choose'}
+          {adminText(hasValue ? 'Replace' : 'Upload / choose')}
         </button>
         {showCrop ? (
-          <button type="button" className="adm-btn-ghost" onClick={() => setCropOpen(true)}>
-            Crop
-          </button>
+          <button type="button" className="adm-btn-ghost" onClick={() => setCropOpen(true)}>{adminText("Crop")}</button>
         ) : null}
         {hasValue && canWrite ? (
           <button
@@ -84,9 +84,7 @@ export default function MediaPicker({
               onChange?.('', null);
               onFocalChange?.('50% 50%');
             }}
-          >
-            Remove
-          </button>
+          >{adminText("Remove")}</button>
         ) : null}
       </div>
 
@@ -95,7 +93,7 @@ export default function MediaPicker({
           src={value}
           value={focalValue || '50% 50%'}
           disabled={!canWrite}
-          label="Focus point"
+          label={adminText("Focus point")}
           onChange={onFocalChange}
         />
       ) : null}

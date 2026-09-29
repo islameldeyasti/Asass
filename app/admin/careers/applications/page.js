@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {listApplications} from '@/lib/cms/content-service';
@@ -15,13 +17,13 @@ export default async function AdminCareersApplicationsPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Applications"
-      subtitle={`${items.length} career applications`}
+      title={adminText("Applications")}
+      subtitle={adminText(`${items.length} career applications`)}
       breadcrumb={
-        <nav className="cms-breadcrumb" aria-label="Breadcrumb">
-          <span>Careers</span>
+        <nav className="cms-breadcrumb" aria-label={adminText("Breadcrumb")}>
+          <span>{adminText("Careers")}</span>
           <span aria-hidden>/</span>
-          <span>Applications</span>
+          <span>{adminText("Applications")}</span>
         </nav>
       }
     >

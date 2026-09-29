@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useEffect, useMemo, useState} from 'react';
 import Link from 'next/link';
@@ -206,10 +208,8 @@ export default function EmployeeCardsStudio({
     <div className="ecs-studio">
       <div className="cms-card ecs-toolbar">
         <div>
-          <strong>Employee digital cards</strong>
-          <p style={{margin: '4px 0 0', color: 'var(--cms-muted)'}}>
-            Configure public profiles and QR codes for team members.
-          </p>
+          <strong>{adminText("Employee digital cards")}</strong>
+          <p style={{margin: '4px 0 0', color: 'var(--cms-muted)'}}>{adminText("Configure public profiles and QR codes for team members.")}</p>
         </div>
         <div style={{display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center'}}>
           <select
@@ -218,10 +218,10 @@ export default function EmployeeCardsStudio({
             value={deptFilter}
             onChange={(e) => setDeptFilter(e.target.value)}
           >
-            <option value="all">All departments</option>
+            <option value="all">{adminText("All departments")}</option>
             {departments.map((d) => (
               <option key={d} value={d}>
-                {d}
+                {adminText(d)}
               </option>
             ))}
           </select>
@@ -231,22 +231,21 @@ export default function EmployeeCardsStudio({
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
           >
-            <option value="all">All statuses</option>
-            <option value="published">Published</option>
-            <option value="draft">Draft</option>
-            <option value="disabled">Disabled</option>
+            <option value="all">{adminText("All statuses")}</option>
+            <option value="published">{adminText("Published")}</option>
+            <option value="draft">{adminText("Draft")}</option>
+            <option value="disabled">{adminText("Disabled")}</option>
           </select>
           <input
             className="adm-input"
             style={{maxWidth: 220}}
-            placeholder="Search name, role, email…"
+            placeholder={adminText("Search name, role, email…")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           {canWrite ? (
             <Link className="adm-btn" href="/admin/corporate/employee-cards/new">
-              <Plus size={14} /> Add card
-            </Link>
+              <Plus size={14} />{adminText(" Add card")}</Link>
           ) : null}
         </div>
       </div>
@@ -266,8 +265,8 @@ export default function EmployeeCardsStudio({
           ['Need publish', stats.missingQrReady],
         ].map(([label, value]) => (
           <div key={label} className="cms-stat-card">
-            <span>{label}</span>
-            <strong>{value}</strong>
+            <span>{adminText(label)}</span>
+            <strong>{adminText(value)}</strong>
           </div>
         ))}
       </div>
@@ -277,50 +276,36 @@ export default function EmployeeCardsStudio({
           className="cms-card"
           style={{display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center'}}
         >
-          <span style={{fontSize: 13}}>{selectedIds.size} selected</span>
-          <button type="button" className="adm-btn" disabled={saving} onClick={bulkCreateCards}>
-            Create / configure cards
-          </button>
+          <span style={{fontSize: 13}}>{adminText(selectedIds.size)}{adminText(" selected")}</span>
+          <button type="button" className="adm-btn" disabled={saving} onClick={bulkCreateCards}>{adminText("Create / configure cards")}</button>
           <button
             type="button"
             className="adm-btn-ghost"
             disabled={saving || (!canPublish && !canWrite)}
             onClick={() => bulkSetStatus('published')}
-          >
-            Publish cards
-          </button>
+          >{adminText("Publish cards")}</button>
           <button
             type="button"
             className="adm-btn-ghost"
             disabled={saving}
             onClick={() => bulkSetStatus('disabled')}
-          >
-            Disable cards
-          </button>
-          <button type="button" className="adm-btn-ghost" disabled={saving} onClick={() => bulkQrZip('png')}>
-            Download QR ZIP (PNG)
-          </button>
-          <button type="button" className="adm-btn-ghost" disabled={saving} onClick={() => bulkQrZip('svg')}>
-            Download QR ZIP (SVG)
-          </button>
+          >{adminText("Disable cards")}</button>
+          <button type="button" className="adm-btn-ghost" disabled={saving} onClick={() => bulkQrZip('png')}>{adminText("Download QR ZIP (PNG)")}</button>
+          <button type="button" className="adm-btn-ghost" disabled={saving} onClick={() => bulkQrZip('svg')}>{adminText("Download QR ZIP (SVG)")}</button>
         </div>
       ) : null}
 
-      {error ? <div className="adm-error">{error}</div> : null}
-      {notice ? <div className="adm-success">{notice}</div> : null}
+      {error ? <div className="adm-error">{adminText(error)}</div> : null}
+      {notice ? <div className="adm-success">{adminText(notice)}</div> : null}
 
       <div className="cms-card" style={{padding: 0, overflow: 'hidden'}}>
         {filtered.length === 0 ? (
           <div className="adm-empty" style={{padding: 32}}>
-            <p>No team members found. Add profiles in Team first.</p>
+            <p>{adminText("No team members found. Add profiles in Team first.")}</p>
             <div style={{marginTop: 12, display: 'flex', gap: 8, justifyContent: 'center'}}>
-              <Link className="adm-btn-ghost" href="/admin/team/new">
-                Add team member
-              </Link>
+              <Link className="adm-btn-ghost" href="/admin/team/new">{adminText("Add team member")}</Link>
               {canWrite ? (
-                <Link className="adm-btn" href="/admin/corporate/employee-cards/new">
-                  Add card
-                </Link>
+                <Link className="adm-btn" href="/admin/corporate/employee-cards/new">{adminText("Add card")}</Link>
               ) : null}
             </div>
           </div>
@@ -333,15 +318,15 @@ export default function EmployeeCardsStudio({
                     type="checkbox"
                     checked={filtered.length > 0 && selectedIds.size === filtered.length}
                     onChange={toggleSelectAll}
-                    aria-label="Select all"
+                    aria-label={adminText("Select all")}
                   />
                 </th>
-                <th>Photo</th>
-                <th>Employee</th>
-                <th>Template</th>
-                <th>Card status</th>
-                <th>QR</th>
-                <th>Views</th>
+                <th>{adminText("Photo")}</th>
+                <th>{adminText("Employee")}</th>
+                <th>{adminText("Template")}</th>
+                <th>{adminText("Card status")}</th>
+                <th>{adminText("QR")}</th>
+                <th>{adminText("Views")}</th>
                 <th />
               </tr>
             </thead>
@@ -358,62 +343,56 @@ export default function EmployeeCardsStudio({
                         type="checkbox"
                         checked={selectedIds.has(member.id)}
                         onChange={() => toggleSelect(member.id)}
-                        aria-label={`Select ${member.name_en}`}
+                        aria-label={adminText(`Select ${member.name_en}`)}
                       />
                     </td>
                     <td>
                       {member.profile_image ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img className="adm-thumb" src={member.profile_image} alt="" />
+                        <img className="adm-thumb" src={member.profile_image} alt={adminText("")} />
                       ) : (
                         <div className="adm-thumb adm-thumb--empty">
-                          {(member.name_en || '?').slice(0, 1)}
+                          {adminText((member.name_en || '?').slice(0, 1))}
                         </div>
                       )}
                     </td>
                     <td>
-                      <strong>{member.name_en}</strong>
+                      <strong>{adminText(member.name_en)}</strong>
                       <div style={{color: 'var(--cms-muted)', fontSize: 12}}>
-                        {member.job_title_en}
-                        {member.department_en ? ` · ${member.department_en}` : ''}
+                        {adminText(member.job_title_en)}
+                        {adminText(member.department_en ? ` · ${member.department_en}` : '')}
                       </div>
                     </td>
-                    <td>{tpl?.name || card.templateId}</td>
+                    <td>{adminText(tpl?.name || card.templateId)}</td>
                     <td>
                       <span className={`adm-badge ${statusClass(card)}`}>
-                        {statusLabel(card)}
+                        {adminText(statusLabel(card))}
                       </span>
                     </td>
                     <td style={{fontSize: 12}}>
                       {published && publicPath ? (
-                        <a href={publicPath} target="_blank" rel="noreferrer">
-                          /c/{card.publicId}
+                        <a href={publicPath} target="_blank" rel="noreferrer">{adminText("/c/")}{adminText(card.publicId)}
                         </a>
                       ) : (
                         '—'
                       )}
                     </td>
-                    <td>{card.views || 0}</td>
+                    <td>{adminText(card.views || 0)}</td>
                     <td>
                       <div style={{display: 'flex', gap: 6, justifyContent: 'flex-end', flexWrap: 'wrap'}}>
                         <Link
                           className="adm-btn-ghost"
                           href={`/admin/corporate/employee-cards/${member.id}`}
                         >
-                          <IdCard size={14} /> Edit
-                        </Link>
+                          <IdCard size={14} />{adminText(" Edit")}</Link>
                         {publicPath ? (
-                          <a className="adm-btn-ghost" href={publicPath} target="_blank" rel="noreferrer">
-                            Preview
-                          </a>
+                          <a className="adm-btn-ghost" href={publicPath} target="_blank" rel="noreferrer">{adminText("Preview")}</a>
                         ) : null}
                         {card.publicId ? (
                           <a
                             className="adm-btn-ghost"
                             href={`/api/public/card-qr?publicId=${encodeURIComponent(card.publicId)}&format=png`}
-                          >
-                            QR
-                          </a>
+                          >{adminText("QR")}</a>
                         ) : null}
                       </div>
                     </td>

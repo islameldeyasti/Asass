@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {
   DEFAULT_CARD_LAYOUT,
@@ -54,14 +56,12 @@ export default function CardLayoutControls({
   return (
     <div className="ecs-layout-controls">
       <div className="ecs-layout-head">
-        <strong>Spacing &amp; type</strong>
-        <p className="ecs-help" style={{margin: '4px 0 0'}}>
-          Works on every template. Adjust padding, margins, gaps, corners, and text sizes — preview updates live.
-        </p>
+        <strong>{adminText("Spacing & type")}</strong>
+        <p className="ecs-help" style={{margin: '4px 0 0'}}>{adminText("Works on every template. Adjust padding, margins, gaps, corners, and text sizes — preview updates live.")}</p>
       </div>
 
       <div className="adm-field">
-        <label>Density preset</label>
+        <label>{adminText("Density preset")}</label>
         <div className="adm-actions" style={{flexWrap: 'wrap'}}>
           {LAYOUT_DENSITY_PRESETS.map((preset) => (
             <button
@@ -71,12 +71,10 @@ export default function CardLayoutControls({
               disabled={!canWrite}
               onClick={() => applyDensity(preset.id)}
             >
-              {preset.label}
+              {adminText(preset.label)}
             </button>
           ))}
-          <button type="button" className="adm-btn-ghost" disabled={!canWrite} onClick={resetDefaults}>
-            Reset
-          </button>
+          <button type="button" className="adm-btn-ghost" disabled={!canWrite} onClick={resetDefaults}>{adminText("Reset")}</button>
         </div>
       </div>
 
@@ -84,10 +82,10 @@ export default function CardLayoutControls({
         {SLIDERS.map((slider) => (
           <div key={slider.key} className="adm-field ecs-layout-row">
             <div className="ecs-layout-label">
-              <label htmlFor={`layout-${slider.key}`}>{slider.label}</label>
+              <label htmlFor={`layout-${slider.key}`}>{adminText(slider.label)}</label>
               <span>
-                {slider.unit === 'rem' ? Number(L[slider.key]).toFixed(2) : L[slider.key]}
-                {slider.unit}
+                {adminText(slider.unit === 'rem' ? Number(L[slider.key]).toFixed(2) : L[slider.key])}
+                {adminText(slider.unit)}
               </span>
             </div>
             <input

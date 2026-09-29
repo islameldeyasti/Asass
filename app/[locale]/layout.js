@@ -2,6 +2,7 @@ import {notFound} from 'next/navigation';
 import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteTour from '@/components/SiteTour';
 import WhatsApp from '@/components/WhatsApp';
 import ThemeFab from '@/components/theme/ThemeFab';
 import FloatingUtilities from '@/components/FloatingUtilities';
@@ -118,6 +119,7 @@ export default async function LocaleLayout({children, params}) {
       <FloatingUtilities locale={locale} />
       <ThemeFab locale={locale} />
       <AIAssistantMount locale={locale} />
+      <SiteTour locale={locale} />
       <WhatsApp locale={locale} companyData={company} />
     </div>
   );

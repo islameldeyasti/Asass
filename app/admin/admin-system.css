@@ -1,0 +1,1233 @@
+/* ─────────────────────────────────────────────
+   ASAS Admin — Metronic-inspired design system
+   Compact, light, consistent. Brand: ASAS navy.
+   ───────────────────────────────────────────── */
+
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+  --cms-bg: #f6f8fb;
+  --cms-surface: #ffffff;
+  --cms-surface-2: #f9f9f9;
+  --cms-elevated: #ffffff;
+  --cms-border: #f1f1f4;
+  --cms-border-strong: #e1e3ea;
+  --cms-text: #071437;
+  --cms-text-secondary: #4b5675;
+  --cms-muted: #99a1b7;
+  --cms-navy: #1b84ff;
+  --cms-navy-soft: rgba(27, 132, 255, 0.08);
+  --cms-accent: #1b84ff;
+  --cms-accent-soft: rgba(27, 132, 255, 0.1);
+  --cms-radius: 0.75rem;
+  --cms-sidebar-w: 250px;
+  --cms-sidebar-collapsed: 70px;
+  --cms-rail-w: 70px;
+  --cms-menu-w: 250px;
+  --cms-topbar-h: 70px;
+  --cms-rust: #c2410c;
+  --cms-success: #17c653;
+  --cms-success-text: #04b440;
+  --cms-warning: #f6c000;
+  --cms-warning-text: #c59a00;
+  --cms-danger: #f8285a;
+  --cms-danger-text: #d81a48;
+  --cms-info: #1b84ff;
+  --cms-radius-sm: 0.5rem;
+  --cms-radius-xs: 0.375rem;
+  --cms-control-h: 40px;
+  --cms-font: 'Inter', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --cms-shadow-sm: 0 3px 4px 0 rgba(0, 0, 0, 0.03);
+  --cms-shadow-md: 0 8px 22px 0 rgba(0, 0, 0, 0.05);
+  --cms-shadow-lg: 0 10px 30px 0 rgba(0, 0, 0, 0.08);
+  --cms-ease: 150ms ease;
+  --cms-content-max: 1280px;
+  --cms-sidebar-bg: #ffffff;
+  --cms-sidebar-border: #f1f1f4;
+  --cms-sidebar-text: #4b5675;
+  --cms-sidebar-muted: #99a1b7;
+  --cms-sidebar-hover: #f9f9f9;
+  --cms-sidebar-active: #1b84ff;
+  --cms-sidebar-active-bg: rgba(27, 132, 255, 0.1);
+  --cms-z-overlay: 80;
+  --cms-z-modal: 90;
+  --cms-z-toast: 110;
+  --cms-z-tooltip: 120;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --cms-bg: #15171c;
+  --cms-surface: #1c1d21;
+  --cms-surface-2: #26272f;
+  --cms-elevated: #26272f;
+  --cms-border: #363843;
+  --cms-border-strong: #474a57;
+  --cms-text: #f5f5f5;
+  --cms-text-secondary: #c4cada;
+  --cms-muted: #b4b8c8;
+  --cms-navy: #8ec5ff;
+  --cms-navy-soft: rgba(142, 197, 255, 0.16);
+  --cms-accent: #1b84ff;
+  --cms-accent-soft: rgba(27, 132, 255, 0.22);
+  --cms-info: #8ec5ff;
+  --cms-shadow-sm: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+  --cms-shadow-md: 0 8px 22px 0 rgba(0, 0, 0, 0.28);
+  --cms-shadow-lg: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+  --cms-sidebar-bg: #1c1d21;
+  --cms-sidebar-border: #363843;
+  --cms-sidebar-text: #c4cada;
+  --cms-sidebar-muted: #9a9cae;
+  --cms-sidebar-hover: #26272f;
+  --cms-sidebar-active: #ffffff;
+  --cms-sidebar-active-bg: #1b84ff;
+  --asas-navy: #f5f5f5;
+  --asas-text: #f5f5f5;
+  --text-primary: #f5f5f5;
+}
+
+/* Focus rings */
+.cms-body :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--cms-accent);
+  outline-offset: 2px;
+}
+
+/* Buttons — full state set */
+.cms-btn,
+.cms-btn-ghost,
+.cms-btn-danger,
+.adm-btn,
+.adm-btn-ghost,
+.adm-btn-danger,
+.erp-btn {
+  position: relative;
+  min-height: 42px;
+  transition: background var(--cms-ease), color var(--cms-ease), border-color var(--cms-ease),
+    box-shadow var(--cms-ease), transform var(--cms-ease), opacity var(--cms-ease);
+}
+
+.cms-btn:active,
+.adm-btn:active,
+.erp-btn:not(.secondary):active {
+  transform: translateY(1px);
+}
+
+.cms-btn.is-loading,
+.adm-btn.is-loading,
+.erp-btn.is-loading {
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.cms-btn.is-loading::after,
+.adm-btn.is-loading::after,
+.erp-btn.is-loading::after {
+  content: '';
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  color: #fff;
+  animation: cms-spin 0.7s linear infinite;
+}
+
+@keyframes cms-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Inputs — unified in admin-inputs.css (@tailwindcss/forms) */
+.cms-field input:disabled,
+.cms-field textarea:disabled,
+.cms-field select:disabled,
+.adm-field input:disabled,
+.adm-field textarea:disabled,
+.adm-field select:disabled,
+.erp-workspace input:disabled,
+.erp-workspace select:disabled,
+.erp-workspace textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cms-field.is-error input,
+.cms-field.is-error textarea,
+.cms-field.is-error select,
+.adm-field.is-error input,
+.erp-field.is-error input {
+  border-color: var(--cms-danger);
+  box-shadow: 0 0 0 4px rgba(238, 93, 80, 0.12);
+}
+
+.cms-field-error {
+  color: var(--cms-danger-text);
+  font-size: 12px;
+}
+
+/* Sidebar — Metronic light density */
+.cms-sidebar {
+  background: var(--cms-sidebar-bg);
+  border-right: 1px solid var(--cms-sidebar-border);
+}
+
+.cms-sidebar-logo {
+  background: var(--cms-navy);
+  color: #fff;
+  border-radius: 8px;
+}
+
+.cms-login .cms-sidebar-logo {
+  background: var(--cms-navy);
+  color: #fff;
+}
+
+.cms-sidebar-brand-text strong {
+  color: var(--cms-text);
+  font-weight: 600;
+}
+
+.cms-sidebar-brand-text span,
+.cms-nav-group-toggle,
+.cms-nav-group-label {
+  color: var(--cms-sidebar-muted);
+}
+
+.cms-nav-link {
+  position: relative;
+  min-height: 40px;
+  border-radius: 8px;
+  color: var(--cms-sidebar-text);
+}
+
+.cms-nav-link:hover {
+  background: var(--cms-sidebar-hover);
+  color: var(--cms-text);
+}
+
+.cms-nav-link.is-active {
+  background: var(--cms-sidebar-active-bg);
+  color: var(--cms-sidebar-active);
+  box-shadow: none;
+  font-weight: 600;
+}
+
+.cms-nav-link.is-active svg {
+  color: var(--cms-sidebar-active);
+}
+
+.cms-sidebar-collapse {
+  border-color: var(--cms-border);
+  color: var(--cms-sidebar-muted);
+  background: var(--cms-surface);
+}
+
+.cms-sidebar-user-meta strong {
+  color: var(--cms-text);
+}
+
+.cms-sidebar-user-meta span {
+  color: var(--cms-muted);
+}
+
+.cms-sidebar-avatar {
+  background: var(--cms-accent-soft);
+  color: var(--cms-accent);
+}
+
+.cms-sidebar.is-collapsed .cms-nav-link:hover::after,
+.cms-sidebar.is-collapsed .cms-sidebar-collapse:hover::after {
+  content: attr(title);
+  position: absolute;
+  inset-inline-start: calc(100% + 10px);
+  top: 50%;
+  translate: 0 -50%;
+  z-index: var(--cms-z-tooltip);
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: #071437;
+  color: #fff;
+  font: 600 12px/1 var(--cms-font);
+  white-space: nowrap;
+  box-shadow: var(--cms-shadow-md);
+  pointer-events: none;
+}
+
+.cms-sidebar.is-collapsed .cms-nav-link {
+  position: relative;
+}
+
+.cms-topbar-grow {
+  flex: 1;
+}
+
+.cms-topbar {
+  height: var(--cms-topbar-h);
+  padding: 0 24px;
+  background: var(--cms-surface);
+  border-bottom: 1px solid var(--cms-border);
+}
+
+.cms-search-trigger {
+  min-height: 40px;
+  min-width: 240px;
+  border-radius: 8px;
+  background: var(--cms-surface-2);
+  box-shadow: none;
+}
+
+.cms-page-header {
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.cms-page-header h1 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.cms-page-header p {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.cms-breadcrumb {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+/* Topbar */
+.cms-topbar {
+  height: var(--cms-topbar-h);
+  padding: 0 28px;
+  background: color-mix(in srgb, var(--cms-bg) 78%, transparent);
+}
+
+.cms-search-trigger {
+  min-height: 44px;
+  min-width: 260px;
+  border-radius: 30px;
+  background: var(--cms-surface);
+  box-shadow: var(--cms-shadow-sm);
+}
+
+/* Cards */
+.cms-card,
+.adm-card,
+.rx-card,
+.rx-kpi,
+.erp-metric,
+.ops-metric,
+.erp-register,
+.ops-panel,
+.erp-module,
+.ops-module {
+  border-radius: var(--cms-radius);
+  border: 1px solid var(--cms-border);
+  background: var(--cms-surface);
+  box-shadow: var(--cms-shadow-sm);
+  transition: border-color var(--cms-ease), box-shadow var(--cms-ease);
+}
+
+.rx-kpi:hover,
+.erp-module:hover,
+.ops-module:hover,
+.cms-stat-card:hover,
+.ops-metric:hover {
+  box-shadow: var(--cms-shadow-md);
+  border-color: var(--cms-border-strong);
+}
+
+/* Dashboard */
+.rx-welcome h2 {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--cms-text);
+}
+
+.rx-kpi strong,
+.cms-stat-card strong,
+.ops-metric > strong,
+.erp-metric > strong {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+
+.rx-bar.is-active .rx-bar-fill {
+  background: linear-gradient(180deg, #868cff 0%, var(--cms-accent) 100%);
+}
+
+.rx-spark {
+  color: var(--cms-accent);
+}
+
+/* Tables */
+.cms-table,
+.adm-table,
+.erp-table,
+.rx-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.cms-table thead th,
+.adm-table thead th,
+.erp-table th,
+.rx-table th {
+  height: 48px;
+  background: var(--cms-surface-2);
+  color: var(--cms-muted);
+  font: 700 11px/1 var(--cms-font);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cms-table tbody td,
+.adm-table tbody td,
+.erp-table td,
+.rx-table td {
+  height: 56px;
+  color: var(--cms-text-secondary);
+}
+
+.cms-table tbody tr:hover td,
+.adm-table tbody tr:hover td,
+.erp-table tr:hover td,
+.rx-table tbody tr:hover {
+  background: color-mix(in srgb, var(--cms-accent) 4%, var(--cms-surface));
+}
+
+.cms-row-actions .adm-btn-ghost,
+.cms-row-actions .adm-btn-danger {
+  min-height: 34px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+/* Tabs */
+.cms-i18n-tablist,
+.erp-tabs {
+  gap: 6px;
+  padding: 4px;
+  border-radius: 14px;
+  background: var(--cms-surface-2);
+  border: 1px solid var(--cms-border);
+}
+
+.cms-i18n-tab,
+.erp-tabs button {
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background var(--cms-ease), color var(--cms-ease);
+}
+
+.cms-i18n-tab.is-active,
+.erp-tabs button.active {
+  background: var(--cms-surface);
+  color: var(--cms-text);
+  box-shadow: var(--cms-shadow-sm);
+  border-color: transparent;
+}
+
+/* Forms */
+.cms-form-section {
+  display: grid;
+  gap: 14px;
+  padding: 8px 0 18px;
+  border-bottom: 1px solid var(--cms-border);
+  margin-bottom: 18px;
+}
+
+.cms-form-section:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.cms-form-section h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cms-text);
+}
+
+.cms-form-section-desc {
+  margin: 0;
+  color: var(--cms-muted);
+  font-size: 13px;
+}
+
+/* Modals / drawers */
+.cms-overlay,
+.adm-modal-backdrop,
+.erp-modal-backdrop {
+  animation: none;
+}
+
+.cms-dialog,
+.adm-modal,
+.erp-modal,
+.cms-drawer,
+.cms-palette {
+  animation: none;
+  box-shadow: var(--cms-shadow-lg);
+  border-radius: 20px;
+}
+
+.cms-drawer {
+  border-radius: 20px 0 0 20px;
+}
+
+.admin-ar .cms-drawer {
+  border-radius: 0 20px 20px 0;
+}
+
+@keyframes cms-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cms-rise-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.adm-modal-head,
+.erp-modal > header,
+.cms-drawer-head {
+  flex-shrink: 0;
+}
+
+.adm-modal-foot,
+.erp-modal-footer,
+.cms-drawer-foot {
+  position: relative;
+  flex-shrink: 0;
+  background: var(--cms-surface-2);
+}
+
+/* Badges */
+.cms-badge,
+.adm-badge,
+.erp-status,
+.ops-pill,
+.rx-status,
+.rx-pill {
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font: 700 11px/24px var(--cms-font);
+}
+
+/* Pagination */
+.erp-pagination,
+.ops-pagination {
+  min-height: 56px;
+  background: var(--cms-surface-2);
+  color: var(--cms-text);
+  border-top: 1px solid var(--cms-border);
+}
+
+.erp-pagination button,
+.ops-pagination button {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--cms-border);
+  background: var(--cms-surface);
+  color: var(--cms-text-secondary);
+}
+
+.erp-pagination button:hover:not(:disabled),
+.ops-pagination button:hover:not(:disabled) {
+  border-color: var(--cms-accent);
+  color: var(--cms-accent);
+}
+
+/* Empty / loading / skeleton */
+.cms-empty,
+.adm-empty,
+.erp-empty,
+.ops-empty {
+  padding: 56px 24px;
+  border-radius: var(--cms-radius);
+  background: var(--cms-surface-2);
+}
+
+.cms-skeleton,
+.cms-skel {
+  display: grid;
+  gap: 10px;
+}
+
+.cms-skel-line,
+.cms-skeleton-line {
+  height: 12px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--cms-surface-2), var(--cms-border), var(--cms-surface-2));
+  background-size: 200% 100%;
+  animation: cms-shimmer 1.2s ease infinite;
+}
+
+.cms-skel-line.is-lg {
+  height: 28px;
+  width: 40%;
+}
+
+@keyframes cms-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Alerts */
+.adm-success,
+.adm-error,
+.cms-error,
+.erp-error,
+.erp-notice {
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+/* Toasts */
+.cms-toast-stack {
+  z-index: var(--cms-z-toast);
+}
+
+.cms-toast {
+  border-radius: 14px;
+  box-shadow: var(--cms-shadow-md);
+}
+
+/* Dropdowns */
+.cms-user-menu-panel {
+  animation: cms-rise-in 160ms var(--cms-ease);
+  border-radius: 16px;
+}
+
+/* Switches already exist; align track to accent */
+.adm-switch input:checked + .adm-switch-track {
+  background: var(--cms-accent);
+}
+
+/* ERP / Ops inherit tokens */
+.erp-workspace,
+.ops-workspace {
+  --erp-ink: var(--cms-text);
+  --erp-muted: var(--cms-muted);
+  --erp-line: var(--cms-border);
+  --erp-blue: var(--cms-navy);
+  --ops-ink: var(--cms-text);
+  --ops-blue: var(--cms-navy);
+  --ops-line: var(--cms-border);
+}
+
+.erp-hero,
+.ops-hero {
+  background: linear-gradient(135deg, #070463 0%, #2b3674 52%, #4318ff 140%);
+  border-radius: 20px;
+}
+
+.erp-btn {
+  background: var(--cms-navy);
+  border-color: var(--cms-navy);
+  border-radius: 12px;
+}
+
+.erp-btn.secondary {
+  background: var(--cms-surface);
+  color: var(--cms-text-secondary);
+  border-color: var(--cms-border-strong);
+}
+
+.erp-search {
+  min-height: 44px;
+  border-radius: 12px;
+  background: var(--cms-surface-2);
+}
+
+[data-theme='dark'] .cms-login {
+  background: var(--cms-surface-2);
+  color: var(--cms-text);
+  border-color: var(--cms-border-strong);
+}
+
+[data-theme='dark'] .cms-table thead th,
+[data-theme='dark'] .adm-table thead th,
+[data-theme='dark'] .erp-table th {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Responsive grids */
+@media (max-width: 1100px) {
+  .cms-workspace {
+    padding: 20px 18px 64px;
+  }
+
+  .rx-kpi-grid,
+  .erp-modules,
+  .ops-module-grid,
+  .ops-project-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .cms-page-header,
+  .rx-welcome,
+  .erp-hero,
+  .ops-hero,
+  .erp-toolbar,
+  .ops-toolbar,
+  .adm-list-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rx-kpi-grid,
+  .erp-modules,
+  .ops-module-grid,
+  .ops-project-cards,
+  .ops-metrics,
+  .erp-metrics,
+  .cms-grid-2,
+  .cms-grid-3,
+  .adm-grid-2,
+  .adm-grid-3,
+  .erp-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cms-search-trigger {
+    min-width: 0;
+    width: 44px;
+  }
+
+  .cms-table-wrap,
+  .erp-table-scroll,
+  .rx-table-wrap {
+    margin-inline: -8px;
+  }
+
+  .kt-settings {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Metronic settings architecture */
+.kt-settings {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.kt-settings-nav {
+  position: sticky;
+  top: calc(var(--cms-topbar-h) + 16px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  background: var(--cms-surface);
+  border: 1px solid var(--cms-border);
+  border-radius: var(--cms-radius);
+}
+
+.kt-settings-link {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: var(--cms-text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.kt-settings-link:hover {
+  background: var(--cms-surface-2);
+  color: var(--cms-text);
+}
+
+.kt-settings-link.is-active {
+  background: var(--cms-accent-soft);
+  color: var(--cms-accent);
+  font-weight: 600;
+}
+
+.kt-settings-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.kt-settings-main {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.kt-card {
+  background: var(--cms-surface);
+  border: 1px solid var(--cms-border);
+  border-radius: var(--cms-radius);
+  box-shadow: var(--cms-shadow-sm);
+  overflow: hidden;
+}
+
+.kt-card-head {
+  padding: 18px 22px 0;
+}
+
+.kt-card-head h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cms-text);
+}
+
+.kt-card-head p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--cms-muted);
+  line-height: 1.55;
+}
+
+.kt-card-body {
+  padding: 18px 22px;
+}
+
+.kt-card-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 22px;
+  border-top: 1px solid var(--cms-border);
+  background: var(--cms-surface-2);
+}
+
+.erp-hero,
+.ops-hero,
+.ops-360-hero {
+  background: linear-gradient(135deg, #070463 0%, #1d2b6b 52%, #1b84ff 140%);
+  border-radius: var(--cms-radius);
+  color: #fff;
+}
+
+.cms-body :is(.erp-hero, .ops-hero, .ops-360-hero),
+.cms-body :is(.erp-hero, .ops-hero, .ops-360-hero) :is(h1, h2, h3, h4, a, strong, small, svg, button, li) {
+  color: #fff !important;
+}
+
+.cms-body :is(.erp-hero, .ops-hero, .ops-360-hero) :is(p, .erp-eyebrow, .ops-eyebrow) {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+.cms-body :is(.erp-hero-actions a, .ops-hero-links a) {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.rx-bar.is-active .rx-bar-fill {
+  background: var(--cms-accent);
+}
+
+.cms-btn,
+.adm-btn,
+.erp-btn:not(.secondary) {
+  background: var(--cms-accent);
+  border-color: var(--cms-accent);
+  box-shadow: none;
+}
+
+.cms-btn:hover,
+.adm-btn:hover,
+.erp-btn:not(.secondary):hover {
+  background: #056ee9;
+  border-color: #056ee9;
+}
+
+.adm-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.adm-tab {
+  border: 1px solid var(--cms-border);
+  background: var(--cms-surface);
+  color: var(--cms-muted);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: 600 12px/1.2 var(--cms-font);
+  cursor: pointer;
+}
+
+.adm-tab.is-active {
+  background: var(--cms-accent-soft);
+  color: var(--cms-accent);
+  border-color: transparent;
+}
+
+.kt-profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.kt-profile-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--cms-accent-soft);
+  color: var(--cms-accent);
+  display: grid;
+  place-items: center;
+  font: 700 28px/1 var(--cms-font);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px var(--cms-accent-soft);
+}
+
+.kt-profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kt-profile-hero h2 {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.kt-profile-hero p {
+  margin: 0 0 8px;
+  color: var(--cms-muted);
+}
+
+.kt-profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.kt-profile-side {
+  display: grid;
+  gap: 18px;
+}
+
+.kt-profile .adm-field {
+  display: grid;
+  gap: 6px;
+}
+
+@media (max-width: 980px) {
+  .kt-profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Dark mode: all admin surfaces ─────────── */
+[data-theme='dark'] .cms-body,
+[data-theme='dark'] .adm-body,
+[data-theme='dark'] .cms-app,
+[data-theme='dark'] .cms-main,
+[data-theme='dark'] .cms-workspace,
+[data-theme='dark'] .cms-login {
+  background: var(--cms-bg);
+  color: var(--cms-text);
+}
+
+[data-theme='dark'] .cms-login {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(27, 132, 255, 0.16), transparent 60%),
+    linear-gradient(180deg, #121318 0%, var(--cms-bg) 48%);
+}
+
+[data-theme='dark'] .cms-navframe,
+[data-theme='dark'] .cms-topbar,
+[data-theme='dark'] .cms-menu-head,
+[data-theme='dark'] .cms-menu-foot {
+  background: var(--cms-surface);
+  border-color: var(--cms-sidebar-border);
+  color: var(--cms-text);
+}
+
+[data-theme='dark'] .cms-search-trigger,
+[data-theme='dark'] .cms-icon-btn {
+  background: var(--cms-surface-2);
+  border-color: var(--cms-border);
+  color: var(--cms-text-secondary);
+}
+
+[data-theme='dark'] .cms-icon-btn:hover,
+[data-theme='dark'] .cms-search-trigger:hover,
+[data-theme='dark'] .cms-user-menu-panel button:hover {
+  background: var(--cms-sidebar-hover);
+  color: var(--cms-text);
+}
+
+[data-theme='dark'] .cms-icon-btn.is-primary {
+  background: var(--cms-accent);
+  border-color: var(--cms-accent);
+  color: #fff;
+}
+
+[data-theme='dark'] :is(
+  .cms-card,
+  .adm-card,
+  .rx-kpi,
+  .rx-card,
+  .cms-stat-card,
+  .adm-stat-card,
+  .erp-metric,
+  .ops-metric,
+  .erp-module,
+  .ops-module,
+  .erp-register,
+  .ops-panel,
+  .ops-project-card,
+  .erp-modal,
+  .cms-dialog,
+  .adm-modal,
+  .cms-drawer,
+  .kt-card,
+  .cms-login-card,
+  .cms-user-menu-panel,
+  .adm-list,
+  .ops-stage-editor
+) {
+  background: var(--cms-surface);
+  color: var(--cms-text);
+  border-color: var(--cms-border);
+}
+
+[data-theme='dark'] :is(.erp-metric, .ops-metric, .cms-stat-card, .rx-kpi) span,
+[data-theme='dark'] :is(.erp-metric, .ops-metric, .cms-stat-card) small,
+[data-theme='dark'] :is(.erp-module, .ops-module, .ops-project-card) p,
+[data-theme='dark'] .erp-eyebrow,
+[data-theme='dark'] .ops-eyebrow,
+[data-theme='dark'] .erp-muted,
+[data-theme='dark'] .erp-section-heading h2,
+[data-theme='dark'] .erp-section-heading h3,
+[data-theme='dark'] .erp-module h3,
+[data-theme='dark'] .ops-module h3,
+[data-theme='dark'] .erp-metric > strong,
+[data-theme='dark'] .ops-metric > strong {
+  color: var(--cms-text);
+}
+
+[data-theme='dark'] :is(.erp-metric, .ops-metric, .cms-stat-card, .rx-kpi) span,
+[data-theme='dark'] :is(.erp-metric, .ops-metric) small,
+[data-theme='dark'] :is(.erp-module, .ops-module, .ops-project-card) p,
+[data-theme='dark'] .erp-eyebrow,
+[data-theme='dark'] .erp-muted {
+  color: var(--cms-muted);
+}
+
+[data-theme='dark'] .erp-module-icon,
+[data-theme='dark'] .ops-module-icon,
+[data-theme='dark'] .rx-kpi-icon {
+  background: var(--cms-accent-soft);
+  color: var(--cms-accent);
+}
+
+[data-theme='dark'] .erp-module-icon.finance {
+  background: rgba(23, 198, 83, 0.16);
+  color: #4ade80;
+}
+
+[data-theme='dark'] .erp-module-icon.hr {
+  background: rgba(168, 85, 247, 0.16);
+  color: #c084fc;
+}
+
+[data-theme='dark'] .erp-module-icon.purchase {
+  background: rgba(246, 192, 0, 0.16);
+  color: #f6c000;
+}
+
+[data-theme='dark'] .erp-table th,
+[data-theme='dark'] .erp-table td,
+[data-theme='dark'] .cms-table th,
+[data-theme='dark'] .cms-table td,
+[data-theme='dark'] .adm-table th,
+[data-theme='dark'] .adm-table td {
+  background: transparent;
+  color: var(--cms-text);
+  border-color: var(--cms-border);
+}
+
+[data-theme='dark'] .erp-table th,
+[data-theme='dark'] .cms-table thead th,
+[data-theme='dark'] .adm-table thead th {
+  background: var(--cms-surface-2);
+  color: var(--cms-muted);
+}
+
+[data-theme='dark'] .erp-table tr:hover td,
+[data-theme='dark'] .cms-table tr:hover td,
+[data-theme='dark'] .adm-table tr:hover td,
+[data-theme='dark'] .ops-workspace .adm-table tr:hover td {
+  background: rgba(27, 132, 255, 0.08);
+}
+
+[data-theme='dark'] .erp-pagination,
+[data-theme='dark'] .ops-pagination {
+  background: var(--cms-surface-2);
+  color: var(--cms-text);
+  border-top-color: var(--cms-border);
+}
+
+[data-theme='dark'] .erp-pagination span {
+  color: var(--cms-text);
+}
+
+[data-theme='dark'] .erp-empty,
+[data-theme='dark'] .erp-empty h3,
+[data-theme='dark'] .erp-empty p,
+[data-theme='dark'] .erp-document-head p,
+[data-theme='dark'] .erp-details dt,
+[data-theme='dark'] .erp-record-meta,
+[data-theme='dark'] .erp-field,
+[data-theme='dark'] .erp-report-note,
+[data-theme='dark'] .erp-tabs button {
+  color: var(--cms-muted);
+}
+
+[data-theme='dark'] .erp-tabs button.active {
+  color: var(--cms-accent);
+  border-color: var(--cms-accent);
+}
+
+[data-theme='dark'] .erp-record-link,
+[data-theme='dark'] .erp-callout a {
+  color: var(--cms-accent);
+}
+
+[data-theme='dark'] .erp-status,
+[data-theme='dark'] .ops-pill {
+  background: var(--cms-surface-2);
+  color: var(--cms-text-secondary);
+}
+
+[data-theme='dark'] .erp-modal > header,
+[data-theme='dark'] .erp-modal-footer,
+[data-theme='dark'] .erp-report-note,
+[data-theme='dark'] .erp-callout,
+[data-theme='dark'] .erp-search,
+[data-theme='dark'] .erp-pagination button,
+[data-theme='dark'] .erp-btn.secondary,
+[data-theme='dark'] .ops-stage-title button {
+  background: var(--cms-surface-2);
+  color: var(--cms-text);
+  border-color: var(--cms-border);
+}
+
+[data-theme='dark'] .erp-error {
+  background: rgba(248, 40, 90, 0.12);
+  color: #fda4af;
+}
+
+[data-theme='dark'] .erp-notice {
+  background: rgba(23, 198, 83, 0.12);
+  color: #86efac;
+}
+
+[data-theme='dark'] .erp-icon-btn {
+  color: var(--cms-muted);
+}
+
+[data-theme='dark'] .erp-icon-btn:hover {
+  background: var(--cms-sidebar-hover);
+  color: var(--cms-text);
+}
+
+[data-theme='dark'] .kt-profile-avatar {
+  border-color: var(--cms-surface);
+}
+
+[data-theme='dark'] .cms-dialog,
+[data-theme='dark'] .adm-modal,
+[data-theme='dark'] .cms-drawer {
+  background: var(--cms-surface);
+  color: var(--cms-text);
+}
+
+[data-theme='dark'] .adm-tab {
+  background: var(--cms-surface-2);
+  border-color: var(--cms-border);
+  color: var(--cms-muted);
+}
+
+[data-theme='dark'] .adm-tab.is-active {
+  background: var(--cms-accent-soft);
+  color: var(--cms-accent);
+}
+
+[data-theme='dark'] .erp-eyebrow,
+[data-theme='dark'] .ops-eyebrow,
+[data-theme='dark'] .erp-record-link,
+[data-theme='dark'] .erp-tabs button.active,
+[data-theme='dark'] .erp-callout a,
+[data-theme='dark'] .erp-breadcrumb a,
+[data-theme='dark'] .adm-section-title,
+[data-theme='dark'] .rx-kpi-link,
+[data-theme='dark'] .ops-panel-head > a,
+[data-theme='dark'] .cms-page-header a,
+[data-theme='dark'] .erp-module .erp-eyebrow,
+[data-theme='dark'] .ops-module .ops-eyebrow {
+  color: #9ed0ff !important;
+}
+
+[data-theme='dark'] .erp-hero .erp-eyebrow,
+[data-theme='dark'] .ops-hero .ops-eyebrow,
+[data-theme='dark'] .erp-hero :is(h1, h2, h3, p, a, span),
+[data-theme='dark'] .ops-hero :is(h1, h2, h3, p, a, span) {
+  color: #fff !important;
+}
+
+[data-theme='dark'] .erp-hero p,
+[data-theme='dark'] .ops-hero p {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+[data-theme='dark'] .cms-body :is(h1, h2, h3, h4, h5, h6),
+[data-theme='dark'] .adm-body :is(h1, h2, h3, h4, h5, h6),
+[data-theme='dark'] .cms-page-header h1,
+[data-theme='dark'] .adm-main-top h1,
+[data-theme='dark'] .erp-section-heading h2,
+[data-theme='dark'] .erp-module h3,
+[data-theme='dark'] .ops-module h3 {
+  color: #f5f5f5 !important;
+}
+
+[data-theme='dark'] .cms-breadcrumb,
+[data-theme='dark'] .cms-breadcrumb-current,
+[data-theme='dark'] .cms-page-header p {
+  color: var(--cms-muted) !important;
+}
+
+[data-theme='dark'] .cms-breadcrumb a {
+  color: #9ed0ff !important;
+}

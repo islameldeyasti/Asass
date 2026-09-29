@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getServices} from '@/lib/cms/content-service';
@@ -53,8 +55,8 @@ export default async function AdminServicesPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Services"
-      subtitle={`${items.length} services`}
+      title={adminText("Services")}
+      subtitle={adminText(`${items.length} services`)}
     >
       <CollectionTable
         resource="services"

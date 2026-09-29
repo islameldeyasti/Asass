@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useMemo, useState} from 'react';
 import Link from 'next/link';
@@ -23,19 +25,16 @@ export default function EmployeeCardNewPicker({members = []}) {
       <div className="cms-card ecs-toolbar" style={{display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between'}}>
         <div style={{display: 'flex', gap: 12, alignItems: 'flex-start'}}>
           <Link className="adm-btn-ghost" href="/admin/corporate/employee-cards">
-            <ArrowLeft size={14} /> Back
-          </Link>
+            <ArrowLeft size={14} />{adminText(" Back")}</Link>
           <div>
-            <strong>Add employee card</strong>
-            <p style={{margin: '4px 0 0', color: 'var(--cms-muted)'}}>
-              Choose a team member to open their card editor on a full page.
-            </p>
+            <strong>{adminText("Add employee card")}</strong>
+            <p style={{margin: '4px 0 0', color: 'var(--cms-muted)'}}>{adminText("Choose a team member to open their card editor on a full page.")}</p>
           </div>
         </div>
         <input
           className="adm-input"
           style={{maxWidth: 260}}
-          placeholder="Search team member…"
+          placeholder={adminText("Search team member…")}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -44,20 +43,18 @@ export default function EmployeeCardNewPicker({members = []}) {
       <div className="cms-card" style={{padding: 0, overflow: 'hidden'}}>
         {filtered.length === 0 ? (
           <div className="adm-empty" style={{padding: 32}}>
-            <p>No team members found. Create a team profile first.</p>
+            <p>{adminText("No team members found. Create a team profile first.")}</p>
             <div style={{marginTop: 12}}>
-              <Link className="adm-btn" href="/admin/team/new">
-                Add team member
-              </Link>
+              <Link className="adm-btn" href="/admin/team/new">{adminText("Add team member")}</Link>
             </div>
           </div>
         ) : (
           <table className="adm-table">
             <thead>
               <tr>
-                <th>Photo</th>
-                <th>Employee</th>
-                <th>Card status</th>
+                <th>{adminText("Photo")}</th>
+                <th>{adminText("Employee")}</th>
+                <th>{adminText("Card status")}</th>
                 <th />
               </tr>
             </thead>
@@ -66,28 +63,28 @@ export default function EmployeeCardNewPicker({members = []}) {
                 const card = normalizeDigitalCard(member.digital_card);
                 const status =
                   !card.enabled || card.status === 'disabled'
-                    ? 'disabled'
-                    : card.status || 'draft';
+                    ? adminText('disabled')
+                    : card.status || adminText('draft');
                 return (
                   <tr key={member.id}>
                     <td>
                       {member.profile_image ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img className="adm-thumb" src={member.profile_image} alt="" />
+                        <img className="adm-thumb" src={member.profile_image} alt={adminText("")} />
                       ) : (
                         <div className="adm-thumb" />
                       )}
                     </td>
                     <td>
-                      <strong>{member.name_en}</strong>
+                      <strong>{adminText(member.name_en)}</strong>
                       <div style={{color: 'var(--cms-muted)', fontSize: 12}}>
-                        {member.job_title_en}
-                        {member.department_en ? ` · ${member.department_en}` : ''}
+                        {adminText(member.job_title_en)}
+                        {adminText(member.department_en ? ` · ${member.department_en}` : '')}
                       </div>
                     </td>
                     <td>
                       <span className={`adm-badge ${status === 'published' ? 'published' : 'draft'}`}>
-                        {status}
+                        {adminText(status)}
                       </span>
                     </td>
                     <td>
@@ -95,8 +92,7 @@ export default function EmployeeCardNewPicker({members = []}) {
                         className="adm-btn"
                         href={`/admin/corporate/employee-cards/${member.id}`}
                       >
-                        <IdCard size={14} /> Open card editor
-                      </Link>
+                        <IdCard size={14} />{adminText(" Open card editor")}</Link>
                     </td>
                   </tr>
                 );

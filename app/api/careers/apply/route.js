@@ -3,6 +3,8 @@ import path from 'path';
 import {NextResponse} from 'next/server';
 import {GENERAL_APPLICATION, getJobBySlug, getOpenJobs} from '@/data/careers';
 import {company} from '@/data/company';
+import {upsertCollectionItem} from '@/lib/cms/json-store';
+import {notifyStaff, sendMail} from '@/lib/cms/mail';
 
 export const runtime = 'nodejs';
 
@@ -90,6 +92,35 @@ export async function POST(request) {
     };
 
     await writeFile(path.join(root, 'application.json'), JSON.stringify(record, null, 2));
+
+    await upsertCollectionItem(
+      'applications',
+      {
+        id: record.id,
+        name,
+        email,
+        phone,
+        role: positionLabel || position,
+        status: 'NEW',
+        createdAt: record.receivedAt,
+        portfolio,
+        message,
+      },
+      'id',
+    );
+
+    await notifyStaff(
+      `Career application — ${positionLabel || position}`,
+      `${name} <${email}>\n${phone}\n${positionLabel || position}\n${portfolio}\n${message}`,
+    );
+    await sendMail({
+      to: email,
+      subject: locale === 'ar' ? 'استلمنا طلب التوظيف' : 'We received your application',
+      text:
+        locale === 'ar'
+          ? 'شكرًا لتقديمك. فريق التوظيف سيراجع الملف.'
+          : 'Thank you for applying. HR will review your CV.',
+    });
 
     // Optional webhook / email bridge when configured.
     const webhook = process.env.CAREERS_WEBHOOK_URL;

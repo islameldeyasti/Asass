@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useRouter} from 'next/navigation';
 
@@ -12,8 +14,6 @@ export default function AdminSignOut() {
   }
 
   return (
-    <button type="button" className="adm-btn-ghost" onClick={onClick}>
-      Sign out
-    </button>
+    <button type="button" className="adm-btn-ghost" onClick={onClick}>{adminText("Sign out")}</button>
   );
 }

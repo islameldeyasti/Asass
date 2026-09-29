@@ -1,5 +1,6 @@
 'use client';
-
+import {adminText} from '@/lib/admin/translate';
+import AdminLanguageSwitcher from '@/components/admin/ui/AdminLanguageSwitcher';
 import {useState} from 'react';
 
 export default function AdminLoginPage() {
@@ -23,7 +24,7 @@ export default function AdminLoginPage() {
       if (!res.ok) {
         throw new Error(data.error || 'Sign-in failed');
       }
-      window.location.assign('/admin/dashboard');
+      window.location.assign(data.redirectTo || '/admin/dashboard');
       return;
     } catch (err) {
       setError(err.message || 'Sign-in failed');
@@ -35,22 +36,21 @@ export default function AdminLoginPage() {
     <div className="cms-login">
       <form className="cms-login-card" onSubmit={onSubmit}>
         <div className="cms-login-brand">
-          <div className="cms-sidebar-logo" aria-hidden>
-            AS
-          </div>
+          <div className="cms-sidebar-logo" aria-hidden>{adminText("AS")}</div>
           <div>
-            <strong>ASAS CMS</strong>
-            <span>Content workspace</span>
+            <strong>{adminText("ASAS")}</strong>
+            <span>{adminText("Admin workspace")}</span>
           </div>
+          <AdminLanguageSwitcher className="adm-lang-switch-login" />
         </div>
 
-        <h1>Sign in</h1>
-        <p>Use your admin account to continue.</p>
+        <h1>{adminText("Sign in")}</h1>
+        <p>{adminText("Use your admin account to continue.")}</p>
 
-        {error ? <p className="cms-error">{error}</p> : null}
+        {error ? <p className="cms-error">{adminText(error)}</p> : null}
 
         <div className="cms-field">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{adminText("Email")}</label>
           <input
             id="email"
             name="email"
@@ -62,7 +62,7 @@ export default function AdminLoginPage() {
           />
         </div>
         <div className="cms-field">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{adminText("Password")}</label>
           <input
             id="password"
             name="password"
@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
           />
         </div>
         <button className="cms-btn" type="submit" disabled={loading} style={{width: '100%'}}>
-          {loading ? 'Signing in…' : 'Sign in'}
+          {adminText(loading ? 'Signing in…' : 'Sign in')}
         </button>
       </form>
     </div>

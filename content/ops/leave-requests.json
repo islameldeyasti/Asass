@@ -1,0 +1,53 @@
+[
+  {
+    "id": "leave_demo_01",
+    "employeeId": "emp_demo_arch",
+    "leaveType": "annual",
+    "startDate": "2026-10-01",
+    "endDate": "2026-10-05",
+    "days": 5,
+    "reason": "Family travel",
+    "status": "pending",
+    "requestedByUserId": null,
+    "decidedByEmployeeId": null,
+    "decidedByUserId": null,
+    "decisionNote": "",
+    "decidedAt": null,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  },
+  {
+    "id": "leave_demo_02",
+    "employeeId": "emp_demo_mep",
+    "leaveType": "sick",
+    "startDate": "2026-09-15",
+    "endDate": "2026-09-16",
+    "days": 2,
+    "reason": "Medical",
+    "status": "approved",
+    "requestedByUserId": null,
+    "decidedByEmployeeId": "emp_demo_hr",
+    "decidedByUserId": null,
+    "decisionNote": "Approved with medical note",
+    "decidedAt": "2026-09-15T08:00:00.000Z",
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  },
+  {
+    "id": "leave_demo_03",
+    "employeeId": "emp_demo_gm",
+    "leaveType": "annual",
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-19",
+    "days": 3,
+    "reason": "Personal",
+    "status": "pending",
+    "requestedByUserId": "usr_85c1830783bbcab3",
+    "decidedByEmployeeId": null,
+    "decidedByUserId": null,
+    "decisionNote": "",
+    "decidedAt": null,
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  }
+]

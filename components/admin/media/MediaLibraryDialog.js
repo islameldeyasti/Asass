@@ -1,7 +1,10 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
+import AdminPortal from '@/components/admin/ui/AdminPortal';
 
 function isImageItem(item) {
   return String(item?.mime || '').startsWith('image/') || /\.(jpe?g|png|webp|gif)$/i.test(item?.url || '');
@@ -107,21 +110,22 @@ export default function MediaLibraryDialog({
   if (!open) return null;
 
   return (
+    <AdminPortal>
     <div className="adm-modal-backdrop" role="presentation" onClick={() => !uploading && onClose?.()}>
       <div
         className="adm-modal adm-media-dialog"
         role="dialog"
         aria-modal="true"
-        aria-label={title}
+        aria-label={adminText(title)}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="adm-modal-head">
-          <h2>{title}</h2>
+          <h2>{adminText(title)}</h2>
           <AdminCloseButton onClick={onClose} disabled={uploading} />
         </div>
 
         <div className="adm-modal-body">
-          {error ? <p className="adm-error">{error}</p> : null}
+          {error ? <p className="adm-error">{adminText(error)}</p> : null}
 
           {canWrite ? (
             <div
@@ -134,18 +138,16 @@ export default function MediaLibraryDialog({
               onDrop={onDrop}
             >
               <p>
-                {uploading
+                {adminText(uploading
                   ? `Uploading… ${progress}%`
-                  : 'Drag & drop a file here, or browse from your computer.'}
+                  : 'Drag & drop a file here, or browse from your computer.')}
               </p>
               <button
                 type="button"
                 className="adm-btn"
                 disabled={uploading}
                 onClick={() => inputRef.current?.click()}
-              >
-                Browse files
-              </button>
+              >{adminText("Browse files")}</button>
               <input
                 ref={inputRef}
                 type="file"
@@ -170,21 +172,21 @@ export default function MediaLibraryDialog({
           ) : null}
 
           <div className="adm-field" style={{marginTop: canWrite ? 16 : 0}}>
-            <label htmlFor="media-lib-search">Search</label>
+            <label htmlFor="media-lib-search">{adminText("Search")}</label>
             <input
               id="media-lib-search"
               type="search"
               value={query}
-              placeholder="Search by name, alt, or path…"
+              placeholder={adminText("Search by name, alt, or path…")}
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
 
-          {loading ? <p style={{color: '#5b6472', fontSize: 14}}>Loading…</p> : null}
+          {loading ? <p style={{color: '#5b6472', fontSize: 14}}>{adminText("Loading…")}</p> : null}
 
           {!loading && visible.length === 0 ? (
             <div className="adm-empty">
-              <p>No media found{query ? ` for “${query}”` : ''}.</p>
+              <p>{adminText("No media found")}{adminText(query ? ` for “${query}”` : '')}.</p>
             </div>
           ) : (
             <div className="adm-media-grid">
@@ -201,12 +203,12 @@ export default function MediaLibraryDialog({
                   <div className="adm-media-tile-preview">
                     {isImageItem(item) ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={item.url} alt={item.altEn || itemLabel(item)} />
+                      <img src={item.url} alt={adminText(item.altEn || itemLabel(item))} />
                     ) : (
-                      <span className="adm-media-file-badge">PDF</span>
+                      <span className="adm-media-file-badge">{adminText("PDF")}</span>
                     )}
                   </div>
-                  <span className="adm-media-tile-label">{itemLabel(item)}</span>
+                  <span className="adm-media-tile-label">{adminText(itemLabel(item))}</span>
                 </button>
               ))}
             </div>
@@ -214,5 +216,6 @@ export default function MediaLibraryDialog({
         </div>
       </div>
     </div>
+    </AdminPortal>
   );
 }

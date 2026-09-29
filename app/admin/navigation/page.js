@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getNavigation} from '@/lib/cms/content-service';
@@ -15,8 +17,8 @@ export default async function AdminNavigationPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Navigation"
-      subtitle="Manage the main website menu — labels, pages, and visibility"
+      title={adminText("Navigation")}
+      subtitle={adminText("Manage the main website menu — labels, pages, and visibility")}
     >
       <DocumentForm
         resource="navigation"

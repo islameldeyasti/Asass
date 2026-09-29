@@ -1,8 +1,7 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
 
-import {useEffect, useMemo, useState} from 'react';
 import Link from 'next/link';
-import {motion, useReducedMotion} from 'motion/react';
 import {
   Activity,
   ArrowDownRight,
@@ -14,8 +13,7 @@ import {
   Users,
 } from 'lucide-react';
 import EmptyState from '@/components/admin/ui/EmptyState';
-
-const EASE = [0.16, 1, 0.3, 1];
+import {formatAdminDateTime} from '@/lib/admin/locale';
 
 const KPI_ICONS = {
   folder: FolderKanban,
@@ -25,93 +23,51 @@ const KPI_ICONS = {
 };
 
 function formatWhen(iso) {
-  if (!iso) return '';
-  try {
-    return new Intl.DateTimeFormat('en', {
-      dateStyle: 'medium',
-      timeStyle: 'short',
-    }).format(new Date(iso));
-  } catch {
-    return String(iso);
-  }
+  return formatAdminDateTime(iso);
 }
 
 function activityLabel(entry) {
   return `${entry?.action || 'updated'} ${entry?.entity || 'item'}`.replace(/_/g, ' ');
 }
 
-function useCountUp(target, enabled = true, duration = 900) {
-  const [value, setValue] = useState(0);
-  useEffect(() => {
-    if (!enabled) {
-      setValue(Number(target) || 0);
-      return undefined;
-    }
-    const end = Number(target) || 0;
-    let frame = 0;
-    const start = performance.now();
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setValue(Math.round(end * eased));
-      if (t < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [target, enabled, duration]);
-  return value;
-}
-
-function KpiCard({kpi, index, reduceMotion}) {
+function KpiCard({kpi}) {
   const Icon = KPI_ICONS[kpi.icon] || FolderKanban;
-  const value = useCountUp(kpi.value, !reduceMotion, 750 + index * 50);
   return (
-    <motion.article
-      className="rx-kpi"
-      initial={reduceMotion ? false : {opacity: 0, y: 16}}
-      animate={{opacity: 1, y: 0}}
-      transition={{duration: 0.45, delay: 0.05 * index, ease: EASE}}
-    >
+    <article className="rx-kpi">
       <div className="rx-kpi-top">
-        <span>{kpi.label}</span>
+        <span>{adminText(kpi.label)}</span>
         <i className="rx-kpi-icon">
           <Icon size={16} />
         </i>
       </div>
-      <strong>{value.toLocaleString()}</strong>
+      <strong>{adminText(Number(kpi.value || 0).toLocaleString('ar-AE-u-nu-latn'))}</strong>
       <div className={`rx-trend ${kpi.trendPositive ? 'is-up' : 'is-down'}`}>
         {kpi.trendPositive ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
-        <em>{kpi.trend}</em>
+        <em>{adminText(kpi.trend)}</em>
       </div>
-      <Link href={kpi.href} className="rx-kpi-link">
-        View Details
-      </Link>
-    </motion.article>
+      <Link href={kpi.href} className="rx-kpi-link">{adminText("View Details")}</Link>
+    </article>
   );
 }
 
-function OverviewBars({labels = [], values = [], highlightIndex = 0, total, reduceMotion}) {
+function OverviewBars({labels = [], values = [], highlightIndex = 0, total}) {
   const max = Math.max(1, ...values);
-  const [active, setActive] = useState(highlightIndex);
-
-  useEffect(() => {
-    setActive(highlightIndex);
-  }, [highlightIndex]);
+  const active = highlightIndex;
 
   return (
     <div className="rx-overview">
       <div className="rx-overview-head">
         <div>
-          <p className="rx-eyebrow">Activity overview</p>
-          <h3>Content & CRM volume</h3>
+          <p className="rx-eyebrow">{adminText("Activity overview")}</p>
+          <h3>{adminText("Content & CRM volume")}</h3>
         </div>
         <div className="rx-overview-total">
-          <strong>{Number(total || 0).toLocaleString()}</strong>
-          <span className="rx-pill is-up">Live CMS</span>
+          <strong>{adminText(Number(total || 0).toLocaleString('ar-AE-u-nu-latn'))}</strong>
+          <span className="rx-pill is-up">{adminText("Live CMS")}</span>
         </div>
       </div>
 
-      <div className="rx-bars" role="img" aria-label="Monthly activity chart">
+      <div className="rx-bars" role="img" aria-label={adminText("Monthly activity chart")}>
         {values.map((value, index) => {
           const height = `${Math.max(8, (value / max) * 100)}%`;
           const isActive = index === active;
@@ -120,23 +76,16 @@ function OverviewBars({labels = [], values = [], highlightIndex = 0, total, redu
               key={`${labels[index]}-${index}`}
               type="button"
               className={`rx-bar ${isActive ? 'is-active' : ''}`}
-              onMouseEnter={() => setActive(index)}
-              onFocus={() => setActive(index)}
-              aria-label={`${labels[index]}: ${value}`}
+              aria-label={adminText(`${labels[index]}: ${value}`)}
             >
-              <motion.span
-                className="rx-bar-fill"
-                initial={reduceMotion ? false : {height: 0}}
-                animate={{height}}
-                transition={{duration: 0.7, delay: 0.04 * index, ease: EASE}}
-              />
+              <span className="rx-bar-fill" style={{height}} />
               {isActive ? (
                 <span className="rx-bar-tip">
-                  <b>{labels[index]}</b>
-                  <em>{value} events</em>
+                  <b>{adminText(labels[index])}</b>
+                  <em>{adminText(value)}{adminText(" events")}</em>
                 </span>
               ) : null}
-              <span className="rx-bar-label">{labels[index]}</span>
+              <span className="rx-bar-label">{adminText(labels[index])}</span>
             </button>
           );
         })}
@@ -145,32 +94,32 @@ function OverviewBars({labels = [], values = [], highlightIndex = 0, total, redu
   );
 }
 
-function SparkLine({values = [], reduceMotion}) {
-  const points = useMemo(() => {
-    const max = Math.max(1, ...values);
-    const w = 320;
-    const h = 96;
-    return values
-      .map((value, index) => {
-        const x = values.length <= 1 ? 0 : (index / (values.length - 1)) * w;
-        const y = h - (value / max) * (h - 12) - 6;
-        return `${x},${y}`;
-      })
-      .join(' ');
-  }, [values]);
+function SparkLine({values = []}) {
+  const nums = values.map((v) => Number(v || 0));
+  const hasData = nums.some((v) => v > 0);
+  if (!hasData) {
+    return <p className="rx-spark-empty">{adminText('No enquiry activity in this period yet.')}</p>;
+  }
+  const max = Math.max(1, ...nums);
+  const w = 320;
+  const h = 96;
+  const points = nums
+    .map((value, index) => {
+      const x = nums.length <= 1 ? 0 : (index / (nums.length - 1)) * w;
+      const y = h - (value / max) * (h - 12) - 6;
+      return `${x},${y}`;
+    })
+    .join(' ');
 
   return (
     <svg className="rx-spark" viewBox="0 0 320 96" preserveAspectRatio="none" aria-hidden>
-      <motion.polyline
+      <polyline
         fill="none"
         stroke="currentColor"
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
         points={points}
-        initial={reduceMotion ? false : {pathLength: 0, opacity: 0.2}}
-        animate={{pathLength: 1, opacity: 1}}
-        transition={{duration: 1, ease: EASE}}
       />
     </svg>
   );
@@ -180,10 +129,10 @@ function RankList({title, items = [], empty}) {
   return (
     <section className="rx-card rx-list-card">
       <div className="rx-card-head">
-        <h3>{title}</h3>
+        <h3>{adminText(title)}</h3>
       </div>
       {items.length === 0 ? (
-        <EmptyState title={empty} description="Add content to populate this list." />
+        <EmptyState title={adminText(empty)} description={adminText("Add content to populate this list.")} />
       ) : (
         <ul className="rx-rank-list">
           {items.map((item) => (
@@ -192,16 +141,16 @@ function RankList({title, items = [], empty}) {
                 <span className="rx-rank-thumb">
                   {item.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={item.image} alt="" />
+                    <img src={item.image} alt={adminText("")} />
                   ) : (
-                    <em>{String(item.title || '?').slice(0, 1)}</em>
+                    <em>{adminText(String(item.title || '?').slice(0, 1))}</em>
                   )}
                 </span>
                 <span className="rx-rank-copy">
-                  <strong>{item.title}</strong>
-                  <small>{item.category}</small>
+                  <strong>{adminText(item.title)}</strong>
+                  <small>{adminText(item.category)}</small>
                 </span>
-                <b>{item.meta || ''}</b>
+                <b>{adminText(item.meta || '')}</b>
               </Link>
             </li>
           ))}
@@ -219,7 +168,6 @@ export default function DashboardHome({
   activity = [],
   roleLabel,
 }) {
-  const reduceMotion = useReducedMotion();
   const overview = reports?.overview || {labels: [], values: []};
   const publish = reports?.publish || {};
   const health = reports?.healthIssues || {};
@@ -244,140 +192,99 @@ export default function DashboardHome({
 
   return (
     <div className="rx-dash">
-      <motion.header
-        className="rx-welcome"
-        initial={reduceMotion ? false : {opacity: 0, y: 10}}
-        animate={{opacity: 1, y: 0}}
-        transition={{duration: 0.45, ease: EASE}}
-      >
+      <header className="rx-welcome">
         <div>
-          <h2>Welcome, {firstName}</h2>
-          <p>
-            Track content health, enquiry pipeline, and digital card engagement across the ASAS
-            platform.
-          </p>
+          <h2>{adminText("Welcome, ")}{adminText(firstName)}</h2>
+          <p>{adminText("Track content health, enquiry pipeline, and digital card engagement across the ASAS platform.")}</p>
         </div>
         <div className="rx-welcome-actions">
           {newEnquiries > 0 ? (
             <Link href="/admin/crm/enquiries" className="rx-btn-soft">
-              {newEnquiries} new enquiries
-            </Link>
+              {adminText(newEnquiries)}{adminText(" new enquiries")}</Link>
           ) : null}
           <Link href="/admin/reports" className="rx-btn-export">
-            <Download size={15} />
-            Open reports
-          </Link>
+            <Download size={15} />{adminText("Open reports")}</Link>
         </div>
-      </motion.header>
+      </header>
 
       <div className="rx-kpi-grid">
-        {kpis.map((kpi, index) => (
-          <KpiCard key={kpi.id} kpi={kpi} index={index} reduceMotion={reduceMotion} />
+        {kpis.map((kpi) => (
+          <KpiCard key={kpi.id} kpi={kpi} />
         ))}
       </div>
 
       <div className="rx-bento-main">
-        <motion.section
-          className="rx-card rx-main-chart"
-          initial={reduceMotion ? false : {opacity: 0, y: 18}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.5, delay: 0.12, ease: EASE}}
-        >
+        <section className="rx-card rx-main-chart">
           <OverviewBars
             labels={overview.labels}
             values={overview.values}
             highlightIndex={reports?.highlightIndex || 0}
             total={overviewTotal}
-            reduceMotion={reduceMotion}
           />
           <div className="rx-integrations">
             <span>
-              <i /> Projects <b>{publish.published ? publish.published : 0}</b> published mix
-            </span>
+              <i />{adminText(" Projects ")}<b>{adminText(publish.published ? publish.published : 0)}</b>{adminText(" published mix")}</span>
             <span>
-              <i className="is-alt" /> Gallery <b>{publish.gallery || 0}</b> assets
-            </span>
+              <i className="is-alt" />{adminText(" Gallery ")}<b>{adminText(publish.gallery || 0)}</b>{adminText(" assets")}</span>
             <span>
-              <i className="is-soft" /> Videos <b>{publish.videos || 0}</b> films
-            </span>
+              <i className="is-soft" />{adminText(" Videos ")}<b>{adminText(publish.videos || 0)}</b>{adminText(" films")}</span>
           </div>
-        </motion.section>
+        </section>
 
-        <motion.div
-          initial={reduceMotion ? false : {opacity: 0, y: 18}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.5, delay: 0.18, ease: EASE}}
-        >
+        <div>
           <RankList
-            title="Top projects"
+            title={adminText("Top projects")}
             items={reports?.topProjects || []}
             empty="No projects yet"
           />
-        </motion.div>
+        </div>
       </div>
 
       <div className="rx-bento-bottom">
-        <motion.section
-          className="rx-card rx-spark-card"
-          initial={reduceMotion ? false : {opacity: 0, y: 16}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.5, delay: 0.2, ease: EASE}}
-        >
+        <section className="rx-card rx-spark-card">
           <div className="rx-card-head">
             <div>
-              <p className="rx-eyebrow">Enquiries trend</p>
-              <h3>{Number(publish.enquiries30 || 0).toLocaleString()}</h3>
-              <small>Last 30 days · {publish.enquiries7 || 0} in 7 days</small>
+              <p className="rx-eyebrow">{adminText("Enquiries trend")}</p>
+              <h3>{adminText(Number(publish.enquiries30 || 0).toLocaleString('ar-AE-u-nu-latn'))}</h3>
+              <small>{adminText("Last 30 days · ")}{adminText(publish.enquiries7 || 0)}{adminText(" in 7 days")}</small>
             </div>
             <span className={`rx-pill ${Number(reports?.enquiryTrend || 0) >= 0 ? 'is-up' : 'is-down'}`}>
-              {Number(reports?.enquiryTrend || 0) >= 0 ? '+' : ''}
-              {Number(reports?.enquiryTrend || 0)}% pace
-            </span>
+              {adminText(Number(reports?.enquiryTrend || 0) >= 0 ? '+' : '')}
+              {adminText(Number(reports?.enquiryTrend || 0))}{adminText("% pace")}</span>
           </div>
-          <SparkLine values={reports?.spark || []} reduceMotion={reduceMotion} />
-        </motion.section>
+          <SparkLine values={reports?.spark || []} />
+        </section>
 
-        <motion.div
-          initial={reduceMotion ? false : {opacity: 0, y: 16}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.5, delay: 0.24, ease: EASE}}
-        >
-          <RankList title="Team card leaders" items={reports?.topTeam || []} empty="No team cards yet" />
-        </motion.div>
+        <div>
+          <RankList title={adminText("Team card leaders")} items={reports?.topTeam || []} empty="No team cards yet" />
+        </div>
       </div>
 
       <div className="rx-bento-tables">
-        <motion.section
-          className="rx-card"
-          initial={reduceMotion ? false : {opacity: 0, y: 14}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.45, delay: 0.22, ease: EASE}}
-        >
+        <section className="rx-card">
           <div className="rx-card-head">
-            <h3>Health & pipeline table</h3>
-            <Link href="/admin/reports" className="rx-text-link">
-              Full reports
-            </Link>
+            <h3>{adminText("Health & pipeline table")}</h3>
+            <Link href="/admin/reports" className="rx-text-link">{adminText("Full reports")}</Link>
           </div>
           <div className="rx-table-wrap">
             <table className="rx-table">
               <thead>
                 <tr>
-                  <th>Metric</th>
-                  <th>Value</th>
-                  <th>Status</th>
+                  <th>{adminText("Metric")}</th>
+                  <th>{adminText("Value")}</th>
+                  <th>{adminText("Status")}</th>
                 </tr>
               </thead>
               <tbody>
                 {tableRows.map(([label, value]) => (
                   <tr key={label}>
-                    <td>{label}</td>
+                    <td>{adminText(label)}</td>
                     <td>
-                      <strong>{value}</strong>
+                      <strong>{adminText(value)}</strong>
                     </td>
                     <td>
                       <span className={`rx-status ${value > 0 && /missing|draft|new|alt/i.test(label) ? 'is-warn' : 'is-ok'}`}>
-                        {value > 0 && /missing|draft|alt/i.test(label) ? 'Needs attention' : 'OK'}
+                        {adminText(value > 0 && /missing|draft|alt/i.test(label) ? 'Needs attention' : 'OK')}
                       </span>
                     </td>
                   </tr>
@@ -385,43 +292,33 @@ export default function DashboardHome({
               </tbody>
             </table>
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section
-          className="rx-card"
-          initial={reduceMotion ? false : {opacity: 0, y: 14}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.45, delay: 0.28, ease: EASE}}
-        >
+        <section className="rx-card">
           <div className="rx-card-head">
-            <h3>Recent activity</h3>
+            <h3>{adminText("Recent activity")}</h3>
           </div>
           {activity.length === 0 ? (
             <EmptyState
               icon={Activity}
-              title="No activity yet"
-              description="Publishing and edits will appear here once audit events are recorded."
+              title={adminText("No activity yet")}
+              description={adminText("Publishing and edits will appear here once audit events are recorded.")}
             />
           ) : (
             <ul className="rx-activity">
-              {activity.map((entry, index) => (
-                <motion.li
-                  key={entry.id}
-                  initial={reduceMotion ? false : {opacity: 0, x: 8}}
-                  animate={{opacity: 1, x: 0}}
-                  transition={{duration: 0.3, delay: 0.03 * index, ease: EASE}}
-                >
-                  <strong>{activityLabel(entry)}</strong>
+              {activity.map((entry) => (
+                <li key={entry.id}>
+                  <strong>{adminText(activityLabel(entry))}</strong>
                   <span>
-                    {entry.actorEmail || 'System'}
+                    {adminText(entry.actorEmail || 'System')}
                     {entry.at ? ` · ${formatWhen(entry.at)}` : ''}
                   </span>
-                </motion.li>
+                </li>
               ))}
             </ul>
           )}
-          {roleLabel ? <p className="rx-role">Signed in as {roleLabel}</p> : null}
-        </motion.section>
+          {roleLabel ? <p className="rx-role">{adminText("Signed in as ")}{adminText(roleLabel)}</p> : null}
+        </section>
       </div>
     </div>
   );

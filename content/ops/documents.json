@@ -1,0 +1,107 @@
+[
+  {
+    "id": "odoc_demo_01",
+    "name": "Marina Concept Report",
+    "type": "Report",
+    "description": "Client workshop pack — concept options.",
+    "status": "under_review",
+    "confidentiality": "client",
+    "projectId": "opr_demo_marina",
+    "stageId": "pstg_m05",
+    "taskId": "tsk_demo_01",
+    "clientId": "ocl_demo_emaar",
+    "employeeId": "emp_demo_arch",
+    "versions": [
+      {
+        "id": "dver_01",
+        "revision": "REV 01",
+        "version": 1,
+        "fileUrl": "/media/demo/marina-concept-rev01.pdf",
+        "fileName": "marina-concept-rev01.pdf",
+        "notes": "Initial issue",
+        "uploadedByEmployeeId": "emp_demo_arch",
+        "uploadedByUserId": null,
+        "createdAt": "2026-08-28T10:00:00.000Z",
+        "isLatest": false
+      },
+      {
+        "id": "dver_02",
+        "revision": "REV 02",
+        "version": 2,
+        "fileUrl": "/media/demo/marina-concept-rev02.pdf",
+        "fileName": "marina-concept-rev02.pdf",
+        "notes": "Updated façade option C",
+        "uploadedByEmployeeId": "emp_demo_arch",
+        "uploadedByUserId": null,
+        "createdAt": "2026-09-12T14:00:00.000Z",
+        "isLatest": true
+      }
+    ],
+    "latestRevision": "REV 02",
+    "latestFileUrl": "/media/demo/marina-concept-rev02.pdf",
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  },
+  {
+    "id": "odoc_demo_02",
+    "name": "Structural Design Criteria",
+    "type": "Specification",
+    "description": "Basis of design — structure.",
+    "status": "approved",
+    "confidentiality": "internal",
+    "projectId": "opr_demo_marina",
+    "stageId": "pstg_m05",
+    "taskId": null,
+    "clientId": "ocl_demo_emaar",
+    "employeeId": "emp_demo_str",
+    "versions": [
+      {
+        "id": "dver_03",
+        "revision": "REV 01",
+        "version": 1,
+        "fileUrl": "/media/demo/structural-criteria-rev01.pdf",
+        "fileName": "structural-criteria-rev01.pdf",
+        "notes": "Approved by PM",
+        "uploadedByEmployeeId": "emp_demo_str",
+        "uploadedByUserId": null,
+        "createdAt": "2026-09-05T09:00:00.000Z",
+        "isLatest": true
+      }
+    ],
+    "latestRevision": "REV 01",
+    "latestFileUrl": "/media/demo/structural-criteria-rev01.pdf",
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  },
+  {
+    "id": "odoc_demo_03",
+    "name": "School DD Drawing Set",
+    "type": "Drawing",
+    "description": "Architectural DD sheets — draft.",
+    "status": "draft",
+    "confidentiality": "internal",
+    "projectId": "opr_demo_school",
+    "stageId": "pstg_s05",
+    "taskId": "tsk_demo_05",
+    "clientId": "ocl_demo_aldar",
+    "employeeId": "emp_demo_arch",
+    "versions": [
+      {
+        "id": "dver_04",
+        "revision": "REV 01",
+        "version": 1,
+        "fileUrl": "/media/demo/school-dd-rev01.pdf",
+        "fileName": "school-dd-rev01.pdf",
+        "notes": "WIP",
+        "uploadedByEmployeeId": "emp_demo_arch",
+        "uploadedByUserId": null,
+        "createdAt": "2026-09-14T11:00:00.000Z",
+        "isLatest": true
+      }
+    ],
+    "latestRevision": "REV 01",
+    "latestFileUrl": "/media/demo/school-dd-rev01.pdf",
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  }
+]

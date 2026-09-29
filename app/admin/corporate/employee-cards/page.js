@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {listTeamMembers} from '@/lib/team/store';
@@ -16,8 +18,8 @@ export default async function AdminEmployeeCardsPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Employee Cards"
-      subtitle="Digital profiles, printable cards, and QR codes"
+      title={adminText("Employee Cards")}
+      subtitle={adminText("Digital profiles, printable cards, and QR codes")}
     >
       <EmployeeCardsStudio
         members={members}

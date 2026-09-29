@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import Link from 'next/link';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {PERMS} from '@/lib/cms/permissions';
@@ -114,47 +116,29 @@ export default async function AdminReportsPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Reports"
-      subtitle="Content, SEO, media, CRM, and careers health"
+      title={adminText("Reports")}
+      subtitle={adminText("Content, SEO, media, CRM, and careers health")}
     >
       <div style={{display: 'grid', gap: 16}}>
         <div className="cms-card">
-          <strong>Reports hub</strong>
-          <p style={{margin: '6px 0 0', color: 'var(--cms-muted)', fontSize: 13}}>
-            Live counts from the CMS. Use each card to jump to the module and fix issues.
-          </p>
+          <strong>{adminText("Reports hub")}</strong>
+          <p style={{margin: '6px 0 0', color: 'var(--cms-muted)', fontSize: 13}}>{adminText("Live counts from the CMS. Use each card to jump to the module and fix issues.")}</p>
         </div>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: 12,
-          }}
-        >
+        <div className="cms-report-grid">
           {cards.map((card) => (
-            <section key={card.title} className="cms-card" style={{display: 'grid', gap: 10}}>
-              <div style={{display: 'flex', justifyContent: 'space-between', gap: 8}}>
-                <strong>{card.title}</strong>
-                <Link className="adm-btn-ghost" href={card.href}>
-                  Open
-                </Link>
-              </div>
-              <ul style={{margin: 0, padding: 0, listStyle: 'none', display: 'grid', gap: 6}}>
+            <section key={card.title} className="cms-card cms-report-card">
+              <header className="cms-report-card-head">
+                <h3>{adminText(card.title)}</h3>
+              </header>
+              <ul className="cms-report-rows">
                 {card.rows.map(([label, value]) => (
-                  <li
-                    key={label}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      gap: 8,
-                      fontSize: 13,
-                    }}
-                  >
-                    <span style={{color: 'var(--cms-muted)'}}>{label}</span>
-                    <strong>{value}</strong>
+                  <li key={label}>
+                    <span>{adminText(label)}</span>
+                    <strong className={typeof value === 'number' && value > 0 && /missing|draft|new|open/i.test(label) ? 'is-warn' : ''}>{adminText(value)}</strong>
                   </li>
                 ))}
               </ul>
+              <Link className="cms-report-open" href={card.href}>{adminText("Open module")}</Link>
             </section>
           ))}
         </div>

@@ -1,0 +1,60 @@
+[
+  {
+    "id": "apr_demo_01",
+    "title": "Approve Marina Concept Report REV 02",
+    "projectId": "opr_demo_marina",
+    "subjectType": "document",
+    "subjectId": "odoc_demo_01",
+    "requestedByEmployeeId": "emp_demo_arch",
+    "requestedByUserId": null,
+    "status": "pending",
+    "steps": [
+      {
+        "id": "apst_1",
+        "order": 1,
+        "title": "PM Review",
+        "approverEmployeeId": "emp_demo_pm",
+        "status": "approved",
+        "decision": "approved",
+        "comment": "Ready for director",
+        "decidedAt": "2026-09-15T10:00:00.000Z"
+      },
+      {
+        "id": "apst_2",
+        "order": 2,
+        "title": "Director Sign-off",
+        "approverEmployeeId": "emp_demo_gm",
+        "status": "pending",
+        "decision": "",
+        "comment": "",
+        "decidedAt": null
+      }
+    ],
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  },
+  {
+    "id": "apr_demo_02",
+    "title": "Structural Criteria gate",
+    "projectId": "opr_demo_marina",
+    "subjectType": "document",
+    "subjectId": "odoc_demo_02",
+    "requestedByEmployeeId": "emp_demo_str",
+    "requestedByUserId": null,
+    "status": "approved",
+    "steps": [
+      {
+        "id": "apst_3",
+        "order": 1,
+        "title": "PM Approve",
+        "approverEmployeeId": "emp_demo_pm",
+        "status": "approved",
+        "decision": "approved",
+        "comment": "OK",
+        "decidedAt": "2026-09-07T12:00:00.000Z"
+      }
+    ],
+    "createdAt": "2026-09-17T17:11:41.545Z",
+    "updatedAt": "2026-09-17T17:11:41.545Z"
+  }
+]

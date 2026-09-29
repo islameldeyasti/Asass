@@ -2,7 +2,7 @@ import {NextResponse} from 'next/server';
 import {requireAdmin, publicUser} from '@/lib/cms/auth';
 import {writeAudit} from '@/lib/cms/audit';
 import {PERMS} from '@/lib/cms/permissions';
-import {createUser, deleteUser, listUsers, toPublicUser, updateUser} from '@/lib/cms/users-store';
+import {createUser, deleteUser, listUsers, saveProfilePhoto, toPublicUser, updateUser} from '@/lib/cms/users-store';
 
 export const runtime = 'nodejs';
 
@@ -49,9 +49,23 @@ export async function POST(request) {
 export async function PATCH(request) {
   try {
     const session = await requireAdmin(PERMS.USERS_WRITE);
-    const body = await request.json();
+    const contentType = request.headers.get('content-type') || '';
+    let body = {};
+    if (contentType.includes('multipart/form-data')) {
+      const form = await request.formData();
+      body = Object.fromEntries(form.entries());
+      const file = form.get('photo');
+      if (file && typeof file !== 'string') {
+        body.photoUrl = await saveProfilePhoto(file);
+      }
+    } else {
+      body = await request.json();
+    }
     if (!body?.id) {
       return NextResponse.json({error: 'User id is required'}, {status: 400});
+    }
+    if (body.publicProfile != null) {
+      body.publicProfile = body.publicProfile === true || body.publicProfile === 'true';
     }
     const user = await updateUser(body.id, body);
     await writeAudit({
@@ -62,7 +76,7 @@ export async function PATCH(request) {
       entityId: user.id,
       meta: {email: user.email, role: user.role, active: user.active},
     });
-    return NextResponse.json({user: publicUser(user)});
+    return NextResponse.json({user: publicUser(user), profile: toPublicUser(user)});
   } catch (error) {
     return errorResponse(error);
   }

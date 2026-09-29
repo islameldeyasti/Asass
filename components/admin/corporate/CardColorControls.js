@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import MediaPicker from '@/components/admin/media/MediaPicker';
 import {
@@ -42,16 +44,14 @@ export default function CardColorControls({
   return (
     <div className="ecs-layout-controls">
       <div className="ecs-layout-head">
-        <strong>Colors &amp; cover</strong>
-        <p className="ecs-help" style={{margin: '4px 0 0'}}>
-          Change brand colors, card background, cover photo, and overlay. Works on every template.
-        </p>
+        <strong>{adminText("Colors & cover")}</strong>
+        <p className="ecs-help" style={{margin: '4px 0 0'}}>{adminText("Change brand colors, card background, cover photo, and overlay. Works on every template.")}</p>
       </div>
 
       <div className="ecs-color-grid">
         {COLOR_FIELDS.map((field) => (
           <div key={field.key} className="adm-field ecs-color-field">
-            <label htmlFor={`color-${field.key}`}>{field.label}</label>
+            <label htmlFor={`color-${field.key}`}>{adminText(field.label)}</label>
             <div className="ecs-color-input">
               <input
                 id={`color-${field.key}`}
@@ -73,13 +73,11 @@ export default function CardColorControls({
       </div>
 
       <div className="adm-actions">
-        <button type="button" className="adm-btn-ghost" disabled={!canWrite} onClick={resetColors}>
-          Reset colors
-        </button>
+        <button type="button" className="adm-btn-ghost" disabled={!canWrite} onClick={resetColors}>{adminText("Reset colors")}</button>
       </div>
 
       <MediaPicker
-        label="Cover / header background image"
+        label={adminText("Cover / header background image")}
         hint="Optional. Used on headers and cover bands across all templates."
         value={coverImage || ''}
         canWrite={canWrite}
@@ -91,8 +89,8 @@ export default function CardColorControls({
 
       <div className="adm-field ecs-layout-row">
         <div className="ecs-layout-label">
-          <label htmlFor="cover-overlay">Cover overlay strength</label>
-          <span>{C.overlayOpacity}%</span>
+          <label htmlFor="cover-overlay">{adminText("Cover overlay strength")}</label>
+          <span>{adminText(C.overlayOpacity)}%</span>
         </div>
         <input
           id="cover-overlay"
@@ -105,9 +103,9 @@ export default function CardColorControls({
           onChange={(e) => setColor('overlayOpacity', Number(e.target.value))}
         />
         <p className="ecs-help" style={{margin: '4px 0 0'}}>
-          {coverImage
+          {adminText(coverImage
             ? 'Darkens the cover image so logo and text stay readable.'
-            : 'Upload a cover image to enable the overlay.'}
+            : 'Upload a cover image to enable the overlay.')}
         </p>
       </div>
     </div>

@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 export default function EmptyState({
   icon: Icon,
   title = 'Nothing here yet',
@@ -11,8 +13,8 @@ export default function EmptyState({
           <Icon size={22} strokeWidth={1.75} />
         </div>
       ) : null}
-      <h3>{title}</h3>
-      {description ? <p>{description}</p> : null}
+      <h3>{adminText(title)}</h3>
+      {description ? <p>{adminText(description)}</p> : null}
       {actions ? <div className="cms-empty-actions">{actions}</div> : null}
     </div>
   );

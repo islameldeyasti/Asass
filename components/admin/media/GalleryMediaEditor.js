@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import MediaPicker from '@/components/admin/media/MediaPicker';
 
@@ -53,17 +55,13 @@ export default function GalleryMediaEditor({
   return (
     <div className="adm-field" style={{gridColumn: '1 / -1'}}>
       <div style={{display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 10}}>
-        <strong>{label}</strong>
+        <strong>{adminText(label)}</strong>
         {canWrite ? (
-          <button type="button" className="adm-btn-ghost" onClick={addBlank}>
-            Add image
-          </button>
+          <button type="button" className="adm-btn-ghost" onClick={addBlank}>{adminText("Add image")}</button>
         ) : null}
       </div>
       {items.length === 0 ? (
-        <p style={{margin: 0, color: 'var(--cms-muted)', fontSize: 13}}>
-          No gallery images yet. Add images to show multiple angles on the project page.
-        </p>
+        <p style={{margin: 0, color: 'var(--cms-muted)', fontSize: 13}}>{adminText("No gallery images yet. Add images to show multiple angles on the project page.")}</p>
       ) : null}
       <div style={{display: 'grid', gap: 16}}>
         {items.map((item, index) => (
@@ -73,7 +71,7 @@ export default function GalleryMediaEditor({
             style={{padding: 12, display: 'grid', gap: 10}}
           >
             <div style={{display: 'flex', justifyContent: 'space-between', gap: 8}}>
-              <strong style={{fontSize: 13}}>Image {index + 1}</strong>
+              <strong style={{fontSize: 13}}>{adminText("Image ")}{adminText(index + 1)}</strong>
               {canWrite ? (
                 <div style={{display: 'flex', gap: 6}}>
                   <button type="button" className="adm-btn-ghost" onClick={() => move(index, -1)}>
@@ -82,14 +80,12 @@ export default function GalleryMediaEditor({
                   <button type="button" className="adm-btn-ghost" onClick={() => move(index, 1)}>
                     ↓
                   </button>
-                  <button type="button" className="adm-btn-danger" onClick={() => remove(index)}>
-                    Remove
-                  </button>
+                  <button type="button" className="adm-btn-danger" onClick={() => remove(index)}>{adminText("Remove")}</button>
                 </div>
               ) : null}
             </div>
             <MediaPicker
-              label="Image"
+              label={adminText("Image")}
               value={item.src}
               canWrite={canWrite}
               onChange={(url) => update(index, {src: url || ''})}
@@ -98,7 +94,7 @@ export default function GalleryMediaEditor({
             />
             <div className="adm-grid-2">
               <div className="adm-field">
-                <label>Alt (EN)</label>
+                <label>{adminText("Alt (EN)")}</label>
                 <input
                   value={item.altEn}
                   disabled={!canWrite}
@@ -106,7 +102,7 @@ export default function GalleryMediaEditor({
                 />
               </div>
               <div className="adm-field">
-                <label>Alt (AR)</label>
+                <label>{adminText("Alt (AR)")}</label>
                 <input
                   dir="rtl"
                   value={item.altAr}

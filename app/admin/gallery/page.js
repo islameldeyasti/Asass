@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getGalleryItems} from '@/lib/cms/content-service';
@@ -25,8 +27,8 @@ export default async function AdminGalleryPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Gallery"
-      subtitle={`${items.length} images`}
+      title={adminText("Gallery")}
+      subtitle={adminText(`${items.length} images`)}
     >
       <CollectionTable
         resource="gallery"

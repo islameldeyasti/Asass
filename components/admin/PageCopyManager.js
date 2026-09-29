@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useMemo, useState} from 'react';
 import DocumentForm from '@/components/admin/DocumentForm';
@@ -78,7 +80,7 @@ export default function PageCopyManager({initialDocument, canWrite}) {
     <div className="adm-stack">
       <div className="adm-card">
         <div className="adm-field" style={{marginBottom: 0}}>
-          <label htmlFor="page-copy-select">Page</label>
+          <label htmlFor="page-copy-select">{adminText("Page")}</label>
           <select
             id="page-copy-select"
             value={pageId}
@@ -86,7 +88,7 @@ export default function PageCopyManager({initialDocument, canWrite}) {
           >
             {PAGE_OPTIONS.map((opt) => (
               <option key={opt.id} value={opt.id}>
-                {opt.label}
+                {adminText(opt.label)}
               </option>
             ))}
           </select>
@@ -95,7 +97,7 @@ export default function PageCopyManager({initialDocument, canWrite}) {
 
       <DocumentForm
         key={pageId}
-        title={`${PAGE_OPTIONS.find((p) => p.id === pageId)?.label || pageId} copy`}
+        title={adminText(`${PAGE_OPTIONS.find((p) => p.id === pageId)?.label || pageId} copy`)}
         resource="page-copy"
         pageId={pageId}
         initialValue={{...current, pageId}}

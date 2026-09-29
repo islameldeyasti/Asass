@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import Link from 'next/link';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
@@ -16,8 +18,8 @@ export default async function AdminEmployeeCardNewPage() {
 
   if (!canWrite) {
     return (
-      <AdminShell user={user} navItems={navItems} title="Add card">
-        <div className="adm-error">You do not have permission to add cards.</div>
+      <AdminShell user={user} navItems={navItems} title={adminText("Add card")}>
+        <div className="adm-error">{adminText("You do not have permission to add cards.")}</div>
       </AdminShell>
     );
   }
@@ -26,12 +28,10 @@ export default async function AdminEmployeeCardNewPage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="Add employee card"
-      subtitle="Select a team member to configure their digital card"
+      title={adminText("Add employee card")}
+      subtitle={adminText("Select a team member to configure their digital card")}
       actions={
-        <Link className="adm-btn-ghost" href="/admin/corporate/employee-cards">
-          Back to cards
-        </Link>
+        <Link className="adm-btn-ghost" href="/admin/corporate/employee-cards">{adminText("Back to cards")}</Link>
       }
     >
       <EmployeeCardNewPicker members={members} />

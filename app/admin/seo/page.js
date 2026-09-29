@@ -1,3 +1,5 @@
+
+import {adminText} from '@/lib/admin/translate';
 import {Suspense} from 'react';
 import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
@@ -19,13 +21,13 @@ export default async function AdminSeoPage({searchParams}) {
     <AdminShell
       user={user}
       navItems={navItems}
-      title="SEO Control Center"
-      subtitle="Page metadata, redirects, sitemap, and robots for the public site"
+      title={adminText("SEO Control Center")}
+      subtitle={adminText("Page metadata, redirects, sitemap, and robots for the public site")}
     >
       <Suspense
         fallback={
           <div className="cms-card">
-            <p style={{margin: 0, color: 'var(--cms-muted)'}}>Loading SEO Control Center…</p>
+            <p style={{margin: 0, color: 'var(--cms-muted)'}}>{adminText("Loading SEO Control Center…")}</p>
           </div>
         }
       >

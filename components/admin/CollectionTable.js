@@ -1,4 +1,6 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useMemo, useState} from 'react';
 import {useRouter} from 'next/navigation';
@@ -7,6 +9,9 @@ import GalleryMediaEditor from '@/components/admin/media/GalleryMediaEditor';
 import RelationPicker from '@/components/admin/ui/RelationPicker';
 import TranslationTabs from '@/components/admin/ui/TranslationTabs';
 import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
+import EmptyState from '@/components/admin/ui/EmptyState';
+import AdminPortal from '@/components/admin/ui/AdminPortal';
+import TableDataBar, {uniqueFilterOptions} from '@/components/admin/ui/TableDataBar';
 
 function getValue(obj, key) {
   if (!obj || !key) return undefined;
@@ -197,8 +202,33 @@ export default function CollectionTable({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const [query, setQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
 
   const writable = canWrite && !readOnly;
+  const filteredItems = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return items.filter((item) => {
+      if (statusKey && statusFilter && String(item?.[statusKey] || '') !== statusFilter) return false;
+      if (!q) return true;
+      const name = String(getValue(item, titleKey) || '').toLowerCase();
+      const slug = String(getValue(item, slugKey) || item?.[idKey] || '').toLowerCase();
+      const status = String(item?.[statusKey] || '').toLowerCase();
+      return name.includes(q) || slug.includes(q) || status.includes(q);
+    });
+  }, [items, query, titleKey, slugKey, idKey, statusKey, statusFilter]);
+
+  const tableColumns = useMemo(() => {
+    const cols = [
+      {key: titleKey, label: 'Name'},
+      {key: slugKey, label: 'Web address'},
+    ];
+    if (statusKey) cols.push({key: statusKey, label: 'Status'});
+    for (const field of fields) {
+      if (!cols.some((c) => c.key === field.key)) cols.push({key: field.key, label: field.label || field.key});
+    }
+    return cols;
+  }, [fields, titleKey, slugKey, statusKey]);
 
   const translationGroups = useMemo(() => partitionTranslationFields(fields), [fields]);
   const hasTranslations =
@@ -218,6 +248,35 @@ export default function CollectionTable({
 
   function setField(key, value) {
     setDraft((current) => setValue(current || {}, key, value));
+  }
+
+  async function importExcel(mapped) {
+    if (!writable) return;
+    setSaving(true);
+    setError('');
+    try {
+      for (const row of mapped) {
+        const payload = draftToPayload({...blankItem(fields, createDefaults), ...row}, fields);
+        const res = await fetch('/api/admin/content', {
+          method: 'PUT',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({resource, item: payload}),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Import failed');
+      }
+      const list = await fetch(`/api/admin/content?resource=${encodeURIComponent(resource)}`);
+      if (list.ok) {
+        const data = await list.json();
+        if (Array.isArray(data.items)) setItems(data.items);
+      }
+      setMessage('Import completed.');
+      router.refresh();
+    } catch (err) {
+      setError(err.message || 'Import failed');
+    } finally {
+      setSaving(false);
+    }
   }
 
   async function onSave(event) {
@@ -262,7 +321,7 @@ export default function CollectionTable({
   async function onDelete(item) {
     if (!writable || !allowDelete) return;
     const label = getValue(item, titleKey) || getValue(item, slugKey) || item?.[idKey];
-    if (!window.confirm(`Delete “${label}”?`)) return;
+    if (!window.confirm(adminText(`Delete “${label}”?`))) return;
     setError('');
     try {
       const params = new URLSearchParams({resource});
@@ -298,7 +357,7 @@ export default function CollectionTable({
             onChange={(e) => setField(field.key, e.target.checked)}
             disabled={disabled}
           />
-          {field.label}
+          {adminText(field.label)}
         </label>
       );
     }
@@ -306,7 +365,7 @@ export default function CollectionTable({
     if (field.type === 'select') {
       return (
         <div className="adm-field">
-          <label htmlFor={`f-${field.key}`}>{field.label}</label>
+          <label htmlFor={`f-${field.key}`}>{adminText(field.label)}</label>
           <select
             id={`f-${field.key}`}
             value={value}
@@ -315,7 +374,7 @@ export default function CollectionTable({
           >
             {(field.options || []).map((opt) => (
               <option key={String(opt.value)} value={opt.value}>
-                {opt.label}
+                {adminText(opt.label)}
               </option>
             ))}
           </select>
@@ -327,12 +386,12 @@ export default function CollectionTable({
       const selected = getValue(draft, field.key);
       return (
         <RelationPicker
-          label={field.label}
+          label={adminText(field.label)}
           value={Array.isArray(selected) ? selected : []}
           options={field.options || []}
           onChange={(next) => setField(field.key, next)}
           disabled={disabled}
-          placeholder={field.placeholder || 'Search…'}
+          placeholder={adminText(field.placeholder || 'Search…')}
         />
       );
     }
@@ -341,7 +400,7 @@ export default function CollectionTable({
       const focalKey = field.focalKey || (field.type === 'image' ? `${field.key}Focal` : null);
       return (
         <MediaPicker
-          label={field.label}
+          label={adminText(field.label)}
           value={typeof value === 'string' ? value : value == null ? '' : String(value)}
           onChange={(url) => setField(field.key, url)}
           mode={field.mode || (field.type === 'media' ? 'DOCUMENT' : 'IMAGE')}
@@ -363,7 +422,7 @@ export default function CollectionTable({
       const selected = getValue(draft, field.key);
       return (
         <GalleryMediaEditor
-          label={field.label}
+          label={adminText(field.label)}
           value={Array.isArray(selected) ? selected : []}
           onChange={(next) => setField(field.key, next)}
           canWrite={writable}
@@ -379,7 +438,7 @@ export default function CollectionTable({
     ) {
       return (
         <div className="adm-field">
-          <label htmlFor={`f-${field.key}`}>{field.label}</label>
+          <label htmlFor={`f-${field.key}`}>{adminText(field.label)}</label>
           <textarea
             id={`f-${field.key}`}
             value={value}
@@ -391,14 +450,14 @@ export default function CollectionTable({
             }}
             disabled={disabled}
           />
-          {field.hint ? <small style={{color: '#5b6472'}}>{field.hint}</small> : null}
+          {field.hint ? <small>{adminText(field.hint)}</small> : null}
         </div>
       );
     }
 
     return (
       <div className="adm-field">
-        <label htmlFor={`f-${field.key}`}>{field.label}</label>
+        <label htmlFor={`f-${field.key}`}>{adminText(field.label)}</label>
         <input
           id={`f-${field.key}`}
           type={field.type === 'number' ? 'number' : 'text'}
@@ -413,88 +472,101 @@ export default function CollectionTable({
 
   return (
     <div>
-      {error ? <p className="adm-error">{error}</p> : null}
-      {message ? <p className="adm-success">{message}</p> : null}
+      {error ? <p className="adm-error">{adminText(error)}</p> : null}
+      {message ? <p className="adm-success">{adminText(message)}</p> : null}
 
       <div className="adm-card">
         <div className="adm-list-toolbar">
           <div>
             <strong className="adm-list-count">
-              {items.length} {items.length === 1 ? 'item' : 'items'}
+              {adminText(filteredItems.length)} {adminText(filteredItems.length === 1 ? 'item' : 'items')}
             </strong>
-            <p className="adm-section-help" style={{margin: '4px 0 0'}}>
-              Search, edit, and publish content for the website.
-            </p>
+            <p className="adm-section-help" style={{margin: '4px 0 0'}}>{adminText("Search, edit, and publish content for the website.")}</p>
           </div>
-          {writable ? (
-            <button type="button" className="adm-btn" onClick={openCreate}>
-              Add new
-            </button>
-          ) : null}
+          <div className="cms-filter-bar" style={{flexDirection:'column',alignItems:'stretch',width:'100%'}}>
+            <TableDataBar
+              query={query}
+              onQuery={setQuery}
+              filter={statusKey ? statusFilter : undefined}
+              onFilter={statusKey ? setStatusFilter : undefined}
+              filterLabel="All statuses"
+              filterOptions={statusKey ? uniqueFilterOptions(items, statusKey) : []}
+              columns={tableColumns}
+              rows={filteredItems}
+              filename={resource}
+              title={resource}
+              canImport={writable}
+              onImport={importExcel}
+              extra={writable ? <button type="button" className="adm-btn" onClick={openCreate}>{adminText("Add new")}</button> : null}
+            />
+          </div>
         </div>
 
-        {items.length === 0 ? (
-          <div className="adm-empty">
-            <p>{emptyLabel}</p>
-          </div>
+        {filteredItems.length === 0 ? (
+          <EmptyState
+            title={adminText(query ? 'No matching items.' : emptyLabel)}
+            description={adminText(query ? 'Try a different search term.' : 'Create your first item to get started.')}
+          />
         ) : (
+          <div className="cms-table-wrap">
           <table className="adm-table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Web address</th>
-                {statusKey ? <th>Status</th> : null}
+                <th>{adminText("Name")}</th>
+                <th>{adminText("Web address")}</th>
+                {statusKey ? <th>{adminText("Status")}</th> : null}
                 <th />
               </tr>
             </thead>
             <tbody>
-              {items.map((item) => {
+              {filteredItems.map((item) => {
                 const key = item?.[idKey] ?? item?.[slugKey];
                 return (
                   <tr key={String(key)}>
                     <td>
-                      <strong>{getValue(item, titleKey) || '—'}</strong>
+                      <strong>{adminText(getValue(item, titleKey) || '—')}</strong>
                     </td>
-                    <td style={{color: '#5b6472', fontSize: 13}}>
-                      {getValue(item, slugKey) || item?.[idKey] || '—'}
+                    <td style={{color: 'var(--cms-muted)', fontSize: 13}}>
+                      {adminText(getValue(item, slugKey) || item?.[idKey] || '—')}
                     </td>
                     {statusKey ? (
                       <td>
                         {item?.[statusKey] ? (
-                          <span className={`adm-badge ${item[statusKey]}`}>{item[statusKey]}</span>
+                          <span className={`adm-badge ${item[statusKey]}`}>{adminText(item[statusKey])}</span>
                         ) : (
                           '—'
                         )}
                       </td>
                     ) : null}
-                    <td style={{textAlign: 'right', whiteSpace: 'nowrap'}}>
+                    <td>
+                      <div className="cms-row-actions">
                       <button
                         type="button"
                         className="adm-btn-ghost"
                         onClick={() => openEdit(item)}
                       >
-                        {writable ? 'Edit' : 'View'}
+                        {adminText(writable ? 'Edit' : 'View')}
                       </button>
                       {writable && allowDelete ? (
                         <button
                           type="button"
                           className="adm-btn-danger"
-                          style={{marginLeft: 8}}
                           onClick={() => onDelete(item)}
-                        >
-                          Delete
-                        </button>
+                        >{adminText("Delete")}</button>
                       ) : null}
+                      </div>
                     </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
+          </div>
         )}
       </div>
 
       {draft ? (
+        <AdminPortal>
         <div
           className="adm-modal-backdrop"
           role="presentation"
@@ -507,12 +579,15 @@ export default function CollectionTable({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="adm-modal-head">
-              <h2>{writable ? 'Edit content' : 'View content'}</h2>
+              <h2>{adminText(writable ? 'Edit content' : 'View content')}</h2>
               <AdminCloseButton onClick={() => setDraft(null)} disabled={saving} />
             </div>
 
             <form onSubmit={onSave}>
               <div className="adm-modal-body">
+                <div className="cms-form-section">
+                  <h3>{adminText('Content')}</h3>
+                  <p className="cms-form-section-desc">{adminText('Update the fields for this record. Required fields are marked in the form.')}</p>
                 {hasTranslations ? (
                   <TranslationTabs
                     enFields={translationGroups.enFields}
@@ -523,9 +598,10 @@ export default function CollectionTable({
                   />
                 ) : (
                   translationGroups.generalFields.map((field) => (
-                    <div key={field.key}>{renderFieldInput(field)}</div>
+                    <div key={field.key}>{adminText(renderFieldInput(field))}</div>
                   ))
                 )}
+                </div>
 
                 <details
                   className="adm-advanced-json"
@@ -539,12 +615,10 @@ export default function CollectionTable({
                     }
                   }}
                 >
-                  <summary>Developer tools</summary>
-                  <p className="adm-section-help">
-                    For technical support only. Normal editors can ignore this section.
-                  </p>
+                  <summary>{adminText("Developer tools")}</summary>
+                  <p className="adm-section-help">{adminText("For technical support only. Normal editors can ignore this section.")}</p>
                   <div className="adm-field" style={{marginTop: 12}}>
-                    <label htmlFor="raw-json">Raw data</label>
+                    <label htmlFor="raw-json">{adminText("Raw data")}</label>
                     <textarea
                       id="raw-json"
                       value={rawJson}
@@ -568,9 +642,7 @@ export default function CollectionTable({
                             setError(err.message || 'Invalid JSON');
                           }
                         }}
-                      >
-                        Apply JSON to fields
-                      </button>
+                      >{adminText("Apply JSON to fields")}</button>
                     ) : null}
                   </div>
                 </details>
@@ -579,14 +651,15 @@ export default function CollectionTable({
               <div className="adm-modal-foot">
                 <div style={{flex: 1}} />
                 {writable ? (
-                  <button type="submit" className="adm-btn" disabled={saving}>
-                    {saving ? 'Saving…' : 'Save'}
+                  <button type="submit" className={`adm-btn${saving ? ' is-loading' : ''}`} disabled={saving}>
+                    {adminText(saving ? 'Saving…' : 'Save')}
                   </button>
                 ) : null}
               </div>
             </form>
           </div>
         </div>
+        </AdminPortal>
       ) : null}
     </div>
   );

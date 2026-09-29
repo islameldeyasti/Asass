@@ -1,11 +1,15 @@
 'use client';
+import {adminText} from '@/lib/admin/translate';
+
 
 import {useCallback, useEffect, useMemo, useState} from 'react';
-import {Columns3, List, MessageSquare, Search} from 'lucide-react';
+import {Columns3, List, MessageSquare} from 'lucide-react';
+import TableDataBar from '@/components/admin/ui/TableDataBar';
 import EmptyState from '@/components/admin/ui/EmptyState';
 import StatusBadge from '@/components/admin/ui/StatusBadge';
 import AdminCloseButton from '@/components/admin/ui/AdminCloseButton';
 import {useToast} from '@/components/admin/ui/ToastProvider';
+import {formatAdminDateTime} from '@/lib/admin/locale';
 
 export const ENQUIRY_STATUSES = [
   'new',
@@ -33,12 +37,7 @@ function normalizeStatus(value) {
 }
 
 function formatDate(value) {
-  if (!value) return '—';
-  try {
-    return new Date(value).toLocaleString();
-  } catch {
-    return String(value);
-  }
+  return formatAdminDateTime(value);
 }
 
 export default function EnquiriesBoard({canWrite = false, initialItems = null}) {
@@ -204,7 +203,7 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
   if (loading) {
     return (
       <div className="cms-card">
-        <p style={{margin: 0, color: 'var(--cms-muted)'}}>Loading enquiries…</p>
+        <p style={{margin: 0, color: 'var(--cms-muted)'}}>{adminText("Loading enquiries…")}</p>
       </div>
     );
   }
@@ -212,58 +211,65 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
   return (
     <div className="cms-crm-board">
       <div className="cms-crm-toolbar">
-        <div className="cms-crm-filters">
-          <label className="cms-crm-search">
-            <Search size={16} aria-hidden />
-            <input
-              type="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search name, email, message…"
-              aria-label="Search enquiries"
-            />
-          </label>
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            aria-label="Filter by status"
-          >
-            <option value="all">All statuses</option>
-            {ENQUIRY_STATUSES.map((status) => (
-              <option key={status} value={status}>
-                {STATUS_LABELS[status]}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="cms-crm-view-toggle" role="group" aria-label="View">
+        <TableDataBar
+          query={search}
+          onQuery={setSearch}
+          searchPlaceholder="Search name, email, message…"
+          filter={statusFilter === 'all' ? '' : statusFilter}
+          onFilter={(value) => setStatusFilter(value || 'all')}
+          filterLabel="All statuses"
+          filterOptions={ENQUIRY_STATUSES.map((status) => ({value: status, label: STATUS_LABELS[status]}))}
+          columns={[
+            {key:'name',label:'Name'},
+            {key:'email',label:'Email'},
+            {key:'phone',label:'Phone'},
+            {key:'company',label:'Company'},
+            {key:'status',label:'Status'},
+            {key:'message',label:'Message'},
+          ]}
+          rows={filtered}
+          filename="enquiries"
+          title="Enquiries"
+          canImport={canWrite}
+          onImport={async (mapped) => {
+            for (const row of mapped) {
+              const res = await fetch('/api/admin/content', {
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({resource: 'enquiries', item: row}),
+              });
+              const data = await res.json();
+              if (!res.ok) throw new Error(data.error || 'Import failed');
+            }
+            await load();
+          }}
+          extra={
+            <div className="cms-crm-view-toggle" role="group" aria-label={adminText("View")}>
           <button
             type="button"
             className={view === 'kanban' ? 'is-active' : ''}
             onClick={() => setView('kanban')}
           >
-            <Columns3 size={15} aria-hidden />
-            Kanban
-          </button>
+            <Columns3 size={15} aria-hidden />{adminText("Kanban")}</button>
           <button
             type="button"
             className={view === 'table' ? 'is-active' : ''}
             onClick={() => setView('table')}
           >
-            <List size={15} aria-hidden />
-            Table
-          </button>
-        </div>
+            <List size={15} aria-hidden />{adminText("Table")}</button>
+            </div>
+          }
+        />
       </div>
 
       {filtered.length === 0 ? (
         <EmptyState
           icon={MessageSquare}
-          title="No enquiries"
+          title={adminText("No enquiries")}
           description={
-            items.length === 0
+            adminText(items.length === 0
               ? 'New project enquiries will appear here.'
-              : 'No enquiries match the current filters.'
+              : 'No enquiries match the current filters.')
           }
         />
       ) : view === 'kanban' ? (
@@ -286,8 +292,8 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
               }}
             >
               <header className="cms-kanban-col-head">
-                <strong>{STATUS_LABELS[status]}</strong>
-                <span>{columns[status].length}</span>
+                <strong>{adminText(STATUS_LABELS[status])}</strong>
+                <span>{adminText(columns[status].length)}</span>
               </header>
               <div className="cms-kanban-cards">
                 {columns[status].map((item) => (
@@ -301,10 +307,10 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
                     }}
                     onClick={() => openCard(item)}
                   >
-                    <strong>{item.name || item.fullName || 'Untitled'}</strong>
+                    <strong>{item.name || item.fullName || adminText('Untitled')}</strong>
                     <span>{item.email || item.phone || '—'}</span>
-                    <p>{item.subject || item.serviceLabel || item.message || ''}</p>
-                    <em>{formatDate(item.createdAt)}</em>
+                    <p>{adminText(item.subject || item.serviceLabel || item.message || '')}</p>
+                    <em>{adminText(formatDate(item.createdAt))}</em>
                   </article>
                 ))}
               </div>
@@ -316,11 +322,11 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
           <table className="cms-table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Assignee</th>
-                <th>Created</th>
+                <th>{adminText("Name")}</th>
+                <th>{adminText("Email")}</th>
+                <th>{adminText("Status")}</th>
+                <th>{adminText("Assignee")}</th>
+                <th>{adminText("Created")}</th>
               </tr>
             </thead>
             <tbody>
@@ -338,8 +344,8 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
                   <td>
                     <StatusBadge status={normalizeStatus(item.status)} />
                   </td>
-                  <td>{item.assignedTo || '—'}</td>
-                  <td>{formatDate(item.createdAt)}</td>
+                  <td>{adminText(item.assignedTo || '—')}</td>
+                  <td>{adminText(formatDate(item.createdAt))}</td>
                 </tr>
               ))}
             </tbody>
@@ -357,13 +363,13 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
             className="cms-drawer"
             role="dialog"
             aria-modal="true"
-            aria-label="Enquiry details"
+            aria-label={adminText("Enquiry details")}
             onClick={(e) => e.stopPropagation()}
           >
             <header className="cms-drawer-head">
               <div>
-                <p className="cms-drawer-kicker">Enquiry</p>
-                <h2>{draft.name || 'Contact'}</h2>
+                <p className="cms-drawer-kicker">{adminText("Enquiry")}</p>
+                <h2>{draft.name || adminText('Contact')}</h2>
               </div>
               <AdminCloseButton onClick={() => setSelectedId(null)} disabled={saving} />
             </header>
@@ -371,38 +377,38 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
             <form className="cms-drawer-body" onSubmit={onSaveDrawer}>
               <div className="cms-grid-2">
                 <div className="cms-field">
-                  <label>Name</label>
+                  <label>{adminText("Name")}</label>
                   <input value={draft.name} readOnly />
                 </div>
                 <div className="cms-field">
-                  <label>Email</label>
+                  <label>{adminText("Email")}</label>
                   <input value={draft.email} readOnly />
                 </div>
                 <div className="cms-field">
-                  <label>Phone</label>
+                  <label>{adminText("Phone")}</label>
                   <input value={draft.phone} readOnly />
                 </div>
                 <div className="cms-field">
-                  <label>Company</label>
+                  <label>{adminText("Company")}</label>
                   <input value={draft.company} readOnly />
                 </div>
               </div>
 
               {draft.subject ? (
                 <div className="cms-field">
-                  <label>Subject</label>
+                  <label>{adminText("Subject")}</label>
                   <input value={draft.subject} readOnly />
                 </div>
               ) : null}
 
               <div className="cms-field">
-                <label>Message</label>
+                <label>{adminText("Message")}</label>
                 <textarea value={draft.message} rows={5} readOnly />
               </div>
 
               <div className="cms-grid-2">
                 <div className="cms-field">
-                  <label htmlFor="enq-status">Status</label>
+                  <label htmlFor="enq-status">{adminText("Status")}</label>
                   <select
                     id="enq-status"
                     value={draft.status}
@@ -413,13 +419,13 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
                   >
                     {ENQUIRY_STATUSES.map((status) => (
                       <option key={status} value={status}>
-                        {STATUS_LABELS[status]}
+                        {adminText(STATUS_LABELS[status])}
                       </option>
                     ))}
                   </select>
                 </div>
                 <div className="cms-field">
-                  <label htmlFor="enq-assignee">Assignee</label>
+                  <label htmlFor="enq-assignee">{adminText("Assignee")}</label>
                   <input
                     id="enq-assignee"
                     value={draft.assignedTo}
@@ -427,52 +433,52 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
                     onChange={(e) =>
                       setDraft((current) => ({...current, assignedTo: e.target.value}))
                     }
-                    placeholder="Name or email"
+                    placeholder={adminText("Name or email")}
                   />
                 </div>
               </div>
 
               <section className="cms-drawer-section">
-                <h3>Notes</h3>
+                <h3>{adminText("Notes")}</h3>
                 <ul className="cms-notes-list">
                   {(selected.notes || []).length === 0 ? (
-                    <li className="is-empty">No notes yet.</li>
+                    <li className="is-empty">{adminText("No notes yet.")}</li>
                   ) : (
                     (selected.notes || []).map((note) => (
                       <li key={note.id || `${note.at}-${note.text}`}>
-                        <strong>{note.author || 'Admin'}</strong>
-                        <span>{formatDate(note.at)}</span>
-                        <p>{note.text}</p>
+                        <strong>{adminText(note.author || 'Admin')}</strong>
+                        <span>{adminText(formatDate(note.at))}</span>
+                        <p>{adminText(note.text)}</p>
                       </li>
                     ))
                   )}
                 </ul>
                 {canWrite ? (
                   <div className="cms-field">
-                    <label htmlFor="enq-note">Add note</label>
+                    <label htmlFor="enq-note">{adminText("Add note")}</label>
                     <textarea
                       id="enq-note"
                       rows={3}
                       value={noteText}
                       onChange={(e) => setNoteText(e.target.value)}
                       disabled={saving}
-                      placeholder="Follow-up details…"
+                      placeholder={adminText("Follow-up details…")}
                     />
                   </div>
                 ) : null}
               </section>
 
               <section className="cms-drawer-section">
-                <h3>Activity</h3>
+                <h3>{adminText("Activity")}</h3>
                 <ul className="cms-activity-list">
                   {(selected.activity || []).length === 0 ? (
-                    <li className="is-empty">No activity yet.</li>
+                    <li className="is-empty">{adminText("No activity yet.")}</li>
                   ) : (
                     (selected.activity || []).map((act) => (
                       <li key={act.id || `${act.at}-${act.text}`}>
-                        <StatusBadge status={act.type || 'note'}>{act.type || 'event'}</StatusBadge>
-                        <span>{act.text}</span>
-                        <em>{formatDate(act.at)}</em>
+                        <StatusBadge status={act.type || 'note'}>{adminText(act.type || 'event')}</StatusBadge>
+                        <span>{adminText(act.text)}</span>
+                        <em>{adminText(formatDate(act.at))}</em>
                       </li>
                     ))
                   )}
@@ -482,7 +488,7 @@ export default function EnquiriesBoard({canWrite = false, initialItems = null}) 
               {canWrite ? (
                 <div className="cms-drawer-foot">
                   <button type="submit" className="cms-btn" disabled={saving}>
-                    {saving ? 'Saving…' : 'Save'}
+                    {adminText(saving ? 'Saving…' : 'Save')}
                   </button>
                 </div>
               ) : null}
