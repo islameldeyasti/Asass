@@ -898,22 +898,30 @@
   color: var(--cms-text);
 }
 
-/* Premium toggle switch */
+/* Premium toggle switch — input stays invisible; Flowbite checkbox styles must not paint over the track */
 .adm-switch {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   user-select: none;
   font-size: 13px;
+  line-height: 1.35;
   color: var(--cms-text);
+  overflow: visible;
 }
 
 .adm-switch input {
   position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  z-index: 2;
+  width: 42px;
+  height: 24px;
+  margin: 0;
   opacity: 0;
-  width: 1px;
-  height: 1px;
+  cursor: pointer;
 }
 
 .adm-switch-track {
@@ -924,13 +932,14 @@
   border-radius: 999px;
   background: #d7dbe3;
   transition: background var(--cms-ease);
+  pointer-events: none;
 }
 
 .adm-switch-track::after {
   content: '';
   position: absolute;
   top: 3px;
-  left: 3px;
+  inset-inline-start: 3px;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -947,8 +956,21 @@
   transform: translateX(18px);
 }
 
+html[dir='rtl'] .adm-switch input:checked + .adm-switch-track::after {
+  transform: translateX(-18px);
+}
+
 .adm-switch input:focus-visible + .adm-switch-track {
   box-shadow: 0 0 0 3px rgba(7, 4, 99, 0.16);
+}
+
+.adm-switch input:disabled {
+  cursor: not-allowed;
+}
+
+.adm-switch:has(input:disabled) {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .adm-section-title {
@@ -3911,8 +3933,10 @@
 }
 
 .ecs-visibility {
+  display: flex;
+  width: 100%;
   margin-top: 8px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 /* Image crop dialog (react-easy-crop stage needs fixed height) */

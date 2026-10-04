@@ -55,9 +55,11 @@ function VisibilityToggle({label, checked, onChange, disabled}) {
       <span className="adm-switch-track" aria-hidden />
       <span>
         {adminText(checked ? 'Shown publicly' : 'Hidden')}
-        <em style={{display: 'block', color: 'var(--cms-muted)', fontStyle: 'normal', fontWeight: 400}}>
-          {adminText(label)}
-        </em>
+        {label ? (
+          <em style={{display: 'block', color: 'var(--cms-muted)', fontStyle: 'normal', fontWeight: 400}}>
+            {label}
+          </em>
+        ) : null}
       </span>
     </label>
   );
