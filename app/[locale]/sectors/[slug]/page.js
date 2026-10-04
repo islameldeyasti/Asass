@@ -131,10 +131,18 @@ export default async function Sector({params}) {
       : categoryMeta.title
     : null;
 
-  const relatedProjects = projectList
-    .filter((project) => categories.includes(project.category))
-    .slice(0, 3);
-  const relatedServices = relatedServicesForSector(slug, serviceList);
+  const relatedProjects = (
+    Array.isArray(sector.projects) && sector.projects.length
+      ? projectList.filter((project) => sector.projects.includes(project.slug))
+      : projectList.filter((project) => {
+          const sectorIds = Array.isArray(project.sectors) ? project.sectors : [];
+          return sectorIds.includes(slug) || categories.includes(project.category);
+        })
+  ).slice(0, 8);
+  const relatedServices =
+    Array.isArray(sector.services) && sector.services.length
+      ? serviceList.filter((service) => sector.services.includes(service.slug))
+      : relatedServicesForSector(slug, serviceList);
   const relatedSectors = sectorList.filter((item) => item.slug !== slug).slice(0, 4);
   const approachSteps = projectLifecycle.slice(0, 4);
   const heroFeatures = strengths.slice(0, 3);

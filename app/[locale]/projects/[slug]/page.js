@@ -1,7 +1,7 @@
 import {notFound} from 'next/navigation';
 import ProjectDetailView from '@/components/projects/ProjectDetailView';
 import {projectCategories} from '@/data/projects';
-import {getPublicProjectBySlug, getPublicProjects} from '@/lib/cms/public-data';
+import {getPublicProjectBySlug, getPublicProjects, getPublicSectors, getPublicServices} from '@/lib/cms/public-data';
 import {buildRouteMetadata} from '@/lib/cms/seo/build-metadata';
 
 export const dynamic = 'force-dynamic';
@@ -61,22 +61,42 @@ export async function generateMetadata({params}) {
 
 export default async function Project({params}) {
   const {locale, slug} = await params;
-  const projects = await getPublicProjects();
+  const [projects, cmsServices, cmsSectors] = await Promise.all([
+    getPublicProjects(),
+    getPublicServices(),
+    getPublicSectors(),
+  ]);
   const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
 
   const ar = locale === 'ar';
-  const category = projectCategories.find((item) => item.slug === project.category);
+  const serviceMap = Object.fromEntries((cmsServices || []).map((item) => [item.slug, item]));
+  const sectorMap = Object.fromEntries((cmsSectors || []).map((item) => [item.slug, item]));
+  const projectSectors = Array.isArray(project.sectors) ? project.sectors : [];
+  const category =
+    sectorMap[projectSectors[0]] ||
+    projectCategories.find((item) => item.slug === project.category);
   const related = projects
-    .filter((item) => item.category === project.category && item.slug !== project.slug)
+    .filter((item) => {
+      if (item.slug === project.slug) return false;
+      const otherSectors = Array.isArray(item.sectors) ? item.sectors : [];
+      if (projectSectors.length && otherSectors.some((id) => projectSectors.includes(id))) return true;
+      return item.category && item.category === project.category;
+    })
     .slice(0, 6)
     .map((item) => ({
       ...item,
-      categoryLabel: projectCategories.find((entry) => entry.slug === item.category),
+      categoryLabel:
+        sectorMap[(item.sectors || [])[0]] ||
+        projectCategories.find((entry) => entry.slug === item.category),
     }));
 
   const peers = projects
-    .filter((item) => item.category === project.category)
+    .filter((item) => {
+      const otherSectors = Array.isArray(item.sectors) ? item.sectors : [];
+      if (projectSectors.length && otherSectors.some((id) => projectSectors.includes(id))) return true;
+      return item.category && item.category === project.category;
+    })
     .map((item) => ({
       slug: item.slug,
       title: item.title,
@@ -84,12 +104,11 @@ export default async function Project({params}) {
     }));
   const peerIndex = Math.max(0, peers.findIndex((item) => item.slug === project.slug));
 
-  const services = ar
-    ? project.services.map((item) => scopeAr[item] || item)
-    : project.services;
-
-  const scopeTags = project.services.map((item) =>
-    ar ? scopeTagsAr[item] || item : scopeTagsEn[item] || item,
+  const linkedServices = (Array.isArray(project.services) ? project.services : [])
+    .map((item) => serviceMap[item] || {title: item, titleAr: scopeAr[item] || item, slug: item});
+  const services = linkedServices.map((item) => (ar ? item.titleAr || item.title : item.title));
+  const scopeTags = linkedServices.map((item) =>
+    ar ? scopeTagsAr[item.title] || item.titleAr || item.title : scopeTagsEn[item.title] || item.title,
   );
 
   return (
