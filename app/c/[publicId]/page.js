@@ -1,6 +1,7 @@
 import {notFound} from 'next/navigation';
 import Link from 'next/link';
 import {headers} from 'next/headers';
+import {unstable_noStore as noStore} from 'next/cache';
 import {company} from '@/data/company';
 import {
   buildPublicCardPath,
@@ -14,6 +15,7 @@ import '@/app/fonts-arabic.css';
 import '@/app/corporate-cards.css';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 function absUrl(path, host, proto) {
   if (!path) return undefined;
@@ -34,6 +36,7 @@ async function requestOrigin() {
 }
 
 export async function generateMetadata({params, searchParams}) {
+  noStore();
   const {publicId} = await params;
   const sp = await searchParams;
   const locale = sp?.lang === 'ar' ? 'ar' : 'en';
@@ -72,6 +75,7 @@ export async function generateMetadata({params, searchParams}) {
 }
 
 export default async function StableDigitalCardPage({params, searchParams}) {
+  noStore();
   const {publicId} = await params;
   const sp = await searchParams;
   const locale = sp?.lang === 'ar' ? 'ar' : 'en';

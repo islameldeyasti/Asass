@@ -93,10 +93,12 @@ export default function EmployeeCardEditor({
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [copyFromId, setCopyFromId] = useState('');
+  const [savedAt, setSavedAt] = useState('');
 
   const card = draft.digital_card;
   const template = getCardTemplate(card.templateId);
   const publicPath = card.publicId ? buildPublicCardPath(card.publicId) : '';
+  const publicHref = publicPath ? `${publicPath}${savedAt ? `?v=${encodeURIComponent(savedAt)}` : ''}` : '';
 
   useEffect(() => {
     let cancelled = false;
@@ -182,6 +184,7 @@ export default function EmployeeCardEditor({
         ...data.member,
         digital_card: normalizeDigitalCard(data.member.digital_card),
       }));
+      setSavedAt(data.member?.updated_at || String(Date.now()));
       setMessage(publish ? 'Published.' : disable ? 'Disabled.' : 'Saved.');
       router.refresh();
     } catch (err) {
@@ -233,8 +236,8 @@ export default function EmployeeCardEditor({
           <p>
             <span className={`cms-badge cms-badge--${status}`}>{adminText(status)}</span>
             {publicPath ? (
-              <a href={publicPath} target="_blank" rel="noreferrer">
-                {adminText(publicPath)} <ExternalLink size={12} />
+              <a href={publicHref || publicPath} target="_blank" rel="noreferrer">
+                {publicPath} <ExternalLink size={12} />
               </a>
             ) : (
               <span>{adminText("Public ID assigned on first save")}</span>
@@ -525,12 +528,12 @@ export default function EmployeeCardEditor({
                     <p>{adminText("Status: ")}<b>{adminText(status)}</b>
                     </p>
                     <p className="ecs-help" dir="ltr">
-                      {adminText(publicPath || 'Save once to allocate a stable public ID.')}
+                      {publicPath || adminText('Save once to allocate a stable public ID.')}
                     </p>
                     <div className="ecs-inline">
                       <button type="button" className="adm-btn-ghost" disabled={!publicPath} onClick={copyLink}>{adminText("Copy link")}</button>
                       {publicPath ? (
-                        <a className="adm-btn-ghost" href={publicPath} target="_blank" rel="noreferrer">{adminText("Open public profile")}</a>
+                        <a className="adm-btn-ghost" href={publicHref || publicPath} target="_blank" rel="noreferrer">{adminText("Open public profile")}</a>
                       ) : null}
                     </div>
                     {qrDataUrl ? (
@@ -616,7 +619,7 @@ export default function EmployeeCardEditor({
               branding={branding}
               locale={previewLocale}
               qrDataUrl={qrDataUrl}
-              profileUrl={publicPath}
+              profileUrl={publicHref || publicPath}
               compact={previewDevice === 'desktop'}
             />
           </div>

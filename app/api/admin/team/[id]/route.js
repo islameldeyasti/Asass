@@ -7,7 +7,7 @@ import {deleteTeamMember, getTeamMemberById, updateTeamMember} from '@/lib/team/
 
 export const runtime = 'nodejs';
 
-function revalidateTeamPublic(slug) {
+function revalidateTeamPublic(slug, publicId) {
   try {
     revalidatePath('/en');
     revalidatePath('/ar');
@@ -19,8 +19,12 @@ function revalidateTeamPublic(slug) {
       revalidatePath(`/ar/team/${slug}`);
       revalidatePath(`/en/card/${slug}`);
       revalidatePath(`/ar/card/${slug}`);
+      revalidatePath(`/c/${slug}`);
     }
-    revalidatePath('/c/[publicId]');
+    if (publicId) {
+      revalidatePath(`/c/${publicId}`);
+    }
+    revalidatePath('/c/[publicId]', 'page');
   } catch {
     // Cache revalidation must not block card save on read-only hosts.
   }
@@ -88,7 +92,7 @@ export async function PUT(request, {params}) {
     }
 
     const member = await updateTeamMember(id, payload);
-    revalidateTeamPublic(member.slug);
+    revalidateTeamPublic(member.slug, member?.digital_card?.publicId);
     if (existing?.slug && existing.slug !== member.slug) {
       try {
         revalidatePath(`/en/team/${existing.slug}`);
@@ -141,7 +145,7 @@ export async function DELETE(_request, {params}) {
     const {id} = await params;
     const existing = await getTeamMemberById(id);
     await deleteTeamMember(id);
-    revalidateTeamPublic(existing?.slug);
+    revalidateTeamPublic(existing?.slug, existing?.digital_card?.publicId);
     return NextResponse.json({ok: true});
   } catch (error) {
     return NextResponse.json(
