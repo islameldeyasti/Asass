@@ -7,11 +7,15 @@ import {createTeamMember, listTeamMembers} from '@/lib/team/store';
 export const runtime = 'nodejs';
 
 function revalidateTeamPublic() {
-  revalidatePath('/en');
-  revalidatePath('/ar');
-  revalidatePath('/en/team');
-  revalidatePath('/ar/team');
-  revalidatePath('/sitemap.xml');
+  try {
+    revalidatePath('/en');
+    revalidatePath('/ar');
+    revalidatePath('/en/team');
+    revalidatePath('/ar/team');
+    revalidatePath('/sitemap.xml');
+  } catch {
+    // ignore cache errors on read-only hosts
+  }
 }
 
 export async function GET() {
@@ -31,8 +35,12 @@ export async function POST(request) {
     const member = await createTeamMember(body);
     revalidateTeamPublic();
     if (member.slug) {
-      revalidatePath(`/en/team/${member.slug}`);
-      revalidatePath(`/ar/team/${member.slug}`);
+      try {
+        revalidatePath(`/en/team/${member.slug}`);
+        revalidatePath(`/ar/team/${member.slug}`);
+      } catch {
+        // ignore cache errors
+      }
     }
     return NextResponse.json({member}, {status: 201});
   } catch (error) {

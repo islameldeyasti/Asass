@@ -8,18 +8,22 @@ import {deleteTeamMember, getTeamMemberById, updateTeamMember} from '@/lib/team/
 export const runtime = 'nodejs';
 
 function revalidateTeamPublic(slug) {
-  revalidatePath('/en');
-  revalidatePath('/ar');
-  revalidatePath('/en/team');
-  revalidatePath('/ar/team');
-  revalidatePath('/sitemap.xml');
-  if (slug) {
-    revalidatePath(`/en/team/${slug}`);
-    revalidatePath(`/ar/team/${slug}`);
-    revalidatePath(`/en/card/${slug}`);
-    revalidatePath(`/ar/card/${slug}`);
+  try {
+    revalidatePath('/en');
+    revalidatePath('/ar');
+    revalidatePath('/en/team');
+    revalidatePath('/ar/team');
+    revalidatePath('/sitemap.xml');
+    if (slug) {
+      revalidatePath(`/en/team/${slug}`);
+      revalidatePath(`/ar/team/${slug}`);
+      revalidatePath(`/en/card/${slug}`);
+      revalidatePath(`/ar/card/${slug}`);
+    }
+    revalidatePath('/c/[publicId]');
+  } catch {
+    // Cache revalidation must not block card save on read-only hosts.
   }
-  revalidatePath('/c/[publicId]');
 }
 
 function cardOnlyKeys(body = {}) {
@@ -86,10 +90,14 @@ export async function PUT(request, {params}) {
     const member = await updateTeamMember(id, payload);
     revalidateTeamPublic(member.slug);
     if (existing?.slug && existing.slug !== member.slug) {
-      revalidatePath(`/en/team/${existing.slug}`);
-      revalidatePath(`/ar/team/${existing.slug}`);
-      revalidatePath(`/en/card/${existing.slug}`);
-      revalidatePath(`/ar/card/${existing.slug}`);
+      try {
+        revalidatePath(`/en/team/${existing.slug}`);
+        revalidatePath(`/ar/team/${existing.slug}`);
+        revalidatePath(`/en/card/${existing.slug}`);
+        revalidatePath(`/ar/card/${existing.slug}`);
+      } catch {
+        // ignore cache errors
+      }
     }
 
     const prevCard = existing.digital_card || {};
