@@ -128,6 +128,14 @@ function draftToPayload(draft, fields) {
   return payload;
 }
 
+function formatFileSize(bytes) {
+  const n = Number(bytes);
+  if (!Number.isFinite(n) || n <= 0) return '';
+  if (n < 1024) return `${Math.round(n)} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(n < 10 * 1024 ? 1 : 0)} KB`;
+  return `${(n / (1024 * 1024)).toFixed(n < 10 * 1024 * 1024 ? 1 : 0)} MB`;
+}
+
 function isArabicKey(key = '') {
   return key.endsWith('Ar') || key.endsWith('_ar');
 }
@@ -230,7 +238,9 @@ export default function CollectionTable({
     return cols;
   }, [fields, titleKey, slugKey, statusKey]);
 
-  const translationGroups = useMemo(() => partitionTranslationFields(fields), [fields]);
+  const pinnedFields = useMemo(() => fields.filter((field) => field.alwaysVisible), [fields]);
+  const tabFields = useMemo(() => fields.filter((field) => !field.alwaysVisible), [fields]);
+  const translationGroups = useMemo(() => partitionTranslationFields(tabFields), [tabFields]);
   const hasTranslations =
     translationGroups.enFields.length > 0 || translationGroups.arFields.length > 0;
 
@@ -402,7 +412,12 @@ export default function CollectionTable({
         <MediaPicker
           label={adminText(field.label)}
           value={typeof value === 'string' ? value : value == null ? '' : String(value)}
-          onChange={(url) => setField(field.key, url)}
+          onChange={(url, item) => {
+            setField(field.key, url);
+            if (field.sizeKey && item?.size) {
+              setField(field.sizeKey, formatFileSize(item.size));
+            }
+          }}
           mode={field.mode || (field.type === 'media' ? 'DOCUMENT' : 'IMAGE')}
           canWrite={writable}
           enableCrop={field.type === 'image'}
@@ -524,10 +539,10 @@ export default function CollectionTable({
                 return (
                   <tr key={String(key)}>
                     <td>
-                      <strong>{adminText(getValue(item, titleKey) || '—')}</strong>
+                      <strong>{getValue(item, titleKey) || '—'}</strong>
                     </td>
                     <td style={{color: 'var(--cms-muted)', fontSize: 13}}>
-                      {adminText(getValue(item, slugKey) || item?.[idKey] || '—')}
+                      {getValue(item, slugKey) || item?.[idKey] || '—'}
                     </td>
                     {statusKey ? (
                       <td>
@@ -588,6 +603,9 @@ export default function CollectionTable({
                 <div className="cms-form-section">
                   <h3>{adminText('Content')}</h3>
                   <p className="cms-form-section-desc">{adminText('Update the fields for this record. Required fields are marked in the form.')}</p>
+                {pinnedFields.map((field) => (
+                  <div key={field.key}>{renderFieldInput(field)}</div>
+                ))}
                 {hasTranslations ? (
                   <TranslationTabs
                     enFields={translationGroups.enFields}
@@ -598,7 +616,7 @@ export default function CollectionTable({
                   />
                 ) : (
                   translationGroups.generalFields.map((field) => (
-                    <div key={field.key}>{adminText(renderFieldInput(field))}</div>
+                    <div key={field.key}>{renderFieldInput(field)}</div>
                   ))
                 )}
                 </div>

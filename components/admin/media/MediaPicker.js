@@ -61,17 +61,24 @@ export default function MediaPicker({
           />
         ) : hasValue ? (
           <div className="adm-media-picker-file">
-            <strong>{adminText("Selected file")}</strong>
-            <span>{adminText(String(value).split('/').pop())}</span>
+            <strong>{adminText(mode === 'DOCUMENT' ? 'Selected PDF' : 'Selected file')}</strong>
+            <span>{String(value).split('/').pop()}</span>
+            {mode === 'DOCUMENT' ? (
+              <a href={value} target="_blank" rel="noreferrer" className="adm-btn-ghost" style={{marginTop: 8}}>
+                {adminText('Open / download PDF')}
+              </a>
+            ) : null}
           </div>
         ) : (
-          <div className="adm-media-picker-empty">{adminText("No media selected yet")}</div>
+          <div className="adm-media-picker-empty">
+            {adminText(mode === 'DOCUMENT' ? 'No PDF selected yet. Upload a PDF or choose one from the library.' : 'No media selected yet')}
+          </div>
         )}
       </div>
 
       <div className="adm-actions" style={{marginTop: 10}}>
         <button type="button" className="adm-btn" disabled={!canWrite} onClick={() => setOpen(true)}>
-          {adminText(hasValue ? 'Replace' : 'Upload / choose')}
+          {adminText(hasValue ? (mode === 'DOCUMENT' ? 'Replace PDF' : 'Replace') : mode === 'DOCUMENT' ? 'Upload PDF' : 'Upload / choose')}
         </button>
         {showCrop ? (
           <button type="button" className="adm-btn-ghost" onClick={() => setCropOpen(true)}>{adminText("Crop")}</button>

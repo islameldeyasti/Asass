@@ -4,7 +4,9 @@ import {requireAdminPage} from '@/lib/cms/guard';
 import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getHomepage} from '@/lib/cms/content-service';
 import AdminShell from '@/components/admin/AdminShell';
-import DocumentForm from '@/components/admin/DocumentForm';
+import HomepageStudio from '@/components/admin/HomepageStudio';
+import '../pages/pages-studio.css';
+import './homepage-studio.css';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,20 +19,10 @@ export default async function AdminHomepagePage() {
     <AdminShell
       user={user}
       navItems={navItems}
-      title={adminText("Homepage")}
-      subtitle={adminText("Sections, hero slides, sector cards, about, and FAQs")}
+      title={adminText('Homepage')}
+      subtitle={adminText('Layout, hero slides, about, sectors, and FAQs')}
     >
-      <DocumentForm
-        resource="homepage"
-        initialValue={document}
-        fields={[]}
-        canWrite={canWrite}
-        sectionEditor
-        heroSlidesEditor
-        sectorCardsEditor
-        aboutEditor
-        faqEditor
-      />
+      <HomepageStudio initialValue={document} canWrite={canWrite} />
     </AdminShell>
   );
 }

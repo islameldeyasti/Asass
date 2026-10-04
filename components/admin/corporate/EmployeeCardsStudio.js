@@ -357,13 +357,13 @@ export default function EmployeeCardsStudio({
                       )}
                     </td>
                     <td>
-                      <strong>{adminText(member.name_en)}</strong>
+                      <strong>{member.name_en}</strong>
                       <div style={{color: 'var(--cms-muted)', fontSize: 12}}>
-                        {adminText(member.job_title_en)}
-                        {adminText(member.department_en ? ` · ${member.department_en}` : '')}
+                        {member.job_title_en}
+                        {member.department_en ? ` · ${member.department_en}` : ''}
                       </div>
                     </td>
-                    <td>{adminText(tpl?.name || card.templateId)}</td>
+                    <td>{tpl?.name || card.templateId}</td>
                     <td>
                       <span className={`adm-badge ${statusClass(card)}`}>
                         {adminText(statusLabel(card))}
@@ -371,13 +371,14 @@ export default function EmployeeCardsStudio({
                     </td>
                     <td style={{fontSize: 12}}>
                       {published && publicPath ? (
-                        <a href={publicPath} target="_blank" rel="noreferrer">{adminText("/c/")}{adminText(card.publicId)}
+                        <a href={publicPath} target="_blank" rel="noreferrer">
+                          /c/{card.publicId}
                         </a>
                       ) : (
                         '—'
                       )}
                     </td>
-                    <td>{adminText(card.views || 0)}</td>
+                    <td>{card.views || 0}</td>
                     <td>
                       <div style={{display: 'flex', gap: 6, justifyContent: 'flex-end', flexWrap: 'wrap'}}>
                         <Link

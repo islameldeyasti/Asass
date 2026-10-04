@@ -9,13 +9,20 @@ import CollectionTable from '@/components/admin/CollectionTable';
 export const dynamic = 'force-dynamic';
 
 const FIELDS = [
+  {
+    key: 'href',
+    label: 'PDF file',
+    type: 'media',
+    mode: 'DOCUMENT',
+    alwaysVisible: true,
+    sizeKey: 'size',
+  },
+  {key: 'size', label: 'Size label', type: 'text', alwaysVisible: true},
+  {key: 'featured', label: 'Featured on downloads page', type: 'checkbox', alwaysVisible: true},
   {key: 'titleEn', label: 'Title (EN)', type: 'text'},
   {key: 'titleAr', label: 'Title (AR)', type: 'text', dir: 'rtl'},
   {key: 'id', label: 'ID', type: 'text'},
-  {key: 'href', label: 'File', type: 'media', mode: 'DOCUMENT'},
-  {key: 'size', label: 'Size label', type: 'text'},
   {key: 'order', label: 'Order', type: 'number'},
-  {key: 'featured', label: 'Featured', type: 'checkbox'},
 ];
 
 export default async function AdminDownloadsPage() {

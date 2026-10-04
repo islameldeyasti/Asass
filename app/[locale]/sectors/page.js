@@ -5,9 +5,8 @@ import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import {sectors as sectorsSeed} from '@/data/sectors';
 import {projects as projectsSeed} from '@/data/projects';
-import {company} from '@/data/company';
 import {getSectorImage, roleImages, ctaBandImages} from '@/data/image-manifest';
-import {getPublicProjects, getPublicSectors} from '@/lib/cms/public-data';
+import {getPublicCompany, getPublicProjects, getPublicSectors} from '@/lib/cms/public-data';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 export const dynamic = 'force-dynamic';
@@ -62,7 +61,11 @@ export const generateMetadata = staticPageMetadata({
 export default async function Sectors({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const [sectors, projects] = await Promise.all([getPublicSectors(), getPublicProjects()]);
+  const [sectors, projects, company] = await Promise.all([
+    getPublicSectors(),
+    getPublicProjects(),
+    getPublicCompany(),
+  ]);
   const sectorList = sectors?.length ? sectors : sectorsSeed;
   const projectList = projects?.length ? projects : projectsSeed;
   const featured = sectorList[0];

@@ -717,11 +717,11 @@ export default function DocumentForm({
         row.length === 2 ? (
           <div className="adm-grid-2" key={row[0].key}>
             {row.map((field) => (
-              <div key={field.key}>{adminText(renderField(field))}</div>
+              <div key={field.key}>{renderField(field)}</div>
             ))}
           </div>
         ) : (
-          <div key={row[0].key}>{adminText(renderField(row[0]))}</div>
+          <div key={row[0].key}>{renderField(row[0])}</div>
         ),
       )}
 

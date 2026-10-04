@@ -23,10 +23,10 @@ import {
 } from 'lucide-react';
 import {services as servicesSeed, serviceGroups} from '@/data/services';
 import {getServiceImage, roleImages, ctaBandImages} from '@/data/image-manifest';
-import {company, stats} from '@/data/company';
+import {company as companySeed} from '@/data/company';
 import ServicesJumpNav from '@/components/services/ServicesJumpNav';
 import ServicesEnquiryCta from '@/components/services/ServicesEnquiryCta';
-import {getPublicServices} from '@/lib/cms/public-data';
+import {getPublicCompanyBundle, getPublicServices} from '@/lib/cms/public-data';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
 export const dynamic = 'force-dynamic';
@@ -118,8 +118,8 @@ const sectionLeads = {
     ar: 'العمارة والإنشاءات والتصميم الكهروميكانيكي والكميات والتصميم الداخلي والمناظر الطبيعية من مكتب واحد في أبوظبي.',
   },
   delivery: {
-    en: company.description,
-    ar: company.descriptionAr,
+    en: companySeed.description,
+    ar: companySeed.descriptionAr,
   },
   planning: {
     en: 'Infrastructure, traffic, sustainability, technical studies and life-safety review supporting project approvals.',
@@ -216,7 +216,11 @@ export const generateMetadata = staticPageMetadata({
 export default async function Services({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const services = (await getPublicServices()) || servicesSeed;
+  const [servicesRaw, {company, stats}] = await Promise.all([
+    getPublicServices(),
+    getPublicCompanyBundle(),
+  ]);
+  const services = servicesRaw?.length ? servicesRaw : servicesSeed;
   const designServices = services.filter((service) => service.group === 'design');
   const deliveryServices = services.filter((service) => service.group === 'delivery');
   const planningServices = services.filter((service) => service.group === 'planning');

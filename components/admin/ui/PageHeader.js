@@ -1,6 +1,10 @@
+'use client';
+
 import {adminText} from '@/lib/admin/translate';
+import {useAdminLang} from '@/components/admin/ui/AdminLangRoot';
 
 export default function PageHeader({title, subtitle, actions, breadcrumb}) {
+  useAdminLang();
   return (
     <header className="cms-page-header">
       <div className="cms-page-header-copy">

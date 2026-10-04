@@ -5,9 +5,9 @@ import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import EnquiryForm from '@/components/EnquiryForm';
 import OfficeMap from '@/components/OfficeMap';
-import {company} from '@/data/company';
+import {company as companySeed} from '@/data/company';
 import {roleImages, ctaBandImages} from '@/data/image-manifest';
-import {getPublicPageCopy} from '@/lib/cms/public-data';
+import {getPublicCompany, getPublicPageCopy} from '@/lib/cms/public-data';
 import {resolvePageChromeForLocale} from '@/lib/cms/page-chrome';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
@@ -19,16 +19,18 @@ export const generateMetadata = staticPageMetadata({
   path: 'contact',
   titleEn: 'Contact ASAS',
   titleAr: 'تواصل مع أساس للاستشارات الهندسية وإدارة المشاريع',
-  descriptionEn: company.address,
-  descriptionAr: company.addressAr,
+  descriptionEn: companySeed.address,
+  descriptionAr: companySeed.addressAr,
   schemaType: 'ContactPage',
 });
 
 
+export const dynamic = 'force-dynamic';
+
 export default async function Contact({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const pageCopy = await getPublicPageCopy('contact');
+  const [company, pageCopy] = await Promise.all([getPublicCompany(), getPublicPageCopy('contact')]);
   const chrome = resolvePageChromeForLocale(pageCopy, locale, {
     heroImage: roleImages.CONTACT_HERO,
     heroImageFocal: '50% 40%',

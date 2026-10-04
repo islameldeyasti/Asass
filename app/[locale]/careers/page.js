@@ -12,9 +12,8 @@ import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import CareersBoard from '@/components/careers/CareersBoard';
 import ApplicationForm from '@/components/careers/ApplicationForm';
 import {careerDepartments} from '@/data/careers';
-import {company} from '@/data/company';
 import {ctaBandImages, roleImages} from '@/data/image-manifest';
-import {getPublicOpenJobs, getPublicPageCopy} from '@/lib/cms/public-data';
+import {getPublicCompany, getPublicOpenJobs, getPublicPageCopy} from '@/lib/cms/public-data';
 import {resolvePageChromeForLocale} from '@/lib/cms/page-chrome';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
@@ -40,8 +39,11 @@ export const generateMetadata = staticPageMetadata({
 export default async function Careers({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const openJobs = await getPublicOpenJobs();
-  const pageCopy = await getPublicPageCopy('careers');
+  const [openJobs, pageCopy, company] = await Promise.all([
+    getPublicOpenJobs(),
+    getPublicPageCopy('careers'),
+    getPublicCompany(),
+  ]);
   const openCount = openJobs.length;
   const chrome = resolvePageChromeForLocale(pageCopy, locale, {
     heroImage: roleImages.CAREERS_HERO,

@@ -74,22 +74,20 @@ export default function TranslationTabs({
       </div>
 
       <div className="cms-i18n-panel" role="tabpanel">
-        {adminText(typeof children === 'function'
-          ? children({tab, enComplete, arComplete})
-          : null)}
+        {typeof children === 'function' ? children({tab, enComplete, arComplete}) : null}
 
         {typeof children !== 'function' && renderField ? (
           <>
             {tab === 'en'
-              ? enFields.map((field) => <div key={field.key}>{adminText(renderField(field))}</div>)
+              ? enFields.map((field) => <div key={field.key}>{renderField(field)}</div>)
               : null}
             {tab === 'ar'
               ? arFields.map((field) => (
-                  <div key={field.key}>{adminText(renderField({...field, dir: field.dir || 'rtl'}))}</div>
+                  <div key={field.key}>{renderField({...field, dir: field.dir || 'rtl'})}</div>
                 ))
               : null}
             {tab === 'general'
-              ? generalFields.map((field) => <div key={field.key}>{adminText(renderField(field))}</div>)
+              ? generalFields.map((field) => <div key={field.key}>{renderField(field)}</div>)
               : null}
           </>
         ) : null}

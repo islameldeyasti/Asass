@@ -8,7 +8,7 @@ import {buildMediaUsageIndex, getMediaUsagesForUrl} from '@/lib/cms/media-usage'
 
 export const runtime = 'nodejs';
 
-const MAX_BYTES = 12 * 1024 * 1024;
+const MAX_BYTES = 25 * 1024 * 1024;
 const ALLOWED_MIME = new Set([
   'image/jpeg',
   'image/png',
@@ -65,7 +65,7 @@ async function persistUpload(file, session, folder = 'uploads', extra = {}) {
     badRequest('File is required (field: file)');
   }
   if (file.size > MAX_BYTES) {
-    badRequest('File exceeds 12 MB limit');
+    badRequest('File exceeds 25 MB limit');
   }
   const mime = String(file.type || '').toLowerCase();
   if (!ALLOWED_MIME.has(mime)) {

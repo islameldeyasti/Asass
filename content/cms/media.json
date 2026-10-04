@@ -83,5 +83,22 @@
     "folder": "uploads",
     "focalPoint": "50% 50%",
     "uploadedBy": "usr_85c1830783bbcab3"
+  },
+  {
+    "id": "media-mutbkbzsw8h",
+    "createdAt": "2026-10-04T04:27:03.736Z",
+    "url": "/assets/asas/cms-uploads/1791088023714-cdnvf-company-profil-pp.pdf",
+    "filename": "company-profil-pp.pdf",
+    "mime": "application/pdf",
+    "size": 2242587,
+    "width": null,
+    "height": null,
+    "altEn": "",
+    "altAr": "",
+    "titleEn": "company-profil-pp.pdf",
+    "titleAr": "",
+    "folder": "uploads",
+    "focalPoint": "50% 50%",
+    "uploadedBy": "usr_85c1830783bbcab3"
   }
 ]

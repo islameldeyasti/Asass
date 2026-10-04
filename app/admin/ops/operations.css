@@ -10,3 +10,58 @@
 .ops-stage-editor{border:1px solid var(--ops-line);border-radius:10px;padding:16px;margin-bottom:12px;background:#fafcfe}.ops-stage-title{display:flex;gap:12px;align-items:center;margin-bottom:16px}.ops-stage-title strong{flex:1;font-size:12px}.ops-stage-title button{background:white;border:1px solid var(--ops-line);border-radius:6px;padding:6px 9px;cursor:pointer}.ops-stage-title button:disabled{opacity:.35;cursor:default}
 .ops-workspace .ops-org-root{position:relative;padding-bottom:28px}.ops-workspace .ops-org-root:after{content:'';position:absolute;width:1px;height:28px;background:#b7c6d8;bottom:0;left:50%}.ops-workspace .ops-org-gm{background:linear-gradient(120deg,#173250,#28577b);color:white;border:0}.ops-workspace .ops-org-gm strong{color:white}.ops-workspace .ops-org-gm p,.ops-workspace .ops-org-gm .ops-org-kicker{color:#bbcfdf}.ops-workspace .ops-org-dept{border-top:3px solid #718da9}.ops-workspace .ops-org-head{color:#416d90}.ops-workspace .ops-kanban-col{background:#ecf0f6;border:1px solid #e1e7ee;border-radius:12px}.ops-workspace .ops-kanban-card{box-shadow:0 2px 3px #17324d06;border-radius:9px;border-left:3px solid #5f83ab}.ops-workspace .ops-my-bucket{min-height:180px}.ops-workspace .ops-my-bucket header{border-bottom:1px solid #edf1f6;padding-bottom:14px}.ops-workspace .ops-my-bucket h3{font-size:13px}
 @media(max-width:1100px){.ops-module-grid,.ops-project-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.ops-two-col{grid-template-columns:1fr}.ops-hero{align-items:flex-start;flex-direction:column}}@media(max-width:640px){.ops-module-grid,.ops-project-cards{grid-template-columns:1fr}.ops-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ops-metric{padding:16px}.ops-hero{padding:22px}.ops-hero h2{font-size:22px}.ops-toolbar>*{max-width:100%}}
+
+.ops-notif{display:grid;gap:16px}
+.ops-notif-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ops-notif-metric{background:var(--cms-surface);border:1px solid var(--cms-border);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.ops-notif-metric span{font-size:12px;color:var(--cms-muted);font-weight:600}
+.ops-notif-metric strong{font-size:26px;letter-spacing:-.6px;color:var(--cms-navy)}
+.ops-notif-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ops-notif-search{display:flex;align-items:center;flex:1;min-width:220px;height:42px;border:1px solid #d1d5db;border-radius:10px;background:#fff;overflow:hidden;color:#6b7280}
+.ops-notif-search svg{flex:0 0 42px}
+.ops-notif-search input{border:0!important;box-shadow:none!important;background:transparent!important;min-height:0!important;height:40px!important;padding:0 12px 0 0!important}
+.ops-notif-filters{display:flex;flex-wrap:wrap;gap:8px}
+.ops-notif-filters button{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;color:#4b5563;font:600 12px/1 inherit;cursor:pointer}
+.ops-notif-filters button em{font-style:normal;min-width:18px;padding:2px 6px;border-radius:999px;background:#f3f4f6;color:#6b7280;font-size:11px;text-align:center}
+.ops-notif-filters button.is-active{background:#1d4ed8;border-color:#1d4ed8;color:#fff}
+.ops-notif-filters button.is-active em{background:#1e40af;color:#fff}
+.ops-notif-list{background:var(--cms-surface);border:1px solid var(--cms-border);border-radius:14px;overflow:hidden}
+.ops-notif-item{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:start;padding:16px 18px;border-bottom:1px solid var(--cms-border)}
+.ops-notif-item:last-child{border-bottom:0}
+.ops-notif-item.is-unread{background:#f8fafc;box-shadow:inset 3px 0 0 #2563eb}
+.ops-notif-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center}
+.ops-notif-icon.tone-approval{background:#fef3c7;color:#b45309}
+.ops-notif-icon.tone-mention{background:#ede9fe;color:#6d28d9}
+.ops-notif-icon.tone-task{background:#dbeafe;color:#1d4ed8}
+.ops-notif-icon.tone-leave{background:#d1fae5;color:#047857}
+.ops-notif-icon.tone-info{background:#f3f4f6;color:#4b5563}
+.ops-notif-copy header{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ops-notif-copy h2{margin:0;font-size:15px;color:var(--cms-text)}
+.ops-notif-copy p{margin:6px 0 0;font-size:13px;line-height:1.55;color:var(--cms-text-secondary)}
+.ops-notif-copy time{display:block;margin-top:8px;font-size:12px;color:var(--cms-muted)}
+.ops-notif-dot{width:8px;height:8px;border-radius:50%;background:#2563eb}
+.ops-pill.tone-approval{background:#fff7ed;color:#c2410c}
+.ops-pill.tone-mention{background:#f5f3ff;color:#6d28d9}
+.ops-pill.tone-task{background:#eff6ff;color:#1d4ed8}
+.ops-pill.tone-leave{background:#ecfdf5;color:#047857}
+.ops-notif-actions{display:flex;flex-direction:column;gap:8px;align-items:stretch;min-width:110px}
+.ops-notif-actions a,.ops-notif-actions button{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 12px;border-radius:9px;font:600 12px/1 inherit;text-decoration:none;cursor:pointer}
+.ops-notif-open{background:#1d4ed8;color:#fff}
+.ops-notif-actions button{background:#fff;border:1px solid #d1d5db;color:#374151}
+.ops-notif-read{font-size:12px;color:#9ca3af;text-align:center;padding:8px 0}
+.ops-notif-empty{text-align:center;padding:48px 24px;border:1px dashed #d1d5db;border-radius:14px;background:#fff;color:#6b7280}
+.ops-notif-empty strong{display:block;margin:12px 0 6px;color:#111827;font-size:16px}
+.ops-notif-empty p{margin:0 auto;max-width:360px;font-size:13px;line-height:1.6}
+@media(max-width:720px){
+  .ops-notif-metrics{grid-template-columns:1fr}
+  .ops-notif-item{grid-template-columns:40px minmax(0,1fr)}
+  .ops-notif-actions{grid-column:2;flex-direction:row}
+}
+[data-theme='dark'] .ops-notif-metric,
+[data-theme='dark'] .ops-notif-search,
+[data-theme='dark'] .ops-notif-filters button,
+[data-theme='dark'] .ops-notif-list,
+[data-theme='dark'] .ops-notif-empty,
+[data-theme='dark'] .ops-notif-actions button{background:var(--cms-surface);border-color:var(--cms-border);color:var(--cms-text)}
+[data-theme='dark'] .ops-notif-item.is-unread{background:rgba(37,99,235,.08)}
+[data-theme='dark'] .ops-notif-filters button em{background:#111827;color:#9ca3af}

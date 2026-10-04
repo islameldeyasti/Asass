@@ -1,7 +1,7 @@
 'use client';
 
 import {useRef, useState} from 'react';
-import {FileSpreadsheet, FileText, Search, Upload} from 'lucide-react';
+import {FileSpreadsheet, FileText, ListFilter, Search, Upload} from 'lucide-react';
 import {adminText} from '@/lib/admin/translate';
 import {downloadExcel, downloadPdf, mapImportedRows, parseTableFile} from '@/lib/admin/table-io';
 
@@ -72,51 +72,60 @@ export default function TableDataBar({
 
   return (
     <div className="table-data-bar">
-      {onQuery ? (
-        <div className="erp-search table-data-search">
-          <Search size={16} />
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => onQuery(e.target.value)}
-            placeholder={adminText(searchPlaceholder)}
-            aria-label={adminText('Search')}
-          />
-        </div>
-      ) : null}
-      {onFilter ? (
-        <select aria-label={adminText('Filter')} value={filter} onChange={(e) => onFilter(e.target.value)}>
-          <option value="">{adminText(filterLabel)}</option>
-          {filterOptions.map((opt) => (
-            <option key={String(opt.value)} value={opt.value}>
-              {adminText(opt.label)}
-            </option>
-          ))}
-        </select>
-      ) : null}
-      <button type="button" className="erp-btn secondary" disabled={busy === 'excel'} onClick={exportExcel}>
-        <FileSpreadsheet size={15} />
-        {adminText(busy === 'excel' ? 'Preparing…' : 'Excel')}
-      </button>
-      <button type="button" className="erp-btn secondary" disabled={busy === 'pdf'} onClick={exportPdf}>
-        <FileText size={15} />
-        {adminText(busy === 'pdf' ? 'Preparing…' : 'PDF')}
-      </button>
-      {canImport && onImport ? (
-        <>
-          <input ref={fileRef} type="file" accept=".xlsx,.xls,.csv,text/csv" hidden onChange={onFile} />
-          <button
-            type="button"
-            className="erp-btn secondary"
-            disabled={busy === 'import'}
-            onClick={() => fileRef.current?.click()}
-          >
-            <Upload size={15} />
-            {adminText(busy === 'import' ? 'Importing…' : 'Import Excel')}
-          </button>
-        </>
-      ) : null}
-      {extra}
+      <div className="table-data-bar-tools">
+        {onQuery ? (
+          <label className="table-data-search">
+            <span className="table-data-search-icon" aria-hidden="true">
+              <Search size={16} strokeWidth={2} />
+            </span>
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => onQuery(e.target.value)}
+              placeholder={adminText(searchPlaceholder)}
+              aria-label={adminText('Search')}
+            />
+          </label>
+        ) : null}
+        {onFilter ? (
+          <label className="table-data-filter">
+            <ListFilter size={15} />
+            <select aria-label={adminText('Filter')} value={filter} onChange={(e) => onFilter(e.target.value)}>
+              <option value="">{adminText(filterLabel)}</option>
+              {filterOptions.map((opt) => (
+                <option key={String(opt.value)} value={opt.value}>
+                  {adminText(opt.label)}
+                </option>
+              ))}
+            </select>
+          </label>
+        ) : null}
+      </div>
+      <div className="table-data-bar-actions">
+        <button type="button" className="table-data-btn table-data-btn-excel" disabled={busy === 'excel'} onClick={exportExcel}>
+          <FileSpreadsheet size={15} />
+          {adminText(busy === 'excel' ? 'Preparing…' : 'Excel')}
+        </button>
+        <button type="button" className="table-data-btn table-data-btn-pdf" disabled={busy === 'pdf'} onClick={exportPdf}>
+          <FileText size={15} />
+          {adminText(busy === 'pdf' ? 'Preparing…' : 'PDF')}
+        </button>
+        {canImport && onImport ? (
+          <>
+            <input ref={fileRef} type="file" accept=".xlsx,.xls,.csv,text/csv" hidden onChange={onFile} />
+            <button
+              type="button"
+              className="table-data-btn table-data-btn-import"
+              disabled={busy === 'import'}
+              onClick={() => fileRef.current?.click()}
+            >
+              <Upload size={15} />
+              {adminText(busy === 'import' ? 'Importing…' : 'Import')}
+            </button>
+          </>
+        ) : null}
+        {extra}
+      </div>
       {error ? (
         <p className="adm-error" role="alert">
           {adminText(error)}

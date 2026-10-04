@@ -5,6 +5,7 @@ import {hasPermission, PERMS} from '@/lib/cms/permissions';
 import {getPageCopy} from '@/lib/cms/content-service';
 import AdminShell from '@/components/admin/AdminShell';
 import PageCopyManager from '@/components/admin/PageCopyManager';
+import './pages-studio.css';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,7 +19,7 @@ export default async function AdminPagesPage() {
       user={user}
       navItems={navItems}
       title={adminText("Pages")}
-      subtitle={adminText("Edit bilingual meta, hero, and CTA bands — including background image uploads")}
+      subtitle={adminText('Choose a page, edit the hero or CTA, then save')}
     >
       <PageCopyManager initialDocument={document} canWrite={canWrite} />
     </AdminShell>

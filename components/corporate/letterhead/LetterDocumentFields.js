@@ -105,7 +105,7 @@ export default function LetterDocumentFields({
       const d = new Date(`${value}T00:00:00`);
       if (Number.isNaN(d.getTime())) return value;
       return d.toLocaleDateString(ar ? 'ar-AE' : 'en-GB', {
-        day: 'numeric',
+        day: '2-digit',
         month: 'long',
         year: 'numeric',
       });
@@ -136,17 +136,21 @@ export default function LetterDocumentFields({
         <>
           <div>
             <span className="lh-meta-label">{labels.date}</span>
-            {editable ? (
-              <input
-                type="date"
-                className="lh-inline lh-date-input"
-                value={doc.date || ''}
-                onChange={(e) => onChangeField?.('date', e.target.value)}
-                onClick={(e) => e.stopPropagation()}
-              />
-            ) : (
-              formatDate(doc.date)
-            )}
+            <div className="lh-date-field">
+              <span className="lh-date-text">
+                {formatDate(doc.date) || (editable ? (ar ? 'اختر التاريخ' : 'Select date') : '')}
+              </span>
+              {editable ? (
+                <input
+                  type="date"
+                  className="lh-date-input no-print"
+                  value={doc.date || ''}
+                  onChange={(e) => onChangeField?.('date', e.target.value)}
+                  onClick={(e) => e.stopPropagation()}
+                  aria-label={labels.date}
+                />
+              ) : null}
+            </div>
           </div>
           <div>
             <span className="lh-meta-label">{labels.ref}</span>

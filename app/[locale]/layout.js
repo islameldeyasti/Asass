@@ -21,6 +21,8 @@ import {normalizeBranding} from '@/lib/cms/branding';
 import {getSeoSettings} from '@/lib/cms/seo-store';
 import {buildOrganizationJsonLd, buildWebSiteJsonLd} from '@/lib/cms/seo/schema-builders';
 
+export const dynamic = 'force-dynamic';
+
 export function generateStaticParams() {
   return [{locale: 'en'}, {locale: 'ar'}];
 }

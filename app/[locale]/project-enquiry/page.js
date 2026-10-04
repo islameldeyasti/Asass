@@ -4,7 +4,7 @@ import {ArrowRight, Clock3, FileText, Mail, MessageCircle, Phone} from 'lucide-r
 import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import EnquiryForm from '@/components/EnquiryForm';
-import {company} from '@/data/company';
+import {getPublicCompany} from '@/lib/cms/public-data';
 import {roleImages, ctaBandImages} from '@/data/image-manifest';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
@@ -46,9 +46,12 @@ export const generateMetadata = staticPageMetadata({
 });
 
 
+export const dynamic = 'force-dynamic';
+
 export default async function Enquiry({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
+  const company = await getPublicCompany();
 
   return (
     <div className="enquiry-page">

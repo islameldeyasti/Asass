@@ -8,17 +8,9 @@ import {
 } from 'lucide-react';
 import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
-import {
-  company,
-  mission,
-  standards,
-  stats,
-  strengths,
-  vision,
-  workLocations,
-} from '@/data/company';
+import {company as companySeed} from '@/data/company';
 import {ctaBandImages, roleImages} from '@/data/image-manifest';
-import {getPublicPageCopy} from '@/lib/cms/public-data';
+import {getPublicCompanyBundle, getPublicPageCopy} from '@/lib/cms/public-data';
 import {resolvePageChromeForLocale} from '@/lib/cms/page-chrome';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
@@ -30,8 +22,8 @@ export const generateMetadata = staticPageMetadata({
   path: 'about',
   titleEn: 'About ASAS',
   titleAr: 'عن أساس للاستشارات الهندسية وإدارة المشاريع',
-  descriptionEn: company.description,
-  descriptionAr: company.descriptionAr,
+  descriptionEn: companySeed.description,
+  descriptionAr: companySeed.descriptionAr,
   schemaType: 'AboutPage',
 });
 
@@ -39,7 +31,10 @@ export const generateMetadata = staticPageMetadata({
 export default async function About({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const pageCopy = await getPublicPageCopy('about');
+  const [{company, mission, standards, stats, strengths, vision, workLocations}, pageCopy] = await Promise.all([
+    getPublicCompanyBundle(),
+    getPublicPageCopy('about'),
+  ]);
   const chrome = resolvePageChromeForLocale(pageCopy, locale, {
     heroImage: roleImages.ABOUT_HERO,
     heroImageFocal: '50% 40%',

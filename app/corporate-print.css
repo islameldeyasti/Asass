@@ -433,7 +433,23 @@
   font-style: italic;
 }
 
+.lh-date-field {
+  position: relative;
+  display: inline-block;
+  min-width: 12ch;
+}
+
+.lh-date-text {
+  display: block;
+  font: inherit;
+  color: inherit;
+}
+
 .lh-date-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
   border: none !important;
   background: transparent !important;
   font: inherit;
@@ -1234,14 +1250,28 @@
   pointer-events: none;
 }
 
-.lh-date-input {
-  border: none !important;
-  background: transparent !important;
+.lh-date-field {
+  position: relative;
+  display: inline-block;
+  min-width: 12ch;
+}
+
+.lh-date-text {
+  display: block;
   font: inherit;
   color: inherit;
-  padding: 0 !important;
-  width: auto;
+}
+
+.lh-date-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  border: none !important;
+  background: transparent !important;
+  width: 100%;
   max-width: 100%;
+  padding: 0 !important;
 }
 
 .lh-page.is-editing .lh-block.is-selected {
@@ -1304,7 +1334,8 @@
   .lh-inline[data-empty]::before,
   .lh-body-editable:empty::before,
   .lh-add-signature,
-  .lh-page-break {
+  .lh-page-break,
+  .lh-date-input {
     display: none !important;
   }
 

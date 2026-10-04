@@ -24,8 +24,9 @@ export default function MediaLibraryDialog({
   onSelect,
   mode = 'IMAGE',
   canWrite = false,
-  title = 'Media library',
+  title,
 }) {
+  const dialogTitle = title || (mode === 'DOCUMENT' ? 'Upload or choose a PDF' : 'Media library');
   const [items, setItems] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -116,11 +117,11 @@ export default function MediaLibraryDialog({
         className="adm-modal adm-media-dialog"
         role="dialog"
         aria-modal="true"
-        aria-label={adminText(title)}
+        aria-label={adminText(dialogTitle)}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="adm-modal-head">
-          <h2>{adminText(title)}</h2>
+          <h2>{adminText(dialogTitle)}</h2>
           <AdminCloseButton onClick={onClose} disabled={uploading} />
         </div>
 
@@ -140,7 +141,9 @@ export default function MediaLibraryDialog({
               <p>
                 {adminText(uploading
                   ? `Uploading… ${progress}%`
-                  : 'Drag & drop a file here, or browse from your computer.')}
+                  : mode === 'DOCUMENT'
+                    ? 'Drag & drop a PDF here, or browse from your computer.'
+                    : 'Drag & drop a file here, or browse from your computer.')}
               </p>
               <button
                 type="button"

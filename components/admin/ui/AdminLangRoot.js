@@ -11,7 +11,7 @@ import {
 import {setAdminLangRuntime} from '@/lib/admin/translate';
 
 const AdminLangContext = createContext({
-  lang: 'ar',
+  lang: 'en',
   setLang: () => {},
   theme: 'light',
   setTheme: () => {},
@@ -26,7 +26,7 @@ export function useAdminTheme() {
   return {theme: ctx.theme, setTheme: ctx.setTheme};
 }
 
-export default function AdminLangRoot({initialLang = 'ar', initialTheme = 'light', children}) {
+export default function AdminLangRoot({initialLang = 'en', initialTheme = 'light', children}) {
   const router = useRouter();
   const [lang, setLangState] = useState(() => {
     const next = normalizeAdminLang(initialLang);

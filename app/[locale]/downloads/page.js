@@ -3,14 +3,12 @@ import Image from 'next/image';
 import {ArrowRight, Building2, ClipboardList, FileText, FolderKanban, Layers} from 'lucide-react';
 import {Container} from '@/components/UI';
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
-import {company} from '@/data/company';
 import {companyDocumentImage, roleImages, ctaBandImages} from '@/data/image-manifest';
-import {getPublicPageCopy} from '@/lib/cms/public-data';
+import {getPublicCompany, getPublicPageCopy} from '@/lib/cms/public-data';
+import {filePublicHref, getCompanyProfileDocument} from '@/lib/cms/content-service';
 import {resolvePageChromeForLocale} from '@/lib/cms/page-chrome';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
 
-const PROFILE_HREF = '/downloads/asas-company-profile.pdf';
-const PROFILE_SIZE = '7.7 MB';
 
 const profileContents = [
   {
@@ -87,10 +85,21 @@ export const generateMetadata = staticPageMetadata({
 });
 
 
+export const dynamic = 'force-dynamic';
+
 export default async function Downloads({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
-  const pageCopy = await getPublicPageCopy('downloads');
+  const [pageCopy, featured, company] = await Promise.all([
+    getPublicPageCopy('downloads'),
+    getCompanyProfileDocument(),
+    getPublicCompany(),
+  ]);
+  const profileHref = filePublicHref(featured?.href);
+  const profileSize = featured?.size || 'PDF';
+  const profileTitle = ar
+    ? featured?.titleAr || featured?.titleEn || 'الملف التعريفي لشركة أساس للاستشارات الهندسية وإدارة المشاريع'
+    : featured?.titleEn || featured?.titleAr || 'ASAS Company Profile';
   const chrome = resolvePageChromeForLocale(pageCopy, locale, {
     heroImage: roleImages.DOWNLOADS_HERO,
     heroImageFocal: '50% 40%',
@@ -136,7 +145,7 @@ export default async function Downloads({params}) {
           <p>{chrome.heroLede}</p>
           <div className="downloads-hero-meta">
             <span>PDF</span>
-            <span>{PROFILE_SIZE}</span>
+            <span>{profileSize}</span>
             <span>{ar ? company.cityAr : company.city} · {company.year}</span>
           </div>
         </Container>
@@ -174,7 +183,7 @@ export default async function Downloads({params}) {
               <span className="downloads-featured-label">
                 {ar ? 'المورد الأساسي' : 'Primary resource'}
               </span>
-              <h3>{ar ? 'الملف التعريفي لشركة أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Company Profile'}</h3>
+              <h3>{profileTitle}</h3>
               <p>
                 {ar
                   ? 'يتضمن نظرة على الشركة والتخصصات والمنهجية وأمثلة من المشاريع الرسمية لأساس للاستشارات الهندسية وإدارة المشاريع في أبوظبي.'
@@ -182,11 +191,11 @@ export default async function Downloads({params}) {
               </p>
               <ul className="downloads-featured-meta">
                 <li>{ar ? 'صيغة' : 'Format'} · PDF</li>
-                <li>{ar ? 'الحجم' : 'Size'} · {PROFILE_SIZE}</li>
+                <li>{ar ? 'الحجم' : 'Size'} · {profileSize}</li>
                 <li>{ar ? 'اللغة' : 'Language'} · {ar ? 'إنجليزي' : 'English'}</li>
               </ul>
               <ActionGroup className="downloads-featured-actions">
-                <ActionButton variant="primary" href={PROFILE_HREF} icon="download" download>
+                <ActionButton variant="primary" href={profileHref} icon="download" download>
                   {ar ? 'تحميل الملف التعريفي' : 'Download company profile'}
                 </ActionButton>
                 <ActionButton variant="outline" href={`/${locale}/company-profile`}>

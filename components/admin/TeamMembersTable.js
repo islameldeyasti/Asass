@@ -62,11 +62,11 @@ export default function TeamMembersTable({members}) {
                 )}
               </td>
               <td>
-                <strong>{adminText(member.name_en)}</strong>
-                <div style={{color: '#5b6472', fontSize: 12}}>{adminText(member.slug)}</div>
+                <strong>{member.name_en}</strong>
+                <div style={{color: '#5b6472', fontSize: 12}}>{member.slug}</div>
               </td>
-              <td>{adminText(member.job_title_en)}</td>
-              <td>{adminText(member.display_order)}</td>
+              <td>{member.job_title_en}</td>
+              <td>{member.display_order}</td>
               <td>
                 {adminText(
                   [member.leadership ? 'Leadership' : null, member.featured ? 'Featured' : null]

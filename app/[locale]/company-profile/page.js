@@ -7,17 +7,9 @@ import {
   FileText,
   MapPin,
 } from 'lucide-react';
-import {
-  company,
-  mission,
-  stats,
-  strengths,
-  vision,
-  workLocations,
-} from '@/data/company';
-import {services, serviceGroups} from '@/data/services';
-import {sectors} from '@/data/sectors';
-import {featuredProjects, projectCategories} from '@/data/projects';
+import {company as companySeed} from '@/data/company';
+import {serviceGroups} from '@/data/services';
+import {projectCategories} from '@/data/projects';
 import {projectLifecycle} from '@/data/method';
 import {getSectorImage, getServiceImage, roleImages, ctaBandImages, companyDocumentImage} from '@/data/image-manifest';
 import CompanyProfileSubnav from '@/components/company-profile/CompanyProfileSubnav';
@@ -26,9 +18,13 @@ import CompanyProfileEnquiryCta from '@/components/company-profile/CompanyProfil
 import {ActionButton, ActionGroup} from '@/components/ActionButton';
 import ProjectVisualFallback from '@/components/ProjectVisualFallback';
 import {staticPageMetadata} from '@/lib/cms/seo/page-meta';
-
-const PROFILE_HREF = '/downloads/asas-company-profile.pdf';
-const PROFILE_SIZE = '7.7 MB';
+import {filePublicHref, getCompanyProfileDocument} from '@/lib/cms/content-service';
+import {
+  getPublicCompanyBundle,
+  getPublicProjects,
+  getPublicSectors,
+  getPublicServices,
+} from '@/lib/cms/public-data';
 
 function NextArrow({ar}) {
   return <ArrowRight size={15} className={ar ? 'cp-flip' : ''} />;
@@ -42,15 +38,30 @@ export const generateMetadata = staticPageMetadata({
   path: 'company-profile',
   titleEn: 'Company Profile',
   titleAr: 'الملف التعريفي',
-  descriptionEn: company.description,
-  descriptionAr: company.descriptionAr,
+  descriptionEn: companySeed.description,
+  descriptionAr: companySeed.descriptionAr,
   schemaType: 'AboutPage',
 });
 
 
+export const dynamic = 'force-dynamic';
+
 export default async function CompanyProfile({params}) {
   const {locale} = await params;
   const ar = locale === 'ar';
+  const [profileDoc, {company, mission, stats, strengths, vision, workLocations}, services, sectors, projects] =
+    await Promise.all([
+      getCompanyProfileDocument(),
+      getPublicCompanyBundle(),
+      getPublicServices(),
+      getPublicSectors(),
+      getPublicProjects(),
+    ]);
+  const profileHref = filePublicHref(profileDoc?.href);
+  const profileSize = profileDoc?.size || '';
+  const profileTitle = ar
+    ? profileDoc?.titleAr || profileDoc?.titleEn || 'الملف التعريفي'
+    : profileDoc?.titleEn || profileDoc?.titleAr || 'Company Profile';
   const heroImage = roleImages.COMPANY_HERO;
   const overviewImage = roleImages.COMPANY_OVERVIEW;
   const ctaImage = ctaBandImages.company;
@@ -72,7 +83,10 @@ export default async function CompanyProfile({params}) {
       }),
   }));
 
-  const selectedProjects = featuredProjects.slice(0, 6);
+  const selectedProjects = (projects.filter((item) => item.featured).length
+    ? projects.filter((item) => item.featured)
+    : projects
+  ).slice(0, 6);
   const featuredProject = selectedProjects[0];
   const otherProjects = selectedProjects.slice(1, 4);
   const approachSteps = projectLifecycle.slice(0, 6);
@@ -131,7 +145,7 @@ export default async function CompanyProfile({params}) {
               <ActionButton variant="primary" href="#story" icon={false}>
                 {ar ? 'استكشف أساس للاستشارات الهندسية وإدارة المشاريع' : 'Explore ASAS'}
               </ActionButton>
-              <ActionButton variant="ghost" href={PROFILE_HREF} icon="download" download>
+              <ActionButton variant="ghost" href={profileHref} icon="download" download>
                 {ar ? 'تحميل الملف التعريفي' : 'Download Company Profile'}
               </ActionButton>
             </ActionGroup>
@@ -575,7 +589,7 @@ export default async function CompanyProfile({params}) {
               <i />
               {ar ? 'المستند الرسمي' : 'Official Document'}
             </p>
-            <h2>{ar ? 'الملف التعريفي لشركة أساس للاستشارات الهندسية وإدارة المشاريع' : 'ASAS Company Profile'}</h2>
+            <h2>{profileTitle}</h2>
             <p>
               {ar
                 ? 'المستند المعتمد للتعريف بأساس للاستشارات الهندسية وإدارة المشاريع — المصدر الرسمي للمعلومات عن الشركة والأعمال.'
@@ -584,13 +598,13 @@ export default async function CompanyProfile({params}) {
             <ul className="cp-download-meta">
               <li>{ar ? 'صيغة' : 'Format'} · PDF</li>
               <li>{ar ? 'اللغة' : 'Language'} · {ar ? 'إنجليزي' : 'English'}</li>
-              <li>{ar ? 'الحجم' : 'Size'} · {PROFILE_SIZE}</li>
+              {profileSize ? <li>{ar ? 'الحجم' : 'Size'} · {profileSize}</li> : null}
             </ul>
             <ActionGroup className="cp-download-actions">
-              <ActionButton variant="primary" href={PROFILE_HREF} icon="download" download>
+              <ActionButton variant="primary" href={profileHref} icon="download" download>
                 {ar ? 'تحميل الملف' : 'Download Profile'}
               </ActionButton>
-              <ActionButton variant="outline" href={PROFILE_HREF} icon="file" external>
+              <ActionButton variant="outline" href={profileHref} icon="file" external>
                 {ar ? 'فتح ملف PDF' : 'Open PDF'}
               </ActionButton>
             </ActionGroup>

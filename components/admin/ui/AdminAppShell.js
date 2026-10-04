@@ -1,5 +1,6 @@
 'use client';
 import {adminText} from '@/lib/admin/translate';
+import {useAdminLang} from '@/components/admin/ui/AdminLangRoot';
 
 
 import Link from 'next/link';
@@ -79,10 +80,9 @@ import {
 import CommandPalette from '@/components/admin/ui/CommandPalette';
 import AdminSearch from '@/components/admin/ui/AdminSearch';
 import AdminLanguageSwitcher from '@/components/admin/ui/AdminLanguageSwitcher';
-import {useAdminLang} from '@/components/admin/ui/AdminLangRoot';
 
 const SIDEBAR_KEY = 'asas-cms-sidebar';
-const MENU_OPEN_KEY = 'asas-cms-menu-open';
+const MENU_OPEN_KEY = 'asas-cms-menu-accordion';
 
 const ICON_BY_HREF = {
   '/admin/dashboard': LayoutDashboard,
@@ -254,10 +254,10 @@ const NAV_GROUPS = [
 ];
 
 const MENU_FAMILIES = [
+  {id: 'website', label: 'Website', groupIds: ['content', 'crm', 'media', 'corporate', 'seo', 'site']},
   {id: 'overview', label: 'Overview', groupIds: ['overview']},
   {id: 'erp', label: 'ERP', groupIds: ['erp', 'erp-sales', 'erp-purchase', 'erp-finance', 'erp-people', 'erp-control']},
   {id: 'ops', label: 'Operations', groupIds: ['operations', 'people']},
-  {id: 'website', label: 'Website', groupIds: ['content', 'crm', 'media', 'corporate', 'seo', 'site']},
   {id: 'admin', label: 'Settings', groupIds: ['settings', 'system']},
 ];
 
@@ -361,30 +361,18 @@ function openAdminNav() {
 }
 
 export default function AdminAppShell({user, navItems = []}) {
+  useAdminLang();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openMap, setOpenMap] = useState({});
+  const [openId, setOpenId] = useState(null);
 
   useEffect(() => {
     try {
       window.localStorage.setItem(SIDEBAR_KEY, "expanded");
-      const saved = window.localStorage.getItem(MENU_OPEN_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && typeof parsed === "object") setOpenMap(parsed);
-      }
     } catch {
       // ignore
     }
   }, []);
-
-  useEffect(() => {
-    try {
-      window.localStorage.setItem(MENU_OPEN_KEY, JSON.stringify(openMap));
-    } catch {
-      // ignore
-    }
-  }, [openMap]);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -415,13 +403,26 @@ export default function AdminAppShell({user, navItems = []}) {
     ...leftoverGroups,
   ];
 
+  const routeGroupId = menuGroups.find((group) => group.items.some(isItemActive))?.id || null;
+
+  useEffect(() => {
+    if (routeGroupId) setOpenId(routeGroupId);
+  }, [pathname, routeGroupId]);
+
+  useEffect(() => {
+    try {
+      if (openId) window.localStorage.setItem(MENU_OPEN_KEY, openId);
+    } catch {
+      // ignore
+    }
+  }, [openId]);
+
   function isGroupOpen(groupId) {
-    if (Object.prototype.hasOwnProperty.call(openMap, groupId)) return Boolean(openMap[groupId]);
-    return true;
+    return (openId ?? routeGroupId) === groupId;
   }
 
   function toggleGroup(groupId) {
-    setOpenMap((prev) => ({...prev, [groupId]: !isGroupOpen(groupId)}));
+    setOpenId((prev) => ((prev ?? routeGroupId) === groupId ? "" : groupId));
   }
 
   const sidebarClass = ["cms-navframe", mobileOpen ? "is-open" : ""]
